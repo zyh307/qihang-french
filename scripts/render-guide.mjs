@@ -1,0 +1,21 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const markdown=await fs.readFile(path.join(root,'docs/使用教程.md'),'utf8');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const inline=s=>esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+const lines=markdown.split(/\r?\n/),html=[],toc=[];let section=0;
+for(let i=0;i<lines.length;i++){
+  const line=lines[i];if(!line.trim())continue;
+  if(line.startsWith('```')){const code=[];while(++i<lines.length&&!lines[i].startsWith('```'))code.push(lines[i]);html.push('<pre><code>'+esc(code.join('\n'))+'</code></pre>');continue;}
+  if(line.startsWith('|')){const rows=[];while(i<lines.length&&lines[i].startsWith('|')){const cells=lines[i].split('|').slice(1,-1).map(x=>x.trim());if(!cells.every(c=>/^:?-+:?$/.test(c)))rows.push(cells);i++;}i--;html.push('<div class="table-wrap"><table><thead><tr>'+rows[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');continue;}
+  const heading=/^(#{1,3})\s+(.*)/.exec(line);if(heading){const level=heading[1].length,id=level===2?'section-'+(++section):'';if(id)toc.push({id,title:heading[2]});html.push(`<h${level}${id?` id="${id}"`:''}>${inline(heading[2])}</h${level}>`);continue;}
+  if(/^\d+\.\s/.test(line)){const items=[];while(i<lines.length&&/^\d+\.\s/.test(lines[i])){items.push(lines[i].replace(/^\d+\.\s/,''));i++;}i--;html.push('<ol>'+items.map(x=>'<li>'+inline(x)+'</li>').join('')+'</ol>');continue;}
+  html.push('<p>'+inline(line)+'</p>');
+}
+const document=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>启航法语使用教程</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f3f5fa;color:#2a3850;font:16px/1.9 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}.page{max-width:1040px;padding:48px 36px 80px;margin:auto}.brand{color:#7285ae;letter-spacing:2px;font-size:12px;margin:0 0 22px}h1{font-size:32px;letter-spacing:-.6px;line-height:1.5;margin:0 0 24px}h2{font-size:23px;margin:44px 0 18px;border-top:1px solid #dce3f0;padding-top:30px}h3{font-size:17px;margin:27px 0 12px}p{margin:14px 0}a{color:#506da5}.toc{padding:24px 28px;background:#fff;border:1px solid #dce3ef;border-radius:22px;margin:28px 0}.toc a{display:block;text-decoration:none;padding:4px 0}.table-wrap{overflow:auto;border:1px solid #d7e0ef;border-radius:14px;margin:20px 0;background:#fff}table{border-collapse:collapse;width:100%;min-width:470px}th{background:#e8edf7;color:#3b5279;text-align:left;font-weight:600}th,td{padding:12px 18px;border-bottom:1px solid #e4e9f2;vertical-align:top}tr:last-child td{border-bottom:0}td:first-child{min-width:125px}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.94em;background:#e8edf7;border-radius:5px;padding:2px 5px;overflow-wrap:anywhere}pre{padding:22px;background:#e9eef7;border-radius:16px;overflow:auto;line-height:1.8}pre code{background:none;padding:0;white-space:pre}li{padding:5px 0}footer{border-top:1px solid #dce3f0;margin-top:44px;padding-top:20px;font-size:13px;color:#8090aa}@media(max-width:600px){.page{padding:28px 20px 60px}h1{font-size:26px}h2{font-size:21px}.toc{padding:18px 20px}th,td{padding:10px 13px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:#fff}.page{max-width:none;padding:0}.toc{display:none}h2{break-after:avoid}.table-wrap,pre{break-inside:avoid}}</style></head><body><main class="page"><div class="brand">CAP SUR LE FRANÇAIS</div>${html[0]}${html[1]}<nav class="toc" aria-label="教程目录">${toc.map(t=>`<a href="#${t.id}">${esc(t.title)}</a>`).join('')}</nav>${html.slice(2).join('\n')}<footer>启航法语 · Cap sur le français</footer></main></body></html>`;
+await fs.mkdir(path.join(root,'src/static'),{recursive:true});
+await fs.writeFile(path.join(root,'src/static/使用教程.html'),document,'utf8');
+console.log('使用教程已生成');

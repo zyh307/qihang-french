@@ -1,0 +1,26 @@
+{
+  "name": "启航法语",
+  "description": "Apprendre le français, leçon par leçon.",
+  "versionName": "1.0.12",
+  "versionCode": "10012",
+  "transformPx": false,
+  "h5": {
+    "title": "启航法语 · Cap sur le français",
+    "router": {
+      "mode": "hash",
+      "base": "./"
+    }
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": true
+    }
+  },
+  "app-plus": {
+    "usingComponents": true
+  },
+  "uniStatistics": {
+    "enable": false
+  }
+}

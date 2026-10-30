@@ -1,0 +1,4 @@
+<template><view class="manual-picker"><view class="book-grid"><button v-for="i in 4" :key="i" hover-class="none" :class="['book-tile','glass',`book-${i}`,{locked:i!==1,selected:selected===`inspire${i}`}]" :disabled="i!==1" @click="$emit('select','inspire1')"><view class="book-tile-top"><view class="book-cover"><text class="cover-series">inspire</text><text class="cover-number">{{ i }}</text></view><Icon v-if="i!==1" name="lock" /></view><view class="book-tile-bottom"><view><h2>Inspire {{ i }}</h2><Bi :zh="i===1?`${lessons} 个课次`:'暂未开放'" :fr="i===1?`${lessons} leçons`:'Bientôt'" small /></view><Icon :name="i===1?'arrow':'lock'" /></view></button></view></view></template>
+<script setup>
+import Bi from './Bi.vue';import Icon from './Icon.vue';defineProps({selected:String,lessons:Number});defineEmits(['select']);
+</script>

@@ -1,0 +1,36 @@
+<template><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="paths[name] || paths.book" /></svg></template>
+<script setup>
+defineProps({ name: String });
+const paths = {
+ shift:'M12 3 3 12h5v9h8v-9h5L12 3Z',
+ backspace:'M9 5h12v14H9l-7-7 7-7ZM12 9l6 6M18 9l-6 6',
+ return:'M20 5v7H4m5-5-5 5 5 5',
+ keyboard:'M2 5h20v14H2V5ZM6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10',
+ 'chevron-down':'m6 9 6 6 6-6',
+ phrase:'M4 3h16v13H9l-5 5V3ZM8 7h8M8 11h5',
+ star:'m12 2 3.1 6.3 6.9 1-5 4.8 1.2 6.9-6.2-3.3L5.8 21 7 14.1 2 9.3l6.9-1L12 2Z',
+ cards:'M7 3h13v16H7V3ZM4 7H2v15h13v-2',
+ edit:'m4 16-1 5 5-1L21 7l-4-4L4 16ZM14 6l4 4',
+ list:'M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01',
+ menu:'M4 6h16M4 12h16M4 18h16',
+ eye:'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12ZM15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
+ badge:'M12 2l3 2 4 .5.5 4 2 3-2 3-.5 4-4 .5-3 2-3-2-4-.5-.5-4-2-3 2-3 .5-4L9 4l3-2ZM8 11l3 3 5-6',
+ hand:'M8 13V5a2 2 0 0 1 4 0v6M12 8a2 2 0 0 1 4 0v4M16 10a2 2 0 0 1 4 0v5c0 4-3 7-7 7-4 0-5-3-8-6a2 2 0 0 1 3-3l2 2',
+ book:'M3 4h7a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H3V4Zm18 0h-5a3 3 0 0 0-3 3v14a4 4 0 0 1 4-3h4V4Z',
+ grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+ notebook:'M6 3h14v18H6V3ZM3 7h6M3 12h6M3 17h6M12 8h4M12 12h4',
+ chart:'M4 20h17M7 16v-5M12 16V5M17 16V8',
+ settings:'M4 7h16M4 17h16M9 4v6M16 14v6',
+ plus:'M12 5v14M5 12h14', arrow:'M4 12h15M14 6l6 6-6 6', back:'M20 12H5M10 6l-6 6 6 6',
+ sound:'M11 4 5 9H2v6h3l6 5V4ZM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14',
+ lock:'M6 10V7a6 6 0 0 1 12 0v3M4 10h16v11H4V10Z',
+ check:'m5 12 4 4L19 6', close:'m6 6 12 12M18 6 6 18',
+ search:'M15 15l6 6M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z',
+ heart:'M12 21S2 15 2 8a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 7-10 13-10 13Z',
+ repeat:'m16 2 4 4-4 4M4 11V9a3 3 0 0 1 3-3h13M8 22l-4-4 4-4M20 13v2a3 3 0 0 1-3 3H4',
+ upload:'M12 16V3M7 8l5-5 5 5M4 15v6h16v-6', download:'M12 3v13M7 11l5 5 5-5M4 17v4h16v-4',
+ clock:'M12 8v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+ leaf:'M20 3C7 2 1 9 6 16s15 2 14-13ZM5 21l9-11',
+ flag:'M5 21V3h14l-3 5 3 5H5', info:'M12 11v6M12 7h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+};
+</script>

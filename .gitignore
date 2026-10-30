@@ -1,0 +1,34 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.资料生成/
+.preview/
+*.log
+
+android/build/
+android/signing/
+安卓安装包/
+
+.audio-tools/
+.audio-work/
+
+# Local delivery packages and learning materials
+/分享版/
+/启航法语_分享版.zip
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+*backup*.zip
+~$*
+
+# One-time audio processing utilities
+/scripts/prepare-example-audio.py
+/scripts/prepare-vocabulary-corrections.py
+/scripts/split-gender-audio.py
+/scripts/audio-requirements.txt
