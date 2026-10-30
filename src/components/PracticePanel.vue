@@ -11,7 +11,7 @@
             <button v-for="(option,index) in question.options" :key="option.id" hover-class="none" :class="['exercise-option',{correct:session.feedback?.correct&&option.id===word.id,incorrect:question.rejectedIds?.includes(option.id)}]" :disabled="busy||submitted||!!session.feedback||question.rejectedIds?.includes(option.id)" @click="submit(option.id)"><text class="option-letter">{{ String.fromCharCode(65+index) }}</text><text>{{ option.label }}</text><Icon v-if="question.rejectedIds?.includes(option.id)||(session.feedback?.correct&&option.id===word.id)" :name="option.id===word.id?'check':'close'" /></button>
           </view>
           <template v-else>
-            <view :class="['exercise-entry',{correct:session.feedback?.correct,incorrect:session.feedback&&!session.feedback.correct}]" @click="retrySpelling"><view v-if="task.mode==='choice'" class="article-picker" @click.stop><button hover-class="none" class="article-trigger" :class="{selected:!!articleSelection}" :disabled="busy||!!session.feedback" :aria-expanded="articleOpen" aria-label="选择冠词 / Choisir un article" @click="toggleArticle"><text v-if="articleSelection">{{ articleSelection }}</text><Bi v-else zh="冠词" fr="Article" small /><Icon name="chevron-down" /></button><Transition name="article-menu"><view v-if="articleOpen" class="article-menu" role="group" aria-label="冠词选项 / Articles"><button v-for="article in task.options" :key="article" hover-class="none" :class="{selected:articleSelection===article}" :aria-pressed="articleSelection===article" @click="selectArticle(article)"><text>{{ article }}</text><Icon v-if="articleSelection===article" name="check" /></button></view></Transition></view><text v-if="task.mode==='given'&&parts.prefix" class="given-article">{{ parts.prefix }}</text><input ref="answerInput" v-model="input" :readonly="useTouchKeyboard" :inputmode="useTouchKeyboard?'none':'text'" lang="fr" :disabled="busy||!!session.feedback" aria-label="法语答案 / Réponse en français" placeholder="" :focus="focusInput" confirm-type="done" :adjust-position="false" @blur="focusInput=false" @focus="openKeyboard" @click.stop="openKeyboard" @keydown="physicalInput" /><button v-if="useTouchKeyboard&&!session.feedback" hover-class="none" class="answer-keyboard-toggle" @mousedown.prevent @click.stop="openKeyboard" aria-label="法语键盘 / Clavier français"><Icon name="keyboard" /></button><Icon v-if="session.feedback" :name="session.feedback.correct?'check':'close'" /></view>
+            <view :class="['exercise-entry',{correct:session.feedback?.correct,incorrect:session.feedback&&!session.feedback.correct}]" @click="retrySpelling"><view v-if="task.mode==='choice'" class="article-picker" @click.stop><button hover-class="none" class="article-trigger" :class="{selected:!!articleSelection}" :disabled="busy||!!session.feedback" :aria-expanded="articleOpen" aria-label="选择冠词 / Choisir un article" @click="toggleArticle"><text v-if="articleSelection">{{ articleSelection }}</text><Bi v-else zh="冠词" fr="Article" small /><Icon name="chevron-down" /></button><Transition name="article-menu"><view v-if="articleOpen" class="article-menu" role="group" aria-label="冠词选项 / Articles"><button v-for="article in task.options" :key="article" hover-class="none" :class="{selected:articleSelection===article}" :aria-pressed="articleSelection===article" @click="selectArticle(article)"><text>{{ article }}</text><Icon v-if="articleSelection===article" name="check" /></button></view></Transition></view><text v-if="task.mode==='given'&&parts.prefix" class="given-article">{{ parts.prefix }}</text><AnswerInput ref="answerInput" v-model="input" :touch="useTouchKeyboard" :active="keyboardOpen" :disabled="busy||!!session.feedback" @update:model-value="draft=$event" @activate="openKeyboard" @blur="focusInput=false" @keydown="physicalInput" /><button v-if="useTouchKeyboard&&!session.feedback" hover-class="none" class="answer-keyboard-toggle" @mousedown.prevent @click.stop="openKeyboard" aria-label="法语键盘 / Clavier français"><Icon name="keyboard" /></button><Icon v-if="session.feedback" :name="session.feedback.correct?'check':'close'" /></view>
             <view v-if="session.feedback" :class="['spelling-result',{correct:session.feedback.correct}]" role="status"><Icon :name="session.feedback.correct?'check':'repeat'" /><Bi :zh="session.feedback.correct?'正确':'再试一次'" :fr="session.feedback.correct?'Correct':'À revoir'" small /></view>
             <SpellingFeedback v-if="session.feedback?.diff" :diff="session.feedback.diff" />
           </template>
@@ -35,6 +35,7 @@
 import {computed,ref,watch,nextTick,onUnmounted} from 'vue';
 import ExampleSentence from './ExampleSentence.vue';
 import FrenchKeyboard from './FrenchKeyboard.vue';
+import AnswerInput from './AnswerInput.vue';
 import {nativeHost} from '../platform/native.js';
 import {playCorrect,playTap} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import DefinitionPanel from './DefinitionPanel.vue';import SpellingFeedback from './SpellingFeedback.vue';
@@ -42,25 +43,15 @@ import {displayForm,spellingParts,spellingTask,sharedExample,splitNounArticle,ex
 const props=defineProps({pkg:Object,sourcePkg:Object,session:Object,word:Object,form:Object,favorite:Boolean,playing:String,busy:Boolean,motion:String,articleMode:String});
 const emit=defineEmits(['answer','next','hint','retry-hint','known','favorite','audio','audio-stop']);
 const useTouchKeyboard=!!nativeHost()||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-const answerInput=ref(null),keyboardOpen=ref(false),draft=ref('');let unbindInput=()=>{};
+const answerInput=ref(null),keyboardOpen=ref(false),draft=ref('');
 const input=ref(''),focusInput=ref(false),articleSelection=ref(''),articleOpen=ref(false),submitted=ref(false),choiceReady=ref(false),definitionOpen=ref(false),returnedToQuestion=ref(false),definitionCard=ref(null);let choiceTimer,retryFocus=false;
 const question=computed(()=>props.session.question||props.session.feedback?.question);
 const liveInput=computed(()=>useTouchKeyboard?input.value:draft.value);
-function inputElement(){const root=answerInput.value?.$el||answerInput.value;return root?.matches?.('input')?root:root?.querySelector?.('input');}
-watch(answerInput,()=>{
-  unbindInput();const field=inputElement();if(!field)return;field.lang='fr';field.readOnly=useTouchKeyboard;field.inputMode=useTouchKeyboard?'none':'text';field.setAttribute('inputmode',useTouchKeyboard?'none':'text');field.autocomplete='off';field.spellcheck=false;field.setAttribute('autocorrect','off');field.setAttribute('autocapitalize','none');
-  const capture=()=>draft.value=field.value,end=()=>{input.value=draft.value=field.value;};field.addEventListener('input',capture);field.addEventListener('compositionend',end);unbindInput=()=>{field.removeEventListener('input',capture);field.removeEventListener('compositionend',end);};
-},{flush:'post'});
+function inputElement(){return answerInput.value?.element;}
 function submitSpelling(){if(!useTouchKeyboard)input.value=draft.value=inputElement()?.value??input.value;submit(input.value);}
-function openKeyboard(){closeArticle();if(!useTouchKeyboard||props.busy||props.session.feedback||question.value?.kind!=='spell')return;keyboardOpen.value=true;focusInput.value=true;nextTick(()=>inputElement()?.focus({preventScroll:true}));}
+function openKeyboard(){closeArticle();if(!useTouchKeyboard||props.busy||props.session.feedback||question.value?.kind!=='spell')return;keyboardOpen.value=true;focusInput.value=true;answerInput.value?.focus();}
 function closeKeyboard(){keyboardOpen.value=false;focusInput.value=false;inputElement()?.blur();}
-function replaceRange(text,backwards=false,forwards=false){
-  const field=inputElement(),value=input.value;let start=field?.selectionStart??value.length,end=field?.selectionEnd??start;
-  if(start===end&&backwards)start=Math.max(0,start-1);if(start===end&&forwards)end=Math.min(value.length,end+1);
-  input.value=value.slice(0,start)+text+value.slice(end);
-  if(field){field.value=input.value;field.setSelectionRange(start+text.length,start+text.length);}
-  nextTick(()=>{if(keyboardOpen.value){field?.focus({preventScroll:true});field?.setSelectionRange(start+text.length,start+text.length);}});
-}
+function replaceRange(text,backwards=false,forwards=false){answerInput.value?.replaceRange(text,backwards,forwards);}
 function insertText(letter){if(!props.busy&&!props.session.feedback)replaceRange(letter);}
 function deleteCharacter(){if(!props.busy&&!props.session.feedback)replaceRange('',true);}
 function physicalInput(event){
@@ -113,5 +104,5 @@ function backToQuestion(){
   return true;
 }
 defineExpose({backToQuestion});
-onUnmounted(()=>{unbindInput();clearTimeout(choiceTimer);emit('audio-stop');});
+onUnmounted(()=>{clearTimeout(choiceTimer);emit('audio-stop');});
 </script>
