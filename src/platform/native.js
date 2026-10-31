@@ -1,3 +1,5 @@
+import {day,addDays,wordKey,errorPracticeState} from '../domain/learning.js';
+import {REMINDER_INTERVAL_DAYS} from '../domain/reminders.js';
 export const nativeHost=()=>typeof window!=='undefined'?window.QihangNative:null;
 export function nativeExport(name,bytes,mime,share=false){
   const native=nativeHost();
@@ -18,5 +20,7 @@ export function syncNativeReview(data){
     const due=w.forms.filter(f=>f.tested).map(f=>progress.forms[f.id]?.due).filter(Boolean).sort()[0];
     return due?[due]:[];
   }));
-  native.syncReviewSchedule(JSON.stringify({enabled:!!data.settings.notifications,dates,time:data.settings.reminderTime||'08:00'}));
+  const today=day(),errorDates=data.library.flatMap(p=>p.words.flatMap(w=>{const state=errorPracticeState(data,p,w,today);return state.active?[state.doneToday?addDays(today,1):today]:[];}));
+  const quiet=kind=>{const badge=data.reminders?.badges?.[kind];return badge?.ackDate&&!badge.pending?addDays(badge.ackDate,REMINDER_INTERVAL_DAYS[kind]):'';};
+  native.syncReviewSchedule(JSON.stringify({enabled:!!data.settings.notifications,dates,errorDates,time:data.settings.reminderTime||'08:00',reviewIntervalDays:1,errorIntervalDays:2,reviewQuietUntil:quiet('review'),errorQuietUntil:quiet('errors')}));
 }

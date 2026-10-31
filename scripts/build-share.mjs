@@ -22,6 +22,7 @@ const guide=await fs.readFile(path.join(app,'docs/使用教程.md'),'utf8');
 const plainGuide=guide.replace(/^#{1,3} /gm,'').replace(/^```.*$/gm,'').replace(/`/g,'').replace(/\*\*/g,'');
 await fs.writeFile(path.join(output,'使用说明.txt'),'\uFEFF'+plainGuide.replace(/\r?\n/g,'\r\n'),'utf8');
 await fs.copyFile(path.join(app,'src/static/使用教程.html'),path.join(output,'使用教程.html'));
+
 await fs.writeFile(path.join(app,'启动启航法语.bat'),'@echo off\r\nchcp 65001 >nul\r\nstart "" "%~dp0分享版\\启动启航法语.bat"\r\n','utf8');
 // Package an explicit allowlist, so unrelated files or exported learning backups
 // accidentally placed alongside the program can never enter the share archive.

@@ -7,8 +7,10 @@ export async function allowNotifications(){
   return Notification.permission==='granted'?'granted':await Notification.requestPermission();
 }
 export function notifyReview(count, onOpen){
-  if(nativeHost())return null;
+  const native=nativeHost();if(native){native.checkReviewReminders?.();return null;}
   if(!notificationAvailable()||Notification.permission!=='granted')return null;
-  const n=new Notification('该复习法语啦 · À réviser !',{body:`${count} 个词已到复习时间。点击查看。 / ${count} mots à réviser.`,tag:'francais-review'});
+  const n=new Notification('该复习法语啦 · À réviser !',{body:`复习 ${count.review} · 错题 ${count.errors} / Révision ${count.review} · Erreurs ${count.errors}`,tag:'francais-review'});
   n.onclick=()=>{window.focus();onOpen();n.close();};return n;
 }
+
+export function openNotificationSettings(){nativeHost()?.openNotificationSettings?.();}

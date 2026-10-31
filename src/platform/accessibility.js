@@ -21,6 +21,20 @@ export function accessibleButtons() {
   const focusIn=event=>{if(!event.target?.matches?.('input,textarea,[contenteditable=true]'))return;clearTimeout(focusTimer);anchorX=window.scrollX;anchorY=window.scrollY;viewport();};
   const focusOut=()=>{clearTimeout(focusTimer);focusTimer=setTimeout(viewport,250);};
   viewport();window.addEventListener('resize',viewport);window.addEventListener('scroll',keepPosition,{passive:true});window.visualViewport?.addEventListener('resize',viewport);window.visualViewport?.addEventListener('scroll',keepPosition);document.addEventListener('focusin',focusIn);document.addEventListener('focusout',focusOut);
+  const resumeFrame=()=>{
+    if(document.visibilityState==='hidden')return;
+    requestAnimationFrame(()=>{
+      viewport();
+      // Complete only interrupted page transitions; keep the current page,
+      // card state, text cursor and ongoing input intact.
+      for(const animation of document.getAnimations?.()||[]){
+        const target=animation.effect?.target,timing=animation.effect?.getTiming();
+        if(timing?.iterations!==Infinity&&/(?:page-fade|panel-switch|lesson-entrance|recognition-sheet|definition-sheet|word-switch)-.*active/.test(target?.className||''))try{animation.finish();}catch{}
+      }
+      requestAnimationFrame(viewport);
+    });
+  };
+  document.addEventListener('visibilitychange',resumeFrame);window.addEventListener('pageshow',resumeFrame);window.addEventListener('qihang-resume',resumeFrame);
   const pulses=new Set();
   const pulse=event=>{
     const button=event.target.closest?.('uni-button,[role="button"]');if(!button||button.getAttribute('disabled')==='true'||button.getAttribute('aria-disabled')==='true')return;
@@ -40,5 +54,5 @@ export function accessibleButtons() {
     if (!bound.has(el)) { bound.add(el); el.addEventListener('keydown', e => { if (e.target === el && ['Enter',' '].includes(e.key)) { e.preventDefault(); if (el.getAttribute('disabled') !== 'true') el.click(); } }); }
   });
   update(); const observer = new MutationObserver(records=>{for(const record of records){if(record.type==='attributes')update(record.target);else for(const node of record.addedNodes)if(node.nodeType===1)update(node);}}); observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled']});
-  return () => { clearTimeout(focusTimer);document.documentElement.classList.remove('keyboard-stable');window.removeEventListener('scroll',keepPosition);window.visualViewport?.removeEventListener('scroll',keepPosition);document.removeEventListener('focusin',focusIn);document.removeEventListener('focusout',focusOut);observer.disconnect(); style.remove();window.removeEventListener('resize',viewport);window.visualViewport?.removeEventListener('resize',viewport);document.removeEventListener('click',pulse,true);document.removeEventListener('input',inputSound,true);document.removeEventListener('keydown',enterSound,true);for(const timer of pulses)clearTimeout(timer); };
+  return () => { document.removeEventListener('visibilitychange',resumeFrame);window.removeEventListener('pageshow',resumeFrame);window.removeEventListener('qihang-resume',resumeFrame);clearTimeout(focusTimer);document.documentElement.classList.remove('keyboard-stable');window.removeEventListener('scroll',keepPosition);window.visualViewport?.removeEventListener('scroll',keepPosition);document.removeEventListener('focusin',focusIn);document.removeEventListener('focusout',focusOut);observer.disconnect(); style.remove();window.removeEventListener('resize',viewport);window.visualViewport?.removeEventListener('resize',viewport);document.removeEventListener('click',pulse,true);document.removeEventListener('input',inputSound,true);document.removeEventListener('keydown',enterSound,true);for(const timer of pulses)clearTimeout(timer); };
 }

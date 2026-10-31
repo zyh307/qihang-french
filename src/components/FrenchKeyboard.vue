@@ -8,7 +8,7 @@
       <button v-for="letter in row" :key="letter" hover-class="none" class="keyboard-key" :data-key="letter">{{ symbols?letter:letterCase(letter) }}</button>
       <button v-if="index===2" hover-class="none" class="keyboard-key keyboard-action" data-action="delete" aria-label="删除 / Effacer"><Icon name="backspace" /></button>
     </view>
-    <view class="keyboard-row keyboard-bottom"><button hover-class="none" class="keyboard-key keyboard-action keyboard-numbers" data-action="symbols">{{ symbols?'ABC':'123' }}</button><button hover-class="none" class="keyboard-key keyboard-space" data-action="space">space</button><button hover-class="none" class="keyboard-key keyboard-apostrophe" data-action="apostrophe">’</button><button hover-class="none" class="keyboard-key keyboard-confirm" :disabled="disabled" data-action="confirm" aria-label="确认 / Valider"><Icon name="return" /><text>OK</text></button></view>
+    <view class="keyboard-row keyboard-bottom"><button hover-class="none" class="keyboard-key keyboard-action keyboard-numbers" data-action="symbols">{{ symbols?'ABC':'123' }}</button><button hover-class="none" class="keyboard-key keyboard-space" data-action="space">space</button><button hover-class="none" class="keyboard-key keyboard-apostrophe" data-action="apostrophe">'</button><button hover-class="none" class="keyboard-key keyboard-confirm" :disabled="disabled" data-action="confirm" aria-label="确认 / Valider"><Icon name="return" /><text>OK</text></button></view>
   </view>
 </template>
 <script setup>
@@ -91,7 +91,7 @@ function confirm(){playTap();cancelAll();emit('confirm');}
 function hide(){playTap();cancelAll();emit('close');}
 const onVisibility=()=>{if(document.hidden)cancelAll();};
 function runAction(action){
-  if(action==='shift')toggleShift();else if(action==='symbols')toggleSymbols();else if(action==='hide')hide();else if(action==='confirm'){if(!props.disabled)confirm();}else if(action==='delete')deleteOnce();else if(action==='space')write(' ');else if(action==='apostrophe')write('’');
+  if(action==='shift')toggleShift();else if(action==='symbols')toggleSymbols();else if(action==='hide')hide();else if(action==='confirm'){if(!props.disabled)confirm();}else if(action==='delete')deleteOnce();else if(action==='space')write(' ');else if(action==='apostrophe')write("'");
 }
 function findKey(event){
   const root=rootElement(),target=event.target?.nodeType===1?event.target:event.target?.parentElement,exact=target?.closest?.('[data-key],[data-action]');

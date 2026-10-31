@@ -19,7 +19,7 @@
       <view v-if="record.words.length || record.attempts" class="day-detail-stats"><view><strong>{{ record.words.length }}</strong><Bi zh="完成词数" fr="mots terminés" small /></view><view><strong>{{ record.reviews.length }}</strong><Bi zh="其中复习" fr="dont révisés" small /></view><view><strong>{{ record.attempts }}</strong><Bi zh="作答次数" fr="réponses" small /></view><view><strong>{{ record.attempts ? Math.round(record.correct/record.attempts*100)+'%' : '—' }}</strong><Bi zh="正确率" fr="réussite" small /></view></view>
       <view v-if="words.length" class="calendar-words"><button hover-class="none" v-for="word in words" :key="word.id" :disabled="!word.package||!word.word" @click="$emit('word',{p:word.package,w:word.word})"><text lang="fr">{{ word.text }}</text><text>{{ word.meaning }}</text><text class="muted">{{ word.label }}</text><Icon v-if="word.package" name="arrow" /></button></view>
       <Bi v-else :zh="selected>today?'这一天还未到来。':record.attempts?'当天有练习作答，尚未完成整词。':'这一天还没有学习记录。'" :fr="selected>today?'Cette journée est à venir.':record.attempts?'Des réponses, mais aucun mot terminé.':'Aucune activité enregistrée ce jour-là.'" small />
-      <Bi zh="同一词每天只计一次；复习词包含在完成词数中。" fr="Chaque mot compte une fois par jour, révisions comprises." small />
+      <Bi zh="每日完成词数含复习，同词不重复计数。" fr="Révisions comprises, un seul compte par mot et par jour." small />
     </view>
   </view>
 </template>

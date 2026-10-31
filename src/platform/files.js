@@ -1,6 +1,6 @@
 import { unzipSync, zipSync, strToU8, strFromU8 } from 'fflate';
 import { unpack, validateLesson } from '../domain/importer.js';
-import { migrateSessions, packageKey, sessionKey, reviewPackage, MIXED_REVIEW_KEY,MIXED_ERRORS_KEY } from '../domain/learning.js';
+import { migrateSessions, packageKey, sessionKey, reviewPackage, MIXED_REVIEW_KEY,MIXED_ERRORS_KEY,MIXED_FAVORITES_KEY } from '../domain/learning.js';
 import {nativeExport} from './native.js';
 import {wordAudioEntries} from '../domain/word-display.js';
 export function chooseFile(accept,multiple=false) {
@@ -33,15 +33,19 @@ export async function readBackup(file) {
   if(data.reminders&&(['snoozedUntil','lastSentAt'].some(k=>data.reminders[k]!==undefined&&(!Number.isFinite(data.reminders[k])||data.reminders[k]<0))||['lastSentDate','dismissedDate','lastPopupDate'].some(k=>data.reminders[k]!==undefined&&(typeof data.reminders[k]!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(data.reminders[k])))))throw new Error('提醒时间无效 / Heure de rappel invalide.');
   if(data.lessonCompletions&&(typeof data.lessonCompletions!=='object'||Object.values(data.lessonCompletions).some(v=>typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v))))throw new Error('课次完成日期无效 / Date de leçon invalide.');
   if (data.schema !== 1 || !Array.isArray(data.library) || !data.progress || !data.sessions || !data.activity || !data.errors || !data.favorites || !data.recentOptions || ![3, 5, 7].includes(data.settings?.groupSize) || !Number.isInteger(data.settings.dailyGoal) || data.settings.dailyGoal < 1 || data.settings.dailyGoal > 100 || typeof data.settings.fuzzy !== 'boolean') throw new Error('备份内容不完整 / Sauvegarde incomplète.');
+  if(data.errorHistory!==undefined&&(!data.errorHistory||typeof data.errorHistory!=='object'||Array.isArray(data.errorHistory)||Object.values(data.errorHistory).some(h=>!h||['count','reviewCount','cycleReviews'].some(key=>!Number.isInteger(h[key])||h[key]<0)||['lastReviewDate','lastErrorDate'].some(key=>h[key]!==undefined&&!/^\d{4}-\d{2}-\d{2}$/.test(h[key])))))throw new Error('错题历史无效 / Historique d’erreurs invalide.');
+  if(data.reminders?.badges&&Object.values(data.reminders.badges).some(b=>!b||typeof b.pending!=='boolean'||!Array.isArray(b.acknowledged)||!b.acknowledged.every(id=>typeof id==='string')||(b.ackDate!==undefined&&!/^\d{4}-\d{2}-\d{2}$/.test(b.ackDate))))throw new Error('提醒记录无效 / Rappels invalides.');
+  for(const field of ['lastPopupDates','lastSentDates'])if(data.reminders?.[field]&&Object.values(data.reminders[field]).some(value=>typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value)))throw new Error('提醒日期无效 / Date de rappel invalide.');
   migrateSessions(data);
   const assets = [], seen = new Set();
   for (const p of [...data.library,reviewPackage(data)]) {
     if(!p.reviewPool)validateLesson(p);
     for(const [key,s]of Object.entries(data.sessions).filter(([,s])=>s.lessonKey===packageKey(p))) {
       const base=packageKey(p),prefix=base+':'+s.mode+':',ids=key.startsWith(prefix)?key.slice(prefix.length):null;
-      if(p.reviewPool&&!((key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')))throw new Error('复习进度无效 / Révision invalide.');
+      if(p.reviewPool&&!((key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')||(key===MIXED_FAVORITES_KEY&&s.mode==='favorites')))throw new Error('复习进度无效 / Révision invalide.');
       const scoped=['direct','errors'].includes(s.mode)&&ids&&(ids==='all'||ids.split(',').every(id=>p.words.some(w=>w.id===id)));
-      if(!['learn','review','direct','errors'].includes(s.mode)||(key!==sessionKey(p,s.mode)&&!scoped))throw new Error('练习分类与课次不一致 / Session incompatible avec cette leçon.');
+      if(!['learn','review','direct','errors','favorites'].includes(s.mode)||(key!==sessionKey(p,s.mode)&&!scoped))throw new Error('练习分类与课次不一致 / Session incompatible avec cette leçon.');
+      if(s.mistakeWordIds!==undefined&&(!Array.isArray(s.mistakeWordIds)||!s.mistakeWordIds.every(id=>typeof id==='string')))throw new Error('错题轮次记录无效 / Erreurs de série invalides.');
       if(s.removeErrors!==undefined&&typeof s.removeErrors!=='boolean')throw new Error('错题设置无效 / Erreurs invalides.');
       if (!['judge', 'practice', 'done'].includes(s.phase) || !Array.isArray(s.jobs) || !Array.isArray(s.pending) || !Array.isArray(s.group)) throw new Error('练习进度损坏 / Session invalide.');
       for (const id of [...s.pending, ...s.group, ...s.jobs.map(j => j.wordId)]) if (!p.words.some(w => w.id === id)) throw new Error('备份练习与词库不一致 / Session incompatible.');
@@ -56,7 +60,7 @@ export async function readBackup(file) {
       seen.add(hash); assets.push({ id: hash, bytes });
     }
   }
-  if(Object.entries(data.sessions).some(([key,s])=>!data.library.some(p=>packageKey(p)===s.lessonKey)&&!(s.lessonKey==='review:all'&&((key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')))))throw new Error('备份练习所属课次不存在 / Leçon de session introuvable.');
+  if(Object.entries(data.sessions).some(([key,s])=>!data.library.some(p=>packageKey(p)===s.lessonKey)&&!(s.lessonKey==='review:all'&&((key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')||(key===MIXED_FAVORITES_KEY&&s.mode==='favorites')))))throw new Error('备份练习所属课次不存在 / Leçon de session introuvable.');
   if(Object.entries(data.activeSessions).some(([lesson,key])=>data.sessions[key]?.lessonKey!==lesson))throw new Error('备份续练入口无效 / Reprise de session invalide.');
   return { data, assets };
 }

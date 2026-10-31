@@ -43,7 +43,7 @@ npm run dev
 
 欢迎提交 Issue 和 Pull Request。仓库所有者也可在 Settings → Collaborators 中邀请熟人共同开发。开发流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-当前版本：1.0.14。手机版使用 QWERTY 键位，长按后滑动选择重音字母，松手输入；电脑版使用实体键盘。
+当前版本：1.0.22。手机版使用 QWERTY 键位，长按后滑动选择重音字母，松手输入；电脑版使用实体键盘。
 
 ## 协议与素材
 

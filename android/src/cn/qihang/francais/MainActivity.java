@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Base64;
 import android.view.View;
 import android.view.WindowInsets;
@@ -38,6 +39,8 @@ public final class MainActivity extends Activity {
     private byte[] pendingBytes;
     private String pendingId;
     private FrameLayout container;
+    private boolean resumed;
+    private long visualRequest;
 
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
@@ -90,11 +93,11 @@ public final class MainActivity extends Activity {
                 catch(IOException error){return notFound();}
             }
             @Override public boolean shouldOverrideUrlLoading(WebView view,WebResourceRequest request){return assetPath(request.getUrl())==null;}
-            @Override public void onPageFinished(WebView view,String url){openReviewIntent();}
+            @Override public void onPageFinished(WebView view,String url){openReviewIntent();restoreFrame();}
         });
         container.addView(webView,new FrameLayout.LayoutParams(-1,-1));setContentView(container);
         webView.loadUrl("https://"+HOST+"/index.html");
-        ReminderReceiver.schedule(this);
+        ReminderReceiver.check(this);
     }
     static String assetPath(Uri uri){
         String path=uri.getPath();
@@ -119,7 +122,7 @@ public final class MainActivity extends Activity {
     private void openReviewIntent(){
         if(getIntent().getBooleanExtra("review",false)&&trustedPage()){
             if(!Uri.parse(webView.getUrl()).getPath().equals("/index.html")){webView.loadUrl("https://"+HOST+"/index.html");return;}
-            webView.evaluateJavascript("window.dispatchEvent(new Event('qihang-review-open'))",null);getIntent().removeExtra("review");
+            String notebook="errors".equals(getIntent().getStringExtra("notebook"))?"errors":"review";webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('qihang-review-open',{detail:{notebook:'"+notebook+"'}}))",null);getIntent().removeExtra("review");getIntent().removeExtra("notebook");
         }
     }
     public final class NativeBridge {
@@ -130,6 +133,9 @@ public final class MainActivity extends Activity {
             else permissionResult();
         });}
         @JavascriptInterface public void syncReviewSchedule(String payload){ReminderReceiver.sync(MainActivity.this,payload);}
+        @JavascriptInterface public void checkReviewReminders(){ReminderReceiver.check(MainActivity.this);}
+        @JavascriptInterface public void openNotificationSettings(){runOnUiThread(()->{if(trustedPage())startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE,getPackageName()));});}
+
         @JavascriptInterface public void exportFile(String id,String name,String type,String base64,boolean share){
             final byte[] bytes;
             try{if(base64==null||base64.length()>110*1024*1024)throw new IOException();bytes=Base64.decode(base64,Base64.DEFAULT);if(bytes.length==0)throw new IOException();}
@@ -171,13 +177,25 @@ public final class MainActivity extends Activity {
             }).start();
         }
     }
-    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] results){super.onRequestPermissionsResult(request,permissions,results);if(request==NOTIFY_PERMISSION){permissionResult();ReminderReceiver.schedule(this);}}
+    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] results){super.onRequestPermissionsResult(request,permissions,results);if(request==NOTIFY_PERMISSION){permissionResult();ReminderReceiver.check(this);}}
     @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);openReviewIntent();}
     @Override public void onBackPressed(){
         if(webView.canGoBack()){webView.goBack();return;}
         webView.evaluateJavascript("(function(){return !window.dispatchEvent(new Event('qihang-back',{cancelable:true}));})()",handled->{if(!"true".equals(handled))finish();});
     }
-    @Override protected void onResume(){super.onResume();if(webView!=null){webView.onResume();openReviewIntent();ReminderReceiver.schedule(this);}}
-    @Override protected void onPause(){if(webView!=null)webView.onPause();super.onPause();}
+    private void restoreFrame(){
+        if(!resumed||webView==null||!webView.isAttachedToWindow())return;
+        final WebView current=webView;container.requestApplyInsets();container.requestLayout();current.requestLayout();current.invalidate();
+        current.postOnAnimation(()->{
+            if(!resumed||webView!=current)return;
+            current.evaluateJavascript("requestAnimationFrame(function(){window.dispatchEvent(new Event('qihang-resume'));})",null);
+            current.postVisualStateCallback(++visualRequest,new WebView.VisualStateCallback(){@Override public void onComplete(long request){if(resumed&&webView==current){current.postInvalidateOnAnimation();container.postInvalidateOnAnimation();}}});
+            current.postInvalidateOnAnimation();
+        });
+        current.postDelayed(()->{if(resumed&&webView==current){current.postInvalidateOnAnimation();container.postInvalidateOnAnimation();}},180);
+    }
+    @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)restoreFrame();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(webView!=null){webView.onResume();webView.resumeTimers();restoreFrame();openReviewIntent();ReminderReceiver.check(this);}}
+    @Override protected void onPause(){resumed=false;if(webView!=null)webView.onPause();super.onPause();}
     @Override protected void onDestroy(){if(fileCallback!=null)fileCallback.onReceiveValue(null);pendingBytes=null;if(webView!=null){container.removeView(webView);webView.destroy();webView=null;}super.onDestroy();}
 }

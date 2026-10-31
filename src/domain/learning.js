@@ -7,6 +7,7 @@ export const packageKey = p => `${p.book.id}:${p.lesson.id}`;
 export const wordKey = (p, w) => w?.origin?.progressKey || `${packageKey(p)}:${typeof w === 'string' ? w : w.id}`;
 export const MIXED_REVIEW_KEY='review:all:review';
 export const MIXED_ERRORS_KEY='review:all:errors';
+export const MIXED_FAVORITES_KEY='review:all:favorites';
 export function reviewPackage(data){
   return {reviewPool:true,book:{id:'review',title:'复习 · Révision'},lesson:{id:'all',title:'混合复习 · Révision mélangée',order:0,version:1},words:data.library.flatMap(p=>p.words.map(w=>({...w,id:wordKey(p,w),origin:{progressKey:wordKey(p,w),lessonKey:packageKey(p),wordId:w.id,bookId:p.book.id}})))};
 }
@@ -22,7 +23,7 @@ function rememberKnown(session,word){
   if(!session.acquiredWordIds.includes(word.id))session.acquiredWordIds.push(word.id);
 }
 export const testedForms = w => w.forms.filter(f => f.tested);
-export const sessionKey=(p,mode='learn',ids=null)=>`${packageKey(p)}${mode==='learn'?'':mode==='review'?':review':mode==='errors'?':errors'+(ids?.length?':'+[...new Set(ids)].sort().join(','):''):':direct:'+(ids?.length?[...new Set(ids)].sort().join(','):'all')}`;
+export const sessionKey=(p,mode='learn',ids=null)=>`${packageKey(p)}${mode==='learn'?'':mode==='review'?':review':mode==='favorites'?':favorites':mode==='errors'?':errors'+(ids?.length?':'+[...new Set(ids)].sort().join(','):''):':direct:'+(ids?.length?[...new Set(ids)].sort().join(','):'all')}`;
 export const getSession=(data,p,key)=>data.sessions[key||data.activeSessions?.[packageKey(p)]||packageKey(p)];
 export function removeDemoLessons(data) {
   const demos=data.library.filter(p=>p.demo===true);
@@ -41,7 +42,9 @@ export function removeDemoLessons(data) {
   return true;
 }
 export function migrateSessions(data){
-  data.activeSessions||={};data.directProgress||={};
+  data.activeSessions||={};data.directProgress||={};data.errorHistory||={};
+  const totals={};for(const error of Object.values(data.errors)){const key=error.lesson+':'+error.wordId;totals[key]=(totals[key]||0)+(error.count||0);}
+  for(const [key,count] of Object.entries(totals)){if(!data.errorHistory[key])data.errorHistory[key]={count,reviewCount:0,cycleReviews:0};}
   for(const p of data.library){
     const oldKey=packageKey(p),s=data.sessions[oldKey];
     if(s&&s.mode!=='learn'){
@@ -61,6 +64,8 @@ export function migrateSessions(data){
     const pkg=data.library.find(p=>packageKey(p)===s.lessonKey);
     if(pkg&&(!s.flowVersion||s.flowVersion<2))upgradePracticeFlow(data,pkg,s);
     if(pkg&&s.flowVersion<3)upgradeRounds(data,pkg,s);
+    s.progressTotal??=sessionProgressTotal(s);
+    s.mistakeWordIds??=[...new Set((s.jobs||[]).filter(job=>job.failed).map(job=>s.lessonKey==='review:all'?job.wordId:s.lessonKey+':'+job.wordId))];
     data.activeSessions[s.lessonKey]||=key;
   }
   if(!data.lastPractice){const latest=Object.values(data.sessions).sort((a,b)=>(a.updatedAt||Date.parse(a.started+'T12:00:00'))-(b.updatedAt||Date.parse(b.started+'T12:00:00'))).at(-1);if(latest)data.lastPractice={lessonKey:latest.lessonKey,sessionKey:latest.key};}
@@ -70,6 +75,16 @@ function touched(data,p,s){s.updatedAt=Date.now();data.activeSessions||={};data.
 export function sessionRemaining(s){
   if(!s||s.phase==='done')return 0;
   return s.group.filter(id=>!s.doneWords.includes(id)).length;
+}
+function sessionProgressTotal(s){
+  return Math.max(0,(s.roundNumber||1)-1)*ROUND_SIZE+new Set([...(s.pending||[]),...(s.group||[]),...(s.doneWords||[])]).size;
+}
+export function sessionProgress(data,p,s){
+  if(!p||!s)return {completed:0,total:0,percent:0};
+  const total=s.mode==='learn'?p.words.length:s.progressTotal??sessionProgressTotal(s);
+  const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]).size;
+  const completed=Math.max(0,Math.min(total,s.mode==='learn'?lessonStats(data,p).completed:total-remaining));
+  return {completed,total,percent:total?completed/total*100:0};
 }
 export function reviewLessons(data,today=day()){
   return [...data.library].sort((a,b)=>a.book.id.localeCompare(b.book.id)||a.lesson.order-b.lesson.order).filter(p=>{
@@ -84,8 +99,18 @@ export function checkAnswer(input, expected, fuzzy = true) {
   const answer = exact(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === exact(expected));
   return { correct, fuzzy: correct && answer !== exact(expected), expected };
 }
-export function initialState(library) { return { schema: 1, library, settings: { groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', sounds:true, notifications:false,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
+export function initialState(library) { return { schema: 1, library, settings: { groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', sounds:true, notifications:false,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, errorHistory:{}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
 export function getProgress(data, p, w) { return data.progress[wordKey(p, w)] || { notebook: 'practice', forms: {} }; }
+export function errorPracticeState(data,p,w,today=day()){
+  const history=data.errorHistory?.[wordKey(p,w)]||{},errors=testedForms(w).map(f=>data.errors[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);
+  return {active:errors.length>0,errorCount:history.count??errors.reduce((sum,error)=>sum+(error.count||0),0),reviewCount:history.reviewCount||0,cycleReviews:history.cycleReviews||0,doneToday:history.lastReviewDate===today};
+}
+export function errorPracticeEligible(data,p,w,today=day()){const state=errorPracticeState(data,p,w,today);return state.active&&!state.doneToday;}
+export function dedicatedPracticeState(data,p,w,mode='direct'){
+  const count=data.directProgress?.[wordKey(p,w)]?.practiceCount||0;
+  const errors=testedForms(w).map(f=>data.errors[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);
+  return {count,practiced:count>0&&(mode!=='errors'||errors.length>0&&errors.every(error=>error.practiced!==false))};
+}
 export function studyDays(data,p,w,today=day()){
   const r=getProgress(data,p,w),dates=[r.firstStudiedAt,r.learnedAt,...Object.values(r.forms||{}).map(f=>f.learnedAt)].filter(v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)).sort();
   if(!dates.length)return 1;
@@ -131,7 +156,7 @@ const sequenceFor=s=>s.mode==='review'&&s.reviewMode==='spelling'?['spell']:['re
 function groupJobs(data,p,s,today=day()){
   return s.group.filter(id=>!s.doneWords.includes(id)).flatMap(id=>{
     const w=p.words.find(w=>w.id===id);if(!w)return [];
-    const forms=s.mode==='review'?dueForms(data,p,w,today):s.mode==='errors'?testedForms(w).filter(f=>data.errors[`${wordKey(p,w)}:${f.id}`]):testedForms(w);
+    const forms=s.mode==='review'?dueForms(data,p,w,today):s.mode==='errors'?(errorPracticeEligible(data,p,w,today)?testedForms(w).filter(f=>data.errors[`${wordKey(p,w)}:${f.id}`]):[]):testedForms(w);
     return forms.filter(f=>s.mode!=='learn'||!getProgress(data,p,w).forms[f.id]?.learnedAt).map(f=>({wordId:id,formId:f.id,sequence:sequenceFor(s),stage:0,failed:false}));
   });
 }
@@ -165,20 +190,21 @@ function upgradeRounds(data,p,s){
 function openRound(data,p,s,today){
   s.pending=[...new Set(s.pending)].filter(id=>{
     const w=p.words.find(w=>w.id===id);if(!w)return false;
-    return s.mode==='review'?dueForms(data,p,w,today).length:s.mode==='errors'?testedForms(w).some(f=>data.errors[`${wordKey(p,w)}:${f.id}`]):s.mode==='direct'?testedForms(w).length:getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt);
+    return s.mode==='review'?dueForms(data,p,w,today).length:s.mode==='errors'?errorPracticeEligible(data,p,w,today):s.mode==='favorites'?data.favorites[wordKey(p,w)]&&testedForms(w).length:s.mode==='direct'?testedForms(w).length:getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt);
   });
   if(!s.pending.length){s.phase='done';return;}
-  s.group=s.pending.splice(0,ROUND_SIZE);s.total=s.group.length;s.doneWords=[];
+  if(s.mode==='errors')s.pending.sort((a,b)=>errorPracticeState(data,p,p.words.find(w=>w.id===b),today).errorCount-errorPracticeState(data,p,p.words.find(w=>w.id===a),today).errorCount);
+  s.group=s.pending.splice(0,ROUND_SIZE);s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
   s.stats={attempts:0,correct:0};s.newKnownWordIds=[];s.question=null;s.feedback=null;s.phase='practice';
   s.jobs=groupJobs(data,p,s,today);refresh(data,p,s,today);
 }
 const schedule = [1, 3, 7, 14, 30];
 function completeForm(data, p, w, f, session, job, today) {
-  if(session.mode==='direct'||session.mode==='errors'){
+  if(['direct','errors','favorites'].includes(session.mode)){
     data.directProgress||={};const r=data.directProgress[wordKey(p,w)]||={forms:{}};
     r.forms[f.id]={completedAt:today,count:(r.forms[f.id]?.count||0)+1};
     if(session.mode==='errors'){
-      if(session.removeErrors)delete data.errors[`${wordKey(p,w)}:${f.id}`];
+      if(data.errors[`${wordKey(p,w)}:${f.id}`])data.errors[`${wordKey(p,w)}:${f.id}`].practiced=true;
     }else if(getProgress(data,p,w).notebook==='practice'){
       const progress=ensureProgress(data,p,w);
       if(!progress.forms[f.id]?.learnedAt)progress.forms[f.id]={learnedAt:today,reviewIndex:0,due:addDays(today,1),known:false};
@@ -206,22 +232,27 @@ function completeForm(data, p, w, f, session, job, today) {
 function finishWord(data, p, w, session, today) {
   if (session.doneWords.includes(w.id)) return;
   session.doneWords.push(w.id);
-  if(session.mode==='direct'||session.mode==='errors'){
+  if(session.mode==='errors'){
+    data.errorHistory||={};const key=wordKey(p,w),history=data.errorHistory[key]||={count:0,reviewCount:0,cycleReviews:0};
+    if(history.lastReviewDate!==today){history.reviewCount=(history.reviewCount||0)+1;history.cycleReviews=(history.cycleReviews||0)+1;history.lastReviewDate=today;}
+    if(session.removeErrors&&history.cycleReviews>=2)for(const form of testedForms(w))delete data.errors[`${key}:${form.id}`];
+  }
+  if(['direct','errors','favorites'].includes(session.mode)){
     data.directProgress||={};const r=data.directProgress[wordKey(p,w)]||={forms:{}};
     r.lastPracticed=today;r.practiceCount=(r.practiceCount||0)+1;
     if(session.mode==='errors'||getProgress(data,p,w).notebook!=='practice'){remember(data,p,w,today);return;}
   }
   const progress = ensureProgress(data, p, w);
   if (progress.notebook === 'practice' && testedForms(w).every(f => progress.forms[f.id]?.learnedAt)) {
-    const learnedBefore=progress.learnedAt||data.library.some(other=>other.book.id===p.book.id&&other.words.some(x=>x.id===w.id&&getProgress(data,other,x).learnedAt));
+    const source=wordContext(data,p,w),learnedBefore=progress.learnedAt||data.library.some(other=>other.book.id===source.p.book.id&&other.words.some(x=>x.id===source.w.id&&getProgress(data,other,x).learnedAt));
     progress.firstStudiedAt ||= today;
     if(!learnedBefore)progress.newLearnedAt ||= today;
     progress.notebook='review';progress.learnedAt ||= today;
-    if(session.mode==='direct')for(const s of Object.values(data.sessions).filter(s=>s.mode==='learn'&&s.lessonKey===packageKey(p))){
-      s.pending=s.pending.filter(id=>id!==w.id);s.jobs=s.jobs.filter(j=>j.wordId!==w.id);
-      if(s.group.includes(w.id)&&!s.doneWords.includes(w.id))s.doneWords.push(w.id);
-      if(s.question?.wordId===w.id||s.feedback?.wordId===w.id){s.question=null;s.feedback=null;}
-      if(s.phase!=='done')refresh(data,p,s,today);
+    if(['direct','favorites'].includes(session.mode))for(const s of Object.values(data.sessions).filter(s=>s.mode==='learn'&&s.lessonKey===packageKey(source.p))){
+      const id=source.w.id;s.pending=s.pending.filter(item=>item!==id);s.jobs=s.jobs.filter(j=>j.wordId!==id);
+      if(s.group.includes(id)&&!s.doneWords.includes(id))s.doneWords.push(id);
+      if(s.question?.wordId===id||s.feedback?.wordId===id){s.question=null;s.feedback=null;}
+      if(s.phase!=='done')refresh(data,source.p,s,today);
     }
   }
   progress.lastPracticed = today; progress.practiceCount = (progress.practiceCount || 0) + 1;
@@ -276,17 +307,29 @@ function refresh(data, p, s, today) {
 export function startSession(data, p, mode = 'learn', ids = null, today = day()) {
   migrateSessions(data);
   const key=sessionKey(p,mode,ids),old=data.sessions[key];
+  if(mode==='errors'&&old&&old.phase!=='done'){
+    const eligible=new Set(p.words.filter(w=>errorPracticeEligible(data,p,w,today)).map(w=>w.id));
+    old.pending=old.pending.filter(id=>eligible.has(id));old.jobs=old.jobs.filter(job=>eligible.has(job.wordId));
+    for(const id of old.group)if(!eligible.has(id)&&!old.doneWords.includes(id))old.doneWords.push(id);
+    if((old.question&&!eligible.has(old.question.wordId))||(old.feedback&&!eligible.has(old.feedback.wordId))){old.question=null;old.feedback=null;}
+    refresh(data,p,old,today);
+  }
   if (old && old.phase !== 'done') {touched(data,p,old);return old;}
   if(old?.pending.length){continueRound(data,p,key,today);if(old.phase!=='done')return old;}
-  const words = ids ? p.words.filter(w => ids.includes(w.id)) : p.words.filter(w => mode === 'review' ? dueForms(data, p, w, today).length :mode==='errors'?testedForms(w).some(f=>data.errors[`${wordKey(p,w)}:${f.id}`]): mode==='direct'||getProgress(data, p, w).notebook === 'practice');
+  const words = ids ? p.words.filter(w => ids.includes(w.id)) : p.words.filter(w => mode === 'review' ? dueForms(data, p, w, today).length :mode==='errors'?errorPracticeEligible(data,p,w,today): mode==='favorites'?!!data.favorites[wordKey(p,w)]:mode==='direct'||getProgress(data, p, w).notebook === 'practice');
   if (!words.length) throw new Error('暂无待练单词 / Aucun mot à pratiquer.');
+  if(mode==='errors')words.sort((a,b)=>errorPracticeState(data,p,b,today).errorCount-errorPracticeState(data,p,a,today).errorCount);
+  else if(mode==='favorites')words.sort((a,b)=>dedicatedPracticeState(data,p,a,mode).count-dedicatedPracticeState(data,p,b,mode).count);
   const s = { id: uid(), flowVersion:3, roundNumber:1, mode, reviewMode: data.settings.reviewMode || 'both', removeErrors:mode==='errors'&&data.settings.errorAutoRemove!==false,pending: (mode==='review'||mode==='learn'&&data.settings.shuffleLearning?shuffled(words):words).map(w => w.id), total: 0, doneWords: [], group: [], jobs: [], newKnownWordIds:[], acquiredWordIds:[], phase: 'practice', stats: { attempts: 0, correct: 0 }, started: today, question: null, feedback: null };
-  s.key=key;s.lessonKey=packageKey(p);data.sessions[key] = s;touched(data,p,s);openRound(data,p,s,today); return s;
+  s.progressTotal=words.length;s.key=key;s.lessonKey=packageKey(p);data.sessions[key] = s;touched(data,p,s);openRound(data,p,s,today); return s;
 }
 export function startMixedReview(data,today=day()){
   const p=reviewPackage(data),s=startSession(data,p,'review',null,today);
   for(const [key,old]of Object.entries(data.sessions))if(old.mode==='review'&&key!==MIXED_REVIEW_KEY){delete data.sessions[key];if(data.activeSessions?.[old.lessonKey]===key)delete data.activeSessions[old.lessonKey];}
   return s;
+}
+export function startFavoritePractice(data,today=day()){
+  return startSession(data,reviewPackage(data),'favorites',null,today);
 }
 export function startErrorPractice(data,today=day()){
   return startSession(data,reviewPackage(data),'errors',null,today);
@@ -297,7 +340,21 @@ export function continueRound(data,p,key,today=day()){
 }
 export function revealHint(data, p,key) {
   const s=getSession(data,p,key),q=s?.question;
-  if(q&&q.kind==='spell'){q.hinted=true;s.jobs[0].needsReinforcement=true;s.jobs[0].failed=true;touched(data,p,s);}
+  if(q&&q.kind==='spell'&&!q.hinted){
+    const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);
+    if(word&&form)recordMistake(data,p,word,form,'',day(),'hint',s);
+    q.hinted=true;s.jobs[0].needsReinforcement=true;s.jobs[0].failed=true;touched(data,p,s);
+  }
+}
+function recordMistake(data,p,word,form,input,today,reason='answer',session=null){
+  data.errors||={};data.errorHistory||={};const base=wordKey(p,word),key=`${base}:${form.id}`,previous=data.errors[key];
+  const active=testedForms(word).some(f=>data.errors[`${base}:${f.id}`]);
+  const history=data.errorHistory[base]||={count:0,reviewCount:0,cycleReviews:0};
+  if(!active)history.cycleReviews=0;
+  const counted=session?(session.mistakeWordIds||=[]).includes(base):false;
+  if(!counted){history.count=(history.count||0)+1;if(session)session.mistakeWordIds.push(base);}
+  history.lastErrorDate=today;
+  data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(previous?.count||0)+(counted?0:1),last:today,input:String(input),reason,practiced:false};
 }
 export function retryAfterHint(data,p,today=day(),key){
   const s=getSession(data,p,key);if(!s?.question?.hinted)return;
@@ -329,23 +386,14 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
     result.input=String(input).normalize('NFC');result.diff=spellingDiff(result.input,result.expected);
   }
   const a = activity(data, today); a.attempts++; s.stats.attempts++; if (result.correct) { a.correct++; s.stats.correct++; }
+  if(!result.correct){job.failed=true;job.needsReinforcement=true;recordMistake(data,p,word,form,input,today,'answer',s);}
   if(q.options&&!result.correct){
-    job.failed=true;job.needsReinforcement=true;s.jobs.unshift(job);
-    const key=`${wordKey(p,word)}:${form.id}`;
-    data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(data.errors[key]?.count||0)+1,last:today,input:String(input)};
+    s.jobs.unshift(job);
     q.rejectedIds||=[];q.rejectedIds.push(input);touched(data,p,s);
     return {...result,retryChoice:true};
   }
   const passed = result.correct && !q.hinted;
   if (passed) job.stage++;
-  else {
-    if (!result.correct) {
-      job.failed = true;
-      job.needsReinforcement = true;
-      const key = `${wordKey(p, word)}:${form.id}`;
-      data.errors[key] = { wordId: word.origin?.wordId||word.id, formId: form.id, lesson: word.origin?.lessonKey||packageKey(p), count: (data.errors[key]?.count || 0) + 1, last: today, input: String(input) };
-    }
-  }
   // A wrong or hinted answer stays first until answered independently.
   if (!passed) s.jobs.unshift(job);
   else {
@@ -374,7 +422,7 @@ export function moveWord(data,p,word,target,today=day()){
   const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;
   if(target==='practice')r.forms={};
   else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={learnedAt:r.forms[f.id]?.learnedAt||today,reviewIndex:0,due:target==='known'?null:addDays(today,1),known:target==='known'};remember(data,p,word,today);}
-  for(const s of Object.values(data.sessions).filter(s=>!['direct','errors'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)))){
+  for(const s of Object.values(data.sessions).filter(s=>!['direct','errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)))){
     const mixed=s.key===MIXED_REVIEW_KEY,engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
     const entry=engine.words.find(w=>w.id===id);if(!entry)continue;
     const inRound=s.group.includes(id),active=s.phase!=='done';
@@ -391,11 +439,12 @@ export function moveWord(data,p,word,target,today=day()){
 export function markWordKnown(data,p,word,today=day()){
   const original=wordContext(data,p,word);p=original.p;word=original.w;
   moveWord(data,p,word,'known',today);
-  for(const s of Object.values(data.sessions).filter(s=>s.lessonKey===packageKey(p)&&s.mode==='direct')){
-    const present=s.group.includes(word.id);
-    s.pending=s.pending.filter(id=>id!==word.id);s.jobs=s.jobs.filter(job=>job.wordId!==word.id);
-    if(present&&!s.doneWords.includes(word.id))s.doneWords.push(word.id);
-    if(s.question?.wordId===word.id||s.feedback?.wordId===word.id){s.question=null;s.feedback=null;refresh(data,p,s,today);}
+  for(const s of Object.values(data.sessions).filter(s=>s.lessonKey===packageKey(p)&&s.mode==='direct'||s.key===MIXED_FAVORITES_KEY)){
+    const engine=s.mode==='favorites'?reviewPackage(data):p,id=s.mode==='favorites'?wordKey(p,word):word.id;
+    const present=s.group.includes(id);
+    s.pending=s.pending.filter(item=>item!==id);s.jobs=s.jobs.filter(job=>job.wordId!==id);
+    if(present&&!s.doneWords.includes(id))s.doneWords.push(id);
+    if(s.question?.wordId===id||s.feedback?.wordId===id){s.question=null;s.feedback=null;refresh(data,engine,s,today);}
   }
 }
 export function resetLessonProgress(data,p,today=day()){
@@ -430,7 +479,7 @@ export function installLesson(data, pkg) {
   // A changed course invalidates only that course's queue, never another lesson.
   for(const runKey of Object.keys(data.sessions))if(runKey===key||runKey.startsWith(key+':'))delete data.sessions[runKey];
   if(data.activeSessions)delete data.activeSessions[key];
-  for(const review of [data.sessions[MIXED_REVIEW_KEY],data.sessions[MIXED_ERRORS_KEY]])if(review&&old){
+  for(const review of [data.sessions[MIXED_REVIEW_KEY],data.sessions[MIXED_ERRORS_KEY],data.sessions[MIXED_FAVORITES_KEY]])if(review&&old){
     const pool=reviewPackage(data),words=new Map(pool.words.map(w=>[w.id,w]));
     const validJob=job=>words.get(job.wordId)?.forms.some(f=>f.id===job.formId&&f.tested);
     for(const field of ['pending','group','doneWords','newKnownWordIds','acquiredWordIds'])review[field]=(review[field]||[]).filter(id=>words.has(id));
