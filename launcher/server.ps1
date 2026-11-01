@@ -1,4 +1,4 @@
-param([int]$Port = 5190, [switch]$NoBrowser)
+param([int]$Port = 5192, [switch]$NoBrowser)
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $qihangRoot = Join-Path $PSScriptRoot '网页'
@@ -20,7 +20,7 @@ try {
     # Reuse a previously started copy. Keep a fixed origin so existing records remain accessible.
     try {
         $existing = Invoke-WebRequest -Uri ($qihangUrl + '__qihang_health') -UseBasicParsing -TimeoutSec 2
-        if ($existing.Headers['X-Qihang-App'] -eq 'cap-sur-le-francais' -and ($existing.Content | ConvertFrom-Json).version -eq '1.0.22') {
+        if ($existing.Headers['X-Qihang-App'] -eq 'cap-sur-le-francais' -and ($existing.Content | ConvertFrom-Json).version -eq '2.0.0') {
             if (-not $NoBrowser) {Start-Process $qihangUrl}
             exit 0
         }
@@ -62,7 +62,7 @@ try {
             } while ($line.Length)
             $path = [Uri]::UnescapeDataString(($target -split '\?', 2)[0])
             if ($path -eq '/__qihang_health') {
-                Send-QihangResponse $stream 200 'application/json' ([Text.Encoding]::UTF8.GetBytes('{"app":"cap-sur-le-francais","version":"1.0.22"}')) $headOnly
+                Send-QihangResponse $stream 200 'application/json' ([Text.Encoding]::UTF8.GetBytes('{"app":"cap-sur-le-francais","version":"2.0.0"}')) $headOnly
                 continue
             }
             if ($path -match '[\x00-\x1F\\:]' -or ($path -split '/') -contains '..') {

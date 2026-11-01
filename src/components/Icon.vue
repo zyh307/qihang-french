@@ -2,6 +2,9 @@
 <script setup>
 defineProps({ name: String });
 const paths = {
+ microphone:'M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1-6 0V5Zm-3 6v1a6 6 0 0 0 12 0v-1M12 18v4M8 22h8',
+ modes:'M3 4h7v7H3V4Zm11 0h7v7h-7V4ZM3 15h7v6H3v-6Zm11 0h7v6h-7v-6Z',
+ link:'m10 13 4-4M8 15l-1 1a3 3 0 0 1-4-4l5-5a3 3 0 0 1 4 0m0 10a3 3 0 0 0 4 0l5-5a3 3 0 0 0-4-4l-1 1',
  shift:'M12 3 3 12h5v9h8v-9h5L12 3Z',
  backspace:'M9 5h12v14H9l-7-7 7-7ZM12 9l6 6M18 9l-6 6',
  return:'M20 5v7H4m5-5-5 5 5 5',
