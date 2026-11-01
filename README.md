@@ -33,6 +33,12 @@ npm run dev
 
 如需整合本地教材资料，构建脚本读取项目上一级的 `词库/Inspire1`。缺少原始资料时会生成空内容包，程序仍可启动。已有本地内容包不会被空包覆盖。
 
+## DELF A1 语音口语助手
+
+新增独立的 [口语助手模块](oral-assistant/README.md)：支持A1引导问答、信息交换、情景对话，以及录音回听和结束后的AI复盘。采用本机法语识别加小智考官回复，含42个问句、48张词卡和12个场景。
+
+该模块需要单独安装Python依赖、下载法语模型并绑定自己的小智智能体；目前尚未集成到主应用或APK，也不是GitHub上的在线对话服务。参考答案及示范对话仅在模块文档中提供。
+
 ## Android 构建
 
 执行 `npm run build:apk`。现有构建脚本面向 Windows，需提供 JDK 和 Android SDK 工具；设置 `JAVA_HOME` 和 `QIHANG_ANDROID_TOOLS`。后者包含 `build-tools/android-15`、`platform/android-35/android.jar` 等脚本要求的工具布局，参见 [构建脚本](scripts/build-android.mjs)。

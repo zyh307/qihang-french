@@ -1,0 +1,40 @@
+# Local identities, access tokens, recordings and learning history
+.local/
+.team/
+.speech/
+private/
+sessions/
+identity.json
+access.json
+runtime.json
+french_asr.json
+.env
+.env.*
+!.env.example
+# Models, optional dependencies, environments and tools
+.models/
+.deps/
+.asr_deps/
+.whisper_deps/
+.gpu_deps/
+.venv/
+venv/
+.tools/
+.media/
+node_modules/
+__pycache__/
+*.py[cod]
+*.log
+*.part
+# Private and third-party media are never distributed with source
+*.wav
+*.mp3
+*.ogg
+*.opus
+*.mp4
+*.jpg
+*.jpeg
+*.zip
+*.bin
+测试证据/
+test-results/
