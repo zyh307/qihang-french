@@ -18,9 +18,10 @@ function show(view) {
 }
 async function api(path, body) {
   const options = body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json','X-Oral-Client':'web'}, body:JSON.stringify(body)};
-  const response = await fetch(path, options); const data = await response.json();
+  const response = await (window.QihangOralClient?window.QihangOralClient.fetch(path,options):fetch(path,options)); const data = await response.json();
   if(!response.ok) throw Error(data.error || '操作失败，请重试'); return data;
 }
+function setRecording(player,path){if(window.QihangOralClient)window.QihangOralClient.setAudio(player,path).catch(error=>notice(error.message));else player.src=path;}
 function providerView(data) {
   const ready = data.status === 'ready';
   $('bindingMessage').textContent = data.message;
@@ -30,6 +31,7 @@ function providerView(data) {
   $('bind').textContent = ready ? '刷新连接' : data.status === 'binding' ? '等待绑定…' : '连接小智';
   $('bind').disabled = data.status === 'binding';
   for (const b of document.querySelectorAll('[data-part],#full')) b.disabled = false;
+  $('bind').disabled=data.status==='unconfigured'||data.status==='offline'||data.status==='binding';
 }
 async function refresh() {
   S.boot = await api('/api/bootstrap');providerView(S.boot.provider);
@@ -53,7 +55,7 @@ async function connectSocket() {
   if(S.socket?.readyState === WebSocket.OPEN) return false;
   if(S.socket?.readyState === WebSocket.CONNECTING) throw Error('练习窗口正在连接，请稍候');
   await new Promise((resolve,reject) => {
-    const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`);
+    const ws = window.QihangOralClient?new WebSocket(window.QihangOralClient.socketURL(),window.QihangOralClient.socketProtocols()):new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`);
     S.socket = ws; ws.binaryType = 'arraybuffer';
     const timeout = setTimeout(()=>{ws.close();reject(Error('练习窗口连接超时'));}, 10000);
     ws.onmessage = event => {
@@ -146,8 +148,8 @@ function showGuideStage(stage){
   if(S.guidePart!=='full'&&!S.guideResume)S.guidePart=stage;
   const copy=guideCopy[stage];$('guideTitle').textContent=stageNames[stage]+' · 先看懂，再开口';
   const media=S.boot?.examples?.[stage];const v=$('guideVideo');v.pause();v.removeAttribute('src');v.removeAttribute('poster');v.hidden=!media?.video;
-  if(media?.poster)v.poster=`/examples/${stage}.jpg`;
-  if(media?.video)v.src=`/examples/${stage}.mp4`;
+  if(media?.poster){if(window.QihangOralClient)window.QihangOralClient.mediaURL(`/examples/${stage}.jpg`).then(url=>v.poster=url).catch(()=>{});else v.poster=`/examples/${stage}.jpg`;}
+  if(media?.video){if(window.QihangOralClient)window.QihangOralClient.mediaURL(`/examples/${stage}.mp4`).then(url=>{v.src=url;v.load();}).catch(()=>{});else v.src=`/examples/${stage}.mp4`;}
   v.load();$('guideVideoError').hidden=!!media?.video;$('guideVideoError').textContent=media?.video?'视频暂时无法播放，可打开原视频；也可以直接练习。':'观看示范可打开下方原视频链接，也可以直接练习。';
   $('guideSteps').replaceChildren(...copy.steps.map(x=>node('li',x)));$('guideEnding').textContent=copy.ending||'';$('guideEnding').parentElement.hidden=!copy.ending;
   $('guideTabs').replaceChildren();for(const key of Object.keys(guideCopy)){const b=node('button',stageNames[key],'guide-tab'+(key===stage?' active':''));b.type='button';b.onclick=()=>showGuideStage(key);$('guideTabs').append(b);}
@@ -193,7 +195,7 @@ function transcript(target, session, audio=false) {
       edit.onclick=()=>{S.revisionTarget={sid:session.id,row:row.id};$('originalTranscript').textContent=row.text||'（没有收到识别文字）';$('revisionText').value=row.revisions?.at(-1)?.text||row.asr_reviews?.at(-1)?.text||'';$('revisionDialog').showModal();};
       box.append(edit);
     }
-    if(audio && row.audio) {const player=document.createElement('audio');player.controls=true;player.preload='none';player.src=`/api/sessions/${session.id}/audio/${row.audio}`;box.append(player);}
+    if(audio && row.audio) {const player=document.createElement('audio');player.controls=true;player.preload='none';setRecording(player,`/api/sessions/${session.id}/audio/${row.audio}`);box.append(player);}
     target.append(box);
   }
   if(!audio) target.scrollTop=target.scrollHeight;
@@ -247,7 +249,7 @@ function renderSession() {
   $('finish').hidden=session.phase==='preparation';
   const last=[...session.messages].reverse().find(m=>m.role==='user'&&m.audio);
   $('lastRecording').hidden=!last;
-  if(last) {const src=`/api/sessions/${session.id}/audio/${last.audio}`;if($('lastAudio').getAttribute('src')!==src) $('lastAudio').src=src;}
+  if(last) {const src=`/api/sessions/${session.id}/audio/${last.audio}`;if(($('lastAudio').dataset.recordingSource||$('lastAudio').getAttribute('src'))!==src)setRecording($('lastAudio'),src);}
   transcript($('transcript'),{...session,messages:session.messages.filter(m=>m.stage===stage)});renderProgress();updateButtons();
 }
 async function start(part) {if(!S.boot){notice('页面正在连接，请稍候');return;}await action(async()=>{await ensureAudio();await connectSocket();S.state='waiting';await send('start',{part,mode:$('mode').value,scene:$('scene').value,recognition_mode:$('recognitionMode').value,confirm_transcript:!!S.boot.capabilities?.confirm_transcript && $('confirmRecognition').checked});$('hintBox').hidden=true;});}
@@ -268,7 +270,7 @@ async function beginCapture() {
     $('inputDevice').value=selected;
     $('inputName').textContent='本次输入：'+(stream.getAudioTracks()[0]?.label||'默认麦克风')+' · 处理采样率 '+context.sampleRate+' Hz';
     S.micStats={peak:0,maxRms:0,clipped:0,blocks:0};
-    await context.audioWorklet.addModule('/assets/capture.js');
+    await context.audioWorklet.addModule(window.QihangOralClient?.workletURL||'/assets/capture.js');
     const source=context.createMediaStreamSource(stream);const capture=new AudioWorkletNode(context,'oral-capture');
     const gain=context.createGain();gain.gain.value=0;
     const state={buffer:new Float32Array(0),position:0,ratio:context.sampleRate/16000};
@@ -404,7 +406,8 @@ function evaluationLines(state) {
  }
  return lines;
 }
-$('export').onclick=()=>{if(!S.review) return;const s=S.review;const text=['Parlons · A1 对话记录',new Date(s.created*1000).toLocaleString('zh-CN'),'原始转写可能包含识别错误；不是官方成绩。','',...s.messages.map(m=>`${m.role==='user'?'你':'Camille'} [${stageNames[m.stage]}]：${m.text||'（无识别文字，见原录音）'}${m.recognition?'\n独立法语识别：'+m.recognition.model+'（原始输出）':''}${m.asr_reviews?.length?'\n本地法语复核（独立候选）：'+(m.asr_reviews.at(-1).text||'未识别出文字'):''}${m.revisions?.length?'\n考生修订稿：'+m.revisions.at(-1).text:''}${m.confirmed_text?'\n考生确认文字：'+m.confirmed_text:''}${m.confirmation_status==='cancelled'?'\n此条已放弃，原录音保留':m.confirmation_status==='pending'?'\n待确认':''}`),...evaluationLines(s.evaluation)].join('\n');
+$('export').onclick=()=>{if(!S.review) return;const s=S.review;const text=['启航法语 · DELF A1 对话记录',new Date(s.created*1000).toLocaleString('zh-CN'),'原始转写可能包含识别错误；不是官方成绩。','',...s.messages.map(m=>`${m.role==='user'?'你':'Camille'} [${stageNames[m.stage]}]：${m.text||'（无识别文字，见原录音）'}${m.recognition?'\n独立法语识别：'+m.recognition.model+'（原始输出）':''}${m.asr_reviews?.length?'\n本地法语复核（独立候选）：'+(m.asr_reviews.at(-1).text||'未识别出文字'):''}${m.revisions?.length?'\n考生修订稿：'+m.revisions.at(-1).text:''}${m.confirmed_text?'\n考生确认文字：'+m.confirmed_text:''}${m.confirmation_status==='cancelled'?'\n此条已放弃，原录音保留':m.confirmation_status==='pending'?'\n待确认':''}`),...evaluationLines(s.evaluation)].join('\n');
+  if(window.QihangOralClient){window.QihangOralClient.exportText('A1-'+s.id.slice(0,8)+'.txt',text);return;}
   const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='A1-'+s.id.slice(0,8)+'.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 $('restore').onclick=()=>action(async()=>{await ensureAudio();await connectSocket();await send('restore',{id:S.review.id});});
 $('lastAudio').onplay=()=>{stopPlayback();updateButtons();};$('lastAudio').onpause=$('lastAudio').onended=updateButtons;
@@ -412,5 +415,18 @@ $('revisionCancel').onclick=()=>$('revisionDialog').close();
 $('revisionForm').onsubmit=event=>{event.preventDefault();action(async()=>{const target=S.revisionTarget;if(!target)return;const d=await api(`/api/sessions/${target.sid}/revision`,{row:target.row,text:$('revisionText').value});$('revisionDialog').close();if(S.review?.id===target.sid){S.review=d.session;await openReview(target.sid);}notice('修订稿已单独保存，原始识别文字保留。');});};
 window.addEventListener('beforeunload',()=>{S.stream?.getTracks().forEach(t=>t.stop());S.socket?.close();});
 (async()=>{try{await refresh();for(const scene of S.boot.scenes){const option=node('option',scene.title);option.value=scene.id;$('scene').append(option);}
-  $('version').textContent='A1 · 原型 '+(S.boot.build?.split('web-').at(-1)||'开发版');if(S.boot.provider.status==='binding') pollProvider();
-}catch(e){notice('无法连接本机服务：'+e.message);}})();
+  $('version').textContent=window.QihangOralClient?'DELF A1':'A1 · '+(S.boot.build?.split('web-').at(-1)||'');if(S.boot.provider.status==='binding') pollProvider();
+}catch(e){
+  if(window.QihangOralClient){S.boot=await window.QihangOralClient.offlineBootstrap();providerView(S.boot.provider);$('bankInfo').textContent='42 问句 · 48 词卡 · 12 情景';for(const scene of S.boot.scenes){const option=node('option',scene.title);option.value=scene.id;$('scene').append(option);}window.QihangOralClient.connectionFailed(e.message);notice('请连接口语服务后开始对话 / Connectez le service oral.');}
+  else notice('无法连接本机服务：'+e.message);
+}})();
+
+window.addEventListener('pagehide',()=>{S.stream?.getTracks().forEach(track=>track.stop());S.socket?.close();stopPlayback();});
+
+if(window.QihangOralClient){
+ const labels={navPractice:['练习','Pratiquer'],navHistory:['记录','Historique'],bind:{'连接小智':'连接小智 · Connecter','刷新连接':'刷新连接 · Actualiser','等待绑定…':'等待绑定 · Association…'},micLabel:{'开始说话':'开始说话 · Parler','我说完了':'我说完了 · Terminé'},finish:['结束练习','Terminer'],endTop:['结束并保存','Terminer et enregistrer'],full:['开始完整练习','Épreuve complète'],backHome:['返回练习','Pratiquer'],reviewBack:['全部记录','Historique'],evaluate:{'生成评价':'生成评价 · Évaluer','重新评价':'重新评价 · Réévaluer','重试评价':'重试评价 · Réessayer'},export:['导出记录','Exporter']};
+ const update=()=>{for(const [id,copy] of Object.entries(labels)){const element=$(id);if(!element)continue;if(Array.isArray(copy)){if(!element.dataset.bilingual){element.textContent=copy.join(' · ');element.dataset.bilingual='1';}}else if(copy[element.textContent])element.textContent=copy[element.textContent];}};
+ update();const observer=new MutationObserver(update);for(const id of Object.keys(labels)){const element=$(id);if(element)observer.observe(element,{childList:true,characterData:true,subtree:true});}window.addEventListener('pagehide',()=>observer.disconnect());
+}
+
+if(window.QihangOralClient)document.addEventListener('visibilitychange',()=>{if(document.hidden){if(S.stream){stopCapture(false);S.socket?.close();}stopPlayback();}});

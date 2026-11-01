@@ -32,3 +32,6 @@ android/signing/
 /scripts/prepare-vocabulary-corrections.py
 /scripts/split-gender-audio.py
 /scripts/audio-requirements.txt
+
+# Reproducible oral client assets
+/src/static/oral/

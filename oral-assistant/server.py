@@ -26,6 +26,7 @@ from exam import STAGES, SCENES, create_session, current_stage, instruction, nex
 from mcp_tools import respond as mcp_respond
 from hosted import Hosted, ProviderError
 from store import Store
+from app_client import AppClient
 from local_asr import LocalFrenchASR
 from french_asr import FrenchASRClient
 from flow import progress,usable,finish_reply
@@ -571,26 +572,38 @@ class Bridge:
 def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     cookie = secrets.token_urlsafe(32)
     origins = {f'http://127.0.0.1:{port}', f'http://localhost:{port}'}
+    app_client = AppClient(data_dir)
 
     @web.middleware
     async def guard(request, handler):
-        if request.host not in {f'127.0.0.1:{port}', f'localhost:{port}'}:
-            return web.json_response({'error': '仅允许从本机访问'}, status=403)
-        if request.path not in ('/', '/api/health') and request.cookies.get('oral_local') != cookie:
-            return web.json_response({'error': '请从首页重新打开'}, status=401)
-        if request.method != 'GET' or request.path == '/ws':
-            if request.headers.get('Origin') not in origins:
-                return web.json_response({'error': '来源校验失败'}, status=403)
-            if request.method != 'GET' and request.headers.get('X-Oral-Client') != 'web':
-                return web.json_response({'error': '请求校验失败'}, status=403)
+        integrated = app_client.allowed(request)
+        if integrated:
+            if request.method == 'OPTIONS':
+                return app_client.cors(request, web.Response(status=204))
+            if not app_client.authorized(request):
+                return app_client.cors(request, web.json_response({'error':'服务访问码无效 / Code d’accès invalide'}, status=401))
+            if not (request.path.startswith('/api/') or request.path.startswith('/examples/') or request.path == '/ws') or request.method not in ('GET','POST'):
+                raise web.HTTPNotFound()
+        else:
+            if request.host not in {f'127.0.0.1:{port}', f'localhost:{port}'}:
+                return web.json_response({'error': '仅允许从本机访问'}, status=403)
+            if request.path not in ('/', '/api/health') and request.cookies.get('oral_local') != cookie:
+                return web.json_response({'error': '请从首页重新打开'}, status=401)
+            if request.method != 'GET' or request.path == '/ws':
+                if request.headers.get('Origin') not in origins:
+                    return web.json_response({'error': '来源校验失败'}, status=403)
+                if request.method != 'GET' and request.headers.get('X-Oral-Client') != 'web':
+                    return web.json_response({'error': '请求校验失败'}, status=403)
         try:
             response = await handler(request)
         except (ValueError, ProviderError) as exc:
-            return web.json_response({'error': str(exc)}, status=400)
+            response = web.json_response({'error': str(exc)}, status=400)
         except web.HTTPException:
             raise
         except Exception:
-            return web.json_response({'error': '操作失败，请重试；已有记录保留'}, status=500)
+            response = web.json_response({'error': '操作失败，请重试；已有记录保留'}, status=500)
+        if integrated:
+            app_client.cors(request, response)
         response.headers['Cache-Control'] = 'no-store'
         response.headers['X-Content-Type-Options'] = 'nosniff'
         response.headers['Referrer-Policy'] = 'no-referrer'
@@ -724,7 +737,7 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     async def ws_handler(request):
         if app['bridge'] is not None:
             return web.json_response({'error': '已有一个练习窗口连接，请关闭旧窗口再打开'}, status=409)
-        ws = web.WebSocketResponse(heartbeat=20, max_msg_size=64 * 1024)
+        ws = web.WebSocketResponse(heartbeat=20, max_msg_size=64 * 1024, protocols=('qihang-oral-v1',) if app_client.authorized(request) else ())
         await ws.prepare(request)
         bridge = Bridge(app, ws)
         app['bridge'] = bridge
@@ -777,10 +790,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=8127)
     parser.add_argument('--data-dir', type=Path, default=ROOT / '.local')
+    parser.add_argument('--listen', default='127.0.0.1')
     parser.add_argument('--open', action='store_true')
     args = parser.parse_args()
     if args.open:
         import threading
         threading.Timer(1.5, lambda: webbrowser.open(f'http://127.0.0.1:{args.port}/')).start()
-    web.run_app(make_app(args.data_dir, args.port), host='127.0.0.1', port=args.port,
+    web.run_app(make_app(args.data_dir, args.port), host=args.listen, port=args.port,
                 access_log=None, print=lambda _: print(f'A1 assistant {BUILD}: http://127.0.0.1:{args.port}/'))

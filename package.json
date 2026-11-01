@@ -1,14 +1,14 @@
 {
   "name": "francais-ensemble",
-  "version": "1.0.22",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/build-content.mjs && uni --host 127.0.0.1 --port 5190",
-    "build": "node scripts/build-content.mjs && node scripts/render-guide.mjs && uni build",
+    "dev": "node scripts/build-oral.mjs && node scripts/build-content.mjs && uni --host 127.0.0.1 --port 5192",
+    "build": "node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/render-guide.mjs && uni build",
     "build:share": "npm run build && node scripts/build-share.mjs",
-    "preview": "vite preview --host 127.0.0.1 --port 5191 --outDir dist/build/h5",
-    "build:apk": "node scripts/build-content.mjs && node scripts/render-guide.mjs && node scripts/build-android.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 5193 --outDir dist/build/h5",
+    "build:apk": "node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/render-guide.mjs && node scripts/build-android.mjs",
     "prepare:content": "node scripts/build-content.mjs"
   },
   "dependencies": {

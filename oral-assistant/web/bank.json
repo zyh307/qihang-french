@@ -1,0 +1,369 @@
+{
+  "provider": {
+    "status": "unconfigured",
+    "message": "连接口语服务后开始练习 / Connectez le service oral."
+  },
+  "stages": {
+    "intro": {
+      "name": "引导问答",
+      "fr": "Entretien dirigé",
+      "hint": "介绍自己，再回答家庭、学习、爱好等追问。不会在姓名、住址后重新开始。",
+      "minutes": "约 1–2 分钟"
+    },
+    "exchange": {
+      "name": "信息交换",
+      "fr": "Échange d’informations",
+      "hint": "你抽到6张词卡。每张卡围绕其主题向考官提一个问题，考官回答；不是考官连续问你。",
+      "minutes": "约 2 分钟"
+    },
+    "roleplay": {
+      "name": "情景对话",
+      "fr": "Dialogue simulé",
+      "hint": "阅读任务和材料，主动与对方完成交流。",
+      "minutes": "约 2 分钟"
+    }
+  },
+  "scenes": [
+    {
+      "id": "boulangerie",
+      "title": "在面包店购物",
+      "fr": "À la boulangerie",
+      "task": "你是顾客。购买面包，询问价格和总价，最后礼貌告别。",
+      "materials": [
+        {
+          "name": "Une baguette",
+          "price": "1,20 €"
+        },
+        {
+          "name": "Un croissant",
+          "price": "1,50 €"
+        },
+        {
+          "name": "Un pain au chocolat",
+          "price": "1,80 €"
+        }
+      ],
+      "checks": [
+        "打招呼",
+        "说明商品和数量",
+        "询问价格或总价",
+        "结束交流"
+      ]
+    },
+    {
+      "id": "cafe",
+      "title": "在咖啡馆点单",
+      "fr": "Au café",
+      "task": "你是顾客。询问饮品价格，点饮品并说明堂食或外带，然后结账。",
+      "materials": [
+        {
+          "name": "Un café",
+          "price": "2,00 €"
+        },
+        {
+          "name": "Un thé",
+          "price": "2,50 €"
+        },
+        {
+          "name": "Un jus d’orange",
+          "price": "3,00 €"
+        }
+      ],
+      "checks": [
+        "打招呼",
+        "点饮品",
+        "说明堂食或外带",
+        "询价并结账"
+      ]
+    },
+    {
+      "id": "hotel",
+      "title": "向酒店询价",
+      "fr": "À l’hôtel",
+      "task": "你是旅客。询问单人间、入住日期、早餐和价格，并确认预订信息。",
+      "materials": [
+        {
+          "name": "Chambre simple / nuit",
+          "price": "60,00 €"
+        },
+        {
+          "name": "Petit déjeuner / jour",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Arrivée",
+          "price": "À partir de 15 h"
+        }
+      ],
+      "checks": [
+        "说明房间需求",
+        "说明日期和住几晚",
+        "询问早餐或价格",
+        "确认并告别"
+      ]
+    },
+    {
+      "id": "clothes",
+      "title": "在服装店购物",
+      "fr": "Au magasin de vêtements",
+      "task": "给自己或家人选购衣服，询问尺码、颜色和价格，选择并付款。",
+      "materials": [
+        {
+          "name": "Un tee-shirt / S, M, L",
+          "price": "12,00 €"
+        },
+        {
+          "name": "Un pantalon / 36–44",
+          "price": "25,00 €"
+        },
+        {
+          "name": "Une veste / S, M, L",
+          "price": "38,00 €"
+        }
+      ],
+      "checks": [
+        "打招呼",
+        "说明商品和尺码",
+        "询问颜色或价格",
+        "选择并付款"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "market",
+      "title": "在市场买水果蔬菜",
+      "fr": "Au marché",
+      "task": "买水果或蔬菜，问每公斤价格，说明重量，结账并告别。",
+      "materials": [
+        {
+          "name": "Pommes / kg",
+          "price": "2,50 €"
+        },
+        {
+          "name": "Tomates / kg",
+          "price": "3,00 €"
+        },
+        {
+          "name": "Carottes / kg",
+          "price": "1,80 €"
+        }
+      ],
+      "checks": [
+        "询问单价",
+        "说明品种和重量",
+        "确认总价",
+        "付款告别"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "holiday_club",
+      "title": "在度假俱乐部订活动",
+      "fr": "Au club de vacances",
+      "task": "询问活动、时间和价格，预订一项活动并付款。",
+      "materials": [
+        {
+          "name": "Location de vélo / jour · 9 h–18 h",
+          "price": "15,00 €"
+        },
+        {
+          "name": "Tennis / heure · 10 h–17 h",
+          "price": "8,00 €"
+        },
+        {
+          "name": "Piscine / entrée · 9 h–19 h",
+          "price": "5,00 €"
+        }
+      ],
+      "checks": [
+        "询问活动",
+        "确认日期和时段",
+        "询问价格",
+        "预订付款"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "theatre",
+      "title": "买演出票",
+      "fr": "Au théâtre",
+      "task": "询问节目、开演时间和票价，选择演出并购买指定张数的票。",
+      "materials": [
+        {
+          "name": "Concert · vendredi 20 h",
+          "price": "18,00 €"
+        },
+        {
+          "name": "Comédie · samedi 19 h",
+          "price": "15,00 €"
+        },
+        {
+          "name": "Danse · dimanche 16 h",
+          "price": "12,00 €"
+        }
+      ],
+      "checks": [
+        "询问演出和时间",
+        "选择演出",
+        "说明票数",
+        "确认总价并付款"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "station",
+      "title": "在车站买火车票",
+      "fr": "À la gare",
+      "task": "询问目的地、出发时间和票价，买一张或多张单程票。",
+      "materials": [
+        {
+          "name": "Paris → Lyon · 10 h",
+          "price": "35,00 €"
+        },
+        {
+          "name": "Paris → Bordeaux · 11 h 30",
+          "price": "45,00 €"
+        },
+        {
+          "name": "Paris → Lille · 14 h",
+          "price": "25,00 €"
+        }
+      ],
+      "checks": [
+        "说明目的地和日期",
+        "询问时间",
+        "确认张数和票价",
+        "付款告别"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "office_shop",
+      "title": "购买办公用品",
+      "fr": "Au magasin de fournitures",
+      "task": "为办公桌选购文具，询问商品和价格，说明数量并付款。",
+      "materials": [
+        {
+          "name": "Un cahier",
+          "price": "2,00 €"
+        },
+        {
+          "name": "Un stylo",
+          "price": "1,50 €"
+        },
+        {
+          "name": "Une lampe de bureau",
+          "price": "20,00 €"
+        }
+      ],
+      "checks": [
+        "说明需要的商品",
+        "询问商品信息",
+        "说明数量",
+        "结算付款"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "school",
+      "title": "为孩子咨询课程",
+      "fr": "À l’école",
+      "task": "为孩子询问课程、上课时间和费用，选择一门课程，提供姓名并报名付款。",
+      "materials": [
+        {
+          "name": "Dessin · mercredi 14 h–15 h / mois",
+          "price": "25,00 €"
+        },
+        {
+          "name": "Musique · samedi 10 h–11 h / mois",
+          "price": "30,00 €"
+        },
+        {
+          "name": "Sport · samedi 15 h–16 h / mois",
+          "price": "20,00 €"
+        }
+      ],
+      "checks": [
+        "说明报名需求",
+        "询问课程和时间",
+        "确认费用",
+        "提供信息并报名"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "bookshop",
+      "title": "在书店买书",
+      "fr": "À la librairie",
+      "task": "说出想看的主题，询问书籍和价格，选一本或几本书并结账。",
+      "materials": [
+        {
+          "name": "Découvrir la France",
+          "price": "12,00 €"
+        },
+        {
+          "name": "La cuisine facile",
+          "price": "10,00 €"
+        },
+        {
+          "name": "Les animaux",
+          "price": "8,00 €"
+        }
+      ],
+      "checks": [
+        "说明阅读主题",
+        "询问书籍信息",
+        "选择书籍和数量",
+        "付款告别"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    },
+    {
+      "id": "restaurant",
+      "title": "在餐厅点餐",
+      "fr": "Au restaurant",
+      "task": "询问菜单，点一道菜和饮料，最后要账单并付款。",
+      "materials": [
+        {
+          "name": "Une salade",
+          "price": "7,00 €"
+        },
+        {
+          "name": "Un poulet avec du riz",
+          "price": "12,00 €"
+        },
+        {
+          "name": "Une eau minérale",
+          "price": "2,00 €"
+        }
+      ],
+      "checks": [
+        "问候并点菜",
+        "询问菜品或价格",
+        "点饮料",
+        "要账单并付款"
+      ],
+      "source": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+      "material_type": "原创练习题卡"
+    }
+  ],
+  "sessions": [],
+  "capabilities": {
+    "confirm_transcript": true,
+    "independent_fr": false
+  },
+  "examples": {},
+  "bank": {
+    "intro_questions": 42,
+    "keywords": 48,
+    "scenes": 12
+  }
+}

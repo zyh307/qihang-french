@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.view.View;
 import android.view.WindowInsets;
 import android.webkit.JavascriptInterface;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -33,9 +34,10 @@ import org.json.JSONObject;
 /** Offline Android host: local assets, system file picker and scoped exports. */
 public final class MainActivity extends Activity {
     private static final String HOST = "appassets.androidplatform.net";
-    private static final int PICK_FILE=41, SAVE_FILE=42, NOTIFY_PERMISSION=43;
+    private static final int PICK_FILE=41, SAVE_FILE=42, NOTIFY_PERMISSION=43, MICROPHONE_PERMISSION=44;
     private WebView webView;
     private ValueCallback<Uri[]> fileCallback;
+    private PermissionRequest microphoneRequest;
     private byte[] pendingBytes;
     private String pendingId;
     private FrameLayout container;
@@ -74,6 +76,15 @@ public final class MainActivity extends Activity {
         settings.setTextZoom(100);settings.setMediaPlaybackRequiresUserGesture(false);
         webView.addJavascriptInterface(new NativeBridge(),"QihangNative");
         webView.setWebChromeClient(new WebChromeClient(){
+            @Override public void onPermissionRequest(PermissionRequest request){runOnUiThread(()->{
+                if(!request.getOrigin().toString().equals("https://"+HOST+"/")&&!request.getOrigin().toString().equals("https://"+HOST)){request.deny();return;}
+                boolean audio=false;for(String resource:request.getResources())if(PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource))audio=true;
+                if(!audio){request.deny();return;}
+                if(checkSelfPermission("android.permission.RECORD_AUDIO")==PackageManager.PERMISSION_GRANTED){request.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});return;}
+                if(microphoneRequest!=null)microphoneRequest.deny();microphoneRequest=request;requestPermissions(new String[]{"android.permission.RECORD_AUDIO"},MICROPHONE_PERMISSION);
+            });}
+            @Override public void onPermissionRequestCanceled(PermissionRequest request){runOnUiThread(()->{if(microphoneRequest==request)microphoneRequest=null;});}
+
             @Override public boolean onShowFileChooser(WebView view,ValueCallback<Uri[]> callback,FileChooserParams params){
                 if(fileCallback!=null)fileCallback.onReceiveValue(null);fileCallback=callback;
                 Intent intent=new Intent(Intent.ACTION_OPEN_DOCUMENT);intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -88,7 +99,7 @@ public final class MainActivity extends Activity {
         webView.setWebViewClient(new WebViewClient(){
             @Override public WebResourceResponse shouldInterceptRequest(WebView view,WebResourceRequest request){
                 Uri uri=request.getUrl();String file=assetPath(uri);
-                if(file==null)return notFound();
+                if(file==null)return oralRequestAllowed(uri)?null:notFound();
                 try{return new WebResourceResponse(mime(file),"UTF-8",200,"OK",Collections.singletonMap("Cache-Control","no-cache"),getAssets().open(file));}
                 catch(IOException error){return notFound();}
             }
@@ -112,6 +123,11 @@ public final class MainActivity extends Activity {
         if(path.endsWith(".mp3"))return "audio/mpeg";if(path.endsWith(".woff2"))return "font/woff2";
         return "application/octet-stream";
     }
+    private boolean oralRequestAllowed(Uri uri){
+        String saved=getSharedPreferences("oral-service",MODE_PRIVATE).getString("endpoint","");if(saved.isEmpty())return false;
+        Uri service=Uri.parse(saved);String prefix=service.getPath()==null?"":service.getPath().replaceAll("/$","");String path=uri.getPath()==null?"":uri.getPath();
+        return "https".equals(uri.getScheme())&&service.getHost()!=null&&service.getHost().equals(uri.getHost())&&service.getPort()==uri.getPort()&&(path.startsWith(prefix+"/api/")||path.startsWith(prefix+"/examples/"));
+    }
     private static WebResourceResponse notFound(){return new WebResourceResponse("text/plain","UTF-8",404,"Not Found",Collections.emptyMap(),new ByteArrayInputStream(new byte[0]));}
     private boolean trustedPage(){return webView!=null&&assetPath(Uri.parse(webView.getUrl()==null?"":webView.getUrl()))!=null;}
     private void event(String name,JSONObject detail){runOnUiThread(()->{if(trustedPage())webView.evaluateJavascript("window.dispatchEvent(new CustomEvent("+JSONObject.quote(name)+",{detail:"+detail.toString()+"}))",null);});}
@@ -126,6 +142,10 @@ public final class MainActivity extends Activity {
         }
     }
     public final class NativeBridge {
+        @JavascriptInterface public void openExternalLink(String address){runOnUiThread(()->{try{if(trustedPage()&&"https".equals(Uri.parse(address).getScheme()))startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(address)));}catch(RuntimeException ignored){}});}
+        @JavascriptInterface public void configureOralService(String address){
+            try{Uri uri=Uri.parse(address);if(!"https".equals(uri.getScheme())||uri.getHost()==null||uri.getUserInfo()!=null||uri.getQuery()!=null||uri.getFragment()!=null)return;getSharedPreferences("oral-service",MODE_PRIVATE).edit().putString("endpoint",address).apply();}catch(RuntimeException ignored){}
+        }
         @JavascriptInterface public String notificationPermission(){return ReminderReceiver.permission(MainActivity.this);}
         @JavascriptInterface public void requestNotifications(){runOnUiThread(()->{
             if(!trustedPage())return;
@@ -177,7 +197,7 @@ public final class MainActivity extends Activity {
             }).start();
         }
     }
-    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] results){super.onRequestPermissionsResult(request,permissions,results);if(request==NOTIFY_PERMISSION){permissionResult();ReminderReceiver.check(this);}}
+    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] results){super.onRequestPermissionsResult(request,permissions,results);if(request==NOTIFY_PERMISSION){permissionResult();ReminderReceiver.check(this);}if(request==MICROPHONE_PERMISSION&&microphoneRequest!=null){PermissionRequest pending=microphoneRequest;microphoneRequest=null;if(results.length>0&&results[0]==PackageManager.PERMISSION_GRANTED&&trustedPage())pending.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});else pending.deny();}}
     @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);openReviewIntent();}
     @Override public void onBackPressed(){
         if(webView.canGoBack()){webView.goBack();return;}
@@ -197,5 +217,5 @@ public final class MainActivity extends Activity {
     @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)restoreFrame();}
     @Override protected void onResume(){super.onResume();resumed=true;if(webView!=null){webView.onResume();webView.resumeTimers();restoreFrame();openReviewIntent();ReminderReceiver.check(this);}}
     @Override protected void onPause(){resumed=false;if(webView!=null)webView.onPause();super.onPause();}
-    @Override protected void onDestroy(){if(fileCallback!=null)fileCallback.onReceiveValue(null);pendingBytes=null;if(webView!=null){container.removeView(webView);webView.destroy();webView=null;}super.onDestroy();}
+    @Override protected void onDestroy(){if(microphoneRequest!=null){microphoneRequest.deny();microphoneRequest=null;}if(fileCallback!=null)fileCallback.onReceiveValue(null);pendingBytes=null;if(webView!=null){container.removeView(webView);webView.destroy();webView=null;}super.onDestroy();}
 }

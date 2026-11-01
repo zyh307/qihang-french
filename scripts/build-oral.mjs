@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const output=path.join(root,'src/static/oral');await fs.mkdir(output,{recursive:true});
+for(const name of ['app.js','capture.js','style.css','bank.json'])await fs.copyFile(path.join(root,'oral-assistant/web',name),path.join(output,name));
+await fs.copyFile(path.join(root,'src/oral/client.js'),path.join(output,'client.js'));
+await fs.copyFile(path.join(root,'src/oral/theme.css'),path.join(output,'theme.css'));
+let html=await fs.readFile(path.join(root,'oral-assistant/web/index.html'),'utf8');
+html=html.replace('href="/assets/style.css"','href="style.css"').replace('src="/assets/app.js"','src="app.js"');
+html=html.replace('</head>','<link rel="stylesheet" href="theme.css"><script src="client.js"></script></head>');
+html=html.replace('陪练 · 可以请求帮助','陪练 · Pratique').replace('模拟 · 结束后复盘','模拟 · Simulation').replace('>情景对话场景</label>','>情景 · Situation</label>').replace('随机场景 · 每次换一题','随机 · Aléatoire');
+html=html.replace('A1 · 开发原型','DELF A1').replace(/电脑网页原型[^<]+/,'').replace('<title>Parlons · 法语口语练习</title>','<title>启航法语 · 口语练习</title>');
+await fs.writeFile(path.join(output,'index.html'),html,'utf8');
+console.log('口语模式资源已生成');

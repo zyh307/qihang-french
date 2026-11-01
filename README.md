@@ -27,7 +27,7 @@ npm ci
 npm run dev
 ```
 
-浏览器打开 http://127.0.0.1:5190/ 。网页构建使用 `npm run build`；Windows 分享包使用 `npm run build:share`。
+浏览器打开 http://127.0.0.1:5192/ 。网页构建使用 `npm run build`；Windows 分享包使用 `npm run build:share`。
 
 仓库包含程序运行所需的预处理词库与音频。也可在设置的资料页导入 XLSX / JSON 与录音 ZIP。个人学习记录、签名私钥、缓存和音频处理过程文件不会上传。导入格式和音频编号规则见 [使用教程](docs/使用教程.md)。
 
@@ -49,10 +49,14 @@ npm run dev
 
 欢迎提交 Issue 和 Pull Request。仓库所有者也可在 Settings → Collaborators 中邀请熟人共同开发。开发流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-当前版本：1.0.22。手机版使用 QWERTY 键位，长按后滑动选择重音字母，松手输入；电脑版使用实体键盘。
+当前版本：2.0.0。手机版使用 QWERTY 键位，长按后滑动选择重音字母，松手输入；电脑版使用实体键盘。
 
 ## 协议与素材
 
 本项目原创程序代码采用 **GPL-3.0-only**，完整条款见 [LICENSE](LICENSE)。第三方依赖保留其各自协议；公版名言、作者及出处见 [SOURCES.md](SOURCES.md)。教材、录音和用户导入资料不因程序开源而获得再分发授权。
 
 Copyright (C) 2026 启航 AI 俱乐部。
+
+## 2.0 双模式
+
+右上角“模式”打开右侧栏，可切换词汇学习与 DELF A1 口语练习，沿用统一浅色界面。口语模式保留三个环节、42 个问句、48 张词卡、12 个情景及回听、记录、导出和中文复盘；服务接入见 [配置说明](oral-assistant/docs/主应用接入.md)。本项目不附带公共语音服务、私人访问码或模型权重。
