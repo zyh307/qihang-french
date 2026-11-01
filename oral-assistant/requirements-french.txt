@@ -1,0 +1,2 @@
+# Exact recognizer dependency versions already evaluated in the isolated folder.
+-r requirements-whisper-eval.lock.txt

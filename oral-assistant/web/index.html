@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Parlons · 法语口语练习</title><link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="header wrap"><a class="brand" href="/" aria-label="Parlons 首页"><span class="logo">p.</span><span>Parlons<small>法语口语练习</small></span></a>
+    <nav aria-label="主导航"><button id="navPractice" class="nav active">练习</button><button id="navHistory" class="nav">练习记录</button></nav>
+    <span class="pill"><i id="connectionDot"></i><span id="connectionLabel">等待连接</span></span>
+  </header>
+  <main class="wrap">
+    <div id="notice" class="notice" role="alert" hidden></div>
+    <section id="home">
+      <div class="hero"><span class="eyebrow">DELF · A1</span><h1>从一句 Bonjour，<br>开始自在表达。</h1><p>和法语考官练习问答、提问与日常对话。<br>每次只专注一段交流。</p></div>
+      <section class="connection panel" aria-labelledby="bindingTitle"><div><h2 id="bindingTitle">连接你的法语考官</h2><p id="bindingMessage">使用已配置好的小智智能体，开始真实语音练习。</p><div id="bindingCode" hidden><span class="label">设备绑定码</span><strong id="codeValue"></strong><p>打开小智控制台 → 添加设备 → 输入此码，绑定到“DELF A1 法语口语考官”。<br>绑定完成后，本页会自动更新。不要把此码填到登录验证码处。</p><a href="https://xiaozhi.me/" target="_blank" rel="noopener noreferrer">打开小智控制台 ↗</a></div></div><button id="bind" class="button dark">连接小智</button></section>
+      <div class="section-top"><div><span class="eyebrow">CHOISISSEZ VOTRE EXERCICE</span><h2>今天，想练哪一部分？</h2></div><label class="mode-label">练习方式<select id="mode"><option value="practice">陪练 · 可以请求帮助</option><option value="simulation">模拟 · 结束后复盘</option></select></label></div>
+      <div class="cards">
+        <div id="recognizerChoice" class="recognizer-choice" hidden><label for="recognitionMode">语音识别</label><select id="recognitionMode"><option value="independent_fr">独立法语识别</option><option value="xiaozhi">小智原有识别</option></select><p id="recognizerMessage" class="quiet"></p></div>
+        <label id="recognitionChoice" class="recognition-choice" hidden><input id="confirmRecognition" type="checkbox"><span>回复前确认识别文字<small>可选：改正错词后再让考官接话；关闭时自动回复。</small></span></label>
+        <button class="part panel" data-part="intro"><span class="number">01</span><span class="part-fr">Entretien dirigé</span><strong>引导问答</strong><p>介绍自己，和考官聊聊<br>你的家庭、学习与日常。</p><span class="card-bottom">约 1–2 分钟 <span>了解环节与练习 ↗</span></span></button>
+        <button class="part panel" data-part="exchange"><span class="number">02</span><span class="part-fr">Échange d’informations</span><strong>信息交换</strong><p>这次，由你来提问。<br>用关键词了解对方。</p><span class="card-bottom">约 2 分钟 <span>了解环节与练习 ↗</span></span></button>
+        <button class="part panel" data-part="roleplay"><span class="number">03</span><span class="part-fr">Dialogue simulé</span><strong>情景对话</strong><p>走进面包店或咖啡馆，<br>用法语完成一个小任务。</p><span class="card-bottom">约 2 分钟 <span>了解环节与练习 ↗</span></span></button>
+      </div>
+      <div class="full panel"><div><h3>准备好完整练一次了吗？</h3><p>连续完成三个部分，感受完整口试节奏。</p></div><button id="full" class="button outline">开始完整练习 →</button></div>
+      <div class="scene-setting"><label for="scene">情景对话场景</label><select id="scene"><option value="random">随机场景 · 每次换一题</option></select><span id="bankInfo">题卡为原创练习材料</span></div>
+      <p class="quiet intro-note">电脑网页原型 · 一次连接一个练习窗口 · 首次使用请允许浏览器访问麦克风</p>
+    </section>
+
+    <section id="practice" hidden>
+      <div class="practice-top"><button id="endTop" class="text-button">← 结束并保存</button><span id="modeTag" class="tag"></span></div>
+      <div id="steps" class="steps" aria-label="考试阶段"></div>
+      <div class="practice-grid">
+        <aside class="task panel"><span id="taskEyebrow" class="eyebrow"></span><h1 id="taskTitle"></h1><p id="taskHint"></p>
+          <div id="prep" hidden><div id="prepClock" class="prep-clock">10:00</div><p>准备信息交换关键词和情景任务。引导问答无需准备。</p><button id="finishPrep" class="button dark">结束准备，开始口试</button></div>
+          <div id="keywords" hidden><span class="label">你的6张词卡</span><p>不必照搬原词，可点击卡片自选顺序。请求重复不算完成。</p><div id="keywordGrid" class="keyword-grid"></div><p id="keywordProgress" class="quiet"></p><span class="label">当前词卡</span><div id="keyword" class="keyword"></div><button id="nextKeyword" class="text-button">暂时跳过，换一张 →</button></div>
+          <div id="sceneCard" hidden><h3 id="sceneTitle"></h3><p id="sceneTask"></p><div id="materials"></div><fieldset id="checks"><legend>交流任务 · 自评勾选</legend></fieldset></div>
+          <div id="hintBox" class="hint-box" hidden><strong>练习小提示</strong><p id="hintText"></p></div>
+          <button id="viewExample" class="text-button">看看本环节的对话案例 ↗</button><p class="quiet">结束时会明确提示。也可以随时结束并保存记录。</p>
+        </aside>
+        <section class="conversation panel" aria-label="考官对话">
+          <div class="examiner"><div class="avatar">C</div><div><strong>Camille</strong><span>你的 A1 法语考官</span></div><span id="elapsed" class="elapsed">00:00</span></div>
+          <div id="stageStatus" class="stage-status" aria-live="polite"><div><strong id="stageProgress"></strong><p id="stageMessage"></p></div><div class="time-reference"><span id="targetTime">参考时长</span><strong id="remainingTime"></strong></div></div>
+          <div id="transcript" class="transcript" aria-live="polite"><div class="empty-dialogue">连接后，和 Camille 说声 Bonjour。</div></div>
+          <div class="voice-controls"><p id="voiceState" role="status">准备开始</p><div class="voice-buttons"><button id="abort" class="circle secondary" aria-label="停止录音和考官播放" title="停止录音和考官播放">■</button><button id="mic" class="mic" disabled><span class="mic-icon">●</span><span id="micLabel">开始说话</span></button><button id="resume" class="circle secondary" aria-label="重新连接并继续本环节" title="重新连接并继续本环节">↻</button></div><p class="quiet">说完后再点一次“我说完了” · 先停止播放可打断考官</p>
+          <details id="textEntry" hidden><summary>也可以输入法语</summary><form id="textForm"><label class="sr-only" for="textInput">你的法语消息</label><input id="textInput" maxlength="2000" placeholder="Écrivez votre message…" autocomplete="off"><button class="button dark" id="sendText" type="submit">发送</button></form></details></div>
+          <form id="recognitionForm" class="recognition-form" hidden><label for="confirmedTranscript">确认你刚才说的话</label><p class="quiet">可以直接确认，或改正错词。原始识别和录音会保留。</p><textarea id="confirmedTranscript" rows="2" maxlength="2000" placeholder="输入你实际说的法语…"></textarea><div class="recognition-actions"><button id="retrySpeech" type="button" class="button outline">重新说这句</button><button id="confirmSpeech" type="submit" class="button dark">确认并让考官回复</button></div></form>
+          <div class="mic-settings"><details><summary>麦克风与录音检查</summary><div class="mic-options"><label>输入设备<select id="inputDevice"><option value="">系统默认麦克风</option></select></label><label>输入增益<select id="inputGain"><option value="1">标准</option><option value="1.5">提高 1.5 倍</option><option value="2">提高 2 倍</option></select></label></div><p id="inputName" class="quiet">首次录音授权后显示设备列表。请优先使用靠近嘴部的麦克风。</p><label class="level-label">录音电平 <meter id="inputLevel" min="0" max="1" value="0"></meter></label><p id="inputQuality" class="quiet">点击“开始说话”后查看电平，停录后可回听上一句。</p></details><div id="lastRecording" hidden><span class="label">回听上一句 · 原始录音</span><audio id="lastAudio" controls preload="none"></audio></div></div>
+        </section>
+      </div>
+      <div class="practice-bottom"><button id="showHint" class="text-button">需要一点提示？</button><button id="nextStage" class="button dark">下一个环节 →</button><button id="finish" class="button outline">结束并复盘</button></div>
+    </section>
+
+    <section id="history" hidden><div class="section-top"><div><span class="eyebrow">VOS PROGRÈS</span><h1>每一次开口，都值得留下。</h1><p class="muted">回听自己的声音，看看已经完成的交流。</p></div><button id="backHome" class="button outline">返回练习</button></div><div id="historyList"></div></section>
+    <section id="review" hidden><div class="section-top"><div><span class="eyebrow">VOTRE SÉANCE</span><h1>这一次，你开口了。</h1><p id="reviewMeta" class="muted"></p></div><button id="reviewBack" class="button outline">查看全部记录</button></div><div id="reviewStats" class="review-stats"></div><section class="panel review-block ai-evaluation"><div class="section-top"><h2>AI 口语复盘</h2><button id="evaluate" class="button outline">生成评价</button></div><p class="quiet">依据本轮对话文字，评价任务完成、交流、词汇和语法。转写可能有误；发音暂不评判，此处不作为官方成绩。</p><div id="evaluationContent" aria-live="polite"></div></section><div class="review-grid"><section class="panel review-block"><h2>对话与录音</h2><div id="reviewTranscript"></div></section><aside class="panel review-block"><h2>回顾这次练习</h2><p id="reviewChecks"></p><p>选一句你想说得更流畅的话，回听录音，再重新练习一次。</p><button id="export" class="button outline">导出对话记录</button><button id="restore" class="button dark" hidden>继续未结束的练习</button></aside></div></section>
+  </main>
+  <dialog id="revisionDialog"><form id="revisionForm"><h2>记一份修订稿</h2><p class="quiet">原始识别文字会保留。修订稿单独保存，便于复盘；不会冒充平台识别结果。</p><span class="label">原始识别</span><p id="originalTranscript"></p><label for="revisionText">你实际想表达的内容</label><textarea id="revisionText" rows="4" maxlength="2000"></textarea><div class="dialog-actions"><button id="revisionCancel" type="button" class="button outline">取消</button><button type="submit" class="button dark">保存修订稿</button></div></form></dialog>
+  <dialog id="guideDialog" class="guide-dialog" aria-labelledby="guideTitle"><div class="guide-heading"><div><span class="eyebrow">AVANT DE COMMENCER</span><h2 id="guideTitle"></h2></div><button id="guideClose" class="text-button" aria-label="关闭环节说明">关闭 ×</button></div><nav id="guideTabs" class="guide-tabs" aria-label="选择示范环节"></nav><div class="guide-layout"><figure><video id="guideVideo" controls playsinline preload="metadata"></video><figcaption><strong>对话案例</strong><span>观看这段示范，了解考官与考生各自要做什么。</span><a href="https://www.bilibili.com/video/BV1V3411S7HT/?p=2" target="_blank" rel="noopener noreferrer">来源：爱丽丝的法语日记 · B站原视频第2集 ↗</a></figcaption><p id="guideVideoError" class="quiet" hidden>视频暂时无法播放，可打开原视频；也可以直接练习。</p></figure><div class="guide-notes"><h3>这个环节怎么进行？</h3><ol id="guideSteps"></ol><div class="guide-ending"><strong>什么时候结束？</strong><p id="guideEnding"></p></div><button id="guideStart" class="button dark">直接练习，跳过视频 →</button><p class="quiet">示范是一个对话案例，时长不代表每场考试的固定长度。</p><a class="quiet" href="https://www.france-education-international.fr/document/manuel-candidat-delf-a1" target="_blank" rel="noopener noreferrer">查看官方A1考生指南 ↗</a></div></div></dialog>
+  <footer class="wrap">Parlons <span>Petit à petit, on progresse.</span><small id="version">A1 · 开发原型</small></footer>
+  <script src="/assets/app.js" defer></script>
+</body></html>
