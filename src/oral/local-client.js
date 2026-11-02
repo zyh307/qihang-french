@@ -74,7 +74,7 @@ class LocalChannel {
   catch(e){this.connectionSession=null;this.state('stopped',e.message);throw e;}
  }
  async action(a){let s=this.session;
-  if(a.action==='start'){if(s&&s.phase!=='ended')throw Error('请先结束当前练习 / Terminez la séance actuelle.');if(this.evaluation?.evaluation?.status==='pending')throw Error('请等待本次点评结束 / Attendez l’évaluation.');const status=await call('status');if(!status.model.ready||status.provider.status!=='connected')throw Error('请先完成口语准备 / Terminez la préparation.');this.session=s=create(a);await this.update();if(s.phase==='active')await this.openStage();else this.state('idle','准备好后开始口试 / Préparez-vous.');return;}
+  if(a.action==='start'){if(s&&s.phase!=='ended')throw Error('请先结束当前练习 / Terminez la séance actuelle.');if(this.evaluation?.evaluation?.status==='pending')throw Error('请等待本次点评结束 / Attendez l’évaluation.');const status=await call('status');if(!status.model.ready||status.recognizer?.ready===false||status.provider.status!=='connected')throw Error('请先完成口语准备 / Terminez la préparation.');this.session=s=create(a);await this.update();if(s.phase==='active')await this.openStage();else this.state('idle','准备好后开始口试 / Préparez-vous.');return;}
   if(a.action==='restore'){this.session=s=await call('session.get',{id:a.id});s.confirm_transcript=false;for(const row of s.messages){if(row.recognition_status==='pending'){row.recognition_status='failed';row.confirmation_status='not_sent';row.recognition_error='上次识别被中断，请重新录音 / Réenregistrez cette réponse.';}if(row.id===s.awaiting_confirmation&&row.recognition_status==='done'&&row.text?.trim()){row.confirmed_text=row.revisions?.at(-1)?.text||row.text;row.confirmation_status='automatic';row.submission_source='restored_transcript';}if(accepted(row)&&!row.reply_delivered)row.delivery_uncertain=true;}delete s.awaiting_confirmation;if(s.evaluation?.status==='pending')s.evaluation={status:'error',message:'上次评价未完成，可重新生成 / Réessayez l’évaluation.'};if(s.ended)throw Error('本次练习已结束 / Séance terminée.');this.inFlight=null;this.state('stopped','练习已恢复，点击继续 / Séance restaurée.');await this.update();return;}
   if(!s||s.ended)throw Error('当前没有练习 / Aucune séance active.');
   if(this.recognizingRow&&['prepare_record','record_start','next','keyword','select_keyword','resume'].includes(a.action))throw Error('正在识别，请等待或点停止 / Attendez la transcription ou arrêtez-la.');
@@ -105,13 +105,13 @@ class LocalChannel {
   try{
    const job=await call('recognize',{audio:row.audio}),started=performance.now();let shown='';
    while(current()){
-    await new Promise(resolve=>setTimeout(resolve,500));if(!current())return;
     result=await call('job',{id:job.job});if(!current())return;
     if(result.state!=='running')break;
     if(performance.now()-started>(job.timeoutMs||600000)+5000){await call('recognize.cancel');throw Error('识别用时过长，已停止，原录音保留 / Reconnaissance trop longue, audio conservé.');}
     const seconds=Math.floor((result.elapsedMs||performance.now()-started)/1000),phase=result.phase==='loading'?'正在加载模型 / Chargement du modèle':result.phase==='finishing'?'正在整理文字 / Finalisation':'正在本机识别 / Transcription locale';
     const message=`${phase} · ${seconds}s${result.percent>0?' · '+result.percent+'%':''}`;
     if(message!==shown){shown=message;this.state('recognizing',message);}
+    await new Promise(resolve=>setTimeout(resolve,120));
    }
   }catch(error){result={state:'failed',error:error.message};}
   if(!current())return;
@@ -119,7 +119,7 @@ class LocalChannel {
    if(!current())return;this.recognizingRow=null;delete session.awaiting_confirmation;
    if(result?.state==='done'&&result.text?.trim()){
     row.text=row.original_asr=row.confirmed_text=result.text.trim();row.recognition_status='done';row.confirmation_status='automatic';row.submission_source='local_asr';row.submitted_at=now();
-    row.recognition={engine:'whisper.cpp',model:result.model||'whisper-large-v3-french-q5_0',elapsed_ms:result.elapsedMs};await this.update();
+    row.recognition={engine:'whisper.cpp',model:result.model||'whisper-large-v3-french-q5_0',elapsed_ms:result.elapsedMs,model_load_ms:result.modelLoadMs,inference_ms:result.inferenceMs,encoder_ms:result.encoderMs,decoder_ms:result.decoderMs,threads:result.threads,backend:result.backend};await this.update();
     try{await this.control();}catch(error){row.delivery_error=error.message;await this.update();this.emit('notice',{message:error.message});}
    }else{
     row.recognition_status=result?.state==='cancelled'?'cancelled':'failed';row.confirmation_status='not_sent';row.recognition_error=result?.error||'未识别出文字，请重新录音 / Réenregistrez votre réponse.';

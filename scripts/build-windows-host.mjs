@@ -10,7 +10,13 @@ const asset=JSON.parse(await fs.readFile(path.join(tools,'jre-assets.json'),'utf
 const archive=await fs.readFile(path.join(tools,'temurin-jre.zip'));if(createHash('sha256').update(archive).digest('hex')!==asset.binary.package.checksum)throw Error('JRE 校验失败');
 const jreDir=(await fs.readdir(path.join(tools,'jre'))).find(n=>n.startsWith('jdk-'));if(!jreDir)throw Error('JRE 未解压');await fs.cp(path.join(tools,'jre',jreDir),path.join(out,'runtime'),{recursive:true});
 await fs.mkdir(path.join(out,'bin'),{recursive:true});await fs.copyFile(path.join(root,'native/build/windows/qihang_speech.dll'),path.join(out,'bin/qihang_speech.dll'));
-for(const name of ['whisper.dll','ggml.dll','ggml-base.dll','ggml-cpu.dll'])await fs.copyFile(path.join(tools,'whisper-win/Release',name),path.join(out,'bin',name));
+const whisperBin=process.env.QIHANG_WHISPER_BIN||path.join(tools,'whisper-win/Release');
+for(const name of ['whisper.dll','ggml.dll','ggml-base.dll','ggml-cpu.dll'])await fs.copyFile(path.join(whisperBin,name),path.join(out,'bin',name));
+// Keep optional acceleration plugins with the pinned 1.8.3 runtime. Without a
+// supported GPU the same model continues on CPU; no weights are converted.
+for(const name of ['ggml-blas.dll','libopenblas.dll','ggml-cuda.dll','cublas64_12.dll','cublasLt64_12.dll','cudart64_12.dll','nvrtc64_120_0.dll','nvrtc-builtins64_124.dll']){
+ const source=path.join(whisperBin,name);if(await fs.access(source).then(()=>true,()=>false))await fs.copyFile(source,path.join(out,'bin',name));
+}
 for(const name of ['libwinpthread-1.dll'])await fs.copyFile(path.join('D:/mingw64/bin',name),path.join(out,'bin',name));
 for(const name of ['msvcp140.dll','vcruntime140.dll','vcruntime140_1.dll']){try{await fs.copyFile(path.join(out,'runtime/bin',name),path.join(out,'bin',name));}catch(error){if(error.code!=='ENOENT')throw error;}}
 const openmp=path.join(tools,'vcredist-cabs/1/expanded-a12/vcomp140.dll_amd64');

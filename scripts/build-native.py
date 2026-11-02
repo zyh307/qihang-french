@@ -2,7 +2,7 @@
 import concurrent.futures, hashlib, json, os, pathlib, re, shutil, subprocess, sys
 root=pathlib.Path(__file__).resolve().parent.parent
 base=pathlib.Path('Q:/') if pathlib.Path('Q:/native/cpp/speech.cpp').is_file() else root
-tools=base/'.native-tools'; target=sys.argv[1] if len(sys.argv)>1 else 'android'
+tools=pathlib.Path(os.environ.get('QIHANG_NATIVE_TOOLS',str(base/'.native-tools'))); target=sys.argv[1] if len(sys.argv)>1 else 'android'
 whisper=tools/'whisper.cpp-1.8.3'; opus=tools/'opus-1.5.2'; out=tools/('manual-'+target);out.mkdir(exist_ok=True)
 def groups(file,names):
     text=(opus/file).read_text(); result=[]
@@ -31,7 +31,9 @@ if target=='android':
     flags+=['-DGGML_USE_CPU','-DGGML_VERSION="0.9.5"','-DGGML_COMMIT="whisper-v1.8.3"','-DWHISPER_VERSION="1.8.3"','-I'+str(whisper/'ggml/include'),'-I'+str(g),'-I'+str(g/'ggml-cpu')]
     library=root/'android/jniLibs/arm64-v8a/libqihang_speech.so'
 else:
-    cc=pathlib.Path('D:/mingw64/bin/gcc.exe');cxx=pathlib.Path('D:/mingw64/bin/g++.exe');flags+=['-ID:/include','-ID:/include/win32','-I'+str(whisper/'ggml/include')]
+    mingw=pathlib.Path(os.environ.get('QIHANG_MINGW_BIN','D:/mingw64/bin'))
+    jdk=pathlib.Path(os.environ.get('QIHANG_JDK_HOME','D:/'))
+    cc=mingw/'gcc.exe';cxx=mingw/'g++.exe';flags+=['-I'+str(jdk/'include'),'-I'+str(jdk/'include/win32'),'-I'+str(whisper/'ggml/include')]
     library=root/'native/build/windows/qihang_speech.dll'
 sources += [base/'native/cpp/speech.cpp'];flags+=['-I'+str(whisper/'include')]
 def compile_one(item):
@@ -46,7 +48,10 @@ print('Compiling',target,len(sources),'sources',flush=True)
 with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:objects=list(pool.map(compile_one,enumerate(sources)))
 library.parent.mkdir(parents=True,exist_ok=True)
 link=[str(cxx),*([f'--target=aarch64-none-linux-android26','--sysroot='+str(llvm/'sysroot'),'-static-libstdc++','-Wl,-z,max-page-size=16384','-Wl,--no-undefined','-llog','-latomic','-lm'] if target=='android' else ['-static-libgcc','-static-libstdc++']),'-shared','-o',str(library),*[str(o) for o in objects]]
-if target!='android':link += [str(tools/'whisper-win/Release/whisper.dll'),'-lcrypt32'] if (tools/'whisper-win/Release/whisper.dll').is_file() else [str(next((tools/'whisper-win').rglob('whisper.dll'))),'-lcrypt32']
+if target!='android':
+    whisper_dll=pathlib.Path(os.environ.get('QIHANG_WHISPER_DLL',str(tools/'whisper-win/Release/whisper.dll')))
+    if not whisper_dll.is_file():whisper_dll=next((tools/'whisper-win').rglob('whisper.dll'))
+    link += [str(whisper_dll),str(whisper_dll.with_name('ggml.dll')),str(whisper_dll.with_name('ggml-base.dll')),'-lcrypt32']
 result=subprocess.run(link,capture_output=True);(out/'link.log').write_bytes(result.stdout+result.stderr)
 if result.returncode:raise RuntimeError((result.stdout+result.stderr).decode('utf-8','replace')[-6000:])
 print('Native library:',library,library.stat().st_size,'bytes',flush=True)

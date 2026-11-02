@@ -10,6 +10,7 @@ public final class OralCore {
  private final ExecutorService speech=Executors.newSingleThreadExecutor();private final Map<String,JSONObject> jobs=new ConcurrentHashMap<>();
  private final ScheduledExecutorService recognitionClock=Executors.newSingleThreadScheduledExecutor();
  private volatile String activeRecognition="";private volatile long recognitionStarted;
+ private volatile boolean preparingSpeech;private volatile String preparedModel="",preparationError="";private volatile long preparationStarted,preparationElapsedMs;private volatile long[] preparedTimings;
  private final ArrayDeque<JSONObject> events=new ArrayDeque<>();private long sequence;
  private String recordingId="",recordingSession="",recordingStage="",recordingRow="";private volatile String recordingState="idle";private FileOutputStream capture;private long recordingBytes;private volatile long recognitionGeneration;
  private final Object turnLock=new Object();
@@ -21,7 +22,8 @@ public final class OralCore {
  private JSONObject dispatch(String method,JSONObject a)throws Exception{
   switch(method){
    case "heartbeat":return J.o();
-   case "status":return J.o("model",modelStatus(),"provider",examiner.state(),"recording",recordingState,"availableMemory",host.availableMemory(),"native",true);
+   case "status":ensureSpeechPrepared();return J.o("model",modelStatus(),"recognizer",speechStatus(),"provider",examiner.state(),"recording",recordingState,"availableMemory",host.availableMemory(),"native",true);
+   case "recognizer.prepare":preparationError="";ensureSpeechPrepared();return speechStatus();
    case "events":{JSONArray batch=new JSONArray();synchronized(this){long since=a.optLong("after");for(JSONObject e:events)if(e.optLong("seq")>since)batch.put(e);return J.o("events",batch,"cursor",sequence);}}
    case "model.import":host.importModel(model);return J.o("opened",true);
    case "model.delete":if(!a.optBoolean("confirmed"))throw new IOException("请先确认删除 / Confirmez la suppression.");model.delete();return model.status();
@@ -51,8 +53,19 @@ public final class OralCore {
  private JSONObject sendTurn(JSONObject a)throws Exception{synchronized(turnLock){if(examiner.state().optBoolean("busy"))throw new IOException("请等待考官回复 / Attendez la réponse.");String turn=a.getJSONObject("task").optString("turn_id");synchronized(this){replyTurn=turn;reply.reset();}examiner.submit(a.getJSONObject("task"),a.getString("text"));return J.o("submitted",true,"turn",turn);}}
  private String safeId(String id)throws IOException{if(!id.matches("[a-zA-Z0-9-]{8,80}"))throw new IOException();return id;}
  private JSONObject modelStatus()throws Exception{JSONObject value=model.status();value.put("label",model.description().optString("label"));return value;}
+ static int recognitionThreads(int processors,boolean desktop){return SpeechSettings.threads(processors,desktop);}
+ private int recognitionThreads(){return recognitionThreads(Runtime.getRuntime().availableProcessors(),System.getProperty("os.name","").startsWith("Windows"));}
+ private String modelStamp(){return model.model.length()+":"+model.model.lastModified();}
+ private JSONObject speechStatus(){boolean ready=!preparingSpeech&&preparationError.isEmpty()&&preparedModel.equals(modelStamp())&&model.status().optBoolean("ready");return J.o("ready",ready,"state",preparingSpeech?"preparing":!preparationError.isEmpty()?"failed":ready?"ready":"waiting","elapsedMs",preparingSpeech?(System.nanoTime()-preparationStarted)/1000000:0,"preparationMs",preparationElapsedMs,"message",preparationError,"backend",preparedTimings!=null&&preparedTimings.length>6&&preparedTimings[6]==1?"gpu":"cpu");}
+ private synchronized void ensureSpeechPrepared(){
+  if(preparingSpeech||!preparationError.isEmpty()||!model.status().optBoolean("ready")||preparedModel.equals(modelStamp())||!activeRecognition.isEmpty())return;
+  if(host.availableMemory()<model.minimumMemory()){preparationError="可用内存不足，请关闭其他应用后重试 / Mémoire insuffisante.";return;}
+  if(!model.acquire())return;
+  final String stamp=modelStamp();preparingSpeech=true;preparationStarted=System.nanoTime();
+  speech.submit(()->{try{NativeSpeech.prepare();if(NativeSpeech.preload(model.model.getAbsolutePath()))NativeSpeech.transcribe(model.model.getAbsolutePath(),new float[16000],recognitionThreads());preparedTimings=NativeSpeech.timings();preparedModel=stamp;}catch(LinkageError e){preparationError="语音组件不完整或版本不匹配，请完整解压新版 / Composants vocaux incomplets, réinstallez le paquet complet.";}catch(Throwable e){preparationError=J.safe(e);}finally{preparationElapsedMs=(System.nanoTime()-preparationStarted)/1000000;model.done();preparingSpeech=false;}});
+ }
  private File audio(String id){return new File(root,"recordings/"+id+".wav");}
- private synchronized JSONObject beginRecord()throws Exception{if(capture!=null||!activeRecognition.isEmpty())throw new IOException("请等待上一段录音处理结束 / Attendez la fin du traitement précédent.");recordingId=UUID.randomUUID().toString();capture=new FileOutputStream(new File(root,"recordings/"+recordingId+".pcm.part"));recordingBytes=0;recordingRow=UUID.randomUUID().toString();J.atomic(new File(root,"recording-active.json"),J.bytes(J.o("audio",recordingId,"row",recordingRow,"session",recordingSession,"stage",recordingStage).toString()));recordingState="recording";return J.o("audio",recordingId,"row",recordingRow);}
+ private synchronized JSONObject beginRecord()throws Exception{if(!speechStatus().optBoolean("ready"))throw new IOException("语音模型尚在准备，请完成准备后开始 / Attendez la préparation du modèle.");if(capture!=null||!activeRecognition.isEmpty())throw new IOException("请等待上一段录音处理结束 / Attendez la fin du traitement précédent.");recordingId=UUID.randomUUID().toString();capture=new FileOutputStream(new File(root,"recordings/"+recordingId+".pcm.part"));recordingBytes=0;recordingRow=UUID.randomUUID().toString();J.atomic(new File(root,"recording-active.json"),J.bytes(J.o("audio",recordingId,"row",recordingRow,"session",recordingSession,"stage",recordingStage).toString()));recordingState="recording";return J.o("audio",recordingId,"row",recordingRow);}
  private synchronized JSONObject chunk(String encoded)throws Exception{if(capture==null)throw new IOException("录音已停止 / Enregistrement arrêté.");if(encoded.length()>512*1024)throw new IOException();byte[] pcm=Base64.getDecoder().decode(encoded);if((pcm.length&1)!=0||recordingBytes+pcm.length>16000*2*120)throw new IOException("每次录音最长两分钟 / Deux minutes maximum.");capture.write(pcm);recordingBytes+=pcm.length;return J.o();}
  private synchronized JSONObject endRecord()throws Exception{if(capture==null)throw new IOException("录音已停止 / Enregistrement arrêté.");capture.getFD().sync();capture.close();capture=null;File partial=new File(root,"recordings/"+recordingId+".pcm.part");byte[] pcm=Files.readAllBytes(partial.toPath());J.atomic(audio(recordingId),wav(pcm,16000));Files.deleteIfExists(partial.toPath());recordingState="idle";JSONObject result=J.o("audio",recordingId,"row",recordingRow,"duration",pcm.length/32000.0);saveCaptured(result,false);Files.deleteIfExists(new File(root,"recording-active.json").toPath());return result;}
  private synchronized void cancelRecognition(String message){
@@ -70,9 +83,10 @@ public final class OralCore {
   return J.o("state","running","phase",phase==2?"loading":phase==3?"transcribing":phase==1?"queued":"finishing","percent",progress.length>1?Math.max(0,Math.min(100,progress[1])):0,"elapsedMs",(System.nanoTime()-recognitionStarted)/1000000,"timeoutMs",value.optLong("timeoutMs"));
  }
  private synchronized JSONObject recognize(String id)throws Exception{
+  if(!speechStatus().optBoolean("ready"))throw new IOException("语音模型尚在准备，请完成准备后开始 / Attendez la préparation du modèle.");
   safeId(id);long size=audio(id).length();if(size<3244||size>3840044)throw new IOException("录音过短或无效，请重新录音 / Réenregistrez une réponse plus longue.");
   if(!model.acquire())throw new IOException("模型尚未就绪或正在识别 / Modèle indisponible ou occupé.");
-  if(host.availableMemory()<model.minimumMemory()){model.done();throw new IOException("可用内存不足，请关闭其他应用后重试 / Mémoire disponible insuffisante.");}
+  if(host.availableMemory()<Math.min(model.minimumMemory(),512L*1024*1024)){model.done();throw new IOException("可用内存不足，请关闭其他应用后重试 / Mémoire disponible insuffisante.");}
   final ModelStore selectedModel=model;
   try{NativeSpeech.prepare();}catch(Throwable e){model.done();throw e;}
   String job=UUID.randomUUID().toString();long generation=++recognitionGeneration;
@@ -85,10 +99,11 @@ public final class OralCore {
     if(generation!=recognitionGeneration)return;
     byte[] wav=Files.readAllBytes(audio(id).toPath());float[] samples=new float[(wav.length-44)/2];ByteBuffer b=ByteBuffer.wrap(wav,44,wav.length-44).order(ByteOrder.LITTLE_ENDIAN);
     for(int i=0;i<samples.length;i++)samples[i]=b.getShort()/32768f;
-    String text=NativeSpeech.transcribe(selectedModel.model.getAbsolutePath(),samples,Math.max(1,Math.min(4,Runtime.getRuntime().availableProcessors()-1)));
+    String text=NativeSpeech.transcribe(selectedModel.model.getAbsolutePath(),samples,recognitionThreads());
     if(generation!=recognitionGeneration)return;
     if(text.trim().isEmpty())throw new IOException("未识别出文字，请回听或重新录音 / Aucun texte reconnu.");
-    jobs.replace(job,running,J.o("state","done","text",text.trim(),"model",selectedModel.modelId(),"elapsedMs",(System.nanoTime()-recognitionStarted)/1000000));
+    long[] timing=NativeSpeech.timings();
+    jobs.replace(job,running,J.o("state","done","text",text.trim(),"model",selectedModel.modelId(),"elapsedMs",(System.nanoTime()-recognitionStarted)/1000000,"modelLoadMs",timing[0],"inferenceMs",timing[1],"encoderMs",timing[2],"decoderMs",timing[3],"threads",timing[5],"backend",timing[6]==1?"gpu":"cpu"));
    }catch(Throwable e){jobs.replace(job,running,J.o("state",generation!=recognitionGeneration?"cancelled":"failed","error",e instanceof OutOfMemoryError?"识别内存不足，请关闭其他应用后重试 / Mémoire insuffisante.":J.safe(e)));}
    finally{deadline.cancel(false);synchronized(this){selectedModel.done();if(job.equals(activeRecognition)){activeRecognition="";recordingState="idle";}}}
   });
