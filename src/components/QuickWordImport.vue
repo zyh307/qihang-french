@@ -6,10 +6,10 @@
    <textarea auto-height v-model="input" :adjust-position="false" class="quick-import-input" maxlength="12000" placeholder="bonjour, un livre, hôtel" :disabled="loading||saving"/>
    <button class="button secondary" :disabled="!input.trim()||loading||saving" @click="lookup"><Icon name="search"/><Bi :zh="loading?'正在导入':'导入单词'" :fr="loading?'Importation…':'Importer'" small/></button>
    <text v-if="error" class="quick-import-error" role="alert">{{ error }}</text>
-   <view v-if="results.length" class="quick-import-results">
-    <view v-for="(row,i) in results" :key="i" class="glass quick-import-row">
+   <view v-if="choiceRows.length" class="quick-import-results">
+    <view v-for="(row,i) in choiceRows" :key="i" class="glass quick-import-row">
      <text>{{ row.input }}</text>
-     <view v-if="row.missing" class="missing-word"><Bi zh="未找到，可修改输入后重试" fr="Mot introuvable : corrigez puis réessayez" small/><button class="text-button" :disabled="loading||saving" @click="results.splice(i,1)"><Bi zh="跳过" fr="Ignorer" small/></button></view>
+     <Bi v-if="!row.selected" class="quick-choice-prompt" zh="请选择一个词" fr="Choisissez un mot" small/>
      <view v-for="option in row.options" :key="option.id" class="quick-word-option">
       <button hover-class="none" :disabled="loading||saving" :class="['quick-word-choice',{selected:row.selected===option.id}]" @click="row.selected=row.selected===option.id?'':option.id">
        <view><text lang="fr">{{ option.word }}</text><text class="quick-word-pronunciation">{{ option.pos }} {{ option.gender==='m'?'m.':option.gender==='f'?'f.':'' }} {{ option.ipa }}</text><text class="muted">{{ option.meanings.join('；') }}</text><text v-if="!option.example?.fr" class="quick-word-pending">例句待补 · Phrase à compléter</text></view><Icon :name="row.selected===option.id?'check':'plus'"/>
@@ -19,9 +19,9 @@
        <view v-for="existing in candidateLocations.get(option.id)" :key="existing.key" class="quick-existing-word"><text lang="fr">{{ existing.word }}</text><Bi :zh="existing.locations.map(location=>location.zh).join(' / ')" :fr="existing.locations.map(location=>location.fr).join(' / ')" small/></view>
       </view>
      </view>
-     <text v-if="row.options.length>1&&!row.selected" class="muted">请选择一个词 · Choisissez un mot.</text>
     </view>
    </view>
+   <view v-if="missingRows.length" class="quick-import-not-found"><Bi zh="以下词未找到" fr="Mots introuvables" small/><text v-for="row in missingRows" :key="row.input" lang="fr">{{ row.input }}</text></view>
    <view v-if="importedRows.length" class="quick-import-receipt" role="status" aria-live="polite">
     <template v-if="successfulRows.length"><view class="import-success"><Icon name="check"/><Bi :zh="'成功导入 '+successfulRows.length+' 个词'" :fr="successfulRows.length+' mots importés'" small/></view><view v-for="word in successfulRows" :key="word.key" class="imported-word-result"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
     <template v-if="duplicateRows.length"><Bi :zh="'已在导入本 · '+duplicateRows.length+' 个词'" :fr="'Déjà importés · '+duplicateRows.length" small/><view v-for="word in duplicateRows" :key="word.key" class="imported-word-result duplicate"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
@@ -41,6 +41,7 @@ const props=defineProps({library:Array,data:Object}),emit=defineEmits(['close','
 const input=ref(''),results=ref([]),error=ref(''),importedRows=ref([]),loading=ref(false),saving=ref(false);let dictionary;
 watch(input,()=>{results.value=[];error.value='';importedRows.value=[];});
 const successfulRows=computed(()=>importedRows.value.filter(row=>row.added)),duplicateRows=computed(()=>importedRows.value.filter(row=>!row.added));
+const choiceRows=computed(()=>results.value.filter(row=>!row.missing)),missingRows=computed(()=>results.value.filter(row=>row.missing));
 const candidateLocations=computed(()=>{
  const locate=makeImportLocationLookup(props.data||{library:props.library||[]}),map=new Map();
  for(const row of results.value)for(const option of row.options)if(!map.has(option.id))map.set(option.id,locate(option));
@@ -83,4 +84,5 @@ function submit(){
 .import-top{min-height:52px;flex:none;gap:15px}.missing-word{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .import-success{display:flex;align-items:center;gap:9px;color:#739d8c;font-size:11px;padding:4px 1px}
 .quick-word-option{display:flex;flex-direction:column;gap:5px;min-width:0}.quick-word-choice{width:100%;text-align:left}.quick-existing-list{padding:3px 9px 6px;display:flex;flex-direction:column;gap:5px;color:#8799ac}.quick-existing-word{display:flex;flex-direction:column;gap:1px;font-size:11px;line-height:1.6;overflow-wrap:anywhere}.quick-existing-list :deep(.bi){font-size:10px}.quick-import-receipt{display:flex;flex-direction:column;gap:7px;padding:12px 2px 8px;border-top:1px solid #e4ebf0}.quick-import-receipt>.bi{margin-top:5px;color:#8d9ba9}.imported-word-result{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:3px 0;font-size:12px;color:#597b6b;line-height:1.6}.imported-word-result>text:first-child{min-width:0;overflow-wrap:anywhere}.imported-word-result>text:last-child{flex:none;color:#97a6b4;font-size:10px}.imported-word-result.duplicate{color:#8a98a8}
+.quick-choice-prompt{padding:7px 10px;border-radius:10px;background:#edf2fc;color:#617cad}.quick-import-not-found{display:flex;flex-direction:column;gap:6px;padding:12px 2px;color:#9b8082}.quick-import-not-found>text{font-size:12px;line-height:1.6;overflow-wrap:anywhere}
 </style>

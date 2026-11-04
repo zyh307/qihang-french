@@ -205,3 +205,5 @@
 Inspire 2、3、4 的词汇、例句与真人录音来自用户提供的教材资料包，保留其课次、书页和原音轨信息。教材及录音版权归原权利人所有；配套编写的例句单独标记来源。
 
 补充词汇录音：fr-FR-DeniseNeural 法语合成音。
+
+常用自反动词补充：依据现有 Wiktionary 法语、英语版本词条校订 76 个独立自反用法；中文释义和中法例句由启航法语编写，音标人工校订。补充数据、用法别名和日期见 src/lexicon/pronominal-supplement.json；新增单词及例句录音为 fr-FR-DeniseNeural 合成音。se rappeler 的直接宾语用法另参考法国法兰西学院：https://www.academie-francaise.fr/se-rappeler-quelque-chose-se-souvenir-de-quelque-chose 。

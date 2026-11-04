@@ -12,7 +12,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 VERSION = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
 NAME = json.loads((ROOT / 'src/manifest.json').read_text(encoding='utf-8'))['name']
-OUT = ROOT / '正式版'
+OUT = ROOT / f'{NAME}-正式版-v{VERSION}'
 MANIFEST = json.loads((ROOT / 'native/model-manifest.json').read_text(encoding='utf-8'))
 
 
@@ -59,7 +59,7 @@ def main():
     parser.add_argument('--model', type=Path)
     args = parser.parse_args()
     OUT.mkdir(exist_ok=True)
-    assert not OUT.is_symlink() and OUT.resolve() == ROOT / '正式版'
+    assert not OUT.is_symlink() and OUT.resolve() == ROOT / f'{NAME}-正式版-v{VERSION}'
     model = args.model or Path(os.environ.get('QIHANG_MODEL_FILE') or OUT / MANIFEST['filename'])
     if not model.is_file():
         model = ROOT / '交付/模型' / MANIFEST['filename']

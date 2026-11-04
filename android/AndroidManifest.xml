@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.qihang.francais" android:versionCode="20350" android:versionName="2.3.5">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.qihang.francais" android:versionCode="20360" android:versionName="2.3.6">
   <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
   <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
