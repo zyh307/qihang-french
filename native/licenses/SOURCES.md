@@ -18,4 +18,4 @@
 - whisper.cpp v1.8.3 官方 BLAS 资产 `whisper-blas-bin-x64.zip`，SHA-256 `2c9e6b95d9b679120553631d07b97d4bb1a56668a592052838dc9e7e24769c04`，包含 OpenBLAS 0.3.29（BSD，许可见 OpenBLAS-BSD.txt）。
 - 可选 NVIDIA CUDA 后端来自同版官方 `whisper-cublas-12.4.0-bin-x64.zip`，SHA-256 `c12a563333d3c3707be70754dc0e87c1cb58aa6333a87055bbcf9b524488dfb0`；CUDA运行库按其自身条款提供，不属于本项目GPL授权内容。许可见 NVIDIA-CUDA-12.4-EULA.txt；未分发驱动或开发工具。
 - 分支性能候选使用 w64devkit 2.11.0 / GCC 16.2.0；本次发布的 JNI 库使用本机 MinGW-w64 GCC 8.1.0 重新编译，沿用同版 whisper.cpp 头文件和 Opus 1.5.2 源码。开发工具不随应用分发。
-- 法语模型、Q5量化与解码精度不变。Windows完整包随附固定法语模型；Android使用本机导入的模型。GPU不可用时使用CPU。
+- 法语模型、Q5量化与解码精度不变。Windows和Android使用同一固定模型文件，均由用户单独导入。GPU不可用时使用CPU。

@@ -18,3 +18,6 @@ export function openNotificationSettings(){nativeHost()?.openNotificationSetting
 
 export const exactAlarmPermission=()=>nativeHost()?.exactAlarmPermission?.()||'unsupported';
 export const openExactAlarmSettings=()=>nativeHost()?.openExactAlarmSettings?.();
+export function reviewReminderStatus(){try{return JSON.parse(nativeHost()?.reviewReminderStatus?.()||'null');}catch{return null;}}
+export const openBackgroundSettings=()=>nativeHost()?.openBackgroundSettings?.();
+export const openBatterySettings=()=>nativeHost()?.openBatterySettings?.();

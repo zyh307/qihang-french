@@ -4,7 +4,6 @@ import {fileURLToPath} from 'node:url';
 import {Zip,ZipDeflate} from 'fflate';
 import {createReadStream,createWriteStream} from 'node:fs';
 import {once} from 'node:events';
-import {prepareFrenchModel} from './prepare-french-model.mjs';
 
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const appName=JSON.parse(await fs.readFile(path.join(app,'src/manifest.json'),'utf8')).name;
@@ -17,12 +16,13 @@ await fs.mkdir(output,{recursive:true});
 // Replace only the generated web resources; never copy browser profiles or backups.
 if((await fs.realpath(output)).toLowerCase()!==output.toLowerCase())throw new Error('分享目录不能指向项目外部');
 await fs.cp(path.join(app,'native/build/windows-host'),path.join(output,'口语运行'),{recursive:true});
-const model=await prepareFrenchModel();
-const modelName=JSON.parse(await fs.readFile(path.join(app,'native/model-manifest.json'),'utf8')).filename;
-await fs.mkdir(path.join(output,'口语运行/models'),{recursive:true});
-await fs.copyFile(model,path.join(output,'口语运行/models',modelName));
+// Model weights are a separate Release asset. Remove only our old generated
+// bundle directory so rebuilding over an earlier share package cannot leak it.
+const oldModels=path.join(output,'口语运行/models');
+const modelDirectory=await fs.lstat(oldModels).catch(error=>{if(error.code!=='ENOENT')throw error;return null;});
+if(modelDirectory){if(modelDirectory.isSymbolicLink()||!(await fs.realpath(oldModels)).toLowerCase().startsWith(output.toLowerCase()+path.sep))throw Error('模型目录不能指向分享目录外部');await fs.rm(oldModels,{recursive:true,force:true});}
 const runtimeSource=JSON.parse(await fs.readFile(path.join(output,'口语运行/runtime-source.json'),'utf8'));
-runtimeSource.modelIncluded=true;runtimeSource.modelPath='models/'+modelName;
+runtimeSource.modelIncluded=false;delete runtimeSource.modelPath;
 await fs.writeFile(path.join(output,'口语运行/runtime-source.json'),JSON.stringify(runtimeSource,null,2));
 await fs.rm(path.join(output,'server.ps1'),{force:true});
 await fs.rm(path.join(output,'口语运行/extra-audio-manifest.json'),{force:true});
@@ -67,6 +67,6 @@ await addWeb('口语运行');
 for(const name of [startName,'使用说明.txt','使用教程.html','SOURCES.md','LICENSE','COPYRIGHT'])await addFile(name);
 const completed=once(stream,'finish');zipper.end();await completed;if(streamError)throw streamError;
 await fs.rename(archive+'.part',archive);
-if((await fs.stat(archive)).size>=2*1024*1024*1024)throw Error('完整包超过 GitHub 单资产限制，请拆分发行，不能静默去掉模型。');
+if((await fs.stat(archive)).size>=2*1024*1024*1024)throw Error('Windows 包超过 GitHub 单资产限制，请检查运行资源。');
 console.log('分享版已生成：'+output);
-console.log(`完整分享包已生成：${archive}（${count} 个文件，含法语识别模型）`);
+console.log(`Windows 分享包已生成：${archive}（${count} 个文件，法语识别模型独立导入）`);

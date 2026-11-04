@@ -1,14 +1,14 @@
 {
   "name": "francais-ensemble",
-  "version": "2.2.4",
+  "version": "2.3.5",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && uni --host 127.0.0.1 --port 5194",
-    "build": "node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/render-guide.mjs && uni build",
+    "dev": "node scripts/apply-example-translations.mjs && node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/build-inspire-books.mjs && uni --host 127.0.0.1 --port 5194",
+    "build": "node scripts/apply-example-translations.mjs && node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/build-inspire-books.mjs && node scripts/render-guide.mjs && uni build",
     "build:share": "npm run build && node scripts/build-windows-host.mjs && node scripts/build-share.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 5195 --outDir dist/build/h5",
-    "build:apk": "node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/render-guide.mjs && node scripts/build-android.mjs",
+    "build:apk": "node scripts/apply-example-translations.mjs && node scripts/prepare-bundled-audio.mjs && node scripts/build-oral.mjs && node scripts/build-content.mjs && node scripts/build-inspire-books.mjs && node scripts/render-guide.mjs && node scripts/build-android.mjs",
     "prepare:content": "node scripts/build-content.mjs"
   },
   "dependencies": {

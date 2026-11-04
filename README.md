@@ -2,23 +2,23 @@
 
 中法双语词汇、语法和 DELF A1 口语练习。
 
-## 下载测试版
+## 下载
 
-[打开测试版下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.2.4)
+[打开下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.3.5)
 
 | 设备 | 下载文件 | 打开方式 |
 |---|---|---|
-| Windows | [Windows 完整包](https://github.com/zyh307/qihang-french/releases/download/v2.2.4/QihangFrench-Windows-v2.2.4.zip) | 完整解压，双击“启动启航法语.bat” |
-| 安卓 | [APK](https://github.com/zyh307/qihang-french/releases/download/v2.2.4/QihangFrench-Android-v2.2.4.apk) | 下载后安装 |
-| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.1.1-beta.1/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
+| Windows | [Windows 程序包](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Windows-v2.3.5.zip) | 完整解压，双击“启动启航法语.bat” |
+| 安卓 | [APK](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Android-v2.3.5.apk) | 下载后安装 |
+| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
 
 词库包含 18,655 个词条，支持逗号导入。课内录音、课外单词和例句录音均已内置，安装后可离线播放，无需另下语音包。
 
-Windows 完整包已含法语识别模型；安卓口语首次使用需导入约 1.08 GB 的模型。只用词汇或语法无需导入模型。口语转写在当前设备运行，考官回复需要联网。
+Windows 和安卓程序包均不含法语识别模型。口语首次使用请单独下载约 1.08 GB 的模型，在应用中导入。只用词汇或语法无需导入模型。口语转写在当前设备运行，考官回复需要联网。
 
 ## 口语开始使用
 
-1. Windows 等待随附模型校验完成；安卓从下载页取得识别模型后，在口语设置中导入。
+1. 从下载页单独下载 ggml-model-q5_0.bin，在设置 → 口语 → 导入本地模型，等待校验完成。两端共用同一个模型文件。
 2. 允许麦克风，点击“绑定小智”。
 3. 在自己的小智账号创建法语考官，粘贴应用提供的考官配置，选择模型和法语音色，使用绑定码添加设备。
 4. 返回应用选择练习。说完自动转写并发送，无需确认或修改文字。
@@ -27,7 +27,7 @@ Windows 完整包已含法语识别模型；安卓口语首次使用需导入约
 
 ## 词汇与语法
 
-词汇支持逐课背诵、选择、拼写、收藏、错题及定期复习。语法按单元进入课次，先看本课概览，再逐个学习语法点，各单元综合练习分别保存进度。教材分别记住上次选择的 Lesson；导入本每课 30 词，与 Inspire 共用卡片背诵和五词练习。
+Inspire 1–4 均可逐课学习，教材录音及来源信息随课提供。词汇支持逐课背诵、选择、拼写、收藏、错题及定期复习。语法按单元进入课次，先看本课概览，再逐个学习语法点，各单元综合练习分别保存进度。教材分别记住上次选择的 Lesson；导入本每课 30 词，与 Inspire 共用卡片背诵和五词练习。候选词显示已有位置，导入结果列出成功单词及 Lesson；学完自动进入复习本，也可标记已会。
 
 [资料导入教程](docs/使用教程.md)
 

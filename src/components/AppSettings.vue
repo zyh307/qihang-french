@@ -33,6 +33,12 @@
       <button v-if="data.settings.reviewReminders!==false&&notificationPermission!=='granted'" class="setting-action" hover-class="none" @click="$emit('notifications',true)"><Icon name="clock"/><Bi zh="允许系统通知" fr="Autoriser les notifications" small/><Icon name="arrow"/></button>
       <button v-if="data.settings.reviewReminders!==false&&alarmPermission==='denied'" class="setting-action" hover-class="none" @click="openExactAlarmSettings"><Icon name="clock"/><Bi zh="允许准时提醒" fr="Autoriser les rappels à l’heure" small/><Icon name="arrow"/></button>
       <button v-if="nativeHost()" hover-class="none" class="setting-action" @click="openNotificationSettings"><Icon name="settings"/><Bi zh="系统通知设置" fr="Notifications du système" small/><Icon name="arrow"/></button>
+      <template v-if="reminderStatus&&data.settings.reviewReminders!==false">
+       <Bi :zh="reminderState.zh" :fr="reminderState.fr" small/>
+       <button hover-class="none" class="setting-action" @click="openBackgroundSettings"><Icon name="settings"/><Bi zh="后台运行与自启动" fr="Exécution en arrière-plan" small/><Icon name="arrow"/></button>
+       <button v-if="reminderStatus.batteryOptimized" hover-class="none" class="setting-action" @click="openBatterySettings"><Icon name="settings"/><Bi zh="省电限制设置" fr="Économie de batterie" small/><Icon name="arrow"/></button>
+       <Bi zh="收不到提醒时，请允许后台运行和自启动。" fr="Si nécessaire, autorisez l’arrière-plan et le démarrage automatique." small/>
+      </template>
       <Bi v-if="data.settings.reviewReminders!==false&&backgroundReminderFailed" zh="后台提醒未开启，请重新开启复习提醒。" fr="Réactivez les rappels en arrière-plan." small/>
 
      </section>
@@ -59,12 +65,27 @@
  </view>
 </template>
 <script setup>
-import {ref,onMounted,onUnmounted} from 'vue';
+import {ref,computed,watch,onMounted,onUnmounted} from 'vue';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import StudyGuide from './StudyGuide.vue';import OralSetup from './OralSetup.vue';
-import appManifest from '../manifest.json';import {nativeHost} from '../platform/native.js';import {notificationAvailable,openNotificationSettings,exactAlarmPermission,openExactAlarmSettings} from '../platform/notifications.js';
+import appManifest from '../manifest.json';import {nativeHost} from '../platform/native.js';import {notificationAvailable,openNotificationSettings,exactAlarmPermission,openExactAlarmSettings,reviewReminderStatus,openBackgroundSettings,openBatterySettings} from '../platform/notifications.js';
 const props=defineProps({data:Object,dataReady:Boolean,busy:Boolean,notificationPermission:String,grammarSettings:Object,initialScope:{type:String,default:'general'}});
 const emit=defineEmits(['close','setting','grammarSetting','goal','notifications','reminderTime','import','backup','restore','share','notice','mode']);
-const alarmPermission=ref(exactAlarmPermission()),backgroundReminderFailed=ref(window.qihangBackgroundReminderReady===false);const refreshPermissions=()=>{alarmPermission.value=exactAlarmPermission();backgroundReminderFailed.value=window.qihangBackgroundReminderReady===false;};onMounted(()=>document.addEventListener('visibilitychange',refreshPermissions));onUnmounted(()=>document.removeEventListener('visibilitychange',refreshPermissions));
+const reminderStatus=ref(reviewReminderStatus()),alarmPermission=ref(exactAlarmPermission()),backgroundReminderFailed=ref(window.qihangBackgroundReminderReady===false);
+const reminderState=computed(()=>{
+ const s=reminderStatus.value;if(!s)return {zh:'',fr:''};
+ if(s.notifications!=='granted')return {zh:'尚未允许系统通知',fr:'Notifications non autorisées'};
+ if(s.error)return {zh:s.error,fr:''};
+ if(!s.hasWords)return {zh:'暂无待复习单词',fr:'Aucun mot à réviser'};
+ if(!s.scheduled)return {zh:'提醒尚未安排，请重新开启',fr:'Réactivez les rappels'};
+ if(s.backgroundRestricted)return {zh:'后台运行受限',fr:'Arrière-plan limité'};
+ if(s.exact!=='granted')return {zh:'提醒已安排，时间可能延迟',fr:'Rappel planifié, retard possible'};
+ const at=new Date(s.nextAlarmAt),time=String(at.getHours()).padStart(2,'0')+':'+String(at.getMinutes()).padStart(2,'0');
+ return {zh:'提醒已安排 · '+(at.getMonth()+1)+'月'+at.getDate()+'日 '+time,fr:'Rappel planifié · '+at.toLocaleDateString('fr-FR')+' '+time};
+});
+const refreshPermissions=()=>{alarmPermission.value=exactAlarmPermission();reminderStatus.value=reviewReminderStatus();backgroundReminderFailed.value=window.qihangBackgroundReminderReady===false;};
+watch(()=>[props.data.settings.reviewReminders,props.data.settings.reminderTime],refreshPermissions,{flush:'post'});
+onMounted(()=>{document.addEventListener('visibilitychange',refreshPermissions);window.addEventListener('qihang-resume',refreshPermissions);});
+onUnmounted(()=>{document.removeEventListener('visibilitychange',refreshPermissions);window.removeEventListener('qihang-resume',refreshPermissions);});
 const scope=ref(props.initialScope),vocabularySection=ref('study');
 const scopes=[{id:'general',icon:'settings',zh:'通用',fr:'Général'},{id:'vocabulary',icon:'book',zh:'词汇',fr:'Vocabulaire'},{id:'grammar',icon:'grammar',zh:'语法',fr:'Grammaire'},{id:'oral',icon:'microphone',zh:'口语',fr:'Expression orale'}];
 const vocabularyTabs=[{id:'study',icon:'book',zh:'学习',fr:'Étude'},{id:'review',icon:'repeat',zh:'复习',fr:'Révision'},{id:'data',icon:'upload',zh:'资料',fr:'Données'},{id:'guide',icon:'info',zh:'帮助',fr:'Aide'}];

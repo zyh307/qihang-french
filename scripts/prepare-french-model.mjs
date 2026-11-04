@@ -1,4 +1,4 @@
-// Release builds include the pinned French model. Missing weights fail the build.
+// Optional build-time preparation of the standalone pinned model asset.
 // An explicit local file avoids another download without relaxing verification.
 import fs from 'node:fs/promises';
 import {createReadStream,createWriteStream} from 'node:fs';
@@ -24,7 +24,7 @@ export async function prepareFrenchModel(){
  for(const url of urls){
   const partial=modelFile+'.download';
   try{
-   console.log('Downloading pinned French model for complete Windows package…');
+   console.log('Downloading the standalone pinned French model…');
    const response=await fetch(url,{signal:AbortSignal.timeout(30*60*1000)});
    if(!response.ok||!response.body)throw Error('Model download returned HTTP '+response.status);
    if(response.headers.get('content-length')&&Number(response.headers.get('content-length'))!==manifest.size)throw Error('Incorrect download size');
@@ -32,6 +32,6 @@ export async function prepareFrenchModel(){
    await verifyModel(partial);await fs.rename(partial,modelFile);return modelFile;
   }catch(error){last=error;await fs.rm(partial,{force:true});}
  }
- throw Error('完整包无法生成：法语模型下载失败。可设置 QIHANG_MODEL_FILE 指向已校验模型。'+last?.message);
+ throw Error('独立模型文件准备失败：下载未完成。可设置 QIHANG_MODEL_FILE 指向已校验模型。'+last?.message);
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))await prepareFrenchModel();

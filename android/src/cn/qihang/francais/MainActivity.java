@@ -191,6 +191,9 @@ public final class MainActivity extends Activity {
         }
         @JavascriptInterface public String notificationPermission(){return ReminderReceiver.permission(MainActivity.this);}
         @JavascriptInterface public String exactAlarmPermission(){return ReminderReceiver.exactPermission(MainActivity.this);}
+        @JavascriptInterface public String reviewReminderStatus(){return trustedPage()?ReminderReceiver.status(MainActivity.this):"{}";}
+        @JavascriptInterface public void openBackgroundSettings(){runOnUiThread(()->{if(!trustedPage())return;try{startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));}catch(RuntimeException ignored){}});}
+        @JavascriptInterface public void openBatterySettings(){runOnUiThread(()->{if(!trustedPage())return;try{startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));}catch(RuntimeException ignored){try{startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));}catch(RuntimeException unavailable){}}});}
         @JavascriptInterface public void openExactAlarmSettings(){runOnUiThread(()->{if(!trustedPage()||Build.VERSION.SDK_INT<31)return;try{startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())));}catch(RuntimeException ignored){}});}
         @JavascriptInterface public String microphonePermission(){return trustedPage()?MainActivity.this.microphonePermission():"denied";}
         @JavascriptInterface public void requestMicrophonePermission(){runOnUiThread(()->requestMicrophoneAccess());}

@@ -17,8 +17,45 @@ export function makeLookup(entries,library=[]){
 }
 export function importedEntries(data){return data.library.flatMap(p=>p.words.filter(w=>!w.conjugation&&data.importedWords?.[wordKey(p,w)]).map(w=>({p,w,imported:data.importedWords[wordKey(p,w)]}))).sort((a,b)=>Number(getProgress(data,a.p,a.w).notebook!=='practice')-Number(getProgress(data,b.p,b.w).notebook!=='practice')||b.imported.at-a.imported.at);}
 export const IMPORTED_LESSON_SIZE=30;
+const importedLessonId=sequence=>'L'+String(Math.floor((sequence-1)/IMPORTED_LESSON_SIZE)+1).padStart(2,'0');
+const locationKey=value=>exact(value).toLocaleLowerCase('fr');
+export function makeImportLocationLookup(data){
+ const index=new Map();
+ for(const p of data.library)for(const w of p.words){
+  if(w.conjugation)continue;
+  const key=wordKey(p,w),locations=[];
+  if(p.book.id!=='personal')locations.push({zh:p.book.title.split(' · ')[0]+' · '+p.lesson.id,fr:p.book.title.split(' · ')[0]+' · '+p.lesson.id});
+  const sequence=data.importedWordOrder?.[key];
+  if(data.importedWords?.[key]&&Number.isSafeInteger(sequence)&&sequence>0){const lesson=importedLessonId(sequence);locations.unshift({zh:'导入本 · '+lesson,fr:'Importés · '+lesson});}
+  if(!locations.length)continue;
+  const item={key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),pos:w.sourcePos||w.pos,locations};
+  const names=new Set(w.forms.map(f=>locationKey(w.lexiconWord||bare(displayForm(w,f)))));
+  for(const name of names){if(!index.has(name))index.set(name,[]);index.get(name).push(item);}
+ }
+ return entry=>index.get(locationKey(bare(entry.word)))||[];
+}
+export function importedWordResults(data,result){
+ const added=new Set(result.addedKeys||[]),rows=new Map();
+ for(const entry of result.resolved||[]){
+  const p=data.library.find(p=>packageKey(p)===entry.lesson),w=p?.words.find(w=>w.id===entry.word);if(!w)continue;
+  const key=wordKey(p,w),sequence=data.importedWordOrder?.[key];
+  if(!data.importedWords?.[key]||!Number.isSafeInteger(sequence)||sequence<1)continue;
+  rows.set(key,{key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),lesson:importedLessonId(sequence),added:added.has(key)});
+ }
+ return [...rows.values()];
+}
+export function syncImportedProgress(data){
+ for(const {p,w}of importedEntries(data)){
+  const r=data.progress[wordKey(p,w)],forms=w.forms.filter(f=>f.tested);
+  if(!r||r.notebook!=='practice'||!forms.length||!forms.every(f=>/^\d{4}-\d{2}-\d{2}$/.test(r.forms?.[f.id]?.learnedAt||'')))continue;
+  r.notebook=forms.every(f=>r.forms[f.id].known)?'known':'review';
+  r.learnedAt ||= forms.map(f=>r.forms[f.id].learnedAt).sort().at(-1);
+  r.firstStudiedAt ||= r.learnedAt;
+ }
+}
 // Assign permanent slots without moving the source words or their progress keys.
 export function ensureImportedLessons(data){
+ syncImportedProgress(data);
  data.importedWordOrder||={};let serial=Math.max(0,Number(data.importedWordSerial)||0,...Object.values(data.importedWordOrder).filter(Number.isSafeInteger));
  const order=new Map(Object.keys(data.importedWords||{}).map((key,i)=>[key,i]));
  const entries=importedEntries(data).sort((a,b)=>a.imported.at-b.imported.at||order.get(wordKey(a.p,a.w))-order.get(wordKey(b.p,b.w)));
@@ -50,7 +87,7 @@ export function resetImportedLesson(data,p){
 }
 export function addImportedEntries(data,entries,at=Date.now(),addToImported=true){
  ensureImportedLessons(data);
- data.importedWords||={};let added=0,duplicates=0;const resolved=[];const date=day(new Date(at));let personal=data.library.find(p=>p.book.id==='personal');
+ data.importedWords||={};let added=0,duplicates=0;const resolved=[],addedKeys=[];const date=day(new Date(at));let personal=data.library.find(p=>p.book.id==='personal');
  const wordIndex=new Map(),newIds=[];for(const p of data.library)for(const w of p.words)for(const f of w.forms){const key=exact(w.lexiconWord||(w.pos==='n.'?bare(displayForm(w,f)):displayForm(w,f))).toLocaleLowerCase('fr');if(!wordIndex.has(key))wordIndex.set(key,{p,w});}
  const used=new Set([...(data.reservedWordIds||[]),...data.library.flatMap(p=>p.words.map(w=>w.id)),...Object.keys(data.progress).map(k=>k.split(':').at(-1))]);let counter=800000;
  for(const entry of entries){
@@ -74,9 +111,9 @@ export function addImportedEntries(data,entries,at=Date.now(),addToImported=true
    if(f.example?.fr&&!f.example.audioKey)f.example.audioKey=spokenKey(f.example.fr);
   }
   if(entry.conjugationPlan)w.conjugationPlan=JSON.parse(JSON.stringify(entry.conjugationPlan));
-  const key=wordKey(p,w);resolved.push({lesson:packageKey(p),word:w.id});if(addToImported){if(data.importedWords[key])duplicates++;else{data.importedWords[key]={at,date};if(!data.importedWordOrder[key])data.importedWordOrder[key]=++data.importedWordSerial;added++;}}
+  const key=wordKey(p,w);resolved.push({lesson:packageKey(p),word:w.id});if(addToImported){if(data.importedWords[key])duplicates++;else{data.importedWords[key]={at,date};if(!data.importedWordOrder[key])data.importedWordOrder[key]=++data.importedWordSerial;added++;addedKeys.push(key);}}
  }
- if(newIds.length)data.reservedWordIds=[...new Set([...(data.reservedWordIds||[]),...newIds])];return {added,duplicates,resolved};
+ if(newIds.length)data.reservedWordIds=[...new Set([...(data.reservedWordIds||[]),...newIds])];return {added,duplicates,resolved,addedKeys};
 }
 export function removeImportedEntry(data,p,w){
  delete data.importedWords?.[wordKey(p,w)];

@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.concurrent.*;
 public final class WindowsApp implements Host {
  private static final int PORT=Integer.getInteger("qihang.port",5188);
- private static final String VERSION="2.2.4";
+ private static final String VERSION="2.3.5";
  private final File home,web;private OralCore core;private HttpServer server;private ReviewReminders reminders;
  private volatile long seen=System.currentTimeMillis();
  private final String cookie;
@@ -21,10 +21,10 @@ public final class WindowsApp implements Host {
  public long availableMemory(){return ((com.sun.management.OperatingSystemMXBean)ManagementFactory.getOperatingSystemMXBean()).getFreeMemorySize();}
  public void importModel(ModelStore store){new Thread(()->{try{FileDialog dialog=new FileDialog((Frame)null,"导入法语识别模型 / Importer le modèle",FileDialog.LOAD);dialog.setFile("*.bin");dialog.setVisible(true);if(dialog.getFile()!=null){File chosen=new File(dialog.getDirectory(),dialog.getFile());if(chosen.length()!=store.status().optLong("total"))throw new IOException("请选择 ggml-model-q5_0.bin（约1.08GB）。个人版ctranslate2文件夹和3GB的model.bin不适用于此原生版本 / Choisissez le modèle Q5 de 1,08 Go.");store.importFrom(new FileInputStream(chosen));}dialog.dispose();}catch(Exception e){javax.swing.JOptionPane.showMessageDialog(null,J.safe(e));}},"qihang-model-picker").start();}
  private void start()throws Exception{
-  try{server=HttpServer.create(new InetSocketAddress(InetAddress.getByName("127.0.0.1"),PORT),24);}catch(BindException e){try{HttpURLConnection c=(HttpURLConnection)new URL("http://127.0.0.1:"+PORT+"/__qihang_health").openConnection();c.setReadTimeout(1500);JSONObject h=new JSONObject(new String(J.read(c.getInputStream(),4096),java.nio.charset.StandardCharsets.UTF_8));if(h.optBoolean("bundledAudio")&&h.optBoolean("nativeOral")&&"stable".equals(h.optString("channel"))&&VERSION.equals(h.optString("version"))&&Examiner.PROTOCOL_REVISION.equals(h.optString("oralProtocol"))){Desktop.getDesktop().browse(new URI("http://127.0.0.1:"+PORT+"/"));return;}}catch(Exception ignored){}throw new IOException("请先关闭已打开的旧版本，再重新打开 / Fermez l’ancienne version de test puis réessayez.");}
+  try{server=HttpServer.create(new InetSocketAddress(InetAddress.getByName("127.0.0.1"),PORT),24);}catch(BindException e){try{HttpURLConnection c=(HttpURLConnection)new URL("http://127.0.0.1:"+PORT+"/__qihang_health").openConnection();c.setReadTimeout(1500);JSONObject h=new JSONObject(new String(J.read(c.getInputStream(),4096),java.nio.charset.StandardCharsets.UTF_8));if(h.optBoolean("bundledAudio")&&h.optBoolean("nativeOral")&&"stable".equals(h.optString("channel"))&&VERSION.equals(h.optString("version"))&&Examiner.PROTOCOL_REVISION.equals(h.optString("oralProtocol"))){Desktop.getDesktop().browse(new URI("http://127.0.0.1:"+PORT+"/"));return;}}catch(Exception ignored){}throw new IOException("旧版本仍在运行，请关闭旧页面，稍候再打开 / Fermez l’ancienne page, puis réessayez après un instant.");}
   File data=dataDirectory();
   reminders=new ReviewReminders(home,data);
-  JSONObject manifest=J.json(new File(home,"口语运行/model-manifest.json"));manifest.put("bundledModelPath",new File(home,"口语运行/models/"+manifest.getString("filename")).getAbsolutePath());
+  JSONObject manifest=J.json(new File(home,"口语运行/model-manifest.json"));
   core=new OralCore(data,manifest,J.json(new File(home,"口语运行/evaluation-schema.json")),this);
   server.createContext("/",this::request);server.setExecutor(Executors.newFixedThreadPool(8));server.start();if(!Boolean.getBoolean("qihang.headless"))Desktop.getDesktop().browse(new URI("http://127.0.0.1:"+PORT+"/"));
   ScheduledExecutorService life=Executors.newSingleThreadScheduledExecutor();life.scheduleAtFixedRate(()->{if(System.currentTimeMillis()-seen>180000){core.close();server.stop(0);System.exit(0);}},30,30,TimeUnit.SECONDS);

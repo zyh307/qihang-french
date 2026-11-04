@@ -19,10 +19,10 @@
     "words": 18655,
     "ipa": 18655,
     "examples": 18655,
-    "translatedExamples": 5399,
+    "translatedExamples": 18655,
     "authoredExamples": 760
   },
-  "sha256": "e9f88bffe6484f7a0196487484ca68705cc452819397faae2f5e008911c50eff",
+  "sha256": "8461aca79f90168fb885f3a78e5b8f34597e5b8faf26bcf3ac459038330db6c4",
   "inputs": {
     "zh-simp.jsonl": "42082dd36a33515102325e3e0f709d85997348ee8b2c20f66a5482533c30d478",
     "zh-trad.jsonl": "53cac0a16dcc9ac0eb0150aaa3125ce30158973f291e17781bf091b0c1ae85af",
@@ -40,10 +40,10 @@
   },
   "audio": {
     "voice": "fr-FR-DeniseNeural",
-    "clips": 35822,
-    "files": 1296,
-    "bytes": 373370328,
-    "indexSHA256": "12e84222dcbe6d84be828dd9f9e22668ba2e3a2045210d9764ef005167da1c03"
+    "clips": 35853,
+    "files": 1327,
+    "bytes": 373572548,
+    "indexSHA256": "5a524f08856a7442a54242a5fb9d3ff93657814b1b01621da0c194d161e4f176"
   },
   "supplement": {
     "lexiqueRepository": "https://github.com/chrplr/openlexicon",
@@ -58,5 +58,11 @@
   "contextualPrimaryMeanings": {
     "matched": 2045,
     "method": "Existing Chinese example matches a distinct dictionary sense; user overrides take priority."
+  },
+  "exampleTranslations": {
+    "date": "2026-11-03",
+    "provider": "Google Translate; 启航法语校订",
+    "entries": 12992,
+    "sha256": "381e73e2ed82c5c0c883b8d2eed799a8c60a0bfacd72d65c66ee4f81ba2428f6"
   }
 }

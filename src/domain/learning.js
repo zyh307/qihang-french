@@ -428,8 +428,8 @@ export function moveWord(data,p,word,target,today=day()){
   const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;
   if(target==='practice')r.forms={};
   else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={...newReviewRecord(r.forms[f.id]?.learnedAt||r.learnedAt||today),known:target==='known',due:target==='known'?null:addDays(r.forms[f.id]?.learnedAt||r.learnedAt||today,1)};remember(data,p,word,today);}
-  for(const s of Object.values(data.sessions).filter(s=>!['direct','errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)))){
-    const mixed=s.key===MIXED_REVIEW_KEY,engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
+  for(const s of Object.values(data.sessions).filter(s=>!['errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)||s.mode==='direct'&&s.lessonKey==='review:all'&&(s.importedPractice||s.dictionaryPractice)))){
+    const mixed=s.lessonKey==='review:all'||s.key===MIXED_REVIEW_KEY,engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
     const entry=engine.words.find(w=>w.id===id);if(!entry)continue;
     const inRound=s.group.includes(id),active=s.phase!=='done';
     if(target==='known'&&!wasKnown&&inRound&&s.mode==='review')rememberKnown(s,entry);

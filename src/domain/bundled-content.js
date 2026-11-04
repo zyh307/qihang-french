@@ -1,10 +1,11 @@
 import {unzipSync,strFromU8} from 'fflate';
 import {clone,packageKey,installLesson,normalize} from './learning.js';
 import {BUNDLED_CONTENT_ID} from './content-version.js';
+import {ADDITIONAL_BUNDLED_BOOKS} from './content-books.js';
 
 const fingerprint=word=>JSON.stringify([word.pos,word.meanings,word.forms.map(f=>[f.text,f.gender,f.tested])]);
-export function mergeBundledLessons(data,bundle){
-  if(bundle.schema!==1||bundle.id!==BUNDLED_CONTENT_ID||!Array.isArray(bundle.library))throw new Error('内置词库异常 / Vocabulaire intégré invalide.');
+export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
+  if(bundle.schema!==1||bundle.id!==expectedId||!Array.isArray(bundle.library))throw new Error('内置词库异常 / Vocabulaire intégré invalide.');
   const used=new Set([...(data.reservedWordIds||[]),...data.library.flatMap(p=>p.words.map(w=>w.id)),...Object.keys(data.progress).map(key=>key.split(':')[2])]);
   const registry=new Map(data.library.flatMap(p=>p.words.map(w=>[fingerprint(w),w]))),sourceIds=new Map();let serial=1;
   const nextId=()=>{while(used.has(`w${String(serial).padStart(6,'0')}`))serial++;const id=`w${String(serial++).padStart(6,'0')}`;used.add(id);return id;};
@@ -13,6 +14,24 @@ export function mergeBundledLessons(data,bundle){
     // A user's imported lesson is authoritative, even with the same lesson number.
     const existing=data.library.find(p=>packageKey(p)===packageKey(source));
     if(existing){
+      if(source.words.some(w=>w.curriculumAuthority)){
+        for(const fresh of source.words){
+          const original=existing.words.find(w=>w.audioNumber===fresh.audioNumber&&w.forms.some(f=>fresh.forms.some(g=>normalize(f.text)===normalize(g.text))));
+          if(!original){
+            const word=clone(fresh),oldId=word.id;word.id=nextId();word.order=Math.max(0,...existing.words.map(w=>w.order))+1;
+            for(const form of word.forms)form.id=word.id+form.id.slice(oldId.length);existing.words.push(word);continue;
+          }
+          const oldForms=original.forms;for(const field of ['pos','sourcePos','sourceText','meanings','curriculumAuthority'])original[field]=clone(fresh[field]);
+          if(!original.primaryMeaningChosen)original.primaryMeaning=fresh.primaryMeaning;
+          original.forms=fresh.forms.map((form,index)=>{
+            const previous=oldForms.find(f=>normalize(f.text)===normalize(form.text)&&f.gender===form.gender);
+            const updated=clone(form);updated.id=previous?.id||original.id+form.id.slice(fresh.id.length);
+            if(previous?.audioKey&&form.audioOrigin!=='textbook-human')for(const field of ['audioKey','audio','audioOrigin'])if(previous[field]!==undefined)updated[field]=previous[field];
+            return updated;
+          });
+        }
+        existing.bundled=true;installed++;continue;
+      }
       if(source.curriculumRevision>(existing.curriculumRevision||0)){
         const textKey=w=>w.pos+':'+w.forms.map(f=>normalize(f.text)).join('|');
         const same=existing.words.length===source.words.length&&source.words.every((w,i)=>textKey(w)===textKey(existing.words[i]));
@@ -74,15 +93,20 @@ export function mergeBundledLessons(data,bundle){
     }
     installLesson(data,pkg);installed++;
   }
-  data.bundles||={};data.bundles.inspire1=bundle.id;
+  data.bundles||={};data.bundles[bundle.bookId||bundle.library[0]?.book.id||'inspire1']=bundle.id;
   return installed;
 }
 export async function prepareBundledContent(data,fetcher=fetch){
-  if(data.bundles?.inspire1===BUNDLED_CONTENT_ID)return null;
-  const response=await fetcher(new URL('static/content/inspire1.zip',window.location.href));
-  if(!response.ok)throw new Error('无法读取内置词库 / Vocabulaire intégré inaccessible.');
-  const files=unzipSync(new Uint8Array(await response.arrayBuffer()));
-  const bundle=JSON.parse(strFromU8(files['manifest.json']));
-  const assets=[];for(const id of bundle.audio){const bytes=files[`audio/${id}.bin`];if(!bytes)throw new Error('内置录音缺失 / Audio intégré absent.');assets.push({id,bytes});}
-  mergeBundledLessons(data,bundle);return assets;
+  const books=[{id:'inspire1',contentId:BUNDLED_CONTENT_ID,file:'inspire1.zip'},...ADDITIONAL_BUNDLED_BOOKS],assets=new Map();let changed=false;
+  for(const book of books){
+    if(data.bundles?.[book.id]===book.contentId)continue;
+    const response=await fetcher(new URL('static/content/'+book.file,window.location.href));
+    if(!response.ok)throw new Error('无法读取内置词库 / Vocabulaire intégré inaccessible.');
+    const files=unzipSync(new Uint8Array(await response.arrayBuffer()));
+    const bundle=JSON.parse(strFromU8(files['manifest.json']));
+    if(bundle.library.some(p=>p.book.id!==book.id))throw Error('教材资料不匹配 / Manuel incorrect.');
+    for(const id of bundle.audio){const bytes=files[`audio/${id}.bin`];if(!bytes)throw new Error('内置录音缺失 / Audio intégré absent.');assets.set(id,{id,bytes});}
+    mergeBundledLessons(data,bundle,book.contentId);changed=true;
+  }
+  return changed?[...assets.values()]:null;
 }
