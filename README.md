@@ -8,8 +8,8 @@
 
 | 设备 | 下载文件 | 打开方式 |
 |---|---|---|
-| Windows | [Windows 程序包](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Windows-v2.3.5.zip) | 完整解压，双击“启动启航法语.bat” |
-| 安卓 | [APK](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Android-v2.3.5.apk) | 下载后安装 |
+| Windows | [启航法语 · Windows](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Windows-v2.3.5.zip) | 完整解压，双击“启动启航法语.bat” |
+| 安卓 | [启航法语 · Android](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/QihangFrench-Android-v2.3.5.apk) | 下载后安装 |
 | 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.3.5/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
 
 词库包含 18,655 个词条，支持逗号导入。课内录音、课外单词和例句录音均已内置，安装后可离线播放，无需另下语音包。

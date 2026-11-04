@@ -67,8 +67,8 @@ def main():
     assert digest(model) == MANIFEST['sha256'], 'Model SHA-256 mismatch'
     outputs = []
     for source, name, prefix, windows in (
-        (ROOT / f'安卓安装包/{NAME}-v{VERSION}.apk', f'QihangFrench-Android-v{VERSION}.apk', 'assets/', False),
-        (ROOT / f'{NAME}_分享版.zip', f'QihangFrench-Windows-v{VERSION}.zip', NAME + '/网页/', True),
+        (ROOT / f'安卓安装包/{NAME}-v{VERSION}.apk', f'{NAME}-Android-v{VERSION}.apk', 'assets/', False),
+        (ROOT / f'{NAME}_分享版.zip', f'{NAME}-Windows-v{VERSION}.zip', NAME + '/网页/', True),
     ):
         audit(source, prefix, windows)
         target = OUT / name
@@ -80,14 +80,14 @@ def main():
     assert digest(target) == MANIFEST['sha256']
     outputs.append(target)
 
-    license_file = OUT / 'QihangFrench-Model-Licenses.zip'
+    license_file = OUT / f'{NAME}-模型许可.zip'
     with zipfile.ZipFile(license_file, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in ('OpenAI-Whisper-MIT.txt', 'whisper-large-v3-french-model-card.md'):
             archive.write(ROOT / 'native/licenses' / name, name)
         archive.write(ROOT / 'native/model-manifest.json', 'model-manifest.json')
         archive.writestr('README.txt', f"French recognition model: {MANIFEST['repository']}\nRevision: {MANIFEST['revision']}\nFile: {MANIFEST['filename']}\nSize: {MANIFEST['size']} bytes\nSHA-256: {MANIFEST['sha256']}\nLicense: MIT, see the model card and upstream licensing.\nSource: https://huggingface.co/{MANIFEST['repository']}/tree/{MANIFEST['revision']}\nThe application's GPL license does not replace the model's license.\n")
     outputs.append(license_file)
-    guide = OUT / 'QuickStart-zh-CN.txt'
+    guide = OUT / f'{NAME}-使用说明.txt'
     guide.write_text(f'''启航法语 {VERSION}
 
 Windows：下载 Windows ZIP，完整解压，双击“启动启航法语.bat”。
@@ -104,11 +104,20 @@ Windows：下载 Windows ZIP，完整解压，双击“启动启航法语.bat”
 下载页：https://github.com/zyh307/qihang-french/releases/tag/v{VERSION}
 模型文件大小：{MANIFEST['size']} 字节
 模型 SHA-256：{MANIFEST['sha256']}
-模型来源和许可见 QihangFrench-Model-Licenses.zip。
-各文件校验值见 SHA256SUMS.txt，完整使用教程在 Windows 包及应用帮助中。
+模型来源和许可见配套的模型许可压缩包。
+SHA256SUMS.txt 对应本地中文文件名；SHA256SUMS-GitHub.txt 对应 GitHub 下载文件名。
+完整使用教程在 Windows 包及应用帮助中。
 ''', encoding='utf-8-sig')
     outputs.append(guide)
     (OUT / 'SHA256SUMS.txt').write_text(''.join(digest(file) + '  ' + file.name + '\n' for file in outputs), encoding='utf-8')
+    # GitHub normalizes non-ASCII asset filenames; labels use the Chinese name.
+    aliases = {
+        f'{NAME}-Android-v{VERSION}.apk': f'QihangFrench-Android-v{VERSION}.apk',
+        f'{NAME}-Windows-v{VERSION}.zip': f'QihangFrench-Windows-v{VERSION}.zip',
+        f'{NAME}-模型许可.zip': 'QihangFrench-Model-Licenses.zip',
+        f'{NAME}-使用说明.txt': 'QuickStart-zh-CN.txt',
+    }
+    (OUT / 'SHA256SUMS-GitHub.txt').write_text(''.join(digest(file) + '  ' + aliases.get(file.name, file.name) + '\n' for file in outputs), encoding='utf-8')
     print('Release files verified:', OUT, flush=True)
 
 
