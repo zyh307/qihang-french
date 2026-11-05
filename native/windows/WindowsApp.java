@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.concurrent.*;
 public final class WindowsApp implements Host {
  private static final int PORT=Integer.getInteger("qihang.port",5188);
- private static final String VERSION="2.3.12";
+ private static final String VERSION="2.4.0";
  private final File home,web;private OralCore core;private HttpServer server;private ReviewReminders reminders;
  private volatile long seen=System.currentTimeMillis();
  private final String cookie;

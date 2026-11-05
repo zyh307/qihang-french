@@ -6,7 +6,7 @@
       <button v-if="canConjugate" class="button secondary conjugation-open" hover-class="none" @click="conjugationOpen=true"><Icon name="grammar"/><Bi zh="查看变位" fr="Voir la conjugaison" small/><Icon name="arrow"/></button>
       <slot />
     </view>
-    <ConjugationDetails v-if="conjugationOpen" :word="word" @close="conjugationOpen=false" @audio="$emit('audio',$event)"/>
+    <ConjugationDetails v-if="conjugationOpen" :word="word" :pkg="pkg" @close="conjugationOpen=false" @audio="$emit('audio',$event)"/>
     <view class="exercise-footer definition-actions">
       <button v-if="allowKnown" hover-class="none" :class="['button','known-action',showContinue?'secondary':'primary']" :disabled="busy||celebrating||known" @click="know" aria-label="已会，停止自动复习 / Acquis, arrêter les révisions"><Icon :name="known?'check':'badge'" /><Bi zh="已会" fr="Acquis" small /></button>
       <button v-if="showContinue" hover-class="none" class="button primary" :disabled="busy||celebrating" @click="$emit('continue')"><Bi zh="继续" fr="Continuer" small /><Icon name="arrow" /></button>

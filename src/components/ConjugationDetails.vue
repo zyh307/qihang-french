@@ -1,17 +1,26 @@
 <template>
   <view class="word-preview conjugation-details"><view class="word-preview-content">
-    <view class="practice-top"><button data-conjugation-close class="icon-button back-control" hover-class="none" @click="$emit('close')" aria-label="返回 / Retour"><Icon name="back" /></button><view class="practice-location"><text lang="fr">{{ lemma }}</text><Bi zh="变位" fr="Conjugaison" small /></view></view>
+    <view class="practice-top"><button data-conjugation-close class="icon-button back-control" hover-class="none" @click="moveOpen?moveOpen=false:$emit('close')" aria-label="返回 / Retour"><Icon name="back" /></button><view class="practice-location"><text lang="fr">{{ lemma }}</text><Bi zh="变位" fr="Conjugaison" small /></view></view>
+    <view v-if="actions" class="definition-title"><Icon name="grammar"/><Bi zh="变位释义" fr="Conjugaison" small/><view class="definition-tools"><button v-if="isIrregularLemma(lemma)" class="text-button" hover-class="none" :disabled="working" @click="practice"><Icon name="repeat"/><Bi zh="专练" fr="Pratiquer" small/></button><button class="text-button" hover-class="none" :disabled="working" @click="moveOpen=true"><Icon name="notebook"/><Bi zh="词本" fr="Carnet" small/></button><button class="icon-button favorite" :class="{marked:status.favorite}" hover-class="none" :disabled="working" @click="actions.favorite(word,pkg,tense)" aria-label="收藏当前时态 / Ajouter ce temps aux favoris"><Icon name="heart"/></button></view></view>
     <view class="conj-detail-scroll">
       <view class="conj-tense-tabs"><button v-for="t in TENSES" :key="t.id" hover-class="none" :class="{selected:tense===t.id}" :aria-pressed="tense===t.id" @click="tense=t.id"><text>{{ t.id }}</text></button></view>
       <view class="conj-person-grid"><button v-for="p in PERSONS" :key="p" class="conj-person-card" hover-class="none" :disabled="!forms[p]||forms[p]==='—'" :aria-label="personLabel(p)+' '+(forms[p]||'—')" @click="$emit('audio',recording(spokenForm(lemma,tense,p),p))"><text class="conj-person-label" lang="fr">{{ personLabel(p) }}</text><text class="conj-person-form" lang="fr">{{ forms[p]||'—' }}</text><Icon v-if="forms[p]&&forms[p]!=='—'" name="sound" /></button></view>
     </view>
+    <view v-if="actions" class="exercise-footer"><button class="button primary known-action" hover-class="none" :disabled="working||status.known||!Object.keys(forms).length" @click="move('known')"><Icon :name="status.known?'check':'badge'"/><Bi zh="已会" fr="Acquis" small/></button></view>
+    <view v-if="moveOpen" class="modal-shade confirm-shade" @click.self="moveOpen=false"><view class="modal small-modal"><view class="modal-heading"><button class="icon-button back-control" hover-class="none" @click="moveOpen=false" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="调整词本" fr="Changer de carnet"/></view><text class="move-word">{{ lemma }} · {{ tense }}</text><button v-for="target in targets" :key="target.id" class="setting-action" hover-class="none" :disabled="working" @click="move(target.id)"><Icon :name="target.icon"/><Bi :zh="target.zh" :fr="target.fr"/><Icon name="arrow"/></button></view></view>
   </view></view>
 </template>
 <script setup>
-import {ref,computed} from 'vue';
+import {ref,computed,inject} from 'vue';
+import {playKnown} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';
-import {PERSONS,TENSES,conjugations,spokenForm,recording,lemmaFor} from '../conjugation/catalog.js';
-const props=defineProps({word:Object});defineEmits(['close','audio']);
+import {PERSONS,TENSES,conjugations,spokenForm,recording,lemmaFor,isIrregularLemma} from '../conjugation/catalog.js';
+const props=defineProps({word:Object,pkg:Object});const emit=defineEmits(['close','audio']);
+const actions=inject('conjugationActions',null),moveOpen=ref(false),working=computed(()=>actions?.busy.value),status=computed(()=>actions?.status(props.word,props.pkg,tense.value)||{known:false,favorite:false});
+const targets=[{id:'practice',zh:'待学',fr:'À apprendre',icon:'book'},{id:'review',zh:'复习本',fr:'À réviser',icon:'repeat'},{id:'known',zh:'已会本',fr:'Acquis',icon:'check'}];
+async function move(target){if(working.value)return;if(await actions.move(props.word,props.pkg,tense.value,target)){moveOpen.value=false;if(target==='known')playKnown();}}
+async function practice(){if(!working.value&&await actions.practice(props.word,props.pkg,tense.value))emit('close');}
+
 const lemma=computed(()=>lemmaFor(props.word));const tense=ref(props.word?.conjugation?.tense||'现在时');const forms=computed(()=>conjugations(lemma.value,tense.value));
 const personLabel=p=>p==='il'?'il / elle / on':p==='ils'?'ils / elles':p;
 </script>

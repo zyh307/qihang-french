@@ -1,17 +1,17 @@
 import {conjugationSpeech} from './speech-text.js';
 import {MatchSession,wordKey as entryKey} from './match-engine.js';
 import {primaryMeaning} from '../domain/meanings.js';
-import {conjugations,conjugationPracticeWords,conjugationPackages} from './catalog.js';
+import {conjugations,conjugationPracticeWords,conjugationPackages,ensureConjugationCards,normalizePlan,lemmaFor,isIrregularLemma} from './catalog.js';
 import {day,packageKey,wordKey,getProgress,dueForms,checkAnswer,completeConjugationWord,recordConjugationAttempt,wordContext,errorPracticeEligible} from '../domain/learning.js';
 const keyFor=(v,t,p)=>`${v}|${t}|${p}`;
 export function pendingConjugations(data,pkg=null,mode='learn'){
- return (pkg?[{...pkg,words:conjugationPracticeWords(data,pkg)}]:conjugationPackages(data)).flatMap(p=>p.words.filter(w=>!w.studyDisabled&&(mode==='review'?dueForms(data,p,w).length:mode==='learn'?getProgress(data,p,w).notebook==='practice':mode==='errors'?errorPracticeEligible(data,p,w):true)).map(w=>wordContext(data,p,w)));
+ return (pkg?[{...pkg,words:conjugationPracticeWords(data,pkg)}]:conjugationPackages(data)).flatMap(p=>p.words.filter(w=>!w.studyDisabled&&(mode==='review'?dueForms(data,p,w).length:mode==='learn'?getProgress(data,p,w).notebook==='practice':mode==='errors'?errorPracticeEligible(data,p,w):mode==='favorites'?!!data.favorites[wordKey(p,w)]:true)).map(w=>wordContext(data,p,w)));
 }
-export function startConjugationSession(data,pkg=null,mode='learn'){
- data.conjugationSessions||={};const key=(pkg?packageKey(pkg):'all')+':'+mode,old=data.conjugationSessions[key];
+export function startConjugationSession(data,pkg=null,mode='learn',scope=null){
+ data.conjugationSessions||={};const key=(pkg?packageKey(pkg):'all')+':'+mode+(scope?':word:'+scope.baseWordId+':'+encodeURIComponent(scope.tense):''),old=data.conjugationSessions[key];
  if(old&&!old.done&&!old.retired){restoreMeanings(data,old);if(old.nextQuestion){old.viewQuestion=old.nextQuestion;delete old.nextQuestion;}return key;}
  if(old?.retired){data.conjugationSessionArchive||=[];data.conjugationSessionArchive.push({key,...old});}
- const candidates=pendingConjugations(data,pkg,mode);if(!candidates.length)throw Error('暂无待练变位 / Aucune conjugaison à pratiquer.');const refs={},entries=new Map();
+ const candidates=pendingConjugations(data,pkg,mode).filter(({w})=>!scope||(w.conjugation.baseWordId===scope.baseWordId&&w.conjugation.tense===scope.tense));if(!candidates.length)throw Error('暂无待练变位 / Aucune conjugaison à pratiquer.');const refs={},entries=new Map();
  for(const {p,w} of candidates){const c=w.conjugation,id=keyFor(c.lemma,c.tense,c.person);(refs[id]||=[]).push({lesson:packageKey(p),wordId:w.id});const base=p.words.find(base=>base.id===c.baseWordId),e=entries.get(c.lemma+'|'+c.tense)||{verbe:c.lemma,temps:c.tense,personnes:[],meaning:primaryMeaning(base)||primaryMeaning(w)};if(!e.personnes.includes(c.person))e.personnes.push(c.person);entries.set(c.lemma+'|'+c.tense,e);}
  const engine=MatchSession.create([...entries.values()],{mode:mode==='review'?'review':'learn',direct:true,settings:{fuzzy:data.settings.fuzzy}},{}).s;
  data.conjugationSessions[key]={schema:1,engine,refs,mode,paused:false,done:false,completedForms:[],mistakeWordIds:[],failedForms:[],created:Date.now(),updatedAt:Date.now()};data.lastConjugationKey=key;conjugationQuestion(data,key);return key;
@@ -45,9 +45,17 @@ export function answerConjugation(data,key,body){const s=data.conjugationSession
 export function hintConjugation(data,key){const s=data.conjugationSessions[key],q=s.engine.question;if(q.round!=='fill')return '';const id=keyFor(q.verbe,q.temps,q.personne);s.engine.fill_retry[id]=1;if(!s.failedForms.includes(id))s.failedForms.push(id);for(const {p,w} of contexts(data,s,q))recordConjugationAttempt(data,p,w,false,s,'hint');return conjugations(q.verbe,q.temps)[q.personne];}
 export function validateConjugationSessions(data){
  for(const s of Object.values(data.conjugationSessions||{})){
-  if(s.schema!==1||!s.engine?.game||!Array.isArray(s.engine.groups)||!s.refs||!Array.isArray(s.completedForms)||!['learn','review','errors','direct'].includes(s.mode)||s.engine.groups.some(g=>!Array.isArray(g.entries)||g.entries.some(e=>typeof e.verbe!=='string'||!Array.isArray(e.personnes)||(!s.retired&&!s.done&&e.personnes.some(p=>!conjugations(e.verbe,e.temps)[p])))))throw Error('变位进度无效 / Progression invalide.');
+  if(s.schema!==1||!s.engine?.game||!Array.isArray(s.engine.groups)||!s.refs||!Array.isArray(s.completedForms)||!['learn','review','errors','direct','favorites'].includes(s.mode)||s.engine.groups.some(g=>!Array.isArray(g.entries)||g.entries.some(e=>typeof e.verbe!=='string'||!Array.isArray(e.personnes)||(!s.retired&&!s.done&&e.personnes.some(p=>!conjugations(e.verbe,e.temps)[p])))))throw Error('变位进度无效 / Progression invalide.');
   for(const refs of Object.values(s.refs))for(const ref of refs){const p=data.library.find(p=>packageKey(p)===ref.lesson);if(!p||![...p.words,...(data.conjugationDecks?.[ref.lesson]||[])].some(w=>w.id===ref.wordId&&w.conjugation))throw Error('变位进度与词条不符 / Mots incompatibles.');}
  }
 }
 
 export function advanceConjugationUI(data,key,automatic=false){const s=data.conjugationSessions[key];if(s.nextQuestion){s.viewQuestion=s.nextQuestion;delete s.nextQuestion;}if(!automatic)s.paused=false;}
+
+export function startWordConjugationPractice(data,entry,tense){
+ const source=wordContext(data,entry.p,entry.w),p=data.library.find(item=>packageKey(item)===packageKey(source.p))||source.p,w=p.words.find(item=>item.id===source.w.id)||source.w,lemma=lemmaFor(w);
+ if(!isIrregularLemma(lemma)||!Object.keys(conjugations(lemma,tense)).length)throw Error('暂无这个时态 / Temps indisponible.');
+ const plan=normalizePlan(w.conjugationPlan);w.conjugationPlan={...plan,tenses:[...new Set([...plan.tenses,tense])]};
+ ensureConjugationCards(data);
+ return startConjugationSession(data,{...p,words:[w]},'direct',{baseWordId:w.id,tense});
+}

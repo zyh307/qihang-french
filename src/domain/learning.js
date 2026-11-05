@@ -2,7 +2,7 @@ import {newReviewRecord,nextReviewDate,completeReviewRecord,migrateReviewPlans} 
 import {primaryMeaning} from './meanings.js';
 let practiceDictionary=[];
 export function setPracticeDictionary(entries){practiceDictionary=entries.map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,forms:[{text:e.word,gender:e.gender||null,tested:true}]}));}
-import {isVocabularyWord,conjugationPracticeWords,conjugationPackages} from '../conjugation/catalog.js';
+import {isVocabularyWord,conjugationPracticeWords,conjugationPackages,conjugationUnits} from '../conjugation/catalog.js';
 import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees } from './word-display.js';
 import { spellingDiff } from './spelling-diff.js';
 export const clone = v => JSON.parse(JSON.stringify(v));
@@ -139,9 +139,8 @@ export function reviewDaysLeft(data,p,w,today=day()){
   return Math.max(0,Math.round((utc(due)-utc(today))/86400000));
 }
 export function lessonStats(data,p,today=day()){
- const grouped=new Map();for(const card of conjugationPracticeWords(data,p)){const id=card.conjugation.baseWordId;if(!grouped.has(id))grouped.set(id,[]);grouped.get(id).push(card);}
- const originals=p.words.filter(w=>!w.conjugation),result={total:originals.length,practice:0,review:0,known:0,due:0,favorites:0};
- for(const w of originals){const cards=grouped.get(w.id)||[],units=[...(isVocabularyWord(w)?[w]:[]),...cards];const records=units.map(u=>getProgress(data,p,u));const place=records.some(r=>r.notebook==='practice')?'practice':records.every(r=>r.notebook==='known')?'known':'review';result[place]++;if(units.some(u=>dueForms(data,p,u,today).length))result.due++;if(data.favorites[wordKey(p,w)])result.favorites++;}
+ const units=[...p.words.filter(isVocabularyWord).map(w=>[w]),...conjugationUnits(data,p).map(u=>u.cards)],result={total:units.length,practice:0,review:0,known:0,due:0,favorites:0};
+ for(const cards of units){const records=cards.map(w=>getProgress(data,p,w)),place=records.some(r=>r.notebook==='practice')?'practice':records.every(r=>r.notebook==='known')?'known':'review';result[place]++;if(cards.some(w=>dueForms(data,p,w,today).length))result.due++;if(cards.some(w=>data.favorites[wordKey(p,w)]))result.favorites++;}
  result.completed=result.review+result.known;return result;
 }
 export function recordLessonCompletions(data) {

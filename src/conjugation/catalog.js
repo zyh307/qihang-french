@@ -70,3 +70,8 @@ export async function prepareConjugationAudio(data,repository,fetcher=fetch){
  const keys=[...new Set([...data.library.flatMap(p=>p.words.flatMap(w=>w.forms.filter(f=>f.conjugationAudio).map(f=>f.audioKey))),...conjugationPackages(data).flatMap(p=>p.words.flatMap(w=>w.forms.map(f=>f.audioKey)))].filter(k=>k&&!k.startsWith('tts:')))];const assets=[];let cursor=0;
  await Promise.all(Array.from({length:Math.min(6,keys.length)},async()=>{while(cursor<keys.length){const id=keys[cursor++];if(await repository.audio(id))continue;const r=await fetcher(new URL('static/conjugation/audio/'+id+'.mp3',window.location.href));if(!r.ok)throw Error('变位录音读取失败 / Audio inaccessible.');const bytes=new Uint8Array(await r.arrayBuffer());const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash!==id)throw Error('变位录音校验失败 / Audio invalide.');assets.push({id,bytes});}}));return assets;
 }
+
+export function conjugationUnits(data,p){
+ const groups=new Map();for(const w of conjugationPracticeWords(data,p)){const c=w.conjugation,key=c.baseWordId+'|'+c.tense;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(w);}
+ return [...groups.values()].map(cards=>({cards,w:{...cards[0],sourcePos:'v. · '+cards[0].conjugation.tense,forms:[{...cards[0].forms[0],text:cards[0].conjugation.lemma,audioKey:null}],conjugationUnit:true}}));
+}
