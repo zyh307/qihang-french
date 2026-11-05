@@ -14,3 +14,5 @@
 - ECDICT：https://github.com/skywind3000/ECDICT ，固定提交 39cfb9672c0906b63569e0453c2e6abfb9ab182a，MIT（见 ECDICT-MIT.txt）；为部分英文词义提供汉语对照，translationPivot 和 glossEn 保留对应关系。补充词义经自动匹配与部分人工整理，不属于官方分级词表。
 
 课本外词汇的单词与例句合成录音随安装包内置，可离线播放。使用 fr-FR-DeniseNeural 音色生成。课内录音内置，词库不捆绑第三方真人录音，不共享语音服务账号。
+
+常用词补充的固定词表版本、来源与署名见 COMMON-SOURCES.md。

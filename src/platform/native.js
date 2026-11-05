@@ -14,10 +14,22 @@ export function nativeExport(name,bytes,mime,share=false){
     catch(error){window.removeEventListener('qihang-export',result);reject(error);}
   });
 }
+let lastReviewSync='',lastReviewSyncedAt=0,reviewSyncTail=Promise.resolve();
 export function syncNativeReview(data){
  const native=nativeHost();
  const dates=[...data.library,...conjugationPackages(data)].flatMap(p=>p.words.flatMap(w=>{const r=data.progress[wordKey(p,w)];if(r?.notebook!=='review')return [];const due=w.forms.filter(f=>f.tested).map(f=>nextReviewDate(r.forms[f.id],data.settings)).filter(Boolean).sort()[0];return due?[due]:[];}));
- const state={enabled:data.settings.reviewReminders!==false,dates,time:data.settings.reminderTime||'08:00'};
- if(native?.syncReviewSchedule){native.syncReviewSchedule(JSON.stringify(state));try{const status=JSON.parse(native.reviewReminderStatus?.()||'null');if(status)window.qihangBackgroundReminderReady=!status.enabled||!status.hasWords||status.scheduled;}catch{}}
- else if(typeof window!=='undefined'&&window.location.hostname==='127.0.0.1')return fetch('/review-reminders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)}).then(async response=>{if(!response.ok)return;const result=await response.json();window.qihangWindowsReminders=result.nativeReminders===true;window.qihangBackgroundReminderReady=result.scheduled===true;}).catch(()=>{});
+ const state={enabled:data.settings.reviewReminders!==false,dates:dates.sort(),time:data.settings.reminderTime||'08:00'};
+ const payload=JSON.stringify(state);if(payload===lastReviewSync&&Date.now()-lastReviewSyncedAt<60000)return;
+ if(native?.syncReviewSchedule){native.syncReviewSchedule(payload);lastReviewSync=payload;lastReviewSyncedAt=Date.now();try{const status=JSON.parse(native.reviewReminderStatus?.()||'null');if(status)window.qihangBackgroundReminderReady=!status.enabled||!status.hasWords||status.scheduled;}catch{}}
+ else if(typeof window!=='undefined'&&window.location.hostname==='127.0.0.1'){
+  reviewSyncTail=reviewSyncTail.catch(()=>{}).then(async()=>{
+   if(payload===lastReviewSync&&Date.now()-lastReviewSyncedAt<60000)return;
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+   try{
+    const response=await fetch('/review-reminders',{method:'POST',headers:{'Content-Type':'application/json'},body:payload,signal:controller.signal});if(!response.ok)return;
+    const result=await response.json();window.qihangWindowsReminders=result.nativeReminders===true;window.qihangBackgroundReminderReady=result.scheduled===true;
+    if(result.scheduled===true||state.enabled===false){lastReviewSync=payload;lastReviewSyncedAt=Date.now();}
+   }catch{}finally{clearTimeout(timer);}
+  });return reviewSyncTail;
+ }
 }

@@ -1,6 +1,14 @@
 import {primaryMeaningOptions} from './meanings.js';
 import {day,wordKey,packageKey,getProgress,normalize,advance,reviewPackage,lessonStats,resetLessonProgress,wordContext} from './learning.js';
 import {displayForm,splitNounArticle} from './word-display.js';
+import {isSupportedLemma,sourceVerbEntries,recording} from '../conjugation/catalog.js';
+import {sourceOrderedLibrary,lessonSourceLabel} from './word-source.js';
+export const needsConjugationChoice=entry=>/^(v\.|v$|verb)/i.test(entry?.pos||'')&&isSupportedLemma(String(entry.word).normalize('NFC').trim().toLocaleLowerCase('fr'));
+function withSourceVerbs(entries){
+ const source=new Map(sourceVerbEntries().map(e=>[e.word,e])),names=new Set();
+ const rows=entries.map(entry=>{const name=exact(entry.word).toLocaleLowerCase('fr');names.add(name);const verb=source.get(name);return verb&&!/^(v\.|v$|verb)/i.test(entry.pos)?{...entry,pos:'v.',meanings:verb.meanings}:entry;});
+ return [...rows,...[...source.values()].filter(e=>!names.has(e.word))];
+}
 export const spokenKey=text=>'tts:'+encodeURIComponent(text);
 export const splitWords=text=>[...new Set(String(text).normalize('NFC').split(/[,，\n;；]+/).map(v=>v.trim().replace(/\s+/g,' ')).filter(Boolean))];
 const exact=text=>String(text).normalize('NFC').replaceAll('’',"'").trim().replace(/\s+/g,' ');
@@ -8,8 +16,9 @@ const importNormal=text=>normalize(text).replaceAll('œ','oe').replaceAll('æ','
 const bare=text=>{const value=exact(text),p=splitNounArticle(value);return p.answer&&/^(?:un|une|des|du|le|la|les|de la|de l['’]|l['’])$/i.test(p.prefix)?p.answer:value;};
 function distance(a,b,limit=2){if(Math.abs(a.length-b.length)>limit)return limit+1;let older,prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const curr=[i];for(let j=1;j<=b.length;j++){curr[j]=Math.min(curr[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]!==b[j-1]));if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])curr[j]=Math.min(curr[j],older[j-2]+1);}if(Math.min(...curr)>limit)return limit+1;older=prev;prev=curr;}return prev[b.length];}
 export function makeLookup(entries,library=[]){
+ entries=withSourceVerbs(entries);
  const dictionary=new Map(entries.map(e=>[exact(e.word).toLocaleLowerCase('fr'),e]));
- const rows=[...library.flatMap(p=>p.words.flatMap(w=>w.forms.map(f=>{const entry=dictionary.get(exact(bare(displayForm(w,f))).toLocaleLowerCase('fr'));return {...entry,word:displayForm(w,f),id:'existing:'+wordKey(p,w)+':'+f.id,existing:{lesson:packageKey(p),word:w.id},meanings:w.meanings,pos:w.pos,ipa:f.ipa||entry?.ipa||'',example:f.example?.fr?f.example:entry?.example,gender:f.gender||entry?.gender||null};}))),...entries];
+ const rows=[...sourceOrderedLibrary(library).flatMap(p=>p.words.flatMap(w=>w.forms.map(f=>{const entry=dictionary.get(exact(bare(displayForm(w,f))).toLocaleLowerCase('fr'));return {...entry,word:displayForm(w,f),id:'existing:'+wordKey(p,w)+':'+f.id,existing:{lesson:packageKey(p),word:w.id},meanings:w.meanings,pos:w.pos,ipa:f.ipa||entry?.ipa||'',example:f.example?.fr?f.example:entry?.example,gender:f.gender||entry?.gender||null};}))),...entries];
  const byExact=new Map(),byNormal=new Map(),byAlias=new Map(),byAliasNormal=new Map();
  for(const r of rows){const k=exact(r.word),n=importNormal(k);if(!byExact.has(k))byExact.set(k,[]);byExact.get(k).push(r);if(!byNormal.has(n))byNormal.set(n,[]);byNormal.get(n).push(r);}
  for(const r of rows)for(const alias of r.aliases||[]){const k=exact(alias),n=importNormal(k);if(!byAlias.has(k))byAlias.set(k,[]);byAlias.get(k).push(r);if(!byAliasNormal.has(n))byAliasNormal.set(n,[]);byAliasNormal.get(n).push(r);}
@@ -22,14 +31,14 @@ const importedLessonId=sequence=>'L'+String(Math.floor((sequence-1)/IMPORTED_LES
 const locationKey=value=>exact(value).toLocaleLowerCase('fr');
 export function makeImportLocationLookup(data){
  const index=new Map();
- for(const p of data.library)for(const w of p.words){
+ for(const p of sourceOrderedLibrary(data.library))for(const w of p.words){
   if(w.conjugation)continue;
   const key=wordKey(p,w),locations=[];
-  if(p.book.id!=='personal')locations.push({zh:p.book.title.split(' · ')[0]+' · '+p.lesson.id,fr:p.book.title.split(' · ')[0]+' · '+p.lesson.id});
+  if(p.book.id!=='personal')locations.push({zh:lessonSourceLabel(p),fr:lessonSourceLabel(p)});
   const sequence=data.importedWordOrder?.[key];
-  if(data.importedWords?.[key]&&Number.isSafeInteger(sequence)&&sequence>0){const lesson=importedLessonId(sequence);locations.unshift({zh:'导入本 · '+lesson,fr:'Importés · '+lesson});}
+  if(data.importedWords?.[key]&&Number.isSafeInteger(sequence)&&sequence>0){const lesson=importedLessonId(sequence);locations.push({zh:'导入本 · '+lesson,fr:'Importés · '+lesson});}
   if(!locations.length)continue;
-  const item={key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),pos:w.sourcePos||w.pos,locations};
+  const item={key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),pos:w.sourcePos||w.pos,locations,tenses:[...new Set((data.conjugationDecks?.[packageKey(p)]||[]).filter(card=>card.conjugation.baseWordId===w.id&&!card.studyDisabled).map(card=>card.conjugation.tense))]};
   const names=new Set(w.forms.map(f=>locationKey(w.lexiconWord||bare(displayForm(w,f)))));
   for(const name of names){if(!index.has(name))index.set(name,[]);index.get(name).push(item);}
  }
@@ -41,7 +50,7 @@ export function importedWordResults(data,result){
   const p=data.library.find(p=>packageKey(p)===entry.lesson),w=p?.words.find(w=>w.id===entry.word);if(!w)continue;
   const key=wordKey(p,w),sequence=data.importedWordOrder?.[key];
   if(!data.importedWords?.[key]||!Number.isSafeInteger(sequence)||sequence<1)continue;
-  rows.set(key,{key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),lesson:importedLessonId(sequence),added:added.has(key)});
+  rows.set(key,{key,word:w.forms.map(f=>displayForm(w,f)).join(' / '),lesson:'导入本 · '+importedLessonId(sequence),added:added.has(key)});
  }
  return [...rows.values()];
 }
@@ -89,7 +98,7 @@ export function resetImportedLesson(data,p){
 export function addImportedEntries(data,entries,at=Date.now(),addToImported=true){
  ensureImportedLessons(data);
  data.importedWords||={};let added=0,duplicates=0;const resolved=[],addedKeys=[];const date=day(new Date(at));let personal=data.library.find(p=>p.book.id==='personal');
- const wordIndex=new Map(),newIds=[];for(const p of data.library)for(const w of p.words)for(const f of w.forms){const key=exact(w.lexiconWord||(w.pos==='n.'?bare(displayForm(w,f)):displayForm(w,f))).toLocaleLowerCase('fr');if(!wordIndex.has(key))wordIndex.set(key,{p,w});}
+ const wordIndex=new Map(),newIds=[];for(const p of sourceOrderedLibrary(data.library))for(const w of p.words)for(const f of w.forms){const key=exact(w.lexiconWord||(w.pos==='n.'?bare(displayForm(w,f)):displayForm(w,f))).toLocaleLowerCase('fr');if(!wordIndex.has(key))wordIndex.set(key,{p,w});}
  const used=new Set([...(data.reservedWordIds||[]),...data.library.flatMap(p=>p.words.map(w=>w.id)),...Object.keys(data.progress).map(k=>k.split(':').at(-1))]);let counter=800000;
  for(const entry of entries){
   let p,w;
@@ -99,10 +108,10 @@ export function addImportedEntries(data,entries,at=Date.now(),addToImported=true
    if(!personal){personal={schemaVersion:1,book:{id:'personal',title:'导入词汇 · Mots importés'},lesson:{id:'L01',title:'导入词汇 · Mots importés',order:1,version:1},words:[]};data.library.push(personal);}p=personal;
    while(used.has('w'+String(counter).padStart(6,'0')))counter++;if(counter>999999)throw Error('词条空间不足 / Limite atteinte.');const id='w'+counter++;used.add(id);
    const gender=entry.gender||null,pos=entry.pos==='n.'&&!gender?'loc.':entry.pos||'loc.';
-   const text=pos==='n.'&&entry.plural?'des '+entry.word:entry.word,spoken=pos==='n.'&&!splitNounArticle(text).prefix?(gender==='f'?'une ':'un ')+text:text;
+   const text=pos==='n.'&&entry.plural?'des '+entry.word:entry.word,spoken=pos==='n.'&&!entry.literal&&!splitNounArticle(text).prefix?(gender==='f'?'une ':'un ')+text:text;
    const example=entry.example?.fr?{...entry.example,audioKey:spokenKey(entry.example.fr)}:undefined;
-   const form={id:id+'-base',text,tested:true,gender,audio:null,audioKey:spokenKey(spoken),ipa:entry.ipa||'',source:'Wiktionary · '+entry.word+' · CC BY-SA 4.0'+(example?.source?' / '+example.source:'')};if(example)form.example=example;if(entry.literal||pos!=='n.'&&splitNounArticle(text).prefix)form.literal=true;
-   w={id,lexiconId:entry.id,lexiconWord:entry.word,provenance:{dictionary:entry.sourceUrl||'https://zh.wiktionary.org/',license:'CC BY-SA 4.0',sentence:entry.example?.url||entry.sourceUrl||'',sentenceSource:entry.example?.source||'',authored:!!entry.example?.authored},order:p.words.length+1,pos,sourcePos:entry.pos||pos,meanings:entry.meanings,primaryMeaning:entry.primaryMeaning,forms:[form]};p.words.push(w);p.lesson.version++;newIds.push(id);wordIndex.set(exact(entry.word).toLocaleLowerCase('fr'),{p,w});
+   const form={id:id+'-base',text,tested:true,gender,audio:null,audioKey:spokenKey(spoken),ipa:entry.ipa||'',source:'Wiktionary · '+entry.word+' · CC BY-SA 4.0'+(example?.source?' / '+example.source:'')};if(entry.conjugationSource){Object.assign(form,{audioKey:recording(entry.word).audioKey,conjugationAudio:true,source:'法语变位器3.0'});}if(example)form.example=example;if(entry.literal||pos!=='n.'&&splitNounArticle(text).prefix)form.literal=true;
+   w={id,lexiconId:entry.id,lexiconWord:entry.word,provenance:{dictionary:entry.conjugationSource?'法语变位器3.0':entry.sourceUrl||'https://zh.wiktionary.org/',license:entry.conjugationSource?'MIT':'CC BY-SA 4.0',sentence:entry.example?.url||entry.sourceUrl||'',sentenceSource:entry.example?.source||'',authored:!!entry.example?.authored},order:p.words.length+1,pos,sourcePos:entry.pos||pos,meanings:entry.meanings,primaryMeaning:entry.primaryMeaning,forms:[form]};p.words.push(w);p.lesson.version++;newIds.push(id);wordIndex.set(exact(entry.word).toLocaleLowerCase('fr'),{p,w});
   }
   for(const f of w.forms){
    const same=exact(w.lexiconWord||bare(displayForm(w,f))).toLocaleLowerCase('fr')===exact(entry.existing?bare(entry.word):entry.word).toLocaleLowerCase('fr');
@@ -128,9 +137,10 @@ export function removeImportedEntry(data,p,w){
 
 export function activeImportedSession(data,lessonKey=null){return Object.values(data.sessions).find(s=>s.importedPractice&&(!lessonKey||s.importedLessonKey===lessonKey)&&s.phase!=='done'&&(s.jobs?.length||s.group?.some(id=>!s.doneWords?.includes(id))));}
 
-export function dictionaryEntry(row){const gender=row.gender||null,pos=row.pos==='n.'&&!gender?'loc.':row.pos;let text=pos==='n.'&&row.plural?'des '+row.word:row.word;const spoken=pos==='n.'&&!splitNounArticle(text).prefix?(gender==='f'?'une ':'un ')+text:text;return {id:row.id,lexiconId:row.id,lexiconWord:row.word,order:1,pos,sourcePos:row.pos,meanings:row.meanings,primaryMeaning:row.primaryMeaning,forms:[{id:row.id+'-base',text,gender,tested:true,literal:!!row.literal||pos!=='n.'&&!!splitNounArticle(text).prefix,ipa:row.ipa,audio:null,audioKey:spokenKey(spoken),example:row.example?{...row.example,audioKey:spokenKey(row.example.fr)}:undefined}]};}
+export function dictionaryEntry(row){const gender=row.gender||null,pos=row.pos==='n.'&&!gender?'loc.':row.pos;let text=pos==='n.'&&row.plural?'des '+row.word:row.word;const spoken=pos==='n.'&&!row.literal&&!splitNounArticle(text).prefix?(gender==='f'?'une ':'un ')+text:text;return {id:row.id,lexiconId:row.id,lexiconWord:row.word,order:1,pos,sourcePos:row.pos,meanings:row.meanings,primaryMeaning:row.primaryMeaning,forms:[{id:row.id+'-base',text,gender,tested:true,literal:!!row.literal||pos!=='n.'&&!!splitNounArticle(text).prefix,ipa:row.ipa,audio:null,audioKey:row.conjugationSource?recording(row.word).audioKey:spokenKey(spoken),...(row.conjugationSource?{conjugationAudio:true}:{}),example:row.example?{...row.example,audioKey:spokenKey(row.example.fr)}:undefined}]};}
 export function dictionaryNotebookEntries(rows,data){
- const existing=new Map(),seen=new Set(),result=[];for(const p of data.library)for(const w of p.words){if(w.conjugation)continue;for(const f of w.forms){const name=exact(w.lexiconWord||(w.pos==='n.'?bare(displayForm(w,f)):displayForm(w,f))).toLocaleLowerCase('fr');if(!existing.has(name))existing.set(name,{p,w});}}
+ rows=withSourceVerbs(rows);
+ const existing=new Map(),seen=new Set(),result=[];for(const p of sourceOrderedLibrary(data.library))for(const w of p.words){if(w.conjugation)continue;for(const f of w.forms){const name=exact(w.lexiconWord||(w.pos==='n.'?bare(displayForm(w,f)):displayForm(w,f))).toLocaleLowerCase('fr');if(!existing.has(name))existing.set(name,{p,w});}}
  const p={dictionary:true,book:{id:'dictionary',title:'词库 · Dictionnaire'},lesson:{id:'all',title:'词库',order:1,version:1}};
  for(const row of rows){const entry=existing.get(exact(row.word).toLocaleLowerCase('fr'));if(entry){const key=wordKey(entry.p,entry.w);if(!seen.has(key)){result.push(entry);seen.add(key);}}else result.push({p,w:dictionaryEntry(row),dictionaryRow:row});}
  for(const course of data.library)for(const w of course.words){const key=wordKey(course,w);if(!w.conjugation&&!seen.has(key)){result.push({p:course,w});seen.add(key);}}return result;

@@ -1,7 +1,7 @@
 <template>
   <view class="practice-panel" @click="closeArticle">
     <Transition :name="definitionVisible?'definition-sheet':motion==='none'?'no-motion':question?.kind==='recognize'?'recognition-sheet':motion==='page'?'word-switch-page':'word-switch-slide'" mode="out-in">
-      <DefinitionPanel v-if="definitionVisible" key="definition" ref="definitionCard" :pkg="sourcePkg||pkg" :word="word" :favorite="favorite" :playing="playing" :busy="busy" :known="known" :allow-known="session.mode!=='errors'" :allow-remove="false" @remove="removeImported" @primary-meaning="$emit('primary-meaning',$event)" @favorite="$emit('favorite',word)" @audio="$emit('audio',$event)" @known="forwardKnown" @continue="continueDefinition"></DefinitionPanel>
+      <DefinitionPanel v-if="definitionVisible" key="definition" ref="definitionCard" :pkg="sourcePkg||pkg" :source-label="sourceLabel" :word="word" :favorite="favorite" :playing="playing" :busy="busy" :known="known" :allow-known="session.mode!=='errors'" :allow-remove="false" @remove="removeImported" @primary-meaning="$emit('primary-meaning',$event)" @favorite="$emit('favorite',word)" @audio="$emit('audio',$event)" @known="forwardKnown" @continue="continueDefinition"></DefinitionPanel>
       <view v-else-if="question" :key="question.kind==='spell'?'spell:'+question.wordId+':'+question.formId:'question:'+question.id" class="exercise-screen" :class="{'is-recognition':question.kind==='recognize'}">
         <view class="exercise-body">
           <view class="exercise-head"><Bi :zh="question.kind==='recognize'?'选择中文':'写出法语'" :fr="question.kind==='recognize'?'Choisir le sens':'Écrire le mot'" small /><view v-if="question.kind==='recognize'" class="recognition-audio-controls"><button v-if="sentenceRecording" hover-class="none" class="round-audio sentence-audio" @click="$emit('audio',sentenceRecording)" aria-label="播放例句 / Écouter la phrase"><Icon name="phrase" /></button></view></view>
@@ -41,7 +41,7 @@ import {nativeHost} from '../platform/native.js';
 import {playCorrect,playTap} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import DefinitionPanel from './DefinitionPanel.vue';import SpellingFeedback from './SpellingFeedback.vue';
 import {displayForm,spellingParts,spellingTask,sharedExample,splitNounArticle,exampleAudio} from '../domain/word-display.js';
-const props=defineProps({pkg:Object,sourcePkg:Object,session:Object,word:Object,form:Object,favorite:Boolean,known:Boolean,playing:String,busy:Boolean,allowRemove:Boolean,motion:String,articleMode:String});
+const props=defineProps({pkg:Object,sourcePkg:Object,sourceLabel:String,session:Object,word:Object,form:Object,favorite:Boolean,known:Boolean,playing:String,busy:Boolean,allowRemove:Boolean,motion:String,articleMode:String});
 const emit=defineEmits(['answer','next','hint','retry-hint','known','favorite','audio','audio-stop','remove','primary-meaning']);
 const useTouchKeyboard=!!nativeHost()||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const answerInput=ref(null),keyboardOpen=ref(false),draft=ref('');

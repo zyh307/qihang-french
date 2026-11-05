@@ -45,7 +45,7 @@ export function answerConjugation(data,key,body){const s=data.conjugationSession
 export function hintConjugation(data,key){const s=data.conjugationSessions[key],q=s.engine.question;if(q.round!=='fill')return '';const id=keyFor(q.verbe,q.temps,q.personne);s.engine.fill_retry[id]=1;if(!s.failedForms.includes(id))s.failedForms.push(id);for(const {p,w} of contexts(data,s,q))recordConjugationAttempt(data,p,w,false,s,'hint');return conjugations(q.verbe,q.temps)[q.personne];}
 export function validateConjugationSessions(data){
  for(const s of Object.values(data.conjugationSessions||{})){
-  if(s.schema!==1||!s.engine?.game||!Array.isArray(s.engine.groups)||!s.refs||!Array.isArray(s.completedForms)||!['learn','review','errors','direct'].includes(s.mode)||s.engine.groups.some(g=>!Array.isArray(g.entries)||g.entries.some(e=>typeof e.verbe!=='string'||!Array.isArray(e.personnes)||e.personnes.some(p=>!conjugations(e.verbe,e.temps)[p]))))throw Error('变位进度无效 / Progression invalide.');
+  if(s.schema!==1||!s.engine?.game||!Array.isArray(s.engine.groups)||!s.refs||!Array.isArray(s.completedForms)||!['learn','review','errors','direct'].includes(s.mode)||s.engine.groups.some(g=>!Array.isArray(g.entries)||g.entries.some(e=>typeof e.verbe!=='string'||!Array.isArray(e.personnes)||(!s.retired&&!s.done&&e.personnes.some(p=>!conjugations(e.verbe,e.temps)[p])))))throw Error('变位进度无效 / Progression invalide.');
   for(const refs of Object.values(s.refs))for(const ref of refs){const p=data.library.find(p=>packageKey(p)===ref.lesson);if(!p||![...p.words,...(data.conjugationDecks?.[ref.lesson]||[])].some(w=>w.id===ref.wordId&&w.conjugation))throw Error('变位进度与词条不符 / Mots incompatibles.');}
  }
 }

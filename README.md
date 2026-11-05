@@ -4,15 +4,15 @@
 
 ## 下载
 
-[打开下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.3.6)
+[打开下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.3.12)
 
 | 设备 | 下载文件 | 打开方式 |
 |---|---|---|
-| Windows | [启航法语 · Windows](https://github.com/zyh307/qihang-french/releases/download/v2.3.6/QihangFrench-Windows-v2.3.6.zip) | 完整解压，双击“启动启航法语.bat” |
-| 安卓 | [启航法语 · Android](https://github.com/zyh307/qihang-french/releases/download/v2.3.6/QihangFrench-Android-v2.3.6.apk) | 下载后安装 |
-| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.3.6/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
+| Windows | [启航法语 · Windows](https://github.com/zyh307/qihang-french/releases/download/v2.3.12/QihangFrench-Windows-v2.3.12.zip) | 完整解压，双击“启动启航法语.bat” |
+| 安卓 | [启航法语 · Android](https://github.com/zyh307/qihang-french/releases/download/v2.3.12/QihangFrench-Android-v2.3.12.apk) | 下载后安装 |
+| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.3.12/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
 
-词库包含 18,731 个词条，支持逗号导入，新增 76 个常用自反动词及其词组用法。课内录音、课外单词和例句录音均已内置，安装后可离线播放，无需另下语音包。
+词库包含 18,949 个词条，支持逗号导入，新增 76 个常用自反动词及其词组用法。课内录音、课外单词和例句录音均已内置，安装后可离线播放，无需另下语音包。
 
 Windows 和安卓程序包均不含法语识别模型。口语首次使用请单独下载约 1.08 GB 的模型，在应用中导入。只用词汇或语法无需导入模型。口语转写在当前设备运行，考官回复需要联网。
 

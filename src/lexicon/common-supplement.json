@@ -1,0 +1,3436 @@
+{
+  "schema": 1,
+  "date": "2026-11-04",
+  "entries": [
+    {
+      "word": "milieu",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "中间",
+        "环境",
+        "社会阶层"
+      ],
+      "fr": "Une table se trouve au milieu de la pièce.",
+      "zh": "房间中间有一张桌子。",
+      "ipa": "/mi.ljø/",
+      "highlight": "milieu",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/milieu",
+      "frequency": 5.17,
+      "primaryMeaning": "中间"
+    },
+    {
+      "word": "et",
+      "pos": "conj.",
+      "gender": null,
+      "meanings": [
+        "和",
+        "并且"
+      ],
+      "fr": "Paul et Marie arrivent ensemble.",
+      "zh": "保罗和玛丽一起到了。",
+      "ipa": "/e/",
+      "highlight": "et",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/et",
+      "frequency": 7.31,
+      "primaryMeaning": "和"
+    },
+    {
+      "word": "une",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "一个（阴性）"
+      ],
+      "fr": "Elle achète une pomme.",
+      "zh": "她买了一个苹果。",
+      "ipa": "/yn/",
+      "highlight": "une",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/une",
+      "frequency": 7.0,
+      "primaryMeaning": "一个（阴性）"
+    },
+    {
+      "word": "on",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我们",
+        "人们",
+        "有人"
+      ],
+      "fr": "On va au cinéma ce soir.",
+      "zh": "我们今晚去看电影。",
+      "ipa": "/ɔ̃/",
+      "highlight": "On",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/on",
+      "frequency": 6.71,
+      "primaryMeaning": "我们"
+    },
+    {
+      "word": "du",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "一些",
+        "de与le的缩合形式"
+      ],
+      "fr": "Je voudrais du pain.",
+      "zh": "我想要一些面包。",
+      "ipa": "/dy/",
+      "highlight": "du",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/du",
+      "frequency": 6.99,
+      "primaryMeaning": "一些"
+    },
+    {
+      "word": "se",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "自己（第三人称自反代词）"
+      ],
+      "fr": "Il se lave les mains.",
+      "zh": "他洗自己的手。",
+      "ipa": "/sə/",
+      "highlight": "se",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/se",
+      "frequency": 6.56,
+      "primaryMeaning": "自己（第三人称自反代词）"
+    },
+    {
+      "word": "au",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "à与le的缩合形式"
+      ],
+      "fr": "Nous allons au marché.",
+      "zh": "我们去市场。",
+      "ipa": "/o/",
+      "highlight": "au",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/au",
+      "frequency": 6.78,
+      "primaryMeaning": "à与le的缩合形式"
+    },
+    {
+      "word": "ce",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "这",
+        "这个"
+      ],
+      "fr": "Ce livre est intéressant.",
+      "zh": "这本书很有趣。",
+      "ipa": "/sə/",
+      "highlight": "Ce",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ce",
+      "frequency": 6.78,
+      "primaryMeaning": "这"
+    },
+    {
+      "word": "son",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "他的",
+        "她的",
+        "它的"
+      ],
+      "fr": "Elle cherche son téléphone.",
+      "zh": "她在找自己的手机。",
+      "ipa": "/sɔ̃/",
+      "highlight": "son",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/son",
+      "frequency": 6.47,
+      "primaryMeaning": "她的"
+    },
+    {
+      "word": "te",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你（宾语代词）"
+      ],
+      "fr": "Je te remercie pour ton aide.",
+      "zh": "我感谢你的帮助。",
+      "ipa": "/tə/",
+      "highlight": "te",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/te",
+      "frequency": 5.96,
+      "primaryMeaning": "你（宾语代词）"
+    },
+    {
+      "word": "sa",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "他的",
+        "她的",
+        "它的（阴性）"
+      ],
+      "fr": "Il aime sa maison.",
+      "zh": "他喜欢自己的房子。",
+      "ipa": "/sa/",
+      "highlight": "sa",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sa",
+      "frequency": 6.34,
+      "primaryMeaning": "他的"
+    },
+    {
+      "word": "ses",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "他的",
+        "她的",
+        "它的（复数）"
+      ],
+      "fr": "Elle prépare ses affaires.",
+      "zh": "她在整理自己的东西。",
+      "ipa": "/sɛ/",
+      "highlight": "ses",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ses",
+      "frequency": 6.21,
+      "primaryMeaning": "她的"
+    },
+    {
+      "word": "ou",
+      "pos": "conj.",
+      "gender": null,
+      "meanings": [
+        "或者",
+        "还是"
+      ],
+      "fr": "Tu préfères le thé ou le café ?",
+      "zh": "你更喜欢茶还是咖啡？",
+      "ipa": "/u/",
+      "highlight": "ou",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ou",
+      "frequency": 6.46,
+      "primaryMeaning": "还是"
+    },
+    {
+      "word": "ma",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "我的（阴性）"
+      ],
+      "fr": "Voici ma chambre.",
+      "zh": "这是我的房间。",
+      "ipa": "/ma/",
+      "highlight": "ma",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ma",
+      "frequency": 6.0,
+      "primaryMeaning": "我的（阴性）"
+    },
+    {
+      "word": "aux",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "à与les的缩合形式"
+      ],
+      "fr": "Le professeur parle aux élèves.",
+      "zh": "老师对学生们讲话。",
+      "ipa": "/o/",
+      "highlight": "aux",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/aux",
+      "frequency": 6.32,
+      "primaryMeaning": "à与les的缩合形式"
+    },
+    {
+      "word": "ton",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "你的"
+      ],
+      "fr": "Où est ton sac ?",
+      "zh": "你的包在哪里？",
+      "ipa": "/tɔ̃/",
+      "highlight": "ton",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ton",
+      "frequency": 5.82,
+      "primaryMeaning": "你的"
+    },
+    {
+      "word": "quoi",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "什么"
+      ],
+      "fr": "De quoi as-tu besoin ?",
+      "zh": "你需要什么？",
+      "ipa": "/kwa/",
+      "highlight": "quoi",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/quoi",
+      "frequency": 5.84,
+      "primaryMeaning": "什么"
+    },
+    {
+      "word": "ta",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "你的（阴性）"
+      ],
+      "fr": "Ta réponse est correcte.",
+      "zh": "你的回答是正确的。",
+      "ipa": "/ta/",
+      "highlight": "Ta",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ta",
+      "frequency": 5.66,
+      "primaryMeaning": "你的（阴性）"
+    },
+    {
+      "word": "est-ce que",
+      "pos": "loc.",
+      "gender": null,
+      "meanings": [
+        "是否（一般疑问句结构）"
+      ],
+      "fr": "Est-ce que tu viens demain ?",
+      "zh": "你明天来吗？",
+      "ipa": "/ɛs kə/",
+      "highlight": "Est-ce que",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/est-ce que",
+      "frequency": 6.5,
+      "primaryMeaning": "是否（一般疑问句结构）"
+    },
+    {
+      "word": "mes",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "我的（复数）"
+      ],
+      "fr": "Je cherche mes lunettes.",
+      "zh": "我在找自己的眼镜。",
+      "ipa": "/mɛ/",
+      "highlight": "mes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mes",
+      "frequency": 5.77,
+      "primaryMeaning": "我的（复数）"
+    },
+    {
+      "word": "leurs",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "他们的",
+        "她们的（复数）"
+      ],
+      "fr": "Ils rangent leurs livres.",
+      "zh": "他们在收拾自己的书。",
+      "ipa": "/lœʁ/",
+      "highlight": "leurs",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/leurs",
+      "frequency": 5.82,
+      "primaryMeaning": "他们的"
+    },
+    {
+      "word": "tes",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "你的（复数）"
+      ],
+      "fr": "Tes amis sont très gentils.",
+      "zh": "你的朋友们很友善。",
+      "ipa": "/tɛ/",
+      "highlight": "Tes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tes",
+      "frequency": 5.45,
+      "primaryMeaning": "你的（复数）"
+    },
+    {
+      "word": "ni",
+      "pos": "conj.",
+      "gender": null,
+      "meanings": [
+        "也不",
+        "既不……也不"
+      ],
+      "fr": "Je ne bois ni thé ni café.",
+      "zh": "我既不喝茶也不喝咖啡。",
+      "ipa": "/ni/",
+      "highlight": "ni",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ni",
+      "frequency": 5.48,
+      "primaryMeaning": "也不"
+    },
+    {
+      "word": "vos",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "你们的",
+        "您的（复数）"
+      ],
+      "fr": "Vous pouvez poser vos questions.",
+      "zh": "你们可以提出自己的问题。",
+      "ipa": "/vo/",
+      "highlight": "vos",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vos",
+      "frequency": 5.61,
+      "primaryMeaning": "你们的"
+    },
+    {
+      "word": "nos",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "我们的（复数）"
+      ],
+      "fr": "Nous invitons nos voisins.",
+      "zh": "我们邀请了邻居们。",
+      "ipa": "/no/",
+      "highlight": "nos",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nos",
+      "frequency": 5.73,
+      "primaryMeaning": "我们的（复数）"
+    },
+    {
+      "word": "ouais",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "是的",
+        "嗯（口语）"
+      ],
+      "fr": "Ouais, je suis d'accord avec toi.",
+      "zh": "嗯，我同意你的看法。",
+      "ipa": "/wɛ/",
+      "highlight": "Ouais",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ouais",
+      "frequency": 5.2,
+      "primaryMeaning": "是的"
+    },
+    {
+      "word": "cet",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "这个（元音前的阳性形式）"
+      ],
+      "fr": "Cet arbre est très vieux.",
+      "zh": "这棵树很老了。",
+      "ipa": "/sɛ.t‿/",
+      "highlight": "Cet",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/cet",
+      "frequency": 5.66,
+      "primaryMeaning": "这个（元音前的阳性形式）"
+    },
+    {
+      "word": "point",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "点",
+        "要点",
+        "分数"
+      ],
+      "fr": "Ce point est important.",
+      "zh": "这一点很重要。",
+      "ipa": "/pwɛ̃/",
+      "highlight": "point",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/point",
+      "frequency": 5.58,
+      "primaryMeaning": "点"
+    },
+    {
+      "word": "part",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "份",
+        "部分"
+      ],
+      "fr": "Je voudrais une part de gâteau.",
+      "zh": "我想要一块蛋糕。",
+      "ipa": "/paʁ/",
+      "highlight": "part",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/part",
+      "frequency": 5.63,
+      "primaryMeaning": "份"
+    },
+    {
+      "word": "tour",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "轮次",
+        "一圈",
+        "游览"
+      ],
+      "fr": "C'est à ton tour de jouer.",
+      "zh": "轮到你玩了。",
+      "ipa": "/tuʁ/",
+      "highlight": "tour",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tour",
+      "frequency": 5.37,
+      "primaryMeaning": "轮次"
+    },
+    {
+      "word": "celui",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "那个（阳性单数）"
+      ],
+      "fr": "Je préfère celui qui est près de la fenêtre.",
+      "zh": "我更喜欢靠窗的那个。",
+      "ipa": "/sə.lɥi/",
+      "highlight": "celui",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/celui",
+      "frequency": 5.6,
+      "primaryMeaning": "那个（阳性单数）"
+    },
+    {
+      "word": "ceux",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "那些（阳性复数）"
+      ],
+      "fr": "Ceux qui veulent venir peuvent s'inscrire.",
+      "zh": "想来的人可以报名。",
+      "ipa": "/sø/",
+      "highlight": "Ceux",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ceux",
+      "frequency": 5.66,
+      "primaryMeaning": "那些（阳性复数）"
+    },
+    {
+      "word": "celle",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "那个（阴性单数）"
+      ],
+      "fr": "Je prends celle qui est rouge.",
+      "zh": "我拿红色的那个。",
+      "ipa": "/sɛl/",
+      "highlight": "celle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/celle",
+      "frequency": 5.5,
+      "primaryMeaning": "那个（阴性单数）"
+    },
+    {
+      "word": "là-bas",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "在那里",
+        "在那边"
+      ],
+      "fr": "Mon frère habite là-bas.",
+      "zh": "我哥哥住在那边。",
+      "ipa": "/la.ba/",
+      "highlight": "là-bas",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/là-bas",
+      "frequency": 5.29,
+      "primaryMeaning": "在那边"
+    },
+    {
+      "word": "ombre",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "影子",
+        "阴凉处"
+      ],
+      "fr": "Nous nous reposons à l'ombre.",
+      "zh": "我们在阴凉处休息。",
+      "ipa": "/ɔ̃bʁ/",
+      "highlight": "ombre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ombre",
+      "frequency": 4.52,
+      "primaryMeaning": "阴凉处"
+    },
+    {
+      "word": "dix",
+      "pos": "num.",
+      "gender": null,
+      "meanings": [
+        "十"
+      ],
+      "fr": "Il reste dix minutes.",
+      "zh": "还剩十分钟。",
+      "ipa": "/dis/",
+      "highlight": "dix",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/dix",
+      "frequency": 5.15,
+      "primaryMeaning": "十"
+    },
+    {
+      "word": "aucune",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "没有任何（阴性）"
+      ],
+      "fr": "Je n'ai aucune idée.",
+      "zh": "我一点头绪也没有。",
+      "ipa": "/o.kyn/",
+      "highlight": "aucune",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/aucune",
+      "frequency": 5.39,
+      "primaryMeaning": "没有任何（阴性）"
+    },
+    {
+      "word": "lui-même",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "他自己"
+      ],
+      "fr": "Il a réparé la porte lui-même.",
+      "zh": "他自己修好了门。",
+      "ipa": "/lɥi.mɛm/",
+      "highlight": "lui-même",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/lui-même",
+      "frequency": 5.95,
+      "primaryMeaning": "他自己"
+    },
+    {
+      "word": "toute",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "整个",
+        "全部（阴性单数）"
+      ],
+      "fr": "Elle travaille toute la journée.",
+      "zh": "她工作了一整天。",
+      "ipa": "/tut/",
+      "highlight": "toute",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/toute",
+      "frequency": 5.81,
+      "primaryMeaning": "整个"
+    },
+    {
+      "word": "laquelle",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "哪一个（阴性）"
+      ],
+      "fr": "Laquelle de ces robes préfères-tu ?",
+      "zh": "这些连衣裙你更喜欢哪一件？",
+      "ipa": "/la.kɛl/",
+      "highlight": "Laquelle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/laquelle",
+      "frequency": 5.19,
+      "primaryMeaning": "哪一个（阴性）"
+    },
+    {
+      "word": "d'autres",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "其他的",
+        "另外一些"
+      ],
+      "fr": "Tu as d'autres questions ?",
+      "zh": "你还有其他问题吗？",
+      "ipa": "/d‿otʁ/",
+      "highlight": "d'autres",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/d'autres",
+      "frequency": 5.97,
+      "primaryMeaning": "其他的"
+    },
+    {
+      "word": "moindre",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "更小的",
+        "最微小的"
+      ],
+      "fr": "Il n'y a pas le moindre bruit.",
+      "zh": "一点声音也没有。",
+      "ipa": "/mwɛ̃dʁ/",
+      "highlight": "moindre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/moindre",
+      "frequency": 4.76,
+      "primaryMeaning": "更小的"
+    },
+    {
+      "word": "telle",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "这样的（阴性）"
+      ],
+      "fr": "Je n'ai jamais vu une telle chose.",
+      "zh": "我从没见过这样的事。",
+      "ipa": "/tɛl/",
+      "highlight": "telle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/telle",
+      "frequency": 4.93,
+      "primaryMeaning": "这样的（阴性）"
+    },
+    {
+      "word": "elle-même",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "她自己"
+      ],
+      "fr": "Elle a écrit ce texte elle-même.",
+      "zh": "这篇文字是她自己写的。",
+      "ipa": "/ɛl.mɛm/",
+      "highlight": "elle-même",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/elle-même",
+      "frequency": 6.1,
+      "primaryMeaning": "她自己"
+    },
+    {
+      "word": "celles",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "那些（阴性复数）"
+      ],
+      "fr": "Je préfère celles qui sont simples.",
+      "zh": "我更喜欢简单的那些。",
+      "ipa": "/sɛl/",
+      "highlight": "celles",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/celles",
+      "frequency": 5.07,
+      "primaryMeaning": "那些（阴性复数）"
+    },
+    {
+      "word": "certains",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "某些",
+        "有些（阳性复数）"
+      ],
+      "fr": "Certains élèves arrivent en avance.",
+      "zh": "有些学生提前到了。",
+      "ipa": "/sɛʁ.tɛ̃/",
+      "highlight": "Certains",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/certains",
+      "frequency": 5.49,
+      "primaryMeaning": "有些"
+    },
+    {
+      "word": "dimanche",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "星期日"
+      ],
+      "fr": "Nous allons au parc dimanche.",
+      "zh": "我们星期日去公园。",
+      "ipa": "/di.mɑ̃ʃ/",
+      "highlight": "dimanche",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/dimanche",
+      "frequency": 5.03,
+      "primaryMeaning": "星期日"
+    },
+    {
+      "word": "nature",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "大自然",
+        "本性",
+        "性质"
+      ],
+      "fr": "Il aime observer la nature.",
+      "zh": "他喜欢观察大自然。",
+      "ipa": "/na.tyʁ/",
+      "highlight": "nature",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nature",
+      "frequency": 5.06,
+      "primaryMeaning": "大自然"
+    },
+    {
+      "word": "poste",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "职位",
+        "岗位"
+      ],
+      "fr": "Elle cherche un poste de professeur.",
+      "zh": "她在找一个教师职位。",
+      "ipa": "/pɔst/",
+      "highlight": "poste",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/poste",
+      "frequency": 5.08,
+      "primaryMeaning": "职位"
+    },
+    {
+      "word": "dedans",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "在里面"
+      ],
+      "fr": "Le sac est ouvert, regarde dedans.",
+      "zh": "包是打开的，看看里面。",
+      "ipa": "/də.dɑ̃/",
+      "highlight": "dedans",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/dedans",
+      "frequency": 4.8,
+      "primaryMeaning": "在里面"
+    },
+    {
+      "word": "mademoiselle",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "小姐"
+      ],
+      "fr": "Bonjour mademoiselle, puis-je vous aider ?",
+      "zh": "您好，小姐，需要帮助吗？",
+      "ipa": "/mad.mwa.zɛl/",
+      "highlight": "mademoiselle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mademoiselle",
+      "frequency": 4.08,
+      "primaryMeaning": "小姐"
+    },
+    {
+      "word": "vague",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "波浪"
+      ],
+      "fr": "Une grande vague arrive sur la plage.",
+      "zh": "一股大浪涌向沙滩。",
+      "ipa": "/vaɡ/",
+      "highlight": "vague",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vague",
+      "frequency": 4.45,
+      "primaryMeaning": "波浪"
+    },
+    {
+      "word": "surgir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "突然出现",
+        "涌现"
+      ],
+      "fr": "Un problème peut surgir à tout moment.",
+      "zh": "问题随时可能出现。",
+      "ipa": "/syʁ.ʒiʁ/",
+      "highlight": "surgir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/surgir",
+      "frequency": 3.28,
+      "primaryMeaning": "突然出现"
+    },
+    {
+      "word": "là-haut",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "在上面",
+        "在高处"
+      ],
+      "fr": "Regarde là-haut dans le ciel.",
+      "zh": "看看上面的天空。",
+      "ipa": "/la.o/",
+      "highlight": "là-haut",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/là-haut",
+      "frequency": 5.26,
+      "primaryMeaning": "在上面"
+    },
+    {
+      "word": "durant",
+      "pos": "prép.",
+      "gender": null,
+      "meanings": [
+        "在……期间"
+      ],
+      "fr": "Il a plu durant toute la nuit.",
+      "zh": "雨下了一整夜。",
+      "ipa": "/dy.ʁɑ̃/",
+      "highlight": "durant",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/durant",
+      "frequency": 5.09,
+      "primaryMeaning": "在……期间"
+    },
+    {
+      "word": "monstre",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "怪物"
+      ],
+      "fr": "Le monstre de cette histoire fait peur.",
+      "zh": "这个故事里的怪物很吓人。",
+      "ipa": "/mɔ̃stʁ/",
+      "highlight": "monstre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/monstre",
+      "frequency": 4.18,
+      "primaryMeaning": "怪物"
+    },
+    {
+      "word": "retomber",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "重新落下",
+        "再次陷入"
+      ],
+      "fr": "La neige commence à retomber.",
+      "zh": "雪又开始落下了。",
+      "ipa": "/ʁə.tɔ̃.be/",
+      "highlight": "retomber",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/retomber",
+      "frequency": 3.62,
+      "primaryMeaning": "重新落下"
+    },
+    {
+      "word": "rang",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "排",
+        "行列",
+        "等级"
+      ],
+      "fr": "Je suis assis au premier rang.",
+      "zh": "我坐在第一排。",
+      "ipa": "/ʁɑ̃/",
+      "highlight": "rang",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rang",
+      "frequency": 4.58,
+      "primaryMeaning": "排"
+    },
+    {
+      "word": "quels",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "哪些（阳性复数）"
+      ],
+      "fr": "Quels livres veux-tu lire ?",
+      "zh": "你想读哪些书？",
+      "ipa": "/kɛl/",
+      "highlight": "Quels",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/quels",
+      "frequency": 4.64,
+      "primaryMeaning": "哪些（阳性复数）"
+    },
+    {
+      "word": "mien",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我的那个（阳性）"
+      ],
+      "fr": "Ton sac est bleu et le mien est noir.",
+      "zh": "你的包是蓝色的，我的是黑色的。",
+      "ipa": "/mjɛ̃/",
+      "highlight": "mien",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mien",
+      "frequency": 4.22,
+      "primaryMeaning": "我的那个（阳性）"
+    },
+    {
+      "word": "certaines",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "某些",
+        "有些（阴性复数）"
+      ],
+      "fr": "Certaines rues sont très étroites.",
+      "zh": "有些街道很窄。",
+      "ipa": "/sɛʁ.tɛn/",
+      "highlight": "Certaines",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/certaines",
+      "frequency": 5.23,
+      "primaryMeaning": "有些"
+    },
+    {
+      "word": "toutes",
+      "pos": "art.",
+      "gender": null,
+      "meanings": [
+        "所有的（阴性复数）"
+      ],
+      "fr": "Toutes les fenêtres sont ouvertes.",
+      "zh": "所有窗户都开着。",
+      "ipa": "/tut/",
+      "highlight": "Toutes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/toutes",
+      "frequency": 5.71,
+      "primaryMeaning": "所有的（阴性复数）"
+    },
+    {
+      "word": "mienne",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我的那个（阴性）"
+      ],
+      "fr": "Ta chambre est plus grande que la mienne.",
+      "zh": "你的房间比我的大。",
+      "ipa": "/mjɛn/",
+      "highlight": "mienne",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mienne",
+      "frequency": 4.17,
+      "primaryMeaning": "我的那个（阴性）"
+    },
+    {
+      "word": "emplir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "装满",
+        "充满"
+      ],
+      "fr": "Cette musique peut emplir la salle de joie.",
+      "zh": "这音乐能让整个大厅充满喜悦。",
+      "ipa": "/ɑ̃.pliʁ/",
+      "highlight": "emplir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/emplir",
+      "frequency": 2.26,
+      "primaryMeaning": "充满"
+    },
+    {
+      "word": "voile",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "帆"
+      ],
+      "fr": "Le vent gonfle la voile du bateau.",
+      "zh": "风鼓起了船帆。",
+      "ipa": "/vwal/",
+      "highlight": "voile",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/voile",
+      "frequency": 4.49,
+      "primaryMeaning": "帆"
+    },
+    {
+      "word": "eux-mêmes",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "他们自己"
+      ],
+      "fr": "Ils ont construit cette maison eux-mêmes.",
+      "zh": "这座房子是他们自己建的。",
+      "ipa": "/ø.mɛm/",
+      "highlight": "eux-mêmes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/eux-mêmes",
+      "frequency": 5.02,
+      "primaryMeaning": "他们自己"
+    },
+    {
+      "word": "lesquels",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "哪一些（阳性复数）"
+      ],
+      "fr": "Lesquels de ces fruits préfères-tu ?",
+      "zh": "这些水果你更喜欢哪些？",
+      "ipa": "/le.kɛl/",
+      "highlight": "Lesquels",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/lesquels",
+      "frequency": 4.66,
+      "primaryMeaning": "哪一些（阳性复数）"
+    },
+    {
+      "word": "mai",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "五月"
+      ],
+      "fr": "Les fleurs s'ouvrent au mois de mai.",
+      "zh": "花儿在五月绽放。",
+      "ipa": "/mɛ/",
+      "highlight": "mai",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mai",
+      "frequency": 5.24,
+      "primaryMeaning": "五月"
+    },
+    {
+      "word": "toi-même",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你自己"
+      ],
+      "fr": "Tu peux le faire toi-même.",
+      "zh": "你可以自己做这件事。",
+      "ipa": "/twa.mɛm/",
+      "highlight": "toi-même",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/toi-même",
+      "frequency": 5.73,
+      "primaryMeaning": "你自己"
+    },
+    {
+      "word": "week-end",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "周末"
+      ],
+      "fr": "Nous partons à la campagne ce week-end.",
+      "zh": "我们这个周末去乡下。",
+      "ipa": "/wi.kɛnd/",
+      "highlight": "week-end",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/week-end",
+      "frequency": 4.53,
+      "primaryMeaning": "周末"
+    },
+    {
+      "word": "faillir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "险些",
+        "差点"
+      ],
+      "fr": "J'ai failli rater le train.",
+      "zh": "我差点错过火车。",
+      "ipa": "/fa.jiʁ/",
+      "highlight": "failli",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/faillir",
+      "frequency": 2.57,
+      "primaryMeaning": "差点"
+    },
+    {
+      "word": "hocher",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "点头",
+        "摇动"
+      ],
+      "fr": "Il suffit de hocher la tête.",
+      "zh": "只要点点头就行了。",
+      "ipa": "/ɔ.ʃe/",
+      "highlight": "hocher",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/hocher",
+      "frequency": 2.35,
+      "primaryMeaning": "点头"
+    },
+    {
+      "word": "sienne",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "他的那个",
+        "她的那个（阴性）"
+      ],
+      "fr": "Ma réponse est différente de la sienne.",
+      "zh": "我的回答和他的不同。",
+      "ipa": "/sjɛn/",
+      "highlight": "sienne",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sienne",
+      "frequency": 4.01,
+      "primaryMeaning": "他的那个"
+    },
+    {
+      "word": "rocher",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "岩石"
+      ],
+      "fr": "Un oiseau se pose sur le rocher.",
+      "zh": "一只鸟落在岩石上。",
+      "ipa": "/ʁɔ.ʃe/",
+      "highlight": "rocher",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rocher",
+      "frequency": 4.03,
+      "primaryMeaning": "岩石"
+    },
+    {
+      "word": "rumeur",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "传闻",
+        "谣言"
+      ],
+      "fr": "Cette rumeur n'est pas vraie.",
+      "zh": "这个传闻不是真的。",
+      "ipa": "/ʁy.mœʁ/",
+      "highlight": "rumeur",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rumeur",
+      "frequency": 4.05,
+      "primaryMeaning": "传闻"
+    },
+    {
+      "word": "pilote",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "飞行员",
+        "驾驶员"
+      ],
+      "fr": "Le pilote prépare le décollage.",
+      "zh": "飞行员正在准备起飞。",
+      "ipa": "/pi.lɔt/",
+      "highlight": "pilote",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/pilote",
+      "frequency": 4.52,
+      "primaryMeaning": "飞行员"
+    },
+    {
+      "word": "redevenir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "重新变成",
+        "恢复"
+      ],
+      "fr": "Le ciel va redevenir bleu.",
+      "zh": "天空会重新变蓝。",
+      "ipa": "/ʁə.də.v(ə).niʁ/",
+      "highlight": "redevenir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/redevenir",
+      "frequency": 3.57,
+      "primaryMeaning": "重新变成"
+    },
+    {
+      "word": "luire",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "发光",
+        "闪耀"
+      ],
+      "fr": "On voit luire les étoiles.",
+      "zh": "我们看见星星在闪耀。",
+      "ipa": "/lɥiʁ/",
+      "highlight": "luire",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/luire",
+      "frequency": 2.17,
+      "primaryMeaning": "闪耀"
+    },
+    {
+      "word": "bel",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "美丽的（元音前的阳性形式）"
+      ],
+      "fr": "C'est un bel endroit pour se promener.",
+      "zh": "这是一个适合散步的美丽地方。",
+      "ipa": "/bɛl/",
+      "highlight": "bel",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/bel",
+      "frequency": 4.57,
+      "primaryMeaning": "美丽的（元音前的阳性形式）"
+    },
+    {
+      "word": "grand-chose",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "很多东西（常用于否定）"
+      ],
+      "fr": "Je n'ai pas grand-chose à dire.",
+      "zh": "我没有太多可说的。",
+      "ipa": "/ɡʁɑ̃.ʃoz/",
+      "highlight": "grand-chose",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/grand-chose",
+      "frequency": 5.44,
+      "primaryMeaning": "很多东西（常用于否定）"
+    },
+    {
+      "word": "sien",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "他的那个",
+        "她的那个（阳性）"
+      ],
+      "fr": "Mon vélo est plus petit que le sien.",
+      "zh": "我的自行车比他的更小。",
+      "ipa": "/sjɛ̃/",
+      "highlight": "sien",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sien",
+      "frequency": 3.97,
+      "primaryMeaning": "他的那个"
+    },
+    {
+      "word": "chacune",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "每一个（阴性）"
+      ],
+      "fr": "Chacune de ces photos raconte une histoire.",
+      "zh": "这些照片每一张都讲述着一个故事。",
+      "ipa": "/ʃa.kyn/",
+      "highlight": "Chacune",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/chacune",
+      "frequency": 4.5,
+      "primaryMeaning": "每一个（阴性）"
+    },
+    {
+      "word": "destiner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "指定用途",
+        "留给"
+      ],
+      "fr": "Nous allons destiner cette salle aux enfants.",
+      "zh": "我们打算把这个房间留给孩子们。",
+      "ipa": "/dɛs.ti.ne/",
+      "highlight": "destiner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/destiner",
+      "frequency": 2.43,
+      "primaryMeaning": "留给"
+    },
+    {
+      "word": "longer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "沿着……走"
+      ],
+      "fr": "Nous allons longer la rivière.",
+      "zh": "我们要沿着河边走。",
+      "ipa": "/lɔ̃.ʒe/",
+      "highlight": "longer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/longer",
+      "frequency": 2.94,
+      "primaryMeaning": "沿着……走"
+    },
+    {
+      "word": "vôtre",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你们的那个",
+        "您的那个"
+      ],
+      "fr": "Ce parapluie est-il le vôtre ?",
+      "zh": "这把伞是您的吗？",
+      "ipa": "/votʁ/",
+      "highlight": "vôtre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vôtre",
+      "frequency": 3.85,
+      "primaryMeaning": "你们的那个"
+    },
+    {
+      "word": "vase",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "花瓶"
+      ],
+      "fr": "Elle met des fleurs dans le vase.",
+      "zh": "她把花放进花瓶里。",
+      "ipa": "/vaz/",
+      "highlight": "vase",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vase",
+      "frequency": 3.77,
+      "primaryMeaning": "花瓶"
+    },
+    {
+      "word": "wagon",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "车厢"
+      ],
+      "fr": "Notre wagon est à l'avant du train.",
+      "zh": "我们的车厢在列车前部。",
+      "ipa": "/va.ɡɔ̃/",
+      "highlight": "wagon",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/wagon",
+      "frequency": 3.68,
+      "primaryMeaning": "车厢"
+    },
+    {
+      "word": "là-dessus",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "在那上面",
+        "关于这件事"
+      ],
+      "fr": "Pose ton livre là-dessus.",
+      "zh": "把你的书放在那上面。",
+      "ipa": "/la.d(ə).sy/",
+      "highlight": "là-dessus",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/là-dessus",
+      "frequency": 5.27,
+      "primaryMeaning": "在那上面"
+    },
+    {
+      "word": "ressortir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "再次出去",
+        "取出",
+        "显露"
+      ],
+      "fr": "Je dois ressortir pour acheter du pain.",
+      "zh": "我得再出去买面包。",
+      "ipa": "/ʁə.sɔʁ.tiʁ/",
+      "highlight": "ressortir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ressortir",
+      "frequency": 4.06,
+      "primaryMeaning": "再次出去"
+    },
+    {
+      "word": "grogner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "低吼",
+        "嘟囔"
+      ],
+      "fr": "Le chien commence à grogner.",
+      "zh": "狗开始低吼。",
+      "ipa": "/ɡʁɔ.ɲe/",
+      "highlight": "grogner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/grogner",
+      "frequency": 2.53,
+      "primaryMeaning": "低吼"
+    },
+    {
+      "word": "ricaner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "冷笑",
+        "讥笑"
+      ],
+      "fr": "Il ne faut pas ricaner quand quelqu'un se trompe.",
+      "zh": "别人犯错时不应讥笑。",
+      "ipa": "/ʁi.ka.ne/",
+      "highlight": "ricaner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ricaner",
+      "frequency": 2.56,
+      "primaryMeaning": "讥笑"
+    },
+    {
+      "word": "duquel",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "其……的（de与lequel的缩合）"
+      ],
+      "fr": "Le village près duquel je vis est calme.",
+      "zh": "我住的地方附近的那个村子很安静。",
+      "ipa": "/dy.kɛl/",
+      "highlight": "duquel",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/duquel",
+      "frequency": 4.2,
+      "primaryMeaning": "其……的（de与lequel的缩合）"
+    },
+    {
+      "word": "innombrable",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "无数的"
+      ],
+      "fr": "Une foule innombrable remplit la place.",
+      "zh": "无数人挤满了广场。",
+      "ipa": "/i.nɔ̃.bʁabl/",
+      "highlight": "innombrable",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/innombrable",
+      "frequency": 2.31,
+      "primaryMeaning": "无数的"
+    },
+    {
+      "word": "jusque-là",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "直到那时",
+        "到那里"
+      ],
+      "fr": "Jusque-là, tout allait bien.",
+      "zh": "直到那时，一切都很顺利。",
+      "ipa": "/ʒys.k(ə).la/",
+      "highlight": "Jusque-là",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/jusque-là",
+      "frequency": 4.51,
+      "primaryMeaning": "直到那时"
+    },
+    {
+      "word": "la plupart des",
+      "pos": "loc.",
+      "gender": null,
+      "meanings": [
+        "大多数的"
+      ],
+      "fr": "La plupart des élèves aiment ce cours.",
+      "zh": "大多数学生喜欢这门课。",
+      "ipa": "/la ply.paʁ de/",
+      "highlight": "La plupart des",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/la plupart des",
+      "frequency": 5.08,
+      "primaryMeaning": "大多数的"
+    },
+    {
+      "word": "sanglot",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "呜咽",
+        "抽泣"
+      ],
+      "fr": "Un sanglot interrompt sa phrase.",
+      "zh": "一声抽泣打断了他的话。",
+      "ipa": "/sɑ̃.ɡlo/",
+      "highlight": "sanglot",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sanglot",
+      "frequency": 2.44,
+      "primaryMeaning": "抽泣"
+    },
+    {
+      "word": "fasciner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使着迷",
+        "吸引"
+      ],
+      "fr": "Les étoiles continuent de fasciner les enfants.",
+      "zh": "星星始终让孩子们着迷。",
+      "ipa": "/fa.si.ne/",
+      "highlight": "fasciner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/fasciner",
+      "frequency": 2.48,
+      "primaryMeaning": "使着迷"
+    },
+    {
+      "word": "sud",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "南方",
+        "南部"
+      ],
+      "fr": "Cette ville se trouve dans le sud du pays.",
+      "zh": "这座城市位于该国南部。",
+      "ipa": "/syd/",
+      "highlight": "sud",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sud",
+      "frequency": 5.27,
+      "primaryMeaning": "南部"
+    },
+    {
+      "word": "vous-même",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "您自己"
+      ],
+      "fr": "Vous pouvez vérifier vous-même.",
+      "zh": "您可以自己核实。",
+      "ipa": "/vu.mɛm/",
+      "highlight": "vous-même",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vous-même",
+      "frequency": 6.12,
+      "primaryMeaning": "您自己"
+    },
+    {
+      "word": "sursauter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "惊跳",
+        "猛然一震"
+      ],
+      "fr": "Ce bruit me fait sursauter.",
+      "zh": "这个声音让我吓了一跳。",
+      "ipa": "/syʁ.so.te/",
+      "highlight": "sursauter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sursauter",
+      "frequency": 2.86,
+      "primaryMeaning": "惊跳"
+    },
+    {
+      "word": "puce",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "跳蚤",
+        "芯片"
+      ],
+      "fr": "Cette carte contient une petite puce.",
+      "zh": "这张卡内有一枚小芯片。",
+      "ipa": "/pys/",
+      "highlight": "puce",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/puce",
+      "frequency": 3.93,
+      "primaryMeaning": "芯片"
+    },
+    {
+      "word": "habit",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "衣服",
+        "服装"
+      ],
+      "fr": "Cet habit est trop grand pour moi.",
+      "zh": "这件衣服对我来说太大了。",
+      "ipa": "/a.bi/",
+      "highlight": "habit",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/habit",
+      "frequency": 3.64,
+      "primaryMeaning": "衣服"
+    },
+    {
+      "word": "empoigner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "抓紧",
+        "紧握"
+      ],
+      "fr": "Il faut empoigner la corde avec les deux mains.",
+      "zh": "必须双手抓紧绳子。",
+      "ipa": "/ɑ̃.pwa.ɲe/",
+      "highlight": "empoigner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/empoigner",
+      "frequency": 2.25,
+      "primaryMeaning": "抓紧"
+    },
+    {
+      "word": "raccompagner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "陪送",
+        "送回"
+      ],
+      "fr": "Je peux te raccompagner chez toi.",
+      "zh": "我可以送你回家。",
+      "ipa": "/ʁa.kɔ̃.pa.ɲe/",
+      "highlight": "raccompagner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/raccompagner",
+      "frequency": 2.72,
+      "primaryMeaning": "陪送"
+    },
+    {
+      "word": "aboutir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "通向",
+        "取得结果"
+      ],
+      "fr": "Ce chemin va aboutir à la plage.",
+      "zh": "这条路通向沙滩。",
+      "ipa": "/a.bu.tiʁ/",
+      "highlight": "aboutir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/aboutir",
+      "frequency": 3.91,
+      "primaryMeaning": "通向"
+    },
+    {
+      "word": "glacer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使冰冷",
+        "使惊恐"
+      ],
+      "fr": "Ce vent peut glacer les mains.",
+      "zh": "这阵风能让双手冻得冰冷。",
+      "ipa": "/ɡla.se/",
+      "highlight": "glacer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/glacer",
+      "frequency": 2.52,
+      "primaryMeaning": "使冰冷"
+    },
+    {
+      "word": "info",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "信息",
+        "消息（口语）"
+      ],
+      "fr": "Merci pour cette info utile.",
+      "zh": "谢谢你提供这条有用的信息。",
+      "ipa": "/ɛ̃.fo/",
+      "highlight": "info",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/info",
+      "frequency": 4.63,
+      "primaryMeaning": "信息"
+    },
+    {
+      "word": "soi-même",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "自己",
+        "自身"
+      ],
+      "fr": "Il faut apprendre à croire en soi-même.",
+      "zh": "要学会相信自己。",
+      "ipa": "/swa.mɛm/",
+      "highlight": "soi-même",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/soi-même",
+      "frequency": 4.86,
+      "primaryMeaning": "自己"
+    },
+    {
+      "word": "dévisager",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "仔细端详",
+        "盯着看"
+      ],
+      "fr": "Il est impoli de dévisager les gens.",
+      "zh": "盯着别人看是不礼貌的。",
+      "ipa": "/de.vi.za.ʒe/",
+      "highlight": "dévisager",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/dévisager",
+      "frequency": 2.42,
+      "primaryMeaning": "仔细端详"
+    },
+    {
+      "word": "divan",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "长沙发"
+      ],
+      "fr": "Le chat dort sur le divan.",
+      "zh": "猫睡在长沙发上。",
+      "ipa": "/di.vɑ̃/",
+      "highlight": "divan",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/divan",
+      "frequency": 3.34,
+      "primaryMeaning": "长沙发"
+    },
+    {
+      "word": "foot",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "足球（口语）"
+      ],
+      "fr": "Nous jouons au foot après les cours.",
+      "zh": "我们放学后踢足球。",
+      "ipa": "/fut/",
+      "highlight": "foot",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/foot",
+      "frequency": 4.45,
+      "primaryMeaning": "足球（口语）"
+    },
+    {
+      "word": "ordonnance",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "处方",
+        "法令"
+      ],
+      "fr": "Le médecin me donne une ordonnance.",
+      "zh": "医生给了我一张处方。",
+      "ipa": "/ɔʁ.dɔ.nɑ̃s/",
+      "highlight": "ordonnance",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ordonnance",
+      "frequency": 4.21,
+      "primaryMeaning": "处方"
+    },
+    {
+      "word": "nôtre",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我们的那个"
+      ],
+      "fr": "Votre maison est plus ancienne que la nôtre.",
+      "zh": "你们的房子比我们的更古老。",
+      "ipa": "/notʁ/",
+      "highlight": "nôtre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nôtre",
+      "frequency": 4.04,
+      "primaryMeaning": "我们的那个"
+    },
+    {
+      "word": "la plupart",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "大多数"
+      ],
+      "fr": "La plupart sont déjà partis.",
+      "zh": "大多数人已经离开了。",
+      "ipa": "/la ply.paʁ/",
+      "highlight": "La plupart",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/la plupart",
+      "frequency": 5.09,
+      "primaryMeaning": "大多数"
+    },
+    {
+      "word": "sous-titre",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "字幕",
+        "副标题"
+      ],
+      "fr": "Je lis le sous-titre de la vidéo.",
+      "zh": "我在读视频的字幕。",
+      "ipa": "/su.titʁ/",
+      "highlight": "sous-titre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sous-titre",
+      "frequency": 5.23,
+      "primaryMeaning": "字幕"
+    },
+    {
+      "word": "guide",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "导游",
+        "指南"
+      ],
+      "fr": "Le guide nous montre le musée.",
+      "zh": "导游带我们参观博物馆。",
+      "ipa": "/ɡid/",
+      "highlight": "guide",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/guide",
+      "frequency": 4.5,
+      "primaryMeaning": "导游"
+    },
+    {
+      "word": "enchanter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使高兴",
+        "使陶醉"
+      ],
+      "fr": "Cette surprise va enchanter ma sœur.",
+      "zh": "这个惊喜会让我姐姐很高兴。",
+      "ipa": "/ɑ̃.ʃɑ̃.te/",
+      "highlight": "enchanter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/enchanter",
+      "frequency": 2.54,
+      "primaryMeaning": "使高兴"
+    },
+    {
+      "word": "grouiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "挤满",
+        "蠕动"
+      ],
+      "fr": "La place commence à grouiller de monde.",
+      "zh": "广场开始挤满人。",
+      "ipa": "/ɡʁu.je/",
+      "highlight": "grouiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/grouiller",
+      "frequency": 2.11,
+      "primaryMeaning": "挤满"
+    },
+    {
+      "word": "remarque",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "评论",
+        "意见",
+        "注意事项"
+      ],
+      "fr": "Ta remarque est très utile.",
+      "zh": "你的意见很有用。",
+      "ipa": "/ʁə.maʁk/",
+      "highlight": "remarque",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/remarque",
+      "frequency": 4.54,
+      "primaryMeaning": "意见"
+    },
+    {
+      "word": "treize",
+      "pos": "num.",
+      "gender": null,
+      "meanings": [
+        "十三"
+      ],
+      "fr": "Il y a treize élèves dans la salle.",
+      "zh": "教室里有十三名学生。",
+      "ipa": "/tʁɛz/",
+      "highlight": "treize",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/treize",
+      "frequency": 4.02,
+      "primaryMeaning": "十三"
+    },
+    {
+      "word": "marine",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "海军",
+        "航海业"
+      ],
+      "fr": "Son frère travaille dans la marine.",
+      "zh": "他的哥哥在海军工作。",
+      "ipa": "/ma.ʁin/",
+      "highlight": "marine",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/marine",
+      "frequency": 4.85,
+      "primaryMeaning": "海军"
+    },
+    {
+      "word": "nettement",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "清楚地",
+        "明显地"
+      ],
+      "fr": "Je vois nettement la différence.",
+      "zh": "我清楚地看到了区别。",
+      "ipa": "/nɛtmɑ̃/",
+      "highlight": "nettement",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nettement",
+      "frequency": 4.33,
+      "primaryMeaning": "清楚地"
+    },
+    {
+      "word": "pudeur",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "羞涩",
+        "羞耻心",
+        "含蓄"
+      ],
+      "fr": "Elle parle de ses sentiments avec pudeur.",
+      "zh": "她含蓄地谈起自己的感情。",
+      "ipa": "/py.dœʁ/",
+      "highlight": "pudeur",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/pudeur",
+      "frequency": 3.68,
+      "primaryMeaning": "含蓄"
+    },
+    {
+      "word": "rôder",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "徘徊",
+        "游荡"
+      ],
+      "fr": "Un chat aime rôder dans le jardin.",
+      "zh": "一只猫喜欢在花园里游荡。",
+      "ipa": "/ʁo.de/",
+      "highlight": "rôder",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rôder",
+      "frequency": 2.53,
+      "primaryMeaning": "游荡"
+    },
+    {
+      "word": "reparler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "再次谈论"
+      ],
+      "fr": "Nous pourrons reparler de ce projet demain.",
+      "zh": "我们明天可以再谈这个项目。",
+      "ipa": "/ʁə.paʁ.le/",
+      "highlight": "reparler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/reparler",
+      "frequency": 3.26,
+      "primaryMeaning": "再次谈论"
+    },
+    {
+      "word": "intriguer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使好奇",
+        "使困惑"
+      ],
+      "fr": "Cette question continue de m'intriguer.",
+      "zh": "这个问题一直让我感到好奇。",
+      "ipa": "/ɛ̃.tʁi.ɡe/",
+      "highlight": "intriguer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/intriguer",
+      "frequency": 2.44,
+      "primaryMeaning": "使好奇"
+    },
+    {
+      "word": "exaspérer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "激怒",
+        "使恼火"
+      ],
+      "fr": "Ce bruit finit par exaspérer les voisins.",
+      "zh": "这个噪声最终惹恼了邻居们。",
+      "ipa": "/ɛɡ.zas.pe.ʁe/",
+      "highlight": "exaspérer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/exaspérer",
+      "frequency": 2.4,
+      "primaryMeaning": "激怒"
+    },
+    {
+      "word": "entrouvrir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "半开",
+        "稍稍打开"
+      ],
+      "fr": "Tu peux entrouvrir la fenêtre.",
+      "zh": "你可以把窗户稍微打开一点。",
+      "ipa": "/ɑ̃.tʁu.vʁiʁ/",
+      "highlight": "entrouvrir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/entrouvrir",
+      "frequency": 2.04,
+      "primaryMeaning": "半开"
+    },
+    {
+      "word": "raidir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使僵硬",
+        "使绷紧"
+      ],
+      "fr": "Le froid peut raidir les doigts.",
+      "zh": "寒冷会使手指僵硬。",
+      "ipa": "/ʁɛ.diʁ/",
+      "highlight": "raidir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/raidir",
+      "frequency": 2.04,
+      "primaryMeaning": "使僵硬"
+    },
+    {
+      "word": "déplier",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "展开",
+        "打开"
+      ],
+      "fr": "Je vais déplier la carte.",
+      "zh": "我要展开地图。",
+      "ipa": "/de.pli.je/",
+      "highlight": "déplier",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/déplier",
+      "frequency": 2.35,
+      "primaryMeaning": "展开"
+    },
+    {
+      "word": "rouiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "生锈"
+      ],
+      "fr": "La pluie fait rouiller ce vieux vélo.",
+      "zh": "雨水让这辆旧自行车生锈了。",
+      "ipa": "/ʁu.je/",
+      "highlight": "rouiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rouiller",
+      "frequency": 2.54,
+      "primaryMeaning": "生锈"
+    },
+    {
+      "word": "vis-à-vis",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "面对面",
+        "在对面"
+      ],
+      "fr": "Les deux maisons sont situées vis-à-vis.",
+      "zh": "这两栋房子面对面。",
+      "ipa": "/vi.za.vi/",
+      "highlight": "vis-à-vis",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vis-à-vis",
+      "frequency": 4.63,
+      "primaryMeaning": "面对面"
+    },
+    {
+      "word": "masquer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "遮住",
+        "掩饰"
+      ],
+      "fr": "Les nuages vont masquer le soleil.",
+      "zh": "云层将遮住太阳。",
+      "ipa": "/maske/",
+      "highlight": "masquer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/masquer",
+      "frequency": 3.6,
+      "primaryMeaning": "遮住"
+    },
+    {
+      "word": "pressentir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "预感到"
+      ],
+      "fr": "Je commence à pressentir un problème.",
+      "zh": "我开始预感到会有问题。",
+      "ipa": "/pʁe.sɑ̃.tiʁ/",
+      "highlight": "pressentir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/pressentir",
+      "frequency": 2.23,
+      "primaryMeaning": "预感到"
+    },
+    {
+      "word": "ruisseler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "流淌",
+        "淌下"
+      ],
+      "fr": "La pluie fait ruisseler l'eau sur les vitres.",
+      "zh": "雨水顺着玻璃淌下来。",
+      "ipa": "/ʁɥi.sle/",
+      "highlight": "ruisseler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ruisseler",
+      "frequency": 2.15,
+      "primaryMeaning": "淌下"
+    },
+    {
+      "word": "accourir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "跑来",
+        "赶来"
+      ],
+      "fr": "Nous voyons les voisins accourir.",
+      "zh": "我们看到邻居们赶来。",
+      "ipa": "/a.ku.ʁiʁ/",
+      "highlight": "accourir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/accourir",
+      "frequency": 2.22,
+      "primaryMeaning": "赶来"
+    },
+    {
+      "word": "successif",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "连续的",
+        "接连的"
+      ],
+      "fr": "Chaque essai successif apporte une amélioration.",
+      "zh": "每一次接连的尝试都带来改进。",
+      "ipa": "/syksesif/",
+      "highlight": "successif",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/successif",
+      "frequency": 2.36,
+      "primaryMeaning": "接连的"
+    },
+    {
+      "word": "cligner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "眨眼"
+      ],
+      "fr": "La lumière me fait cligner des yeux.",
+      "zh": "光线让我眨眼。",
+      "ipa": "/kli.ɲe/",
+      "highlight": "cligner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/cligner",
+      "frequency": 2.54,
+      "primaryMeaning": "眨眼"
+    },
+    {
+      "word": "réflexe",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "反射",
+        "本能反应"
+      ],
+      "fr": "Fermer les yeux est parfois un réflexe.",
+      "zh": "闭上眼睛有时是一种本能反应。",
+      "ipa": "/ʁe.flɛks/",
+      "highlight": "réflexe",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/réflexe",
+      "frequency": 3.79,
+      "primaryMeaning": "本能反应"
+    },
+    {
+      "word": "douzaine",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "十二个",
+        "一打"
+      ],
+      "fr": "Je voudrais une douzaine d'œufs.",
+      "zh": "我想要一打鸡蛋。",
+      "ipa": "/du.zɛn/",
+      "highlight": "douzaine",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/douzaine",
+      "frequency": 3.99,
+      "primaryMeaning": "一打"
+    },
+    {
+      "word": "bâiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "打哈欠"
+      ],
+      "fr": "Je commence à bâiller de fatigue.",
+      "zh": "我累得开始打哈欠。",
+      "ipa": "/ba.je/",
+      "highlight": "bâiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/bâiller",
+      "frequency": 2.12,
+      "primaryMeaning": "打哈欠"
+    },
+    {
+      "word": "litre",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "升"
+      ],
+      "fr": "Cette bouteille contient un litre d'eau.",
+      "zh": "这个瓶子装有一升水。",
+      "ipa": "/litʁ/",
+      "highlight": "litre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/litre",
+      "frequency": 3.82,
+      "primaryMeaning": "升"
+    },
+    {
+      "word": "ronfler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "打鼾"
+      ],
+      "fr": "Je l'entends ronfler dans la chambre.",
+      "zh": "我听到他在房间里打鼾。",
+      "ipa": "/ʁɔ̃.fle/",
+      "highlight": "ronfler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ronfler",
+      "frequency": 2.57,
+      "primaryMeaning": "打鼾"
+    },
+    {
+      "word": "milliard",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "十亿"
+      ],
+      "fr": "Ce projet coûte un milliard d'euros.",
+      "zh": "这个项目耗资十亿欧元。",
+      "ipa": "/mi.ljaʁ/",
+      "highlight": "milliard",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/milliard",
+      "frequency": 4.11,
+      "primaryMeaning": "十亿"
+    },
+    {
+      "word": "gravir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "攀登",
+        "登上"
+      ],
+      "fr": "Nous voulons gravir cette montagne.",
+      "zh": "我们想要攀登这座山。",
+      "ipa": "/ɡʁa.viʁ/",
+      "highlight": "gravir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/gravir",
+      "frequency": 3.21,
+      "primaryMeaning": "攀登"
+    },
+    {
+      "word": "rectangle",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "长方形"
+      ],
+      "fr": "Dessine un rectangle sur la feuille.",
+      "zh": "在纸上画一个长方形。",
+      "ipa": "/ʁɛk.tɑ̃ɡl/",
+      "highlight": "rectangle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rectangle",
+      "frequency": 3.39,
+      "primaryMeaning": "长方形"
+    },
+    {
+      "word": "tournage",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "电影拍摄",
+        "摄制"
+      ],
+      "fr": "Le tournage du film commence demain.",
+      "zh": "电影的拍摄明天开始。",
+      "ipa": "/tuʁnaʒ/",
+      "highlight": "tournage",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tournage",
+      "frequency": 4.33,
+      "primaryMeaning": "电影拍摄"
+    },
+    {
+      "word": "pâté",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "肉酱",
+        "肉馅饼"
+      ],
+      "fr": "Je mange du pâté avec du pain.",
+      "zh": "我把肉酱配着面包吃。",
+      "ipa": "/pa.te/",
+      "highlight": "pâté",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/pâté",
+      "frequency": 3.44,
+      "primaryMeaning": "肉酱"
+    },
+    {
+      "word": "tapoter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "轻拍",
+        "轻敲"
+      ],
+      "fr": "Il commence à tapoter sur la table.",
+      "zh": "他开始轻敲桌子。",
+      "ipa": "/tapɔte/",
+      "highlight": "tapoter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tapoter",
+      "frequency": 2.49,
+      "primaryMeaning": "轻敲"
+    },
+    {
+      "word": "plisser",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使起皱",
+        "眯起"
+      ],
+      "fr": "Le soleil me fait plisser les yeux.",
+      "zh": "阳光让我眯起眼睛。",
+      "ipa": "/pli.se/",
+      "highlight": "plisser",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/plisser",
+      "frequency": 2.17,
+      "primaryMeaning": "眯起"
+    },
+    {
+      "word": "tacher",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "弄脏",
+        "沾污"
+      ],
+      "fr": "Attention à ne pas tacher ta chemise.",
+      "zh": "小心别弄脏你的衬衫。",
+      "ipa": "/ta.ʃe/",
+      "highlight": "tacher",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tacher",
+      "frequency": 2.47,
+      "primaryMeaning": "弄脏"
+    },
+    {
+      "word": "mairie",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "市政厅",
+        "镇政府"
+      ],
+      "fr": "La mairie se trouve sur la place.",
+      "zh": "市政厅位于广场上。",
+      "ipa": "/mɛ.ʁi/",
+      "highlight": "mairie",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/mairie",
+      "frequency": 4.53,
+      "primaryMeaning": "市政厅"
+    },
+    {
+      "word": "enlacer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "拥抱",
+        "搂住"
+      ],
+      "fr": "Elle veut enlacer sa mère.",
+      "zh": "她想拥抱自己的母亲。",
+      "ipa": "/ɑ̃.la.se/",
+      "highlight": "enlacer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/enlacer",
+      "frequency": 2.55,
+      "primaryMeaning": "拥抱"
+    },
+    {
+      "word": "froncer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "皱起"
+      ],
+      "fr": "Il commence à froncer les sourcils.",
+      "zh": "他开始皱眉头。",
+      "ipa": "/fʁɔ̃.se/",
+      "highlight": "froncer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/froncer",
+      "frequency": 2.25,
+      "primaryMeaning": "皱起"
+    },
+    {
+      "word": "près de",
+      "pos": "prép.",
+      "gender": null,
+      "meanings": [
+        "在……附近",
+        "接近"
+      ],
+      "fr": "J'habite près de la gare.",
+      "zh": "我住在火车站附近。",
+      "ipa": "/pʁɛ də/",
+      "highlight": "près de",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/près de",
+      "frequency": 5.45,
+      "primaryMeaning": "在……附近"
+    },
+    {
+      "word": "nous-mêmes",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我们自己"
+      ],
+      "fr": "Nous préparons le repas nous-mêmes.",
+      "zh": "我们自己准备饭菜。",
+      "ipa": "/nu.mɛm/",
+      "highlight": "nous-mêmes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nous-mêmes",
+      "frequency": 5.14,
+      "primaryMeaning": "我们自己"
+    },
+    {
+      "word": "vingtaine",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "大约二十",
+        "二十个左右"
+      ],
+      "fr": "Une vingtaine de personnes sont venues.",
+      "zh": "大约二十个人来了。",
+      "ipa": "/vɛ̃.tɛn/",
+      "highlight": "vingtaine",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vingtaine",
+      "frequency": 4.22,
+      "primaryMeaning": "大约二十"
+    },
+    {
+      "word": "boiter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "跛行",
+        "一瘸一拐地走"
+      ],
+      "fr": "Cette blessure le fait boiter.",
+      "zh": "这处伤让他走路一瘸一拐。",
+      "ipa": "/bwa.te/",
+      "highlight": "boiter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/boiter",
+      "frequency": 2.33,
+      "primaryMeaning": "跛行"
+    },
+    {
+      "word": "malle",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "大箱子",
+        "旅行箱"
+      ],
+      "fr": "Les vieux vêtements sont dans une malle.",
+      "zh": "旧衣服放在一个大箱子里。",
+      "ipa": "/mal/",
+      "highlight": "malle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/malle",
+      "frequency": 3.38,
+      "primaryMeaning": "大箱子"
+    },
+    {
+      "word": "micro",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "麦克风"
+      ],
+      "fr": "Parle plus près du micro.",
+      "zh": "靠近麦克风说话。",
+      "ipa": "/mi.kʁo/",
+      "highlight": "micro",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/micro",
+      "frequency": 4.48,
+      "primaryMeaning": "麦克风"
+    },
+    {
+      "word": "chantonner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "轻声哼唱"
+      ],
+      "fr": "J'aime chantonner en cuisinant.",
+      "zh": "我喜欢做饭时轻声哼唱。",
+      "ipa": "/ʃɑ̃.tɔ.ne/",
+      "highlight": "chantonner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/chantonner",
+      "frequency": 2.04,
+      "primaryMeaning": "轻声哼唱"
+    },
+    {
+      "word": "enjamber",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "跨过"
+      ],
+      "fr": "Il faut enjamber ce petit mur.",
+      "zh": "需要跨过这堵矮墙。",
+      "ipa": "/ɑ̃.ʒɑ̃.be/",
+      "highlight": "enjamber",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/enjamber",
+      "frequency": 2.56,
+      "primaryMeaning": "跨过"
+    },
+    {
+      "word": "elles-mêmes",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "她们自己"
+      ],
+      "fr": "Elles ont organisé la fête elles-mêmes.",
+      "zh": "聚会是她们自己组织的。",
+      "ipa": "/ɛl.mɛm/",
+      "highlight": "elles-mêmes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/elles-mêmes",
+      "frequency": 5.04,
+      "primaryMeaning": "她们自己"
+    },
+    {
+      "word": "munition",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "弹药"
+      ],
+      "fr": "Cette boîte contient une munition ancienne.",
+      "zh": "这个盒子里有一枚旧弹药。",
+      "ipa": "/my.ni.sjɔ̃/",
+      "highlight": "munition",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/munition",
+      "frequency": 2.89,
+      "primaryMeaning": "弹药"
+    },
+    {
+      "word": "sangloter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "抽泣",
+        "呜咽"
+      ],
+      "fr": "L'enfant commence à sangloter.",
+      "zh": "孩子开始抽泣。",
+      "ipa": "/sɑ̃glɔte/",
+      "highlight": "sangloter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sangloter",
+      "frequency": 2.22,
+      "primaryMeaning": "抽泣"
+    },
+    {
+      "word": "insistance",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "坚持",
+        "执意"
+      ],
+      "fr": "Il demande avec insistance une réponse.",
+      "zh": "他执意要求一个答复。",
+      "ipa": "/ɛ̃sistɑ̃s/",
+      "highlight": "insistance",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/insistance",
+      "frequency": 3.49,
+      "primaryMeaning": "执意"
+    },
+    {
+      "word": "football",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "足球"
+      ],
+      "fr": "Mon frère aime jouer au football.",
+      "zh": "我的哥哥喜欢踢足球。",
+      "ipa": "/fut.bol/",
+      "highlight": "football",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/football",
+      "frequency": 4.75,
+      "primaryMeaning": "足球"
+    },
+    {
+      "word": "sous-sol",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "地下室",
+        "地下"
+      ],
+      "fr": "Nous rangeons les outils au sous-sol.",
+      "zh": "我们把工具放在地下室。",
+      "ipa": "/su.sɔl/",
+      "highlight": "sous-sol",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sous-sol",
+      "frequency": 4.95,
+      "primaryMeaning": "地下室"
+    },
+    {
+      "word": "haricot",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "豆",
+        "菜豆"
+      ],
+      "fr": "Je mets un haricot dans le pot.",
+      "zh": "我把一颗豆子放进罐子里。",
+      "ipa": "/a.ʁi.ko/",
+      "highlight": "haricot",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/haricot",
+      "frequency": 3.13,
+      "primaryMeaning": "豆"
+    },
+    {
+      "word": "petit-déjeuner",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "早餐"
+      ],
+      "fr": "Je prends mon petit-déjeuner à sept heures.",
+      "zh": "我七点吃早餐。",
+      "ipa": "/ptideʒœne/, /pətideʒœne/",
+      "highlight": "petit-déjeuner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/petit-déjeuner",
+      "frequency": 4.44,
+      "primaryMeaning": "早餐"
+    },
+    {
+      "word": "trentaine",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "大约三十",
+        "三十个左右"
+      ],
+      "fr": "Une trentaine de livres sont sur la table.",
+      "zh": "桌上有大约三十本书。",
+      "ipa": "/tʁɑ̃.tɛn/",
+      "highlight": "trentaine",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/trentaine",
+      "frequency": 4.07,
+      "primaryMeaning": "大约三十"
+    },
+    {
+      "word": "soi-disant",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "所谓的",
+        "自称的"
+      ],
+      "fr": "Ce soi-disant expert ne sait rien.",
+      "zh": "这个所谓的专家什么也不懂。",
+      "ipa": "/swa.di.zɑ̃/",
+      "highlight": "soi-disant",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/soi-disant",
+      "frequency": 4.49,
+      "primaryMeaning": "所谓的"
+    },
+    {
+      "word": "terrestre",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "陆地的",
+        "地球的"
+      ],
+      "fr": "Le transport terrestre est parfois plus lent.",
+      "zh": "陆地运输有时更慢。",
+      "ipa": "/tɛ.ʁɛstʁ/",
+      "highlight": "terrestre",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/terrestre",
+      "frequency": 4.09,
+      "primaryMeaning": "陆地的"
+    },
+    {
+      "word": "recoin",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "角落",
+        "偏僻处"
+      ],
+      "fr": "Le chat se cache dans un recoin.",
+      "zh": "猫躲在一个角落里。",
+      "ipa": "/ʁə.kwɛ̃/",
+      "highlight": "recoin",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/recoin",
+      "frequency": 2.84,
+      "primaryMeaning": "角落"
+    },
+    {
+      "word": "scintiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "闪烁",
+        "闪耀"
+      ],
+      "fr": "Je regarde les étoiles scintiller.",
+      "zh": "我看着星星闪烁。",
+      "ipa": "/sɛ̃.ti.je/",
+      "highlight": "scintiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/scintiller",
+      "frequency": 2.32,
+      "primaryMeaning": "闪烁"
+    },
+    {
+      "word": "quinzaine",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "大约十五",
+        "两周左右"
+      ],
+      "fr": "Je pars pour une quinzaine de jours.",
+      "zh": "我要离开大约十五天。",
+      "ipa": "/kɛ̃.zɛn/",
+      "highlight": "quinzaine",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/quinzaine",
+      "frequency": 4.03,
+      "primaryMeaning": "大约十五"
+    },
+    {
+      "word": "matinal",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "清晨的",
+        "早起的"
+      ],
+      "fr": "Le calme matinal me plaît.",
+      "zh": "我喜欢清晨的宁静。",
+      "ipa": "/ma.ti.nal/",
+      "highlight": "matinal",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/matinal",
+      "frequency": 3.22,
+      "primaryMeaning": "清晨的"
+    },
+    {
+      "word": "maths",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "数学（口语）"
+      ],
+      "fr": "Elle adore les maths.",
+      "zh": "她很喜欢数学。",
+      "ipa": "/mat/",
+      "highlight": "maths",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/maths",
+      "frequency": 4.09,
+      "plural": true,
+      "primaryMeaning": "数学（口语）"
+    },
+    {
+      "word": "tutoyer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "用tu称呼",
+        "以你相称"
+      ],
+      "fr": "Est-ce que je peux te tutoyer ?",
+      "zh": "我可以用你来称呼你吗？",
+      "ipa": "/ty.twa.je/",
+      "highlight": "tutoyer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tutoyer",
+      "frequency": 2.83,
+      "primaryMeaning": "用tu称呼"
+    },
+    {
+      "word": "oh",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "哦",
+        "啊"
+      ],
+      "ipa": "/o/",
+      "fr": "Oh, quelle bonne surprise !",
+      "zh": "哦，真是个好惊喜！",
+      "highlight": "Oh",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/oh",
+      "frequency": 5.09,
+      "primaryMeaning": "哦"
+    },
+    {
+      "word": "ah",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "啊",
+        "哦"
+      ],
+      "ipa": "/a/",
+      "fr": "Ah, je comprends maintenant.",
+      "zh": "啊，我现在明白了。",
+      "highlight": "Ah",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ah",
+      "frequency": 5.31,
+      "primaryMeaning": "啊"
+    },
+    {
+      "word": "hein",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "嗯",
+        "是吧",
+        "什么"
+      ],
+      "ipa": "/ɛ̃/",
+      "fr": "Il fait beau, hein ?",
+      "zh": "天气真好，是吧？",
+      "highlight": "hein",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/hein",
+      "frequency": 5.08,
+      "primaryMeaning": "是吧"
+    },
+    {
+      "word": "autres",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "其他的（复数）"
+      ],
+      "ipa": "/otʁ/",
+      "fr": "Les autres élèves sont déjà partis.",
+      "zh": "其他学生已经离开了。",
+      "highlight": "autres",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/autres",
+      "frequency": 6.0,
+      "primaryMeaning": "其他的（复数）"
+    },
+    {
+      "word": "hé",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "嘿（引起注意）"
+      ],
+      "ipa": "/e/",
+      "fr": "Hé, attends-moi !",
+      "zh": "嘿，等等我！",
+      "highlight": "Hé",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/hé",
+      "frequency": 4.18,
+      "primaryMeaning": "嘿（引起注意）"
+    },
+    {
+      "word": "ok",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "好的",
+        "行"
+      ],
+      "ipa": "/ɔ.kɛ/",
+      "fr": "Ok, on se retrouve à huit heures.",
+      "zh": "好的，我们八点见。",
+      "highlight": "Ok",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ok",
+      "frequency": 5.04,
+      "primaryMeaning": "好的"
+    },
+    {
+      "word": "tiens",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "给",
+        "咦",
+        "你看"
+      ],
+      "ipa": "/tjɛ̃/",
+      "fr": "Tiens, voici ton livre.",
+      "zh": "给，这是你的书。",
+      "highlight": "Tiens",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tiens",
+      "frequency": 4.88,
+      "primaryMeaning": "给"
+    },
+    {
+      "word": "euh",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "呃（表示犹豫）"
+      ],
+      "ipa": "/ø/",
+      "fr": "Euh, je dois réfléchir un instant.",
+      "zh": "呃，我得想一想。",
+      "highlight": "Euh",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/euh",
+      "frequency": 4.57,
+      "primaryMeaning": "呃（表示犹豫）"
+    },
+    {
+      "word": "l'une",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "其中一个（阴性）"
+      ],
+      "ipa": "/lyn/",
+      "fr": "L'une de mes amies habite ici.",
+      "zh": "我的一位朋友住在这里。",
+      "highlight": "L'une",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/l'une",
+      "frequency": 6.81,
+      "primaryMeaning": "其中一个（阴性）"
+    },
+    {
+      "word": "cents",
+      "pos": "num.",
+      "gender": null,
+      "meanings": [
+        "百（cent的复数形式）"
+      ],
+      "ipa": "/sɑ̃/",
+      "fr": "Ce vélo coûte deux cents euros.",
+      "zh": "这辆自行车售价两百欧元。",
+      "highlight": "cents",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/cents",
+      "frequency": 4.27,
+      "primaryMeaning": "百（cent的复数形式）"
+    },
+    {
+      "word": "uns",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "一些人（用于les uns）"
+      ],
+      "ipa": "/œ̃/",
+      "fr": "Les uns préfèrent marcher, les autres courir.",
+      "zh": "有些人更喜欢走路，另一些人更喜欢跑步。",
+      "highlight": "uns",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/uns",
+      "frequency": 4.57,
+      "primaryMeaning": "一些人（用于les uns）"
+    },
+    {
+      "word": "etc.",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "等等"
+      ],
+      "ipa": "/ɛt.se.te.ʁa/",
+      "fr": "Nous vendons des fruits, des légumes, etc.",
+      "zh": "我们销售水果、蔬菜等等。",
+      "highlight": "etc.",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/etc.",
+      "frequency": 5.29,
+      "primaryMeaning": "等等"
+    },
+    {
+      "word": "sous-titrage",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "字幕制作",
+        "配字幕"
+      ],
+      "ipa": "/su.ti.tʁaʒ/",
+      "fr": "Le sous-titrage facilite la compréhension.",
+      "zh": "字幕有助于理解。",
+      "highlight": "sous-titrage",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/sous-titrage",
+      "frequency": 2.94,
+      "primaryMeaning": "字幕制作"
+    },
+    {
+      "word": "s'efforcer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "努力",
+        "尽力"
+      ],
+      "ipa": "/se.fɔʁ.se/",
+      "fr": "Il faut s'efforcer de parler clairement.",
+      "zh": "要努力把话说清楚。",
+      "highlight": "s'efforcer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/s'efforcer",
+      "frequency": 2.96,
+      "primaryMeaning": "努力"
+    },
+    {
+      "word": "s'écrier",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "大声叫喊",
+        "惊呼"
+      ],
+      "ipa": "/se.kʁi.je/",
+      "fr": "Elle ne peut pas s'empêcher de s'écrier de joie.",
+      "zh": "她忍不住高兴地叫起来。",
+      "highlight": "s'écrier",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/s'écrier",
+      "frequency": 2.09,
+      "primaryMeaning": "大声叫喊"
+    },
+    {
+      "word": "stop",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "停",
+        "停止"
+      ],
+      "ipa": "/stɔp/",
+      "fr": "Stop, ne traverse pas maintenant !",
+      "zh": "停，现在别过马路！",
+      "highlight": "Stop",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/stop",
+      "frequency": 4.36,
+      "primaryMeaning": "停"
+    },
+    {
+      "word": "déconner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "胡说",
+        "乱来（口语）"
+      ],
+      "ipa": "/de.kɔ.ne/",
+      "fr": "Arrête de déconner et écoute-moi.",
+      "zh": "别胡说了，听我说。",
+      "highlight": "déconner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/déconner",
+      "frequency": 3.68,
+      "primaryMeaning": "胡说"
+    },
+    {
+      "word": "nulle",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "毫无价值的",
+        "很差的（阴性）"
+      ],
+      "ipa": "/nyl/",
+      "fr": "Cette idée est vraiment nulle.",
+      "zh": "这个主意真的很糟糕。",
+      "highlight": "nulle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nulle",
+      "frequency": 4.51,
+      "primaryMeaning": "毫无价值的"
+    },
+    {
+      "word": "vive",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "万岁",
+        "祝……兴盛"
+      ],
+      "ipa": "/viv/",
+      "fr": "Vive les vacances !",
+      "zh": "假期万岁！",
+      "highlight": "Vive",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vive",
+      "frequency": 4.58,
+      "primaryMeaning": "万岁"
+    },
+    {
+      "word": "hum",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "嗯（犹豫或思考）"
+      ],
+      "ipa": "/œm/",
+      "fr": "Hum, cette question est difficile.",
+      "zh": "嗯，这个问题很难。",
+      "highlight": "Hum",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/hum",
+      "frequency": 4.08,
+      "primaryMeaning": "嗯（犹豫或思考）"
+    },
+    {
+      "word": "quant à",
+      "pos": "loc.",
+      "gender": null,
+      "meanings": [
+        "至于",
+        "关于"
+      ],
+      "ipa": "/kɑ̃.t‿a/",
+      "fr": "Quant à moi, je préfère rester ici.",
+      "zh": "至于我，我更喜欢留在这里。",
+      "highlight": "Quant à",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/quant à",
+      "frequency": 5.01,
+      "primaryMeaning": "至于"
+    },
+    {
+      "word": "allô",
+      "pos": "interj.",
+      "gender": null,
+      "meanings": [
+        "喂（接电话）"
+      ],
+      "ipa": "/a.lo/",
+      "fr": "Allô, tu m'entends ?",
+      "zh": "喂，你听得到我吗？",
+      "highlight": "Allô",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/allô",
+      "frequency": 3.34
+    },
+    {
+      "word": "se crisper",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "绷紧",
+        "僵住"
+      ],
+      "ipa": "/sə kʁis.pe/",
+      "fr": "Il essaie de ne pas se crisper avant l'examen.",
+      "zh": "他努力不在考试前紧绷起来。",
+      "highlight": "se crisper",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/se crisper",
+      "frequency": 2.15,
+      "primaryMeaning": "绷紧"
+    },
+    {
+      "word": "tels",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "这样的（阳性复数）"
+      ],
+      "ipa": "/tɛl/",
+      "fr": "De tels efforts méritent une récompense.",
+      "zh": "这样的努力值得奖励。",
+      "highlight": "tels",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tels",
+      "frequency": 4.81,
+      "primaryMeaning": "这样的（阳性复数）"
+    },
+    {
+      "word": "internet",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "互联网"
+      ],
+      "ipa": "/ɛ̃.tɛʁ.nɛt/",
+      "fr": "Cette application fonctionne sans internet.",
+      "zh": "这个应用不用互联网也能运行。",
+      "highlight": "internet",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/internet",
+      "frequency": 5.13,
+      "literal": true,
+      "primaryMeaning": "互联网"
+    },
+    {
+      "word": "e-mail",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "电子邮件"
+      ],
+      "ipa": "/i.mɛl/",
+      "fr": "Je vais vous envoyer un e-mail demain.",
+      "zh": "我明天会给您发一封电子邮件。",
+      "highlight": "e-mail",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/e-mail",
+      "frequency": 4.37,
+      "primaryMeaning": "电子邮件"
+    },
+    {
+      "word": "wi-fi",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "无线网络"
+      ],
+      "ipa": "/wi.fi/",
+      "fr": "Le wi-fi est disponible dans cet hôtel.",
+      "zh": "这家酒店提供无线网络。",
+      "highlight": "wi-fi",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/wi-fi",
+      "frequency": 3.51,
+      "aliases": [
+        "wifi",
+        "Wi-Fi"
+      ],
+      "primaryMeaning": "无线网络"
+    },
+    {
+      "word": "notification",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "通知",
+        "提醒"
+      ],
+      "ipa": "/nɔ.ti.fi.ka.sjɔ̃/",
+      "fr": "Une notification apparaît sur mon téléphone.",
+      "zh": "我的手机上出现了一条通知。",
+      "highlight": "notification",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/notification",
+      "frequency": 3.62,
+      "primaryMeaning": "通知"
+    },
+    {
+      "word": "espèces",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "现金"
+      ],
+      "ipa": "/ɛs.pɛs/",
+      "fr": "Je préfère payer en espèces.",
+      "zh": "我更喜欢用现金付款。",
+      "highlight": "espèces",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/espèces",
+      "frequency": 4.65,
+      "plural": true,
+      "primaryMeaning": "现金"
+    },
+    {
+      "word": "rond-point",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "环岛",
+        "环形交叉路口"
+      ],
+      "ipa": "/ʁɔ̃.pwɛ̃/",
+      "fr": "Tournez à droite après le rond-point.",
+      "zh": "过环岛后向右转。",
+      "highlight": "rond-point",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rond-point",
+      "frequency": 4.25,
+      "primaryMeaning": "环岛"
+    },
+    {
+      "word": "composteur",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "车票打孔机",
+        "堆肥箱"
+      ],
+      "ipa": "/kɔ̃.pɔs.tœʁ/",
+      "fr": "Le composteur est près de l'entrée du quai.",
+      "zh": "车票打孔机位于站台入口附近。",
+      "highlight": "composteur",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/composteur",
+      "frequency": 2.44,
+      "primaryMeaning": "车票打孔机"
+    },
+    {
+      "word": "tien",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你的那个（阳性）"
+      ],
+      "ipa": "/tjɛ̃/",
+      "fr": "Mon livre est ici et le tien est là.",
+      "zh": "我的书在这里，你的在那边。",
+      "highlight": "tien",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tien",
+      "frequency": 3.98,
+      "primaryMeaning": "你的那个（阳性）"
+    },
+    {
+      "word": "tienne",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你的那个（阴性）"
+      ],
+      "ipa": "/tjɛn/",
+      "fr": "Ma place est à côté de la tienne.",
+      "zh": "我的座位在你的旁边。",
+      "highlight": "tienne",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tienne",
+      "frequency": 4.08,
+      "primaryMeaning": "你的那个（阴性）"
+    },
+    {
+      "word": "siens",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "他的那些",
+        "她的那些（阳性复数）"
+      ],
+      "ipa": "/sjɛ̃/",
+      "fr": "Mes résultats sont meilleurs que les siens.",
+      "zh": "我的成绩比他的更好。",
+      "highlight": "siens",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/siens",
+      "frequency": 3.98,
+      "primaryMeaning": "他的那些"
+    },
+    {
+      "word": "miens",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "我的那些（阳性复数）"
+      ],
+      "ipa": "/mjɛ̃/",
+      "fr": "Tes amis connaissent déjà les miens.",
+      "zh": "你的朋友们已经认识我的朋友们了。",
+      "highlight": "miens",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/miens",
+      "frequency": 3.88,
+      "primaryMeaning": "我的那些（阳性复数）"
+    },
+    {
+      "word": "vôtres",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "你们的那些",
+        "您的那些"
+      ],
+      "ipa": "/votʁ/",
+      "fr": "Ces affaires sont-elles les vôtres ?",
+      "zh": "这些东西是您的吗？",
+      "highlight": "vôtres",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vôtres",
+      "frequency": 3.39,
+      "primaryMeaning": "你们的那些"
+    },
+    {
+      "word": "auxquels",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "向其",
+        "对其（阳性复数）"
+      ],
+      "ipa": "/o.kɛl/",
+      "fr": "Les cours auxquels je participe sont intéressants.",
+      "zh": "我参加的课程很有趣。",
+      "highlight": "auxquels",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/auxquels",
+      "frequency": 4.24,
+      "primaryMeaning": "向其"
+    },
+    {
+      "word": "auxquelles",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "向其",
+        "对其（阴性复数）"
+      ],
+      "ipa": "/o.kɛl/",
+      "fr": "Les questions auxquelles je réponds sont simples.",
+      "zh": "我回答的那些问题很简单。",
+      "highlight": "auxquelles",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/auxquelles",
+      "frequency": 4.11,
+      "primaryMeaning": "向其"
+    },
+    {
+      "word": "desquels",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "其……的（阳性复数）"
+      ],
+      "ipa": "/de.kɛl/",
+      "fr": "Les amis près desquels je suis assis sont français.",
+      "zh": "我旁边坐着的朋友们是法国人。",
+      "highlight": "desquels",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/desquels",
+      "frequency": 3.71,
+      "primaryMeaning": "其……的（阳性复数）"
+    },
+    {
+      "word": "desquelles",
+      "pos": "pron.",
+      "gender": null,
+      "meanings": [
+        "其……的（阴性复数）"
+      ],
+      "ipa": "/de.kɛl/",
+      "fr": "Les maisons près desquelles je passe sont anciennes.",
+      "zh": "我经过的那些房屋很古老。",
+      "highlight": "desquelles",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/desquelles",
+      "frequency": 3.61,
+      "primaryMeaning": "其……的（阴性复数）"
+    }
+  ]
+}

@@ -10,8 +10,9 @@ export function createRepository() {
   async function read(store, key) { const db = await open(); return new Promise((resolve, reject) => { const q = db.transaction(store).objectStore(store).get(key); q.onsuccess = () => resolve(q.result); q.onerror = () => reject(q.error); }); }
   return {
     async load() { const primary = await read('state', 'primary'); if (!primary) return null; if (primary.schema === 1 && Array.isArray(primary.library) && primary.progress && primary.settings && primary.sessions) return primary; const backup = await read('state', 'backup'); if (backup?.schema === 1 && Array.isArray(backup.library)) return backup; throw new Error('学习记录异常，请先保留数据 / Données illisibles, conservez-les.'); },
-    async save(state, assets = []) {
-      const db = await open(); const copy = JSON.parse(JSON.stringify(state));
+    async save(state, assets = [], {isolated=false} = {}) {
+      // Callers pass an isolated plain snapshot; IndexedDB performs the structured clone.
+      const db = await open(); const copy = isolated?state:JSON.parse(JSON.stringify(state));
       return new Promise((resolve, reject) => {
         const tx = db.transaction(['state', 'audio'], 'readwrite'), store = tx.objectStore('state');
         const q = store.get('primary'); q.onsuccess = () => { if (q.result) store.put(q.result, 'backup'); store.put(copy, 'primary'); };

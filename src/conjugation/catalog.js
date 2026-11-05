@@ -1,7 +1,8 @@
-import catalog from './catalog.json' with {type:'json'};
+import catalog from './source-catalog.json' with {type:'json'};
 import audio from './audio.json' with {type:'json'};
 import ipa from './phonetics.json' with {type:'json'};
 import {conjugationSpeech,speechTextKey} from './speech-text.js';
+import {verbMeanings} from './verb-meanings.js';
 export const PERSONS=['je','tu','il','nous','vous','ils'];
 export const TENSES=[{id:'现在时',fr:'Présent'},{id:'复合过去时',fr:'Passé composé'},{id:'未完成过去时',fr:'Imparfait'}];
 export const defaultPlan=()=>({infinitive:true,tenses:['现在时']});
@@ -9,6 +10,10 @@ export function normalizePlan(value){return {infinitive:value?.infinitive!==fals
 export const lemmaFor=word=>word?.conjugation?.lemma||word?.forms?.map(f=>f.text.normalize('NFC').trim().replace(/[’‘]/g,"'").toLocaleLowerCase('fr')).find(t=>catalog[t])||null;
 export const conjugations=(lemma,tense='现在时')=>catalog[lemma]?.[tense]||{};
 export const isVerb=word=>!!word&&!word.conjugation&&(/^(v\.|v$|verb)/i.test(word.pos||'')||/^v[.\s]/i.test(word.sourcePos||''))&&!!lemmaFor(word);
+// Eligibility follows the complete source app, including rendre and confondre.
+export const isSupportedLemma=lemma=>Object.hasOwn(catalog,lemma);
+export const isConjugationVerb=isVerb;
+export const sourceVerbEntries=()=>Object.keys(catalog).map(word=>({id:'conjugation:'+word,word,pos:'v.',meanings:verbMeanings[word].split('；'),ipa:ipa[word]||'',conjugationSource:true}));
 // Compare attested forms, never generate missing forms for the learner.
 const irregularCache=new Map();
 export function isIrregularLemma(lemma){
@@ -49,8 +54,8 @@ export function ensureConjugationCards(data){
  for(const p of data.library){
   const deck=data.conjugationDecks[lessonId(p)]||=[];
   const byId=new Map(p.words.map(w=>[w.id,w]));
-  for(const card of deck){const base=byId.get(card.conjugation.baseWordId);card.studyDisabled=!isIrregularVerb(base)||!normalizePlan(base?.conjugationPlan).tenses.includes(card.conjugation.tense);}
-  const base=p.words.filter(isIrregularVerb),existing=new Set(deck.map(w=>w.conjugation.baseWordId+'|'+w.conjugation.tense+'|'+w.conjugation.person));let order=Math.max(0,...p.words.map(w=>w.order||0),...deck.map(w=>w.order||0));
+  for(const card of deck){const base=byId.get(card.conjugation.baseWordId),c=card.conjugation;card.studyDisabled=!isConjugationVerb(base)||c.lemma!==lemmaFor(base)||conjugations(c.lemma,c.tense)[c.person]!==c.form||!normalizePlan(base?.conjugationPlan).tenses.includes(c.tense);}
+  const base=p.words.filter(isConjugationVerb),existing=new Set(deck.map(w=>w.conjugation.baseWordId+'|'+w.conjugation.tense+'|'+w.conjugation.person));let order=Math.max(0,...p.words.map(w=>w.order||0),...deck.map(w=>w.order||0));
   for(const w of base){const lemma=lemmaFor(w),plan=normalizePlan(w.conjugationPlan);
    for(const tense of plan.tenses)for(const person of PERSONS){const form=conjugations(lemma,tense)[person];if(!form||form==='—')continue;const identity=w.id+'|'+tense+'|'+person;if(existing.has(identity))continue;const id=known.get(identity)||allocate();known.set(identity,id);used.add(id);const text=conjugationSpeech(person,form),rec=recording(text,id+'-base');
     deck.push({id,order:++order,pos:'v.',sourcePos:'v. · '+tense,meanings:[...w.meanings],conjugation:{lemma,tense,person,baseWordId:w.id,form},forms:[{...rec,id:id+'-base',text,gender:null,tested:true,ipa:ipa[speechTextKey(text)]||ipa[form]||'',source:lemma+' · '+tense,questionHint:lemma+' · '+tense+' · '+person}]});existing.add(identity);added++;
@@ -60,8 +65,8 @@ export function ensureConjugationCards(data){
  for(const session of Object.values(data.conjugationSessions||{}))if(!session.done&&Object.values(session.refs||{}).flat().some(ref=>(data.conjugationDecks[ref.lesson]||[]).find(w=>w.id===ref.wordId)?.studyDisabled))session.retired=true;
  data.conjugationWordIds=Object.fromEntries(known);data.reservedWordIds=[...used];return added;
 }
-export const isVocabularyWord=w=>!w.conjugation&&!w.studyDisabled&&!(isIrregularVerb(w)&&w.conjugationPlan?.infinitive===false);
+export const isVocabularyWord=w=>!w.conjugation&&!w.studyDisabled&&!(isConjugationVerb(w)&&w.conjugationPlan?.infinitive===false);
 export async function prepareConjugationAudio(data,repository,fetcher=fetch){
- const keys=[...new Set(conjugationPackages(data).flatMap(p=>p.words.flatMap(w=>w.forms.map(f=>f.audioKey))).filter(k=>k&&!k.startsWith('tts:')))];const assets=[];let cursor=0;
+ const keys=[...new Set([...data.library.flatMap(p=>p.words.flatMap(w=>w.forms.filter(f=>f.conjugationAudio).map(f=>f.audioKey))),...conjugationPackages(data).flatMap(p=>p.words.flatMap(w=>w.forms.map(f=>f.audioKey)))].filter(k=>k&&!k.startsWith('tts:')))];const assets=[];let cursor=0;
  await Promise.all(Array.from({length:Math.min(6,keys.length)},async()=>{while(cursor<keys.length){const id=keys[cursor++];if(await repository.audio(id))continue;const r=await fetcher(new URL('static/conjugation/audio/'+id+'.mp3',window.location.href));if(!r.ok)throw Error('变位录音读取失败 / Audio inaccessible.');const bytes=new Uint8Array(await r.arrayBuffer());const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash!==id)throw Error('变位录音校验失败 / Audio invalide.');assets.push({id,bytes});}}));return assets;
 }

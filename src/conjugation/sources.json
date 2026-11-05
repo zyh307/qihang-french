@@ -1,11 +1,21 @@
 {
   "source": "法语变位器3.0",
-  "sourceDirectory": "法语变位器3.0",
+  "sourceFile": "src/generated/wordlists.json",
   "sourceLicense": "MIT",
-  "supplement": "https://github.com/tatuylonen/wiktextract",
-  "data": "https://kaikki.org/dictionary/French/",
-  "extractionCommit": "19f9a3006a405fb7bfb40193dca41c7117a009a5",
-  "dataLicense": "CC-BY-SA-4.0",
-  "verbs": 7382,
-  "dataSHA256": "9053b1845fb3e045fa1fbe3f749122fa43e21b49bfa741cadd50255ae6ca0126"
+  "verbs": 80,
+  "sourceSHA256": "66751abb673e3f96ab54f2e96ee7f355c51e64624816339216fb15fe1071f85e",
+  "tenses": [
+    "现在时",
+    "复合过去时",
+    "未完成过去时"
+  ],
+  "corrections": [
+    {
+      "lemma": "prendre",
+      "tense": "现在时",
+      "person": "vous",
+      "from": "prennez",
+      "to": "prenez"
+    }
+  ]
 }

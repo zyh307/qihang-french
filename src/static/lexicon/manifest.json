@@ -16,13 +16,13 @@
     }
   },
   "stats": {
-    "words": 18731,
-    "ipa": 18731,
-    "examples": 18731,
-    "translatedExamples": 18731,
-    "authoredExamples": 836
+    "words": 18949,
+    "ipa": 18949,
+    "examples": 18949,
+    "translatedExamples": 18949,
+    "authoredExamples": 1054
   },
-  "sha256": "44c15626e72585e2bcf9c8bcd955659aa4b00ffbfba7eb73d8a6874b602e74c4",
+  "sha256": "b348efc07bffd6ed612d98ceb557c0439971f07af210e21f2824d8f7dc333beb",
   "inputs": {
     "zh-simp.jsonl": "42082dd36a33515102325e3e0f709d85997348ee8b2c20f66a5482533c30d478",
     "zh-trad.jsonl": "53cac0a16dcc9ac0eb0150aaa3125ce30158973f291e17781bf091b0c1ae85af",
@@ -40,10 +40,10 @@
   },
   "audio": {
     "voice": "fr-FR-DeniseNeural",
-    "clips": 36005,
-    "files": 1479,
-    "bytes": 374765028,
-    "indexSHA256": "89e680ec49b89988cda819da6905f5d5202f6d4a7745040f0f8edbcd645968ea"
+    "clips": 36448,
+    "files": 1922,
+    "bytes": 378058096,
+    "indexSHA256": "14bd992f75b3ab76d099e8b412473e4362c4a961f9bfa7f57d48effa6c844d93"
   },
   "supplement": {
     "lexiqueRepository": "https://github.com/chrplr/openlexicon",
@@ -70,5 +70,14 @@
     "date": "2026-11-04",
     "sha256": "cb252aa763fecbf38299c749c144e6edf47a38406f9be726b58a88ca858b9417",
     "method": "Reviewed pronominal uses, separately authored French-Chinese examples and explicit usage aliases; existing headwords and IDs preserved."
+  },
+  "commonSupplement": {
+    "entries": 219,
+    "date": "2026-11-04",
+    "sha256": "9f2b8e24f85a5c222005c214a2468b2f718be279a9eaac91a65f5dcb90aafd64"
+  },
+  "reviewedExampleMeanings": {
+    "entries": 259,
+    "method": "Reviewed against the French example; explicit example sense; user choices preserved."
   }
 }

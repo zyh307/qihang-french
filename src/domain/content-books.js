@@ -2,14 +2,14 @@
 export const ADDITIONAL_BUNDLED_BOOKS = [
   {
     "id": "inspire2",
-    "contentId": "63857d620afa2ae44c2424a75c48e7ebc5c63450733522467c8334a829ef538e",
+    "contentId": "83b6c7698d96b180c320f40a1c1323abcb9040667a10ae870dfb63445091252d",
     "file": "inspire2.zip",
     "lessons": 24,
     "words": 658
   },
   {
     "id": "inspire3",
-    "contentId": "e729ff46971e7e532ed6a79858219b6645ad3904d296ba36caaea18b63e9cb8f",
+    "contentId": "900ee37b124be7c81ec4bbba1f8a7d2055528adfe5cb4689ada5bdc5be49dedd",
     "file": "inspire3.zip",
     "lessons": 27,
     "words": 647

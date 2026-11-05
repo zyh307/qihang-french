@@ -1,0 +1,14 @@
+{
+  "frequency": {
+    "repository": "hermitdave/FrequencyWords",
+    "revision": "525f9b560de45753a5ea01069454e72e9aa541c6",
+    "sha256": "f81f7c570b6433764da99aa30f4dfb08d81c5926301377b709af23a13b1f9596",
+    "bytes": 653452
+  },
+  "freedict": {
+    "repository": "freedict/fd-dictionaries",
+    "revision": "5bdceeac8d0dba3298c1bebe734f60d54dad30f7",
+    "sha256": "de9eb6e5756d994bca9bdb2a91bfc2bb8d8822d3387f5a3b586acc8d42133114",
+    "bytes": 2691924
+  }
+}

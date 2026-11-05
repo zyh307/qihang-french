@@ -16,7 +16,7 @@
       </button>
       <view v-if="candidateLocations.get(option.id)?.length" class="quick-existing-list">
        <Bi zh="已有词条" fr="Déjà présents" small/>
-       <view v-for="existing in candidateLocations.get(option.id)" :key="existing.key" class="quick-existing-word"><text lang="fr">{{ existing.word }}</text><Bi :zh="existing.locations.map(location=>location.zh).join(' / ')" :fr="existing.locations.map(location=>location.fr).join(' / ')" small/></view>
+       <view v-for="existing in candidateLocations.get(option.id)" :key="existing.key" class="quick-existing-word"><text lang="fr">{{ existing.word }}</text><Bi :zh="existing.locations.map(location=>location.zh).join(' / ')" :fr="existing.locations.map(location=>location.fr).join(' / ')" small/><Bi v-if="existing.tenses?.length" :zh="'已有时态：'+existing.tenses.join('、')" :fr="'Déjà ajoutés : '+existing.tenses.join('、')" small/></view>
       </view>
      </view>
     </view>
@@ -27,16 +27,16 @@
     <template v-if="duplicateRows.length"><Bi :zh="'已在导入本 · '+duplicateRows.length+' 个词'" :fr="'Déjà importés · '+duplicateRows.length" small/><view v-for="word in duplicateRows" :key="word.key" class="imported-word-result duplicate"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
    </view>
   </view>
-  <ConjugationOptions v-if="selected.some(e=>e.pos==='v.'&&isIrregularLemma(e.word))" v-model="conjugationPlan"/>
+  <ConjugationOptions v-if="selected.some(needsConjugationChoice)" v-model="conjugationPlan" :existing="existingTenses"/>
   <view v-if="results.length&&selected.length" class="exercise-footer"><button class="button primary wide" hover-class="none" :disabled="!selected.length||saving||loading" @click="submit"><Icon name="upload"/><Bi :zh="saving?'正在导入':'导入 '+selected.length+' 个词'" :fr="saving?'Importation…':'Importer '+selected.length+' mots'" small/></button></view>
  </view></view>
 </template>
 <script setup>
 import {computed,ref,watch} from 'vue';
 import ConjugationOptions from './ConjugationOptions.vue';
-import {defaultPlan,isIrregularLemma} from '../conjugation/catalog.js';
+import {TENSES} from '../conjugation/catalog.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';
-import {splitWords,makeLookup,makeImportLocationLookup} from '../domain/quick-import.js';
+import {splitWords,makeLookup,makeImportLocationLookup,needsConjugationChoice} from '../domain/quick-import.js';
 const props=defineProps({library:Array,data:Object}),emit=defineEmits(['close','import']);
 const input=ref(''),results=ref([]),error=ref(''),importedRows=ref([]),loading=ref(false),saving=ref(false);let dictionary;
 watch(input,()=>{results.value=[];error.value='';importedRows.value=[];});
@@ -52,7 +52,8 @@ function rememberImports(lessons=[],rows=[]){
  for(const row of rows)all.set(row.key,{...row,added:row.added||all.get(row.key)?.added||false});
  importedRows.value=[...all.values()];
 }
-const conjugationPlan=ref(defaultPlan());
+const conjugationPlan=ref({infinitive:true,tenses:[]});
+const existingTenses=computed(()=>[...new Set(selected.value.flatMap(e=>(candidateLocations.value.get(e.id)||[]).flatMap(location=>location.tenses||[])))]);
 const selected=computed(()=>results.value.flatMap(r=>r.options.filter(o=>o.id===r.selected)));
 async function lookup(){
  document.activeElement?.blur();const words=splitWords(input.value);
@@ -66,16 +67,19 @@ async function lookup(){
   }
   const resolve=makeLookup(dictionary,props.library),matched=[];results.value=[];
   for(let i=0;i<words.length;i++){
-   const row=resolve(words[i]);if(row.options.length===1&&row.kind!=='typo')matched.push(row.options[0]);else{row.selected='';results.value.push(row);}
+   const row=resolve(words[i]),certain=row.options.length===1&&row.kind!=='typo';
+   if(certain&&!needsConjugationChoice(row.options[0]))matched.push(row.options[0]);
+   else{row.selected=certain?row.options[0].id:'';results.value.push(row);}
    if(i%8===0)await new Promise(r=>setTimeout(r,0));
   }
   if(matched.length){saving.value=true;emit('import',matched.map(e=>({...e,conjugationPlan:conjugationPlan.value})),(success,lessons,rows)=>{saving.value=false;if(success)rememberImports(lessons,rows);},true);}
  }catch{error.value='词库暂时无法读取，请重试 / Dictionnaire indisponible.';}
  finally{loading.value=false;}
 }
+function planForEntry(entry){const existing=(candidateLocations.value.get(entry.id)||[]).flatMap(location=>location.tenses||[]);return {...conjugationPlan.value,tenses:[...new Set([...existing,...conjugationPlan.value.tenses])]};}
 function submit(){
  if(!selected.value.length||saving.value)return;saving.value=true;
- emit('import',selected.value.map(e=>({...e,conjugationPlan:conjugationPlan.value})),(success,lessons,rows)=>{saving.value=false;if(success){rememberImports(lessons,rows);results.value=results.value.filter(r=>!r.selected);}},true);
+ emit('import',selected.value.map(e=>({...e,conjugationPlan:planForEntry(e)})),(success,lessons,rows)=>{saving.value=false;if(success){rememberImports(lessons,rows);results.value=results.value.filter(r=>!r.selected);}},true);
 }
 </script>
 <style scoped>

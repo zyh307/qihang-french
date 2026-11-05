@@ -1,12 +1,12 @@
 # 变位模块
 
-- catalog.js：只将不规则动词原形与练习用的变位形式关联；规则动词保持普通词汇练习。ensureConjugationCards(data) 在载入、导入或保存时补齐选择的时态，默认原形 + 现在时。baseWord.conjugationPlan = {infinitive: true, tenses: ["现在时"]}；也支持复合过去时和未完成过去时。
+- catalog.js：使用法语变位器3.0完整80词快照，将全部已收录动词原形与练习用变位关联（包括 rendre、confondre），不再按词尾排除。ensureConjugationCards(data) 在载入、导入或保存时补齐选择的时态，默认原形 + 现在时。baseWord.conjugationPlan = {infinitive: true, tenses: ["现在时"]}；也支持复合过去时和未完成过去时。
 - 派生形式只保存在 data.conjugationDecks[lessonKey]，不追加进原词表 p.words；旧数据中的自动生成形式会迁入该独立存储，保留编号和历史。派生形式使用独立 wNNNNNN 编号；conjugation.baseWordId 指向原形。conjugationWordIds 保留编号映射，重导入不重置历史。重复读写不会重复添加卡片。未选择的时态仅在练习存储中标 studyDisabled，保留历史；原词条不写入该标记。
 - sessions.js：独立的 conjugationSessions，不写普通五词练习队列。按三个不同动词原形分组；同一动词的多种时态属于同组。新学两轮配对，复习一轮，然后填空；错题及提示需独立答对，并安排后续巩固。
 - 每个人称在练习内部独立保存间隔；词表和词本界面仍以原词条展示，变位错题汇总在原词条下；每天的完成词数按人称形式去重计数。组内进度和 Lesson 总词数按原形计。
-- 逗号导入与文件导入均复用 ConjugationOptions，词库数据本身无需夹带语法规则。不能识别的动词不猜测变位。
+- 逗号导入与文件导入均复用 ConjugationOptions；完全匹配的已收录动词也先选择原形及所需时态，确认后导入。词库数据本身无需夹带语法规则。不能识别的动词不猜测变位。
 - public 来源、许可及语音署名在 static/conjugation；原软件数据目录未导入。音频写入现有 repository.audio，合成语音复用 platform/speech.js。
 
-背诵页每个原词一张卡片，依次为待背诵／不规则动词／已学习。不规则动词背面有查看变位入口，与卡片一起翻转。ConjugationDetails 展示六个人称小卡片，手机两列、宽屏三列；不造不存在的人称形式。
+背诵页每个原词一张卡片，依次为待背诵／动词变位／已学习。已收录动词背面有查看变位入口，与卡片一起翻转。ConjugationDetails 展示六个人称小卡片，手机两列、宽屏三列；不造不存在的人称形式。
 
 变位练习中的“释义”打开当前动词、当前时态的变位表；返回继续原题。填空中查看释义计作提示，需要独立答对并后续巩固。

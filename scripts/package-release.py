@@ -88,26 +88,7 @@ def main():
         archive.writestr('README.txt', f"French recognition model: {MANIFEST['repository']}\nRevision: {MANIFEST['revision']}\nFile: {MANIFEST['filename']}\nSize: {MANIFEST['size']} bytes\nSHA-256: {MANIFEST['sha256']}\nLicense: MIT, see the model card and upstream licensing.\nSource: https://huggingface.co/{MANIFEST['repository']}/tree/{MANIFEST['revision']}\nThe application's GPL license does not replace the model's license.\n")
     outputs.append(license_file)
     guide = OUT / f'{NAME}-使用说明.txt'
-    guide.write_text(f'''启航法语 {VERSION}
-
-Windows：下载 Windows ZIP，完整解压，双击“启动启航法语.bat”。
-安卓：下载 Android APK，直接覆盖安装；更新前不要卸载。
-词汇和语法可直接使用，课内、课外单词及例句录音均已内置。
-
-口语识别模型独立下载，电脑和手机共用 ggml-model-q5_0.bin（约 1.08 GB）。
-打开设置 → 口语 → 导入本地模型，选择文件并等待校验。
-然后允许麦克风，绑定自己的小智账号与考官。电脑和手机分别绑定。
-识别在当前设备运行；考官对话、语音回复和中文点评需要联网。
-模型可在口语设置中删除；学习记录、口语历史和绑定保留。
-正常软件更新会保留已导入的模型，不必重复下载。
-
-下载页：https://github.com/zyh307/qihang-french/releases/tag/v{VERSION}
-模型文件大小：{MANIFEST['size']} 字节
-模型 SHA-256：{MANIFEST['sha256']}
-模型来源和许可见配套的模型许可压缩包。
-SHA256SUMS.txt 对应本地中文文件名；SHA256SUMS-GitHub.txt 对应 GitHub 下载文件名。
-完整使用教程在 Windows 包及应用帮助中。
-''', encoding='utf-8-sig')
+    guide.write_text('下载启航法语：\nhttps://github.com/zyh307/qihang-french\n', encoding='utf-8-sig')
     outputs.append(guide)
     (OUT / 'SHA256SUMS.txt').write_text(''.join(digest(file) + '  ' + file.name + '\n' for file in outputs), encoding='utf-8')
     # GitHub normalizes non-ASCII asset filenames; labels use the Chinese name.

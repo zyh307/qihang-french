@@ -61,7 +61,9 @@ export async function readBackup(file) {
     }
     for (const w of p.words) for (const f of wordAudioEntries(w)) if (f.audioKey && !seen.has(f.audioKey)) {
       if(f.audioKey.startsWith('tts:')){const text=decodeURIComponent(f.audioKey.slice(4));if(!text.trim()||text.length>3000)throw Error('合成语音内容无效 / Texte invalide.');continue;}
-      if (!/^[a-f0-9]{64}$/.test(f.audioKey) || !files[`audio/${f.audioKey}.bin`]) throw new Error('备份缺少录音 / Audio manquant dans la sauvegarde.');
+      if (!/^[a-f0-9]{64}$/.test(f.audioKey)) throw new Error('备份缺少录音 / Audio manquant dans la sauvegarde.');
+      if(!files[`audio/${f.audioKey}.bin`]&&f.conjugationAudio)continue;
+      if(!files[`audio/${f.audioKey}.bin`])throw new Error('备份缺少录音 / Audio manquant dans la sauvegarde.');
       const bytes = files[`audio/${f.audioKey}.bin`];
       const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2, '0')).join('');
       if (hash !== f.audioKey) throw new Error('录音校验失败 / Vérification audio échouée.');
@@ -70,9 +72,9 @@ export async function readBackup(file) {
   }
   if(Object.entries(data.sessions).some(([key,s])=>!data.library.some(p=>packageKey(p)===s.lessonKey)&&!(s.lessonKey==='review:all'&&(((s.importedPractice===true||s.dictionaryPractice===true)&&s.mode==='direct'&&key.startsWith('review:all:direct:'))||(key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')||(key===MIXED_FAVORITES_KEY&&s.mode==='favorites')))))throw new Error('备份练习所属课次不存在 / Leçon de session introuvable.');
   if(Object.entries(data.activeSessions).some(([lesson,key])=>data.sessions[key]?.lessonKey!==lesson))throw new Error('备份续练入口无效 / Reprise de session invalide.');
-  validateConjugationSessions(data);
   // Older backups may still contain generated forms inside lesson words.
   ensureConjugationCards(data);
+  validateConjugationSessions(data);
   for(const [lesson,words]of Object.entries(data.conjugationDecks||{})){
     const source=data.library.find(p=>packageKey(p)===lesson);if(!source)continue;
     for(const w of words){

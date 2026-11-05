@@ -13,7 +13,7 @@
       </template>
     </view>
     <text v-if="sharedIpa" class="shared-ipa">{{ sharedIpa }}</text>
-    <view v-if="shared.example?.fr" class="example shared-example"><ExampleSentence class="example-fr" :text="shared.example.fr" :word="word" /><text v-if="shared.example.zh" class="example-zh">{{ shared.example.zh }}</text><view class="example-footer"><view v-if="showSource&&(shared.source||sourceLabel)" class="source"><Icon name="book" /><text>{{ sourceText }}</text></view><button hover-class="none" class="example-audio" :class="{active:playing===sentenceRecording?.id}" :disabled="!sentenceRecording" @click="$emit('audio',sentenceRecording)" aria-label="播放法语例句 / Écouter la phrase"><Icon name="sound" /><Bi zh="听例句" fr="Écouter" small /></button></view></view><view v-else-if="showSource&&(shared.source||sourceLabel)" class="source"><Icon name="book" /><text>{{ sourceText }}</text></view>
+    <view v-if="shared.example?.fr" class="example shared-example"><ExampleSentence class="example-fr" :text="shared.example.fr" :word="word" /><text v-if="shared.example.zh" class="example-zh">{{ shared.example.zh }}</text><view class="example-footer"><view v-if="showSource&&sourceText" class="source"><Icon name="book" /><text>{{ sourceText }}</text></view><button hover-class="none" class="example-audio" :class="{active:playing===sentenceRecording?.id}" :disabled="!sentenceRecording" @click="$emit('audio',sentenceRecording)" aria-label="播放法语例句 / Écouter la phrase"><Icon name="sound" /><Bi zh="听例句" fr="Écouter" small /></button></view></view><view v-else-if="showSource&&sourceText" class="source"><Icon name="book" /><text>{{ sourceText }}</text></view>
     <view v-if="word.patternNote&&!definition" class="pattern-note"><Icon name="info" /><text>{{ word.patternNote }}</text></view>
     <view v-if="definition&&detailedMeanings.length" class="definition-senses"><Bi zh="更多释义" fr="Autres sens" small/><text v-for="(sense,index) in detailedMeanings" :key="index">{{ index+1 }}. {{ sense }}</text></view><view v-if="actions" class="word-actions"><button hover-class="none" class="text-button single-word-practice" @click="$emit('practice', word)"><Bi :zh="practiceSession&&practiceSession.phase!=='done'?'继续专练':'单词专练'" :fr="practiceSession&&practiceSession.phase!=='done'?'Reprendre ce mot':'Pratiquer ce mot'" inline /></button><button hover-class="none" class="text-button subtle" @click="$emit('move', word)"><Bi zh="调整词本" fr="Changer de carnet" inline /></button></view>
   </view>
@@ -36,7 +36,13 @@ function chooseMeaning(meaning){emit('primary-meaning',meaning);meaningPickerOpe
 const meaningOptions=computed(()=>primaryMeaningOptions(props.word));
 const detailedMeanings=computed(()=>meaningPoints(props.word).filter(value=>primaryMeaning({meanings:[value]})!==primaryMeaning(props.word)));
 const shared=computed(()=>sharedExample(props.word));
-const sourceText=computed(()=>[shared.value.source||props.sourceLabel,shared.value.example?.source&&('例句 · Exemple : '+shared.value.example.source)].filter(Boolean).join('；'));
+const sourceText=computed(()=>{
+ const location=props.sourceLabel?.trim()||'',raw=shared.value.source||'';
+ const book=location.match(/^INSPIRE\s*([1-4])\b/i),original=raw.match(/^\s*Inspire\s*([1-4])\s*·\s*(L\d+)\b/i);
+ if(!book||!original||book[1]!==original[1]||!location.toUpperCase().endsWith(original[2].toUpperCase()))return location;
+ const page=raw.match(/\bp\.\s*(\d+(?:\s*[-–]\s*\d+)?)/i);
+ return location+(page?' · p. '+page[1]:'');
+});
 const sentenceRecording=computed(()=>exampleAudio(props.word));
 const sharedIpa=computed(()=>{const values=[...new Set(props.word.forms.map(f=>f.ipa).filter(Boolean))];return values.length===1?values[0]:null;});
 </script>
