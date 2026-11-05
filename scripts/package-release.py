@@ -15,6 +15,23 @@ NAME = json.loads((ROOT / 'src/manifest.json').read_text(encoding='utf-8'))['nam
 OUT = ROOT / f'{NAME}-正式版-v{VERSION}'
 MANIFEST = json.loads((ROOT / 'native/model-manifest.json').read_text(encoding='utf-8'))
 
+GUIDE = f"""{NAME} v{VERSION}
+
+Windows：完整解压 Windows ZIP，双击“启动启航法语.bat”。
+安卓：安装 Android APK；更新时直接覆盖安装，不要先卸载。
+
+口语模型导入
+1. 准备配套的 ggml-model-q5_0.bin 文件（约 1.08 GB，电脑和手机通用）。
+2. 打开软件 → 设置 → 口语 → 导入本地模型，选择该文件。
+3. 等待校验完成并显示“模型已就绪”，再允许麦克风权限。
+4. 点击“绑定小智”，复制考官配置到自己的小智智能体，选择模型和法语音色，在控制台“添加设备”中填写绑定码并关联智能体。
+5. 返回软件，等待“考官已连接”后开始练习。电脑和手机分别绑定。
+
+词汇和语法无需导入模型。模型导入后可在本机识别；考官回复和点评需要联网。已导入的模型可在口语设置中删除。
+
+GitHub 仓库：https://github.com/zyh307/qihang-french
+"""
+
 
 def digest(file):
     with file.open('rb') as stream:
@@ -88,7 +105,7 @@ def main():
         archive.writestr('README.txt', f"French recognition model: {MANIFEST['repository']}\nRevision: {MANIFEST['revision']}\nFile: {MANIFEST['filename']}\nSize: {MANIFEST['size']} bytes\nSHA-256: {MANIFEST['sha256']}\nLicense: MIT, see the model card and upstream licensing.\nSource: https://huggingface.co/{MANIFEST['repository']}/tree/{MANIFEST['revision']}\nThe application's GPL license does not replace the model's license.\n")
     outputs.append(license_file)
     guide = OUT / f'{NAME}-使用说明.txt'
-    guide.write_text('下载启航法语：\nhttps://github.com/zyh307/qihang-french\n', encoding='utf-8-sig')
+    guide.write_text(GUIDE, encoding='utf-8-sig')
     outputs.append(guide)
     (OUT / 'SHA256SUMS.txt').write_text(''.join(digest(file) + '  ' + file.name + '\n' for file in outputs), encoding='utf-8')
     # GitHub normalizes non-ASCII asset filenames; labels use the Chinese name.
