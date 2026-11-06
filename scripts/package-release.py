@@ -52,6 +52,12 @@ def audit(file, prefix, windows=False):
         for number in (1, 2, 3, 4):
             name = f'static/content/inspire{number}.zip'
             assert archive.read(prefix + name) == (ROOT / 'src' / name).read_bytes(), name
+        for name in ('local-client.js', 'delf-exam.js', 'delf-cards.json', 'app.js', 'entry.js', 'index.html'):
+            relative = 'static/oral/' + name
+            assert archive.read(prefix + relative) == (ROOT / 'dist/build/h5' / relative).read_bytes(), relative
+        if not windows:
+            for name in ('libqihang_speech.so', 'libqihang_cpu.so', 'libqihang_speech_fp16.so', 'libqihang_speech_dotprod.so'):
+                assert archive.read('lib/arm64-v8a/' + name) == (ROOT / 'android/jniLibs/arm64-v8a' / name).read_bytes(), name
         index = json.loads(archive.read(prefix + 'static/lexicon/audio/index.json'))['entries']
         for name in {clip['file'] for clip in index.values()}:
             assert hashlib.sha256(archive.read(prefix + 'static/lexicon/audio/' + name)).hexdigest() + '.mp3' == name

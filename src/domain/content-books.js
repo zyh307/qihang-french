@@ -2,7 +2,7 @@
 export const ADDITIONAL_BUNDLED_BOOKS = [
   {
     "id": "inspire2",
-    "contentId": "c6503076091383fca295328d714373fe77f288ea011a84ea9b4dd7ec38fe5b86",
+    "contentId": "6fe141eb74a5f7e632d493467d6a015c668ad4d976029b304110df33caf9b421",
     "file": "inspire2.zip",
     "lessons": 24,
     "words": 658

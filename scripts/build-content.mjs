@@ -12,6 +12,7 @@ import {dictionaryEntry,spokenKey} from '../src/domain/quick-import.js';
 import {vocabularyCorrections} from '../src/domain/vocabulary-corrections.js';
 import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
 import {applyCourseEntrySplits} from '../src/domain/course-entry-splits.js';
+import {applyMeaningCorrections} from '../src/domain/meanings.js';
 
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const materials=path.resolve(app,'../词库/Inspire1');
@@ -92,6 +93,7 @@ for(const extra of curriculumAdditions){
  pkg.words.push(word);names.add(extra.lesson+'-'+extra.word);sentenceNames.add(extra.lesson+'-'+extra.word+'-example');
 }
 applyCourseEntrySplits(state);
+applyMeaningCorrections(state);
 applyExampleAudioCorrections(state);
 for(const pkg of state.library)validateLesson(pkg);
 const id=createHash('sha256').update(JSON.stringify(state.library)).update([...audio.keys()].join('')).digest('hex');
