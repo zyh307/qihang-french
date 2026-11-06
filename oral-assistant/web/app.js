@@ -179,10 +179,10 @@ function renderProgress(){
  const seconds=Math.max(0,Math.floor(Date.now()/1000-(s.stage_started||s.created)));const left=Math.max(0,target-seconds);
  $('stageStatus').hidden=s.phase==='preparation';$('stageStatus').classList.toggle('complete',!!p.completed);
  $('stageProgress').textContent=p.completed?'本环节已完成':stage==='exchange'?`词卡进度 ${(s.exchange_done||[]).length} / ${s.keywords.length}`:`已完成 ${p.answers||0} 轮回答`;
- $('stageMessage').textContent=p.completed?(s.stage_index<s.stages.length-1?'点击“下一个环节”继续。':'点击“结束并复盘”，回听本次练习。'):stage==='intro'?'本次练习安排4–6轮回答，考官会继续追问学习、家庭和爱好。':stage==='exchange'?'每张词卡由你问一个问题；六张交流完成后收尾。':'完成任务后礼貌告别，考官会明确收尾。';
+ $('stageMessage').textContent=p.completed?(s.stage_index<s.stages.length-1?'点击“下一个环节”继续。':'点击“结束并复盘”，回听本次练习。'):stage==='intro'?'先回答姓名和年龄，再交流其他主题；本轮问题答完、考官收尾后结束。':stage==='exchange'?'每张词卡由你问一个问题；六张交流完成后收尾。':'完成任务后礼貌告别，考官会明确收尾。';
  $('targetTime').textContent=p.completed?'已结束':seconds>=target?'参考时长已到':'距参考时长';
  $('remainingTime').textContent=p.completed?'✓':`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
- if(!p.completed&&seconds>=target)$('stageMessage').textContent+=' 参考时间已到，完成当前交流后收尾；不会截断录音。';
+ if(!p.completed&&seconds>=target)$('stageMessage').textContent+=stage==='intro'?' 参考时间已到，继续完成本轮问答；不会打断录音、识别或考官回复。':' 参考时间已到，完成当前交流后收尾；不会截断录音。';
 }
 function transcript(target, session, audio=false) {
   target.replaceChildren();
