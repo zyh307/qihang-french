@@ -6,8 +6,8 @@
         <view class="recitation-grid">
           <view v-for="word in group.words" :key="word.id" :class="['recitation-card',{'is-flipped':!!flipped[word.id],'is-learned':group.id==='learned','is-long':longest(word)>13,'is-very-long':longest(word)>19}]" role="button" tabindex="0" :aria-pressed="!!flipped[word.id]" aria-label="翻面查看中文 / Retourner la carte" @click="flip(word)" @keydown.enter.self.prevent="flip(word)" @keydown.space.self.prevent="flip(word)">
             <view class="recitation-flipper">
-              <view class="recitation-face recitation-front" :aria-hidden="!!flipped[word.id]"><text lang="fr">{{ label(word) }}</text></view>
-              <view class="recitation-face recitation-back" :aria-hidden="!flipped[word.id]"><text lang="fr">{{ label(word) }}</text><text class="recitation-pos">{{ word.sourcePos||word.pos }}</text><text class="recitation-meaning">{{ primaryMeaning(word) }}</text><view v-if="flipped[word.id]" class="recitation-back-actions"><button hover-class="none" class="recitation-details" @click.stop="word.conjugation?openConjugation(word):$emit('detail',word)" aria-label="详细释义 / Fiche du mot"><view class="recitation-detail-label"><text>释义</text><text>Fiche</text></view><Icon name="arrow" /></button><button v-if="isConjugationVerb(word)" hover-class="none" class="recitation-conjugation" @click.stop="openConjugation(word)"><text>查看变位</text><text>Conjugaison</text></button></view></view>
+              <view class="recitation-face recitation-front" :aria-hidden="!!flipped[word.id]"><text v-fit-card-text="label(word)" lang="fr">{{ label(word) }}</text></view>
+              <view class="recitation-face recitation-back" :aria-hidden="!flipped[word.id]"><text v-fit-card-text="label(word)" lang="fr">{{ label(word) }}</text><text class="recitation-pos">{{ word.sourcePos||word.pos }}</text><text class="recitation-meaning">{{ primaryMeaning(word) }}</text><view v-if="flipped[word.id]" class="recitation-back-actions"><button hover-class="none" class="recitation-details" @click.stop="word.conjugation?openConjugation(word):$emit('detail',word)" aria-label="详细释义 / Fiche du mot"><view class="recitation-detail-label"><text>释义</text><text>Fiche</text></view><Icon name="arrow" /></button><button v-if="isConjugationVerb(word)" hover-class="none" class="recitation-conjugation" @click.stop="openConjugation(word)"><text>查看变位</text><text>Conjugaison</text></button></view></view>
             </view>
           </view>
         </view>
@@ -19,6 +19,7 @@
 </template>
 <script setup>
 import {computed,ref,onMounted,onUnmounted} from 'vue';
+import {vFitCardText} from '../ui/fit-card-text.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';
 import {primaryMeaning} from '../domain/meanings.js';
 import ConjugationDetails from './ConjugationDetails.vue';

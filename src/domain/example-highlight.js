@@ -24,7 +24,8 @@ function verbForms(verb){
 function phrases(word){
   const result=new Set();
   for(const form of word.forms){
-    if(typeof form.example?.highlight==='string'&&form.example.highlight.length<=190)result.add(form.example.highlight);
+    const hints=Array.isArray(form.example?.highlight)?form.example.highlight:[form.example?.highlight];
+    for(const hint of hints)if(typeof hint==='string'&&hint.length<=190)result.add(hint);
     result.add(spellingParts(word,form).text.trim().replace(/[.!?…,:;\s]+$/u,''));
     const text=spellingParts(word,form).answer.trim().replace(/[.!?…,:;\s]+$/u,'');if(!text)continue;
     result.add(text);result.add(text+'s');result.add(text+'x');

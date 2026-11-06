@@ -1,0 +1,5667 @@
+{
+  "nul": {
+    "meaning": "无效的",
+    "meanings": [
+      "无效的",
+      "差劲的",
+      "零的"
+    ],
+    "previousMeanings": [
+      "跛足的"
+    ],
+    "previousPrimary": "跛足的"
+  },
+  "spectacle": {
+    "meaning": "演出，表演",
+    "meanings": [
+      "演出，表演",
+      "景象"
+    ],
+    "previousMeanings": [
+      "显示"
+    ],
+    "previousPrimary": "显示"
+  },
+  "star": {
+    "meaning": "明星",
+    "meanings": [
+      "明星"
+    ],
+    "previousMeanings": [
+      "星"
+    ],
+    "previousPrimary": "星"
+  },
+  "intervention": {
+    "meaning": "干预，介入",
+    "meanings": [
+      "干预，介入",
+      "发言",
+      "手术"
+    ],
+    "previousMeanings": [
+      "插入"
+    ],
+    "previousPrimary": "插入"
+  },
+  "mondial": {
+    "meaning": "世界的，全球的",
+    "meanings": [
+      "世界的，全球的"
+    ],
+    "previousMeanings": [
+      "通用的"
+    ],
+    "previousPrimary": "通用的"
+  },
+  "portée": {
+    "meaning": "范围，影响",
+    "meanings": [
+      "范围，影响",
+      "射程",
+      "一窝幼崽"
+    ],
+    "previousMeanings": [
+      "伸出"
+    ],
+    "previousPrimary": "伸出",
+    "invalidMeanings": [
+      "伸出"
+    ]
+  },
+  "tenue": {
+    "meaning": "服装，装束",
+    "meanings": [
+      "服装，装束",
+      "举止",
+      "保持"
+    ],
+    "previousMeanings": [
+      "维护"
+    ],
+    "previousPrimary": "维护"
+  },
+  "robe": {
+    "meaning": "连衣裙",
+    "meanings": [
+      "连衣裙",
+      "袍子"
+    ],
+    "previousMeanings": [
+      "服装"
+    ],
+    "previousPrimary": "服装"
+  },
+  "engagement": {
+    "meaning": "承诺，投入",
+    "meanings": [
+      "承诺，投入",
+      "约定",
+      "聘用"
+    ],
+    "previousMeanings": [
+      "委托"
+    ],
+    "previousPrimary": "委托"
+  },
+  "pote": {
+    "meaning": "朋友，伙伴",
+    "meanings": [
+      "朋友，伙伴"
+    ],
+    "previousMeanings": [
+      "配偶"
+    ],
+    "previousPrimary": "配偶"
+  },
+  "enceinte": {
+    "meaning": "怀孕的",
+    "meanings": [
+      "怀孕的",
+      "围墙，围场",
+      "音箱"
+    ],
+    "previousMeanings": [
+      "附件"
+    ],
+    "previousPrimary": "附件"
+  },
+  "étage": {
+    "meaning": "楼层",
+    "meanings": [
+      "楼层"
+    ],
+    "previousMeanings": [
+      "地板"
+    ],
+    "previousPrimary": "地板",
+    "invalidMeanings": [
+      "地板"
+    ]
+  },
+  "performance": {
+    "meaning": "表现，成绩",
+    "meanings": [
+      "表现，成绩",
+      "性能",
+      "演出"
+    ],
+    "previousMeanings": [
+      "施行"
+    ],
+    "previousPrimary": "施行"
+  },
+  "stage": {
+    "meaning": "实习，实习期",
+    "meanings": [
+      "实习，实习期",
+      "培训"
+    ],
+    "previousMeanings": [
+      "实习医师的职务"
+    ],
+    "previousPrimary": "实习医师的职务",
+    "invalidMeanings": [
+      "实习医师的职务"
+    ]
+  },
+  "solide": {
+    "meaning": "坚固的，结实的",
+    "meanings": [
+      "坚固的，结实的",
+      "稳固的",
+      "可靠的",
+      "固态的"
+    ],
+    "previousMeanings": [
+      "无虑的"
+    ],
+    "previousPrimary": "无虑的"
+  },
+  "rock": {
+    "meaning": "摇滚乐",
+    "meanings": [
+      "摇滚乐"
+    ],
+    "previousMeanings": [
+      "岩石"
+    ],
+    "previousPrimary": "岩石",
+    "invalidMeanings": [
+      "岩石"
+    ]
+  },
+  "show": {
+    "meaning": "演出，表演",
+    "meanings": [
+      "演出，表演"
+    ],
+    "previousMeanings": [
+      "显示"
+    ],
+    "previousPrimary": "显示"
+  },
+  "douche": {
+    "meaning": "淋浴",
+    "meanings": [
+      "淋浴",
+      "淋浴器"
+    ],
+    "previousMeanings": [
+      "阵雨"
+    ],
+    "previousPrimary": "阵雨",
+    "invalidMeanings": [
+      "阵雨"
+    ]
+  },
+  "moto": {
+    "meaning": "摩托车",
+    "meanings": [
+      "摩托车"
+    ],
+    "previousMeanings": [
+      "自行车"
+    ],
+    "previousPrimary": "自行车",
+    "invalidMeanings": [
+      "自行车"
+    ]
+  },
+  "coach": {
+    "meaning": "教练",
+    "meanings": [
+      "教练",
+      "指导者"
+    ],
+    "previousMeanings": [
+      "四轮大马车"
+    ],
+    "previousPrimary": "四轮大马车"
+  },
+  "viol": {
+    "meaning": "强奸",
+    "meanings": [
+      "强奸"
+    ],
+    "previousMeanings": [
+      "抢夺"
+    ],
+    "previousPrimary": "抢夺"
+  },
+  "plaque": {
+    "meaning": "薄板，牌子",
+    "meanings": [
+      "薄板，牌子",
+      "斑块",
+      "烤盘"
+    ],
+    "previousMeanings": [
+      "床单"
+    ],
+    "previousPrimary": "床单"
+  },
+  "registre": {
+    "meaning": "登记簿",
+    "meanings": [
+      "登记簿",
+      "音域",
+      "语体"
+    ],
+    "previousMeanings": [
+      "寄存器"
+    ],
+    "previousPrimary": "寄存器"
+  },
+  "donnée": {
+    "meaning": "数据",
+    "meanings": [
+      "数据",
+      "已知条件"
+    ],
+    "previousMeanings": [
+      "论据"
+    ],
+    "previousPrimary": "论据"
+  },
+  "pointe": {
+    "meaning": "尖端",
+    "meanings": [
+      "尖端",
+      "顶峰",
+      "高峰期"
+    ],
+    "previousMeanings": [
+      "点"
+    ],
+    "previousPrimary": "点"
+  },
+  "dispositif": {
+    "meaning": "装置，设备",
+    "meanings": [
+      "装置，设备",
+      "安排，部署",
+      "安排，机制"
+    ],
+    "previousMeanings": [
+      "排列"
+    ],
+    "previousPrimary": "排列"
+  },
+  "montage": {
+    "meaning": "组装",
+    "meanings": [
+      "组装",
+      "剪辑",
+      "安装"
+    ],
+    "previousMeanings": [
+      "与会者"
+    ],
+    "previousPrimary": "与会者"
+  },
+  "rappel": {
+    "meaning": "提醒",
+    "meanings": [
+      "提醒",
+      "召回",
+      "返场",
+      "绳降"
+    ],
+    "previousMeanings": [
+      "提醒的人"
+    ],
+    "previousPrimary": "提醒的人"
+  },
+  "régime": {
+    "meaning": "饮食制度",
+    "meanings": [
+      "饮食制度",
+      "政体",
+      "运转状态"
+    ],
+    "previousMeanings": [
+      "政权"
+    ],
+    "previousPrimary": "政权"
+  },
+  "limiter": {
+    "meaning": "限制",
+    "meanings": [
+      "限制",
+      "限定"
+    ],
+    "previousMeanings": [
+      "做标记于"
+    ],
+    "previousPrimary": "做标记于"
+  },
+  "retard": {
+    "meaning": "迟到，延误",
+    "meanings": [
+      "迟到，延误",
+      "落后"
+    ],
+    "previousMeanings": [
+      "耽搁"
+    ],
+    "previousPrimary": "耽搁"
+  },
+  "drogue": {
+    "meaning": "毒品",
+    "meanings": [
+      "毒品",
+      "药物"
+    ],
+    "previousMeanings": [
+      "药"
+    ],
+    "previousPrimary": "药"
+  },
+  "fête": {
+    "meaning": "节日",
+    "meanings": [
+      "节日",
+      "聚会，庆祝活动"
+    ],
+    "previousMeanings": [
+      "宴会"
+    ],
+    "previousPrimary": "宴会"
+  },
+  "tableau": {
+    "meaning": "画，图画",
+    "meanings": [
+      "画，图画",
+      "表格",
+      "黑板"
+    ],
+    "previousMeanings": [
+      "画",
+      "黑板",
+      "表格"
+    ],
+    "previousPrimary": "画"
+  },
+  "port": {
+    "meaning": "港口",
+    "meanings": [
+      "港口",
+      "穿戴",
+      "姿态"
+    ],
+    "previousMeanings": [
+      "港口"
+    ],
+    "previousPrimary": "港口"
+  },
+  "salon": {
+    "meaning": "客厅",
+    "meanings": [
+      "客厅",
+      "展览会",
+      "沙龙",
+      "美容院"
+    ],
+    "previousMeanings": [
+      "大会客室"
+    ],
+    "previousPrimary": "大会客室"
+  },
+  "institut": {
+    "meaning": "研究所",
+    "meanings": [
+      "研究所",
+      "学院"
+    ],
+    "previousMeanings": [
+      "学会"
+    ],
+    "previousPrimary": "学会"
+  },
+  "soin": {
+    "meaning": "照料，护理",
+    "meanings": [
+      "照料，护理",
+      "用心",
+      "治疗"
+    ],
+    "previousMeanings": [
+      "小心"
+    ],
+    "previousPrimary": "小心"
+  },
+  "marc": {
+    "meaning": "渣滓",
+    "meanings": [
+      "渣滓",
+      "果渣"
+    ],
+    "previousMeanings": [
+      "酱状物"
+    ],
+    "previousPrimary": "酱状物"
+  },
+  "reprise": {
+    "meaning": "重新开始",
+    "meanings": [
+      "重新开始",
+      "恢复",
+      "再次，重演",
+      "翻唱"
+    ],
+    "previousMeanings": [
+      "时间"
+    ],
+    "previousPrimary": "时间"
+  },
+  "distribution": {
+    "meaning": "分发，分配",
+    "meanings": [
+      "分发，分配",
+      "发行",
+      "配送"
+    ],
+    "previousMeanings": [
+      "递送"
+    ],
+    "previousPrimary": "递送"
+  },
+  "menace": {
+    "meaning": "威胁",
+    "meanings": [
+      "威胁"
+    ],
+    "previousMeanings": [
+      "恐吓"
+    ],
+    "previousPrimary": "恐吓"
+  },
+  "talent": {
+    "meaning": "才能，天赋",
+    "meanings": [
+      "才能，天赋"
+    ],
+    "previousMeanings": [
+      "天才"
+    ],
+    "previousPrimary": "天才"
+  },
+  "gratuitement": {
+    "meaning": "免费地",
+    "meanings": [
+      "免费地",
+      "无缘无故地"
+    ],
+    "previousMeanings": [
+      "自由地"
+    ],
+    "previousPrimary": "自由地"
+  },
+  "essence": {
+    "meaning": "汽油",
+    "meanings": [
+      "汽油",
+      "本质"
+    ],
+    "previousMeanings": [
+      "实质"
+    ],
+    "previousPrimary": "实质"
+  },
+  "lancement": {
+    "meaning": "发射",
+    "meanings": [
+      "发射",
+      "推出，启动",
+      "投掷"
+    ],
+    "previousMeanings": [
+      "投掷"
+    ],
+    "previousPrimary": "投掷"
+  },
+  "vainqueur": {
+    "meaning": "获胜者",
+    "meanings": [
+      "获胜者"
+    ],
+    "previousMeanings": [
+      "征服者"
+    ],
+    "previousPrimary": "征服者"
+  },
+  "pôle": {
+    "meaning": "极点",
+    "meanings": [
+      "极点",
+      "中心"
+    ],
+    "previousMeanings": [
+      "中心"
+    ],
+    "previousPrimary": "中心"
+  },
+  "liaison": {
+    "meaning": "联系，连接",
+    "meanings": [
+      "联系，连接",
+      "连读",
+      "私情"
+    ],
+    "previousMeanings": [
+      "环"
+    ],
+    "previousPrimary": "环"
+  },
+  "sauce": {
+    "meaning": "酱汁，调味汁",
+    "meanings": [
+      "酱汁，调味汁"
+    ],
+    "previousMeanings": [
+      "酱油"
+    ],
+    "previousPrimary": "酱油"
+  },
+  "exercer": {
+    "meaning": "从事，行使",
+    "meanings": [
+      "从事，行使",
+      "施加",
+      "锻炼",
+      "练习，训练"
+    ],
+    "previousMeanings": [
+      "教"
+    ],
+    "previousPrimary": "教"
+  },
+  "rive": {
+    "meaning": "岸，河岸",
+    "meanings": [
+      "岸，河岸"
+    ],
+    "previousMeanings": [
+      "银行"
+    ],
+    "previousPrimary": "银行",
+    "invalidMeanings": [
+      "银行"
+    ]
+  },
+  "entourage": {
+    "meaning": "周围的人",
+    "meanings": [
+      "周围的人",
+      "亲友，随从"
+    ],
+    "previousMeanings": [
+      "装饰"
+    ],
+    "previousPrimary": "装饰",
+    "invalidMeanings": [
+      "装饰"
+    ]
+  },
+  "recul": {
+    "meaning": "后退",
+    "meanings": [
+      "后退",
+      "退缩",
+      "距离",
+      "下降，衰退"
+    ],
+    "previousMeanings": [
+      "休息寓所"
+    ],
+    "previousPrimary": "休息寓所"
+  },
+  "habitant": {
+    "meaning": "居民",
+    "meanings": [
+      "居民"
+    ],
+    "previousMeanings": [
+      "农夫"
+    ],
+    "previousPrimary": "农夫"
+  },
+  "tirage": {
+    "meaning": "抽取，抽签",
+    "meanings": [
+      "抽取，抽签",
+      "印刷数量",
+      "冲洗照片"
+    ],
+    "previousMeanings": [
+      "图画"
+    ],
+    "previousPrimary": "图画"
+  },
+  "logo": {
+    "meaning": "标志，商标",
+    "meanings": [
+      "标志，商标"
+    ],
+    "previousMeanings": [
+      "连合活字"
+    ],
+    "previousPrimary": "连合活字",
+    "invalidMeanings": [
+      "连合活字"
+    ]
+  },
+  "rendement": {
+    "meaning": "产量",
+    "meanings": [
+      "产量",
+      "效率",
+      "收益率"
+    ],
+    "previousMeanings": [
+      "制造"
+    ],
+    "previousPrimary": "制造"
+  },
+  "stock": {
+    "meaning": "库存",
+    "meanings": [
+      "库存",
+      "储备"
+    ],
+    "previousMeanings": [
+      "树干"
+    ],
+    "previousPrimary": "树干"
+  },
+  "trimestre": {
+    "meaning": "三个月，季度",
+    "meanings": [
+      "三个月，季度",
+      "学期"
+    ],
+    "previousMeanings": [
+      "四分之一"
+    ],
+    "previousPrimary": "四分之一"
+  },
+  "grille": {
+    "meaning": "栅栏，格栅",
+    "meanings": [
+      "栅栏，格栅",
+      "烤架",
+      "表格"
+    ],
+    "previousMeanings": [
+      "马齿龈"
+    ],
+    "previousPrimary": "马齿龈"
+  },
+  "messe": {
+    "meaning": "弥撒",
+    "meanings": [
+      "弥撒"
+    ],
+    "previousMeanings": [
+      "块"
+    ],
+    "previousPrimary": "块",
+    "invalidMeanings": [
+      "块"
+    ]
+  },
+  "house": {
+    "meaning": "浩室音乐",
+    "meanings": [
+      "浩室音乐"
+    ],
+    "previousMeanings": [
+      "家庭音乐"
+    ],
+    "previousPrimary": "家庭音乐"
+  },
+  "ranger": {
+    "meaning": "整理，收拾",
+    "meanings": [
+      "整理，收拾",
+      "排列",
+      "归类"
+    ],
+    "previousMeanings": [
+      "命令"
+    ],
+    "previousPrimary": "命令"
+  },
+  "rap": {
+    "meaning": "说唱音乐",
+    "meanings": [
+      "说唱音乐"
+    ],
+    "previousMeanings": [
+      "轻敲"
+    ],
+    "previousPrimary": "轻敲",
+    "invalidMeanings": [
+      "轻敲"
+    ]
+  },
+  "stockage": {
+    "meaning": "储存，存储",
+    "meanings": [
+      "储存，存储"
+    ],
+    "previousMeanings": [
+      "存储器"
+    ],
+    "previousPrimary": "存储器"
+  },
+  "métrage": {
+    "meaning": "以米计的长度",
+    "meanings": [
+      "以米计的长度",
+      "影片长度"
+    ],
+    "previousMeanings": [
+      "英尺长度"
+    ],
+    "previousPrimary": "英尺长度"
+  },
+  "maquillage": {
+    "meaning": "化妆",
+    "meanings": [
+      "化妆",
+      "化妆品",
+      "掩饰"
+    ],
+    "previousMeanings": [
+      "组成"
+    ],
+    "previousPrimary": "组成",
+    "invalidMeanings": [
+      "组成"
+    ]
+  },
+  "resto": {
+    "meaning": "餐馆",
+    "meanings": [
+      "餐馆"
+    ],
+    "previousMeanings": [
+      "余额"
+    ],
+    "previousPrimary": "余额",
+    "invalidMeanings": [
+      "余额"
+    ]
+  },
+  "relief": {
+    "meaning": "地形，起伏",
+    "meanings": [
+      "地形，起伏",
+      "浮雕",
+      "突出"
+    ],
+    "previousMeanings": [
+      "发射"
+    ],
+    "previousPrimary": "发射"
+  },
+  "affection": {
+    "meaning": "感情，喜爱",
+    "meanings": [
+      "感情，喜爱",
+      "疾病"
+    ],
+    "previousMeanings": [
+      "影响"
+    ],
+    "previousPrimary": "影响"
+  },
+  "stand": {
+    "meaning": "展台，摊位",
+    "meanings": [
+      "展台，摊位",
+      "看台"
+    ],
+    "previousMeanings": [
+      "站立"
+    ],
+    "previousPrimary": "站立"
+  },
+  "set": {
+    "meaning": "一盘，一局",
+    "meanings": [
+      "一盘，一局",
+      "一组",
+      "一场演出"
+    ],
+    "previousMeanings": [
+      "日落"
+    ],
+    "previousPrimary": "日落"
+  },
+  "embauche": {
+    "meaning": "雇用，招聘",
+    "meanings": [
+      "雇用，招聘"
+    ],
+    "previousMeanings": [
+      "空"
+    ],
+    "previousPrimary": "空"
+  },
+  "dérive": {
+    "meaning": "漂移，漂流",
+    "meanings": [
+      "漂移，漂流",
+      "偏离",
+      "偏离正轨，误入歧途"
+    ],
+    "previousMeanings": [
+      "漂流物"
+    ],
+    "previousPrimary": "漂流物"
+  },
+  "dégueulasse": {
+    "meaning": "恶心的",
+    "meanings": [
+      "恶心的",
+      "肮脏的",
+      "卑劣的"
+    ],
+    "previousMeanings": [
+      "凉爽的"
+    ],
+    "previousPrimary": "凉爽的"
+  },
+  "relance": {
+    "meaning": "重新启动",
+    "meanings": [
+      "重新启动",
+      "催促，催款",
+      "复苏"
+    ],
+    "previousMeanings": [
+      "提醒的人"
+    ],
+    "previousPrimary": "提醒的人",
+    "invalidMeanings": [
+      "提醒的人"
+    ]
+  },
+  "définitif": {
+    "meaning": "最终的",
+    "meanings": [
+      "最终的",
+      "永久的"
+    ],
+    "previousMeanings": [
+      "限定的"
+    ],
+    "previousPrimary": "限定的"
+  },
+  "vaccin": {
+    "meaning": "疫苗",
+    "meanings": [
+      "疫苗"
+    ],
+    "previousMeanings": [
+      "牛痘苗"
+    ],
+    "previousPrimary": "牛痘苗"
+  },
+  "mutation": {
+    "meaning": "变动，调动",
+    "meanings": [
+      "变动，调动",
+      "突变",
+      "转型"
+    ],
+    "previousMeanings": [
+      "代替"
+    ],
+    "previousPrimary": "代替"
+  },
+  "lente": {
+    "meaning": "虱卵",
+    "meanings": [
+      "虱卵"
+    ],
+    "previousMeanings": [
+      "没用的人"
+    ],
+    "previousPrimary": "没用的人"
+  },
+  "slogan": {
+    "meaning": "口号",
+    "meanings": [
+      "口号",
+      "广告语"
+    ],
+    "previousMeanings": [
+      "呐喊声"
+    ],
+    "previousPrimary": "呐喊声"
+  },
+  "traîne": {
+    "meaning": "拖尾",
+    "meanings": [
+      "拖尾",
+      "拖网"
+    ],
+    "previousMeanings": [
+      "火车"
+    ],
+    "previousPrimary": "火车"
+  },
+  "spectaculaire": {
+    "meaning": "壮观的",
+    "meanings": [
+      "壮观的",
+      "引人注目的"
+    ],
+    "previousMeanings": [
+      "公开展示的"
+    ],
+    "previousPrimary": "公开展示的"
+  },
+  "poker": {
+    "meaning": "扑克游戏",
+    "meanings": [
+      "扑克游戏"
+    ],
+    "previousMeanings": [
+      "戳的人"
+    ],
+    "previousPrimary": "戳的人",
+    "invalidMeanings": [
+      "戳的人"
+    ]
+  },
+  "rappeur": {
+    "meaning": "说唱歌手",
+    "meanings": [
+      "说唱歌手"
+    ],
+    "previousMeanings": [
+      "敲门人"
+    ],
+    "previousPrimary": "敲门人",
+    "invalidMeanings": [
+      "敲门人"
+    ]
+  },
+  "missile": {
+    "meaning": "导弹",
+    "meanings": [
+      "导弹"
+    ],
+    "previousMeanings": [
+      "发射物"
+    ],
+    "previousPrimary": "发射物"
+  },
+  "square": {
+    "meaning": "街心花园，小广场",
+    "meanings": [
+      "街心花园，小广场"
+    ],
+    "previousMeanings": [
+      "正方形"
+    ],
+    "previousPrimary": "正方形"
+  },
+  "randonnée": {
+    "meaning": "徒步旅行",
+    "meanings": [
+      "徒步旅行",
+      "远足"
+    ],
+    "previousMeanings": [
+      "走"
+    ],
+    "previousPrimary": "走"
+  },
+  "store": {
+    "meaning": "卷帘，百叶窗",
+    "meanings": [
+      "卷帘，百叶窗"
+    ],
+    "previousMeanings": [
+      "蒙蔽物"
+    ],
+    "previousPrimary": "蒙蔽物"
+  },
+  "drone": {
+    "meaning": "无人机",
+    "meanings": [
+      "无人机",
+      "雄蜂"
+    ],
+    "previousMeanings": [
+      "雄蜂"
+    ],
+    "previousPrimary": "雄蜂"
+  },
+  "sinistre": {
+    "meaning": "阴森的，可怕的",
+    "meanings": [
+      "阴森的，可怕的",
+      "灾祸，事故"
+    ],
+    "previousMeanings": [
+      "容易受惊的"
+    ],
+    "previousPrimary": "容易受惊的"
+  },
+  "vitrine": {
+    "meaning": "橱窗",
+    "meanings": [
+      "橱窗",
+      "展示柜"
+    ],
+    "previousMeanings": [
+      "买东西"
+    ],
+    "previousPrimary": "买东西"
+  },
+  "partition": {
+    "meaning": "乐谱",
+    "meanings": [
+      "乐谱",
+      "分割"
+    ],
+    "previousMeanings": [
+      "得分"
+    ],
+    "previousPrimary": "得分",
+    "invalidMeanings": [
+      "得分"
+    ]
+  },
+  "pipi": {
+    "meaning": "尿，小便",
+    "meanings": [
+      "尿，小便"
+    ],
+    "previousMeanings": [
+      "一点点"
+    ],
+    "previousPrimary": "一点点",
+    "invalidMeanings": [
+      "一点点"
+    ]
+  },
+  "protestation": {
+    "meaning": "抗议",
+    "meanings": [
+      "抗议"
+    ],
+    "previousMeanings": [
+      "准许进入"
+    ],
+    "previousPrimary": "准许进入",
+    "invalidMeanings": [
+      "准许进入"
+    ]
+  },
+  "tram": {
+    "meaning": "有轨电车",
+    "meanings": [
+      "有轨电车"
+    ],
+    "previousMeanings": [
+      "电车轨道"
+    ],
+    "previousPrimary": "电车轨道"
+  },
+  "tramway": {
+    "meaning": "有轨电车",
+    "meanings": [
+      "有轨电车"
+    ],
+    "previousMeanings": [
+      "电车轨道"
+    ],
+    "previousPrimary": "电车轨道"
+  },
+  "dunkerque": {
+    "meaning": "敦刻尔克",
+    "meanings": [
+      "敦刻尔克"
+    ],
+    "previousMeanings": [
+      "橱柜"
+    ],
+    "previousPrimary": "橱柜"
+  },
+  "sentence": {
+    "meaning": "判决",
+    "meanings": [
+      "判决",
+      "格言"
+    ],
+    "previousMeanings": [
+      "句子"
+    ],
+    "previousPrimary": "句子"
+  },
+  "western": {
+    "meaning": "西部片",
+    "meanings": [
+      "西部片"
+    ],
+    "previousMeanings": [
+      "西方人"
+    ],
+    "previousPrimary": "西方人"
+  },
+  "obus": {
+    "meaning": "炮弹",
+    "meanings": [
+      "炮弹"
+    ],
+    "previousMeanings": [
+      "贝壳"
+    ],
+    "previousPrimary": "贝壳",
+    "invalidMeanings": [
+      "贝壳"
+    ]
+  },
+  "stocker": {
+    "meaning": "储存，存放",
+    "meanings": [
+      "储存，存放"
+    ],
+    "previousMeanings": [
+      "装把手于"
+    ],
+    "previousPrimary": "装把手于",
+    "invalidMeanings": [
+      "装把手于"
+    ]
+  },
+  "sensé": {
+    "meaning": "明智的，合理的",
+    "meanings": [
+      "明智的，合理的"
+    ],
+    "previousMeanings": [
+      "有感觉的"
+    ],
+    "previousPrimary": "有感觉的",
+    "invalidMeanings": [
+      "有感觉的"
+    ]
+  },
+  "tank": {
+    "meaning": "坦克",
+    "meanings": [
+      "坦克",
+      "储罐"
+    ],
+    "previousMeanings": [
+      "槽"
+    ],
+    "previousPrimary": "槽"
+  },
+  "thriller": {
+    "meaning": "惊悚片，惊悚小说",
+    "meanings": [
+      "惊悚片，惊悚小说"
+    ],
+    "previousMeanings": [
+      "使人激动的东西"
+    ],
+    "previousPrimary": "使人激动的东西"
+  },
+  "dynamisme": {
+    "meaning": "活力，干劲",
+    "meanings": [
+      "活力，干劲"
+    ],
+    "previousMeanings": [
+      "物力论"
+    ],
+    "previousPrimary": "物力论",
+    "invalidMeanings": [
+      "物力论"
+    ]
+  },
+  "soja": {
+    "meaning": "大豆，黄豆",
+    "meanings": [
+      "大豆，黄豆"
+    ],
+    "previousMeanings": [
+      "酱油"
+    ],
+    "previousPrimary": "酱油"
+  },
+  "trésorerie": {
+    "meaning": "财务部门",
+    "meanings": [
+      "财务部门",
+      "现金状况"
+    ],
+    "previousMeanings": [
+      "司库的职位"
+    ],
+    "previousPrimary": "司库的职位"
+  },
+  "hétéro": {
+    "meaning": "异性恋的",
+    "meanings": [
+      "异性恋的",
+      "异性恋者"
+    ],
+    "previousMeanings": [
+      "直的"
+    ],
+    "previousPrimary": "直的",
+    "invalidMeanings": [
+      "直的"
+    ]
+  },
+  "interrogation": {
+    "meaning": "提问，疑问",
+    "meanings": [
+      "提问，疑问",
+      "测验",
+      "审讯",
+      "审问"
+    ],
+    "previousMeanings": [
+      "疑问词"
+    ],
+    "previousPrimary": "疑问词"
+  },
+  "latitude": {
+    "meaning": "纬度",
+    "meanings": [
+      "纬度",
+      "自由，余地"
+    ],
+    "previousMeanings": [
+      "扩充"
+    ],
+    "previousPrimary": "扩充",
+    "invalidMeanings": [
+      "扩充"
+    ]
+  },
+  "légèreté": {
+    "meaning": "轻，轻盈",
+    "meanings": [
+      "轻，轻盈",
+      "轻率"
+    ],
+    "previousMeanings": [
+      "光亮度"
+    ],
+    "previousPrimary": "光亮度"
+  },
+  "enthousiaste": {
+    "meaning": "热情的",
+    "meanings": [
+      "热情的",
+      "热心的，热衷的"
+    ],
+    "previousMeanings": [
+      "得到灵感的"
+    ],
+    "previousPrimary": "得到灵感的"
+  },
+  "préavis": {
+    "meaning": "预先通知",
+    "meanings": [
+      "预先通知",
+      "通知期"
+    ],
+    "previousMeanings": [
+      "注意"
+    ],
+    "previousPrimary": "注意"
+  },
+  "rallye": {
+    "meaning": "拉力赛",
+    "meanings": [
+      "拉力赛",
+      "集会"
+    ],
+    "previousMeanings": [
+      "重振旗鼓"
+    ],
+    "previousPrimary": "重振旗鼓"
+  },
+  "loupe": {
+    "meaning": "放大镜",
+    "meanings": [
+      "放大镜",
+      "瘤"
+    ],
+    "previousMeanings": [
+      "粉瘤"
+    ],
+    "previousPrimary": "粉瘤"
+  },
+  "crucial": {
+    "meaning": "至关重要的",
+    "meanings": [
+      "至关重要的",
+      "决定性的"
+    ],
+    "previousMeanings": [
+      "十字形的"
+    ],
+    "previousPrimary": "十字形的"
+  },
+  "patriarche": {
+    "meaning": "族长，家长",
+    "meanings": [
+      "族长，家长",
+      "宗主教"
+    ],
+    "previousMeanings": [
+      "创办人"
+    ],
+    "previousPrimary": "创办人"
+  },
+  "primordial": {
+    "meaning": "首要的，根本的",
+    "meanings": [
+      "首要的，根本的",
+      "原始的"
+    ],
+    "previousMeanings": [
+      "原始的"
+    ],
+    "previousPrimary": "原始的"
+  },
+  "simplification": {
+    "meaning": "简化",
+    "meanings": [
+      "简化"
+    ],
+    "previousMeanings": [
+      "单一化"
+    ],
+    "previousPrimary": "单一化"
+  },
+  "texture": {
+    "meaning": "质地，纹理",
+    "meanings": [
+      "质地，纹理"
+    ],
+    "previousMeanings": [
+      "(织物的)密度"
+    ],
+    "previousPrimary": "密度"
+  },
+  "devis": {
+    "meaning": "报价单，估价单",
+    "meanings": [
+      "报价单，估价单"
+    ],
+    "previousMeanings": [
+      "引用"
+    ],
+    "previousPrimary": "引用"
+  },
+  "fièrement": {
+    "meaning": "自豪地",
+    "meanings": [
+      "自豪地",
+      "骄傲地"
+    ],
+    "previousMeanings": [
+      "傲慢地"
+    ],
+    "previousPrimary": "傲慢地"
+  },
+  "épave": {
+    "meaning": "残骸",
+    "meanings": [
+      "残骸",
+      "失事船只"
+    ],
+    "previousMeanings": [
+      "失事"
+    ],
+    "previousPrimary": "失事"
+  },
+  "griller": {
+    "meaning": "烤",
+    "meanings": [
+      "烤",
+      "烧坏",
+      "抢先",
+      "抽烟"
+    ],
+    "previousMeanings": [
+      "敬酒"
+    ],
+    "previousPrimary": "敬酒"
+  },
+  "dealer": {
+    "meaning": "毒品贩子",
+    "meanings": [
+      "毒品贩子"
+    ],
+    "previousMeanings": [
+      "处理"
+    ],
+    "previousPrimary": "处理"
+  },
+  "valet": {
+    "meaning": "男仆",
+    "meanings": [
+      "男仆",
+      "侍从",
+      "纸牌中的杰克"
+    ],
+    "previousMeanings": [
+      "插座"
+    ],
+    "previousPrimary": "插座"
+  },
+  "tuteur": {
+    "meaning": "监护人",
+    "meanings": [
+      "监护人",
+      "导师",
+      "支架"
+    ],
+    "previousMeanings": [
+      "看守者"
+    ],
+    "previousPrimary": "看守者"
+  },
+  "muse": {
+    "meaning": "缪斯",
+    "meanings": [
+      "缪斯",
+      "灵感的源泉"
+    ],
+    "previousMeanings": [
+      "沉思"
+    ],
+    "previousPrimary": "沉思"
+  },
+  "mouture": {
+    "meaning": "研磨",
+    "meanings": [
+      "研磨",
+      "版本"
+    ],
+    "previousMeanings": [
+      "一种描述"
+    ],
+    "previousPrimary": "一种描述"
+  },
+  "mouton": {
+    "meaning": "绵羊",
+    "meanings": [
+      "绵羊",
+      "羊肉"
+    ],
+    "previousMeanings": [
+      "绵羊",
+      "羊肉",
+      "盲从者",
+      "一种金币"
+    ],
+    "previousPrimary": "绵羊"
+  },
+  "pognon": {
+    "meaning": "钱",
+    "meanings": [
+      "钱"
+    ],
+    "previousMeanings": [
+      "生面团"
+    ],
+    "previousPrimary": "生面团"
+  },
+  "inflammation": {
+    "meaning": "炎症",
+    "meanings": [
+      "炎症",
+      "燃烧"
+    ],
+    "previousMeanings": [
+      "怒火"
+    ],
+    "previousPrimary": "怒火"
+  },
+  "emmerder": {
+    "meaning": "惹恼，烦扰",
+    "meanings": [
+      "惹恼，烦扰"
+    ],
+    "previousMeanings": [
+      "装防盗报警器"
+    ],
+    "previousPrimary": "装防盗报警器"
+  },
+  "translation": {
+    "meaning": "平移",
+    "meanings": [
+      "平移",
+      "转移"
+    ],
+    "previousMeanings": [
+      "翻译"
+    ],
+    "previousPrimary": "翻译"
+  },
+  "rivage": {
+    "meaning": "岸，海岸",
+    "meanings": [
+      "岸，海岸"
+    ],
+    "previousMeanings": [
+      "银行"
+    ],
+    "previousPrimary": "银行",
+    "invalidMeanings": [
+      "银行"
+    ]
+  },
+  "pion": {
+    "meaning": "棋子",
+    "meanings": [
+      "棋子",
+      "监学员"
+    ],
+    "previousMeanings": [
+      "典当"
+    ],
+    "previousPrimary": "典当"
+  },
+  "remorque": {
+    "meaning": "拖车",
+    "meanings": [
+      "拖车",
+      "拖曳"
+    ],
+    "previousMeanings": [
+      "追踪者"
+    ],
+    "previousPrimary": "追踪者"
+  },
+  "sillage": {
+    "meaning": "航迹，尾迹",
+    "meanings": [
+      "航迹，尾迹",
+      "足迹，影响",
+      "所经之处"
+    ],
+    "previousMeanings": [
+      "守侯"
+    ],
+    "previousPrimary": "守侯"
+  },
+  "legs": {
+    "meaning": "遗赠，遗产",
+    "meanings": [
+      "遗赠，遗产"
+    ],
+    "previousMeanings": [
+      "遗传"
+    ],
+    "previousPrimary": "遗传"
+  },
+  "modélisation": {
+    "meaning": "建模",
+    "meanings": [
+      "建模"
+    ],
+    "previousMeanings": [
+      "模特儿职业"
+    ],
+    "previousPrimary": "模特儿职业"
+  },
+  "merdier": {
+    "meaning": "混乱局面",
+    "meanings": [
+      "混乱局面",
+      "烂摊子"
+    ],
+    "previousMeanings": [
+      "食堂"
+    ],
+    "previousPrimary": "食堂"
+  },
+  "génétiquement": {
+    "meaning": "从遗传学上",
+    "meanings": [
+      "从遗传学上"
+    ],
+    "previousMeanings": [
+      "创始"
+    ],
+    "previousPrimary": "创始"
+  },
+  "dater": {
+    "meaning": "注明日期",
+    "meanings": [
+      "注明日期",
+      "确定年代",
+      "始于"
+    ],
+    "previousMeanings": [
+      "约会"
+    ],
+    "previousPrimary": "约会"
+  },
+  "fondue": {
+    "meaning": "奶酪火锅",
+    "meanings": [
+      "奶酪火锅",
+      "火锅料理"
+    ],
+    "previousMeanings": [
+      "蛋白乳酪酥"
+    ],
+    "previousPrimary": "蛋白乳酪酥",
+    "invalidMeanings": [
+      "蛋白乳酪酥"
+    ]
+  },
+  "qualificatif": {
+    "meaning": "形容的",
+    "meanings": [
+      "形容的",
+      "修饰语"
+    ],
+    "previousMeanings": [
+      "取得资格的人"
+    ],
+    "previousPrimary": "取得资格的人"
+  },
+  "prospectus": {
+    "meaning": "广告传单",
+    "meanings": [
+      "广告传单",
+      "说明书"
+    ],
+    "previousMeanings": [
+      "创办计划书"
+    ],
+    "previousPrimary": "创办计划书"
+  },
+  "traquer": {
+    "meaning": "追捕，追踪",
+    "meanings": [
+      "追捕，追踪"
+    ],
+    "previousMeanings": [
+      "循路而行"
+    ],
+    "previousPrimary": "循路而行"
+  },
+  "virilité": {
+    "meaning": "男子气概",
+    "meanings": [
+      "男子气概",
+      "男性特征"
+    ],
+    "previousMeanings": [
+      "成年"
+    ],
+    "previousPrimary": "成年"
+  },
+  "laps": {
+    "meaning": "一段时间",
+    "meanings": [
+      "一段时间"
+    ],
+    "previousMeanings": [
+      "过失"
+    ],
+    "previousPrimary": "过失"
+  },
+  "obstruction": {
+    "meaning": "阻碍，堵塞",
+    "meanings": [
+      "阻碍，堵塞"
+    ],
+    "previousMeanings": [
+      "街区"
+    ],
+    "previousPrimary": "街区"
+  },
+  "succursale": {
+    "meaning": "分店，分支机构",
+    "meanings": [
+      "分店，分支机构"
+    ],
+    "previousMeanings": [
+      "树枝"
+    ],
+    "previousPrimary": "树枝"
+  },
+  "injure": {
+    "meaning": "侮辱，辱骂",
+    "meanings": [
+      "侮辱，辱骂"
+    ],
+    "previousMeanings": [
+      "犯罪"
+    ],
+    "previousPrimary": "犯罪"
+  },
+  "antan": {
+    "meaning": "昔日，往昔",
+    "meanings": [
+      "昔日，往昔"
+    ],
+    "previousMeanings": [
+      "去年"
+    ],
+    "previousPrimary": "去年"
+  },
+  "standing": {
+    "meaning": "档次，水准",
+    "meanings": [
+      "档次，水准"
+    ],
+    "previousMeanings": [
+      "起立"
+    ],
+    "previousPrimary": "起立"
+  },
+  "reddition": {
+    "meaning": "投降",
+    "meanings": [
+      "投降",
+      "交还"
+    ],
+    "previousMeanings": [
+      "付还"
+    ],
+    "previousPrimary": "付还"
+  },
+  "projecteur": {
+    "meaning": "投影仪",
+    "meanings": [
+      "投影仪",
+      "聚光灯"
+    ],
+    "previousMeanings": [
+      "计划人"
+    ],
+    "previousPrimary": "计划人"
+  },
+  "roulette": {
+    "meaning": "轮盘赌",
+    "meanings": [
+      "轮盘赌",
+      "小轮"
+    ],
+    "previousMeanings": [
+      "投手"
+    ],
+    "previousPrimary": "投手"
+  },
+  "hélice": {
+    "meaning": "螺旋桨",
+    "meanings": [
+      "螺旋桨",
+      "螺旋"
+    ],
+    "previousMeanings": [
+      "螺旋"
+    ],
+    "previousPrimary": "螺旋"
+  },
+  "onglet": {
+    "meaning": "选项卡",
+    "meanings": [
+      "选项卡",
+      "标签"
+    ],
+    "previousMeanings": [
+      "制表(键)"
+    ],
+    "previousPrimary": "制表"
+  },
+  "ozone": {
+    "meaning": "臭氧",
+    "meanings": [
+      "臭氧"
+    ],
+    "previousMeanings": [
+      "新鲜的空气"
+    ],
+    "previousPrimary": "新鲜的空气"
+  },
+  "ébauche": {
+    "meaning": "草稿，初稿",
+    "meanings": [
+      "草稿，初稿",
+      "雏形"
+    ],
+    "previousMeanings": [
+      "气流"
+    ],
+    "previousPrimary": "气流"
+  },
+  "électricien": {
+    "meaning": "电工",
+    "meanings": [
+      "电工"
+    ],
+    "previousMeanings": [
+      "电学家"
+    ],
+    "previousPrimary": "电学家"
+  },
+  "pourboire": {
+    "meaning": "小费",
+    "meanings": [
+      "小费"
+    ],
+    "previousMeanings": [
+      "顶"
+    ],
+    "previousPrimary": "顶"
+  },
+  "étui": {
+    "meaning": "盒，套",
+    "meanings": [
+      "盒，套"
+    ],
+    "previousMeanings": [
+      "情形"
+    ],
+    "previousPrimary": "情形"
+  },
+  "lustre": {
+    "meaning": "吊灯",
+    "meanings": [
+      "吊灯",
+      "光泽",
+      "五年"
+    ],
+    "previousMeanings": [
+      "人口普查"
+    ],
+    "previousPrimary": "人口普查",
+    "invalidMeanings": [
+      "人口普查"
+    ]
+  },
+  "placebo": {
+    "meaning": "安慰剂",
+    "meanings": [
+      "安慰剂"
+    ],
+    "previousMeanings": [
+      "(为死者所诵的)晚祷歌"
+    ],
+    "previousPrimary": "晚祷歌",
+    "invalidMeanings": [
+      "晚祷歌"
+    ]
+  },
+  "traiteur": {
+    "meaning": "熟食商",
+    "meanings": [
+      "熟食商",
+      "宴席承办商"
+    ],
+    "previousMeanings": [
+      "(Traiteur)人名"
+    ],
+    "previousPrimary": "人名"
+  },
+  "ténor": {
+    "meaning": "男高音",
+    "meanings": [
+      "男高音",
+      "领军人物"
+    ],
+    "previousMeanings": [
+      "稳定的进程"
+    ],
+    "previousPrimary": "稳定的进程",
+    "invalidMeanings": [
+      "稳定的进程"
+    ]
+  },
+  "malice": {
+    "meaning": "狡黠",
+    "meanings": [
+      "狡黠",
+      "恶意"
+    ],
+    "previousMeanings": [
+      "损害"
+    ],
+    "previousPrimary": "损害"
+  },
+  "piquant": {
+    "meaning": "辛辣的",
+    "meanings": [
+      "辛辣的",
+      "尖锐的",
+      "有趣的"
+    ],
+    "previousMeanings": [
+      "大钉一般的"
+    ],
+    "previousPrimary": "大钉一般的"
+  },
+  "habitacle": {
+    "meaning": "驾驶舱",
+    "meanings": [
+      "驾驶舱",
+      "座舱"
+    ],
+    "previousMeanings": [
+      "居住"
+    ],
+    "previousPrimary": "居住"
+  },
+  "flan": {
+    "meaning": "奶蛋饼",
+    "meanings": [
+      "奶蛋饼",
+      "金属坯"
+    ],
+    "previousMeanings": [
+      "造币用金属坯"
+    ],
+    "previousPrimary": "造币用金属坯"
+  },
+  "plomberie": {
+    "meaning": "管道工程",
+    "meanings": [
+      "管道工程",
+      "管道系统"
+    ],
+    "previousMeanings": [
+      "测深"
+    ],
+    "previousPrimary": "测深"
+  },
+  "transpiration": {
+    "meaning": "出汗",
+    "meanings": [
+      "出汗",
+      "蒸腾作用"
+    ],
+    "previousMeanings": [
+      "蒸发"
+    ],
+    "previousPrimary": "蒸发"
+  },
+  "vidange": {
+    "meaning": "排空",
+    "meanings": [
+      "排空",
+      "更换机油"
+    ],
+    "previousMeanings": [
+      "垃圾"
+    ],
+    "previousPrimary": "垃圾"
+  },
+  "décrochage": {
+    "meaning": "脱落",
+    "meanings": [
+      "脱落",
+      "脱离，失联",
+      "失速"
+    ],
+    "previousMeanings": [
+      "厩"
+    ],
+    "previousPrimary": "厩"
+  },
+  "immuable": {
+    "meaning": "不变的，恒定的",
+    "meanings": [
+      "不变的，恒定的"
+    ],
+    "previousMeanings": [
+      "无能力的"
+    ],
+    "previousPrimary": "无能力的"
+  },
+  "répondeur": {
+    "meaning": "电话答录机",
+    "meanings": [
+      "电话答录机"
+    ],
+    "previousMeanings": [
+      "爱顶嘴的"
+    ],
+    "previousPrimary": "爱顶嘴的"
+  },
+  "sole": {
+    "meaning": "鳎鱼",
+    "meanings": [
+      "鳎鱼",
+      "底面"
+    ],
+    "previousMeanings": [
+      "脚掌"
+    ],
+    "previousPrimary": "脚掌"
+  },
+  "lime": {
+    "meaning": "锉刀",
+    "meanings": [
+      "锉刀",
+      "青柠"
+    ],
+    "previousMeanings": [
+      "档案"
+    ],
+    "previousPrimary": "档案",
+    "invalidMeanings": [
+      "档案"
+    ]
+  },
+  "houle": {
+    "meaning": "涌浪",
+    "meanings": [
+      "涌浪"
+    ],
+    "previousMeanings": [
+      "增大"
+    ],
+    "previousPrimary": "增大"
+  },
+  "lieue": {
+    "meaning": "里格，一种旧长度单位",
+    "meanings": [
+      "里格，一种旧长度单位"
+    ],
+    "previousMeanings": [
+      "同盟"
+    ],
+    "previousPrimary": "同盟"
+  },
+  "exhaustif": {
+    "meaning": "详尽的，全面的",
+    "meanings": [
+      "详尽的，全面的"
+    ],
+    "previousMeanings": [
+      "消耗的"
+    ],
+    "previousPrimary": "消耗的"
+  },
+  "récital": {
+    "meaning": "独奏会，独唱会",
+    "meanings": [
+      "独奏会，独唱会"
+    ],
+    "previousMeanings": [
+      "背诵"
+    ],
+    "previousPrimary": "背诵"
+  },
+  "duvet": {
+    "meaning": "绒毛",
+    "meanings": [
+      "绒毛",
+      "羽绒被，睡袋"
+    ],
+    "previousMeanings": [
+      "丘陵"
+    ],
+    "previousPrimary": "丘陵"
+  },
+  "pulsion": {
+    "meaning": "冲动，欲望",
+    "meanings": [
+      "冲动，欲望"
+    ],
+    "previousMeanings": [
+      "驾车"
+    ],
+    "previousPrimary": "驾车"
+  },
+  "embrayage": {
+    "meaning": "离合器",
+    "meanings": [
+      "离合器"
+    ],
+    "previousMeanings": [
+      "抓紧"
+    ],
+    "previousPrimary": "抓紧"
+  },
+  "soute": {
+    "meaning": "货舱",
+    "meanings": [
+      "货舱",
+      "行李舱"
+    ],
+    "previousMeanings": [
+      "把握"
+    ],
+    "previousPrimary": "把握"
+  },
+  "salve": {
+    "meaning": "齐射",
+    "meanings": [
+      "齐射",
+      "一阵"
+    ],
+    "previousMeanings": [
+      "保留条款"
+    ],
+    "previousPrimary": "保留条款"
+  },
+  "épi": {
+    "meaning": "穗，麦穗",
+    "meanings": [
+      "穗，麦穗",
+      "翘起的头发"
+    ],
+    "previousMeanings": [
+      "耳朵"
+    ],
+    "previousPrimary": "耳朵"
+  },
+  "galactique": {
+    "meaning": "银河系的",
+    "meanings": [
+      "银河系的"
+    ],
+    "previousMeanings": [
+      "乳汁的"
+    ],
+    "previousPrimary": "乳汁的"
+  },
+  "tique": {
+    "meaning": "蜱虫",
+    "meanings": [
+      "蜱虫"
+    ],
+    "previousMeanings": [
+      "滴答声"
+    ],
+    "previousPrimary": "滴答声",
+    "invalidMeanings": [
+      "滴答声"
+    ]
+  },
+  "fioul": {
+    "meaning": "燃油，燃料油",
+    "meanings": [
+      "燃油，燃料油"
+    ],
+    "previousMeanings": [
+      "内燃机"
+    ],
+    "previousPrimary": "内燃机",
+    "invalidMeanings": [
+      "内燃机"
+    ]
+  },
+  "fourrière": {
+    "meaning": "扣押场，拖车场",
+    "meanings": [
+      "扣押场，拖车场",
+      "动物收容所"
+    ],
+    "previousMeanings": [
+      "磅"
+    ],
+    "previousPrimary": "磅",
+    "invalidMeanings": [
+      "磅"
+    ]
+  },
+  "tisane": {
+    "meaning": "花草茶",
+    "meanings": [
+      "花草茶"
+    ],
+    "previousMeanings": [
+      "打"
+    ],
+    "previousPrimary": "打",
+    "invalidMeanings": [
+      "打"
+    ]
+  },
+  "pointure": {
+    "meaning": "鞋码",
+    "meanings": [
+      "鞋码",
+      "尺寸",
+      "杰出人物"
+    ],
+    "previousMeanings": [
+      "主人"
+    ],
+    "previousPrimary": "主人"
+  },
+  "traçabilité": {
+    "meaning": "可追溯性",
+    "meanings": [
+      "可追溯性"
+    ],
+    "previousMeanings": [
+      "可描绘"
+    ],
+    "previousPrimary": "可描绘"
+  },
+  "équitablement": {
+    "meaning": "公平地",
+    "meanings": [
+      "公平地"
+    ],
+    "previousMeanings": [
+      "美观地"
+    ],
+    "previousPrimary": "美观地"
+  },
+  "rosaire": {
+    "meaning": "玫瑰经",
+    "meanings": [
+      "玫瑰经",
+      "念珠"
+    ],
+    "previousMeanings": [
+      "玫瑰园"
+    ],
+    "previousPrimary": "玫瑰园"
+  },
+  "tympan": {
+    "meaning": "鼓膜，耳膜",
+    "meanings": [
+      "鼓膜，耳膜"
+    ],
+    "previousMeanings": [
+      "中耳"
+    ],
+    "previousPrimary": "中耳"
+  },
+  "lyre": {
+    "meaning": "里拉琴",
+    "meanings": [
+      "里拉琴"
+    ],
+    "previousMeanings": [
+      "里拉(古希腊乐器)"
+    ],
+    "previousPrimary": "里拉",
+    "invalidMeanings": [
+      "里拉"
+    ]
+  },
+  "ratatouille": {
+    "meaning": "普罗旺斯炖杂菜",
+    "meanings": [
+      "普罗旺斯炖杂菜"
+    ],
+    "previousMeanings": [
+      "打"
+    ],
+    "previousPrimary": "打"
+  },
+  "houblon": {
+    "meaning": "啤酒花",
+    "meanings": [
+      "啤酒花"
+    ],
+    "previousMeanings": [
+      "单脚跳"
+    ],
+    "previousPrimary": "单脚跳"
+  },
+  "klaxon": {
+    "meaning": "喇叭",
+    "meanings": [
+      "喇叭"
+    ],
+    "previousMeanings": [
+      "角"
+    ],
+    "previousPrimary": "角"
+  },
+  "obsolescence": {
+    "meaning": "过时，淘汰",
+    "meanings": [
+      "过时，淘汰"
+    ],
+    "previousMeanings": [
+      "荒废"
+    ],
+    "previousPrimary": "荒废",
+    "invalidMeanings": [
+      "荒废"
+    ]
+  },
+  "obédience": {
+    "meaning": "隶属关系",
+    "meanings": [
+      "隶属关系",
+      "教派"
+    ],
+    "previousMeanings": [
+      "说服"
+    ],
+    "previousPrimary": "说服"
+  },
+  "liasse": {
+    "meaning": "一叠，一捆",
+    "meanings": [
+      "一叠，一捆"
+    ],
+    "previousMeanings": [
+      "小软团"
+    ],
+    "previousPrimary": "小软团"
+  },
+  "peignoir": {
+    "meaning": "浴袍",
+    "meanings": [
+      "浴袍",
+      "晨衣"
+    ],
+    "previousMeanings": [
+      "岬"
+    ],
+    "previousPrimary": "岬",
+    "invalidMeanings": [
+      "岬"
+    ]
+  },
+  "airbag": {
+    "meaning": "安全气囊",
+    "meanings": [
+      "安全气囊"
+    ],
+    "previousMeanings": [
+      "<俚>（女人的）一对乳房（用此词会冒犯女性）"
+    ],
+    "previousPrimary": "<俚>一对乳房",
+    "invalidMeanings": [
+      "<俚>一对乳房"
+    ]
+  },
+  "rabot": {
+    "meaning": "刨子",
+    "meanings": [
+      "刨子"
+    ],
+    "previousMeanings": [
+      "平面"
+    ],
+    "previousPrimary": "平面",
+    "invalidMeanings": [
+      "平面"
+    ]
+  },
+  "planeur": {
+    "meaning": "滑翔机",
+    "meanings": [
+      "滑翔机"
+    ],
+    "previousMeanings": [
+      "滑翔员"
+    ],
+    "previousPrimary": "滑翔员",
+    "invalidMeanings": [
+      "滑翔员"
+    ]
+  },
+  "voiturier": {
+    "meaning": "代客泊车员",
+    "meanings": [
+      "代客泊车员",
+      "车夫"
+    ],
+    "previousMeanings": [
+      "贴身男仆"
+    ],
+    "previousPrimary": "贴身男仆"
+  },
+  "moût": {
+    "meaning": "葡萄汁，麦芽汁",
+    "meanings": [
+      "葡萄汁，麦芽汁"
+    ],
+    "previousMeanings": [
+      "必须"
+    ],
+    "previousPrimary": "必须",
+    "invalidMeanings": [
+      "必须"
+    ]
+  },
+  "leasing": {
+    "meaning": "租赁，融资租赁",
+    "meanings": [
+      "租赁，融资租赁"
+    ],
+    "previousMeanings": [
+      "说谎"
+    ],
+    "previousPrimary": "说谎",
+    "invalidMeanings": [
+      "说谎"
+    ]
+  },
+  "maki": {
+    "meaning": "寿司卷",
+    "meanings": [
+      "寿司卷",
+      "狐猴"
+    ],
+    "previousMeanings": [
+      "[日]真希（女子名"
+    ],
+    "previousPrimary": "真希（女子名",
+    "invalidMeanings": [
+      "真希（女子名"
+    ]
+  },
+  "jonc": {
+    "meaning": "灯心草",
+    "meanings": [
+      "灯心草",
+      "手镯"
+    ],
+    "previousMeanings": [
+      "匆促"
+    ],
+    "previousPrimary": "匆促"
+  },
+  "lavis": {
+    "meaning": "淡彩画",
+    "meanings": [
+      "淡彩画",
+      "水墨淡彩"
+    ],
+    "previousMeanings": [
+      "脸红"
+    ],
+    "previousPrimary": "脸红"
+  },
+  "magasinage": {
+    "meaning": "购物",
+    "meanings": [
+      "购物",
+      "仓储"
+    ],
+    "previousMeanings": [
+      "商品储藏室"
+    ],
+    "previousPrimary": "商品储藏室"
+  },
+  "marteler": {
+    "meaning": "锤打",
+    "meanings": [
+      "锤打",
+      "反复强调"
+    ],
+    "previousMeanings": [
+      "困扰"
+    ],
+    "previousPrimary": "困扰"
+  },
+  "noirci": {
+    "meaning": "变黑的",
+    "meanings": [
+      "变黑的",
+      "熏黑的"
+    ],
+    "previousMeanings": [
+      "（食品）涂上辣椒粉和调味品后油炸的"
+    ],
+    "previousPrimary": "涂上辣椒粉和调味品后油炸的"
+  },
+  "jalon": {
+    "meaning": "标杆",
+    "meanings": [
+      "标杆",
+      "里程碑"
+    ],
+    "previousMeanings": [
+      "基础"
+    ],
+    "previousPrimary": "基础"
+  },
+  "matou": {
+    "meaning": "公猫",
+    "meanings": [
+      "公猫"
+    ],
+    "previousMeanings": [
+      "雄性动物"
+    ],
+    "previousPrimary": "雄性动物"
+  },
+  "doublon": {
+    "meaning": "重复项",
+    "meanings": [
+      "重复项",
+      "重复录入",
+      "杜布隆金币"
+    ],
+    "previousMeanings": [
+      "达布隆(从前西班牙金币名称)"
+    ],
+    "previousPrimary": "达布隆"
+  },
+  "mousquetaire": {
+    "meaning": "火枪手",
+    "meanings": [
+      "火枪手"
+    ],
+    "previousMeanings": [
+      "火枪车"
+    ],
+    "previousPrimary": "火枪车"
+  },
+  "popotin": {
+    "meaning": "屁股",
+    "meanings": [
+      "屁股"
+    ],
+    "previousMeanings": [
+      "游荡者"
+    ],
+    "previousPrimary": "游荡者"
+  },
+  "dissolvant": {
+    "meaning": "溶剂",
+    "meanings": [
+      "溶剂",
+      "溶解的"
+    ],
+    "previousMeanings": [
+      "有偿付能力的"
+    ],
+    "previousPrimary": "有偿付能力的"
+  },
+  "travelling": {
+    "meaning": "移动摄影",
+    "meanings": [
+      "移动摄影"
+    ],
+    "previousMeanings": [
+      "洋娃娃"
+    ],
+    "previousPrimary": "洋娃娃",
+    "invalidMeanings": [
+      "洋娃娃"
+    ]
+  },
+  "nichée": {
+    "meaning": "一窝雏鸟",
+    "meanings": [
+      "一窝雏鸟",
+      "一窝幼崽"
+    ],
+    "previousMeanings": [
+      "垃圾"
+    ],
+    "previousPrimary": "垃圾",
+    "invalidMeanings": [
+      "垃圾"
+    ]
+  },
+  "défilement": {
+    "meaning": "滚动",
+    "meanings": [
+      "滚动",
+      "游行"
+    ],
+    "previousMeanings": [
+      "弄脏, 污秽, 污辱"
+    ],
+    "previousPrimary": "弄脏, 污秽, 污辱",
+    "invalidMeanings": [
+      "弄脏, 污秽, 污辱"
+    ]
+  },
+  "hermétiquement": {
+    "meaning": "密封地",
+    "meanings": [
+      "密封地"
+    ],
+    "previousMeanings": [
+      "奥妙"
+    ],
+    "previousPrimary": "奥妙"
+  },
+  "hachoir": {
+    "meaning": "绞肉机",
+    "meanings": [
+      "绞肉机",
+      "切碎机",
+      "砍刀"
+    ],
+    "previousMeanings": [
+      "(Mezzaluna)人名"
+    ],
+    "previousPrimary": "人名",
+    "invalidMeanings": [
+      "人名"
+    ]
+  },
+  "enfanter": {
+    "meaning": "生育",
+    "meanings": [
+      "生育",
+      "产生"
+    ],
+    "previousMeanings": [
+      "忍受"
+    ],
+    "previousPrimary": "忍受",
+    "invalidMeanings": [
+      "忍受"
+    ]
+  },
+  "égocentrisme": {
+    "meaning": "自我中心主义",
+    "meanings": [
+      "自我中心主义"
+    ],
+    "previousMeanings": [
+      "self-centred的变形"
+    ],
+    "previousPrimary": "self-centred的变形",
+    "invalidMeanings": [
+      "self-centred的变形"
+    ]
+  },
+  "étal": {
+    "meaning": "摊位，货摊",
+    "meanings": [
+      "摊位，货摊"
+    ],
+    "previousMeanings": [
+      "厩"
+    ],
+    "previousPrimary": "厩",
+    "invalidMeanings": [
+      "厩"
+    ]
+  },
+  "herse": {
+    "meaning": "耙",
+    "meanings": [
+      "耙",
+      "栅门",
+      "阻车钉带"
+    ],
+    "previousMeanings": [
+      "哈罗公学"
+    ],
+    "previousPrimary": "哈罗公学",
+    "invalidMeanings": [
+      "哈罗公学"
+    ]
+  },
+  "hochet": {
+    "meaning": "摇铃，拨浪鼓",
+    "meanings": [
+      "摇铃，拨浪鼓"
+    ],
+    "previousMeanings": [
+      "格格声"
+    ],
+    "previousPrimary": "格格声",
+    "invalidMeanings": [
+      "格格声"
+    ]
+  },
+  "foufou": {
+    "meaning": "疯疯癫癫的",
+    "meanings": [
+      "疯疯癫癫的"
+    ],
+    "previousMeanings": [
+      "产坚果的"
+    ],
+    "previousPrimary": "产坚果的"
+  },
+  "lichen": {
+    "meaning": "地衣",
+    "meanings": [
+      "地衣"
+    ],
+    "previousMeanings": [
+      "青苔"
+    ],
+    "previousPrimary": "青苔",
+    "invalidMeanings": [
+      "青苔"
+    ]
+  },
+  "minaret": {
+    "meaning": "宣礼塔",
+    "meanings": [
+      "宣礼塔"
+    ],
+    "previousMeanings": [
+      "光塔"
+    ],
+    "previousPrimary": "光塔"
+  },
+  "surdose": {
+    "meaning": "药物过量",
+    "meanings": [
+      "药物过量"
+    ],
+    "previousMeanings": [
+      "配药量过多"
+    ],
+    "previousPrimary": "配药量过多",
+    "invalidMeanings": [
+      "配药量过多"
+    ]
+  },
+  "starlette": {
+    "meaning": "新秀女演员",
+    "meanings": [
+      "新秀女演员"
+    ],
+    "previousMeanings": [
+      "小星星"
+    ],
+    "previousPrimary": "小星星"
+  },
+  "morveux": {
+    "meaning": "流鼻涕的",
+    "meanings": [
+      "流鼻涕的",
+      "小毛孩"
+    ],
+    "previousMeanings": [
+      "患鼻疽病的"
+    ],
+    "previousPrimary": "患鼻疽病的"
+  },
+  "plumer": {
+    "meaning": "拔毛",
+    "meanings": [
+      "拔毛",
+      "敲诈"
+    ],
+    "previousMeanings": [
+      "脱落"
+    ],
+    "previousPrimary": "脱落"
+  },
+  "sectoriel": {
+    "meaning": "部门的，行业的",
+    "meanings": [
+      "部门的，行业的"
+    ],
+    "previousMeanings": [
+      "扇形的"
+    ],
+    "previousPrimary": "扇形的"
+  },
+  "égarement": {
+    "meaning": "迷路",
+    "meanings": [
+      "迷路",
+      "迷失，误入歧途",
+      "一时糊涂"
+    ],
+    "previousMeanings": [
+      "娱乐"
+    ],
+    "previousPrimary": "娱乐"
+  },
+  "réanimation": {
+    "meaning": "复苏，抢救",
+    "meanings": [
+      "复苏，抢救"
+    ],
+    "previousMeanings": [
+      "复兴"
+    ],
+    "previousPrimary": "复兴"
+  },
+  "greffier": {
+    "meaning": "书记员",
+    "meanings": [
+      "书记员",
+      "猫"
+    ],
+    "previousMeanings": [
+      "猫"
+    ],
+    "previousPrimary": "猫",
+    "invalidMeanings": [
+      "猫"
+    ]
+  },
+  "facho": {
+    "meaning": "法西斯主义者",
+    "meanings": [
+      "法西斯主义者",
+      "法西斯的"
+    ],
+    "previousMeanings": [
+      "烦恼"
+    ],
+    "previousPrimary": "烦恼"
+  },
+  "infime": {
+    "meaning": "极小的，微不足道的",
+    "meanings": [
+      "极小的，微不足道的"
+    ],
+    "previousMeanings": [
+      "地位低的"
+    ],
+    "previousPrimary": "地位低的"
+  },
+  "infiltration": {
+    "meaning": "渗透",
+    "meanings": [
+      "渗透",
+      "潜入"
+    ],
+    "previousMeanings": [
+      "注射"
+    ],
+    "previousPrimary": "注射"
+  },
+  "déontologie": {
+    "meaning": "职业道德",
+    "meanings": [
+      "职业道德"
+    ],
+    "previousMeanings": [
+      "代码"
+    ],
+    "previousPrimary": "代码"
+  },
+  "cricket": {
+    "meaning": "板球",
+    "meanings": [
+      "板球"
+    ],
+    "previousMeanings": [
+      "蟋蟀"
+    ],
+    "previousPrimary": "蟋蟀"
+  },
+  "impertinence": {
+    "meaning": "无礼，冒犯",
+    "meanings": [
+      "无礼，冒犯"
+    ],
+    "previousMeanings": [
+      "不切题"
+    ],
+    "previousPrimary": "不切题"
+  },
+  "sévir": {
+    "meaning": "严惩",
+    "meanings": [
+      "严惩",
+      "肆虐"
+    ],
+    "previousMeanings": [
+      "大怒"
+    ],
+    "previousPrimary": "大怒"
+  },
+  "sociétaire": {
+    "meaning": "会员，社员",
+    "meanings": [
+      "会员，社员"
+    ],
+    "previousMeanings": [
+      "男人"
+    ],
+    "previousPrimary": "男人"
+  },
+  "supersonique": {
+    "meaning": "超音速的",
+    "meanings": [
+      "超音速的"
+    ],
+    "previousMeanings": [
+      "超声波的"
+    ],
+    "previousPrimary": "超声波的",
+    "invalidMeanings": [
+      "超声波的"
+    ]
+  },
+  "salutation": {
+    "meaning": "问候，致意",
+    "meanings": [
+      "问候，致意"
+    ],
+    "previousMeanings": [
+      "祝贺"
+    ],
+    "previousPrimary": "祝贺"
+  },
+  "saphir": {
+    "meaning": "蓝宝石",
+    "meanings": [
+      "蓝宝石",
+      "蓝宝石唱针"
+    ],
+    "previousMeanings": [
+      "天蓝色的"
+    ],
+    "previousPrimary": "天蓝色的"
+  },
+  "recueillement": {
+    "meaning": "静思，默思",
+    "meanings": [
+      "静思，默思"
+    ],
+    "previousMeanings": [
+      "注视"
+    ],
+    "previousPrimary": "注视"
+  },
+  "quiétude": {
+    "meaning": "宁静，安宁",
+    "meanings": [
+      "宁静，安宁"
+    ],
+    "previousMeanings": [
+      "宁静"
+    ],
+    "previousPrimary": "宁静"
+  },
+  "exemplarité": {
+    "meaning": "示范性",
+    "meanings": [
+      "示范性",
+      "榜样作用"
+    ],
+    "previousMeanings": [
+      "exemplary的变形"
+    ],
+    "previousPrimary": "exemplary的变形"
+  },
+  "moniteur": {
+    "meaning": "教练，指导员",
+    "meanings": [
+      "教练，指导员",
+      "监视器"
+    ],
+    "previousMeanings": [
+      "监督器"
+    ],
+    "previousPrimary": "监督器",
+    "invalidMeanings": [
+      "监督器"
+    ]
+  },
+  "sketch": {
+    "meaning": "短喜剧，小品",
+    "meanings": [
+      "短喜剧，小品"
+    ],
+    "previousMeanings": [
+      "素描"
+    ],
+    "previousPrimary": "素描"
+  },
+  "tandem": {
+    "meaning": "双人自行车",
+    "meanings": [
+      "双人自行车",
+      "二人搭档"
+    ],
+    "previousMeanings": [
+      "纵列两匹马拉的马车"
+    ],
+    "previousPrimary": "纵列两匹马拉的马车"
+  },
+  "transe": {
+    "meaning": "恍惚状态",
+    "meanings": [
+      "恍惚状态",
+      "极度激动"
+    ],
+    "previousMeanings": [
+      "理解"
+    ],
+    "previousPrimary": "理解"
+  },
+  "croustillant": {
+    "meaning": "酥脆的",
+    "meanings": [
+      "酥脆的",
+      "有趣的"
+    ],
+    "previousMeanings": [
+      "卷曲的"
+    ],
+    "previousPrimary": "卷曲的"
+  },
+  "périphérie": {
+    "meaning": "周边，外围",
+    "meanings": [
+      "周边，外围"
+    ],
+    "previousMeanings": [
+      "周长"
+    ],
+    "previousPrimary": "周长"
+  },
+  "roulé": {
+    "meaning": "卷状的",
+    "meanings": [
+      "卷状的",
+      "卷饼，蛋糕卷"
+    ],
+    "previousMeanings": [
+      "连续击鼓声（常用于表明重要人物即将出场）"
+    ],
+    "previousPrimary": "连续击鼓声"
+  },
+  "fonction": {
+    "meaning": "功能",
+    "meanings": [
+      "功能",
+      "职务",
+      "函数"
+    ],
+    "previousMeanings": [
+      "职务、功能"
+    ],
+    "previousPrimary": "职务、功能"
+  },
+  "guère": {
+    "meaning": "几乎不，很少",
+    "meanings": [
+      "几乎不，很少"
+    ],
+    "previousMeanings": [
+      "刚刚"
+    ],
+    "previousPrimary": "刚刚"
+  },
+  "master": {
+    "meaning": "硕士学位",
+    "meanings": [
+      "硕士学位",
+      "大师"
+    ],
+    "previousMeanings": [
+      "主人"
+    ],
+    "previousPrimary": "主人"
+  },
+  "joint": {
+    "meaning": "接头，连接处",
+    "meanings": [
+      "接头，连接处",
+      "密封垫",
+      "大麻烟"
+    ],
+    "previousMeanings": [
+      "印章"
+    ],
+    "previousPrimary": "印章"
+  },
+  "trait": {
+    "meaning": "线条，一笔",
+    "meanings": [
+      "线条，一笔",
+      "特征",
+      "举止"
+    ],
+    "previousMeanings": [
+      "列"
+    ],
+    "previousPrimary": "列"
+  },
+  "poutine": {
+    "meaning": "肉汁奶酪薯条",
+    "meanings": [
+      "肉汁奶酪薯条"
+    ],
+    "previousMeanings": [
+      "面团布丁"
+    ],
+    "previousPrimary": "面团布丁"
+  },
+  "location": {
+    "meaning": "租赁，出租",
+    "meanings": [
+      "租赁，出租"
+    ],
+    "previousMeanings": [
+      "租金"
+    ],
+    "previousPrimary": "租金"
+  },
+  "issu": {
+    "meaning": "出自的，来自的",
+    "meanings": [
+      "出自的，来自的"
+    ],
+    "previousMeanings": [
+      "发布"
+    ],
+    "previousPrimary": "发布"
+  },
+  "panne": {
+    "meaning": "故障",
+    "meanings": [
+      "故障"
+    ],
+    "previousMeanings": [
+      "崩溃"
+    ],
+    "previousPrimary": "崩溃"
+  },
+  "majesté": {
+    "meaning": "威严",
+    "meanings": [
+      "威严",
+      "陛下"
+    ],
+    "previousMeanings": [
+      "最高权威"
+    ],
+    "previousPrimary": "最高权威"
+  },
+  "panneau": {
+    "meaning": "标牌",
+    "meanings": [
+      "标牌",
+      "面板"
+    ],
+    "previousMeanings": [
+      "符号"
+    ],
+    "previousPrimary": "符号"
+  },
+  "appart": {
+    "meaning": "公寓",
+    "meanings": [
+      "公寓"
+    ],
+    "previousMeanings": [
+      "房间"
+    ],
+    "previousPrimary": "房间"
+  },
+  "expertise": {
+    "meaning": "鉴定",
+    "meanings": [
+      "鉴定",
+      "专业知识"
+    ],
+    "previousMeanings": [
+      "评价"
+    ],
+    "previousPrimary": "评价"
+  },
+  "gang": {
+    "meaning": "帮派",
+    "meanings": [
+      "帮派"
+    ],
+    "previousMeanings": [
+      "队"
+    ],
+    "previousPrimary": "队"
+  },
+  "susceptible": {
+    "meaning": "易受影响的",
+    "meanings": [
+      "易受影响的",
+      "敏感的",
+      "可能的"
+    ],
+    "previousMeanings": [
+      "有可能的"
+    ],
+    "previousPrimary": "有可能的"
+  },
+  "ré": {
+    "meaning": "音符 re",
+    "meanings": [
+      "音符 re"
+    ],
+    "previousMeanings": [
+      "不动产"
+    ],
+    "previousPrimary": "不动产"
+  },
+  "back": {
+    "meaning": "后卫",
+    "meanings": [
+      "后卫"
+    ],
+    "previousMeanings": [
+      "使后退"
+    ],
+    "previousPrimary": "使后退"
+  },
+  "mental": {
+    "meaning": "心理的，精神的",
+    "meanings": [
+      "心理的，精神的"
+    ],
+    "previousMeanings": [
+      "思想"
+    ],
+    "previousPrimary": "思想"
+  },
+  "inflation": {
+    "meaning": "通货膨胀",
+    "meanings": [
+      "通货膨胀",
+      "膨胀"
+    ],
+    "previousMeanings": [
+      "胀大"
+    ],
+    "previousPrimary": "胀大"
+  },
+  "rejet": {
+    "meaning": "拒绝，否决",
+    "meanings": [
+      "拒绝，否决",
+      "排斥",
+      "排出物"
+    ],
+    "previousMeanings": [
+      "被拒之人"
+    ],
+    "previousPrimary": "被拒之人"
+  },
+  "jet": {
+    "meaning": "喷射，喷流",
+    "meanings": [
+      "喷射，喷流",
+      "投掷"
+    ],
+    "previousMeanings": [
+      "投掷"
+    ],
+    "previousPrimary": "投掷"
+  },
+  "payant": {
+    "meaning": "收费的",
+    "meanings": [
+      "收费的",
+      "有回报的"
+    ],
+    "previousMeanings": [
+      "支付的"
+    ],
+    "previousPrimary": "支付的"
+  },
+  "nouveauté": {
+    "meaning": "新事物，新产品",
+    "meanings": [
+      "新事物，新产品",
+      "新奇"
+    ],
+    "previousMeanings": [
+      "崭新"
+    ],
+    "previousPrimary": "崭新"
+  },
+  "parallèlement": {
+    "meaning": "平行地",
+    "meanings": [
+      "平行地",
+      "与此同时"
+    ],
+    "previousMeanings": [
+      "相连地"
+    ],
+    "previousPrimary": "相连地"
+  },
+  "duel": {
+    "meaning": "决斗",
+    "meanings": [
+      "决斗",
+      "双方的"
+    ],
+    "previousMeanings": [
+      "双重的"
+    ],
+    "previousPrimary": "双重的"
+  },
+  "localisation": {
+    "meaning": "定位",
+    "meanings": [
+      "定位",
+      "所在地"
+    ],
+    "previousMeanings": [
+      "局限"
+    ],
+    "previousPrimary": "局限"
+  },
+  "rapprochement": {
+    "meaning": "靠拢，接近",
+    "meanings": [
+      "靠拢，接近",
+      "和解",
+      "比较"
+    ],
+    "previousMeanings": [
+      "环"
+    ],
+    "previousPrimary": "环"
+  },
+  "revers": {
+    "meaning": "背面",
+    "meanings": [
+      "背面",
+      "挫折",
+      "反手"
+    ],
+    "previousMeanings": [
+      "底侧"
+    ],
+    "previousPrimary": "底侧"
+  },
+  "oubli": {
+    "meaning": "遗忘",
+    "meanings": [
+      "遗忘",
+      "疏忽"
+    ],
+    "previousMeanings": [
+      "勘漏"
+    ],
+    "previousPrimary": "勘漏"
+  },
+  "transaction": {
+    "meaning": "交易",
+    "meanings": [
+      "交易",
+      "和解"
+    ],
+    "previousMeanings": [
+      "妥协"
+    ],
+    "previousPrimary": "妥协"
+  },
+  "culpabilité": {
+    "meaning": "罪责",
+    "meanings": [
+      "罪责",
+      "内疚"
+    ],
+    "previousMeanings": [
+      "罪行"
+    ],
+    "previousPrimary": "罪行"
+  },
+  "pair": {
+    "meaning": "偶数的",
+    "meanings": [
+      "偶数的",
+      "相等的",
+      "同等者"
+    ],
+    "previousMeanings": [
+      "平坦的"
+    ],
+    "previousPrimary": "平坦的"
+  },
+  "élan": {
+    "meaning": "冲劲，势头",
+    "meanings": [
+      "冲劲，势头",
+      "驼鹿"
+    ],
+    "previousMeanings": [
+      "精神"
+    ],
+    "previousPrimary": "精神"
+  },
+  "gravement": {
+    "meaning": "严重地",
+    "meanings": [
+      "严重地",
+      "庄重地"
+    ],
+    "previousMeanings": [
+      "严肃地"
+    ],
+    "previousPrimary": "严肃地"
+  },
+  "hostile": {
+    "meaning": "敌对的，不友好的",
+    "meanings": [
+      "敌对的，不友好的"
+    ],
+    "previousMeanings": [
+      "敌人的"
+    ],
+    "previousPrimary": "敌人的"
+  },
+  "départemental": {
+    "meaning": "省的",
+    "meanings": [
+      "省的",
+      "部门的"
+    ],
+    "previousMeanings": [
+      "部门的"
+    ],
+    "previousPrimary": "部门的"
+  },
+  "indication": {
+    "meaning": "指示，说明",
+    "meanings": [
+      "指示，说明",
+      "迹象",
+      "适应证"
+    ],
+    "previousMeanings": [
+      "方向"
+    ],
+    "previousPrimary": "方向"
+  },
+  "itinéraire": {
+    "meaning": "路线，行程",
+    "meanings": [
+      "路线，行程"
+    ],
+    "previousMeanings": [
+      "旅程"
+    ],
+    "previousPrimary": "旅程"
+  },
+  "sonde": {
+    "meaning": "探针，探测器",
+    "meanings": [
+      "探针，探测器",
+      "导管"
+    ],
+    "previousMeanings": [
+      "探索"
+    ],
+    "previousPrimary": "探索"
+  },
+  "humble": {
+    "meaning": "谦逊的",
+    "meanings": [
+      "谦逊的",
+      "卑微的"
+    ],
+    "previousMeanings": [
+      "低下的"
+    ],
+    "previousPrimary": "低下的"
+  },
+  "rideau": {
+    "meaning": "窗帘，幕布",
+    "meanings": [
+      "窗帘，幕布"
+    ],
+    "previousMeanings": [
+      "帐"
+    ],
+    "previousPrimary": "帐"
+  },
+  "vitre": {
+    "meaning": "窗玻璃",
+    "meanings": [
+      "窗玻璃"
+    ],
+    "previousMeanings": [
+      "窗户"
+    ],
+    "previousPrimary": "窗户"
+  },
+  "mousse": {
+    "meaning": "泡沫",
+    "meanings": [
+      "泡沫",
+      "苔藓",
+      "钝的"
+    ],
+    "previousMeanings": [
+      "钝的"
+    ],
+    "previousPrimary": "钝的"
+  },
+  "clin": {
+    "meaning": "眨眼",
+    "meanings": [
+      "眨眼",
+      "搭接板"
+    ],
+    "previousMeanings": [
+      "船板叠搭的小船[亦作 lapstreak]"
+    ],
+    "previousPrimary": "船板叠搭的小船"
+  },
+  "mêlée": {
+    "meaning": "混战",
+    "meanings": [
+      "混战",
+      "混杂的人群"
+    ],
+    "previousMeanings": [
+      "磨损"
+    ],
+    "previousPrimary": "磨损"
+  },
+  "directoire": {
+    "meaning": "理事会",
+    "meanings": [
+      "理事会",
+      "督政府"
+    ],
+    "previousMeanings": [
+      "目录"
+    ],
+    "previousPrimary": "目录"
+  },
+  "troll": {
+    "meaning": "网络挑衅者",
+    "meanings": [
+      "网络挑衅者",
+      "巨怪"
+    ],
+    "previousMeanings": [
+      "转动"
+    ],
+    "previousPrimary": "转动"
+  },
+  "natal": {
+    "meaning": "出生的",
+    "meanings": [
+      "出生的",
+      "故乡的"
+    ],
+    "previousMeanings": [
+      "本国的"
+    ],
+    "previousPrimary": "本国的"
+  },
+  "versant": {
+    "meaning": "山坡",
+    "meanings": [
+      "山坡",
+      "方面"
+    ],
+    "previousMeanings": [
+      "倾斜"
+    ],
+    "previousPrimary": "倾斜"
+  },
+  "ouah": {
+    "meaning": "哇",
+    "meanings": [
+      "哇",
+      "汪"
+    ],
+    "previousMeanings": [
+      "(非正式)是"
+    ],
+    "previousPrimary": "是"
+  },
+  "trilogie": {
+    "meaning": "三部曲",
+    "meanings": [
+      "三部曲"
+    ],
+    "previousMeanings": [
+      "三部剧"
+    ],
+    "previousPrimary": "三部剧"
+  },
+  "réservation": {
+    "meaning": "预订",
+    "meanings": [
+      "预订",
+      "保留"
+    ],
+    "previousMeanings": [
+      "保留"
+    ],
+    "previousPrimary": "保留"
+  },
+  "exploitant": {
+    "meaning": "经营者",
+    "meanings": [
+      "经营者",
+      "开采者"
+    ],
+    "previousMeanings": [
+      "开发的"
+    ],
+    "previousPrimary": "开发的"
+  },
+  "tracer": {
+    "meaning": "画，绘制",
+    "meanings": [
+      "画，绘制",
+      "规划"
+    ],
+    "previousMeanings": [
+      "规定"
+    ],
+    "previousPrimary": "规定"
+  },
+  "attrait": {
+    "meaning": "吸引力，魅力",
+    "meanings": [
+      "吸引力，魅力"
+    ],
+    "previousMeanings": [
+      "恳求"
+    ],
+    "previousPrimary": "恳求"
+  },
+  "receveur": {
+    "meaning": "收款员",
+    "meanings": [
+      "收款员",
+      "接球手",
+      "接收者"
+    ],
+    "previousMeanings": [
+      "接收器"
+    ],
+    "previousPrimary": "接收器"
+  },
+  "donation": {
+    "meaning": "赠与，捐赠",
+    "meanings": [
+      "赠与，捐赠"
+    ],
+    "previousMeanings": [
+      "捐赠物"
+    ],
+    "previousPrimary": "捐赠物"
+  },
+  "imagerie": {
+    "meaning": "图像，影像",
+    "meanings": [
+      "图像，影像",
+      "意象"
+    ],
+    "previousMeanings": [
+      "肖像"
+    ],
+    "previousPrimary": "肖像"
+  },
+  "fondamentalement": {
+    "meaning": "根本上，本质上",
+    "meanings": [
+      "根本上，本质上"
+    ],
+    "previousMeanings": [
+      "基础"
+    ],
+    "previousPrimary": "基础"
+  },
+  "kilo": {
+    "meaning": "千克，公斤",
+    "meanings": [
+      "千克，公斤"
+    ],
+    "previousMeanings": [
+      "千"
+    ],
+    "previousPrimary": "千"
+  },
+  "minable": {
+    "meaning": "差劲的",
+    "meanings": [
+      "差劲的",
+      "可怜的"
+    ],
+    "previousMeanings": [
+      "污秽的"
+    ],
+    "previousPrimary": "污秽的"
+  },
+  "tournure": {
+    "meaning": "转变",
+    "meanings": [
+      "转变",
+      "措辞",
+      "样子"
+    ],
+    "previousMeanings": [
+      "出现"
+    ],
+    "previousPrimary": "出现"
+  },
+  "zoom": {
+    "meaning": "变焦",
+    "meanings": [
+      "变焦",
+      "放大"
+    ],
+    "previousMeanings": [
+      "急速上升"
+    ],
+    "previousPrimary": "急速上升"
+  },
+  "trésorier": {
+    "meaning": "财务主管，司库",
+    "meanings": [
+      "财务主管，司库"
+    ],
+    "previousMeanings": [
+      "会计"
+    ],
+    "previousPrimary": "会计"
+  },
+  "serein": {
+    "meaning": "平静的，安宁的",
+    "meanings": [
+      "平静的，安宁的",
+      "晴朗的"
+    ],
+    "previousMeanings": [
+      "没有云的"
+    ],
+    "previousPrimary": "没有云的"
+  },
+  "suspens": {
+    "meaning": "悬而未决的",
+    "meanings": [
+      "悬而未决的",
+      "悬念"
+    ],
+    "previousMeanings": [
+      "无决断力的"
+    ],
+    "previousPrimary": "无决断力的"
+  },
+  "refrain": {
+    "meaning": "副歌",
+    "meanings": [
+      "副歌",
+      "老话"
+    ],
+    "previousMeanings": [
+      "重复的话"
+    ],
+    "previousPrimary": "重复的话"
+  },
+  "spoiler": {
+    "meaning": "剧透",
+    "meanings": [
+      "剧透",
+      "扰流板"
+    ],
+    "previousMeanings": [
+      "掠夺者"
+    ],
+    "previousPrimary": "掠夺者"
+  },
+  "marqueur": {
+    "meaning": "记号笔",
+    "meanings": [
+      "记号笔",
+      "标记",
+      "得分手"
+    ],
+    "previousMeanings": [
+      "作记号的人"
+    ],
+    "previousPrimary": "作记号的人"
+  },
+  "joker": {
+    "meaning": "百搭牌",
+    "meanings": [
+      "百搭牌",
+      "王牌",
+      "替补"
+    ],
+    "previousMeanings": [
+      "诙谐者"
+    ],
+    "previousPrimary": "诙谐者"
+  },
+  "recharge": {
+    "meaning": "补充装",
+    "meanings": [
+      "补充装",
+      "充电",
+      "充值"
+    ],
+    "previousMeanings": [
+      "再注满"
+    ],
+    "previousPrimary": "再注满"
+  },
+  "refonte": {
+    "meaning": "重铸",
+    "meanings": [
+      "重铸",
+      "彻底修改，改版"
+    ],
+    "previousMeanings": [
+      "再制"
+    ],
+    "previousPrimary": "再制"
+  },
+  "égide": {
+    "meaning": "庇护",
+    "meanings": [
+      "庇护",
+      "神盾"
+    ],
+    "previousMeanings": [
+      "羊皮盾"
+    ],
+    "previousPrimary": "羊皮盾"
+  },
+  "culinaire": {
+    "meaning": "烹饪的",
+    "meanings": [
+      "烹饪的"
+    ],
+    "previousMeanings": [
+      "厨房的"
+    ],
+    "previousPrimary": "厨房的"
+  },
+  "miniature": {
+    "meaning": "微型的",
+    "meanings": [
+      "微型的",
+      "微型模型",
+      "细密画"
+    ],
+    "previousMeanings": [
+      "缩图"
+    ],
+    "previousPrimary": "缩图"
+  },
+  "texto": {
+    "meaning": "短信",
+    "meanings": [
+      "短信",
+      "逐字地"
+    ],
+    "previousMeanings": [
+      "逐字地"
+    ],
+    "previousPrimary": "逐字地"
+  },
+  "internat": {
+    "meaning": "寄宿学校",
+    "meanings": [
+      "寄宿学校",
+      "住院医师实习"
+    ],
+    "previousMeanings": [
+      "住处"
+    ],
+    "previousPrimary": "住处"
+  },
+  "faction": {
+    "meaning": "派别",
+    "meanings": [
+      "派别",
+      "值勤"
+    ],
+    "previousMeanings": [
+      "巡夜者"
+    ],
+    "previousPrimary": "巡夜者"
+  },
+  "magistrature": {
+    "meaning": "司法官系统",
+    "meanings": [
+      "司法官系统",
+      "司法官职务"
+    ],
+    "previousMeanings": [
+      "长官的职位"
+    ],
+    "previousPrimary": "长官的职位"
+  },
+  "mixité": {
+    "meaning": "混合",
+    "meanings": [
+      "混合",
+      "男女共处"
+    ],
+    "previousMeanings": [
+      "混合物"
+    ],
+    "previousPrimary": "混合物"
+  },
+  "panel": {
+    "meaning": "专家小组",
+    "meanings": [
+      "专家小组",
+      "受访者群体"
+    ],
+    "previousMeanings": [
+      "嵌板"
+    ],
+    "previousPrimary": "嵌板"
+  },
+  "pendu": {
+    "meaning": "被绞死的人",
+    "meanings": [
+      "被绞死的人",
+      "上吊的，吊着的"
+    ],
+    "previousMeanings": [
+      "绞刑吏"
+    ],
+    "previousPrimary": "绞刑吏"
+  },
+  "viable": {
+    "meaning": "可行的",
+    "meanings": [
+      "可行的",
+      "能存活的"
+    ],
+    "previousMeanings": [
+      "能养活的"
+    ],
+    "previousPrimary": "能养活的"
+  },
+  "addiction": {
+    "meaning": "成瘾，依赖",
+    "meanings": [
+      "成瘾，依赖"
+    ],
+    "previousMeanings": [
+      "入迷"
+    ],
+    "previousPrimary": "入迷"
+  },
+  "dépourvu": {
+    "meaning": "缺乏的",
+    "meanings": [
+      "缺乏的",
+      "毫无准备的"
+    ],
+    "previousMeanings": [
+      "惊奇"
+    ],
+    "previousPrimary": "惊奇"
+  },
+  "lice": {
+    "meaning": "比武场",
+    "meanings": [
+      "比武场",
+      "围场",
+      "雌猎犬"
+    ],
+    "previousMeanings": [
+      "目录"
+    ],
+    "previousPrimary": "目录"
+  },
+  "mu": {
+    "meaning": "希腊字母 μ",
+    "meanings": [
+      "希腊字母 μ"
+    ],
+    "previousMeanings": [
+      "希腊字母(M"
+    ],
+    "previousPrimary": "希腊字母(M"
+  },
+  "trappe": {
+    "meaning": "活板门",
+    "meanings": [
+      "活板门",
+      "捕兽夹"
+    ],
+    "previousMeanings": [
+      "圈套"
+    ],
+    "previousPrimary": "圈套"
+  },
+  "embouchure": {
+    "meaning": "河口",
+    "meanings": [
+      "河口",
+      "吹口"
+    ],
+    "previousMeanings": [
+      "发话筒"
+    ],
+    "previousPrimary": "发话筒"
+  },
+  "huissier": {
+    "meaning": "司法执达员",
+    "meanings": [
+      "司法执达员",
+      "门卫"
+    ],
+    "previousMeanings": [
+      "引座员"
+    ],
+    "previousPrimary": "引座员"
+  },
+  "identifiant": {
+    "meaning": "标识符",
+    "meanings": [
+      "标识符",
+      "账号"
+    ],
+    "previousMeanings": [
+      "检验人"
+    ],
+    "previousPrimary": "检验人"
+  },
+  "jouissance": {
+    "meaning": "享受",
+    "meanings": [
+      "享受",
+      "使用权",
+      "快感"
+    ],
+    "previousMeanings": [
+      "使用"
+    ],
+    "previousPrimary": "使用"
+  },
+  "outrage": {
+    "meaning": "侮辱，冒犯",
+    "meanings": [
+      "侮辱，冒犯"
+    ],
+    "previousMeanings": [
+      "犯罪"
+    ],
+    "previousPrimary": "犯罪"
+  },
+  "scoop": {
+    "meaning": "独家新闻",
+    "meanings": [
+      "独家新闻"
+    ],
+    "previousMeanings": [
+      "铲子"
+    ],
+    "previousPrimary": "铲子"
+  },
+  "enchanté": {
+    "meaning": "高兴的",
+    "meanings": [
+      "高兴的",
+      "幸会",
+      "被施魔法的"
+    ],
+    "previousMeanings": [
+      "中魔法的"
+    ],
+    "previousPrimary": "中魔法的"
+  },
+  "insensible": {
+    "meaning": "无感觉的",
+    "meanings": [
+      "无感觉的",
+      "冷漠的",
+      "不易察觉的"
+    ],
+    "previousMeanings": [
+      "不知的"
+    ],
+    "previousPrimary": "不知的"
+  },
+  "plausible": {
+    "meaning": "可信的，合理的",
+    "meanings": [
+      "可信的，合理的"
+    ],
+    "previousMeanings": [
+      "貌似真实的"
+    ],
+    "previousPrimary": "貌似真实的"
+  },
+  "yacht": {
+    "meaning": "游艇",
+    "meanings": [
+      "游艇"
+    ],
+    "previousMeanings": [
+      "快艇"
+    ],
+    "previousPrimary": "快艇"
+  },
+  "discernement": {
+    "meaning": "判断力，辨别力",
+    "meanings": [
+      "判断力，辨别力"
+    ],
+    "previousMeanings": [
+      "裁判"
+    ],
+    "previousPrimary": "裁判"
+  },
+  "raie": {
+    "meaning": "条纹",
+    "meanings": [
+      "条纹",
+      "分缝",
+      "鳐鱼"
+    ],
+    "previousMeanings": [
+      "列"
+    ],
+    "previousPrimary": "列"
+  },
+  "immonde": {
+    "meaning": "肮脏的",
+    "meanings": [
+      "肮脏的",
+      "令人作呕的"
+    ],
+    "previousMeanings": [
+      "不纯的"
+    ],
+    "previousPrimary": "不纯的"
+  },
+  "professionnalisme": {
+    "meaning": "专业精神",
+    "meanings": [
+      "专业精神",
+      "职业化"
+    ],
+    "previousMeanings": [
+      "职业特性"
+    ],
+    "previousPrimary": "职业特性"
+  },
+  "fitness": {
+    "meaning": "健身",
+    "meanings": [
+      "健身"
+    ],
+    "previousMeanings": [
+      "适合"
+    ],
+    "previousPrimary": "适合"
+  },
+  "gastronomique": {
+    "meaning": "美食的",
+    "meanings": [
+      "美食的",
+      "烹饪的"
+    ],
+    "previousMeanings": [
+      "美食(烹饪)法的"
+    ],
+    "previousPrimary": "美食法的"
+  },
+  "synagogue": {
+    "meaning": "犹太教堂",
+    "meanings": [
+      "犹太教堂"
+    ],
+    "previousMeanings": [
+      "犹太人集会"
+    ],
+    "previousPrimary": "犹太人集会"
+  },
+  "infidèle": {
+    "meaning": "不忠实的",
+    "meanings": [
+      "不忠实的",
+      "不忠贞的"
+    ],
+    "previousMeanings": [
+      "不诚实的"
+    ],
+    "previousPrimary": "不诚实的"
+  },
+  "motard": {
+    "meaning": "摩托车骑手",
+    "meanings": [
+      "摩托车骑手"
+    ],
+    "previousMeanings": [
+      "骑摩托车"
+    ],
+    "previousPrimary": "骑摩托车"
+  },
+  "pancarte": {
+    "meaning": "标牌，告示牌",
+    "meanings": [
+      "标牌，告示牌"
+    ],
+    "previousMeanings": [
+      "符号"
+    ],
+    "previousPrimary": "符号"
+  },
+  "passeur": {
+    "meaning": "摆渡人",
+    "meanings": [
+      "摆渡人",
+      "传球手",
+      "偷渡组织者"
+    ],
+    "previousMeanings": [
+      "过路人"
+    ],
+    "previousPrimary": "过路人"
+  },
+  "récession": {
+    "meaning": "经济衰退",
+    "meanings": [
+      "经济衰退",
+      "后退"
+    ],
+    "previousMeanings": [
+      "后退"
+    ],
+    "previousPrimary": "后退"
+  },
+  "motte": {
+    "meaning": "土块",
+    "meanings": [
+      "土块",
+      "土丘"
+    ],
+    "previousMeanings": [
+      "丛林"
+    ],
+    "previousPrimary": "丛林"
+  },
+  "visionnaire": {
+    "meaning": "有远见的",
+    "meanings": [
+      "有远见的",
+      "空想家"
+    ],
+    "previousMeanings": [
+      "幻像的"
+    ],
+    "previousPrimary": "幻像的"
+  },
+  "patch": {
+    "meaning": "补丁",
+    "meanings": [
+      "补丁",
+      "贴片"
+    ],
+    "previousMeanings": [
+      "片"
+    ],
+    "previousPrimary": "片"
+  },
+  "teinture": {
+    "meaning": "染色",
+    "meanings": [
+      "染色",
+      "染料",
+      "酊剂"
+    ],
+    "previousMeanings": [
+      "颜色"
+    ],
+    "previousPrimary": "颜色"
+  },
+  "verso": {
+    "meaning": "背面",
+    "meanings": [
+      "背面",
+      "书页背面"
+    ],
+    "previousMeanings": [
+      "偶数页"
+    ],
+    "previousPrimary": "偶数页"
+  },
+  "sabotage": {
+    "meaning": "蓄意破坏",
+    "meanings": [
+      "蓄意破坏",
+      "怠工"
+    ],
+    "previousMeanings": [
+      "怠工"
+    ],
+    "previousPrimary": "怠工"
+  },
+  "mandarin": {
+    "meaning": "官吏",
+    "meanings": [
+      "官吏",
+      "普通话",
+      "官僚"
+    ],
+    "previousMeanings": [
+      "(中国式)紧身马褂的"
+    ],
+    "previousPrimary": "紧身马褂的"
+  },
+  "mascotte": {
+    "meaning": "吉祥物",
+    "meanings": [
+      "吉祥物"
+    ],
+    "previousMeanings": [
+      "福神"
+    ],
+    "previousPrimary": "福神"
+  },
+  "magnitude": {
+    "meaning": "震级",
+    "meanings": [
+      "震级",
+      "星等",
+      "量级"
+    ],
+    "previousMeanings": [
+      "巨大"
+    ],
+    "previousPrimary": "巨大"
+  },
+  "mollet": {
+    "meaning": "小腿肚",
+    "meanings": [
+      "小腿肚",
+      "嫩的"
+    ],
+    "previousMeanings": [
+      "软的"
+    ],
+    "previousPrimary": "软的"
+  },
+  "flop": {
+    "meaning": "惨败",
+    "meanings": [
+      "惨败",
+      "失败之作"
+    ],
+    "previousMeanings": [
+      "砰然落下"
+    ],
+    "previousPrimary": "砰然落下"
+  },
+  "hospice": {
+    "meaning": "救济院",
+    "meanings": [
+      "救济院",
+      "安养院"
+    ],
+    "previousMeanings": [
+      "旅客住宿处"
+    ],
+    "previousPrimary": "旅客住宿处"
+  },
+  "impérativement": {
+    "meaning": "务必，必须",
+    "meanings": [
+      "务必，必须"
+    ],
+    "previousMeanings": [
+      "急切地"
+    ],
+    "previousPrimary": "急切地"
+  },
+  "latex": {
+    "meaning": "乳胶",
+    "meanings": [
+      "乳胶"
+    ],
+    "previousMeanings": [
+      "乳液"
+    ],
+    "previousPrimary": "乳液"
+  },
+  "quiz": {
+    "meaning": "小测验",
+    "meanings": [
+      "小测验"
+    ],
+    "previousMeanings": [
+      "考查"
+    ],
+    "previousPrimary": "考查"
+  },
+  "sagement": {
+    "meaning": "乖乖地",
+    "meanings": [
+      "乖乖地",
+      "明智地"
+    ],
+    "previousMeanings": [
+      "聪明地"
+    ],
+    "previousPrimary": "聪明地"
+  },
+  "exergue": {
+    "meaning": "题词",
+    "meanings": [
+      "题词",
+      "突出位置"
+    ],
+    "previousMeanings": [
+      "(钱币等背面边缘的)空白处"
+    ],
+    "previousPrimary": "空白处"
+  },
+  "insoutenable": {
+    "meaning": "难以忍受的",
+    "meanings": [
+      "难以忍受的",
+      "站不住脚的"
+    ],
+    "previousMeanings": [
+      "不能防守的"
+    ],
+    "previousPrimary": "不能防守的"
+  },
+  "offrande": {
+    "meaning": "供品",
+    "meanings": [
+      "供品",
+      "奉献"
+    ],
+    "previousMeanings": [
+      "提供"
+    ],
+    "previousPrimary": "提供"
+  },
+  "illusoire": {
+    "meaning": "虚幻的，不切实际的",
+    "meanings": [
+      "虚幻的，不切实际的"
+    ],
+    "previousMeanings": [
+      "产生幻觉的"
+    ],
+    "previousPrimary": "产生幻觉的"
+  },
+  "semelle": {
+    "meaning": "鞋底",
+    "meanings": [
+      "鞋底",
+      "底板"
+    ],
+    "previousMeanings": [
+      "脚掌"
+    ],
+    "previousPrimary": "脚掌"
+  },
+  "stagnation": {
+    "meaning": "停滞",
+    "meanings": [
+      "停滞"
+    ],
+    "previousMeanings": [
+      "淤塞"
+    ],
+    "previousPrimary": "淤塞"
+  },
+  "tacite": {
+    "meaning": "默许的，不言明的",
+    "meanings": [
+      "默许的，不言明的"
+    ],
+    "previousMeanings": [
+      "沉默寡言的"
+    ],
+    "previousPrimary": "沉默寡言的"
+  },
+  "slow": {
+    "meaning": "慢舞",
+    "meanings": [
+      "慢舞",
+      "慢节奏舞曲"
+    ],
+    "previousMeanings": [
+      "华尔兹舞"
+    ],
+    "previousPrimary": "华尔兹舞"
+  },
+  "ingénieux": {
+    "meaning": "巧妙的",
+    "meanings": [
+      "巧妙的",
+      "有创造力的"
+    ],
+    "previousMeanings": [
+      "灵敏的"
+    ],
+    "previousPrimary": "灵敏的"
+  },
+  "restaurateur": {
+    "meaning": "餐馆老板",
+    "meanings": [
+      "餐馆老板",
+      "修复者"
+    ],
+    "previousMeanings": [
+      "修补者"
+    ],
+    "previousPrimary": "修补者"
+  },
+  "renoncement": {
+    "meaning": "放弃",
+    "meanings": [
+      "放弃"
+    ],
+    "previousMeanings": [
+      "否认"
+    ],
+    "previousPrimary": "否认"
+  },
+  "smash": {
+    "meaning": "扣杀",
+    "meanings": [
+      "扣杀"
+    ],
+    "previousMeanings": [
+      "打碎"
+    ],
+    "previousPrimary": "打碎"
+  },
+  "signifié": {
+    "meaning": "所指",
+    "meanings": [
+      "所指"
+    ],
+    "previousMeanings": [
+      "[语]意指"
+    ],
+    "previousPrimary": "意指"
+  },
+  "visuellement": {
+    "meaning": "从视觉上",
+    "meanings": [
+      "从视觉上"
+    ],
+    "previousMeanings": [
+      "看"
+    ],
+    "previousPrimary": "看"
+  },
+  "intouchable": {
+    "meaning": "不可触碰的",
+    "meanings": [
+      "不可触碰的",
+      "不受惩罚的"
+    ],
+    "previousMeanings": [
+      "达不到的"
+    ],
+    "previousPrimary": "达不到的"
+  },
+  "volumineux": {
+    "meaning": "体积大的",
+    "meanings": [
+      "体积大的",
+      "篇幅长的"
+    ],
+    "previousMeanings": [
+      "卷数多的"
+    ],
+    "previousPrimary": "卷数多的"
+  },
+  "jackpot": {
+    "meaning": "头奖，累积奖金",
+    "meanings": [
+      "头奖，累积奖金"
+    ],
+    "previousMeanings": [
+      "最大赌注"
+    ],
+    "previousPrimary": "最大赌注"
+  },
+  "roquette": {
+    "meaning": "火箭弹",
+    "meanings": [
+      "火箭弹",
+      "芝麻菜"
+    ],
+    "previousMeanings": [
+      "火箭"
+    ],
+    "previousPrimary": "火箭"
+  },
+  "persistant": {
+    "meaning": "持续的",
+    "meanings": [
+      "持续的",
+      "顽固的"
+    ],
+    "previousMeanings": [
+      "固执的"
+    ],
+    "previousPrimary": "固执的"
+  },
+  "putsch": {
+    "meaning": "政变",
+    "meanings": [
+      "政变"
+    ],
+    "previousMeanings": [
+      "（德）起义"
+    ],
+    "previousPrimary": "起义"
+  },
+  "provision": {
+    "meaning": "储备，供应品",
+    "meanings": [
+      "储备，供应品",
+      "预付款"
+    ],
+    "previousMeanings": [
+      "(政府提供的)钱和设备"
+    ],
+    "previousPrimary": "钱和设备"
+  },
+  "terne": {
+    "meaning": "暗淡的",
+    "meanings": [
+      "暗淡的",
+      "乏味的"
+    ],
+    "previousMeanings": [
+      "钝的"
+    ],
+    "previousPrimary": "钝的"
+  },
+  "discréditer": {
+    "meaning": "败坏……名誉",
+    "meanings": [
+      "败坏……名誉",
+      "使失去信用"
+    ],
+    "previousMeanings": [
+      "不信"
+    ],
+    "previousPrimary": "不信"
+  },
+  "incohérence": {
+    "meaning": "不连贯",
+    "meanings": [
+      "不连贯",
+      "矛盾"
+    ],
+    "previousMeanings": [
+      "无凝聚性"
+    ],
+    "previousPrimary": "无凝聚性"
+  },
+  "javel": {
+    "meaning": "漂白水",
+    "meanings": [
+      "漂白水"
+    ],
+    "previousMeanings": [
+      "漂白"
+    ],
+    "previousPrimary": "漂白"
+  },
+  "marmite": {
+    "meaning": "锅，汤锅",
+    "meanings": [
+      "锅，汤锅"
+    ],
+    "previousMeanings": [
+      "盆"
+    ],
+    "previousPrimary": "盆"
+  },
+  "noirceur": {
+    "meaning": "黑暗",
+    "meanings": [
+      "黑暗",
+      "阴险"
+    ],
+    "previousMeanings": [
+      "黑"
+    ],
+    "previousPrimary": "黑"
+  },
+  "aberration": {
+    "meaning": "谬误",
+    "meanings": [
+      "谬误",
+      "失常",
+      "像差"
+    ],
+    "previousMeanings": [
+      "离开正路"
+    ],
+    "previousPrimary": "离开正路"
+  },
+  "dicton": {
+    "meaning": "谚语，俗语",
+    "meanings": [
+      "谚语，俗语"
+    ],
+    "previousMeanings": [
+      "叙述"
+    ],
+    "previousPrimary": "叙述"
+  },
+  "miraculeusement": {
+    "meaning": "奇迹般地",
+    "meanings": [
+      "奇迹般地"
+    ],
+    "previousMeanings": [
+      "超自然"
+    ],
+    "previousPrimary": "超自然"
+  },
+  "procréation": {
+    "meaning": "生育，繁殖",
+    "meanings": [
+      "生育，繁殖"
+    ],
+    "previousMeanings": [
+      "生产"
+    ],
+    "previousPrimary": "生产"
+  },
+  "vil": {
+    "meaning": "卑劣的",
+    "meanings": [
+      "卑劣的",
+      "低贱的"
+    ],
+    "previousMeanings": [
+      "便宜的"
+    ],
+    "previousPrimary": "便宜的"
+  },
+  "intenable": {
+    "meaning": "难以维持的",
+    "meanings": [
+      "难以维持的",
+      "无法容忍的"
+    ],
+    "previousMeanings": [
+      "不能防守的"
+    ],
+    "previousPrimary": "不能防守的"
+  },
+  "piédestal": {
+    "meaning": "基座，底座",
+    "meanings": [
+      "基座，底座"
+    ],
+    "previousMeanings": [
+      "支柱"
+    ],
+    "previousPrimary": "支柱"
+  },
+  "rayer": {
+    "meaning": "划去",
+    "meanings": [
+      "划去",
+      "划伤",
+      "加条纹"
+    ],
+    "previousMeanings": [
+      "排成一行"
+    ],
+    "previousPrimary": "排成一行"
+  },
+  "gent": {
+    "meaning": "一群人",
+    "meanings": [
+      "一群人",
+      "种类"
+    ],
+    "previousMeanings": [
+      "公司"
+    ],
+    "previousPrimary": "公司"
+  },
+  "justicier": {
+    "meaning": "伸张正义的人",
+    "meanings": [
+      "伸张正义的人"
+    ],
+    "previousMeanings": [
+      "正义"
+    ],
+    "previousPrimary": "正义"
+  },
+  "prolifique": {
+    "meaning": "多产的",
+    "meanings": [
+      "多产的"
+    ],
+    "previousMeanings": [
+      "有生殖力的"
+    ],
+    "previousPrimary": "有生殖力的"
+  },
+  "discriminatoire": {
+    "meaning": "歧视性的",
+    "meanings": [
+      "歧视性的"
+    ],
+    "previousMeanings": [
+      "有辨识力的"
+    ],
+    "previousPrimary": "有辨识力的"
+  },
+  "manille": {
+    "meaning": "卸扣",
+    "meanings": [
+      "卸扣",
+      "一种纸牌游戏"
+    ],
+    "previousMeanings": [
+      "吕宋纸"
+    ],
+    "previousPrimary": "吕宋纸"
+  },
+  "pitch": {
+    "meaning": "简短介绍",
+    "meanings": [
+      "简短介绍",
+      "推销陈述"
+    ],
+    "previousMeanings": [
+      "程度"
+    ],
+    "previousPrimary": "程度"
+  },
+  "tapant": {
+    "meaning": "整点的",
+    "meanings": [
+      "整点的",
+      "敲击的"
+    ],
+    "previousMeanings": [
+      "锋利的"
+    ],
+    "previousPrimary": "锋利的"
+  },
+  "dispenser": {
+    "meaning": "分配，提供",
+    "meanings": [
+      "分配，提供",
+      "免除"
+    ],
+    "previousMeanings": [
+      "原谅"
+    ],
+    "previousPrimary": "原谅"
+  },
+  "mime": {
+    "meaning": "哑剧",
+    "meanings": [
+      "哑剧",
+      "哑剧演员"
+    ],
+    "previousMeanings": [
+      "手势"
+    ],
+    "previousPrimary": "手势"
+  },
+  "tartine": {
+    "meaning": "涂酱面包片",
+    "meanings": [
+      "涂酱面包片",
+      "冗长的话"
+    ],
+    "previousMeanings": [
+      "冗长的文章"
+    ],
+    "previousPrimary": "冗长的文章"
+  },
+  "voyeur": {
+    "meaning": "偷窥者",
+    "meanings": [
+      "偷窥者"
+    ],
+    "previousMeanings": [
+      "观察者"
+    ],
+    "previousPrimary": "观察者"
+  },
+  "attesté": {
+    "meaning": "得到证实的",
+    "meanings": [
+      "得到证实的",
+      "有记载的"
+    ],
+    "previousMeanings": [
+      "证明无病的"
+    ],
+    "previousPrimary": "证明无病的"
+  },
+  "estrade": {
+    "meaning": "讲台，舞台",
+    "meanings": [
+      "讲台，舞台"
+    ],
+    "previousMeanings": [
+      "站台"
+    ],
+    "previousPrimary": "站台"
+  },
+  "ourson": {
+    "meaning": "小熊",
+    "meanings": [
+      "小熊"
+    ],
+    "previousMeanings": [
+      "幼兽"
+    ],
+    "previousPrimary": "幼兽"
+  },
+  "papeterie": {
+    "meaning": "文具店",
+    "meanings": [
+      "文具店",
+      "文具",
+      "造纸"
+    ],
+    "previousMeanings": [
+      "造纸"
+    ],
+    "previousPrimary": "造纸"
+  },
+  "verrouillage": {
+    "meaning": "锁定，上锁",
+    "meanings": [
+      "锁定，上锁"
+    ],
+    "previousMeanings": [
+      "<美>(对囚犯的)一级防范禁闭"
+    ],
+    "previousPrimary": "<美>一级防范禁闭"
+  },
+  "luge": {
+    "meaning": "雪橇",
+    "meanings": [
+      "雪橇"
+    ],
+    "previousMeanings": [
+      "(竞赛用)的仰卧小雪撬"
+    ],
+    "previousPrimary": "的仰卧小雪撬"
+  },
+  "puceau": {
+    "meaning": "处男",
+    "meanings": [
+      "处男"
+    ],
+    "previousMeanings": [
+      "处女"
+    ],
+    "previousPrimary": "处女"
+  },
+  "étable": {
+    "meaning": "牛棚，牲畜棚",
+    "meanings": [
+      "牛棚，牲畜棚"
+    ],
+    "previousMeanings": [
+      "马房"
+    ],
+    "previousPrimary": "马房"
+  },
+  "adonner": {
+    "meaning": "沉迷于，致力于",
+    "meanings": [
+      "沉迷于，致力于"
+    ],
+    "previousMeanings": [
+      "发生"
+    ],
+    "previousPrimary": "发生"
+  },
+  "unisson": {
+    "meaning": "齐唱，齐奏",
+    "meanings": [
+      "齐唱，齐奏",
+      "一致"
+    ],
+    "previousMeanings": [
+      "调和"
+    ],
+    "previousPrimary": "调和"
+  },
+  "écusson": {
+    "meaning": "徽章",
+    "meanings": [
+      "徽章",
+      "盾形标志"
+    ],
+    "previousMeanings": [
+      "勋章"
+    ],
+    "previousPrimary": "勋章"
+  },
+  "évangélisation": {
+    "meaning": "传播福音",
+    "meanings": [
+      "传播福音"
+    ],
+    "previousMeanings": [
+      "evangelise的变形"
+    ],
+    "previousPrimary": "evangelise的变形"
+  },
+  "lectorat": {
+    "meaning": "读者群",
+    "meanings": [
+      "读者群"
+    ],
+    "previousMeanings": [
+      "读者"
+    ],
+    "previousPrimary": "读者"
+  },
+  "magnat": {
+    "meaning": "巨头，大亨",
+    "meanings": [
+      "巨头，大亨"
+    ],
+    "previousMeanings": [
+      "大官"
+    ],
+    "previousPrimary": "大官"
+  },
+  "modestement": {
+    "meaning": "谦逊地",
+    "meanings": [
+      "谦逊地",
+      "适度地"
+    ],
+    "previousMeanings": [
+      "适当地"
+    ],
+    "previousPrimary": "适当地"
+  },
+  "perdition": {
+    "meaning": "毁灭，堕落",
+    "meanings": [
+      "毁灭，堕落"
+    ],
+    "previousMeanings": [
+      "(恶人的)恶报"
+    ],
+    "previousPrimary": "恶报"
+  },
+  "crémaillère": {
+    "meaning": "齿条",
+    "meanings": [
+      "齿条",
+      "吊锅钩"
+    ],
+    "previousMeanings": [
+      "鱼网"
+    ],
+    "previousPrimary": "鱼网"
+  },
+  "ponction": {
+    "meaning": "穿刺",
+    "meanings": [
+      "穿刺",
+      "抽取"
+    ],
+    "previousMeanings": [
+      "刺痕"
+    ],
+    "previousPrimary": "刺痕"
+  },
+  "dard": {
+    "meaning": "刺针，毒刺",
+    "meanings": [
+      "刺针，毒刺"
+    ],
+    "previousMeanings": [
+      "叮"
+    ],
+    "previousPrimary": "叮"
+  },
+  "sociabilité": {
+    "meaning": "合群，善交际",
+    "meanings": [
+      "合群，善交际"
+    ],
+    "previousMeanings": [
+      "社交活动"
+    ],
+    "previousPrimary": "社交活动"
+  },
+  "élitiste": {
+    "meaning": "精英主义的",
+    "meanings": [
+      "精英主义的",
+      "精英主义者"
+    ],
+    "previousMeanings": [
+      "优秀人材的"
+    ],
+    "previousPrimary": "优秀人材的"
+  },
+  "glander": {
+    "meaning": "游手好闲，无所事事",
+    "meanings": [
+      "游手好闲，无所事事"
+    ],
+    "previousMeanings": [
+      "做"
+    ],
+    "previousPrimary": "做"
+  },
+  "inhibition": {
+    "meaning": "抑制",
+    "meanings": [
+      "抑制"
+    ],
+    "previousMeanings": [
+      "禁止"
+    ],
+    "previousPrimary": "禁止"
+  },
+  "rudimentaire": {
+    "meaning": "初步的，简陋的",
+    "meanings": [
+      "初步的，简陋的"
+    ],
+    "previousMeanings": [
+      "基本的"
+    ],
+    "previousPrimary": "基本的"
+  },
+  "soluble": {
+    "meaning": "可溶的",
+    "meanings": [
+      "可溶的"
+    ],
+    "previousMeanings": [
+      "溶解的"
+    ],
+    "previousPrimary": "溶解的"
+  },
+  "squatter": {
+    "meaning": "擅自占用",
+    "meanings": [
+      "擅自占用"
+    ],
+    "previousMeanings": [
+      "蹲下"
+    ],
+    "previousPrimary": "蹲下"
+  },
+  "portfolio": {
+    "meaning": "作品集",
+    "meanings": [
+      "作品集",
+      "公事包"
+    ],
+    "previousMeanings": [
+      "皮包"
+    ],
+    "previousPrimary": "皮包"
+  },
+  "rediffusion": {
+    "meaning": "重播",
+    "meanings": [
+      "重播"
+    ],
+    "previousMeanings": [
+      "重新开动"
+    ],
+    "previousPrimary": "重新开动"
+  },
+  "épithète": {
+    "meaning": "修饰形容词",
+    "meanings": [
+      "修饰形容词",
+      "称号"
+    ],
+    "previousMeanings": [
+      "浑名"
+    ],
+    "previousPrimary": "浑名"
+  },
+  "fard": {
+    "meaning": "化妆品",
+    "meanings": [
+      "化妆品",
+      "掩饰"
+    ],
+    "previousMeanings": [
+      "捏造"
+    ],
+    "previousPrimary": "捏造"
+  },
+  "empressement": {
+    "meaning": "热切，殷勤",
+    "meanings": [
+      "热切，殷勤"
+    ],
+    "previousMeanings": [
+      "注意力"
+    ],
+    "previousPrimary": "注意力"
+  },
+  "prouesse": {
+    "meaning": "壮举，出色表现",
+    "meanings": [
+      "壮举，出色表现"
+    ],
+    "previousMeanings": [
+      "英勇"
+    ],
+    "previousPrimary": "英勇"
+  },
+  "subsister": {
+    "meaning": "继续存在",
+    "meanings": [
+      "继续存在",
+      "维持生活"
+    ],
+    "previousMeanings": [
+      "供给食物"
+    ],
+    "previousPrimary": "供给食物"
+  },
+  "symbiose": {
+    "meaning": "共生",
+    "meanings": [
+      "共生"
+    ],
+    "previousMeanings": [
+      "共栖"
+    ],
+    "previousPrimary": "共栖"
+  },
+  "hideux": {
+    "meaning": "丑陋的，可怕的",
+    "meanings": [
+      "丑陋的，可怕的"
+    ],
+    "previousMeanings": [
+      "奇怪的"
+    ],
+    "previousPrimary": "奇怪的"
+  },
+  "solstice": {
+    "meaning": "至日，夏至或冬至",
+    "meanings": [
+      "至日，夏至或冬至"
+    ],
+    "previousMeanings": [
+      "至"
+    ],
+    "previousPrimary": "至"
+  },
+  "souk": {
+    "meaning": "露天集市",
+    "meanings": [
+      "露天集市",
+      "混乱"
+    ],
+    "previousMeanings": [
+      "食堂"
+    ],
+    "previousPrimary": "食堂"
+  },
+  "toboggan": {
+    "meaning": "滑梯",
+    "meanings": [
+      "滑梯"
+    ],
+    "previousMeanings": [
+      "滑"
+    ],
+    "previousPrimary": "滑"
+  },
+  "daube": {
+    "meaning": "炖肉",
+    "meanings": [
+      "炖肉",
+      "劣质的东西"
+    ],
+    "previousMeanings": [
+      "炖"
+    ],
+    "previousPrimary": "炖"
+  },
+  "modalité": {
+    "meaning": "方式",
+    "meanings": [
+      "方式",
+      "具体办法"
+    ],
+    "previousMeanings": [
+      "样式"
+    ],
+    "previousPrimary": "样式"
+  },
+  "radiologie": {
+    "meaning": "放射学",
+    "meanings": [
+      "放射学"
+    ],
+    "previousMeanings": [
+      "辐射学"
+    ],
+    "previousPrimary": "辐射学"
+  },
+  "sensationnel": {
+    "meaning": "惊人的，出色的",
+    "meanings": [
+      "惊人的，出色的"
+    ],
+    "previousMeanings": [
+      "使人感动的"
+    ],
+    "previousPrimary": "使人感动的"
+  },
+  "véranda": {
+    "meaning": "玻璃游廊，阳光房",
+    "meanings": [
+      "玻璃游廊，阳光房"
+    ],
+    "previousMeanings": [
+      "阳台"
+    ],
+    "previousPrimary": "阳台"
+  },
+  "tourelle": {
+    "meaning": "小塔",
+    "meanings": [
+      "小塔",
+      "炮塔"
+    ],
+    "previousMeanings": [
+      "塔楼"
+    ],
+    "previousPrimary": "塔楼"
+  },
+  "grisaille": {
+    "meaning": "灰蒙蒙",
+    "meanings": [
+      "灰蒙蒙",
+      "灰色单色画"
+    ],
+    "previousMeanings": [
+      "纯以灰色的装饰画法"
+    ],
+    "previousPrimary": "纯以灰色的装饰画法"
+  },
+  "joaillerie": {
+    "meaning": "珠宝业",
+    "meanings": [
+      "珠宝业",
+      "珠宝"
+    ],
+    "previousMeanings": [
+      "珠宝"
+    ],
+    "previousPrimary": "珠宝"
+  },
+  "monteur": {
+    "meaning": "安装工",
+    "meanings": [
+      "安装工",
+      "剪辑师"
+    ],
+    "previousMeanings": [
+      "编者"
+    ],
+    "previousPrimary": "编者"
+  },
+  "réticent": {
+    "meaning": "有所保留的，不情愿的",
+    "meanings": [
+      "有所保留的，不情愿的"
+    ],
+    "previousMeanings": [
+      "保留的"
+    ],
+    "previousPrimary": "保留的"
+  },
+  "entendement": {
+    "meaning": "理解力",
+    "meanings": [
+      "理解力"
+    ],
+    "previousMeanings": [
+      "理解"
+    ],
+    "previousPrimary": "理解"
+  },
+  "isolément": {
+    "meaning": "单独地",
+    "meanings": [
+      "单独地"
+    ],
+    "previousMeanings": [
+      "isolated的变形"
+    ],
+    "previousPrimary": "isolated的变形"
+  },
+  "morfler": {
+    "meaning": "挨打",
+    "meanings": [
+      "挨打",
+      "遭罪"
+    ],
+    "previousMeanings": [
+      "支付"
+    ],
+    "previousPrimary": "支付"
+  },
+  "rocambolesque": {
+    "meaning": "离奇曲折的",
+    "meanings": [
+      "离奇曲折的"
+    ],
+    "previousMeanings": [
+      "奇妙的"
+    ],
+    "previousPrimary": "奇妙的"
+  },
+  "intangible": {
+    "meaning": "不可触碰的",
+    "meanings": [
+      "不可触碰的",
+      "不可更改的"
+    ],
+    "previousMeanings": [
+      "难以明了的"
+    ],
+    "previousPrimary": "难以明了的"
+  },
+  "épisodique": {
+    "meaning": "偶尔发生的",
+    "meanings": [
+      "偶尔发生的",
+      "插曲式的"
+    ],
+    "previousMeanings": [
+      "插曲似的"
+    ],
+    "previousPrimary": "插曲似的"
+  },
+  "longitudinal": {
+    "meaning": "纵向的",
+    "meanings": [
+      "纵向的"
+    ],
+    "previousMeanings": [
+      "经度的"
+    ],
+    "previousPrimary": "经度的"
+  },
+  "servage": {
+    "meaning": "农奴制，农奴身份",
+    "meanings": [
+      "农奴制，农奴身份"
+    ],
+    "previousMeanings": [
+      "奴隶状态"
+    ],
+    "previousPrimary": "奴隶状态"
+  },
+  "mitaine": {
+    "meaning": "露指手套",
+    "meanings": [
+      "露指手套",
+      "连指手套"
+    ],
+    "previousMeanings": [
+      "连指手套"
+    ],
+    "previousPrimary": "连指手套"
+  },
+  "mercerie": {
+    "meaning": "缝纫用品店",
+    "meanings": [
+      "缝纫用品店",
+      "缝纫用品"
+    ],
+    "previousMeanings": [
+      "男子服饰经售店"
+    ],
+    "previousPrimary": "男子服饰经售店"
+  },
+  "offusquer": {
+    "meaning": "使震惊",
+    "meanings": [
+      "使震惊",
+      "冒犯"
+    ],
+    "previousMeanings": [
+      "犯罪"
+    ],
+    "previousPrimary": "犯罪"
+  },
+  "échoppe": {
+    "meaning": "小店铺",
+    "meanings": [
+      "小店铺"
+    ],
+    "previousMeanings": [
+      "厩"
+    ],
+    "previousPrimary": "厩"
+  },
+  "prohibitif": {
+    "meaning": "高得令人却步的",
+    "meanings": [
+      "高得令人却步的",
+      "禁止的"
+    ],
+    "previousMeanings": [
+      "禁止的"
+    ],
+    "previousPrimary": "禁止的"
+  },
+  "isoloir": {
+    "meaning": "投票隔间",
+    "meanings": [
+      "投票隔间"
+    ],
+    "previousMeanings": [
+      "亭"
+    ],
+    "previousPrimary": "亭"
+  },
+  "surmenage": {
+    "meaning": "过度劳累",
+    "meanings": [
+      "过度劳累"
+    ],
+    "previousMeanings": [
+      "过度操劳的工作"
+    ],
+    "previousPrimary": "过度操劳的工作"
+  },
+  "crissement": {
+    "meaning": "尖锐的摩擦声",
+    "meanings": [
+      "尖锐的摩擦声"
+    ],
+    "previousMeanings": [
+      "尖声喊叫"
+    ],
+    "previousPrimary": "尖声喊叫"
+  },
+  "interpolation": {
+    "meaning": "插入，插值",
+    "meanings": [
+      "插入，插值"
+    ],
+    "previousMeanings": [
+      "篡改"
+    ],
+    "previousPrimary": "篡改"
+  },
+  "jongleur": {
+    "meaning": "杂耍演员",
+    "meanings": [
+      "杂耍演员"
+    ],
+    "previousMeanings": [
+      "表演娱乐节目的人"
+    ],
+    "previousPrimary": "表演娱乐节目的人"
+  },
+  "fange": {
+    "meaning": "泥淖",
+    "meanings": [
+      "泥淖",
+      "污秽"
+    ],
+    "previousMeanings": [
+      "污秽"
+    ],
+    "previousPrimary": "污秽"
+  },
+  "exceller": {
+    "meaning": "擅长，出类拔萃",
+    "meanings": [
+      "擅长，出类拔萃"
+    ],
+    "previousMeanings": [
+      "胜过"
+    ],
+    "previousPrimary": "胜过"
+  }
+}

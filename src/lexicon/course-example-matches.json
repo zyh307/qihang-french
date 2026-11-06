@@ -1,0 +1,1237 @@
+[
+  {
+    "wordId": "w000106",
+    "book": "inspire1",
+    "lesson": "L08",
+    "sourceText": "les frères et les sœurs",
+    "fr": "Il a trois frères et deux sœurs.",
+    "highlight": [
+      "frères",
+      "sœurs"
+    ],
+    "forms": [
+      "les frères et les sœurs"
+    ]
+  },
+  {
+    "wordId": "w000109",
+    "book": "inspire1",
+    "lesson": "L08",
+    "sourceText": "les cousins et les cousines",
+    "fr": "Mes cousins et mes cousines habitent à Lyon.",
+    "highlight": [
+      "cousins",
+      "cousines"
+    ],
+    "forms": [
+      "les cousins et les cousines"
+    ]
+  },
+  {
+    "wordId": "w000112",
+    "book": "inspire1",
+    "lesson": "L08",
+    "sourceText": "les oncles et les tantes",
+    "fr": "Mes oncles et mes tantes arrivent demain.",
+    "highlight": [
+      "oncles",
+      "tantes"
+    ],
+    "forms": [
+      "les oncles et les tantes"
+    ]
+  },
+  {
+    "wordId": "w000169",
+    "book": "inspire1",
+    "lesson": "L10",
+    "sourceText": "regarder la télé",
+    "fr": "Il regarde la télé le soir.",
+    "highlight": "regarde la télé",
+    "forms": [
+      "regarder la télé"
+    ]
+  },
+  {
+    "wordId": "w000378",
+    "book": "inspire1",
+    "lesson": "L20",
+    "sourceText": "une cuillère de",
+    "fr": "Une cuillère d'huile d'olive.",
+    "highlight": "cuillère d'",
+    "forms": [
+      "une cuillère de"
+    ]
+  },
+  {
+    "wordId": "w000437",
+    "book": "inspire1",
+    "lesson": "L25",
+    "sourceText": "le jardin partagé",
+    "fr": "Les jardins partagés sont utiles.",
+    "highlight": "jardins partagés",
+    "forms": [
+      "le jardin partagé"
+    ]
+  },
+  {
+    "wordId": "w202007",
+    "book": "inspire2",
+    "lesson": "L02",
+    "sourceText": "connaître",
+    "fr": "Je connais bien mes voisins.",
+    "highlight": "connais",
+    "forms": [
+      "connaître"
+    ]
+  },
+  {
+    "wordId": "w202009",
+    "book": "inspire2",
+    "lesson": "L02",
+    "sourceText": "découvrir",
+    "fr": "On découvre une autre culture.",
+    "highlight": "découvre",
+    "forms": [
+      "découvrir"
+    ]
+  },
+  {
+    "wordId": "w202011",
+    "book": "inspire2",
+    "lesson": "L02",
+    "sourceText": "devenir amis",
+    "fr": "Je suis devenu amie avec un jeune Russe, Boris.",
+    "highlight": "devenu amie",
+    "forms": [
+      "devenir amis"
+    ]
+  },
+  {
+    "wordId": "w202027",
+    "book": "inspire2",
+    "lesson": "L02",
+    "sourceText": "sympa(thique)",
+    "fr": "Il est sympathique.",
+    "highlight": "sympathique",
+    "forms": [
+      "sympa"
+    ]
+  },
+  {
+    "wordId": "w202028",
+    "book": "inspire2",
+    "lesson": "L02",
+    "sourceText": "pas sympa(thique)",
+    "fr": "Ce voisin n'est pas sympathique.",
+    "highlight": "pas sympathique",
+    "forms": [
+      "pas sympa"
+    ]
+  },
+  {
+    "wordId": "w203015",
+    "book": "inspire2",
+    "lesson": "L03",
+    "sourceText": "recevoir",
+    "fr": "J'ai reçu du sable sur le visage.",
+    "highlight": "reçu",
+    "forms": [
+      "recevoir"
+    ]
+  },
+  {
+    "wordId": "w203020",
+    "book": "inspire2",
+    "lesson": "L03",
+    "sourceText": "dépenser de l'argent",
+    "fr": "Il dépense trop d'argent en vêtements.",
+    "highlight": "dépense trop d'argent",
+    "forms": [
+      "dépenser de l'argent"
+    ]
+  },
+  {
+    "wordId": "w203024",
+    "book": "inspire2",
+    "lesson": "L03",
+    "sourceText": "être en (pleine) forme",
+    "fr": "Après ces vacances, je suis en pleine forme.",
+    "highlight": "suis en pleine forme",
+    "forms": [
+      "être en forme"
+    ]
+  },
+  {
+    "wordId": "w203025",
+    "book": "inspire2",
+    "lesson": "L03",
+    "sourceText": "se sentir (bien, mal, fatigué(e))",
+    "fr": "Après cette journée, je me sens fatigué.",
+    "highlight": "me sens fatigué",
+    "forms": [
+      "se sentir bien",
+      "se sentir mal",
+      "se sentir fatigué",
+      "se sentir fatiguée"
+    ]
+  },
+  {
+    "wordId": "w205012",
+    "book": "inspire2",
+    "lesson": "L05",
+    "sourceText": "avoir des affinités",
+    "fr": "Nous avons beaucoup d'affinités.",
+    "highlight": "avons beaucoup d'affinités",
+    "forms": [
+      "avoir des affinités"
+    ]
+  },
+  {
+    "wordId": "w206009",
+    "book": "inspire2",
+    "lesson": "L06",
+    "sourceText": "avoir beaucoup d'énergie",
+    "fr": "Elle était très courageuse, elle avait beaucoup d'énergie.",
+    "highlight": "avait beaucoup d'énergie",
+    "forms": [
+      "avoir beaucoup d'énergie"
+    ]
+  },
+  {
+    "wordId": "w206011",
+    "book": "inspire2",
+    "lesson": "L06",
+    "sourceText": "un(e) employé(e) de maison",
+    "fr": "Ma mère travaillait comme employée de maison et mon père était maçon.",
+    "highlight": "employée de maison",
+    "forms": [
+      "un employé de maison",
+      "une employé de maison"
+    ]
+  },
+  {
+    "wordId": "w207010",
+    "book": "inspire2",
+    "lesson": "L07",
+    "sourceText": "en (juillet) 52",
+    "fr": "Mon père est né en juillet 52.",
+    "highlight": "en juillet 52",
+    "forms": [
+      "en 52"
+    ]
+  },
+  {
+    "wordId": "w207024",
+    "book": "inspire2",
+    "lesson": "L07",
+    "sourceText": "se voir",
+    "fr": "On se voyait après l'école.",
+    "highlight": "se voyait",
+    "forms": [
+      "se voir"
+    ]
+  },
+  {
+    "wordId": "w207026",
+    "book": "inspire2",
+    "lesson": "L07",
+    "sourceText": "se reconnaître",
+    "fr": "Après vingt ans, ils se sont reconnus tout de suite.",
+    "highlight": "se sont reconnus",
+    "forms": [
+      "se reconnaître"
+    ]
+  },
+  {
+    "wordId": "w209001",
+    "book": "inspire2",
+    "lesson": "L09",
+    "sourceText": "le centre-ville",
+    "fr": "En France, les centres-villes se vident.",
+    "highlight": "centres-villes",
+    "forms": [
+      "le centre-ville"
+    ]
+  },
+  {
+    "wordId": "w213034",
+    "book": "inspire2",
+    "lesson": "L13",
+    "sourceText": "promener",
+    "fr": "Il promène son chien chaque matin.",
+    "highlight": "promène",
+    "forms": [
+      "promener"
+    ]
+  },
+  {
+    "wordId": "w219011",
+    "book": "inspire2",
+    "lesson": "L19",
+    "sourceText": "s'ennuyer",
+    "fr": "Les enfants s'ennuient pendant le trajet.",
+    "highlight": "s'ennuient",
+    "forms": [
+      "s'ennuyer"
+    ]
+  },
+  {
+    "wordId": "w221012",
+    "book": "inspire2",
+    "lesson": "L21",
+    "sourceText": "être membre de",
+    "fr": "Il est membre d'une association.",
+    "highlight": "est membre d'",
+    "forms": [
+      "être membre de"
+    ]
+  },
+  {
+    "wordId": "w221018",
+    "book": "inspire2",
+    "lesson": "L21",
+    "sourceText": "se sentir concerné(e)",
+    "fr": "On agit parce qu'on se sent concernés.",
+    "highlight": "se sent concernés",
+    "forms": [
+      "se sentir concerné",
+      "se sentir concernée"
+    ]
+  },
+  {
+    "wordId": "w221026",
+    "book": "inspire2",
+    "lesson": "L21",
+    "sourceText": "un problème environnemental",
+    "fr": "Les dirigeants veulent sensibiliser les jeunes aux problèmes environnementaux.",
+    "highlight": "problèmes environnementaux",
+    "forms": [
+      "un problème environnemental"
+    ]
+  },
+  {
+    "wordId": "w225008",
+    "book": "inspire2",
+    "lesson": "L25",
+    "sourceText": "un réseau social",
+    "fr": "Les jeunes utilisent les réseaux sociaux pour s'informer.",
+    "highlight": "réseaux sociaux",
+    "forms": [
+      "un réseau social"
+    ]
+  },
+  {
+    "wordId": "w225022",
+    "book": "inspire2",
+    "lesson": "L25",
+    "sourceText": "croire",
+    "fr": "Vous croyez à cette info ?",
+    "highlight": "croyez",
+    "forms": [
+      "croire"
+    ]
+  },
+  {
+    "wordId": "w226018",
+    "book": "inspire2",
+    "lesson": "L26",
+    "sourceText": "disposer de",
+    "fr": "Nous disposons d'une salle de réunion.",
+    "highlight": "disposons d'",
+    "forms": [
+      "disposer de"
+    ]
+  },
+  {
+    "wordId": "w229017",
+    "book": "inspire2",
+    "lesson": "L29",
+    "sourceText": "un poisson volant",
+    "fr": "Il y a aussi les baleines, les dauphins qui suivent le bateau et les poissons volants.",
+    "highlight": "poissons volants",
+    "forms": [
+      "un poisson volant"
+    ]
+  },
+  {
+    "wordId": "w230032",
+    "book": "inspire2",
+    "lesson": "L30",
+    "sourceText": "accueillir",
+    "fr": "On m'accueille et moi je respecte les cultures et les coutumes de mes hôtes.",
+    "highlight": "accueille",
+    "forms": [
+      "accueillir"
+    ]
+  },
+  {
+    "wordId": "w301013",
+    "book": "inspire3",
+    "lesson": "L01",
+    "sourceText": "être à l'écoute",
+    "fr": "Soyez à l'écoute.",
+    "highlight": "Soyez à l'écoute",
+    "forms": [
+      "être à l'écoute"
+    ]
+  },
+  {
+    "wordId": "w301014",
+    "book": "inspire3",
+    "lesson": "L01",
+    "sourceText": "être attaché(e) à",
+    "fr": "Il est très attaché à sa région.",
+    "highlight": "est très attaché à",
+    "forms": [
+      "être attaché à",
+      "être attachée à"
+    ]
+  },
+  {
+    "wordId": "w301015",
+    "book": "inspire3",
+    "lesson": "L01",
+    "sourceText": "être de bonne humeur",
+    "fr": "Elle est de bonne humeur ce matin.",
+    "highlight": "est de bonne humeur",
+    "forms": [
+      "être de bonne humeur"
+    ]
+  },
+  {
+    "wordId": "w302004",
+    "book": "inspire3",
+    "lesson": "L02",
+    "sourceText": "une personne âgée",
+    "fr": "Les personnes âgées reçoivent de la visite grâce à cette association.",
+    "highlight": "personnes âgées",
+    "forms": [
+      "une personne âgée"
+    ]
+  },
+  {
+    "wordId": "w303008",
+    "book": "inspire3",
+    "lesson": "L03",
+    "sourceText": "être hors de soi",
+    "fr": "Il était hors de lui en apprenant la nouvelle.",
+    "highlight": "était hors de lui",
+    "forms": [
+      "être hors de soi"
+    ]
+  },
+  {
+    "wordId": "w303010",
+    "book": "inspire3",
+    "lesson": "L03",
+    "sourceText": "se fermer",
+    "fr": "Les gens se fermaient car ils me trouvaient bizarre.",
+    "highlight": "se fermaient",
+    "forms": [
+      "se fermer"
+    ]
+  },
+  {
+    "wordId": "w305016",
+    "book": "inspire3",
+    "lesson": "L05",
+    "sourceText": "accueillir",
+    "fr": "On accueillera les visiteurs tous les jours.",
+    "highlight": "accueillera",
+    "forms": [
+      "accueillir"
+    ]
+  },
+  {
+    "wordId": "w305031",
+    "book": "inspire3",
+    "lesson": "L05",
+    "sourceText": "s'intégrer",
+    "fr": "Les nouveaux arrivants s'intègrent à la vie locale.",
+    "highlight": "s'intègrent",
+    "forms": [
+      "s'intégrer"
+    ]
+  },
+  {
+    "wordId": "w306004",
+    "book": "inspire3",
+    "lesson": "L06",
+    "sourceText": "sûr(e) de soi",
+    "fr": "Elle est sûre d'elle pendant l'entretien.",
+    "highlight": "sûre d'elle",
+    "forms": [
+      "sûr de soi",
+      "sûre de soi"
+    ]
+  },
+  {
+    "wordId": "w306013",
+    "book": "inspire3",
+    "lesson": "L06",
+    "sourceText": "une personne handicapée",
+    "fr": "Quand ils ont construit les immeubles, les architectes ont pensé aux personnes handicapées.",
+    "highlight": "personnes handicapées",
+    "forms": [
+      "une personne handicapée"
+    ]
+  },
+  {
+    "wordId": "w307016",
+    "book": "inspire3",
+    "lesson": "L07",
+    "sourceText": "galérer",
+    "fr": "Il galère pour trouver un logement.",
+    "highlight": "galère",
+    "forms": [
+      "galérer"
+    ]
+  },
+  {
+    "wordId": "w309008",
+    "book": "inspire3",
+    "lesson": "L09",
+    "sourceText": "être en (pleine) forme",
+    "fr": "Après ces vacances, je suis en pleine forme.",
+    "highlight": "suis en pleine forme",
+    "forms": [
+      "être en forme"
+    ]
+  },
+  {
+    "wordId": "w309026",
+    "book": "inspire3",
+    "lesson": "L09",
+    "sourceText": "être équipé(e)",
+    "fr": "Ce bureau est bien équipé.",
+    "highlight": "est bien équipé",
+    "forms": [
+      "être équipé",
+      "être équipée"
+    ]
+  },
+  {
+    "wordId": "w314009",
+    "book": "inspire3",
+    "lesson": "L14",
+    "sourceText": "un burn out",
+    "fr": "Les gens peuvent faire quoi pour éviter le burn-out ?",
+    "highlight": "burn-out",
+    "forms": [
+      "un burn out"
+    ]
+  },
+  {
+    "wordId": "w314020",
+    "book": "inspire3",
+    "lesson": "L14",
+    "sourceText": "se sentir",
+    "fr": "Ils se sentent bien dans une organisation du travail moins hiérarchique.",
+    "highlight": "se sentent",
+    "forms": [
+      "se sentir"
+    ]
+  },
+  {
+    "wordId": "w314023",
+    "book": "inspire3",
+    "lesson": "L14",
+    "sourceText": "être attentif à / être attentive à",
+    "fr": "Il faut être attentif aux besoins des autres.",
+    "highlight": "être attentif aux",
+    "forms": [
+      "être attentif à",
+      "être attentive à"
+    ]
+  },
+  {
+    "wordId": "w315014",
+    "book": "inspire3",
+    "lesson": "L15",
+    "sourceText": "s'ennuyer",
+    "fr": "Les enfants s'ennuient pendant le trajet.",
+    "highlight": "s'ennuient",
+    "forms": [
+      "s'ennuyer"
+    ]
+  },
+  {
+    "wordId": "w317027",
+    "book": "inspire3",
+    "lesson": "L17",
+    "sourceText": "entretenir",
+    "fr": "Les habitants entretiennent le jardin.",
+    "highlight": "entretiennent",
+    "forms": [
+      "entretenir"
+    ]
+  },
+  {
+    "wordId": "w318012",
+    "book": "inspire3",
+    "lesson": "L18",
+    "sourceText": "reconstruire",
+    "fr": "On a reconstruit l'immeuble après l'incendie.",
+    "highlight": "reconstruit",
+    "forms": [
+      "reconstruire"
+    ]
+  },
+  {
+    "wordId": "w321001",
+    "book": "inspire3",
+    "lesson": "L21",
+    "sourceText": "un chef-d'œuvre",
+    "fr": "Expérience unique, ce concept intègre images numériques et musiques pour que les chefs-d'œuvre de grands artistes prennent vie sous les yeux des visiteurs.",
+    "highlight": "chefs-d'œuvre",
+    "forms": [
+      "un chef-d'œuvre"
+    ]
+  },
+  {
+    "wordId": "w321011",
+    "book": "inspire3",
+    "lesson": "L21",
+    "sourceText": "mettre en perspective",
+    "fr": "Leur reflet met en perspective les œuvres et les visiteurs, sans limites spatiales.",
+    "highlight": "met en perspective",
+    "forms": [
+      "mettre en perspective"
+    ]
+  },
+  {
+    "wordId": "w321019",
+    "book": "inspire3",
+    "lesson": "L21",
+    "sourceText": "recouvrir",
+    "fr": "La neige recouvre le sol.",
+    "highlight": "recouvre",
+    "forms": [
+      "recouvrir"
+    ]
+  },
+  {
+    "wordId": "w325015",
+    "book": "inspire3",
+    "lesson": "L25",
+    "sourceText": "mettre en contexte",
+    "fr": "Le journaliste prend le temps de mettre les faits en contexte.",
+    "highlight": "mettre les faits en contexte",
+    "forms": [
+      "mettre en contexte"
+    ]
+  },
+  {
+    "wordId": "w325016",
+    "book": "inspire3",
+    "lesson": "L25",
+    "sourceText": "mettre en perspective",
+    "fr": "Leur reflet met en perspective les œuvres et les visiteurs, sans limites spatiales.",
+    "highlight": "met en perspective",
+    "forms": [
+      "mettre en perspective"
+    ]
+  },
+  {
+    "wordId": "w326010",
+    "book": "inspire3",
+    "lesson": "L26",
+    "sourceText": "être au courant",
+    "fr": "Je suis au courant de cette affaire.",
+    "highlight": "suis au courant",
+    "forms": [
+      "être au courant"
+    ]
+  },
+  {
+    "wordId": "w326020",
+    "book": "inspire3",
+    "lesson": "L26",
+    "sourceText": "être atteint(e) de",
+    "fr": "Il est atteint d'une maladie chronique.",
+    "highlight": "est atteint d'",
+    "forms": [
+      "être atteint de",
+      "être atteinte de"
+    ]
+  },
+  {
+    "wordId": "w326021",
+    "book": "inspire3",
+    "lesson": "L26",
+    "sourceText": "souffrir de",
+    "fr": "Les gens en souffrent de plus en plus.",
+    "highlight": "en souffrent",
+    "forms": [
+      "souffrir de"
+    ]
+  },
+  {
+    "wordId": "w327010",
+    "book": "inspire3",
+    "lesson": "L27",
+    "sourceText": "diffuser en continu",
+    "fr": "Cette chaîne diffuse les informations en continu.",
+    "highlight": "diffuse les informations en continu",
+    "forms": [
+      "diffuser en continu"
+    ]
+  },
+  {
+    "wordId": "w327011",
+    "book": "inspire3",
+    "lesson": "L27",
+    "sourceText": "manipuler",
+    "fr": "Les enfants apprennent en manipulant les objets.",
+    "highlight": "manipulant",
+    "forms": [
+      "manipuler"
+    ]
+  },
+  {
+    "wordId": "w330008",
+    "book": "inspire3",
+    "lesson": "L30",
+    "sourceText": "une espèce vivante",
+    "fr": "Listez les espèces vivantes que vous voyez.",
+    "highlight": "espèces vivantes",
+    "forms": [
+      "une espèce vivante"
+    ]
+  },
+  {
+    "wordId": "w330014",
+    "book": "inspire3",
+    "lesson": "L30",
+    "sourceText": "un équilibre biologique",
+    "fr": "Tous les animaux ont des droits égaux à l'existence dans le cadre des équilibres biologiques.",
+    "highlight": "équilibres biologiques",
+    "forms": [
+      "un équilibre biologique"
+    ]
+  },
+  {
+    "wordId": "w333030",
+    "book": "inspire3",
+    "lesson": "L33",
+    "sourceText": "mettre le cap sur",
+    "fr": "Le bateau met le cap sur Marseille.",
+    "highlight": "met le cap sur",
+    "forms": [
+      "mettre le cap sur"
+    ]
+  },
+  {
+    "wordId": "w333035",
+    "book": "inspire3",
+    "lesson": "L33",
+    "sourceText": "avoir peur",
+    "fr": "Il a peur de parler en public.",
+    "highlight": "a peur",
+    "forms": [
+      "avoir peur"
+    ]
+  },
+  {
+    "wordId": "w333037",
+    "book": "inspire3",
+    "lesson": "L33",
+    "sourceText": "inquiéter",
+    "fr": "Comme je n'en avais jamais rencontré, cela m'inquiétait.",
+    "highlight": "inquiétait",
+    "forms": [
+      "inquiéter"
+    ]
+  },
+  {
+    "wordId": "w335005",
+    "book": "inspire3",
+    "lesson": "L35",
+    "sourceText": "découvrir",
+    "fr": "J'ai découvert les voyages immobiles grâce à ce livre.",
+    "highlight": "découvert",
+    "forms": [
+      "découvrir"
+    ]
+  },
+  {
+    "wordId": "w335007",
+    "book": "inspire3",
+    "lesson": "L35",
+    "sourceText": "laisser derrière soi",
+    "fr": "Elle a laissé ses soucis derrière elle.",
+    "highlight": "laissé ses soucis derrière elle",
+    "forms": [
+      "laisser derrière soi"
+    ]
+  },
+  {
+    "wordId": "w405005",
+    "book": "inspire4",
+    "lesson": "L05",
+    "sourceText": "être tatoué(e)",
+    "fr": "Il est tatoué sur l'avant-bras.",
+    "highlight": "est tatoué",
+    "forms": [
+      "être tatoué",
+      "être tatouée"
+    ]
+  },
+  {
+    "wordId": "w405012",
+    "book": "inspire4",
+    "lesson": "L05",
+    "sourceText": "être victime",
+    "fr": "Les Vauréens et habitants des communes environnantes ont également, par ricochet, été victimes de ces nuits de gel.",
+    "highlight": "été victimes",
+    "forms": [
+      "être victime"
+    ]
+  },
+  {
+    "wordId": "w405020",
+    "book": "inspire4",
+    "lesson": "L05",
+    "sourceText": "être bafoué(e)",
+    "fr": "Ses droits ont été bafoués.",
+    "highlight": "été bafoués",
+    "forms": [
+      "être bafoué",
+      "être bafouée"
+    ]
+  },
+  {
+    "wordId": "w405025",
+    "book": "inspire4",
+    "lesson": "L05",
+    "sourceText": "mettre la rage",
+    "fr": "Cette injustice me met la rage.",
+    "highlight": "met la rage",
+    "forms": [
+      "mettre la rage"
+    ]
+  },
+  {
+    "wordId": "w405026",
+    "book": "inspire4",
+    "lesson": "L05",
+    "sourceText": "en avoir dans la tête",
+    "fr": "Elle en a dans la tête.",
+    "highlight": "en a dans la tête",
+    "forms": [
+      "en avoir dans la tête"
+    ]
+  },
+  {
+    "wordId": "w406016",
+    "book": "inspire4",
+    "lesson": "L06",
+    "sourceText": "une prothèse bionique",
+    "fr": "On est passé des prothèses mécaniques aux prothèses bioniques, réellement en symbiose avec le corps.",
+    "highlight": "prothèses bioniques",
+    "forms": [
+      "une prothèse bionique"
+    ]
+  },
+  {
+    "wordId": "w406017",
+    "book": "inspire4",
+    "lesson": "L06",
+    "sourceText": "une prothèse mécanique",
+    "fr": "On est passé des prothèses mécaniques aux prothèses bioniques, réellement en symbiose avec le corps.",
+    "highlight": "prothèses mécaniques",
+    "forms": [
+      "une prothèse mécanique"
+    ]
+  },
+  {
+    "wordId": "w409034",
+    "book": "inspire4",
+    "lesson": "L09",
+    "sourceText": "rejeter",
+    "fr": "Cette usine rejette du dioxyde de carbone.",
+    "highlight": "rejette",
+    "forms": [
+      "rejeter"
+    ]
+  },
+  {
+    "wordId": "w409042",
+    "book": "inspire4",
+    "lesson": "L09",
+    "sourceText": "se renouveler",
+    "fr": "Les cellules se renouvellent régulièrement.",
+    "highlight": "se renouvellent",
+    "forms": [
+      "se renouveler"
+    ]
+  },
+  {
+    "wordId": "w409046",
+    "book": "inspire4",
+    "lesson": "L09",
+    "sourceText": "générer",
+    "fr": "Cela génère une pollution dont les conséquences sont nombreuses.",
+    "highlight": "génère",
+    "forms": [
+      "générer"
+    ]
+  },
+  {
+    "wordId": "w409051",
+    "book": "inspire4",
+    "lesson": "L09",
+    "sourceText": "restreindre",
+    "fr": "On restreint le carburant.",
+    "highlight": "restreint",
+    "forms": [
+      "restreindre"
+    ]
+  },
+  {
+    "wordId": "w409056",
+    "book": "inspire4",
+    "lesson": "L09",
+    "sourceText": "y aller un peu fort",
+    "fr": "Tu y vas un peu fort avec cette critique.",
+    "highlight": "y vas un peu fort",
+    "forms": [
+      "y aller un peu fort"
+    ]
+  },
+  {
+    "wordId": "w410024",
+    "book": "inspire4",
+    "lesson": "L10",
+    "sourceText": "se mobiliser",
+    "fr": "Si les jeunes ne se mobilisaient pas plus que leurs aînés, on irait à la catastrophe écologique.",
+    "highlight": "se mobilisaient",
+    "forms": [
+      "se mobiliser"
+    ]
+  },
+  {
+    "wordId": "w413004",
+    "book": "inspire4",
+    "lesson": "L13",
+    "sourceText": "une langue régionale",
+    "fr": "Il y a des langues régionales ?",
+    "highlight": "langues régionales",
+    "forms": [
+      "une langue régionale"
+    ]
+  },
+  {
+    "wordId": "w413017",
+    "book": "inspire4",
+    "lesson": "L13",
+    "sourceText": "en avoir marre",
+    "fr": "J'en ai marre de ce bruit !",
+    "highlight": "en ai marre",
+    "forms": [
+      "en avoir marre"
+    ]
+  },
+  {
+    "wordId": "w413018",
+    "book": "inspire4",
+    "lesson": "L13",
+    "sourceText": "en avoir ras-le-bol",
+    "fr": "J'en ai ras le bol de ce boloss et de sa meuf!",
+    "highlight": "en ai ras le bol",
+    "forms": [
+      "en avoir ras-le-bol"
+    ]
+  },
+  {
+    "wordId": "w414010",
+    "book": "inspire4",
+    "lesson": "L14",
+    "sourceText": "être vénère",
+    "fr": "Il est vénère parce qu'on lui a menti.",
+    "highlight": "est vénère",
+    "forms": [
+      "être vénère"
+    ]
+  },
+  {
+    "wordId": "w418018",
+    "book": "inspire4",
+    "lesson": "L18",
+    "sourceText": "être à la tête de",
+    "fr": "Elle est à la tête d'une grande entreprise.",
+    "highlight": "est à la tête d'",
+    "forms": [
+      "être à la tête de"
+    ]
+  },
+  {
+    "wordId": "w421040",
+    "book": "inspire4",
+    "lesson": "L21",
+    "sourceText": "veiller sur",
+    "fr": "Cette technologie doit être un complément à l'accompagnement humain pour soulager tant les seniors dépendants que les personnes veillant sur eux.",
+    "highlight": "veillant sur",
+    "forms": [
+      "veiller sur"
+    ]
+  },
+  {
+    "wordId": "w421041",
+    "book": "inspire4",
+    "lesson": "L21",
+    "sourceText": "une personne âgée",
+    "fr": "La robotique est stimulante pour les personnes âgées.",
+    "highlight": "personnes âgées",
+    "forms": [
+      "une personne âgée"
+    ]
+  },
+  {
+    "wordId": "w422010",
+    "book": "inspire4",
+    "lesson": "L22",
+    "sourceText": "fédérer",
+    "fr": "Ce projet fédère les habitants.",
+    "highlight": "fédère",
+    "forms": [
+      "fédérer"
+    ]
+  },
+  {
+    "wordId": "w425011",
+    "book": "inspire4",
+    "lesson": "L25",
+    "sourceText": "manipuler",
+    "fr": "Les enfants apprennent en manipulant les objets.",
+    "highlight": "manipulant",
+    "forms": [
+      "manipuler"
+    ]
+  },
+  {
+    "wordId": "w425016",
+    "book": "inspire4",
+    "lesson": "L25",
+    "sourceText": "retenir",
+    "fr": "Nous allons retenir cette idée.",
+    "highlight": "retenir",
+    "forms": [
+      "retenir"
+    ]
+  },
+  {
+    "wordId": "w425035",
+    "book": "inspire4",
+    "lesson": "L25",
+    "sourceText": "apprendre par cœur",
+    "fr": "Elle apprend ce poème par cœur.",
+    "highlight": "apprend ce poème par cœur",
+    "forms": [
+      "apprendre par cœur"
+    ]
+  },
+  {
+    "wordId": "w426021",
+    "book": "inspire4",
+    "lesson": "L26",
+    "sourceText": "s'astreindre",
+    "fr": "Il s'astreint à un entraînement quotidien.",
+    "highlight": "s'astreint",
+    "forms": [
+      "s'astreindre"
+    ]
+  },
+  {
+    "wordId": "w426037",
+    "book": "inspire4",
+    "lesson": "L26",
+    "sourceText": "s'élever à",
+    "fr": "Le taux de réussite s'élève à quatre-vingts pour cent.",
+    "highlight": "s'élève à",
+    "forms": [
+      "s'élever à"
+    ]
+  },
+  {
+    "wordId": "w427015",
+    "book": "inspire4",
+    "lesson": "L27",
+    "sourceText": "un bulletin scolaire",
+    "fr": "Je fouille le fatras de mes vieux papiers à la recherche de mes bulletins scolaires et de mes diplômes, et je tombe sur une lettre conservée par ma mère.",
+    "highlight": "bulletins scolaires",
+    "forms": [
+      "un bulletin scolaire"
+    ]
+  },
+  {
+    "wordId": "w427036",
+    "book": "inspire4",
+    "lesson": "L27",
+    "sourceText": "être écœuré(e)",
+    "fr": "Elle est écœurée par cette injustice.",
+    "highlight": "est écœurée",
+    "forms": [
+      "être écœuré",
+      "être écœurée"
+    ]
+  },
+  {
+    "wordId": "w427037",
+    "book": "inspire4",
+    "lesson": "L27",
+    "sourceText": "avoir mal au crâne",
+    "fr": "J'ai mal au crâne depuis ce matin.",
+    "highlight": "ai mal au crâne",
+    "forms": [
+      "avoir mal au crâne"
+    ]
+  },
+  {
+    "wordId": "w429013",
+    "book": "inspire4",
+    "lesson": "L29",
+    "sourceText": "être débauché(e)",
+    "fr": "Il a été débauché par une entreprise concurrente.",
+    "highlight": "été débauché",
+    "forms": [
+      "être débauché",
+      "être débauchée"
+    ]
+  },
+  {
+    "wordId": "w429021",
+    "book": "inspire4",
+    "lesson": "L29",
+    "sourceText": "être en mode",
+    "fr": "Aujourd'hui, je suis en mode repos.",
+    "highlight": "suis en mode",
+    "forms": [
+      "être en mode"
+    ]
+  },
+  {
+    "wordId": "w430001",
+    "book": "inspire4",
+    "lesson": "L30",
+    "sourceText": "être à la tête de",
+    "fr": "Elle est à la tête d'une grande entreprise.",
+    "highlight": "est à la tête d'",
+    "forms": [
+      "être à la tête de"
+    ]
+  },
+  {
+    "wordId": "w430002",
+    "book": "inspire4",
+    "lesson": "L30",
+    "sourceText": "être licencié(e)",
+    "fr": "Comme il n'a pas pu résoudre les conflits, le directeur a été licencié.",
+    "highlight": "été licencié",
+    "forms": [
+      "être licencié",
+      "être licenciée"
+    ]
+  },
+  {
+    "wordId": "w430003",
+    "book": "inspire4",
+    "lesson": "L30",
+    "sourceText": "être pionnier",
+    "fr": "Cette entreprise est pionnière dans ce domaine.",
+    "highlight": "est pionnière",
+    "forms": [
+      "être pionnier"
+    ]
+  },
+  {
+    "wordId": "w430006",
+    "book": "inspire4",
+    "lesson": "L30",
+    "sourceText": "se devoir de",
+    "fr": "Nous nous devons de respecter nos engagements.",
+    "highlight": "nous devons de",
+    "forms": [
+      "se devoir de"
+    ]
+  },
+  {
+    "wordId": "w431011",
+    "book": "inspire4",
+    "lesson": "L31",
+    "sourceText": "être en rage",
+    "fr": "Elle est en rage après cette annonce.",
+    "highlight": "est en rage",
+    "forms": [
+      "être en rage"
+    ]
+  },
+  {
+    "wordId": "w433015",
+    "book": "inspire4",
+    "lesson": "L33",
+    "sourceText": "avoir un pied dans la tombe",
+    "fr": "À l'entendre, il aurait déjà un pied dans la tombe !",
+    "highlight": "aurait déjà un pied dans la tombe",
+    "forms": [
+      "avoir un pied dans la tombe"
+    ]
+  },
+  {
+    "wordId": "w433016",
+    "book": "inspire4",
+    "lesson": "L33",
+    "sourceText": "mettre la puce à l'oreille",
+    "fr": "Cette remarque m'a mis la puce à l'oreille.",
+    "highlight": "mis la puce à l'oreille",
+    "forms": [
+      "mettre la puce à l'oreille"
+    ]
+  },
+  {
+    "wordId": "w435013",
+    "book": "inspire4",
+    "lesson": "L35",
+    "sourceText": "être bon à jeter à la benne",
+    "fr": "Ce meuble est bon à jeter à la benne.",
+    "highlight": "est bon à jeter à la benne",
+    "forms": [
+      "être bon à jeter à la benne"
+    ]
+  },
+  {
+    "wordId": "w435014",
+    "book": "inspire4",
+    "lesson": "L35",
+    "sourceText": "être bonne à jeter à la benne",
+    "fr": "Cette chaise est bonne à jeter à la benne.",
+    "highlight": "est bonne à jeter à la benne",
+    "forms": [
+      "être bonne à jeter à la benne"
+    ]
+  },
+  {
+    "wordId": "w435015",
+    "book": "inspire4",
+    "lesson": "L35",
+    "sourceText": "être bon joueur / être bonne joueuse",
+    "fr": "Il accepte sa défaite : il est bon joueur.",
+    "highlight": "est bon joueur",
+    "forms": [
+      "être bon joueur",
+      "être bonne joueuse"
+    ]
+  },
+  {
+    "wordId": "w435016",
+    "book": "inspire4",
+    "lesson": "L35",
+    "sourceText": "ne rien avoir à perdre",
+    "fr": "Je vais essayer : je n'ai rien à perdre.",
+    "highlight": "n'ai rien à perdre",
+    "forms": [
+      "ne rien avoir à perdre"
+    ]
+  }
+]

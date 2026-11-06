@@ -101,6 +101,7 @@ export async function playAudio(form, repository, ended) {
   if(form.audioKey?.startsWith('tts:')){const text=decodeURIComponent(form.audioKey.slice(4));if(!text.trim()||text.length>3000)throw Error('语音内容无效 / Texte invalide.');return await playSpeech(text,ended);}
   if (!form.audioKey) throw new Error('尚未提供录音 / Audio non disponible.');
   let bytes = await repository.audio(form.audioKey); if(token!==audioSerial)return;
+  if(!bytes&&form.id?.startsWith('example:')&&form.text)return await playSpeech(form.text,ended);
   if(!bytes&&form.conjugationAudio&&/^[a-f0-9]{64}$/.test(form.audioKey)){const response=await fetch(new URL('static/conjugation/audio/'+form.audioKey+'.mp3',document.baseURI));if(response.ok){const content=new Uint8Array(await response.arrayBuffer());const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',content))].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash===form.audioKey){bytes=content;await repository.cacheAudio?.({id:hash,bytes});}}}if(token!==audioSerial)return;if(!bytes)throw new Error('录音文件缺失 / Fichier audio manquant.');
   currentUrl = URL.createObjectURL(new Blob([bytes], { type: 'audio/mpeg' })); currentAudio = new Audio(currentUrl);
   currentAudio.onended = () => { stopAudio(); ended?.(); }; currentAudio.onerror = () => { stopAudio(); ended?.(); };

@@ -4,12 +4,14 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import ExcelJS from 'exceljs';
 import {zipSync,strToU8} from 'fflate';
-import {normalizeXlsx,masterRowsToLesson,unpack} from '../src/domain/importer.js';
+import {normalizeXlsx,masterRowsToLesson,unpack,validateLesson} from '../src/domain/importer.js';
 import {initialState,installLesson,normalize} from '../src/domain/learning.js';
 import {wordAudioEntries,displayForm} from '../src/domain/word-display.js';
 import {curriculumAdditions} from '../src/domain/curriculum-additions.js';
 import {dictionaryEntry,spokenKey} from '../src/domain/quick-import.js';
 import {vocabularyCorrections} from '../src/domain/vocabulary-corrections.js';
+import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
+import {applyCourseEntrySplits} from '../src/domain/course-entry-splits.js';
 
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const materials=path.resolve(app,'../词库/Inspire1');
@@ -89,8 +91,11 @@ for(const extra of curriculumAdditions){
  for(const text of [extra.word,extra.fr])if(!speechIndex[createHash('sha256').update(text).digest('hex')])throw Error('补充词汇录音缺失：'+text);
  pkg.words.push(word);names.add(extra.lesson+'-'+extra.word);sentenceNames.add(extra.lesson+'-'+extra.word+'-example');
 }
+applyCourseEntrySplits(state);
+applyExampleAudioCorrections(state);
+for(const pkg of state.library)validateLesson(pkg);
 const id=createHash('sha256').update(JSON.stringify(state.library)).update([...audio.keys()].join('')).digest('hex');
-const manifest={schema:1,id,library:state.library,audio:[...audio.keys()],stats:{lessons:ids.length,words:state.library.reduce((sum,p)=>sum+p.words.length,0),recordings:names.size,exampleRecordings:sentenceNames.size,missing}};
+const manifest={schema:1,id,library:state.library,audio:[...audio.keys()],stats:{lessons:ids.length,words:state.library.reduce((sum,p)=>sum+p.words.length,0),recordings:state.library.flatMap(p=>p.words).reduce((sum,w)=>sum+w.forms.filter(f=>f.audioKey).length,0),exampleRecordings:state.library.flatMap(p=>p.words).filter(w=>w.forms.some(f=>f.example?.audioKey)).length,missing}};
 const entries={'manifest.json':strToU8(JSON.stringify(manifest))};for(const [hash,bytes]of audio)entries[`audio/${hash}.bin`]=bytes;
 await fs.mkdir(path.join(app,'src/static/content'),{recursive:true});
 await fs.writeFile(path.join(app,'src/static/content/inspire1.zip'),zipSync(entries,{level:6}));

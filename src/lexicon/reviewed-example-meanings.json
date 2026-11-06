@@ -1049,5 +1049,5810 @@
     "fr": "Nous allons y arriver éventuellement.",
     "meaning": "可能，或许",
     "zh": "我们或许能到达那里。"
+  },
+  "chanter": {
+    "fr": "Aimez-vous écouter la musique ou chanter des chansons ?",
+    "meaning": "唱歌",
+    "meanings": [
+      "唱，唱歌",
+      "鸣叫，啼叫"
+    ],
+    "previousMeanings": [
+      "v.i. et v.t. 唱，唱歌，鸣叫，啼"
+    ]
+  },
+  "incontournable": {
+    "fr": "Ce dilemme est incontournable.",
+    "meaning": "不可避免的",
+    "meanings": [
+      "不可避免的",
+      "必不可少的，至关重要的",
+      "不可错过的"
+    ],
+    "previousMeanings": [
+      "不应失误的"
+    ],
+    "invalidMeanings": [
+      "不应失误的"
+    ]
+  },
+  "loisir": {
+    "fr": "Mon loisir est de jouer de la guitare.",
+    "meaning": "爱好",
+    "meanings": [
+      "爱好，休闲活动",
+      "闲暇，空闲时间"
+    ],
+    "previousMeanings": [
+      "空闲"
+    ]
+  },
+  "elle": {
+    "fr": "Ce ne peut pas être Mary. Elle est à l'hôpital en ce moment.",
+    "meaning": "她",
+    "meanings": [
+      "她"
+    ],
+    "previousMeanings": [
+      "她们 （第三人称、单数、阴性、主语）"
+    ]
+  },
+  "avant tout": {
+    "fr": "Avant tout, prends soin de toi.",
+    "meaning": "首先",
+    "meanings": [
+      "首先，最重要的是"
+    ],
+    "previousMeanings": [
+      "adv. 全部的（一切的，极度的）"
+    ]
+  },
+  "chose": {
+    "fr": "Tu devrais t'assurer des faits avant d'écrire quelque chose.",
+    "meaning": "东西，事情",
+    "meanings": [
+      "东西，事物",
+      "事情"
+    ],
+    "previousMeanings": [
+      "n.f. 无生命物体；事物，事物；事实，事态，现实，事件；东西；不能实施自己愿望的人，无法行动的人；任某人摆布的人，完全依靠他人的人autre ~另一回事，另一东西"
+    ]
+  },
+  "vers": {
+    "fr": "Tournez vers le nord et à la deuxième ruelle vous voilà arrivé.",
+    "meaning": "向，朝",
+    "meanings": [
+      "向，朝",
+      "大约，接近"
+    ],
+    "previousMeanings": [
+      "诗；韵文",
+      "诗句；诗节",
+      "介词：朝向、接近"
+    ]
+  },
+  "après quoi": {
+    "fr": "Parpoil et Gaspard demeurèrent immobiles pendant une seconde, après quoi Gaspard tourna les talons et regrimpa l’escalier quatre à quatre.",
+    "meaning": "随后",
+    "meanings": [
+      "随后，在那之后"
+    ],
+    "previousMeanings": [
+      "adv. 在什么上面（于其上，于是）"
+    ]
+  },
+  "non merci": {
+    "fr": "Non merci, je n'ai pas besoin de sac de plastique.",
+    "meaning": "不，谢谢",
+    "meanings": [
+      "不，谢谢"
+    ],
+    "previousMeanings": [
+      "不要，谢谢"
+    ]
+  },
+  "autant que": {
+    "fr": "Le grillon en cage dévore autant que le grillon en liberté.",
+    "meaning": "和……一样多",
+    "meanings": [
+      "和……一样多",
+      "据……所知"
+    ],
+    "previousMeanings": [
+      "conj. 作为（当作，象）"
+    ]
+  },
+  "au lieu de": {
+    "fr": "Je vais donc jouer au Sudoku au lieu de continuer de te déranger.",
+    "meaning": "而不是",
+    "meanings": [
+      "而不是，代替"
+    ],
+    "previousMeanings": [
+      "loc.prép.不...而...prep. 的（用...做的，关于...的，对...的）prep. 离（从下...来离，离开）adv. 离（从下...来离，离开）"
+    ]
+  },
+  "au compte de": {
+    "fr": "Ces achats seront portés au compte de l'entreprise.",
+    "meaning": "记在……账上",
+    "meanings": [
+      "记在……账上",
+      "由……承担费用"
+    ],
+    "previousMeanings": [
+      "为了；代表"
+    ]
+  },
+  "d'ailleurs": {
+    "fr": "Je ne sais pas lire le français, ni le parler d'ailleurs.",
+    "meaning": "而且",
+    "meanings": [
+      "而且，此外",
+      "再说，况且"
+    ],
+    "previousMeanings": [
+      "仅按字面意思，并无比喻或俗语义；参见de、ailleurs：从别的地方",
+      "顺带一提"
+    ]
+  },
+  "mieux": {
+    "fr": "Je suis convaincu que les choses vont changer pour le mieux.",
+    "meaning": "更好",
+    "meanings": [
+      "更好"
+    ],
+    "previousMeanings": [
+      "更",
+      "尽力而为"
+    ]
+  },
+  "ainsi": {
+    "fr": "Un chameau est, pour ainsi dire, un bateau dans le désert.",
+    "meaning": "这样，如此",
+    "meanings": [
+      "这样，如此",
+      "因此"
+    ],
+    "previousMeanings": [
+      "Ainsi soit-il　但愿如此［祈祷文中的结束语］",
+      "loc.conj. 如同，正如；和，以及"
+    ]
+  },
+  "ainsi que": {
+    "fr": "Il me donna de la nourriture ainsi que de l'argent.",
+    "meaning": "以及",
+    "meanings": [
+      "以及，和",
+      "正如"
+    ],
+    "previousMeanings": [
+      "就像，正如。",
+      "以及。"
+    ]
+  },
+  "vraiment": {
+    "fr": "J'ai vraiment faim, quand est-ce qu'on peut aller déjeuner ?",
+    "meaning": "真的，确实",
+    "meanings": [
+      "真的，确实",
+      "真正地"
+    ],
+    "previousMeanings": [
+      "真正地，真实地",
+      "真的；的确",
+      "真的吗？"
+    ]
+  },
+  "place": {
+    "fr": "Mon père prit sa retraite pour faire de la place aux plus jeunes.",
+    "meaning": "位置，空间",
+    "meanings": [
+      "位置，座位",
+      "空间，余地",
+      "广场"
+    ],
+    "previousMeanings": [
+      "广场\n* 正体： 位［电子计算机］"
+    ]
+  },
+  "cours": {
+    "fr": "Comment surmonter le fort cours du yen est un vrai problème.",
+    "meaning": "汇率",
+    "meanings": [
+      "课程，课",
+      "汇率，行情",
+      "水流，进程"
+    ],
+    "previousMeanings": [
+      "水流，（液体的）流动",
+      "（天体的）移动，运行",
+      "〈转〉进展，经过，过程，期间",
+      "［商］行市，行情，市价，牌价"
+    ]
+  },
+  "nouvelle": {
+    "fr": "Comme elle entendait la nouvelle, elle est devenue heureuse.",
+    "meaning": "消息",
+    "meanings": [
+      "消息，新闻",
+      "短篇小说"
+    ],
+    "previousMeanings": [
+      "新闻",
+      "中篇小说"
+    ]
+  },
+  "argent": {
+    "fr": "Ils économisent leur argent pour l'acquisition d'une maison.",
+    "meaning": "钱",
+    "meanings": [
+      "钱，金钱",
+      "银，白银"
+    ],
+    "previousMeanings": [
+      "n.m. 银，白银；银币，货币，钱；d'~银白色的，银光闪闪的"
+    ]
+  },
+  "langue": {
+    "fr": "Traduire nous aide à mieux connaître notre langue maternelle.",
+    "meaning": "语言",
+    "meanings": [
+      "语言",
+      "舌头"
+    ],
+    "previousMeanings": [
+      "舌，舌头"
+    ]
+  },
+  "classe": {
+    "fr": "Ma classe n'est pas grande, elle compte seulement 12 élèves.",
+    "meaning": "班级",
+    "meanings": [
+      "班级，课堂",
+      "类别，等级",
+      "阶级，阶层"
+    ],
+    "previousMeanings": [
+      "n.f. 阶级，阶层，类别；等级，级别；（动植物分类中的）纲；〈集〉同年达到服兵役年龄的青年；（中小学的）年级；班，班级，全班同学；课，课程；教室；出色，高雅，高档次，高水平"
+    ]
+  },
+  "projet": {
+    "fr": "Je ne sais pas s'il sera d'accord ou non avec notre projet.",
+    "meaning": "计划",
+    "meanings": [
+      "计划，项目",
+      "方案"
+    ],
+    "previousMeanings": [
+      "设计"
+    ]
+  },
+  "formation": {
+    "fr": "la formation juridique",
+    "meaning": "培训",
+    "meanings": [
+      "培训，训练",
+      "形成，构成",
+      "阵形"
+    ],
+    "previousMeanings": [
+      "构成\n* 正体: 成形，形成[电子计算机]"
+    ]
+  },
+  "programme": {
+    "fr": "Laissez-moi savoir le programme au préalable, s'il vous plaît.",
+    "meaning": "安排，计划",
+    "meanings": [
+      "安排，计划",
+      "节目",
+      "程序，软件"
+    ],
+    "previousMeanings": [
+      "软件\n* 正体： 节目［电机工程］"
+    ]
+  },
+  "esprit": {
+    "fr": "Je ne suis pas un artiste. Je n'ai jamais eu l'esprit pour ça.",
+    "meaning": "才能，头脑",
+    "meanings": [
+      "头脑，思维",
+      "精神",
+      "精灵，幽灵"
+    ],
+    "previousMeanings": [
+      "鬼神",
+      "头脑，智慧",
+      "精神",
+      "性情"
+    ]
+  },
+  "terme": {
+    "fr": "Je suppose que c'est différent quand tu y penses à long terme.",
+    "meaning": "期限",
+    "meanings": [
+      "词语，术语",
+      "期限，末期",
+      "条件"
+    ],
+    "previousMeanings": [
+      "词语",
+      "期限"
+    ]
+  },
+  "propos": {
+    "fr": "La plupart des gens écrivent à propos de leur vie quotidienne.",
+    "meaning": "话题",
+    "meanings": [
+      "话，言论",
+      "话题",
+      "意图"
+    ],
+    "previousMeanings": [
+      "目的",
+      "目标",
+      "意图"
+    ]
+  },
+  "frère": {
+    "fr": "Mon frère est très important. Du moins il pense qu'il l'est.",
+    "meaning": "兄弟",
+    "meanings": [
+      "兄弟，哥哥或弟弟"
+    ],
+    "previousMeanings": [
+      "哥哥，弟弟，兄弟",
+      "（男）道友，教友 （僧侣间）"
+    ]
+  },
+  "bonsoir": {
+    "fr": "Il plongea ses yeux dans ceux de Nan.\nBonsoir, dit-il, gaiement. N'étiez-vous pas au bar, il y a quelques minutes ?",
+    "meaning": "晚上好",
+    "meanings": [
+      "晚上好",
+      "晚安"
+    ],
+    "previousMeanings": [
+      "*n.m. 晚安，夜安，晚上好"
+    ]
+  },
+  "cahier": {
+    "fr": "Ce mot est depuis longtemps dans mon cahier de notes.",
+    "meaning": "本子",
+    "meanings": [
+      "本子，笔记本",
+      "书帖"
+    ],
+    "previousMeanings": [
+      "*n.m. 簿子，本子；书帖~s n.m.pl. ~ de doléances （法国三级议会的）陈情书，请愿书"
+    ]
+  },
+  "anniversaire": {
+    "fr": "Elle viendra à ma fête d'anniversaire seulement si tu viens.",
+    "meaning": "生日",
+    "meanings": [
+      "生日",
+      "周年纪念日"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 周年纪念的，周年纪念日n.m. 生日，诞生，诞生日的庆贺活动"
+    ]
+  },
+  "boulot": {
+    "fr": "Le patron a une bonne opinion de ton boulot.",
+    "meaning": "工作",
+    "meanings": [
+      "工作，活儿"
+    ],
+    "previousMeanings": [
+      "adj. et n. 矮胖的（人）boulot n.m. 活儿，活计，工作，职业aller au ~ 去干活，去工作"
+    ]
+  },
+  "coupable": {
+    "fr": "Je ne l'ai pas invité à la fête. Je me sens coupable de ça.",
+    "meaning": "内疚的",
+    "meanings": [
+      "有罪的，有过错的",
+      "内疚的",
+      "罪犯"
+    ],
+    "previousMeanings": [
+      "adj. et n. 有罪的，犯罪的，有过错的，犯错误的，罪犯，罪人；应受谴责的"
+    ]
+  },
+  "amateur": {
+    "fr": "Je prends des photos, mais c'est juste en amateur, un passe-temps.",
+    "meaning": "业余爱好者",
+    "meanings": [
+      "爱好者",
+      "业余爱好者，业余选手"
+    ],
+    "previousMeanings": [
+      "n. et adj. 业余的，客串的/业余爱好者；爱好的，有兴趣的/爱好者，有兴趣者；〈俗〉买者，买主n. 〈贬〉做事不专心致志者，没有本领的人，涉猎而不求精通的人"
+    ]
+  },
+  "contemporain": {
+    "fr": "Elle m’avait fait découvrir des romancières anglaises contemporaines que j’appréciais presque autant que Daphné Du Maurier : Penelope Lively, Rose Tremain, Joanna Trollope, A. S. Byatt.",
+    "meaning": "当代的",
+    "meanings": [
+      "当代的，现代的",
+      "同时代的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 同时代的，同一辈的；现代的，当代的"
+    ]
+  },
+  "brutal": {
+    "fr": "Passion brutale.",
+    "meaning": "强烈的",
+    "meanings": [
+      "粗暴的，残暴的",
+      "猛烈的，强烈的",
+      "突然的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 粗暴的（人），粗鲁的（人）adj. 粗暴的，强暴的，暴力的；突然的，意外的"
+    ]
+  },
+  "aigu": {
+    "fr": "Son cri aigu a surpris tout le monde.",
+    "meaning": "尖厉的",
+    "meanings": [
+      "尖的，锐利的",
+      "尖厉的，高音的",
+      "剧烈的，急性的"
+    ],
+    "previousMeanings": [
+      "=adj. 尖的，锐利的，锋利的；〈转〉］尖声的，高音的；〈转〉敏锐的，有洞察力的；〈转〉尖锐的，激烈的，剧烈的；［医］急性的；Accent ~ ［音］闭口音符"
+    ]
+  },
+  "chuter": {
+    "fr": "La vague de froid sera accompagnée de fortes rafales de vent. La température va chuter à -50°C dans le Dakota du Nord entre mardi et jeudi.",
+    "meaning": "骤降",
+    "meanings": [
+      "跌倒，摔落",
+      "下降，骤降"
+    ],
+    "previousMeanings": [
+      "v.i. 〈俗〉",
+      "跌倒，摔跤，倒下",
+      "暴跌，骤落",
+      "桥牌中宕牌"
+    ]
+  },
+  "cramer": {
+    "fr": "Renvoyer les gens à l’éco-anxiété, c’est les renvoyer à un problème qui n’est pas flou : la planète crame, on va cramer dessus, tout ça est assez bien identifié.",
+    "meaning": "烧毁",
+    "meanings": [
+      "烧焦，烧毁"
+    ],
+    "previousMeanings": [
+      "v.i. et v.t. <俗>烧焦，烧糊"
+    ]
+  },
+  "brièvement": {
+    "fr": "Elle a brièvement jeté un coup d'œil au journal.",
+    "meaning": "短暂地",
+    "meanings": [
+      "简短地",
+      "短暂地"
+    ],
+    "previousMeanings": [
+      "ad. ； 简短地"
+    ]
+  },
+  "à ce moment-là": {
+    "fr": "C'est à ce moment-là qu'il se rendit compte qu'il s'était fait avoir.",
+    "meaning": "那时",
+    "meanings": [
+      "那时，在那个时候"
+    ],
+    "previousMeanings": [
+      "à ce moment-là\n* 国际音标^((帮助)): /a s(ə) mɔ.mɑ̃.la/\n*副词：在那时"
+    ]
+  },
+  "à grande échelle": {
+    "fr": "Il semble que la zone rurale sera développée à grande échelle.",
+    "meaning": "大规模地",
+    "meanings": [
+      "大规模地"
+    ],
+    "previousMeanings": [
+      "à grande échelle\n*副词短语：大规模地"
+    ]
+  },
+  "au-dehors": {
+    "fr": "Il est dangereux de se pencher au-dehors.",
+    "meaning": "在外面",
+    "meanings": [
+      "在外面，在外部"
+    ],
+    "previousMeanings": [
+      "adv. ou loc. prép. 在外面，在外部，在...外面"
+    ]
+  },
+  "au-dedans": {
+    "fr": "Tu l'a vue sortir ? Non, elle est encore au-dedans.",
+    "meaning": "在里面",
+    "meanings": [
+      "在里面，在内部"
+    ],
+    "previousMeanings": [
+      "adv. ou loc. prép. 在里面，在内部，在...里面，在...内部"
+    ]
+  },
+  "au surplus": {
+    "fr": "Au surplus , comme il était décidé que la citadelle serait rendue avant toute autre chose, la France et l’Angleterre passèrent outre à l’exécution complète de la convention du 22 octobre.",
+    "meaning": "此外",
+    "meanings": [
+      "此外，而且"
+    ],
+    "previousMeanings": [
+      "loc.adv.，loc.prép.=此外，而且"
+    ]
+  },
+  "aucun": {
+    "fr": "Il n'y a aucun moyen d'atteindre l'île autre que le bateau.",
+    "meaning": "没有任何的",
+    "meanings": [
+      "没有任何的",
+      "没有一个"
+    ],
+    "previousMeanings": [
+      "adj. et pron.indéf. 没有一个的，没有任何的，一点没有的/没有一个，没有任何人"
+    ]
+  },
+  "à travers": {
+    "fr": "Mon petit frère courut complètement nu à travers le salon.",
+    "meaning": "穿过",
+    "meanings": [
+      "穿过，横穿",
+      "通过，借助"
+    ],
+    "previousMeanings": [
+      "loc.prép，loc.adv. 横过，穿过，通过prep. 横过（跨越，在...的对面）adv. 横过（跨越，在...的对面）prep. 在...旁边（被，经过，按，用，由，截至）"
+    ]
+  },
+  "afin de": {
+    "fr": "Il a beaucoup étudié afin de pouvoir entrer à l'université.",
+    "meaning": "为了",
+    "meanings": [
+      "为了，以便"
+    ],
+    "previousMeanings": [
+      "loc.prép.，afin que ［afz2kz8］ loc.conj. ［后接不定式］为了，以便"
+    ]
+  },
+  "après-midi": {
+    "fr": "J'ai passé mon samedi après-midi à regarder la télévision.",
+    "meaning": "下午",
+    "meanings": [
+      "下午"
+    ],
+    "previousMeanings": [
+      "n.m. ou n.f.inv. 下午"
+    ]
+  },
+  "continuer": {
+    "fr": "Je vais donc jouer au Sudoku au lieu de continuer de te déranger.",
+    "meaning": "继续",
+    "meanings": [
+      "继续",
+      "延续，延伸"
+    ],
+    "previousMeanings": [
+      "v.t. v.i. 继续，延长，保持；继续，延伸； se ~继续，延伸，伸展"
+    ]
+  },
+  "s'agir": {
+    "fr": "Le pilote a laissé entendre qu'il pourrait s'agir d'un OVNI.",
+    "meaning": "涉及，关于",
+    "meanings": [
+      "涉及，关于",
+      "问题在于"
+    ],
+    "previousMeanings": [
+      "v.pr. ； 做， 起作用， 表现"
+    ]
+  },
+  "blessé": {
+    "fr": "Tom a été grièvement blessé dans un accident de la circulation.",
+    "meaning": "受伤的",
+    "meanings": [
+      "受伤的",
+      "受到伤害的",
+      "伤员"
+    ],
+    "previousMeanings": [
+      "adj. et n. 受伤的（人），残废的（人）；精神上受到伤害的，感到受辱的，被刺伤的",
+      "blesser的过去分词（阳性单数）"
+    ]
+  },
+  "condamné": {
+    "fr": "Le meurtrier fut déclaré coupable et condamné à un emprisonnement à vie.",
+    "meaning": "被判刑的",
+    "meanings": [
+      "被判刑的，被定罪的",
+      "注定失败的",
+      "囚犯"
+    ],
+    "previousMeanings": [
+      "n. et adj. 犯人，囚犯，被判刑的，被定罪的"
+    ]
+  },
+  "casse-pieds": {
+    "fr": "C'est casse-pieds que quelqu'un raconte ce qui va suivre à la fin du film.",
+    "meaning": "烦人的",
+    "meanings": [
+      "烦人的，讨厌的",
+      "讨厌的人"
+    ],
+    "previousMeanings": [
+      "n.inv. et adj.inv. 〈俗〉讨厌的（人），令人厌烦的（人）",
+      "adj.inv. 使人厌倦的，使人烦恼的"
+    ]
+  },
+  "adjoint": {
+    "fr": "Le cryobiologiste se caressa le menton. Il trouvait que son adjoint n'avait aucune considération pour les volontaires. Or, sans volontaires, il n'existerait pas d’expériences.",
+    "meaning": "助手",
+    "meanings": [
+      "助手，副手",
+      "副的，辅助的"
+    ],
+    "previousMeanings": [
+      "n. et adj. 助理，助手，帮办/副的，助理的，辅助的"
+    ]
+  },
+  "conservateur": {
+    "fr": "Dieu est le créateur et le conservateur de toutes choses.",
+    "meaning": "维护者",
+    "meanings": [
+      "维护者，保护者",
+      "馆长，保管员",
+      "保守的，保守派"
+    ],
+    "previousMeanings": [
+      "n. et adj. 负责保管收藏书的，博物馆馆长，图书馆馆长；守旧的，保守的，保守派，保守党人；保守党人（的），保守党支持者（的）",
+      "adj. 〈俗〉喜欢保留东西的，不愿扔东西的；保守派的，保守党的，保守主义的conservateur",
+      "n.m. 冰柜，冷冻柜；（食品）防腐剂"
+    ]
+  },
+  "bouffe": {
+    "fr": "– Comment est la bouffe dans ce restau ? C’est une histoire qu’on ne peut pas raconter le ventre vide.\n– Le bobotie est génial.\n– D’accord.",
+    "meaning": "食物",
+    "meanings": [
+      "食物，饭菜"
+    ],
+    "previousMeanings": [
+      "adj. Opéra ~ opéran.f. 食物，饮食"
+    ]
+  },
+  "célibataire": {
+    "fr": "Raison d'être célibataire : on aimait une seule personne, maintenant on aime être seul.",
+    "meaning": "单身的",
+    "meanings": [
+      "单身的，未婚的",
+      "单身者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 独身的，不婚的，单身者，未婚者"
+    ]
+  },
+  "attaquant": {
+    "fr": "Mais une jeune fille qui hurle tout à coup, et se retourne, bras levés comme pour se défendre d’un attaquant invisible, c’est curieux.",
+    "meaning": "攻击者",
+    "meanings": [
+      "攻击者，进攻者",
+      "前锋"
+    ],
+    "previousMeanings": [
+      "adj. et n. 进攻的，攻击的/进攻者，攻击者"
+    ]
+  },
+  "casse-cou": {
+    "fr": "Ce cascadeur est un vrai casse-cou.",
+    "meaning": "敢冒险的人",
+    "meanings": [
+      "敢冒险的人",
+      "冒失的，不顾危险的"
+    ],
+    "previousMeanings": [
+      "n.inv. et adj.inv. 胆大妄为的（人），玩命的（人）"
+    ]
+  },
+  "constructeur": {
+    "fr": "Il serait toutefois désirable que le constructeur étalonnât chaque instrument avec un pyrhéliomètre donnant des valeurs absolues.",
+    "meaning": "制造商",
+    "meanings": [
+      "制造商，制造者",
+      "建筑商，建造者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 建筑的，制造的，设计的，建筑师，制造者，设计者"
+    ]
+  },
+  "aîné": {
+    "fr": "Son frère aîné a deux ans de plus que moi.",
+    "meaning": "年长的",
+    "meanings": [
+      "年长的",
+      "长子，长女"
+    ],
+    "previousMeanings": [
+      "n. et adj. 长子/女；年龄较大的（人），较年长的（人）"
+    ]
+  },
+  "chanceux": {
+    "fr": "Je suis chanceux aujourd'hui.",
+    "meaning": "幸运的",
+    "meanings": [
+      "幸运的，走运的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 走运的，好运的"
+    ]
+  },
+  "centenaire": {
+    "fr": "Un arbre centenaire.",
+    "meaning": "百年的",
+    "meanings": [
+      "百年的",
+      "百岁的人",
+      "百年纪念"
+    ],
+    "previousMeanings": [
+      "adj. et n. 百年的，百年的",
+      "n.m. 百年纪念"
+    ]
+  },
+  "agresseur": {
+    "fr": "Le triomphe d’un blessé n’a jamais disculpé l’agresseur.",
+    "meaning": "袭击者",
+    "meanings": [
+      "袭击者，侵略者"
+    ],
+    "previousMeanings": [
+      "adj.m. et n.m. 侵略的，袭击的/侵略者，袭击者"
+    ]
+  },
+  "audiovisuel": {
+    "fr": "Il nous a fait une présentation audiovisuelle impressionnante avec de la musique et des bouts de films vraiment au service de l’information.",
+    "meaning": "视听的",
+    "meanings": [
+      "视听的",
+      "视听设备"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 视听的，视听教学的，视听传播的/视听传播设备，音像器材"
+    ]
+  },
+  "catalan": {
+    "fr": "Parlez-vous le catalan ?",
+    "meaning": "加泰罗尼亚语",
+    "meanings": [
+      "加泰罗尼亚的",
+      "加泰罗尼亚人",
+      "加泰罗尼亚语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 加泰罗尼亚的，加泰罗尼亚人catalan n.m. 加泰罗尼亚语"
+    ]
+  },
+  "capitaliste": {
+    "fr": "La Chine est un pays capitaliste.",
+    "meaning": "资本主义的",
+    "meanings": [
+      "资本主义的",
+      "资本家"
+    ],
+    "previousMeanings": [
+      "n. et adj. 资本家（的）；〈俗，贬〉富翁（的），财主（的），大款（的）",
+      "adj. 资本主义的"
+    ]
+  },
+  "anarchiste": {
+    "fr": "Les anarcha-féministes ont de fait souvent critiqué les grands théoriciens anarchistes (Proudhon, Bakounine) qui minoraient trop le problème du patriarcat, voire le validaient.",
+    "meaning": "无政府主义者",
+    "meanings": [
+      "无政府主义者",
+      "无政府主义的"
+    ],
+    "previousMeanings": [
+      "anarchiste n. et adj. 无政府主义的；主张无政府主义的/无政府主义者；无政府主义政党成员；〈引〉扰乱分子，反对秩序的人，目无纪律的人"
+    ]
+  },
+  "ballade": {
+    "fr": "Je vais — hop ! — à l’improvisade, vous composer une ballade.",
+    "meaning": "叙事诗",
+    "meanings": [
+      "叙事诗，歌谣",
+      "叙事曲"
+    ],
+    "previousMeanings": [
+      ":ballade\nn.f. （中世纪的）抒情诗，三节联韵诗；叙事诗；叙事曲；声乐剧，器乐剧。"
+    ]
+  },
+  "agité": {
+    "fr": "Elle était si agitée, que je me suis demandé si elle était folle.",
+    "meaning": "激动的",
+    "meanings": [
+      "激动的，不安的",
+      "动荡的",
+      "波涛汹涌的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 激动的，不安的；烦躁的；好动的/焦躁不安者；烦躁症患者adj. 摇动的，搅动的；骚动的，动荡的；不安的，不安静的"
+    ]
+  },
+  "arrogant": {
+    "fr": "Ne sois pas aussi arrogant.",
+    "meaning": "傲慢的",
+    "meanings": [
+      "傲慢的，自大的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 傲慢的，狂妄自大的，目空一切的/傲慢的人，狂妄自大的人"
+    ]
+  },
+  "centriste": {
+    "fr": "Ce résultat fut atteint par un autre homme politique, centriste de tempérament, mais non issu de la tradition du catholicisme politique.",
+    "meaning": "中间派的",
+    "meanings": [
+      "中间派的",
+      "中间派人士"
+    ],
+    "previousMeanings": [
+      "adj. et n. 中间派"
+    ]
+  },
+  "barbu": {
+    "fr": "De tout temps, les hommes barbus se sont vu attribuer des vertus diverses comme la sagesse, la virilité ou un statut social élevé.",
+    "meaning": "有胡须的",
+    "meanings": [
+      "有胡须的",
+      "蓄须的人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 有胡须的；有胡须的人"
+    ]
+  },
+  "conquérant": {
+    "fr": "Alexandre fut un grand conquérant. - Guillaume le Conquérant. - Zénobie fut une illustre conquérante.",
+    "meaning": "征服者",
+    "meanings": [
+      "征服者",
+      "征服的"
+    ],
+    "previousMeanings": [
+      "adj. et n. （用武力）征服的，夺得的，获得的，赢得的，征服者，夺得者，获得者，赢得者；傲慢的（人），自负的（人）"
+    ]
+  },
+  "affilié": {
+    "fr": "Cette corporation a des affiliés.",
+    "meaning": "成员",
+    "meanings": [
+      "成员，加入者",
+      "附属的，加入组织的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 加入（会、社、党）的/成员，参加者，加入者"
+    ]
+  },
+  "anxieux": {
+    "fr": "Vous n'avez pas besoin d'être si anxieux.",
+    "meaning": "焦虑的",
+    "meanings": [
+      "焦虑的，担忧的",
+      "渴望的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 忧虑的，焦虑的/生性忧虑不安者",
+      "adj. être ~ de （+inf.） 急于...，渴望"
+    ]
+  },
+  "bowling": {
+    "fr": "Elle adore jouer au bowling.",
+    "meaning": "保龄球",
+    "meanings": [
+      "保龄球",
+      "保龄球馆"
+    ],
+    "previousMeanings": [
+      "ou ［bz3liy4］n.m. ［英］保龄球戏，地滚球戏，保龄球球球场，地滚球球场"
+    ]
+  },
+  "beige": {
+    "fr": "[…] une bonne robe de droguet ou de laine beige.",
+    "meaning": "米色的",
+    "meanings": [
+      "米色的，浅褐色的",
+      "米色"
+    ],
+    "previousMeanings": [
+      "n.m. et adj. 米色的，天然羊毛色的，淡褐灰色的\n----"
+    ]
+  },
+  "costaud": {
+    "fr": "C’était un petit homme dont le torse reposait avec force sur des jambes solides. Il se frappait la poitrine en disant : « Petit, mais costaud. »",
+    "meaning": "强壮的",
+    "meanings": [
+      "强壮的，结实的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 〈俗〉强壮的，结实的"
+    ]
+  },
+  "arrondi": {
+    "fr": "Des formes arrondies.",
+    "meaning": "圆形的",
+    "meanings": [
+      "圆形的，圆润的",
+      "圆形轮廓"
+    ],
+    "previousMeanings": [
+      "adj. et n.f. ［音］圆唇的/圆唇音arrondi",
+      "n.m. 圆形外廓"
+    ]
+  },
+  "bohème": {
+    "fr": "Façons, manières bohèmes.",
+    "meaning": "放荡不羁的",
+    "meanings": [
+      "放荡不羁的，不拘习俗的",
+      "波希米亚式生活"
+    ],
+    "previousMeanings": [
+      "adj. et n. 放荡不羁的（人），生活放纵的（人）n.f. La ~ 生活放荡不羁的文艺界，放荡不羁的文化人生活"
+    ]
+  },
+  "coordinateur": {
+    "fr": "Ce coordinateur est un expert dans son domaine de compétence.",
+    "meaning": "协调员",
+    "meanings": [
+      "协调员，统筹者"
+    ],
+    "previousMeanings": [
+      "et coordonnateur，triceadj. et n. 起协调作用的，协同的，调整的，调配的，协调人，协调行动者，调整者，调配者，组织协调者"
+    ]
+  },
+  "civilisé": {
+    "fr": "En 314 ces groupes sporadiques des confins du monde civilisé envoient trois de leurs épiscopes au concile d’Arles.",
+    "meaning": "文明的",
+    "meanings": [
+      "文明的，有教养的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 开化的，文明的，有文化的，有教养的，有教养的人，有文化的人"
+    ]
+  },
+  "bouddhiste": {
+    "fr": "Il a sculpté une image bouddhiste dans du bois.",
+    "meaning": "佛教的",
+    "meanings": [
+      "佛教的",
+      "佛教徒"
+    ],
+    "previousMeanings": [
+      "adj. et n. 佛教的，信奉佛教的，佛教徒"
+    ]
+  },
+  "bourguignon": {
+    "fr": "Or, dans les ménages morvandiauds et bourguignons, la plus légère douleur, le plus petit tressaillement de nerfs est un prétexte à vin cuit.",
+    "meaning": "勃艮第的",
+    "meanings": [
+      "勃艮第的",
+      "勃艮第人",
+      "勃艮第红酒炖牛肉"
+    ],
+    "previousMeanings": [
+      "adj. et n. 勃艮第的，勃艮第的，勃艮第人bourguignon",
+      "n.m. 红葡萄酒洋葱烧牛肉"
+    ]
+  },
+  "admirateur": {
+    "fr": "Il est de vos admirateurs.",
+    "meaning": "仰慕者",
+    "meanings": [
+      "仰慕者，崇拜者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 钦佩者（的），赞美者（的），赞赏者（的），仰慕者（的）"
+    ]
+  },
+  "approximation": {
+    "fr": "Je ne vous demande qu’une approximation, une simple approximation.",
+    "meaning": "近似值",
+    "meanings": [
+      "近似值，估计值",
+      "粗略估计"
+    ],
+    "previousMeanings": [
+      "approximation; n.f. 近似，粗略，大概，近似值，粗略估计；不确切，不明确，含混；Calcul par ~s successives ［数］逐次逼近计算（法）"
+    ]
+  },
+  "conteneur": {
+    "fr": "Le transport naval des marchandises se fait surtout par conteneur.",
+    "meaning": "集装箱",
+    "meanings": [
+      "集装箱，货柜"
+    ],
+    "previousMeanings": [
+      "et containern.m. 集装箱，货柜；包装箱，包"
+    ]
+  },
+  "avare": {
+    "fr": "Un avare amasse de l'argent non pas parce qu'il est prudent mais parce qu'il est avide.",
+    "meaning": "吝啬鬼",
+    "meanings": [
+      "吝啬的",
+      "吝啬鬼"
+    ],
+    "previousMeanings": [
+      "adj. et n. 吝啬的，贪财的，吝啬鬼；~ de 节省的，节约的，吝惜的，不滥用的"
+    ]
+  },
+  "chiite": {
+    "fr": "Je viens d’une famille chiite traditionnelle. On m’a toujours appris que les ismaéliens n’étaient que des hérétiques.",
+    "meaning": "什叶派的",
+    "meanings": [
+      "什叶派的",
+      "什叶派穆斯林"
+    ],
+    "previousMeanings": [
+      "adj. et n. 伊斯兰教什叶派的，伊斯兰教什叶派教徒"
+    ]
+  },
+  "anti-inflammatoire": {
+    "fr": "Si les fabricants vantent ses propriétés anxiolytiques, anti-inflammatoires, neuroprotectrices et antalgiques, l’association invite à en nuancer la fiabilité.",
+    "meaning": "消炎的",
+    "meanings": [
+      "消炎的，抗炎的",
+      "消炎药"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 消炎的/消炎药"
+    ]
+  },
+  "centième": {
+    "fr": "Il est mort quelques jours avant son centième anniversaire.",
+    "meaning": "第一百的",
+    "meanings": [
+      "第一百的",
+      "百分之一"
+    ],
+    "previousMeanings": [
+      "et n. 第一百",
+      "adj. et n.m. 百分之一"
+    ]
+  },
+  "commanditaire": {
+    "fr": "le commanditaire d'un crime",
+    "meaning": "幕后主使",
+    "meanings": [
+      "赞助人，出资人",
+      "有限责任合伙人",
+      "幕后主使"
+    ],
+    "previousMeanings": [
+      "n.m. et adj. 投资者，资助人，赞助人；有限责任股东，隐名合伙人"
+    ]
+  },
+  "borgne": {
+    "fr": "changer son cheval borgne pour un cheval aveugle",
+    "meaning": "独眼的",
+    "meanings": [
+      "独眼的",
+      "独眼者",
+      "封闭的，无窗的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 独眼的，独眼龙，独眼人",
+      "adj. 堵塞的，闭上的"
+    ]
+  },
+  "amputé": {
+    "fr": "Son bras amputé ne le gênait nullement dans cette besogne.",
+    "meaning": "被截去的",
+    "meanings": [
+      "被截去的",
+      "截肢者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 断肢者，截去肢体的人"
+    ]
+  },
+  "capricieux": {
+    "fr": "Le kusi est un vent réputé capricieux mais moins fort que son homologue du nord, qui souffle de façon plus laminaire.",
+    "meaning": "变化无常的",
+    "meanings": [
+      "任性的",
+      "变化无常的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 任性的（人），反复无常的（人）",
+      "adj. 变幻莫测的，变化无常的，多变的"
+    ]
+  },
+  "aristocrate": {
+    "fr": "Un système complexe de taxes permettait au gouvernement, aux aristocrates et aux religieux de profiter du travail de la plus grande partie de la population.",
+    "meaning": "贵族",
+    "meanings": [
+      "贵族",
+      "贵族的"
+    ],
+    "previousMeanings": [
+      "n. et adj. 贵族（的）"
+    ]
+  },
+  "chateaubriand": {
+    "fr": "Il dévorait un chateaubriand béarnaise et je chipotais une sole meunière qui baignait dans son huile.",
+    "meaning": "厚切里脊牛排",
+    "meanings": [
+      "厚切里脊牛排"
+    ],
+    "previousMeanings": [
+      "chateaubriant n.m. 烤里脊牛排"
+    ]
+  },
+  "captif": {
+    "fr": "Ce dernier ayant été pris par l’armée française devant Balaguer, fut emmené captif en France, où il est mort.",
+    "meaning": "被俘的",
+    "meanings": [
+      "被俘的，受囚禁的",
+      "俘虏"
+    ],
+    "previousMeanings": [
+      "n. et adj. 俘虏的，被俘的，战俘，俘虏"
+    ]
+  },
+  "après-rasage": {
+    "fr": "La promesse valait pour l’ensemble des chasseurs, dont la transpiration mêlée aux émanations alcoolisées d’après-rasage emboucanait l’atmosphère d’un suint pimenté.",
+    "meaning": "须后水",
+    "meanings": [
+      "须后水，须后护理品"
+    ],
+    "previousMeanings": [
+      "adj.inv. et n.m. 剃须后用的（润肤香水；润肤霜）"
+    ]
+  },
+  "blasé": {
+    "fr": "Il a le palais blasé.",
+    "meaning": "感觉迟钝的",
+    "meanings": [
+      "感觉迟钝的",
+      "厌倦的，麻木的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 感觉麻木的，感到乏味的，厌倦一切的，麻木的人，对什么都感到厌倦的人"
+    ]
+  },
+  "collatéral": {
+    "fr": "Nef collatérale.",
+    "meaning": "侧面的",
+    "meanings": [
+      "侧面的，旁边的",
+      "旁系的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 旁边的，侧面的；旁系的（亲属）"
+    ]
+  },
+  "biceps": {
+    "fr": "Mais Bronson se définit uniquement par son physique (biceps, démarche souple) et non par la densité de sa présence ce qui limite ses possibilités d'emploi.",
+    "meaning": "肱二头肌",
+    "meanings": [
+      "肱二头肌，二头肌"
+    ],
+    "previousMeanings": [
+      "n.m. et adj. 二头肌；肱二头肌"
+    ]
+  },
+  "altruiste": {
+    "fr": "Un comportement altruiste, dirigé vers les organismes apparentés, aura toutes les chances de favoriser la propagation des gènes de lʼindividu qui adopte ce comportement.",
+    "meaning": "利他的",
+    "meanings": [
+      "利他的，无私的",
+      "利他主义者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 〈书〉利他主义的，利他的，无私的/利他主义者，利他者，无私者"
+    ]
+  },
+  "amplificateur": {
+    "fr": "Dans le cas du montage à excitatrice tournante, on peut considérer cette dernière comme un amplificateur de courant qui évite une trop forte sollicitation de la batterie.",
+    "meaning": "放大器",
+    "meanings": [
+      "放大器，扩音器",
+      "放大的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 夸大的（人），夸张的（人）amplificateur n.m. 放大器；扩音机，扩音器"
+    ]
+  },
+  "buse": {
+    "fr": "Le cri de la buse variable ressemble à un miaulement haut perché, on dit qu’elle piaule.",
+    "meaning": "鵟",
+    "meanings": [
+      "鵟，一种猛禽",
+      "喷嘴，管嘴"
+    ],
+    "previousMeanings": [
+      "n.f. 𫛭",
+      "n.f. 管子；排气管；通风管，风道；细腰管"
+    ]
+  },
+  "contestataire": {
+    "fr": "Le punk est un mouvement contestataire.",
+    "meaning": "反抗现状的",
+    "meanings": [
+      "反抗现状的，持异议的",
+      "抗议者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 对社会不满的，持不同政见的，反对现存社会者，持不同政见者"
+    ]
+  },
+  "albinos": {
+    "fr": "Chez beaucoup d’espèces la forme albinos est notamment plus colorée que la forme sauvage.",
+    "meaning": "白化的",
+    "meanings": [
+      "白化的",
+      "白化病患者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 患白化病的/白化病患者"
+    ]
+  },
+  "baby-sitter": {
+    "fr": "C’est Lulu, la baby-sitter, qui les accompagne.",
+    "meaning": "临时保姆",
+    "meanings": [
+      "临时保姆"
+    ],
+    "previousMeanings": [
+      "ou ［babi-］n. （照看婴儿的）临时保姆，钟点保姆"
+    ]
+  },
+  "avant-gardiste": {
+    "fr": "Que penserait Joseph-Armand Bombardier de tout ça ? « Avant-gardiste comme il l’était, je pense qu’il verrait ça d’un bon œil », avance Denys Lapointe.",
+    "meaning": "前卫的",
+    "meanings": [
+      "前卫的，先锋派的",
+      "先锋派人士"
+    ],
+    "previousMeanings": [
+      "adj. et n. 前卫派（的），先锋派（的）"
+    ]
+  },
+  "affranchi": {
+    "fr": "Une lettre affranchie.",
+    "meaning": "已付邮资的",
+    "meanings": [
+      "已付邮资的",
+      "获得自由的"
+    ],
+    "previousMeanings": [
+      "adj. et n. ［史］获得自由的，被解放的；（思想上）不受束缚的，解脱的"
+    ]
+  },
+  "acrylique": {
+    "fr": "– Tu me trouves comment en acrylique ?",
+    "meaning": "腈纶",
+    "meanings": [
+      "丙烯酸的",
+      "腈纶",
+      "丙烯颜料"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 丙烯的，丙烯酸的，聚丙烯的/晴纶，丙烯酸系纤维聚丙烯晴纤维Peinture ~ 丙烯酸涂料"
+    ]
+  },
+  "banjo": {
+    "fr": "Deux escaliers, sous un maigre lumignon, plongent aussitôt vers un sous-sol d’où la musique sonore et nasillarde de l’accordéon monte avec des accords de banjo.",
+    "meaning": "班卓琴",
+    "meanings": [
+      "班卓琴"
+    ],
+    "previousMeanings": [
+      "ou ［bz9dy1o］n.m. 班卓琴（一种圆形拨弦乐器）"
+    ]
+  },
+  "assujetti": {
+    "fr": "Il ouvrit la porte, assujettie au loquet.",
+    "meaning": "固定的",
+    "meanings": [
+      "固定的",
+      "受约束的",
+      "依法纳税者"
+    ],
+    "previousMeanings": [
+      "n. et adj. 被征服的，被奴役的，服从的，听命的/依法应纳税者，社团成员"
+    ]
+  },
+  "bovin": {
+    "fr": "Cette lésion très fréquente dans l’espèce bovine ne doit donc jamais être considérée comme significative.",
+    "meaning": "牛的",
+    "meanings": [
+      "牛的",
+      "牛，牛类"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 牛的；~s 牛亚科"
+    ]
+  },
+  "bulldozer": {
+    "fr": "Il était bulliste, conducteur de bulldozer. La puissance de son engin rejaillissait sur lui, il savait dominer les monstres des Blancs.",
+    "meaning": "推土机",
+    "meanings": [
+      "推土机"
+    ],
+    "previousMeanings": [
+      "ou ［buldozz6r］n.m. 推土机"
+    ]
+  },
+  "bricoleur": {
+    "fr": "Ils cherchent aussi à contacter un certain technicien, un bricoleur aux doigts de fée, qui a effectué un travail pour eux et qui a disparu de son domicile.",
+    "meaning": "动手修理的人",
+    "meanings": [
+      "爱动手修理的人，手巧的人"
+    ],
+    "previousMeanings": [
+      "n. et adj. 在家修修弄弄的（人），爱在家修修弄弄的（人）"
+    ]
+  },
+  "champenois": {
+    "fr": "Le vignoble champenois attire de nombreux visiteurs.",
+    "meaning": "香槟地区的",
+    "meanings": [
+      "香槟地区的",
+      "香槟地区人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 香槟的/香槟人"
+    ]
+  },
+  "broyeur": {
+    "fr": "Ce marchand de couleurs emploie des broyeurs.",
+    "meaning": "研磨工人，研磨机",
+    "meanings": [
+      "研磨工人",
+      "研磨机，粉碎机"
+    ],
+    "previousMeanings": [
+      "adj. et n. 破碎用的broyeur",
+      "n.m. 破碎机，磨碎机，碾磨机"
+    ]
+  },
+  "caustique": {
+    "fr": "La cantharide est un remède caustique.",
+    "meaning": "腐蚀性的",
+    "meanings": [
+      "腐蚀性的",
+      "尖刻的，挖苦的"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 苛性的，腐蚀性的，苛性物质，腐蚀剂",
+      "adj. 尖刻的，刻薄的，辛辣的，尖锐的"
+    ]
+  },
+  "chapelier": {
+    "fr": "[…]; aussi les dandies de l'endroit se font-ils habiller par les tailleurs et coiffer par les chapeliers de Copenhague.",
+    "meaning": "帽商",
+    "meanings": [
+      "帽商，制帽工人"
+    ],
+    "previousMeanings": [
+      "n. et adj. 帽商，制帽工人；制帽的"
+    ]
+  },
+  "aquaculture": {
+    "fr": "L’aquaculture fournit 60 % des poissons d’eau douce, 40 % des mollusques, 30 % des crevettes et 5 % des poissons d’eau de mer.",
+    "meaning": "水产养殖",
+    "meanings": [
+      "水产养殖"
+    ],
+    "previousMeanings": [
+      "et aquiculture ［aky0ikyltyr］n.f. 水产养殖，水产动植物养殖aquaculteur，trice et equiculteur，trice n. 水产养殖者，水产动植物养殖者"
+    ]
+  },
+  "auvergnat": {
+    "fr": "C’est ça la bourrée auvergnate!… bien qu’il y a des Auvergnats qui la connaissent mal!…",
+    "meaning": "奥弗涅的",
+    "meanings": [
+      "奥弗涅的",
+      "奥弗涅人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 奥弗涅的/奥弗涅人"
+    ]
+  },
+  "antivol": {
+    "fr": "J’aime ce système antivol.",
+    "meaning": "防盗的",
+    "meanings": [
+      "防盗的",
+      "防盗装置"
+    ],
+    "previousMeanings": [
+      "adj.inv. et n.m. 防盗的，防盗保险装置"
+    ]
+  },
+  "béarnais": {
+    "fr": "La sauce béarnaise. : Sauce épaisse au beurre, aux œufs et à l’échalote, servie chaude. On dit aussi elliptiquement une béarnaise.",
+    "meaning": "贝阿恩式的",
+    "meanings": [
+      "贝阿恩的",
+      "贝阿恩人",
+      "贝阿恩酱"
+    ],
+    "previousMeanings": [
+      "adj. et n. 贝亚恩的"
+    ]
+  },
+  "anévrisme": {
+    "fr": "rupture d'anévrisme",
+    "meaning": "动脉瘤",
+    "meanings": [
+      "动脉瘤"
+    ],
+    "previousMeanings": [
+      "anévrysmen.m. 动脉瘤"
+    ]
+  },
+  "conformiste": {
+    "fr": "C’est un conformiste limite psychorigide.",
+    "meaning": "墨守成规的人",
+    "meanings": [
+      "墨守成规的人，随大流的人",
+      "墨守成规的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 遵循惯例的（人），遵守习俗的（人），因循守旧的（人），顺从大流的（人）"
+    ]
+  },
+  "antiraciste": {
+    "fr": "La lutte antiraciste.",
+    "meaning": "反种族主义的",
+    "meanings": [
+      "反种族主义的",
+      "反种族主义者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 反种族主义的/反种族主义者"
+    ]
+  },
+  "antiseptique": {
+    "fr": "La sauge est œstrogénique, antioxydante, antalgique, anti-inflammatoire, neuro-protectrice, anti-asthénique et antiseptique localement.",
+    "meaning": "抗菌的",
+    "meanings": [
+      "抗菌的，防腐的",
+      "消毒剂"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 防腐的，灭菌的/防腐剂，灭菌剂"
+    ]
+  },
+  "cartésien": {
+    "fr": "la méthode cartésienne",
+    "meaning": "笛卡尔的",
+    "meanings": [
+      "笛卡尔的，笛卡尔哲学的",
+      "有条理的，理性的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 笛卡儿主义的，笛卡儿主义者，笛卡儿哲学的，笛卡儿著作的；有条理的，有理性的"
+    ]
+  },
+  "asthmatique": {
+    "fr": "Ils éclatèrent, et pouffèrent à l’envi ; l’un d’eux était asthmatique et semblait avoir un soufflet pour exciter son rire, dès qu’il se calmait.",
+    "meaning": "哮喘患者",
+    "meanings": [
+      "哮喘患者",
+      "患哮喘的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 哮喘（性）的，患哮喘的/哮喘患者"
+    ]
+  },
+  "contractant": {
+    "fr": "Nous avons, aux articles de la capacité des parties contractantes, rapporté un arrêt qui a déclaré un ex-maire personnellement responsable d'un emprunt qu'il avait fait en cette qualité.",
+    "meaning": "缔约的",
+    "meanings": [
+      "缔约的，订立合同的",
+      "缔约方"
+    ],
+    "previousMeanings": [
+      "adj. et n. 签订契约的，签订条约的，契约签订人，条约签订人"
+    ]
+  },
+  "cambodgien": {
+    "fr": "La cuisine cambodgienne.",
+    "meaning": "柬埔寨的",
+    "meanings": [
+      "柬埔寨的",
+      "柬埔寨人",
+      "高棉语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 柬埔寨的； 柬埔寨人cambodgien n.m. 柬埔寨语，高棉语"
+    ]
+  },
+  "antidépresseur": {
+    "fr": "Le médecin m’examina et s’alarma de ma faiblesse, il me prescrivit des médicaments pour une forme sérieuse d’arthrose, des antidépresseurs, des anxiolytiques, des vitamines.",
+    "meaning": "抗抑郁药",
+    "meanings": [
+      "抗抑郁药",
+      "抗抑郁的"
+    ],
+    "previousMeanings": [
+      "adj.m. et n.m. 抗忧郁症的/抗忧郁剂，兴奋剂"
+    ]
+  },
+  "alarmiste": {
+    "fr": "C'était un alarmiste, qui essayait toujours de rendre les autres anxieux.",
+    "meaning": "危言耸听的人",
+    "meanings": [
+      "危言耸听的人",
+      "危言耸听的"
+    ],
+    "previousMeanings": [
+      "n. et adj. 散布令人惊慌消息的（人），危言耸听的（人）adj. 可以使人惊慌的，造成人心惶惶的"
+    ]
+  },
+  "bisexuel": {
+    "fr": "Francaise, 33, tres jolie, elegante, cherche une femme sympa, bisexuelle, pour plaisir erotique sans et avec son mari.",
+    "meaning": "双性恋的",
+    "meanings": [
+      "双性恋的",
+      "双性恋者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 既搞同性恋也搞异性恋的（人），双性恋的（人）"
+    ]
+  },
+  "bougon": {
+    "fr": "Pierre est très bougon.",
+    "meaning": "爱抱怨的",
+    "meanings": [
+      "爱抱怨的，爱嘟囔的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 惯于咕哝的（人），老是低声抱怨的（人）"
+    ]
+  },
+  "boute-en-train": {
+    "fr": "Joyeux compagnon, plein de verve, Jean Romain était le boute-en-train de toutes les fêtes.",
+    "meaning": "活跃气氛的人",
+    "meanings": [
+      "活跃气氛的人，开心果"
+    ],
+    "previousMeanings": [
+      "n.m. inv. 擅长逗大家乐的人，善于活跃聚会气氛的人；试情公畜"
+    ]
+  },
+  "angevin": {
+    "fr": "Personne, dans l’Anjou, n’entendait mieux et ne pouvait prononcer plus nettement le français angevin que le rusé vigneron.",
+    "meaning": "安茹的",
+    "meanings": [
+      "安茹的，昂热的",
+      "安茹人，昂热人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 昂热的（法国城市），安茹的（法国旧省）/昂热人，安茹人"
+    ]
+  },
+  "brailler": {
+    "fr": "Lorenzo. – J’en ai assez d’entendre brailler en plein vent le bavardage humain ; il faut que le monde sache un peu qui je suis, et qui il est.",
+    "meaning": "大声叫嚷",
+    "meanings": [
+      "大声叫嚷"
+    ],
+    "previousMeanings": [
+      "v.t. et v.i. 大声叫嚷，大喊大叫，怪声高唱"
+    ]
+  },
+  "castillan": {
+    "fr": "La pétulance andalouse répand dans les rues un mouvement et une vie inconnus aux graves promeneurs castillans, qui ne font pas plus de bruit que leur ombre.",
+    "meaning": "卡斯蒂利亚的",
+    "meanings": [
+      "卡斯蒂利亚的",
+      "卡斯蒂利亚人",
+      "卡斯蒂利亚语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 卡斯蒂利亚的，卡斯蒂利亚人castillan n.m. 西班牙语，卡斯蒂利亚方言"
+    ]
+  },
+  "convoyeur": {
+    "fr": "Le convoyeur de véhicules transporte des véhicules.",
+    "meaning": "运送人员",
+    "meanings": [
+      "运送人员，押运员",
+      "输送机"
+    ],
+    "previousMeanings": [
+      "adj. et n.m. 护送的，护航的，护送者，护航舰"
+    ]
+  },
+  "alizé": {
+    "fr": "Et quelques pas de deux et quelques pas de danse / Et la nuit est soumise et l'alizé se brise / Aux Marquises",
+    "meaning": "信风",
+    "meanings": [
+      "信风"
+    ],
+    "previousMeanings": [
+      "adj.m. et n.m. 信风（的），贸易（的）"
+    ]
+  },
+  "anorexique": {
+    "fr": "Un trouble anorexique.",
+    "meaning": "厌食的",
+    "meanings": [
+      "厌食的",
+      "厌食症患者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 食欲缺乏的，厌食的/食欲缺乏症患者；厌食者"
+    ]
+  },
+  "bosseur": {
+    "fr": "Mes parents étaient l’un et l’autre des bosseurs, mais ils ne sont quand même jamais montés bien haut sur l’échelle des revenus.",
+    "meaning": "勤奋的人",
+    "meanings": [
+      "勤奋的人",
+      "勤奋的，努力工作的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 苦干的，努力工作的，苦干者，埋头苦干的人"
+    ]
+  },
+  "cantonais": {
+    "fr": "Pourquoi avez-vous appris le dialecte cantonais ?",
+    "meaning": "粤语",
+    "meanings": [
+      "粤语",
+      "广州的",
+      "广州人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 广州的，广州人cantonais",
+      "n.m. 广东方言"
+    ]
+  },
+  "apatride": {
+    "fr": "– Il n’est plus « apatride », mais désormais « d’origine indéterminée ».\n– Je vois. Être apatride, c’est être quelque chose. Être indéterminé, c‘est louche.",
+    "meaning": "无国籍的",
+    "meanings": [
+      "无国籍的",
+      "无国籍者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 无国籍的（人）"
+    ]
+  },
+  "arriviste": {
+    "fr": "Autour d'eux, des intellectuels, des écrivains d’avant-garde, snobs gagnés à un bolchevisme moral et politique, arrivistes précocement aigris, les appuient et les encadrent.",
+    "meaning": "投机钻营的",
+    "meanings": [
+      "投机钻营的",
+      "不择手段向上爬的人"
+    ],
+    "previousMeanings": [
+      "n. et adj. 野心家，新贵，暴发户/不择手段向上爬的，投机专营的"
+    ]
+  },
+  "conciliateur": {
+    "fr": "Lorsque le prieur eut achevé ce qu’il considérait comme un avant-propos conciliateur, son compagnon dit brièvement et avec emphase : […].",
+    "meaning": "调解的",
+    "meanings": [
+      "调解的，和解的",
+      "调解人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 调停的，调解的，调停人，调解人",
+      "n. （冲突的）调停人，调解人"
+    ]
+  },
+  "bagarreur": {
+    "fr": "Il a un caractère bagarreur.",
+    "meaning": "好斗的",
+    "meanings": [
+      "好斗的，爱打架的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 〈俗〉爱打架的（人），爱吵架的（人），好斗的（人）"
+    ]
+  },
+  "charolais": {
+    "fr": "Ce bœuf charolais vient d'un élevage local.",
+    "meaning": "夏洛莱的",
+    "meanings": [
+      "夏洛莱的",
+      "夏洛莱牛"
+    ],
+    "previousMeanings": [
+      "adj. et n. 夏罗尔的，夏罗尔人"
+    ]
+  },
+  "responsable": {
+    "fr": "Un conducteur ivre a été responsable de l'accident de voiture.",
+    "meaning": "负有责任的",
+    "meanings": [
+      "负有责任的",
+      "可靠的，负责的",
+      "负责人"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /ʁɛs.pɔ̃.sabl/\n*形容词：负责的\n*名词（阴阳同型）：负责人"
+    ]
+  },
+  "laid": {
+    "fr": "Entre toi et moi, le gros homme laid suit un régime.",
+    "meaning": "丑的",
+    "meanings": [
+      "丑的，难看的",
+      "丑陋的人"
+    ],
+    "previousMeanings": [
+      "国际音标^((帮助)): /lɛ/\n*形容词：丑的\n*名词（阳）：难看的人"
+    ]
+  },
+  "également": {
+    "fr": "Il faisait froid et il pleuvait également beaucoup.",
+    "meaning": "也，同样",
+    "meanings": [
+      "也，同样",
+      "相等地"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /e.ɡal.mɑ̃/\n*副词：同样地、相等地、一样地"
+    ]
+  },
+  "lors": {
+    "fr": "Son élocution lors de son allocution était très naturelle.",
+    "meaning": "在……期间",
+    "meanings": [
+      "在……期间，当……时"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /lɔʁ/\n*副词：那时"
+    ]
+  },
+  "selon": {
+    "fr": "Qu'est-ce qui, selon vous, a causé la perte de son emploi ?",
+    "meaning": "根据，按照",
+    "meanings": [
+      "根据，按照",
+      "取决于"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /sə.lɔ̃/\n*介词：按照"
+    ]
+  },
+  "règle": {
+    "fr": "Cette règle ne s'applique pas dans tous les cas.",
+    "meaning": "规则",
+    "meanings": [
+      "规则，规定",
+      "尺子",
+      "月经"
+    ],
+    "previousMeanings": [
+      "*尺"
+    ]
+  },
+  "verre": {
+    "fr": "Reprenons un verre, et puis je vous ramènerai chez vous.",
+    "meaning": "一杯酒",
+    "meanings": [
+      "玻璃",
+      "杯子",
+      "一杯饮料，一杯酒"
+    ],
+    "previousMeanings": [
+      "(一般不可数) 玻璃",
+      "脆弱的象征",
+      "透明的象征",
+      ":Template:可数 玻璃制的物体"
+    ]
+  },
+  "tirer": {
+    "fr": "Il ne put se résigner à tirer sur le cerf.",
+    "meaning": "射击",
+    "meanings": [
+      "拉，拖",
+      "射击，开枪",
+      "抽出，提取"
+    ],
+    "previousMeanings": [
+      "* 拉\n* 射箭，开枪，放炮"
+    ]
+  },
+  "ouverture": {
+    "fr": "Ses rues, dans le silence d'un lieu désert, attendent le claquement des volets, l'ouverture des portes, le hennissement des chevaux, l'essor d'une marmaille.",
+    "meaning": "打开",
+    "meanings": [
+      "打开，开启",
+      "开幕，开业",
+      "开口，洞口"
+    ],
+    "previousMeanings": [
+      "开始，开幕",
+      ":Template:音乐 序曲"
+    ]
+  },
+  "historique": {
+    "fr": "L'histoire s'approche de la vérité historique.",
+    "meaning": "历史的",
+    "meanings": [
+      "历史的",
+      "历史性的重要的",
+      "历史记录"
+    ],
+    "previousMeanings": [
+      "历史的",
+      ":Template:计算机 历史，记录",
+      "沿革，叙述"
+    ]
+  },
+  "secours": {
+    "fr": "Les secours scrutèrent la zone, à la recherche de l'enfant.",
+    "meaning": "救援人员",
+    "meanings": [
+      "救助，救援",
+      "救援人员"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /sə.kuʁ/\n*名词（阳）：帮助、援助、救济、救护"
+    ]
+  },
+  "inférieur": {
+    "fr": "Le salaire d'un enseignant est inférieur à celui d'un avocat.",
+    "meaning": "低于的",
+    "meanings": [
+      "低于的，较低的",
+      "较差的",
+      "下面的"
+    ],
+    "previousMeanings": [
+      "下面的",
+      "下等的",
+      ":Template:数 小于或等于，≤, ⩽"
+    ]
+  },
+  "provisoire": {
+    "fr": "Je vous donnerai un traitement provisoire.",
+    "meaning": "临时的",
+    "meanings": [
+      "临时的，暂时的"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /pʁɔ.vi.zwaʁ/\n*形容词：暂时的、预先的"
+    ]
+  },
+  "opérateur": {
+    "fr": "L'opérateur téléphonique m'a coupé le mois dernier.",
+    "meaning": "运营商",
+    "meanings": [
+      "操作员",
+      "运营商",
+      "运算符"
+    ],
+    "previousMeanings": [
+      "操作员",
+      ":Template:数 运算子"
+    ]
+  },
+  "au fur et à mesure": {
+    "fr": "La demande diminue toujours au fur et à mesure que le prix augmente.",
+    "meaning": "逐渐地",
+    "meanings": [
+      "逐渐地，随着"
+    ],
+    "previousMeanings": [
+      "loc.adv.陆续地，逐步地，逐渐地* au fur",
+      "et à mesure queloc.conj.随着"
+    ]
+  },
+  "manœuvre": {
+    "fr": "marge de manœuvre",
+    "meaning": "行动余地",
+    "meanings": [
+      "操作，操纵",
+      "行动，调动",
+      "策略，手段"
+    ],
+    "previousMeanings": [
+      "移动",
+      "策略",
+      ":Template:军:Template:复 战略，机动",
+      "劳工"
+    ]
+  },
+  "intégrale": {
+    "fr": "La collection dirigée par C. Moreschini propose en deux volumes l’intégrale des traités authentiques de Cyprien.",
+    "meaning": "全集",
+    "meanings": [
+      "全部的，完整的",
+      "积分",
+      "全集"
+    ],
+    "previousMeanings": [
+      "intégral的阴性单数。",
+      ":Template:数 积分",
+      "作品全集"
+    ]
+  },
+  "grièvement": {
+    "fr": "Tom a été grièvement blessé dans un accident de la circulation.",
+    "meaning": "严重地",
+    "meanings": [
+      "严重地"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /ɡʁi.jɛv.mɑ̃/\n*副词：严重地、严格地"
+    ]
+  },
+  "parabole": {
+    "fr": "J'expliquerai par le biais d'une parabole.",
+    "meaning": "寓言",
+    "meanings": [
+      "寓言，比喻",
+      "抛物线"
+    ],
+    "previousMeanings": [
+      ":Template:数 抛物线",
+      "卫星天线",
+      "比喻"
+    ]
+  },
+  "écouteur": {
+    "fr": "Passe-moi ton écouteur gauche s'il te plaît.",
+    "meaning": "耳机",
+    "meanings": [
+      "耳机",
+      "听者"
+    ],
+    "previousMeanings": [
+      "听者",
+      ":Template:复 耳机"
+    ]
+  },
+  "alto": {
+    "fr": "Jouer de l’alto.",
+    "meaning": "中提琴",
+    "meanings": [
+      "中提琴",
+      "女低音，中音"
+    ],
+    "previousMeanings": [
+      "n.m. 女低音；中提琴adj. 中音乐器/中音的n.f. ou n.m. 女低音歌手"
+    ]
+  },
+  "autiste": {
+    "fr": "Si nous savons que les fonctions cognitives de l’enfant autiste sont gravement perturbées et qu’il ne différencie guère l’animé de l’inanimé, il n’en est pas de même pour le faux self.",
+    "meaning": "自闭症的",
+    "meanings": [
+      "自闭症的",
+      "自闭症患者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 与世隔绝的，孤独的/沉湎于幻想以逃避现实者；孤独症患者"
+    ]
+  },
+  "autodidacte": {
+    "fr": "Elle est une actrice autodidacte.",
+    "meaning": "自学成才的",
+    "meanings": [
+      "自学成才的",
+      "自学者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 自学的（人），自修的（人）"
+    ]
+  },
+  "citadin": {
+    "fr": "Au moment des luttes politiques, les électeurs du Léon, encadrés par leurs prêtres, font, grâce à leur discipline, échec aux aspirations sociales des populations citadines.",
+    "meaning": "城市居民",
+    "meanings": [
+      "城市居民，市民",
+      "城市的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 市民，城市居民，城里人",
+      "adj. 城市的"
+    ]
+  },
+  "boursier": {
+    "fr": "Les griots de la nouvelle économie ont déchanté. La hausse continue des marchés boursiers a laissé place à un effondrement spectaculaire.",
+    "meaning": "证券交易所的",
+    "meanings": [
+      "证券交易所的",
+      "领取奖学金的",
+      "证券经纪人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 享受助学金的（学生）",
+      "adj. 交易所的，政权交易的",
+      "n. 交易所经纪人，证券投机商"
+    ]
+  },
+  "attardé": {
+    "fr": "Un soir il n’arriva pas à l’heure ordinaire. Brisquette venait sur le pas de la porte, rentrait, ressortait, et disait, en se croisant les mains : — Mon Dieu, qu’il est attardé !…",
+    "meaning": "晚归的",
+    "meanings": [
+      "晚归的，迟到的",
+      "落后的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 发育迟缓的（人），智力迟缓的（人）；落后于时代的，过时的/落伍者；落后于时代的"
+    ]
+  },
+  "capricorne": {
+    "fr": "Je représente l'homme Capricorne dans toute sa splendeur.",
+    "meaning": "摩羯座",
+    "meanings": [
+      "摩羯座",
+      "天牛"
+    ],
+    "previousMeanings": [
+      "n.m. 天牛",
+      "n.inv. et adj.inv. 天牛星座的（人）"
+    ]
+  },
+  "berk": {
+    "fr": "Berk, mon gâteau est trop sucré, et comment est le tien ?",
+    "meaning": "呸",
+    "meanings": [
+      "呸，表示厌恶"
+    ],
+    "previousMeanings": [
+      "et beurk［bz6rk］interj. 〈俗〉呸!"
+    ]
+  },
+  "sparte": {
+    "fr": "La végétation est une steppe mixte à alfa (Stipa tenacissima) et sparte (Lygeum spartum). Son recouvrement global est de 50% (dont 30% de alfa et 10% de sparte).",
+    "meaning": "一种禾本科植物",
+    "meanings": [
+      "一种禾本科植物"
+    ],
+    "previousMeanings": [
+      "Lygeum spartum（一种草）"
+    ]
+  },
+  "chevalier": {
+    "fr": "Les chevaliers romains avaient un cheval entretenu aux dépens de la République et portaient un anneau d’or pour marque de leur dignité.",
+    "meaning": "骑士",
+    "meanings": [
+      "骑士",
+      "勋章获得者"
+    ],
+    "previousMeanings": [
+      "==== 名词 ====\nchevalier 阳 (复数 chevaliers)\n#（中世纪欧洲的）骑士；骑士勋章\n# (鸟类学) 矶鹬"
+    ]
+  },
+  "navire": {
+    "fr": "Nous pouvions voir le navire au loin.",
+    "meaning": "船",
+    "meanings": [
+      "船，舰艇"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /na.viʁ/\n*名词（阳）：船、舰"
+    ]
+  },
+  "heure": {
+    "fr": "Je dois aller faire les courses, je reviens dans une heure.",
+    "meaning": "小时",
+    "meanings": [
+      "小时",
+      "时间，时刻"
+    ],
+    "previousMeanings": [
+      "* 国际音标^((帮助)): /œʁ/\n*名词（阴）：小时、时间、时候"
+    ]
+  },
+  "sauf": {
+    "fr": "La fête se tiendra dans le jardin sauf en cas de pluie.",
+    "meaning": "除……之外",
+    "meanings": [
+      "除……之外",
+      "安全的，无损的"
+    ],
+    "previousMeanings": [
+      "<介词> 不包括、例外\n<形容词> 安全的 (不受伤害的)"
+    ]
+  },
+  "loin": {
+    "fr": "La maison que j'ai achetée est assez loin du centre-ville.",
+    "meaning": "远",
+    "meanings": [
+      "远，遥远地"
+    ],
+    "previousMeanings": [
+      "远"
+    ]
+  },
+  "mouvement": {
+    "fr": "J'entends que votre fils a pris part au mouvement étudiant.",
+    "meaning": "运动",
+    "meanings": [
+      "运动，活动",
+      "移动，动作",
+      "乐章"
+    ],
+    "previousMeanings": [
+      "移动",
+      "动作"
+    ]
+  },
+  "mode": {
+    "fr": "Ce livre te donnera une idée claire du mode de vie étasunien.",
+    "meaning": "方式",
+    "meanings": [
+      "方式，方法",
+      "时尚，流行"
+    ],
+    "previousMeanings": [
+      "时尚，流行",
+      "方式，方法",
+      "语气",
+      "调式"
+    ]
+  },
+  "mettre en terre": {
+    "fr": "Nous allons mettre en terre les jeunes plants.",
+    "meaning": "栽种",
+    "meanings": [
+      "栽种",
+      "埋葬"
+    ],
+    "previousMeanings": [
+      "埋葬",
+      "种植"
+    ]
+  },
+  "cadre": {
+    "fr": "On doit être cadre dans une société quelconque.",
+    "meaning": "管理人员",
+    "meanings": [
+      "框架，边框",
+      "范围，背景",
+      "管理人员，干部"
+    ],
+    "previousMeanings": [
+      "n.m. 框；骨架，车架；范围，界限；环境，背景；集装箱；蜂巢框dans le ~ de 在...范围内n.m. 管理干部，管理人员；干部"
+    ]
+  },
+  "langue maternelle": {
+    "fr": "Traduire nous aide à mieux connaître notre langue maternelle.",
+    "meaning": "母语",
+    "meanings": [
+      "母语"
+    ],
+    "previousMeanings": [
+      "母语"
+    ]
+  },
+  "contre-pouvoir": {
+    "fr": "Faute de contre-pouvoir, le bâtonnier et sa garde rapprochée décident selon leurs intérêts à quels confrères iront les missions commandées par l’Ordre.",
+    "meaning": "制衡力量",
+    "meanings": [
+      "制衡力量"
+    ],
+    "previousMeanings": [
+      "n.m. 反政权，对立政权"
+    ]
+  },
+  "à l'attention de": {
+    "fr": "À l'attention de qui la lettre était-elle écrite ?",
+    "meaning": "致，交予",
+    "meanings": [
+      "致，交予"
+    ],
+    "previousMeanings": [
+      "由...转交"
+    ]
+  },
+  "avoir peur": {
+    "fr": "Elle commença à avoir peur lorsqu'elle remarqua l'homme qui la suivait.",
+    "meaning": "害怕",
+    "meanings": [
+      "害怕，恐惧"
+    ],
+    "previousMeanings": [
+      "恐怕"
+    ]
+  },
+  "confiance": {
+    "fr": "Ne fais jamais confiance à une femme qui a un pistolet en main.",
+    "meaning": "信任",
+    "meanings": [
+      "信任，信心"
+    ],
+    "previousMeanings": [
+      "n.f. 相信，信赖，信心，信任de ~，en ~ 放心地，大胆地"
+    ]
+  },
+  "qualité": {
+    "fr": "La qualité de l'air s'est détériorée ces dernières années.",
+    "meaning": "质量",
+    "meanings": [
+      "质量，品质",
+      "优点"
+    ],
+    "previousMeanings": [
+      "质量"
+    ]
+  },
+  "avec plaisir": {
+    "fr": "« Tu ne veux pas venir avec nous ? » « Si, avec plaisir. »",
+    "meaning": "乐意之至",
+    "meanings": [
+      "乐意之至，很愿意"
+    ],
+    "previousMeanings": [
+      "我的荣幸"
+    ]
+  },
+  "fin": {
+    "fr": "Le film était ennuyeux ; le meilleur moment, c'était la fin.",
+    "meaning": "结尾",
+    "meanings": [
+      "结束，结尾",
+      "末端",
+      "目的"
+    ],
+    "previousMeanings": [
+      "末端，结尾，终止"
+    ]
+  },
+  "coupe": {
+    "fr": "Cette coupe de cheveux était populaire dans les années 90.",
+    "meaning": "发型",
+    "meanings": [
+      "切割，剪裁",
+      "发型",
+      "杯，奖杯"
+    ],
+    "previousMeanings": [
+      "切，割，截，砍，剪",
+      "切面，剖面，切面图，剖面图，纸牌游戏中的切牌，倒牌",
+      "浅口酒杯，大口酒杯，杯中酒",
+      "盆，盘"
+    ]
+  },
+  "objet": {
+    "fr": "Un verbe complètement intransitif n'a ni complément, ni objet.",
+    "meaning": "宾语",
+    "meanings": [
+      "物品，物体",
+      "目的，对象",
+      "宾语"
+    ],
+    "previousMeanings": [
+      "东西",
+      "物品",
+      "目标",
+      "想法"
+    ]
+  },
+  "site": {
+    "fr": "D'abord, je vais faire un schéma de mon nouveau site internet.",
+    "meaning": "网站",
+    "meanings": [
+      "网站",
+      "地点，场所"
+    ],
+    "previousMeanings": [
+      "位置"
+    ]
+  },
+  "équipe": {
+    "fr": "Tu as une très bonne équipe, mais la leur est la meilleure.",
+    "meaning": "团队",
+    "meanings": [
+      "团队，队伍"
+    ],
+    "previousMeanings": [
+      "组"
+    ]
+  },
+  "devant": {
+    "fr": "Des douzaines de personnes se rassemblèrent devant la gare.",
+    "meaning": "在……前面",
+    "meanings": [
+      "在……前面",
+      "面对"
+    ],
+    "previousMeanings": [
+      "面对",
+      "在……之前",
+      "在……的外面",
+      "前面"
+    ]
+  },
+  "à la maison": {
+    "fr": "Maintenant qu'il ne pleut plus, on peut rentrer à la maison.",
+    "meaning": "在家里",
+    "meanings": [
+      "在家里",
+      "回家"
+    ],
+    "previousMeanings": [
+      "adv. 家"
+    ]
+  },
+  "conseil": {
+    "fr": "Ne sachant pas quoi faire, je lui ai demandé conseil.",
+    "meaning": "建议",
+    "meanings": [
+      "建议，忠告",
+      "委员会，理事会"
+    ],
+    "previousMeanings": [
+      "劝告，建议，意见，主意",
+      "会，会议，议会，理事会，委员会"
+    ]
+  },
+  "affaire": {
+    "fr": "Quand il partit à la retraite, son fils reprit son affaire.",
+    "meaning": "生意",
+    "meanings": [
+      "事情，事务",
+      "生意，业务",
+      "案件"
+    ],
+    "previousMeanings": [
+      "事，事务",
+      "工商企业",
+      "交易",
+      "买卖，好买卖"
+    ]
+  },
+  "marche": {
+    "fr": "Nous sommes arrivés au musée après dix minutes de marche.",
+    "meaning": "步行",
+    "meanings": [
+      "步行，行走",
+      "运转",
+      "台阶"
+    ],
+    "previousMeanings": [
+      "行进，步伐，行军",
+      "进行曲",
+      "行程，进程",
+      "行驶"
+    ]
+  },
+  "français": {
+    "fr": "Tatoeba : parce qu'on ne rencontre jamais assez de Français.",
+    "meaning": "法国人",
+    "meanings": [
+      "法国的",
+      "法国人",
+      "法语"
+    ],
+    "previousMeanings": [
+      "法国的，法国人的",
+      "法裔美国的",
+      "法语"
+    ]
+  },
+  "grand": {
+    "fr": "Il tire fierté de ce que son père fut un grand scientifique.",
+    "meaning": "伟大的",
+    "meanings": [
+      "大的，高的",
+      "伟大的，重要的"
+    ],
+    "previousMeanings": [
+      "大、高"
+    ]
+  },
+  "plusieurs": {
+    "fr": "Les dégâts du typhon s'étendaient sur plusieurs préfectures.",
+    "meaning": "好几个",
+    "meanings": [
+      "好几个，若干"
+    ],
+    "previousMeanings": [
+      "很多、多数"
+    ]
+  },
+  "prix": {
+    "fr": "Je veux la voir à tout prix.",
+    "meaning": "代价",
+    "meanings": [
+      "价格，价钱",
+      "代价",
+      "奖项"
+    ],
+    "previousMeanings": [
+      "价格",
+      "奖项"
+    ]
+  },
+  "travail": {
+    "fr": "Il est difficilement amical avec ses compagnons de travail.",
+    "meaning": "工作",
+    "meanings": [
+      "工作，劳动",
+      "作业"
+    ],
+    "previousMeanings": [
+      "劳动",
+      "工作",
+      "工作场所"
+    ]
+  },
+  "bien-être": {
+    "fr": "La torpeur qui paralysait son cerveau lui procurait trop de bien-être pour qu’il tentât de la chasser.",
+    "meaning": "舒适，幸福",
+    "meanings": [
+      "舒适，幸福，身心健康"
+    ],
+    "previousMeanings": [
+      "n. 保持良好状态（幸福）"
+    ]
+  },
+  "pour de bon": {
+    "fr": "Jusqu’ici, il ne faisait que plaisanter, mais pour cette fois il a menacé pour de bon.",
+    "meaning": "当真地",
+    "meanings": [
+      "当真地，认真地",
+      "永远地"
+    ],
+    "previousMeanings": [
+      "永远"
+    ]
+  },
+  "vie": {
+    "fr": "Un million de personnes ont perdu la vie pendant la guerre.",
+    "meaning": "生命",
+    "meanings": [
+      "生命，人生",
+      "生活"
+    ],
+    "previousMeanings": [
+      "n.f. 生活",
+      "n.f. 人生"
+    ]
+  },
+  "premier but": {
+    "fr": "Qui marquera le premier but ce soir ?",
+    "meaning": "第一个进球",
+    "meanings": [
+      "第一个进球",
+      "第一目标"
+    ],
+    "previousMeanings": [
+      "一垒",
+      "一垒手"
+    ]
+  },
+  "sans un": {
+    "fr": "Marie ferma la porte sans un bruit.",
+    "meaning": "没有任何",
+    "meanings": [
+      "没有任何，连一个也没有"
+    ],
+    "previousMeanings": [
+      "身无分文的"
+    ]
+  },
+  "autant": {
+    "fr": "Je ne suis pas autant intéressé par la littérature que vous.",
+    "meaning": "同样地",
+    "meanings": [
+      "同样多，同样程度",
+      "如此多"
+    ],
+    "previousMeanings": [
+      "那么多，如此多",
+      "也可以，不妨",
+      "一样多 （可+ que与某事物对比）",
+      "根据 （+ que + 虚拟式）"
+    ]
+  },
+  "au-devant": {
+    "fr": "On n'attend pas même qu'on en demande, et l'on court au-devant du souhait des gens",
+    "meaning": "迎上前去",
+    "meanings": [
+      "向前，迎上前去"
+    ],
+    "previousMeanings": [
+      "adv. 往前，向前，~ de loc.prép. 迎接，迎上去，朝...方向"
+    ]
+  },
+  "protocole": {
+    "fr": "Le protocole des notaires, des avoués, des huissiers.",
+    "meaning": "文书记录",
+    "meanings": [
+      "协议，规程",
+      "礼仪",
+      "文书记录"
+    ],
+    "previousMeanings": [
+      "议定书",
+      "外交礼仪，礼节",
+      ":Template:计算机 协议"
+    ]
+  },
+  "colonialisme": {
+    "fr": "Le colonialisme et l'impérialisme ne sont pas quittes avec nous quand ils ont retiré de nos territoires leurs drapeaux et leurs forces de police.",
+    "meaning": "殖民主义",
+    "meanings": [
+      "殖民主义"
+    ],
+    "previousMeanings": [
+      "n.m. 殖民主义，殖民主义政策colonialiste",
+      "adj. et n. 殖民主义的，殖民主义者"
+    ]
+  },
+  "anarchisme": {
+    "fr": "L’anarchisme n’admet, de façon générale et selon la formule consacrée, ni Dieu ni maître.",
+    "meaning": "无政府主义",
+    "meanings": [
+      "无政府主义"
+    ],
+    "previousMeanings": [
+      "n.m. 无政府主义anarchiste",
+      "n. et adj. 无政府主义的；主张无政府主义的/无政府主义者；无政府主义政党成员；〈引〉扰乱分子，反对秩序的人，目无纪律的人"
+    ]
+  },
+  "cliques": {
+    "fr": "J’ai pris mes cliques et mes claques, et je suis retourné vivre chez ma sœur.",
+    "meaning": "随身物品",
+    "meanings": [
+      "随身物品",
+      "小集团"
+    ],
+    "previousMeanings": [
+      "et ses ~s 〈俗〉卷起所有东西溜之大吉"
+    ]
+  },
+  "copte": {
+    "fr": "Les murs étaient recouverts d’étoffes claires sur lesquelles se superposaient çà et là des morceaux de broderies coptes, aux dessins délicats et vifs.",
+    "meaning": "科普特的",
+    "meanings": [
+      "科普特的",
+      "科普特人，科普特基督徒",
+      "科普特语"
+    ],
+    "previousMeanings": [
+      "n. et adj. 科普特基督教徒（的）",
+      "n.m. 科普特语"
+    ]
+  },
+  "bigot": {
+    "fr": "Une éducation bigote.",
+    "meaning": "过分虔诚的",
+    "meanings": [
+      "过分虔诚的，盲从宗教的",
+      "过分虔诚的人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 过分虔诚的（人），笃信宗教的（人）"
+    ]
+  },
+  "colonisateur": {
+    "fr": "Notons tout de suite que, de même que les diverses plantes n’ont pas le même pouvoir colonisateur, de même elles réagissent différemment devant les obstacles.",
+    "meaning": "拓殖的",
+    "meanings": [
+      "殖民的",
+      "拓殖的，扩散占据生境的",
+      "殖民者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 殖民的，殖民者"
+    ]
+  },
+  "causeur": {
+    "fr": "… ; les chasseurs, gens peu causeurs de leur nature, croyant soupçonner sous les paroles embarrassées et les réticences du jeune homme, un secret qu’il désirait garder, ….",
+    "meaning": "健谈的",
+    "meanings": [
+      "健谈的，能说会道的",
+      "健谈的人"
+    ],
+    "previousMeanings": [
+      "n. et adj. 能说会道的（人），有口才的（人），健谈的（人）"
+    ]
+  },
+  "bordeaux": {
+    "fr": "Puis il appela la réception, questionna l’homme en veste bordeaux.",
+    "meaning": "酒红色的",
+    "meanings": [
+      "波尔多葡萄酒",
+      "酒红色，酒红色的"
+    ],
+    "previousMeanings": [
+      "n.m. 波尔多葡萄酒",
+      "adj.inv. et n.m. 深红色（的），紫红色（的）"
+    ]
+  },
+  "brave": {
+    "fr": "Quand je suis seul, je fais au plus brave un défi ;\nJe m’écarte, je vais détrôner le Sophi ;\nOn m’élit Roi, mon peuple m’aime ; …",
+    "meaning": "勇敢的人",
+    "meanings": [
+      "勇敢的",
+      "勇敢的人",
+      "善良的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 英勇的，勇敢的，勇士，勇敢的人adj. 善良的，正直的，诚实的；人不精明但待人诚恳的"
+    ]
+  },
+  "anglophone": {
+    "fr": "La minorité anglaise avait également reçu, de façon encore plus discrète, une autre « protection »: le trésorier du Québec serait un anglophone, un anglophone choisi par les financiers.",
+    "meaning": "讲英语的",
+    "meanings": [
+      "讲英语的",
+      "英语使用者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 操英语的（人）"
+    ]
+  },
+  "britannique": {
+    "fr": "Elle est citoyenne britannique, mais sa terre natale est la France.",
+    "meaning": "英国的",
+    "meanings": [
+      "英国的，不列颠的",
+      "英国人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 不列颠的，英国的；不列颠人，英国人"
+    ]
+  },
+  "asiatique": {
+    "fr": "Dans la culture asiatique, il est coutumier de retirer ses chaussures avant d'entrer dans une maison ou dans un temple.",
+    "meaning": "亚洲的",
+    "meanings": [
+      "亚洲的",
+      "亚洲人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 亚洲的，亚洲人"
+    ]
+  },
+  "corse": {
+    "fr": "Par exemple, les séparatistes corses se considèrent sûrement comme une nation séparée et distincte, plus ou au moins différente, de la France métropolitaine.",
+    "meaning": "科西嘉的",
+    "meanings": [
+      "科西嘉的",
+      "科西嘉人",
+      "科西嘉语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 科西嘉的，科西嘉人n.m. 科西嘉语"
+    ]
+  },
+  "anglo-américain": {
+    "fr": "La guerre anglo-américaine de 1812.",
+    "meaning": "英美的",
+    "meanings": [
+      "英美的",
+      "英裔美国人的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 英美的，英美两国的；英裔美国人的anglo-américain",
+      "n.m. 美国英语，美式英语"
+    ]
+  },
+  "allié": {
+    "fr": "Des peuples alliés.",
+    "meaning": "结盟的",
+    "meanings": [
+      "结盟的，同盟的",
+      "盟友",
+      "姻亲"
+    ],
+    "previousMeanings": [
+      "adj. et n. 同盟的，联盟的/盟国，同盟国；联姻的，姻亲的/姻亲；协助的/协助者；les A~s同盟国，协约国"
+    ]
+  },
+  "anglo-normand": {
+    "fr": "La poésie anglo-normande est réclamée par les deux pays, et c’est ainsi que les bibliothèques d’Angleterre contiennent parmi leurs archives un si grand nombre de monumens français.",
+    "meaning": "盎格鲁诺曼的",
+    "meanings": [
+      "盎格鲁诺曼的",
+      "盎格鲁诺曼语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 盎格鲁-诺曼底的/法国诺曼底人统治英国时期的文化anglo-normand",
+      "n.m. 盎格鲁-诺曼底语"
+    ]
+  },
+  "antisémite": {
+    "fr": "Pour agir sur l'opinion publique et sur le roi, ces mêmes marchands firent répandre un factum antisémite.",
+    "meaning": "反犹的",
+    "meanings": [
+      "反犹的",
+      "反犹主义者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 反犹太人的，仇视犹太人的，排斥犹太人的"
+    ]
+  },
+  "bénéficiaire": {
+    "fr": "L’héritier bénéficiaire.",
+    "meaning": "受益的",
+    "meanings": [
+      "受益的",
+      "受益人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 获利的，得益的，受惠的，获利者，得益者，受益者，受惠人",
+      "adj. 利润的，产生利润的"
+    ]
+  },
+  "bénévole": {
+    "fr": "Il n’en fallait pas davantage pour que la brancardière bénévole devînt le point de mire de l’assistance",
+    "meaning": "志愿的",
+    "meanings": [
+      "志愿的，无偿的",
+      "志愿者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 尽义务的，自愿服务的，志愿服务的，自愿者，志愿者",
+      "adj. 自愿的，志愿的，无偿的"
+    ]
+  },
+  "abruti": {
+    "fr": "Abruti, tu as la tête pleine d'eau ou quoi ?",
+    "meaning": "笨蛋",
+    "meanings": [
+      "愚钝的",
+      "笨蛋"
+    ],
+    "previousMeanings": [
+      "adj. et n. 愚蠢的/笨蛋，蠢货"
+    ]
+  },
+  "athée": {
+    "fr": "Tous les enfans ſont des athées; ils n'ont aucune idée de Dieu: ſont-ils donc criminels à cauſe de cette ignorance?",
+    "meaning": "无神论者",
+    "meanings": [
+      "无神论者",
+      "无神论的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 无神论的，不信神的（人）"
+    ]
+  },
+  "concessionnaire": {
+    "fr": "Les concessionnaires de mines, les titulaires de permis d’exploitation de mines sont tenus, à compter du 1ᵉʳ janvier 1957, de payer une redevance fixe à l’État.",
+    "meaning": "特许经营者",
+    "meanings": [
+      "特许经营者",
+      "经销商"
+    ],
+    "previousMeanings": [
+      "n. et adj. 享有特许权，特许权所有人；获得专卖权的（人），（某产品在特定区域的）独家经销商"
+    ]
+  },
+  "alsacien": {
+    "fr": "Le glottonyme « alsacien » est relativement récent.",
+    "meaning": "阿尔萨斯语",
+    "meanings": [
+      "阿尔萨斯的",
+      "阿尔萨斯人",
+      "阿尔萨斯语"
+    ],
+    "previousMeanings": [
+      "adj. et n. 阿尔萨斯的/阿尔萨斯人alsacien n.m. 阿尔萨斯方言"
+    ]
+  },
+  "agrégé": {
+    "fr": "Les fleurs de la scabieuse sont agrégées.",
+    "meaning": "聚生的",
+    "meanings": [
+      "聚生的，聚集的",
+      "取得教师会考资格的"
+    ],
+    "previousMeanings": [
+      "n. et adj. 通过会考取得大学或高中教师职衔的（人）"
+    ]
+  },
+  "berbère": {
+    "fr": "En 1830, il n’y avait en Algérie, que des tribus ennemies sur lesquelles pesaient, selon les régions, la terreur des Turcs […], et puis les peuples berbères et arabo-berbères.",
+    "meaning": "柏柏尔人",
+    "meanings": [
+      "柏柏尔人",
+      "柏柏尔语",
+      "柏柏尔的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 柏柏尔人的/柏柏尔人",
+      "n.m. 柏柏尔语"
+    ]
+  },
+  "boiteux": {
+    "fr": "Jésus guérit les boiteux.",
+    "meaning": "跛足的人",
+    "meanings": [
+      "跛足的",
+      "跛足的人",
+      "不稳妥的"
+    ],
+    "previousMeanings": [
+      "adj. et n. 跛的，瘸腿的，跛子，瘸子adj. 不平稳的，放不稳的，不平衡的，不调和的，站不住脚的，有缺陷的"
+    ]
+  },
+  "cocu": {
+    "fr": "Toute femme doit faire son mari cocu.",
+    "meaning": "配偶有外遇的",
+    "meanings": [
+      "配偶有外遇的",
+      "配偶有外遇的人"
+    ],
+    "previousMeanings": [
+      "adj. et n. 〈俗〉配偶有外遇的（人）"
+    ]
+  },
+  "chauvin": {
+    "fr": "Le reste avec mépris du haut de leurs remparts / La race des chauvins, des porteurs de cocardes",
+    "meaning": "沙文主义者",
+    "meanings": [
+      "沙文主义的",
+      "沙文主义者"
+    ],
+    "previousMeanings": [
+      "adj. et n. 沙文主义的，沙文主义分子的，只爱家乡的，沙文主义分子，沙文主义者"
+    ]
+  },
+  "angoissé": {
+    "fr": "Casanova était sans doute un angoissé, et, plus banalement, la recherche de partenaires plus jeunes est peut-être le signe d’une angoisse encore présente.",
+    "meaning": "焦虑不安的人",
+    "meanings": [
+      "焦虑不安的",
+      "焦虑不安的人"
+    ],
+    "previousMeanings": [
+      "adj. et n. （易）忧虑不安的（人），（易）恐慌的（人），（易）苦恼的（人）",
+      "adj. （表现出）极端不安，（表现出）惊恐的"
+    ]
+  },
+  "anglican": {
+    "fr": "Il n'y a pas de corporation ecclésiastique qui ait plus asservi aux circonstances ses doctrines et sa conduite que le haut clergé anglican.",
+    "meaning": "英国圣公会的",
+    "meanings": [
+      "英国圣公会的",
+      "英国圣公会教徒"
+    ],
+    "previousMeanings": [
+      "adj. et n. 英国国教的，英格兰教的，英国圣公会的；英国国教教徒，圣公会教徒"
+    ]
+  },
+  "spectacle": {
+    "fr": "Joli spectacle !",
+    "meaning": "景象，场面",
+    "meanings": [
+      "演出，表演",
+      "景象"
+    ],
+    "previousMeanings": [
+      "显示"
+    ]
+  },
+  "intervention": {
+    "fr": "L'intervention humaine sur la nature ne trouve pas ses limites.",
+    "meaning": "干预，介入",
+    "meanings": [
+      "干预，介入",
+      "发言",
+      "手术"
+    ],
+    "previousMeanings": [
+      "插入"
+    ]
+  },
+  "mondial": {
+    "fr": "L'anglais est un langage mondial.",
+    "meaning": "世界的，全球的",
+    "meanings": [
+      "世界的，全球的"
+    ],
+    "previousMeanings": [
+      "通用的"
+    ]
+  },
+  "portée": {
+    "fr": "Cette arme a une portée de 300 mètres.",
+    "meaning": "射程",
+    "meanings": [
+      "范围，影响",
+      "射程",
+      "一窝幼崽"
+    ],
+    "previousMeanings": [
+      "伸出"
+    ]
+  },
+  "tenue": {
+    "fr": "Une tenue de soirée est souhaitée.",
+    "meaning": "服装，装束",
+    "meanings": [
+      "服装，装束",
+      "举止",
+      "保持"
+    ],
+    "previousMeanings": [
+      "维护"
+    ]
+  },
+  "robe": {
+    "fr": "J'ai acheté cette robe à un bas prix.",
+    "meaning": "连衣裙",
+    "meanings": [
+      "连衣裙",
+      "袍子"
+    ],
+    "previousMeanings": [
+      "服装"
+    ]
+  },
+  "engagement": {
+    "fr": "C'est un engagement important que vous me demandez-là, laissez-moi y réfléchir ...",
+    "meaning": "承诺，投入",
+    "meanings": [
+      "承诺，投入",
+      "约定",
+      "聘用"
+    ],
+    "previousMeanings": [
+      "委托"
+    ]
+  },
+  "pote": {
+    "fr": "J’ai partagé l’argent avec mon pote.",
+    "meaning": "朋友，伙伴",
+    "meanings": [
+      "朋友，伙伴"
+    ],
+    "previousMeanings": [
+      "配偶"
+    ]
+  },
+  "étage": {
+    "fr": "J'ai pris l'ascenseur pour le troisième étage.",
+    "meaning": "楼层",
+    "meanings": [
+      "楼层"
+    ],
+    "previousMeanings": [
+      "地板"
+    ]
+  },
+  "performance": {
+    "fr": "Il pleura d'admiration pour sa performance.",
+    "meaning": "表现，成绩",
+    "meanings": [
+      "表现，成绩",
+      "性能",
+      "演出"
+    ],
+    "previousMeanings": [
+      "施行"
+    ]
+  },
+  "stage": {
+    "fr": "Je vais être en stage.",
+    "meaning": "实习，实习期",
+    "meanings": [
+      "实习，实习期",
+      "培训"
+    ],
+    "previousMeanings": [
+      "实习医师的职务"
+    ]
+  },
+  "solide": {
+    "fr": "Le fromage est un aliment solide fabriqué à partir du lait de vache, de chèvre, de brebis, et d'autres mammifères.",
+    "meaning": "固态的",
+    "meanings": [
+      "坚固的，结实的",
+      "稳固的",
+      "可靠的",
+      "固态的"
+    ],
+    "previousMeanings": [
+      "无虑的"
+    ]
+  },
+  "rock": {
+    "fr": "Je pense que la plupart des jeunes aiment la musique rock.",
+    "meaning": "摇滚乐",
+    "meanings": [
+      "摇滚乐"
+    ],
+    "previousMeanings": [
+      "岩石"
+    ]
+  },
+  "show": {
+    "fr": "Il est allé dans les coulisses après le show.",
+    "meaning": "演出，表演",
+    "meanings": [
+      "演出，表演"
+    ],
+    "previousMeanings": [
+      "显示"
+    ]
+  },
+  "douche": {
+    "fr": "Je prends habituellement ma douche le soir.",
+    "meaning": "淋浴",
+    "meanings": [
+      "淋浴",
+      "淋浴器"
+    ],
+    "previousMeanings": [
+      "阵雨"
+    ]
+  },
+  "moto": {
+    "fr": "Ma moto est tombée en panne sur le chemin.",
+    "meaning": "摩托车",
+    "meanings": [
+      "摩托车"
+    ],
+    "previousMeanings": [
+      "自行车"
+    ]
+  },
+  "coach": {
+    "fr": "Elle aimait le tennis et devint coach.",
+    "meaning": "教练",
+    "meanings": [
+      "教练",
+      "指导者"
+    ],
+    "previousMeanings": [
+      "四轮大马车"
+    ]
+  },
+  "viol": {
+    "fr": "Je ne pense pas qu'il existe une culture où le viol n'est pas considéré comme un crime très grave.",
+    "meaning": "强奸",
+    "meanings": [
+      "强奸"
+    ],
+    "previousMeanings": [
+      "抢夺"
+    ]
+  },
+  "plaque": {
+    "fr": "Déposez-les sur la plaque du four et badigeonnez-les de jaune d'œuf.",
+    "meaning": "烤盘",
+    "meanings": [
+      "薄板，牌子",
+      "斑块",
+      "烤盘"
+    ],
+    "previousMeanings": [
+      "床单"
+    ]
+  },
+  "registre": {
+    "fr": "Pourriez-vous signer le registre ?",
+    "meaning": "登记簿",
+    "meanings": [
+      "登记簿",
+      "音域",
+      "语体"
+    ],
+    "previousMeanings": [
+      "寄存器"
+    ]
+  },
+  "pointe": {
+    "fr": "Je marchais sur la pointe des pieds pour ne pas réveiller le bébé.",
+    "meaning": "尖端",
+    "meanings": [
+      "尖端",
+      "顶峰",
+      "高峰期"
+    ],
+    "previousMeanings": [
+      "点"
+    ]
+  },
+  "dispositif": {
+    "fr": "Nous mettrons en œuvre un dispositif de coopération Nord Sud repensé.",
+    "meaning": "安排，机制",
+    "meanings": [
+      "装置，设备",
+      "安排，部署",
+      "安排，机制"
+    ],
+    "previousMeanings": [
+      "排列"
+    ]
+  },
+  "montage": {
+    "fr": "Comment était le montage d’essai ? Qu’est-ce qui était raccordé ?",
+    "meaning": "组装",
+    "meanings": [
+      "组装",
+      "剪辑",
+      "安装"
+    ],
+    "previousMeanings": [
+      "与会者"
+    ]
+  },
+  "rappel": {
+    "fr": "C'était pour nous toute une aventure de descendre la falaise en rappel.",
+    "meaning": "绳降",
+    "meanings": [
+      "提醒",
+      "召回",
+      "返场",
+      "绳降"
+    ],
+    "previousMeanings": [
+      "提醒的人"
+    ]
+  },
+  "régime": {
+    "fr": "On va beaucoup manger ce soir alors j'espère que tu ne fais pas de régime.",
+    "meaning": "饮食制度",
+    "meanings": [
+      "饮食制度",
+      "政体",
+      "运转状态"
+    ],
+    "previousMeanings": [
+      "政权"
+    ]
+  },
+  "limiter": {
+    "fr": "Pourquoi te limiter à un seul ?",
+    "meaning": "限制",
+    "meanings": [
+      "限制",
+      "限定"
+    ],
+    "previousMeanings": [
+      "做标记于"
+    ]
+  },
+  "retard": {
+    "fr": "J'étais en retard à l'école.",
+    "meaning": "迟到，延误",
+    "meanings": [
+      "迟到，延误",
+      "落后"
+    ],
+    "previousMeanings": [
+      "耽搁"
+    ]
+  },
+  "drogue": {
+    "fr": "Elle vend de la drogue dans les lieux de concerts.",
+    "meaning": "毒品",
+    "meanings": [
+      "毒品",
+      "药物"
+    ],
+    "previousMeanings": [
+      "药"
+    ]
+  },
+  "fête": {
+    "fr": "Les bouteilles de bière que j’avais apporté à la fête étaient de trop ; la famille de notre hôte possédait une brasserie.",
+    "meaning": "聚会",
+    "meanings": [
+      "节日",
+      "聚会，庆祝活动"
+    ],
+    "previousMeanings": [
+      "宴会"
+    ]
+  },
+  "tableau": {
+    "fr": "Qui a peint ce tableau ?",
+    "meaning": "画，图画",
+    "meanings": [
+      "画，图画",
+      "表格",
+      "黑板"
+    ],
+    "previousMeanings": [
+      "画",
+      "黑板",
+      "表格"
+    ]
+  },
+  "port": {
+    "fr": "Pouvez-vous m'indiquer le chemin du port ?",
+    "meaning": "港口",
+    "meanings": [
+      "港口",
+      "穿戴",
+      "姿态"
+    ],
+    "previousMeanings": [
+      "港口"
+    ]
+  },
+  "salon": {
+    "fr": "Elle va au salon de beauté au moins 1 fois par semaine.",
+    "meaning": "美容院",
+    "meanings": [
+      "客厅",
+      "展览会",
+      "沙龙",
+      "美容院"
+    ],
+    "previousMeanings": [
+      "大会客室"
+    ]
+  },
+  "institut": {
+    "fr": "Nous avons fondé l'institut dans le but de faciliter la recherche.",
+    "meaning": "研究所",
+    "meanings": [
+      "研究所",
+      "学院"
+    ],
+    "previousMeanings": [
+      "学会"
+    ]
+  },
+  "soin": {
+    "fr": "Prends bien soin de toi.",
+    "meaning": "照料，护理",
+    "meanings": [
+      "照料，护理",
+      "用心",
+      "治疗"
+    ],
+    "previousMeanings": [
+      "小心"
+    ]
+  },
+  "reprise": {
+    "fr": "La chanteuse a enflammé la salle en faisant une reprise très sensuelle de « I really got you now » des Kinks.",
+    "meaning": "翻唱",
+    "meanings": [
+      "重新开始",
+      "恢复",
+      "再次，重演",
+      "翻唱"
+    ],
+    "previousMeanings": [
+      "时间"
+    ]
+  },
+  "distribution": {
+    "fr": "« Cesse de me supplier pour avoir un biscuit, Tim », dit sa mère. « Rappelle-toi, les enfants qui demandent avec trop d'insistance sont exclus de la distribution de biscuits ».",
+    "meaning": "分发，分配",
+    "meanings": [
+      "分发，分配",
+      "发行",
+      "配送"
+    ],
+    "previousMeanings": [
+      "递送"
+    ]
+  },
+  "menace": {
+    "fr": "La bombe atomique est une menace sérieuse pour l'humanité.",
+    "meaning": "威胁",
+    "meanings": [
+      "威胁"
+    ],
+    "previousMeanings": [
+      "恐吓"
+    ]
+  },
+  "talent": {
+    "fr": "Je ne peux pas m'empêcher d'admirer son talent.",
+    "meaning": "才能，天赋",
+    "meanings": [
+      "才能，天赋"
+    ],
+    "previousMeanings": [
+      "天才"
+    ]
+  },
+  "gratuitement": {
+    "fr": "C'était un vieil homme bienveillant qui se portait volontaire pour tondre la pelouse de ses voisins gratuitement.",
+    "meaning": "免费地",
+    "meanings": [
+      "免费地",
+      "无缘无故地"
+    ],
+    "previousMeanings": [
+      "自由地"
+    ]
+  },
+  "essence": {
+    "fr": "L’essence des mathématiques, c’est la liberté.",
+    "meaning": "本质",
+    "meanings": [
+      "汽油",
+      "本质"
+    ],
+    "previousMeanings": [
+      "实质"
+    ]
+  },
+  "lancement": {
+    "fr": "Les fusées ont été lancées depuis une rampe de lancement.",
+    "meaning": "发射",
+    "meanings": [
+      "发射",
+      "推出，启动",
+      "投掷"
+    ],
+    "previousMeanings": [
+      "投掷"
+    ]
+  },
+  "vainqueur": {
+    "fr": "Les juges ne pouvaient déterminer aucun vainqueur pour le match et décidèrent de prononcer un nul.",
+    "meaning": "获胜者",
+    "meanings": [
+      "获胜者"
+    ],
+    "previousMeanings": [
+      "征服者"
+    ]
+  },
+  "pôle": {
+    "fr": "Il a exploré la région aux alentours du pôle Sud.",
+    "meaning": "极点",
+    "meanings": [
+      "极点",
+      "中心"
+    ],
+    "previousMeanings": [
+      "中心"
+    ]
+  },
+  "liaison": {
+    "fr": "Il y a une liaison aérienne entre Tokyo et Moscou.",
+    "meaning": "联系，连接",
+    "meanings": [
+      "联系，连接",
+      "连读",
+      "私情"
+    ],
+    "previousMeanings": [
+      "环"
+    ]
+  },
+  "sauce": {
+    "fr": "Dans le monde, il n'existe aucune sauce comparable à la faim.",
+    "meaning": "酱汁，调味汁",
+    "meanings": [
+      "酱汁，调味汁"
+    ],
+    "previousMeanings": [
+      "酱油"
+    ]
+  },
+  "exercer": {
+    "fr": "Elle passe beaucoup de temps à exercer son piano.",
+    "meaning": "练习",
+    "meanings": [
+      "从事，行使",
+      "施加",
+      "锻炼",
+      "练习，训练"
+    ],
+    "previousMeanings": [
+      "教"
+    ]
+  },
+  "rive": {
+    "fr": "Le bateau a jeté l'ancre près de la rive.",
+    "meaning": "岸，河岸",
+    "meanings": [
+      "岸，河岸"
+    ],
+    "previousMeanings": [
+      "银行"
+    ]
+  },
+  "entourage": {
+    "fr": "Sois gentil avec ton entourage.",
+    "meaning": "周围的人",
+    "meanings": [
+      "周围的人",
+      "亲友，随从"
+    ],
+    "previousMeanings": [
+      "装饰"
+    ]
+  },
+  "recul": {
+    "fr": "L'entreprise escomptait en fait un léger recul au troisième trimestre, mais a cependant dépassé les attentes et même réalisé un bénéfice.",
+    "meaning": "下降",
+    "meanings": [
+      "后退",
+      "退缩",
+      "距离",
+      "下降，衰退"
+    ],
+    "previousMeanings": [
+      "休息寓所"
+    ]
+  },
+  "tirage": {
+    "fr": "Il travaille pour un grand journal dont le tirage est très élevé.",
+    "meaning": "印数",
+    "meanings": [
+      "抽取，抽签",
+      "印刷数量",
+      "冲洗照片"
+    ],
+    "previousMeanings": [
+      "图画"
+    ]
+  },
+  "logo": {
+    "fr": "J'aime le logo de Tatoeba.",
+    "meaning": "标志，商标",
+    "meanings": [
+      "标志，商标"
+    ],
+    "previousMeanings": [
+      "连合活字"
+    ]
+  },
+  "rendement": {
+    "fr": "Grâce à l'innovation technologique, le maximum de rendement de l'usine a doublé.",
+    "meaning": "产量",
+    "meanings": [
+      "产量",
+      "效率",
+      "收益率"
+    ],
+    "previousMeanings": [
+      "制造"
+    ]
+  },
+  "stock": {
+    "fr": "Tous les pull-overs de ce type sont en rupture de stock en ce moment. Nous les commanderons à la boutique principale à Tokyo.",
+    "meaning": "库存",
+    "meanings": [
+      "库存",
+      "储备"
+    ],
+    "previousMeanings": [
+      "树干"
+    ]
+  },
+  "trimestre": {
+    "fr": "Il regretta d'avoir été paresseux le trimestre dernier.",
+    "meaning": "学期",
+    "meanings": [
+      "三个月，季度",
+      "学期"
+    ],
+    "previousMeanings": [
+      "四分之一"
+    ]
+  },
+  "grille": {
+    "fr": "Attachez la grille s'il vous plait.",
+    "meaning": "栅栏，格栅",
+    "meanings": [
+      "栅栏，格栅",
+      "烤架",
+      "表格"
+    ],
+    "previousMeanings": [
+      "马齿龈"
+    ]
+  },
+  "messe": {
+    "fr": "La messe est dite.",
+    "meaning": "弥撒",
+    "meanings": [
+      "弥撒"
+    ],
+    "previousMeanings": [
+      "块"
+    ]
+  },
+  "house": {
+    "fr": "Nous jouions souvent de la house dans le parc.",
+    "meaning": "浩室音乐",
+    "meanings": [
+      "浩室音乐"
+    ],
+    "previousMeanings": [
+      "家庭音乐"
+    ]
+  },
+  "ranger": {
+    "fr": "Je dois ranger ma chambre.",
+    "meaning": "整理，收拾",
+    "meanings": [
+      "整理，收拾",
+      "排列",
+      "归类"
+    ],
+    "previousMeanings": [
+      "命令"
+    ]
+  },
+  "rap": {
+    "fr": "Tu aimes le rap ?",
+    "meaning": "说唱音乐",
+    "meanings": [
+      "说唱音乐"
+    ],
+    "previousMeanings": [
+      "轻敲"
+    ]
+  },
+  "stockage": {
+    "fr": "Le problème du stockage des déchets nucléaires n'a pas été évoqué au cours de la conférence de presse.",
+    "meaning": "储存，存储",
+    "meanings": [
+      "储存，存储"
+    ],
+    "previousMeanings": [
+      "存储器"
+    ]
+  },
+  "métrage": {
+    "fr": "Ce très court métrage te présentera neuf couleurs. Lis « sept » au lieu de « neuf », si tu es d'avis que le noir et le blanc ne sont pas des couleurs.",
+    "meaning": "影片长度",
+    "meanings": [
+      "以米计的长度",
+      "影片长度"
+    ],
+    "previousMeanings": [
+      "英尺长度"
+    ]
+  },
+  "maquillage": {
+    "fr": "Je n'arrive pas à trouver mon nécessaire de maquillage.",
+    "meaning": "化妆",
+    "meanings": [
+      "化妆",
+      "化妆品",
+      "掩饰"
+    ],
+    "previousMeanings": [
+      "组成"
+    ]
+  },
+  "resto": {
+    "fr": "Je sais pas ce que j'ai, c'est peut-être le resto d'hier, j'ai passé la matinée à dégobiller.",
+    "meaning": "餐馆",
+    "meanings": [
+      "餐馆"
+    ],
+    "previousMeanings": [
+      "余额"
+    ]
+  },
+  "relief": {
+    "fr": "Le relief plat de cette plaine démontre qu'il n'y a eu aucune activité sismique dans la région depuis des millénaires.",
+    "meaning": "地形，起伏",
+    "meanings": [
+      "地形，起伏",
+      "浮雕",
+      "突出"
+    ],
+    "previousMeanings": [
+      "发射"
+    ]
+  },
+  "affection": {
+    "fr": "Il a une profonde affection pour son fils.",
+    "meaning": "感情，喜爱",
+    "meanings": [
+      "感情，喜爱",
+      "疾病"
+    ],
+    "previousMeanings": [
+      "影响"
+    ]
+  },
+  "stand": {
+    "fr": "Tom va au stand, parce qu'il veut voir l'auteur.",
+    "meaning": "展台，摊位",
+    "meanings": [
+      "展台，摊位",
+      "看台"
+    ],
+    "previousMeanings": [
+      "站立"
+    ]
+  },
+  "set": {
+    "fr": "Ils ont fait un set d'une heure seulement, mais on est resté scotchés.",
+    "meaning": "一场演出",
+    "meanings": [
+      "一盘，一局",
+      "一组",
+      "一场演出"
+    ],
+    "previousMeanings": [
+      "日落"
+    ]
+  },
+  "embauche": {
+    "fr": "Une cravate classique est préférable à une cravate criarde pour un entretien d'embauche.",
+    "meaning": "雇用，招聘",
+    "meanings": [
+      "雇用，招聘"
+    ],
+    "previousMeanings": [
+      "空"
+    ]
+  },
+  "dérive": {
+    "fr": "La petite partira à la dérive si personne ne s'en préoccupe trop.",
+    "meaning": "误入歧途",
+    "meanings": [
+      "漂移，漂流",
+      "偏离",
+      "偏离正轨，误入歧途"
+    ],
+    "previousMeanings": [
+      "漂流物"
+    ]
+  },
+  "dégueulasse": {
+    "fr": "Le café est dégueulasse.",
+    "meaning": "恶心的",
+    "meanings": [
+      "恶心的",
+      "肮脏的",
+      "卑劣的"
+    ],
+    "previousMeanings": [
+      "凉爽的"
+    ]
+  },
+  "relance": {
+    "fr": "L'assurance profita de la relance de la conjoncture.",
+    "meaning": "复苏",
+    "meanings": [
+      "重新启动",
+      "催促，催款",
+      "复苏"
+    ],
+    "previousMeanings": [
+      "提醒的人"
+    ]
+  },
+  "définitif": {
+    "fr": "Nous publierons l'ordre du jour définitif le matin du lundi 20 janvier, donc répondez rapidement, s'il vous plait.",
+    "meaning": "最终的",
+    "meanings": [
+      "最终的",
+      "永久的"
+    ],
+    "previousMeanings": [
+      "限定的"
+    ]
+  },
+  "vaccin": {
+    "fr": "Je dois recevoir un vaccin.",
+    "meaning": "疫苗",
+    "meanings": [
+      "疫苗"
+    ],
+    "previousMeanings": [
+      "牛痘苗"
+    ]
+  },
+  "mutation": {
+    "fr": "N'oublions pas d'accélérer la mutation des gares en carrefour de l'intermodalité, lieux de communication, d'échange et de citoyenneté.",
+    "meaning": "转型",
+    "meanings": [
+      "变动，调动",
+      "突变",
+      "转型"
+    ],
+    "previousMeanings": [
+      "代替"
+    ]
+  },
+  "slogan": {
+    "fr": "Ce slogan a fait un tabac.",
+    "meaning": "口号",
+    "meanings": [
+      "口号",
+      "广告语"
+    ],
+    "previousMeanings": [
+      "呐喊声"
+    ]
+  },
+  "spectaculaire": {
+    "fr": "Les festivités culminèrent dans une représentation spectaculaire de feux d'artifice.",
+    "meaning": "壮观的",
+    "meanings": [
+      "壮观的",
+      "引人注目的"
+    ],
+    "previousMeanings": [
+      "公开展示的"
+    ]
+  },
+  "poker": {
+    "fr": "Au poker, un brelan bat deux paires.",
+    "meaning": "扑克游戏",
+    "meanings": [
+      "扑克游戏"
+    ],
+    "previousMeanings": [
+      "戳的人"
+    ]
+  },
+  "rappeur": {
+    "fr": "Un rappeur sans bling-bling est comme un pape sans crucifix.",
+    "meaning": "说唱歌手",
+    "meanings": [
+      "说唱歌手"
+    ],
+    "previousMeanings": [
+      "敲门人"
+    ]
+  },
+  "missile": {
+    "fr": "Mieux vaut tendre une branche d'olivier que de lancer un missile.",
+    "meaning": "导弹",
+    "meanings": [
+      "导弹"
+    ],
+    "previousMeanings": [
+      "发射物"
+    ]
+  },
+  "square": {
+    "fr": "Excusez-moi, ce train va-t-il à Washington Square ?",
+    "meaning": "街心花园，小广场",
+    "meanings": [
+      "街心花园，小广场"
+    ],
+    "previousMeanings": [
+      "正方形"
+    ]
+  },
+  "randonnée": {
+    "fr": "Le mauvais temps a bouleversé nos plans de sortie en randonnée.",
+    "meaning": "徒步旅行",
+    "meanings": [
+      "徒步旅行",
+      "远足"
+    ],
+    "previousMeanings": [
+      "走"
+    ]
+  },
+  "store": {
+    "fr": "Il y avait un store au-dessus du trottoir.",
+    "meaning": "卷帘，百叶窗",
+    "meanings": [
+      "卷帘，百叶窗"
+    ],
+    "previousMeanings": [
+      "蒙蔽物"
+    ]
+  },
+  "drone": {
+    "fr": "Il a été tué par un drone dans les zones tribales du pays.",
+    "meaning": "无人机",
+    "meanings": [
+      "无人机",
+      "雄蜂"
+    ],
+    "previousMeanings": [
+      "雄蜂"
+    ]
+  },
+  "sinistre": {
+    "fr": "D'après l'expression sinistre du docteur, il était clair qu'il avait de sombres nouvelles pour le patient.",
+    "meaning": "阴森的，可怕的",
+    "meanings": [
+      "阴森的，可怕的",
+      "灾祸，事故"
+    ],
+    "previousMeanings": [
+      "容易受惊的"
+    ]
+  },
+  "vitrine": {
+    "fr": "Ne touchez pas les objets en vitrine.",
+    "meaning": "橱窗",
+    "meanings": [
+      "橱窗",
+      "展示柜"
+    ],
+    "previousMeanings": [
+      "买东西"
+    ]
+  },
+  "partition": {
+    "fr": "Durant les ères baroque et classique, les contrebasses doublaient habituellement la partition au violoncelle.",
+    "meaning": "乐谱",
+    "meanings": [
+      "乐谱",
+      "分割"
+    ],
+    "previousMeanings": [
+      "得分"
+    ]
+  },
+  "pipi": {
+    "fr": "Je ne peux plus me retenir de faire pipi.",
+    "meaning": "尿，小便",
+    "meanings": [
+      "尿，小便"
+    ],
+    "previousMeanings": [
+      "一点点"
+    ]
+  },
+  "protestation": {
+    "fr": "Ces mouvements de protestation ont le mérite d'attirer l'attention sur des pratiques arbitraires.",
+    "meaning": "抗议",
+    "meanings": [
+      "抗议"
+    ],
+    "previousMeanings": [
+      "准许进入"
+    ]
+  },
+  "tram": {
+    "fr": "À Montpellier j'étais réveillé tous les jours par le bruit métallique du tram sur les rails.",
+    "meaning": "有轨电车",
+    "meanings": [
+      "有轨电车"
+    ],
+    "previousMeanings": [
+      "电车轨道"
+    ]
+  },
+  "tramway": {
+    "fr": "La ville a décidé de supprimer le tramway.",
+    "meaning": "有轨电车",
+    "meanings": [
+      "有轨电车"
+    ],
+    "previousMeanings": [
+      "电车轨道"
+    ]
+  },
+  "dunkerque": {
+    "fr": "L'armée britannique était bloquée à Dunkerque.",
+    "meaning": "敦刻尔克",
+    "meanings": [
+      "敦刻尔克"
+    ],
+    "previousMeanings": [
+      "橱柜"
+    ]
+  },
+  "sentence": {
+    "fr": "Le vendeur de drogue condamné à mort était disposé à coopérer avec les autorités pour voir sa sentence réduite à la peine à perpétuité.",
+    "meaning": "判决",
+    "meanings": [
+      "判决",
+      "格言"
+    ],
+    "previousMeanings": [
+      "句子"
+    ]
+  },
+  "western": {
+    "fr": "As-tu regardé le western, hier soir à la télévision ?",
+    "meaning": "西部片",
+    "meanings": [
+      "西部片"
+    ],
+    "previousMeanings": [
+      "西方人"
+    ]
+  },
+  "obus": {
+    "fr": "Cette église fut détruite par un tir d'obus.",
+    "meaning": "炮弹",
+    "meanings": [
+      "炮弹"
+    ],
+    "previousMeanings": [
+      "贝壳"
+    ]
+  },
+  "stocker": {
+    "fr": "S'il vous plait demandez à la secrétaire de stocker les fournitures de bureau à la réserve.",
+    "meaning": "储存，存放",
+    "meanings": [
+      "储存，存放"
+    ],
+    "previousMeanings": [
+      "装把手于"
+    ]
+  },
+  "sensé": {
+    "fr": "Un homme sensé devrait avoir honte d'une telle conduite.",
+    "meaning": "明智的，合理的",
+    "meanings": [
+      "明智的，合理的"
+    ],
+    "previousMeanings": [
+      "有感觉的"
+    ]
+  },
+  "dynamisme": {
+    "fr": "L'énergie et le dynamisme sont des qualités des hommes que l'on voit souvent célébrer pour la première fois lors de leur mise à la retraite.",
+    "meaning": "活力，干劲",
+    "meanings": [
+      "活力，干劲"
+    ],
+    "previousMeanings": [
+      "物力论"
+    ]
+  },
+  "soja": {
+    "fr": "Ajoutez le yaourt nature et le lait de soja.",
+    "meaning": "大豆，黄豆",
+    "meanings": [
+      "大豆，黄豆"
+    ],
+    "previousMeanings": [
+      "酱油"
+    ]
+  },
+  "trésorerie": {
+    "fr": "En ce moment, je suis un peu juste côté trésorerie.",
+    "meaning": "现金状况",
+    "meanings": [
+      "财务部门",
+      "现金状况"
+    ],
+    "previousMeanings": [
+      "司库的职位"
+    ]
+  },
+  "interrogation": {
+    "fr": "Il garda le silence pendant tout le temps de l'interrogation.",
+    "meaning": "审问",
+    "meanings": [
+      "提问，疑问",
+      "测验",
+      "审讯",
+      "审问"
+    ],
+    "previousMeanings": [
+      "疑问词"
+    ]
+  },
+  "latitude": {
+    "fr": "La Tasmanie se situe sur le 40e degré de latitude sud.",
+    "meaning": "纬度",
+    "meanings": [
+      "纬度",
+      "自由，余地"
+    ],
+    "previousMeanings": [
+      "扩充"
+    ]
+  },
+  "légèreté": {
+    "fr": "Tu as fait preuve d'une légèreté coupable.",
+    "meaning": "轻率",
+    "meanings": [
+      "轻，轻盈",
+      "轻率"
+    ],
+    "previousMeanings": [
+      "光亮度"
+    ]
+  },
+  "enthousiaste": {
+    "fr": "Il a caché ses émotions et a prétendu être enthousiaste.",
+    "meaning": "热情的",
+    "meanings": [
+      "热情的",
+      "热心的，热衷的"
+    ],
+    "previousMeanings": [
+      "得到灵感的"
+    ]
+  },
+  "préavis": {
+    "fr": "J'ai été licencié sans préavis.",
+    "meaning": "预先通知",
+    "meanings": [
+      "预先通知",
+      "通知期"
+    ],
+    "previousMeanings": [
+      "注意"
+    ]
+  },
+  "rallye": {
+    "fr": "Elles ont participé au rallye.",
+    "meaning": "拉力赛",
+    "meanings": [
+      "拉力赛",
+      "集会"
+    ],
+    "previousMeanings": [
+      "重振旗鼓"
+    ]
+  },
+  "crucial": {
+    "fr": "Le point crucial de son argumentation se trouve à la page cinquante-six.",
+    "meaning": "至关重要的",
+    "meanings": [
+      "至关重要的",
+      "决定性的"
+    ],
+    "previousMeanings": [
+      "十字形的"
+    ]
+  },
+  "patriarche": {
+    "fr": "Les choses les plus froides dans la maison: les genoux du patriarche et le nez du chien.",
+    "meaning": "族长，家长",
+    "meanings": [
+      "族长，家长",
+      "宗主教"
+    ],
+    "previousMeanings": [
+      "创办人"
+    ]
+  },
+  "primordial": {
+    "fr": "Il est primordial que tout le monde soit mis au courant des faits.",
+    "meaning": "首要的，根本的",
+    "meanings": [
+      "首要的，根本的",
+      "原始的"
+    ],
+    "previousMeanings": [
+      "原始的"
+    ]
+  },
+  "simplification": {
+    "fr": "85 % de la population mondiale approuve la nouvelle loi internationale de simplification de la langue anglaise.",
+    "meaning": "简化",
+    "meanings": [
+      "简化"
+    ],
+    "previousMeanings": [
+      "单一化"
+    ]
+  },
+  "texture": {
+    "fr": "La texture granuleuse de cette purée de pommes de terre est fort déplaisante.",
+    "meaning": "质地，纹理",
+    "meanings": [
+      "质地，纹理"
+    ],
+    "previousMeanings": [
+      "(织物的)密度"
+    ]
+  },
+  "devis": {
+    "fr": "Nous avons besoin d'un devis ferme pour lundi.",
+    "meaning": "报价单，估价单",
+    "meanings": [
+      "报价单，估价单"
+    ],
+    "previousMeanings": [
+      "引用"
+    ]
+  },
+  "fièrement": {
+    "fr": "Les drapeaux du monde flottent fièrement devant le siège des Nations Unies.",
+    "meaning": "自豪地",
+    "meanings": [
+      "自豪地",
+      "骄傲地"
+    ],
+    "previousMeanings": [
+      "傲慢地"
+    ]
+  },
+  "épave": {
+    "fr": "L'épave est éparpillée sur une grande étendue.",
+    "meaning": "残骸",
+    "meanings": [
+      "残骸",
+      "失事船只"
+    ],
+    "previousMeanings": [
+      "失事"
+    ]
+  },
+  "valet": {
+    "fr": "Le général me montra les cartes qu'il tenait en mains : Roi de Pic, Dame de Pic et Valet de Carreau.",
+    "meaning": "纸牌中的杰克",
+    "meanings": [
+      "男仆",
+      "侍从",
+      "纸牌中的杰克"
+    ],
+    "previousMeanings": [
+      "插座"
+    ]
+  },
+  "muse": {
+    "fr": "« Des romans ? Je hais les romans. » Oh muse, pardonne son blasphème.",
+    "meaning": "缪斯",
+    "meanings": [
+      "缪斯",
+      "灵感的源泉"
+    ],
+    "previousMeanings": [
+      "沉思"
+    ]
+  },
+  "mouture": {
+    "fr": "Chez nous, la mouture des olives est réalisée lorqu'elles sont encore vertes.",
+    "meaning": "研磨",
+    "meanings": [
+      "研磨",
+      "版本"
+    ],
+    "previousMeanings": [
+      "一种描述"
+    ]
+  },
+  "mouton": {
+    "fr": "Le garçon est un loup déguisé en mouton.",
+    "meaning": "绵羊",
+    "meanings": [
+      "绵羊",
+      "羊肉"
+    ],
+    "previousMeanings": [
+      "绵羊",
+      "羊肉",
+      "盲从者",
+      "一种金币"
+    ]
+  },
+  "pognon": {
+    "fr": "Un conseil ne me sert à rien. Je veux du pognon.",
+    "meaning": "钱",
+    "meanings": [
+      "钱"
+    ],
+    "previousMeanings": [
+      "生面团"
+    ]
+  },
+  "inflammation": {
+    "fr": "Il y a environ quatre ans mon tendon d'Achille commença à me faire mal et on m'a dit qu'il s'agissait d'une inflammation du tendon d'Achille.",
+    "meaning": "炎症",
+    "meanings": [
+      "炎症",
+      "燃烧"
+    ],
+    "previousMeanings": [
+      "怒火"
+    ]
+  },
+  "emmerder": {
+    "fr": "T'arrives déjà pas à trouver ton point G, tu vas pas m'emmerder avec un pauvre point d'exclamation !",
+    "meaning": "惹恼，烦扰",
+    "meanings": [
+      "惹恼，烦扰"
+    ],
+    "previousMeanings": [
+      "装防盗报警器"
+    ]
+  },
+  "translation": {
+    "fr": "La mesure de Lebesgue est invariante par translation.",
+    "meaning": "平移",
+    "meanings": [
+      "平移",
+      "转移"
+    ],
+    "previousMeanings": [
+      "翻译"
+    ]
+  },
+  "rivage": {
+    "fr": "J'ai vu le rivage au loin.",
+    "meaning": "岸，海岸",
+    "meanings": [
+      "岸，海岸"
+    ],
+    "previousMeanings": [
+      "银行"
+    ]
+  },
+  "pion": {
+    "fr": "Méfie-toi du pion.",
+    "meaning": "监学员",
+    "meanings": [
+      "棋子",
+      "监学员"
+    ],
+    "previousMeanings": [
+      "典当"
+    ]
+  },
+  "sillage": {
+    "fr": "La tornade laissa une traînée de destruction dans son sillage.",
+    "meaning": "所经之处",
+    "meanings": [
+      "航迹，尾迹",
+      "足迹，影响",
+      "所经之处"
+    ],
+    "previousMeanings": [
+      "守侯"
+    ]
+  },
+  "legs": {
+    "fr": "Vers la fin de sa vie, il a commencé à être très préoccupé par le legs qu'il laisserait derrière lui.",
+    "meaning": "遗赠，遗产",
+    "meanings": [
+      "遗赠，遗产"
+    ],
+    "previousMeanings": [
+      "遗传"
+    ]
+  },
+  "modélisation": {
+    "fr": "La technologie des supercalculateurs exascale accélère la modélisation des armes nucléaires.",
+    "meaning": "建模",
+    "meanings": [
+      "建模"
+    ],
+    "previousMeanings": [
+      "模特儿职业"
+    ]
+  },
+  "merdier": {
+    "fr": "Je pense qu'il est temps que je m'éloigne de ce merdier.",
+    "meaning": "混乱局面",
+    "meanings": [
+      "混乱局面",
+      "烂摊子"
+    ],
+    "previousMeanings": [
+      "食堂"
+    ]
+  },
+  "génétiquement": {
+    "fr": "De nombreux consommateurs s'inquiètent des risques sanitaires de la nourriture génétiquement modifiée.",
+    "meaning": "从遗传学上",
+    "meanings": [
+      "从遗传学上"
+    ],
+    "previousMeanings": [
+      "创始"
+    ]
+  },
+  "dater": {
+    "fr": "Il est très dur de dater ce vase.",
+    "meaning": "确定年代",
+    "meanings": [
+      "注明日期",
+      "确定年代",
+      "始于"
+    ],
+    "previousMeanings": [
+      "约会"
+    ]
+  },
+  "qualificatif": {
+    "fr": "Un \"qualificatif\" a pour but, comme son nom l'indique, d'embellir une phrase.",
+    "meaning": "修饰语",
+    "meanings": [
+      "形容的",
+      "修饰语"
+    ],
+    "previousMeanings": [
+      "取得资格的人"
+    ]
+  },
+  "prospectus": {
+    "fr": "Je jetai un œil dans le prospectus.",
+    "meaning": "广告传单",
+    "meanings": [
+      "广告传单",
+      "说明书"
+    ],
+    "previousMeanings": [
+      "创办计划书"
+    ]
+  },
+  "traquer": {
+    "fr": "Il aime se livrer à des activités macabres comme la dissection de cadavres d'animaux, ou traquer des personnes dans la rue la nuit.",
+    "meaning": "追捕，追踪",
+    "meanings": [
+      "追捕，追踪"
+    ],
+    "previousMeanings": [
+      "循路而行"
+    ]
+  },
+  "virilité": {
+    "fr": "Personne n'est plus arrogant envers les femmes, plus agressif ou méprisant, qu'un homme inquiet pour sa virilité.",
+    "meaning": "男子气概",
+    "meanings": [
+      "男子气概",
+      "男性特征"
+    ],
+    "previousMeanings": [
+      "成年"
+    ]
+  },
+  "laps": {
+    "fr": "C’est effrayant ce qu’on vieillit entre deux Expositions Universelles, surtout lorsqu’elles sont séparées par un laps considérable.",
+    "meaning": "一段时间",
+    "meanings": [
+      "一段时间"
+    ],
+    "previousMeanings": [
+      "过失"
+    ]
+  },
+  "obstruction": {
+    "fr": "Toute obstruction au déroulement de la procédure de faillite constitue une fraude.",
+    "meaning": "阻碍，堵塞",
+    "meanings": [
+      "阻碍，堵塞"
+    ],
+    "previousMeanings": [
+      "街区"
+    ]
+  },
+  "succursale": {
+    "fr": "Son collègue a été transféré dans une succursale à l'étranger.",
+    "meaning": "分店，分支机构",
+    "meanings": [
+      "分店，分支机构"
+    ],
+    "previousMeanings": [
+      "树枝"
+    ]
+  },
+  "injure": {
+    "fr": "Pourquoi lave-t-on une injure alors qu'on essuie un affront ?",
+    "meaning": "侮辱，辱骂",
+    "meanings": [
+      "侮辱，辱骂"
+    ],
+    "previousMeanings": [
+      "犯罪"
+    ]
+  },
+  "antan": {
+    "fr": "La pièce baignait dans une atmosphère d'antan empreinte de myrrhe et de santal.",
+    "meaning": "昔日，往昔",
+    "meanings": [
+      "昔日，往昔"
+    ],
+    "previousMeanings": [
+      "去年"
+    ]
+  },
+  "standing": {
+    "fr": "Elle habite un appartement de grand standing en bordure de la place Grelot.",
+    "meaning": "档次，水准",
+    "meanings": [
+      "档次，水准"
+    ],
+    "previousMeanings": [
+      "起立"
+    ]
+  },
+  "reddition": {
+    "fr": "La garnison fut contrainte à la reddition.",
+    "meaning": "投降",
+    "meanings": [
+      "投降",
+      "交还"
+    ],
+    "previousMeanings": [
+      "付还"
+    ]
+  },
+  "projecteur": {
+    "fr": "Le projecteur ne marche pas.",
+    "meaning": "投影仪",
+    "meanings": [
+      "投影仪",
+      "聚光灯"
+    ],
+    "previousMeanings": [
+      "计划人"
+    ]
+  },
+  "roulette": {
+    "fr": "Il y a des circonstances où il faut s’abstenir de jouer à la bourse, aux courses, au baccarat ou à la roulette : primo, quand on n’a pas les moyens et secundo, quand on les a.",
+    "meaning": "轮盘赌",
+    "meanings": [
+      "轮盘赌",
+      "小轮"
+    ],
+    "previousMeanings": [
+      "投手"
+    ]
+  },
+  "hélice": {
+    "fr": "Les avions à réaction volent beaucoup plus vite que les avions à hélice.",
+    "meaning": "螺旋桨",
+    "meanings": [
+      "螺旋桨",
+      "螺旋"
+    ],
+    "previousMeanings": [
+      "螺旋"
+    ]
+  },
+  "onglet": {
+    "fr": "Tu dois fermer cet onglet et en ouvrir un autre. Clique là.",
+    "meaning": "选项卡",
+    "meanings": [
+      "选项卡",
+      "标签"
+    ],
+    "previousMeanings": [
+      "制表(键)"
+    ]
+  },
+  "ozone": {
+    "fr": "Nous serions en danger s'il n'y avait pas la couche d'ozone.",
+    "meaning": "臭氧",
+    "meanings": [
+      "臭氧"
+    ],
+    "previousMeanings": [
+      "新鲜的空气"
+    ]
+  },
+  "ébauche": {
+    "fr": "C'est une ébauche du traité de paix.",
+    "meaning": "草稿，初稿",
+    "meanings": [
+      "草稿，初稿",
+      "雏形"
+    ],
+    "previousMeanings": [
+      "气流"
+    ]
+  },
+  "électricien": {
+    "fr": "Je suis électricien.",
+    "meaning": "电工",
+    "meanings": [
+      "电工"
+    ],
+    "previousMeanings": [
+      "电学家"
+    ]
+  },
+  "pourboire": {
+    "fr": "Combien donne-t-on en pourboire en Espagne ?",
+    "meaning": "小费",
+    "meanings": [
+      "小费"
+    ],
+    "previousMeanings": [
+      "顶"
+    ]
+  },
+  "étui": {
+    "fr": "J'ai toujours un coupe-ongle dans mon étui de guitare.",
+    "meaning": "盒，套",
+    "meanings": [
+      "盒，套"
+    ],
+    "previousMeanings": [
+      "情形"
+    ]
+  },
+  "lustre": {
+    "fr": "Si vous ne maintenez pas l'argenterie astiquée, elle perdra son lustre.",
+    "meaning": "光泽",
+    "meanings": [
+      "吊灯",
+      "光泽",
+      "五年"
+    ],
+    "previousMeanings": [
+      "人口普查"
+    ]
+  },
+  "placebo": {
+    "fr": "Ça n'est qu'un placebo.",
+    "meaning": "安慰剂",
+    "meanings": [
+      "安慰剂"
+    ],
+    "previousMeanings": [
+      "(为死者所诵的)晚祷歌"
+    ]
+  },
+  "traiteur": {
+    "fr": "Pour le repas du mariage, on a fait appel à un traiteur.",
+    "meaning": "宴席承办商",
+    "meanings": [
+      "熟食商",
+      "宴席承办商"
+    ],
+    "previousMeanings": [
+      "(Traiteur)人名"
+    ]
+  },
+  "ténor": {
+    "fr": "Ces deux frères sont respectivement ténor et baryton d'opéra.",
+    "meaning": "男高音",
+    "meanings": [
+      "男高音",
+      "领军人物"
+    ],
+    "previousMeanings": [
+      "稳定的进程"
+    ]
+  },
+  "malice": {
+    "fr": "Il m'a poussé par hasard, et non par malice.",
+    "meaning": "恶意",
+    "meanings": [
+      "狡黠",
+      "恶意"
+    ],
+    "previousMeanings": [
+      "损害"
+    ]
+  },
+  "piquant": {
+    "fr": "Le travail est peut-être doux, mais pas piquant.",
+    "meaning": "有趣的",
+    "meanings": [
+      "辛辣的",
+      "尖锐的",
+      "有趣的"
+    ],
+    "previousMeanings": [
+      "大钉一般的"
+    ]
+  },
+  "habitacle": {
+    "fr": "Ça s'était logé dans l'habitacle.",
+    "meaning": "驾驶舱",
+    "meanings": [
+      "驾驶舱",
+      "座舱"
+    ],
+    "previousMeanings": [
+      "居住"
+    ]
+  },
+  "flan": {
+    "fr": "Peter a dit que ce flan était trop sucré.",
+    "meaning": "奶蛋饼",
+    "meanings": [
+      "奶蛋饼",
+      "金属坯"
+    ],
+    "previousMeanings": [
+      "造币用金属坯"
+    ]
+  },
+  "plomberie": {
+    "fr": "Il travaille pour une société de plomberie.",
+    "meaning": "管道工程",
+    "meanings": [
+      "管道工程",
+      "管道系统"
+    ],
+    "previousMeanings": [
+      "测深"
+    ]
+  },
+  "transpiration": {
+    "fr": "Le génie c'est 1 pour cent d'inspiration et 99 pour cent de transpiration.",
+    "meaning": "出汗",
+    "meanings": [
+      "出汗",
+      "蒸腾作用"
+    ],
+    "previousMeanings": [
+      "蒸发"
+    ]
+  },
+  "vidange": {
+    "fr": "Il faudrait faire la vidange avant de passer le contrôle technique.",
+    "meaning": "更换机油",
+    "meanings": [
+      "排空",
+      "更换机油"
+    ],
+    "previousMeanings": [
+      "垃圾"
+    ]
+  },
+  "décrochage": {
+    "fr": "L'avion perd sa portance, c'est un décrochage.",
+    "meaning": "失速",
+    "meanings": [
+      "脱落",
+      "脱离，失联",
+      "失速"
+    ],
+    "previousMeanings": [
+      "厩"
+    ]
+  },
+  "immuable": {
+    "fr": "La modernité, c'est le transitoire, le fugitif, le contingent, la moitié de l'art, dont l'autre moitié est l'éternel et l'immuable.",
+    "meaning": "不变的，恒定的",
+    "meanings": [
+      "不变的，恒定的"
+    ],
+    "previousMeanings": [
+      "无能力的"
+    ]
+  },
+  "sole": {
+    "fr": "La sole avant de mourir laisse à ses enfants cet héritage inestimable : sois plat !",
+    "meaning": "鳎鱼",
+    "meanings": [
+      "鳎鱼",
+      "底面"
+    ],
+    "previousMeanings": [
+      "脚掌"
+    ]
+  },
+  "houle": {
+    "fr": "En plus d'un brouillard épais, il y avait une forte houle.",
+    "meaning": "涌浪",
+    "meanings": [
+      "涌浪"
+    ],
+    "previousMeanings": [
+      "增大"
+    ]
+  },
+  "lieue": {
+    "fr": "La lieue a comme origine la distance que peut parcourir un homme ou un cheval en une heure.",
+    "meaning": "里格，一种旧长度单位",
+    "meanings": [
+      "里格，一种旧长度单位"
+    ],
+    "previousMeanings": [
+      "同盟"
+    ]
+  },
+  "exhaustif": {
+    "fr": "Avez-vous subi un contrôle médical exhaustif lors de l'année écoulée ?",
+    "meaning": "详尽的，全面的",
+    "meanings": [
+      "详尽的，全面的"
+    ],
+    "previousMeanings": [
+      "消耗的"
+    ]
+  },
+  "récital": {
+    "fr": "Madame Green, de qui mes enfants reçoivent des leçons de chant, tiendra un récital dimanche prochain.",
+    "meaning": "独唱会",
+    "meanings": [
+      "独奏会，独唱会"
+    ],
+    "previousMeanings": [
+      "背诵"
+    ]
+  },
+  "duvet": {
+    "fr": "Nana était toute velue, un duvet de rousse faisait de son corps un velours.",
+    "meaning": "绒毛",
+    "meanings": [
+      "绒毛",
+      "羽绒被，睡袋"
+    ],
+    "previousMeanings": [
+      "丘陵"
+    ]
+  },
+  "pulsion": {
+    "fr": "J'eus la pulsion d'hurler fort.",
+    "meaning": "冲动，欲望",
+    "meanings": [
+      "冲动，欲望"
+    ],
+    "previousMeanings": [
+      "驾车"
+    ]
+  },
+  "embrayage": {
+    "fr": "La voiture s'est arrêtée parce que tu n'as pas appuyé sur l'embrayage.",
+    "meaning": "离合器",
+    "meanings": [
+      "离合器"
+    ],
+    "previousMeanings": [
+      "抓紧"
+    ]
+  },
+  "soute": {
+    "fr": "L'héroïne, les policiers l'ont trouvée, au cours d'un contrôle de routine, dans le double-fond d'une soute de camion.",
+    "meaning": "货舱",
+    "meanings": [
+      "货舱",
+      "行李舱"
+    ],
+    "previousMeanings": [
+      "把握"
+    ]
+  },
+  "salve": {
+    "fr": "Quand t’es jeunot, tu pars à la guerre avec des colliers de fleurs au cou et puis tu te fais faucher par la première salve d’artillerie.",
+    "meaning": "齐射",
+    "meanings": [
+      "齐射",
+      "一阵"
+    ],
+    "previousMeanings": [
+      "保留条款"
+    ]
+  },
+  "épi": {
+    "fr": "Deux moineaux sur le même épi ne sont pas longtemps unis.",
+    "meaning": "穗，麦穗",
+    "meanings": [
+      "穗，麦穗",
+      "翘起的头发"
+    ],
+    "previousMeanings": [
+      "耳朵"
+    ]
+  },
+  "galactique": {
+    "fr": "Les êtres sensoriels, dans tout l'Empire Galactique, pouvaient envoyer des messages télépathiques à travers de grandes distances.",
+    "meaning": "银河系的",
+    "meanings": [
+      "银河系的"
+    ],
+    "previousMeanings": [
+      "乳汁的"
+    ]
+  },
+  "tique": {
+    "fr": "J'ai été mordu par une tique.",
+    "meaning": "蜱虫",
+    "meanings": [
+      "蜱虫"
+    ],
+    "previousMeanings": [
+      "滴答声"
+    ]
+  },
+  "fioul": {
+    "fr": "Elles n'avaient pas beaucoup de fioul pour le chauffage et la cuisson.",
+    "meaning": "燃油，燃料油",
+    "meanings": [
+      "燃油，燃料油"
+    ],
+    "previousMeanings": [
+      "内燃机"
+    ]
+  },
+  "fourrière": {
+    "fr": "On l'a mise en fourrière.",
+    "meaning": "扣押场，拖车场",
+    "meanings": [
+      "扣押场，拖车场",
+      "动物收容所"
+    ],
+    "previousMeanings": [
+      "磅"
+    ]
+  },
+  "tisane": {
+    "fr": "Cette tisane est très chaude.",
+    "meaning": "花草茶",
+    "meanings": [
+      "花草茶"
+    ],
+    "previousMeanings": [
+      "打"
+    ]
+  },
+  "pointure": {
+    "fr": "J'ai besoin de ces chaussures en pointure dix s'il vous plait !",
+    "meaning": "鞋码",
+    "meanings": [
+      "鞋码",
+      "尺寸",
+      "杰出人物"
+    ],
+    "previousMeanings": [
+      "主人"
+    ]
+  },
+  "traçabilité": {
+    "fr": "Les produits sont soumis à des règles de traçabilité strictes.",
+    "meaning": "可追溯性",
+    "meanings": [
+      "可追溯性"
+    ],
+    "previousMeanings": [
+      "可描绘"
+    ]
+  },
+  "équitablement": {
+    "fr": "Les professeurs doivent traiter leurs élèves équitablement.",
+    "meaning": "公平地",
+    "meanings": [
+      "公平地"
+    ],
+    "previousMeanings": [
+      "美观地"
+    ]
+  },
+  "rosaire": {
+    "fr": "Les bonnes sœurs prirent à leur ceinture le long rosaire qui pendait.",
+    "meaning": "玫瑰经",
+    "meanings": [
+      "玫瑰经",
+      "念珠"
+    ],
+    "previousMeanings": [
+      "玫瑰园"
+    ]
+  },
+  "tympan": {
+    "fr": "Le conduit auditif envoie les ondes sonores jusqu'au tympan.",
+    "meaning": "鼓膜，耳膜",
+    "meanings": [
+      "鼓膜，耳膜"
+    ],
+    "previousMeanings": [
+      "中耳"
+    ]
+  },
+  "lyre": {
+    "fr": "La femme est une lyre qui ne livre ses secrets qu’à celui qui sait en jouer.",
+    "meaning": "里拉琴",
+    "meanings": [
+      "里拉琴"
+    ],
+    "previousMeanings": [
+      "里拉(古希腊乐器)"
+    ]
+  },
+  "ratatouille": {
+    "fr": "Je voudrais une ratatouille, s'il vous plaît.",
+    "meaning": "普罗旺斯炖杂菜",
+    "meanings": [
+      "普罗旺斯炖杂菜"
+    ],
+    "previousMeanings": [
+      "打"
+    ]
+  },
+  "houblon": {
+    "fr": "La bière contient du houblon.",
+    "meaning": "啤酒花",
+    "meanings": [
+      "啤酒花"
+    ],
+    "previousMeanings": [
+      "单脚跳"
+    ]
+  },
+  "klaxon": {
+    "fr": "Le métro m'a donné un coup de klaxon ce matin.",
+    "meaning": "喇叭",
+    "meanings": [
+      "喇叭"
+    ],
+    "previousMeanings": [
+      "角"
+    ]
+  },
+  "obsolescence": {
+    "fr": "Cette obsolescence du matériel nous empêche d'innover.",
+    "meaning": "过时，淘汰",
+    "meanings": [
+      "过时，淘汰"
+    ],
+    "previousMeanings": [
+      "荒废"
+    ]
+  },
+  "obédience": {
+    "fr": "Il est de quelle obédience ?",
+    "meaning": "隶属关系",
+    "meanings": [
+      "隶属关系",
+      "教派"
+    ],
+    "previousMeanings": [
+      "说服"
+    ]
+  },
+  "liasse": {
+    "fr": "Il lui a donné une liasse d'argent.",
+    "meaning": "一叠，一捆",
+    "meanings": [
+      "一叠，一捆"
+    ],
+    "previousMeanings": [
+      "小软团"
+    ]
+  },
+  "peignoir": {
+    "fr": "Il a bien profité du peignoir.",
+    "meaning": "浴袍",
+    "meanings": [
+      "浴袍",
+      "晨衣"
+    ],
+    "previousMeanings": [
+      "岬"
+    ]
+  },
+  "airbag": {
+    "fr": "L'airbag m'a sauvé la vie.",
+    "meaning": "安全气囊",
+    "meanings": [
+      "安全气囊"
+    ],
+    "previousMeanings": [
+      "<俚>（女人的）一对乳房（用此词会冒犯女性）"
+    ]
+  },
+  "rabot": {
+    "fr": "Elle est allée acheter un rabot.",
+    "meaning": "刨子",
+    "meanings": [
+      "刨子"
+    ],
+    "previousMeanings": [
+      "平面"
+    ]
+  },
+  "planeur": {
+    "fr": "Le planeur vole au-dessus de la rivière.",
+    "meaning": "滑翔机",
+    "meanings": [
+      "滑翔机"
+    ],
+    "previousMeanings": [
+      "滑翔员"
+    ]
+  },
+  "voiturier": {
+    "fr": "Si un restaurant dispose d'un voiturier, il est probablement assez onéreux.",
+    "meaning": "代客泊车员",
+    "meanings": [
+      "代客泊车员",
+      "车夫"
+    ],
+    "previousMeanings": [
+      "贴身男仆"
+    ]
+  },
+  "moût": {
+    "fr": "Le schnaps est fait à base de moût de fruits.",
+    "meaning": "葡萄汁，麦芽汁",
+    "meanings": [
+      "葡萄汁，麦芽汁"
+    ],
+    "previousMeanings": [
+      "必须"
+    ]
+  },
+  "leasing": {
+    "fr": "Nous avons loué notre voiture en leasing. Au fond, elle appartient encore à la banque.",
+    "meaning": "租赁，融资租赁",
+    "meanings": [
+      "租赁，融资租赁"
+    ],
+    "previousMeanings": [
+      "说谎"
+    ]
+  },
+  "jonc": {
+    "fr": "Jeanneton prend sa faucille et s'en va couper du jonc.",
+    "meaning": "灯心草",
+    "meanings": [
+      "灯心草",
+      "手镯"
+    ],
+    "previousMeanings": [
+      "匆促"
+    ]
+  },
+  "lavis": {
+    "fr": "Le lavis est une technique de dessin qui permet de créer des ombrages subtils avec de l’encre diluée.",
+    "meaning": "淡彩画",
+    "meanings": [
+      "淡彩画",
+      "水墨淡彩"
+    ],
+    "previousMeanings": [
+      "脸红"
+    ]
+  },
+  "magasinage": {
+    "fr": "Lorsque vous faites le magasinage à la place de votre partenaire agoraphobe, vous renforcez involontairement sa phobie des espaces publics.",
+    "meaning": "购物",
+    "meanings": [
+      "购物",
+      "仓储"
+    ],
+    "previousMeanings": [
+      "商品储藏室"
+    ]
+  },
+  "marteler": {
+    "fr": "Arrêtez de marteler cette porte !",
+    "meaning": "锤打",
+    "meanings": [
+      "锤打",
+      "反复强调"
+    ],
+    "previousMeanings": [
+      "困扰"
+    ]
+  },
+  "jalon": {
+    "fr": "Cet événement peut être qualifié de nouveau jalon de la coopération en matière d'échange d'informations entre la Chine et le Kazakhstan.",
+    "meaning": "里程碑",
+    "meanings": [
+      "标杆",
+      "里程碑"
+    ],
+    "previousMeanings": [
+      "基础"
+    ]
+  },
+  "matou": {
+    "fr": "J'ai un matou.",
+    "meaning": "公猫",
+    "meanings": [
+      "公猫"
+    ],
+    "previousMeanings": [
+      "雄性动物"
+    ]
+  },
+  "doublon": {
+    "fr": "Cette phrase a été supprimée car il s'agissait d'un doublon.",
+    "meaning": "重复项",
+    "meanings": [
+      "重复项",
+      "重复录入",
+      "杜布隆金币"
+    ],
+    "previousMeanings": [
+      "达布隆(从前西班牙金币名称)"
+    ]
+  },
+  "mousquetaire": {
+    "fr": "Je ne paye pas ! Je suis mousquetaire.",
+    "meaning": "火枪手",
+    "meanings": [
+      "火枪手"
+    ],
+    "previousMeanings": [
+      "火枪车"
+    ]
+  },
+  "popotin": {
+    "fr": "Son frère lui tapait sur le popotin quand il était enfant.",
+    "meaning": "屁股",
+    "meanings": [
+      "屁股"
+    ],
+    "previousMeanings": [
+      "游荡者"
+    ]
+  },
+  "travelling": {
+    "fr": "Le travelling est une technique utilisée pour accompagner le mouvement des personnages.",
+    "meaning": "移动摄影",
+    "meanings": [
+      "移动摄影"
+    ],
+    "previousMeanings": [
+      "洋娃娃"
+    ]
+  },
+  "défilement": {
+    "fr": "Selon mon opinion, un site web bien conçu ne devrait pas requérir de défilement horizontal.",
+    "meaning": "滚动",
+    "meanings": [
+      "滚动",
+      "游行"
+    ],
+    "previousMeanings": [
+      "弄脏, 污秽, 污辱"
+    ]
+  },
+  "hermétiquement": {
+    "fr": "Je veux que cette pièce soit hermétiquement fermée.",
+    "meaning": "密封地",
+    "meanings": [
+      "密封地"
+    ],
+    "previousMeanings": [
+      "奥妙"
+    ]
+  },
+  "hachoir": {
+    "fr": "Le boucher affûte son hachoir.",
+    "meaning": "砍刀",
+    "meanings": [
+      "绞肉机",
+      "切碎机",
+      "砍刀"
+    ],
+    "previousMeanings": [
+      "(Mezzaluna)人名"
+    ]
+  },
+  "enfanter": {
+    "fr": "Tu es blanche, et je suis noir ; mais le jour a besoin de s’unir à la nuit pour enfanter l’aurore et le couchant, qui sont plus beaux que lui !",
+    "meaning": "生育",
+    "meanings": [
+      "生育",
+      "产生"
+    ],
+    "previousMeanings": [
+      "忍受"
+    ]
+  },
+  "égocentrisme": {
+    "fr": "Il ne peut pas supporter mon égocentrisme plus longtemps.",
+    "meaning": "自我中心主义",
+    "meanings": [
+      "自我中心主义"
+    ],
+    "previousMeanings": [
+      "self-centred的变形"
+    ]
+  },
+  "étal": {
+    "fr": "Depuis des années, il se trouve chaque mardi au marché à son étal de poisson.",
+    "meaning": "摊位，货摊",
+    "meanings": [
+      "摊位，货摊"
+    ],
+    "previousMeanings": [
+      "厩"
+    ]
+  },
+  "herse": {
+    "fr": "Ils utilisent une herse pour arrêter le fuyard.",
+    "meaning": "阻车钉带",
+    "meanings": [
+      "耙",
+      "栅门",
+      "阻车钉带"
+    ],
+    "previousMeanings": [
+      "哈罗公学"
+    ]
+  },
+  "hochet": {
+    "fr": "Le bébé secouait le hochet.",
+    "meaning": "摇铃，拨浪鼓",
+    "meanings": [
+      "摇铃，拨浪鼓"
+    ],
+    "previousMeanings": [
+      "格格声"
+    ]
+  },
+  "foufou": {
+    "fr": "Ce chien est complètement foufou !",
+    "meaning": "疯疯癫癫的",
+    "meanings": [
+      "疯疯癫癫的"
+    ],
+    "previousMeanings": [
+      "产坚果的"
+    ]
+  },
+  "lichen": {
+    "fr": "Le lichen indique une bonne qualité d'air.",
+    "meaning": "地衣",
+    "meanings": [
+      "地衣"
+    ],
+    "previousMeanings": [
+      "青苔"
+    ]
+  },
+  "minaret": {
+    "fr": "La tour de la cathédrale de Séville était auparavant un minaret.",
+    "meaning": "宣礼塔",
+    "meanings": [
+      "宣礼塔"
+    ],
+    "previousMeanings": [
+      "光塔"
+    ]
+  },
+  "surdose": {
+    "fr": "Le drogué est mort d'une surdose.",
+    "meaning": "药物过量",
+    "meanings": [
+      "药物过量"
+    ],
+    "previousMeanings": [
+      "配药量过多"
+    ]
+  },
+  "starlette": {
+    "fr": "La beauté de la starlette surpassait tous les fantasmes.",
+    "meaning": "新秀女演员",
+    "meanings": [
+      "新秀女演员"
+    ],
+    "previousMeanings": [
+      "小星星"
+    ]
+  },
+  "morveux": {
+    "fr": "Qui se sent morveux, qu'il se mouche...",
+    "meaning": "流鼻涕的",
+    "meanings": [
+      "流鼻涕的",
+      "小毛孩"
+    ],
+    "previousMeanings": [
+      "患鼻疽病的"
+    ]
+  },
+  "plumer": {
+    "fr": "Marie est occupée à plumer le poulet.",
+    "meaning": "拔毛",
+    "meanings": [
+      "拔毛",
+      "敲诈"
+    ],
+    "previousMeanings": [
+      "脱落"
+    ]
+  },
+  "sectoriel": {
+    "fr": "La théorie du déversement sectoriel explique-t-elle les mutations de l'emploi actuel ?",
+    "meaning": "部门的，行业的",
+    "meanings": [
+      "部门的，行业的"
+    ],
+    "previousMeanings": [
+      "扇形的"
+    ]
+  },
+  "égarement": {
+    "fr": "Il peut l'avoir volé dans un moment d'égarement.",
+    "meaning": "一时糊涂",
+    "meanings": [
+      "迷路",
+      "迷失，误入歧途",
+      "一时糊涂"
+    ],
+    "previousMeanings": [
+      "娱乐"
+    ]
+  },
+  "réanimation": {
+    "fr": "Elle est médecin de réanimation médicale.",
+    "meaning": "复苏，抢救",
+    "meanings": [
+      "复苏，抢救"
+    ],
+    "previousMeanings": [
+      "复兴"
+    ]
+  },
+  "greffier": {
+    "fr": "Mayas est un greffier en chef.",
+    "meaning": "书记员",
+    "meanings": [
+      "书记员",
+      "猫"
+    ],
+    "previousMeanings": [
+      "猫"
+    ]
+  },
+  "facho": {
+    "fr": "Elle m'a traité de facho.",
+    "meaning": "法西斯主义者",
+    "meanings": [
+      "法西斯主义者",
+      "法西斯的"
+    ],
+    "previousMeanings": [
+      "烦恼"
+    ]
+  },
+  "infime": {
+    "fr": "Il y a une infime probabilité qu'un accord soit trouvé.",
+    "meaning": "极小的，微不足道的",
+    "meanings": [
+      "极小的，微不足道的"
+    ],
+    "previousMeanings": [
+      "地位低的"
+    ]
+  },
+  "infiltration": {
+    "fr": "L'action des eaux d'infiltration a oxydé et rubéfié le sol.",
+    "meaning": "渗透",
+    "meanings": [
+      "渗透",
+      "潜入"
+    ],
+    "previousMeanings": [
+      "注射"
+    ]
+  },
+  "déontologie": {
+    "fr": "Il y a un manquement flagrant aux règles de déontologie.",
+    "meaning": "职业道德",
+    "meanings": [
+      "职业道德"
+    ],
+    "previousMeanings": [
+      "代码"
+    ]
+  },
+  "cricket": {
+    "fr": "Mon oncle est un joueur de cricket amateur.",
+    "meaning": "板球",
+    "meanings": [
+      "板球"
+    ],
+    "previousMeanings": [
+      "蟋蟀"
+    ]
+  },
+  "impertinence": {
+    "fr": "Elle leva la tête avec impertinence.",
+    "meaning": "无礼，冒犯",
+    "meanings": [
+      "无礼，冒犯"
+    ],
+    "previousMeanings": [
+      "不切题"
+    ]
+  },
+  "sévir": {
+    "fr": "Il faut sévir face au commerce illégal.",
+    "meaning": "严惩",
+    "meanings": [
+      "严惩",
+      "肆虐"
+    ],
+    "previousMeanings": [
+      "大怒"
+    ]
+  },
+  "sociétaire": {
+    "fr": "Ce sociétaire nous fait confiance.",
+    "meaning": "会员，社员",
+    "meanings": [
+      "会员，社员"
+    ],
+    "previousMeanings": [
+      "男人"
+    ]
+  },
+  "supersonique": {
+    "fr": "Lorsque les avions passent le mur du son, ils causent ce qu'on appelle le bang supersonique.",
+    "meaning": "超音速的",
+    "meanings": [
+      "超音速的"
+    ],
+    "previousMeanings": [
+      "超声波的"
+    ]
+  },
+  "salutation": {
+    "fr": "Je suis également fier d'apporter avec moi la bonne volonté du peuple américain, et une salutation de paix de la part des communautés musulmanes dans mon pays : Assalaamu alaykum.",
+    "meaning": "问候，致意",
+    "meanings": [
+      "问候，致意"
+    ],
+    "previousMeanings": [
+      "祝贺"
+    ]
+  },
+  "recueillement": {
+    "fr": "On observe qu'en France, le plus souvent, les critiques musicaux sont sourds et les critiques d'art aveugles. Cela leur permet le recueillement nécessaire aux idées esthétiques.",
+    "meaning": "静思，默思",
+    "meanings": [
+      "静思，默思"
+    ],
+    "previousMeanings": [
+      "注视"
+    ]
+  },
+  "quiétude": {
+    "fr": "La longue quiétude cachait les prodromes d'une explosion.",
+    "meaning": "宁静，安宁",
+    "meanings": [
+      "宁静，安宁"
+    ],
+    "previousMeanings": [
+      "宁静"
+    ]
+  },
+  "exemplarité": {
+    "fr": "C'est de l'exemplarité.",
+    "meaning": "示范性",
+    "meanings": [
+      "示范性",
+      "榜样作用"
+    ],
+    "previousMeanings": [
+      "exemplary的变形"
+    ]
+  },
+  "moniteur": {
+    "fr": "Mon moniteur d'auto-école me dit que je ne dois pas être aussi impatient.",
+    "meaning": "教练，指导员",
+    "meanings": [
+      "教练，指导员",
+      "监视器"
+    ],
+    "previousMeanings": [
+      "监督器"
+    ]
+  },
+  "sketch": {
+    "fr": "C'est un très bon sketch.",
+    "meaning": "短喜剧，小品",
+    "meanings": [
+      "短喜剧，小品"
+    ],
+    "previousMeanings": [
+      "素描"
+    ]
+  },
+  "tandem": {
+    "fr": "C'était le première fois que nous faisions du tandem.",
+    "meaning": "双人自行车",
+    "meanings": [
+      "双人自行车",
+      "二人搭档"
+    ],
+    "previousMeanings": [
+      "纵列两匹马拉的马车"
+    ]
+  },
+  "transe": {
+    "fr": "L'hypnotiseur était capable de mettre son sujet en transe.",
+    "meaning": "恍惚状态",
+    "meanings": [
+      "恍惚状态",
+      "极度激动"
+    ],
+    "previousMeanings": [
+      "理解"
+    ]
+  },
+  "croustillant": {
+    "fr": "Ce pain est croustillant.",
+    "meaning": "酥脆的",
+    "meanings": [
+      "酥脆的",
+      "有趣的"
+    ],
+    "previousMeanings": [
+      "卷曲的"
+    ]
+  },
+  "périphérie": {
+    "fr": "Je vis à la périphérie de Tokyo.",
+    "meaning": "周边，外围",
+    "meanings": [
+      "周边，外围"
+    ],
+    "previousMeanings": [
+      "周长"
+    ]
+  },
+  "fonction": {
+    "fr": "La mémoire est une fonction essentielle de notre cerveau.",
+    "meaning": "功能",
+    "meanings": [
+      "功能",
+      "职务",
+      "函数"
+    ],
+    "previousMeanings": [
+      "职务、功能"
+    ]
+  },
+  "peut être": {
+    "fr": "Ce problème ne peut être résolu de la manière habituelle.",
+    "meaning": "可以被",
+    "meanings": [
+      "可以是",
+      "可以被"
+    ],
+    "previousMeanings": [
+      "仅按字面意思，并无比喻或俗语义；参见peut、être（可能，可能是）"
+    ]
+  },
+  "poser un lapin": {
+    "fr": "Il a oublié notre rendez-vous et m'a posé un lapin.",
+    "meaning": "放鸽子",
+    "meanings": [
+      "放鸽子，爽约"
+    ],
+    "previousMeanings": [
+      "仅按字面意思，并无比喻或俗语义；参见poser、un、lapin。",
+      "(及物带 à) 放...的鸽子"
+    ]
+  },
+  "dont": {
+    "fr": "C'est la justice et non la charité, dont a besoin le monde.",
+    "meaning": "关系代词，引出与 de 有关的成分",
+    "meanings": [
+      "关系代词，引出与 de 有关的成分"
+    ],
+    "previousMeanings": [
+      "l'homme dont je parle 我所讲的那个人"
+    ]
+  },
+  "compris": {
+    "fr": "J'ai eu beau lui répéter deux fois, Tom n'a toujours pas compris.",
+    "meaning": "理解，明白",
+    "meanings": [
+      "理解，明白",
+      "包括在内的"
+    ],
+    "previousMeanings": [
+      "adj.inv. Y ~，non ~ 包括在内，不包括在内"
+    ]
+  },
+  "auprès": {
+    "fr": "Elle s'excusa auprès de son père pour être rentrée si tard.",
+    "meaning": "在……那里",
+    "meanings": [
+      "在……附近",
+      "向，在……那里"
+    ],
+    "previousMeanings": [
+      "adj. 附近的（近处的，接近的，靠近的）prep. 附近的（近处的，接近的，靠近的）adj. 关闭（结束，捻合，接近，缔结）"
+    ]
+  },
+  "affaires": {
+    "fr": "J'ai fait des affaires avec ce magasin pendant des années.",
+    "meaning": "生意",
+    "meanings": [
+      "事务，事情",
+      "生意，业务",
+      "随身物品"
+    ],
+    "previousMeanings": [
+      "n.f.pl 商业活动，（个人的）衣物v. 原料（本质，织品，填充料，枪弹）"
+    ]
+  },
+  "céréales": {
+    "fr": "Au moins, les céréales ont une longue durée de conservation.",
+    "meaning": "谷物",
+    "meanings": [
+      "谷物",
+      "谷物早餐"
+    ],
+    "previousMeanings": [
+      "n.f.pl 谷物，粮食"
+    ]
+  },
+  "bornes": {
+    "fr": "De tels problèmes sont au-delà des bornes du savoir humain.",
+    "meaning": "界限",
+    "meanings": [
+      "边界，界限",
+      "界桩"
+    ],
+    "previousMeanings": [
+      "n.f.pl 边界，界限，上下限，限度"
+    ]
+  },
+  "bottes": {
+    "fr": "Je voudrais acheter quelques bottes.",
+    "meaning": "靴子",
+    "meanings": [
+      "靴子"
+    ],
+    "previousMeanings": [
+      "n.f.pl 靴子，皮靴"
+    ]
+  },
+  "couché": {
+    "fr": "Tu es trop studieux, pas encore couché que déjà tu veux te lever.",
+    "meaning": "躺下的",
+    "meanings": [
+      "躺下的，睡下的",
+      "卧倒的"
+    ],
+    "previousMeanings": [
+      "adj. écriture ~ 斜卧的字体"
+    ]
+  },
+  "chœur": {
+    "fr": "Ils chantaient en chœur.",
+    "meaning": "齐声合唱",
+    "meanings": [
+      "合唱团",
+      "合唱",
+      "齐声合唱"
+    ],
+    "previousMeanings": [
+      "n.m. 合唱队， 和声 ； n.m. 合唱团，唱诗班，和声，合唱曲，圣诗 ； en ~齐声，一致地n. 椰纤维"
+    ]
+  },
+  "affichage": {
+    "fr": "La campagne d'affichage n'a pas atteint son groupe cible.",
+    "meaning": "张贴",
+    "meanings": [
+      "张贴，张贴广告",
+      "显示"
+    ],
+    "previousMeanings": [
+      "n.m 贴布告，贴告示；布告，告示，广告；［信］（数据在荧光屏上）显示"
+    ]
+  },
+  "battant": {
+    "fr": "une pluie battante",
+    "meaning": "猛烈的",
+    "meanings": [
+      "猛烈的",
+      "不服输的人",
+      "门扇，钟舌"
+    ],
+    "previousMeanings": [
+      "adj. Le cz6ur ~ （激动的）心跳",
+      "n. 顽强斗争的人，不服输的人battant ［batz9］",
+      "n.m. 钟舌，钟心锤；门扇，窗扇"
+    ]
+  },
+  "berne": {
+    "fr": "Berne est la capitale de la Suisse.",
+    "meaning": "伯尔尼",
+    "meanings": [
+      "伯尔尼",
+      "下半旗"
+    ],
+    "previousMeanings": [
+      "n.f. pavillon en ~ 半旗［表示致哀］"
+    ]
+  },
+  "pire": {
+    "fr": "Il n'est pas de pire sourd que celui qui ne veut écouter.",
+    "meaning": "更糟的",
+    "meanings": [
+      "更糟的，更差的"
+    ],
+    "previousMeanings": [
+      "mauvais的比较级：更差",
+      "(le pire) 最差的，末等的东西"
+    ]
+  },
+  "nouvel": {
+    "fr": "En Chine, on célèbre le nouvel an selon le calendrier lunaire.",
+    "meaning": "新的",
+    "meanings": [
+      "新的"
+    ],
+    "previousMeanings": [
+      "nouveau (“新的”)在以元音开头的阳性名词之前的变形。"
+    ]
+  },
+  "suis": {
+    "fr": "Je suis venu à Tokyo il y a trois ans et ai vécu ici depuis.",
+    "meaning": "是",
+    "meanings": [
+      "是",
+      "跟随"
+    ],
+    "previousMeanings": [
+      "être的一人称单数现在式. 参看 Wiktionary：法语不规则动词"
+    ]
+  },
+  "ces": {
+    "fr": "J'aimerais bien voir les arbres où tu as cueilli ces pommes.",
+    "meaning": "这些，那些",
+    "meanings": [
+      "这些，那些"
+    ],
+    "previousMeanings": [
+      "adj. ce的阳性复数 参见ce"
+    ]
+  },
+  "s'": {
+    "fr": "Il préfère s'asseoir près de la fenêtre.",
+    "meaning": "自己",
+    "meanings": [
+      "自己",
+      "相互"
+    ],
+    "previousMeanings": [
+      "si (“如果”) 在 il 或 ils 之前的省略形式。",
+      "se 接在元音开头的词之前时的省略形式",
+      "se 接在辅音开头的词之前时的省略形式"
+    ]
+  },
+  "j'": {
+    "fr": "J'aime apprendre le français.",
+    "meaning": "我",
+    "meanings": [
+      "我"
+    ],
+    "previousMeanings": [
+      "je的附著形式。"
+    ]
+  },
+  "quelle": {
+    "fr": "Quelle couleur est-ce que tu préfères ? Le bleu ou le rouge ?",
+    "meaning": "什么，哪一个",
+    "meanings": [
+      "什么，哪一个",
+      "多么"
+    ],
+    "previousMeanings": [
+      "quel 的阴性单数",
+      "哪一个？",
+      "（感叹词）多么……！"
+    ]
+  },
+  "deux points": {
+    "fr": "La ligne droite est le plus court chemin entre deux points.",
+    "meaning": "两个点",
+    "meanings": [
+      "两个点",
+      "冒号"
+    ],
+    "previousMeanings": [
+      "冒号"
+    ]
+  },
+  "boîte": {
+    "fr": "Il y a une boîte de thon.",
+    "meaning": "罐头",
+    "meanings": ["罐头", "盒子", "罐"],
+    "previousMeanings": ["盒子", "罐"],
+    "applyToCurriculum": true
+  },
+  "boite": {
+    "fr": "Il y a une boîte de thon.",
+    "meaning": "罐头",
+    "meanings": ["罐头", "盒子", "罐"],
+    "previousMeanings": ["盒子", "罐"],
+    "applyToCurriculum": true
+  },
+  "ace": {
+    "fr": "Il a réussi un ace au tennis.",
+    "zh": "他在网球比赛中发球直接得分。",
+    "meaning": "发球直接得分",
+    "meanings": [
+      "网球发球直接得分"
+    ],
+    "previousMeanings": [
+      "幺点"
+    ],
+    "invalidMeanings": [
+      "幺点"
+    ]
   }
 }

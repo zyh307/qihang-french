@@ -1,0 +1,257 @@
+[
+  {
+    "wordId": "w314002",
+    "book": "inspire3",
+    "lesson": "L14",
+    "previousFr": "Vous apprendrez l'histoire et les caractéristiques de chaque vin.",
+    "fr": "J'étudie l'histoire de France.",
+    "zh": "我学习法国历史。",
+    "sourceText": "l'histoire (f.)",
+    "forms": [
+      "l'histoire"
+    ]
+  },
+  {
+    "wordId": "w000109",
+    "book": "inspire1",
+    "lesson": "L08",
+    "previousFr": "Mes cousins habitent à Lyon.",
+    "previousAudioKeys": [
+      "4cb9ea2922070a339312a4d2729a472515a1939a19c62018c657549b4e6312f0"
+    ],
+    "fr": "Mes cousins et mes cousines habitent à Lyon.",
+    "zh": "我的堂表兄弟姐妹住在里昂。",
+    "sourceText": "les cousins et les cousines",
+    "forms": [
+      "les cousins et les cousines"
+    ]
+  },
+  {
+    "wordId": "w000277",
+    "book": "inspire1",
+    "lesson": "L16",
+    "previousFr": "Je travaille du lundi au vendredi.",
+    "previousAudioKeys": [
+      "b72403d42b4d785b40dd0c4f3ce76dca948bd13c1b89399d3af52f2008c5cd6b"
+    ],
+    "fr": "Je travaille cinq jours par semaine.",
+    "zh": "我每周工作五天。",
+    "sourceText": "la semaine",
+    "forms": [
+      "la semaine"
+    ]
+  },
+  {
+    "wordId": "w000280",
+    "book": "inspire1",
+    "lesson": "L16",
+    "previousFr": "On déjeune à midi.",
+    "previousAudioKeys": [
+      "1275894acc36447a3faee9f2d94a8952c23588cfc29d848bf8ae1710b8b41748"
+    ],
+    "fr": "Nous prenons le déjeuner à midi.",
+    "zh": "我们中午吃午饭。",
+    "sourceText": "le déjeuner",
+    "forms": [
+      "le déjeuner"
+    ]
+  },
+  {
+    "wordId": "w201003",
+    "book": "inspire2",
+    "lesson": "L01",
+    "previousFr": "Je viens de me marier.",
+    "previousAudioKeys": [
+      "tts:Je%20viens%20de%20me%20marier."
+    ],
+    "fr": "Je suis marié depuis trois ans.",
+    "zh": "我已经结婚三年了。",
+    "sourceText": "marié(e)",
+    "forms": [
+      "marié",
+      "mariée"
+    ]
+  },
+  {
+    "wordId": "w201017",
+    "book": "inspire2",
+    "lesson": "L01",
+    "previousFr": "Leur gendre s'appelle Paul.",
+    "previousAudioKeys": [
+      "tts:Leur%20gendre%20s'appelle%20Paul."
+    ],
+    "fr": "Le mari de notre fille est notre beau-fils.",
+    "zh": "我们女儿的丈夫就是我们的女婿。",
+    "sourceText": "un beau-fils (un gendre)",
+    "forms": [
+      "un beau-fils"
+    ]
+  },
+  {
+    "wordId": "w218010",
+    "book": "inspire2",
+    "lesson": "L18",
+    "previousFr": "On partage - partageait notre chambre.",
+    "previousAudioKeys": [
+      "tts:On%20partage%20-%20partageait%20notre%20chambre."
+    ],
+    "fr": "Les chambres sont grandes et lumineuses.",
+    "zh": "这些房间宽敞明亮。",
+    "sourceText": "les chambres",
+    "forms": [
+      "les chambres"
+    ]
+  },
+  {
+    "wordId": "w229018",
+    "book": "inspire2",
+    "lesson": "L29",
+    "previousFr": "I nous est arrivé un truc amusant.",
+    "previousAudioKeys": [
+      "tts:I%20nous%20est%20arriv%C3%A9%20un%20truc%20amusant."
+    ],
+    "fr": "Nous attendons l'arrivée du train.",
+    "zh": "我们在等待火车到站。",
+    "sourceText": "une arrivée",
+    "forms": [
+      "une arrivée"
+    ]
+  },
+  {
+    "wordId": "w302004",
+    "book": "inspire3",
+    "lesson": "L02",
+    "previousFr": "Grâce aux Intergénéreux, les personnes âgées reçoivent.",
+    "previousAudioKeys": [
+      "tts:Gr%C3%A2ce%20aux%20Interg%C3%A9n%C3%A9reux%2C%20les%20personnes%20%C3%A2g%C3%A9es%20re%C3%A7oivent."
+    ],
+    "fr": "Les personnes âgées reçoivent de la visite grâce à cette association.",
+    "zh": "通过这个协会，老年人能够得到探访和陪伴。",
+    "sourceText": "une personne âgée",
+    "forms": [
+      "une personne âgée"
+    ]
+  },
+  {
+    "wordId": "w306031",
+    "book": "inspire3",
+    "lesson": "L06",
+    "previousFr": "Le gérondif s'emploie pour indiquer que deux actions sont faites par le même sujet.",
+    "previousAudioKeys": [
+      "tts:Le%20g%C3%A9rondif%20s'emploie%20pour%20indiquer%20que%20deux%20actions%20sont%20faites%20par%20le%20m%C3%AAme%20sujet."
+    ],
+    "fr": "Cette entreprise veut employer deux personnes.",
+    "zh": "这家公司想雇用两个人。",
+    "sourceText": "employer",
+    "forms": [
+      "employer"
+    ]
+  },
+  {
+    "wordId": "w318003",
+    "book": "inspire3",
+    "lesson": "L18",
+    "previousFr": "La ville du Havre Saint-Roch, qui a remplacé un ancien parc public et un cimetière, puis à la place de l'Hôtel-de-Ville.",
+    "previousAudioKeys": [
+      "tts:La%20ville%20du%20Havre%20Saint-Roch%2C%20qui%20a%20remplac%C3%A9%20un%20ancien%20parc%20public%20et%20un%20cimeti%C3%A8re%2C%20puis%20%C3%A0%20la%20place%20de%20l'H%C3%B4tel-de-Ville."
+    ],
+    "fr": "Nous nous retrouvons devant l'hôtel de ville.",
+    "zh": "我们在市政厅前碰面。",
+    "sourceText": "un hôtel de ville",
+    "forms": [
+      "un hôtel de ville"
+    ]
+  },
+  {
+    "wordId": "w321020",
+    "book": "inspire3",
+    "lesson": "L21",
+    "previousFr": "Le sol est revêtu de béton gris clair et le mobilier scénographique est monochrome pour mettre en valeur les œuvres.",
+    "previousAudioKeys": [
+      "tts:Le%20sol%20est%20rev%C3%AAtu%20de%20b%C3%A9ton%20gris%20clair%20et%20le%20mobilier%20sc%C3%A9nographique%20est%20monochrome%20pour%20mettre%20en%20valeur%20les%20%C5%93uvres."
+    ],
+    "fr": "Il va revêtir son costume pour la cérémonie.",
+    "zh": "他将穿上礼服参加典礼。",
+    "sourceText": "revêtir",
+    "forms": [
+      "revêtir"
+    ]
+  },
+  {
+    "wordId": "w406016",
+    "book": "inspire4",
+    "lesson": "L06",
+    "previousFr": "On est passé des prothèses mécaniques aux prothèses bioniques,réellementensymbiose avec le corps.",
+    "previousAudioKeys": [
+      "tts:On%20est%20pass%C3%A9%20des%20proth%C3%A8ses%20m%C3%A9caniques%20aux%20proth%C3%A8ses%20bioniques%2Cr%C3%A9ellementensymbiose%20avec%20le%20corps."
+    ],
+    "fr": "On est passé des prothèses mécaniques aux prothèses bioniques, réellement en symbiose avec le corps.",
+    "zh": "人们已从机械假肢发展到能与身体真正协同工作的仿生假肢。",
+    "sourceText": "une prothèse bionique",
+    "forms": [
+      "une prothèse bionique"
+    ]
+  },
+  {
+    "wordId": "w406017",
+    "book": "inspire4",
+    "lesson": "L06",
+    "previousFr": "On est passé des prothèses mécaniques aux prothèses bioniques,réellementensymbiose avec le corps.",
+    "previousAudioKeys": [
+      "tts:On%20est%20pass%C3%A9%20des%20proth%C3%A8ses%20m%C3%A9caniques%20aux%20proth%C3%A8ses%20bioniques%2Cr%C3%A9ellementensymbiose%20avec%20le%20corps."
+    ],
+    "fr": "On est passé des prothèses mécaniques aux prothèses bioniques, réellement en symbiose avec le corps.",
+    "zh": "人们已从机械假肢发展到能与身体真正协同工作的仿生假肢。",
+    "sourceText": "une prothèse mécanique",
+    "forms": [
+      "une prothèse mécanique"
+    ]
+  },
+  {
+    "wordId": "w415002",
+    "book": "inspire4",
+    "lesson": "L15",
+    "previousFr": "Sa cuisine et Vient de briser un bol.",
+    "previousAudioKeys": [
+      "tts:Sa%20cuisine%20et%20Vient%20de%20briser%20un%20bol."
+    ],
+    "fr": "Le verre est brisé.",
+    "zh": "玻璃杯碎了。",
+    "sourceText": "brisé(e)",
+    "forms": [
+      "brisé",
+      "brisée"
+    ]
+  },
+  {
+    "wordId": "w415007",
+    "book": "inspire4",
+    "lesson": "L15",
+    "previousFr": "Ses doigts se perdent d'abord dans la barbe drue, y restent un souffle ou deux.",
+    "previousAudioKeys": [
+      "tts:Ses%20doigts%20se%20perdent%20d'abord%20dans%20la%20barbe%20drue%2C%20y%20restent%20un%20souffle%20ou%20deux."
+    ],
+    "fr": "Je suis perdu dans cette ville.",
+    "zh": "我在这座城市迷路了。",
+    "sourceText": "perdu(e)",
+    "forms": [
+      "perdu",
+      "perdue"
+    ]
+  },
+  {
+    "wordId": "w425016",
+    "book": "inspire4",
+    "lesson": "L25",
+    "previousFr": "Leurtravail ne les retient que quelques heures, le matin.",
+    "previousAudioKeys": [
+      "tts:Leurtravail%20ne%20les%20retient%20que%20quelques%20heures%2C%20le%20matin."
+    ],
+    "fr": "Nous allons retenir cette idée.",
+    "zh": "我们会保留这个想法。",
+    "sourceText": "retenir",
+    "forms": [
+      "retenir"
+    ]
+  }
+]

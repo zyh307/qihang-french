@@ -1,0 +1,52 @@
+[
+  {
+    "book": "inspire1",
+    "lesson": "L17",
+    "wordId": "w000284",
+    "fromText": "la boulangerie-pâtisserie",
+    "parts": [
+      {
+        "suffix": "",
+        "text": "la boulangerie",
+        "meaning": "面包店",
+        "ipa": "/la bu.lɑ̃ʒ.ʁi/",
+        "fr": "J'achète du pain à la boulangerie.",
+        "zh": "我在面包店买面包。"
+      },
+      {
+        "suffix": "patisserie",
+        "text": "la pâtisserie",
+        "meaning": "糕点店",
+        "ipa": "/la pa.tis.ʁi/",
+        "fr": "J'achète un gâteau à la pâtisserie.",
+        "zh": "我在糕点店买蛋糕。",
+        "wordId": "w090284"
+      }
+    ]
+  },
+  {
+    "book": "inspire1",
+    "lesson": "L17",
+    "wordId": "w000285",
+    "fromText": "la boucherie-charcuterie",
+    "parts": [
+      {
+        "suffix": "",
+        "text": "la boucherie",
+        "meaning": "肉店",
+        "ipa": "/la buʃ.ʁi/",
+        "fr": "J'achète de la viande à la boucherie.",
+        "zh": "我在肉店买肉。"
+      },
+      {
+        "suffix": "charcuterie",
+        "text": "la charcuterie",
+        "meaning": "熟食店",
+        "ipa": "/la ʃaʁ.ky.tʁi/",
+        "fr": "J'achète du jambon à la charcuterie.",
+        "zh": "我在熟食店买火腿。",
+        "wordId": "w090285"
+      }
+    ]
+  }
+]

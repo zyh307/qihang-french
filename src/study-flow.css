@@ -148,3 +148,6 @@
 .app-frame :is(.quick-word-choice,.conj-match-card).selected{border-radius:16px}
 .app-frame :is(.notebook-entry-main,.lesson-word-main,.quick-word-choice,.conj-match-card)::before,.app-frame :is(.notebook-entry-main,.lesson-word-main,.quick-word-choice,.conj-match-card)::after{content:none;display:none}
 .conj-match-card>text{position:relative;display:block;padding:2px;line-height:1.5}
+
+/* Keep long vocabulary visible on both sides, above the fixed actions. */
+.recitation-face>text:first-child{display:block;width:100%;min-width:0;box-sizing:border-box;-webkit-line-clamp:unset;overflow:visible;overflow-wrap:anywhere;flex-shrink:0}

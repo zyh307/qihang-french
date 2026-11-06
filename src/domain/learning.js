@@ -1,7 +1,18 @@
 import {newReviewRecord,nextReviewDate,completeReviewRecord,migrateReviewPlans} from './review-plan.js';
 import {primaryMeaning} from './meanings.js';
-let practiceDictionary=[];
-export function setPracticeDictionary(entries){practiceDictionary=entries.map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,forms:[{text:e.word,gender:e.gender||null,tested:true}]}));}
+import {spellingSimilarity,sameWordFamily,isShopVocabulary} from './choice-similarity.js';
+let practiceDictionary=[],dictionaryGrams=new Map(),dictionaryShops=[];
+const grams=text=>{const value=String(text).normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');return [...new Set(Array.from({length:Math.max(0,value.length-1)},(_,i)=>value.slice(i,i+2)))];};
+export function setPracticeDictionary(entries){
+ practiceDictionary=entries.filter(e=>e.frequency===undefined||e.frequency>=3.8).sort((a,b)=>(b.frequency||0)-(a.frequency||0)).map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]}));
+ dictionaryShops=practiceDictionary.filter(w=>isShopVocabulary(w.forms[0].text));
+ dictionaryGrams=new Map();for(const w of practiceDictionary)for(const gram of grams(w.forms[0].text)){if(!dictionaryGrams.has(gram))dictionaryGrams.set(gram,[]);dictionaryGrams.get(gram).push(w);}
+}
+function dictionaryCandidates(text){
+ const scores=new Map();for(const gram of grams(text))for(const word of dictionaryGrams.get(gram)||[])scores.set(word,(scores.get(word)||0)+1);
+ const similar=[...scores].sort((a,b)=>b[1]-a[1]).slice(0,180).map(([word])=>word);
+ return [...new Set([...similar,...(isShopVocabulary(text)?dictionaryShops:[]),...practiceDictionary.slice(0,100)])];
+}
 import {isVocabularyWord,conjugationPracticeWords,conjugationPackages,conjugationUnits} from '../conjugation/catalog.js';
 import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees } from './word-display.js';
 import { spellingDiff } from './spelling-diff.js';
@@ -271,20 +282,29 @@ export function newWordIdsForDay(data,today=day()){
   }
   return [...dates].filter(([id,date])=>date===today&&(!learned.has(id)||learned.get(id)>=date)).map(([id])=>id);
 }
-export function makeOptions(data, p, word, form, kind, random = Math.random) {
+export function makeOptions(data, p, word, form, kind, random = Math.random, mode='learn') {
   const meaningSet = new Set(word.meanings.map(normalize));
   const sharesMeaning = w => w.meanings.some(m => meaningSet.has(normalize(m)));
-  const sameText = w => w.forms.some(f => normalize(displayForm(w,f)) === normalize(displayForm(word,form)));
-  const local = p.words.filter(w => w.id !== word.id && (!p.reviewPool||w.origin.lessonKey===word.origin.lessonKey) && !sharesMeaning(w) && !sameText(w));
+  const exactText=text=>String(text).normalize('NFC').toLocaleLowerCase('fr').replaceAll('’',"'").replace(/\s+/g,' ').trim();
+  const sameText = w => w.forms.some(f => exactText(displayForm(w,f)) === exactText(displayForm(word,form)));
+  const target=spellingParts(word,form).answer,shop=isShopVocabulary(target);
+  const sameFamily=w=>w.forms.some(f=>sameWordFamily(target,spellingParts(w,f).answer));
+  const local = p.words.filter(w => w.id !== word.id && (!p.reviewPool||w.origin.lessonKey===word.origin.lessonKey) && !sharesMeaning(w) && !sameText(w)&&!sameFamily(w));
   const learned = p.reviewPool?p.words.filter(w=>w.origin.lessonKey!==word.origin.lessonKey&&getProgress(data,p,w).notebook!=='practice'&&!sharesMeaning(w)&&!sameText(w)):data.library.filter(other => other.book.id === p.book.id && packageKey(other) !== packageKey(p)).flatMap(other => other.words.filter(w => getProgress(data, other, w).notebook !== 'practice' && !sharesMeaning(w) && !sameText(w)).map(w => ({ ...w })));
   const recentKey = `${wordKey(p, word)}:${form.id}:${kind}`;
   const recent = data.recentOptions[recentKey] || [];
   const seen = new Set([normalize(kind === 'recognize' ? primaryMeaning(word) : displayForm(word,form))]);
   const candidates = [];
-  const external=kind==='recognize'?practiceDictionary.filter(w=>w.lexiconId!==word.lexiconId&&!sharesMeaning(w)&&!sameText(w)):[];
-  const pools = word.lexiconId||word.origin?.bookId==='personal'?[local.filter(w=>w.pos===word.pos).concat(external.filter(w=>w.pos===word.pos)),local.filter(w=>w.pos!==word.pos).concat(external.filter(w=>w.pos!==word.pos)),learned]:[local.filter(w=>w.pos===word.pos),local.filter(w=>w.pos!==word.pos),learned,external];
+  const shopPeers=shop?data.library.flatMap(p=>p.words).filter(w=>w.forms.some(f=>isShopVocabulary(spellingParts(w,f).answer))&&/[店铺房]|超市|商场/u.test(primaryMeaning(w))):[];
+  const external=kind==='recognize'?[...shopPeers,...dictionaryCandidates(target)].filter(w=>(!w.lexiconId||w.lexiconId!==word.lexiconId)&&!sharesMeaning(w)&&!sameText(w)&&!sameFamily(w)):[];
+  const otherLearned=learned.filter(w=>!sameFamily(w));
+  const pools = mode==='learn'?[local,otherLearned.concat(external)]:[local.concat(otherLearned,external)];
   for (const pool of pools) {
-    const shuffled = pool.map(w => ({ w, r: random() })).sort((a, b) => Number(recent.includes(a.w.id)) - Number(recent.includes(b.w.id)) || a.r - b.r);
+    const shuffled = pool.map(w => {
+      const similarity=Math.max(...w.forms.map(f=>Math.max(spellingSimilarity(target,spellingParts(w,f).answer),shop&&isShopVocabulary(spellingParts(w,f).answer)?.72:0))),r=random();
+      const score=similarity>=.5?similarity-(recent.includes(w.id)?.15:0):-1-(recent.includes(w.id)?.2:0);
+      return {w,r,score};
+    }).sort((a,b)=>b.score-a.score||a.r-b.r);
     for (const { w } of shuffled) {
       const f = testedForms(w)[0] || w.forms[0], label = kind === 'recognize' ? primaryMeaning(w) : displayForm(w,f);
       if (seen.has(normalize(label)) || w.id === word.id) continue;
@@ -305,7 +325,7 @@ function refresh(data, p, s, today) {
   if(recognize>0)s.jobs.unshift(s.jobs.splice(recognize,1)[0]);
   const job = s.jobs[0], word = p.words.find(w => w.id === job.wordId), form = word.forms.find(f => f.id === job.formId);
   let kind = job.sequence[job.stage], options;
-  if (kind !== 'spell') { options = makeOptions(data, p, word, form, kind); if (options.length < 2) { kind = 'spell'; options = undefined; } }
+  if (kind !== 'spell') { options = makeOptions(data, p, word, form, kind,Math.random,s.mode); if (options.length < 2) { kind = 'spell'; options = undefined; } }
   s.question = { id: uid(), kind, wordId: word.id, formId: form.id, options, hinted: false };
 }
 export function startSession(data, p, mode = 'learn', ids = null, today = day()) {

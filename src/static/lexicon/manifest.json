@@ -22,7 +22,7 @@
     "translatedExamples": 18949,
     "authoredExamples": 1054
   },
-  "sha256": "b348efc07bffd6ed612d98ceb557c0439971f07af210e21f2824d8f7dc333beb",
+  "sha256": "4e2b9234ded9b07f420143b66fec6a63ecf858255633fcfcf5ab46a902e74e92",
   "inputs": {
     "zh-simp.jsonl": "42082dd36a33515102325e3e0f709d85997348ee8b2c20f66a5482533c30d478",
     "zh-trad.jsonl": "53cac0a16dcc9ac0eb0150aaa3125ce30158973f291e17781bf091b0c1ae85af",
@@ -40,10 +40,10 @@
   },
   "audio": {
     "voice": "fr-FR-DeniseNeural",
-    "clips": 36448,
-    "files": 1922,
-    "bytes": 378058096,
-    "indexSHA256": "14bd992f75b3ab76d099e8b412473e4362c4a961f9bfa7f57d48effa6c844d93"
+    "clips": 38260,
+    "files": 3734,
+    "bytes": 396386944,
+    "indexSHA256": "19958bd2dd002ae949607e4f76975551c71577ec43a82c1e5a2eff3c6fdc6e01"
   },
   "supplement": {
     "lexiqueRepository": "https://github.com/chrplr/openlexicon",
@@ -77,7 +77,7 @@
     "sha256": "9f2b8e24f85a5c222005c214a2468b2f718be279a9eaac91a65f5dcb90aafd64"
   },
   "reviewedExampleMeanings": {
-    "entries": 259,
+    "entries": 780,
     "method": "Reviewed against the French example; explicit example sense; user choices preserved."
   }
 }

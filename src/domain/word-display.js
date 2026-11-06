@@ -55,6 +55,10 @@ export function sharedExample(word) {
 }
 export function exampleAudio(word){
   const example=sharedExample(word).example;
-  return example?.fr&&example.audioKey?{id:`example:${word.id}:${example.audioKey}`,audioKey:example.audioKey,text:example.fr}:null;
+  if(!example?.fr)return null;
+  // Legacy imports may have the sentence but no usable saved recording key.
+  // Resolve synthesized recordings from the displayed text, never an old sentence.
+  const audioKey=!example.audioKey||example.audioKey.startsWith('tts:')?'tts:'+encodeURIComponent(example.fr):example.audioKey;
+  return {id:`example:${word.id}:${audioKey}`,audioKey,text:example.fr};
 }
 export const wordAudioEntries=word=>[...word.forms,...word.forms.map(f=>f.example).filter(Boolean)];
