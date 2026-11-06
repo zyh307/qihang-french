@@ -151,3 +151,4 @@
 
 /* Keep long vocabulary visible on both sides, above the fixed actions. */
 .recitation-face>text:first-child{display:block;width:100%;min-width:0;box-sizing:border-box;-webkit-line-clamp:unset;overflow:visible;overflow-wrap:anywhere;flex-shrink:0}
+.recitation-back>.recitation-meaning{flex:0 0 auto;display:block;min-height:1.4em;-webkit-line-clamp:unset;overflow:visible;max-width:100%}

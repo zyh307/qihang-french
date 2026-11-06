@@ -23,11 +23,17 @@ function fit(el) {
     size = Math.max(8, size - .5);
     el.style.fontSize = size + 'px';
   }
+  // Reserve the meaning's natural height before fitting French. If even the
+  // smallest French text cannot fit, grow this card rather than clip any row.
+  if (el.scrollHeight > height + 1) {
+    const card = face.closest('.recitation-card');
+    if (card) card.style.minHeight = Math.ceil(face.offsetHeight + el.scrollHeight - height + 2) + 'px';
+  }
 }
 export const vFitCardText = {
   mounted(el) {
     let frame;
-    const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => fit(el)); };
+    const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => { fit(el); const state = states.get(el); if (state) state.content = el.parentElement?.textContent; }); };
     const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(schedule) : null;
     observer?.observe(el.parentElement);
     window.addEventListener('resize', schedule);
@@ -35,6 +41,6 @@ export const vFitCardText = {
     states.set(el, { schedule, dispose: () => { observer?.disconnect(); window.removeEventListener('resize', schedule); cancelAnimationFrame(frame); } });
     schedule();
   },
-  updated(el, binding) { if (binding.value !== binding.oldValue) states.get(el)?.schedule(); },
+  updated(el, binding) { const state=states.get(el); if (binding.value !== binding.oldValue || el.parentElement?.textContent !== state?.content) state?.schedule(); },
   unmounted(el) { states.get(el)?.dispose(); states.delete(el); }
 };
