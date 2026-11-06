@@ -1,0 +1,337 @@
+{
+  "A2": {
+    "version": "fei-tout-public-20261104-v1",
+    "cards": {
+      "monologue": [
+        {
+          "id": "A2-M-01",
+          "title": "Logement",
+          "prompt": "Où habitez-vous ? Décrivez votre logement. Dites ce que vous aimez et ce que vous n’aimez pas dans votre quartier. Expliquez pourquoi.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-02",
+          "title": "Mer ou montagne ?",
+          "prompt": "Où préférez-vous aller en vacances ? À la mer ou à la montagne ? Pourquoi ? Racontez vos dernières vacances dans l’un des deux endroits.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-03",
+          "title": "Amis",
+          "prompt": "Décrivez votre meilleur(e) ami(e). Que faites-vous ensemble ? Racontez.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-04",
+          "title": "Sport",
+          "prompt": "Quel(s) sport(s) pratiquez-vous ? Pourquoi ? Avec qui faites-vous du sport ? Où allez-vous en général ?",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-05",
+          "title": "Magasins",
+          "prompt": "Faites-vous souvent les magasins ? Pourquoi ? Qu’est-ce que vous achetez en général ? Expliquez.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-06",
+          "title": "Cinéma",
+          "prompt": "Quels films préférez-vous ? Pourquoi ? Racontez un film que vous avez vu au cinéma.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-07",
+          "title": "Avion",
+          "prompt": "Avez-vous déjà pris l’avion ? Avec qui ? Pour aller où ? Racontez la dernière fois que vous avez pris l’avion.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-08",
+          "title": "Restaurant",
+          "prompt": "Allez-vous souvent au restaurant ? Pourquoi ? Avec qui y allez-vous en général ? Décrivez votre restaurant préféré.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-09",
+          "title": "Journée de travail",
+          "prompt": "Quelle est votre profession ? Aimez-vous votre travail ? Pourquoi ? Décrivez votre journée de travail en général.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-10",
+          "title": "Ordinateur",
+          "prompt": "Utilisez-vous un ordinateur pour le travail ? Pourquoi ? L’ordinateur vous aide-t-il dans votre travail ? Comment ? Expliquez.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-11",
+          "title": "Lieu de travail",
+          "prompt": "Où travaillez-vous ? Aimez-vous votre lieu de travail ? Décrivez les avantages et les inconvénients de votre lieu de travail.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-12",
+          "title": "Livres",
+          "prompt": "Aimez-vous lire ? Quel genre de lecture aimez-vous ? Pourquoi ? Parlez de votre livre préféré.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-13",
+          "title": "Études",
+          "prompt": "Quelles études avez-vous faites ? Pourquoi ? Où avez-vous étudié ? Aimez-vous étudier ? Expliquez.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-14",
+          "title": "Français",
+          "prompt": "Où avez-vous étudié le français ? Avec qui ? Pourquoi la langue française vous intéresse-t-elle ? Expliquez.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-M-15",
+          "title": "Professeur",
+          "prompt": "Décrivez votre professeur préféré. Pourquoi l’aimez-vous ? Racontez un souvenir avec ce professeur.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        }
+      ],
+      "interaction": [
+        {
+          "id": "A2-E-01",
+          "title": "Recherche de logement",
+          "situation": "Vous allez habiter en France pour votre travail. Vous entrez dans une agence immobilière pour expliquer le type de logement que vous recherchez (nombre de chambres, jardin, etc.).",
+          "role": "L’examinateur joue le rôle de l’agent immobilier.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-02",
+          "title": "Ordinateur",
+          "situation": "Vous habitez en France et vous voulez acheter un ordinateur. Vous demandez des renseignements dans un magasin sur le prix, la taille, la qualité, etc.",
+          "role": "L’examinateur joue le rôle du vendeur.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-03",
+          "title": "Vacances à la montagne",
+          "situation": "Vous voulez partir en vacances en France à la montagne. Vous posez des questions à un ami français sur les prix, les lieux, le climat, etc.",
+          "role": "L’examinateur joue le rôle de votre ami.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-04",
+          "title": "Animal domestique",
+          "situation": "Vous voulez adopter un chien. La chienne de votre ami français vient justement d’avoir des bébés. Vous posez des questions à votre ami pour en savoir plus sur les chiens (type de chiens, couleur, alimentation, exercice, etc.).",
+          "role": "L’examinateur joue le rôle de votre ami.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-05",
+          "title": "Théâtre",
+          "situation": "Vous êtes en France chez des amis français. Vous voulez aller au théâtre. Avec l’un de vos amis, vous regardez sur internet les différents spectacles proposés et vous en choisissez un.",
+          "role": "L’examinateur joue le rôle de votre ami.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-06",
+          "title": "Au restaurant",
+          "situation": "Vous êtes en France pour les vacances. C’est l’heure du déjeuner. Vous entrez dans un restaurant. Vous demandez la carte et vous choisissez votre repas.",
+          "role": "L’examinateur joue le rôle du serveur.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-07",
+          "title": "À la gare routière",
+          "situation": "Vous êtes en France pour les vacances et vous voulez prendre le bus pour aller de Paris à Versailles. Vous allez à la gare routière. Vous posez des questions sur les tarifs et les horaires des bus et vous choisissez un trajet.",
+          "role": "L’examinateur joue le rôle de l’employé de la gare.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-08",
+          "title": "Accident",
+          "situation": "Vous êtes en France et vous conduisez. Vous avez un accident de voiture. Un agent de police vient vous voir pour savoir ce qu’il s’est passé. Vous lui racontez votre accident.",
+          "role": "L’examinateur joue le rôle de l’agent de police.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-09",
+          "title": "Entretien d’embauche",
+          "situation": "Vous êtes en France et vous cherchez un travail. Vous avez un entretien avec le directeur d’une grande entreprise. Vous vous présentez et vous lui parlez de vos motivations.",
+          "role": "L’examinateur joue le rôle du directeur.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-10",
+          "title": "Panne d’ordinateur",
+          "situation": "Vous travaillez en France. Soudain, votre ordinateur tombe en panne. Vous devez terminer un travail urgent. Vous demandez de l’aide à un collègue, spécialiste en informatique. Vous lui expliquez votre problème.",
+          "role": "L’examinateur joue le rôle de votre collègue.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-11",
+          "title": "Accident de travail",
+          "situation": "Vous travaillez en France et vous venez d’avoir un accident pendant vos heures de travail. Vous rencontrez le responsable de votre entreprise pour lui expliquer votre accident et savoir ce que vous devez faire.",
+          "role": "L’examinateur joue le rôle du responsable.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-12",
+          "title": "À la garderie",
+          "situation": "Vous vivez en France et vous cherchez une garderie pour vos enfants. Vous allez dans une garderie pour demander des renseignements (horaires, prix, activités).",
+          "role": "L’examinateur joue le rôle du responsable de la garderie.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-13",
+          "title": "Réunion de rentrée",
+          "situation": "Vous vivez en France avec votre famille. Vous avez rendez-vous à l’école de vos enfants pour une réunion de rentrée. Vous posez des questions au directeur de l’établissement sur le matériel scolaire, les horaires, les activités au programme de cette année.",
+          "role": "L’examinateur joue le rôle du directeur de l’établissement.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-14",
+          "title": "À la bibliothèque",
+          "situation": "Vous vivez en France. Vous voulez vous inscrire à la bibliothèque de votre quartier. Vous demandez des renseignements au responsable de la bibliothèque sur les horaires, les prix et le choix des livres.",
+          "role": "L’examinateur joue le rôle du responsable de la bibliothèque.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        },
+        {
+          "id": "A2-E-15",
+          "title": "Université",
+          "situation": "Vous voulez partir étudier en France. Vous demandez conseil à un ami français. Vous lui posez des questions sur la vie étudiante en France en général (universités, horaires, prix, activités, etc.).",
+          "role": "L’examinateur joue le rôle de votre ami.",
+          "source": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind"
+        }
+      ]
+    }
+  },
+  "B1": {
+    "version": "fei-tout-public-20261104-v1",
+    "cards": {
+      "interaction": [
+        {
+          "id": "B1-E-01",
+          "title": "Sujet 1",
+          "situation": "Pendant votre séjour en France, vous avez acheté un vêtement qui, finalement, ne vous convient pas. La publicité précisait « satisfait ou remboursé ». Vous demandez le remboursement de votre achat, mais le vendeur refuse et vous propose un échange. Vous n’êtes pas d’accord avec sa proposition. Vous insistez pour vous faire rembourser.",
+          "role": "L’examinateur joue le rôle du vendeur.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind"
+        },
+        {
+          "id": "B1-E-02",
+          "title": "Sujet 2",
+          "situation": "Vous faites un stage professionnel en France. Vous avez proposé d’organiser une grande fête pour le départ en retraite d’un collègue. Au dernier moment, le collègue vous dit qu’il ne souhaite pas de fête mais préfère un simple repas avec quelques amis. Vous tentez de comprendre ses raisons et de le convaincre d’accepter votre proposition.",
+          "role": "L’examinateur joue le rôle du collègue français.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind"
+        },
+        {
+          "id": "B1-E-03",
+          "title": "Sujet 3",
+          "situation": "À l’occasion de votre voyage en France, vous avez réservé une chambre dans un hôtel. Mais en arrivant, vous constatez que celle-ci ne correspond pas du tout à votre réservation. Vous demandez au réceptionniste d’en changer. C’est la pleine saison touristique et l’hôtel est complet. Vous cherchez un arrangement avec le gérant.",
+          "role": "L’examinateur joue le rôle du réceptionniste.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind"
+        },
+        {
+          "id": "B1-E-04",
+          "title": "Sujet 4",
+          "situation": "Vous êtes en France et vous proposez d’organiser, dans la résidence pour étudiants étrangers où vous habitez, un festival gastronomique : chaque dîner sera préparé par un étudiant de nationalité différente. Le responsable de la résidence trouve ce projet difficile à réaliser. Vous insistez.",
+          "role": "L’examinateur joue le rôle du responsable de la résidence.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind"
+        },
+        {
+          "id": "B1-E-05",
+          "title": "Sujet 5",
+          "situation": "Vous êtes en France et vous proposez à votre ami français de partir en week-end. Il n’a pas envie de voyager et vous propose de partir avec un autre ami. Vous lui expliquez pourquoi c’est très important pour vous d’y aller avec lui.",
+          "role": "L’examinateur joue le rôle de l’ami français.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind"
+        }
+      ],
+      "document": [
+        {
+          "id": "B1-D-01",
+          "title": "Travailler dans son salon",
+          "document": "Si le télétravail permet de mieux concilier vie de famille et travail, de réduire les temps de trajets ou les coûts de location de bureau, des enquêtes menées cette année montrent que la proportion de télétravailleurs parmi les salariés n’atteint que 7 %.\nLe télétravail est réservé à certains types de poste et il ne s’improvise pas. Certaines personnes y renoncent au bout de quelques mois car, d’une part, la vie de l’entreprise leur manque et, d’autre part, ces travailleurs d’un type particulier ont souvent peur qu’on les oublie, surtout dans les promotions.\nAlors, travailler chez soi, oui, c’est une situation qui semble très attractive, mais il faut rappeler que ce type d’activité est parfois plus difficile à exercer qu’il n’y paraît.",
+          "consigne": "Vous dégagerez le thème soulevé par le document ci-dessous. Vous présenterez ensuite votre opinion sous la forme d’un court exposé de 3 minutes environ. L’examinateur pourra vous poser quelques questions. Vous tirez au sort deux sujets et en choisissez un.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "credit": "D’après Nice-matin.fr"
+        },
+        {
+          "id": "B1-D-02",
+          "title": "Les petits boulots d’été",
+          "document": "Les jobs d’été sont un « plus » sur un CV, un « plus » sur le plan personnel, un « plus » sur le plan professionnel, et une marque d’autonomie.\nÀ partir de 16 ans, les jeunes peuvent légalement effectuer des travaux adaptés à leur âge, avec des horaires pas trop lourds et des tâches pas trop difficiles (garder des animaux, aider dans un restaurant, faire quelques heures de nettoyage, s’occuper d’enfants, etc.), à condition d’avoir obtenu l’accord écrit de leurs parents.\nCertains secteurs recrutent plus que d’autres : l’hôtellerie et la restauration, surtout dans les régions touristiques ; la récolte du raisin (les vendanges) dans les régions viticoles ; les services à la personne et, bien sûr, l’animation (moniteur ou animateur dans les centres de vacances).",
+          "consigne": "Vous dégagerez le thème soulevé par le document ci-dessous. Vous présenterez ensuite votre opinion sous la forme d’un court exposé de 3 minutes environ. L’examinateur pourra vous poser quelques questions. Vous tirez au sort deux sujets et en choisissez un.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "credit": "D’après www.femina.fr"
+        },
+        {
+          "id": "B1-D-03",
+          "title": "Moi, je m’engage",
+          "document": "Ils sont jeunes et ont le même idéal : être utiles aux autres. Pourquoi des jeunes s’engagent-ils dans des actions humanitaires ? Pour certains, c’est lié à leur histoire. La famille joue un rôle dans la défense de certaines valeurs. Les enfants qui ont des parents engagés dans des actions de bénévolat s’engagent plus volontiers eux-mêmes. Les amis peuvent également avoir une influence, mais aussi des événements, comme, par exemple, une catastrophe naturelle qui fait réagir.\nCes jeunes-là ont envie de se sentir utiles, d’agir pour les autres, de voir les choses évoluer dans le bon sens. Les associations leur permettent de mettre en pratique les valeurs qu’ils défendent : la solidarité, l’égalité, le respect. L’engagement apporte un enrichissement non seulement personnel mais aussi professionnel.",
+          "consigne": "Vous dégagerez le thème soulevé par le document ci-dessous. Vous présenterez ensuite votre opinion sous la forme d’un court exposé de 3 minutes environ. L’examinateur pourra vous poser quelques questions. Vous tirez au sort deux sujets et en choisissez un.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "credit": "D’après www.femina.fr"
+        },
+        {
+          "id": "B1-D-04",
+          "title": "Stress aux examens : comment l’apprivoiser",
+          "document": "« Nous y pensons en nous couchant, en nous réveillant, et certains d’entre nous ont du mal à dormir. Si nous sortons, nous culpabilisons de prendre du temps libre », confient des étudiants à la veille de leurs examens.\nValérie, responsable pédagogique : « Au bout d’un certain temps, le cerveau n’a plus la capacité d’assimiler, il vaut donc mieux prendre du repos et se changer les idées. Le stress n’est pas un ennemi, il est même souhaitable : il aide et prépare à l’action. Mais il ne faut pas que le stress soit trop fort, car, dans ce cas, il devient paralysant. Certaines techniques de relaxation et de respiration peuvent aider à le réduire. »",
+          "consigne": "Vous dégagerez le thème soulevé par le document ci-dessous. Vous présenterez ensuite votre opinion sous la forme d’un court exposé de 3 minutes environ. L’examinateur pourra vous poser quelques questions. Vous tirez au sort deux sujets et en choisissez un.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "credit": "D’après Nice-matin.fr"
+        },
+        {
+          "id": "B1-D-05",
+          "title": "Les Français fous de cuisine",
+          "document": "Ils passent en moyenne une heure par jour à cuisiner : les Français, autant par nécessité que par plaisir, adorent être derrière leur cuisinière.\nLe bonheur de partager un bon repas, le souci de manger des aliments sains, le plaisir du goût font que les Français sont de retour dans leur cuisine. Près de la moitié d’entre eux déclarent aujourd’hui cuisiner davantage qu’il y a quelques années, révèle un récent sondage.\nCette passion pour la cuisine gagne du terrain chez les jeunes : six personnes de moins de 35 ans sur dix passent plus de temps qu’avant dans la cuisine. Ce qui les motive d’abord ? La garantie de manger plus équilibré. C’est ce que disent plus de la moitié des femmes, tandis que c’est le plaisir du bon goût et le bonheur de mettre la main à la pâte qui passent en premier chez les hommes.",
+          "consigne": "Vous dégagerez le thème soulevé par le document ci-dessous. Vous présenterez ensuite votre opinion sous la forme d’un court exposé de 3 minutes environ. L’examinateur pourra vous poser quelques questions. Vous tirez au sort deux sujets et en choisissez un.",
+          "source": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "credit": "D’après http://www.francesoir.fr"
+        }
+      ]
+    }
+  },
+  "B2": {
+    "version": "fei-tout-public-20261104-v1",
+    "cards": {
+      "document": [
+        {
+          "id": "B2-D-01",
+          "title": "L’école en demande-t-elle trop aux parents ?",
+          "document": "« Lorsque j’étais enfant, le rôle de mes parents se limitait à me disputer si j’avais de mauvaises notes. Aujourd’hui, j’ai l’impression qu’on me demande de surveiller, de revoir les leçons… J’ai l’impression d’être obligé de jouer les professeurs. Et si je ne le fais pas, je me sens coupable », remarque Vincent, père de deux collégiens.\nDe leur côté, de nombreux enseignants se plaignent de passer une grande partie de leur cours à faire « le travail des parents ». « C’est normal que les parents s’impliquent dans le travail scolaire de leur enfant, on ne cesse de le leur demander ! Mais ils ne le font pas tous », observe Christine, professeur d’allemand.\nFaut-il opposer les deux camps, à l’heure où les bienfaits de la « coéducation » entre la famille et l’équipe pédagogique font de plus en plus l’objet d’un consensus ? L’idée que la famille est déterminante dans la relation entre l’enfant et l’école, et aussi dans la réussite scolaire, fait en effet son chemin.",
+          "consigne": "Vous dégagerez le problème soulevé par le document que vous avez choisi. Vous présenterez votre opinion sur le sujet de manière claire et argumentée et, si nécessaire, vous la défendrez au cours du débat avec l’examinateur.",
+          "source": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "credit": "D’après La Croix"
+        },
+        {
+          "id": "B2-D-02",
+          "title": "Est-ce que le travail, c’est le bonheur ?",
+          "document": "Selon le baromètre du bonheur au travail, 69 % des salariés sont heureux au bureau. Un chiffre nettement en baisse par rapport à l’année dernière.\nLes Français heureux au travail... mais moins qu’avant. Selon le baromètre du bonheur au travail réalisé par 20minutes.fr et En Ligne Pour l’Emploi, 69 % des salariés sont contents de prendre chaque matin le chemin du bureau. Un bon score mais bien inférieur à celui de l’année dernière où 77 % des salariés français affirmaient être satisfaits professionnellement.\nLes collègues restent, pour près de 80 % des personnes interrogées, ce qui les rend le plus heureux dans leur sphère professionnelle. Viennent ensuite les choses qu’ils apprennent au travail (77 %) et le contenu de leurs tâches et leurs missions (74 %).\nMais le baromètre reflète également les conséquences de la crise. Plus de la moitié des salariés ont le sentiment que leur charge et leur rythme de travail ne cessent d’augmenter. Le stress gâche également la vie professionnelle de 30 % des salariés.",
+          "consigne": "Vous dégagerez le problème soulevé par le document que vous avez choisi. Vous présenterez votre opinion sur le sujet de manière claire et argumentée et, si nécessaire, vous la défendrez au cours du débat avec l’examinateur.",
+          "source": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "credit": "D’après lexpress.fr"
+        },
+        {
+          "id": "B2-D-03",
+          "title": "Le rôle de l’université est-il de préparer à un métier ?",
+          "document": "C’est ce que font les universités, de plus en plus. La professionnalisation est entrée dans les établissements universitaires il y a une quinzaine d’années. Avant, ce souci de professionnalisation existait moins, mais il y avait aussi moins d’élèves qui allaient à l’université.\nAujourd’hui, on est dans une logique d’insertion professionnelle imposée par la loi et cela se traduit par la création d’un bureau d’insertion dans chaque université. De plus en plus, l’université ne fait que préparer à un métier : elle ne devrait pas se limiter à cela.\nBien sûr, on a envie que les étudiants réussissent. Mais l’université n’est pas responsable si les étudiants ne trouvent pas de travail ensuite. On dit : « Ils ont été mal formés. » L’université doit d’abord fournir une culture et un bagage qui vont permettre aux diplômés de s’insérer, mais ce qui se passe après, en termes d’insertion professionnelle, ce n’est plus du domaine de l’université.",
+          "consigne": "Vous dégagerez le problème soulevé par le document que vous avez choisi. Vous présenterez votre opinion sur le sujet de manière claire et argumentée et, si nécessaire, vous la défendrez au cours du débat avec l’examinateur.",
+          "source": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "credit": "D’après La voix du nord"
+        },
+        {
+          "id": "B2-D-04",
+          "title": "Peut-on vivre sans télé ?",
+          "document": "2 à 3 % des Français refusent d’avoir la télé chez eux. Qui sont ces réfractaires du petit écran ? Bertrand Bergier, sociologue, professeur à Nantes et à l’Université catholique de l’ouest, à Arradon, a mené une enquête pour le découvrir.\nEn se lançant à la recherche de ces gens, Bertrand Bergier pensait découvrir une espèce en voie de disparition. En fait, il a trouvé une espèce en voie de développement. Ce sociologue a enquêté auprès de 566 ménages et il en a tiré les grands types. D’abord, ceux qui refusent la télé « parce qu’elle symbolise la perte des valeurs ou parce qu’elle est considérée comme un outil de manipulation politique », souligne-t-il. Ensuite, ceux qui considèrent que la télé est dépassée : ce sont les adeptes de l’internet, les 25-35 ans. Enfin, les « héritiers », nés avant 1955, qui n’ont jamais vu chez eux la télé et n’ont pas eu envie de s’équiper.",
+          "consigne": "Vous dégagerez le problème soulevé par le document que vous avez choisi. Vous présenterez votre opinion sur le sujet de manière claire et argumentée et, si nécessaire, vous la défendrez au cours du débat avec l’examinateur.",
+          "source": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "credit": "D’après Letelegramme.com"
+        },
+        {
+          "id": "B2-D-05",
+          "title": "Le télétravail, une solution durable ?",
+          "document": "De plus en plus d’entreprises mettent en place le télétravail. Économie de transport, de temps, de place… Ce mode d’organisation offre de nombreux avantages, tant aux employeurs qu’aux salariés.\nDepuis 2008, toute la filière française d’Alcatel a mis en place un accord de télétravail dans l’entreprise. « Aujourd’hui, le télétravail concerne près de 1 700 salariés, précise la DRH d’Alcatel à Brest, soit 25 % de l’effectif ». De la même manière, le conseil général du Finistère expérimente actuellement le télétravail auprès d’une partie de son personnel pour réduire le nombre de déplacements. « On a lancé un appel à candidatures pour sélectionner 30 agents représentatifs des différents métiers et grades », explique Anne-Marie Croc, chef du projet « télétravail ».\n« En 2008, le nombre de kilomètres économisés équivaut à vingt-deux fois le tour de la circonférence de la terre », affirme Karine Gimenez-Veyriez. « Une journée télétravaillée représente une épargne de 2000 km de trajet, 32 heures de conduite et 162 kg de CO2 pour 27 télétravailleurs. »",
+          "consigne": "Vous dégagerez le problème soulevé par le document que vous avez choisi. Vous présenterez votre opinion sur le sujet de manière claire et argumentée et, si nécessaire, vous la défendrez au cours du débat avec l’examinateur.",
+          "source": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "credit": "D’après Aurélie Tepot, Bretagne.durable.info"
+        }
+      ]
+    }
+  }
+}

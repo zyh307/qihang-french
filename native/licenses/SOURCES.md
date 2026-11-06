@@ -9,6 +9,7 @@
 - Windows C++ 辅助库：MinGW-w64 GCC 8.1.0，GCC Runtime Library Exception；winpthreads 原许可随附。
 - Microsoft Visual C++ OpenMP Runtime：`vcomp140.dll` x64，14.44.35211.0。取自 Microsoft 官方 Visual C++ 2015–2022 Redistributable，下载来源与校验值见 runtime-source.json；许可见 Microsoft-Visual-C++-Runtime.rtf。仅按可再分发组件随 Windows 运行包提供。
 - Android NDK `r27d` 只用于构建，不随软件分发。
+- 安卓CPU加速候选使用NDK r27d（27.3.13750724）的Clang交叉编译，并静态链接libc++／编译器运行库；对应NOTICE和NOTICE.toolchain原文随附为Android-NDK-r27d-*.txt。开发工具本身不分发，完整来源 https://dl.google.com/android/repository/android-ndk-r27d-windows.zip 。
 - 小智协议参考：78/xiaozhi-esp32 的 OTA 激活、WebSocket 与 MCP 实现。客户端不包含小智云端服务、他人身份或任何共享 AI 密钥。
 
 本应用源码按 GPL-3.0-only 提供。模型与各依赖按各自许可提供。

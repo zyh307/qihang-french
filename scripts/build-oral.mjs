@@ -7,14 +7,14 @@ await fs.cp(path.join(root,'native/licenses'),path.join(output,'licenses'),{recu
 await fs.copyFile(path.join(root,'LICENSE'),path.join(output,'licenses/Qihang-GPL-3.0.txt'));
 await fs.copyFile(path.join(root,'COPYRIGHT'),path.join(output,'licenses/Qihang-COPYRIGHT.txt'));
 for(const name of ['app.js','capture.js','style.css','bank.json'])await fs.copyFile(path.join(root,'oral-assistant/web',name),path.join(output,name));
-for(const name of ['local-client.js','native-bridge.js','bank-full.json'])await fs.copyFile(path.join(root,'src/oral',name),path.join(output,name));
-await fs.writeFile(path.join(output,'entry.js'),"await import('./local-client.js');\nawait import('./app.js');\n");
+for(const name of ['local-client.js','native-bridge.js','bank-full.json','delf-exam.js','delf-cards.json'])await fs.copyFile(path.join(root,'src/oral',name),path.join(output,name));
+await fs.writeFile(path.join(output,'entry.js'),"await import('./local-client.js');\nwindow.QihangDelf = await import('./delf-exam.js');\nawait import('./app.js');\n");
 await fs.copyFile(path.join(root,'src/oral/theme.css'),path.join(output,'theme.css'));
 let html=await fs.readFile(path.join(root,'oral-assistant/web/index.html'),'utf8');
 html=html.replace('href="/assets/style.css"','href="style.css"').replace('src="/assets/app.js"','src="app.js"');
 html=html.replace('</head>','<link rel="stylesheet" href="theme.css"></head>').replace('src="app.js"','type="module" src="entry.js"');
 html=html.replace('陪练 · 可以请求帮助','陪练 · Pratique').replace('模拟 · 结束后复盘','模拟 · Simulation').replace('>情景对话场景</label>','>情景 · Situation</label>').replace('随机场景 · 每次换一题','随机 · Aléatoire');
-html=html.replace('A1 · 开发原型','DELF A1').replace(/电脑网页原型[^<]+/,'').replace('<title>Parlons · 法语口语练习</title>','<title>启航法语 · 口语练习</title>');
+html=html.replace('A1 · 开发原型','DELF A1–B2').replace(/电脑网页原型[^<]+/,'').replace('<title>Parlons · 法语口语练习</title>','<title>启航法语 · 口语练习</title>');
 await fs.writeFile(path.join(output,'index.html'),html,'utf8');
 await fs.rm(path.join(output,'client.js'),{force:true});
 console.log('口语模式资源已生成');

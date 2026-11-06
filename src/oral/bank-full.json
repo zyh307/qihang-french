@@ -424,6 +424,14 @@
       ]
     ],
     [
+      "age",
+      "quel age|age.*avez|avez.*ans",
+      [
+        "Quel âge avez-vous ?",
+        "Vous avez quel âge ?"
+      ]
+    ],
+    [
       "home",
       "habit|ville|venez|viv|logement|maison|appartement",
       [
@@ -541,7 +549,7 @@
       ]
     ]
   ],
-  "version": "20261031-a1-bank-1",
+  "version": "20261103-a1-bank-2",
   "sources": [
     {
       "title": "FEI · DELF A1 tout public 公开口试样题",

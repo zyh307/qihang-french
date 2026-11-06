@@ -15,3 +15,34 @@
 .ai-evaluation{margin-bottom:24px}.evaluation-summary{font-size:17px;line-height:1.8}.evaluation-stage{border-top:1px solid #dce4da;padding-top:16px;margin-top:20px;min-width:0;overflow-wrap:anywhere}.evaluation-criteria{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px 16px;font-size:14px;line-height:1.7}.evaluation-criteria dt{font-weight:600}.evaluation-criteria dd{margin:0;color:#536458}.evaluation-example{background:#f3f6ef;border-radius:12px;padding:12px 16px;margin:10px 0;overflow-wrap:anywhere}.evaluation-example blockquote{margin:0;border-left:3px solid #99ae8f;padding-left:12px;white-space:pre-wrap}.evaluation-example p{margin:8px 0 0}.better-phrase{font-weight:600;color:#244638}.evaluation-stage li{margin:8px 0}.ai-evaluation .section-top{flex-wrap:wrap;gap:12px}
 
 .ai-evaluation .section-top{margin:0 0 16px}.ai-evaluation .section-top h2{margin:0}.ai-evaluation #evaluate{width:auto;margin-top:0;flex-shrink:0}.ai-evaluation p{font-size:14px}.ai-evaluation .evaluation-summary{font-size:17px;color:var(--ink)}.ai-evaluation .better-phrase{color:var(--green)}
+/* DELF levels and the candidate's original paper */
+.level-picker,.delf-start,.delf-choice{padding:22px;margin:16px 0}
+.level-picker{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.level-picker h2,.delf-start h2,.delf-choice h2{margin:.25rem 0;font-size:1.35rem}
+.level-options{display:flex;gap:6px}
+.level-options button{min-width:44px;min-height:44px;border:1px solid #d7dfef;border-radius:11px;background:#f5f7fe;color:#354b75;font-weight:650}
+.level-options button[data-level]{transition:none}
+.level-options button[data-level][aria-pressed=true]{background:#425e93;color:white;border-color:#425e93}
+.delf-start .section-top{margin-top:0;align-items:flex-start;flex-wrap:wrap}
+.delf-outline{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;padding:0}
+.delf-outline li,.delf-paper{border:1px solid #dbe2ef;border-radius:14px;background:#f8faff;padding:15px;min-width:0}
+.delf-outline strong,.delf-outline small,.delf-outline span{display:block}
+.delf-outline small,.delf-paper small{color:#526786}
+.delf-outline span{margin:.25rem 0}
+.delf-choice-group{margin:1.25rem 0}
+.delf-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.delf-paper{color:#23344c;overflow-wrap:anywhere}
+.delf-paper h3{margin:0 0 .75rem;line-height:1.35}
+.delf-paper p{white-space:pre-line;line-height:1.62;margin:.6rem 0}
+.delf-paper a,.delf-paper small{display:block;margin:.5rem 0}
+.delf-paper button{margin-top:.5rem}
+.delf-paper.selected{border-color:#506ba1;box-shadow:0 0 0 1px #506ba1}
+.delf-cards{display:grid;grid-column:1/-1;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px}
+.task .delf-cards .delf-paper p{font-size:1rem;color:#2b3e59}
+#practiceGrid:has(#conversation[hidden]){grid-template-columns:minmax(0,1fr)}
+#delfChoice[hidden],#delfCards[hidden],#conversation[hidden],#practiceGrid[hidden],#levelPicker[hidden]{display:none}
+@media(max-width:660px){.delf-pair{grid-template-columns:minmax(0,1fr)}.level-picker,.delf-start,.delf-choice{padding:16px}.delf-outline{grid-template-columns:1fr}.delf-outline li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px}.delf-outline small{grid-column:1/-1}}
+
+.delf-live .conversation{position:sticky;top:0;align-self:start;z-index:2}
+.delf-quiet .voice-buttons{grid-template-columns:minmax(0,240px) 42px}
+@media(max-width:860px){.delf-live .conversation{grid-row:1}}

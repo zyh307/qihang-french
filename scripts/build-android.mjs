@@ -83,6 +83,14 @@ const nativeLibrary=path.join(root,'android/jniLibs/arm64-v8a/libqihang_speech.s
 if(!fs.existsSync(nativeLibrary))throw new Error('缺少本机语音识别库，请先运行 build:native');
 contents['lib/arm64-v8a/libqihang_speech.so']=fs.readFileSync(nativeLibrary);
 }
+// New Java selects these before JNI initialization. Never ship a new APK that
+// silently loses hardware acceleration because the packer kept only baseline.
+const androidVariants=['libqihang_cpu.so','libqihang_speech_fp16.so','libqihang_speech_dotprod.so'];
+for(const name of androidVariants){
+ const file=path.join(root,'android/jniLibs/arm64-v8a',name);
+ if(!fs.existsSync(file))throw new Error('缺少安卓CPU加速库，请运行 python scripts/build-native.py android：'+name);
+ contents['lib/arm64-v8a/'+name]=fs.readFileSync(file);
+}
 if(refreshRepairWeb){
  for(const name of Object.keys(contents))if(name.startsWith('assets/assets/'))delete contents[name];
  addAssets(web);
@@ -147,6 +155,7 @@ const packed=unzipSync(fs.readFileSync(apk)),assets=Object.keys(packed).filter(n
 for(const name of assets)if(!expectedAssets[name]?.equals(Buffer.from(packed[name])))throw new Error('APK 资源不匹配：'+name);
 const expectedSpeech=repairAssets&&!(refreshRepairWeb&&repairRevision>=7)?repairAssets['lib/arm64-v8a/libqihang_speech.so']:fs.readFileSync(path.join(root,'android/jniLibs/arm64-v8a/libqihang_speech.so'));
 if(!Buffer.from(expectedSpeech).equals(Buffer.from(packed['lib/arm64-v8a/libqihang_speech.so'])))throw new Error('原生识别库与预期文件不一致');
+for(const name of androidVariants)if(!fs.readFileSync(path.join(root,'android/jniLibs/arm64-v8a',name)).equals(Buffer.from(packed['lib/arm64-v8a/'+name]||[])))throw new Error('安卓CPU加速库未正确打包：'+name);
 if(!repairAssets)for(const name of dictionaryAudioFiles){const bytes=packed['assets/static/lexicon/audio/'+name];if(!bytes||createHash('sha256').update(bytes).digest('hex')+'.mp3'!==name)throw Error('内置词库录音缺失或损坏：'+name);}
 const contentFile=packed['assets/static/content/inspire1.zip'];if(!contentFile)throw new Error('APK 缺少正式词库');
 if(repairAssets&&!Buffer.from(repairAssets['assets/static/content/inspire1.zip']).equals(Buffer.from(contentFile)))throw new Error('原词库发生变化');

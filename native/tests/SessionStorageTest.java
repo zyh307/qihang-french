@@ -20,7 +20,18 @@ public final class SessionStorageTest {
    require(result.getString("error").contains("已有记录未删除")&&!result.getString("error").contains(root.getPath()),"Unsafe or vague failure message");
    require(Arrays.equals(before,Files.readAllBytes(file.toPath())),"Failed save damaged original session");
    require(new File(root,"sessions").listFiles((d,n)->n.endsWith(".json")).length==1,"Records were added or lost on failure");
-   System.out.println("Session storage: 3 groups passed; temporary directory, no formal data or network.");
+   float[] longAudio=new float[420*16000];
+   Arrays.fill(longAudio,1);
+   Arrays.fill(longAudio,117*16000,117*16000+3200,0);
+   require(OralCore.segmentEnd(longAudio,0)==117*16000+1600,"Long recording should split at a quiet point");
+   int position=0,segments=0;
+   while(position<longAudio.length){
+    int end=OralCore.segmentEnd(longAudio,position);
+    require(end>position&&end-position<=120*16000,"JNI segment out of bounds");
+    position=end;segments++;
+   }
+   require(segments==4&&position==longAudio.length,"Seven-minute audio was truncated");
+   System.out.println("Session storage and long recording: 4 groups passed; temporary directory, no formal data or network.");
   }finally{core.close();}
  }
 }

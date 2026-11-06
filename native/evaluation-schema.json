@@ -14,7 +14,12 @@
             "enum": [
               "intro",
               "exchange",
-              "roleplay"
+              "roleplay",
+              "monologue",
+              "interaction",
+              "opinion",
+              "presentation",
+              "debate"
             ]
           },
           "task": {

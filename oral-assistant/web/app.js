@@ -4,7 +4,9 @@ const S = {boot: null, socket: null, session: null, review: null, state: 'idle',
   epoch: 0, rate: 24000, context: null, sources: new Set(), playUntil: 0, audioBacklog: [], audioBacklogBytes: 0, audioRecovering: false,
   stream: null, inputContext: null, capture: null, micBusy: false, captureEpoch: 0, polling: null, actionBusy: false,
   micStats:null, revisionTarget:null, localReviews:new Set(),recognitionChosen:false,evaluationTimer:null};
+const delf=window.QihangDelf;
 const stageNames = {intro:'引导问答', exchange:'信息交换', roleplay:'情景对话', full:'完整练习'};
+if(delf)for(const [key,part] of Object.entries(delf.parts))stageNames[key]=part.name;
 const hintTexts = {intro:'可以从姓名、居住地、学习和爱好说起。用你会的短句即可，不需要背一篇长介绍。',
   exchange:'观察关键词，选择你会的疑问句。你可以询问对方的情况，考官会回答你。',
   roleplay:'先打招呼，再说明你需要什么。需要时询问价格或请对方重复，最后礼貌告别。'};
@@ -43,6 +45,7 @@ async function refresh() {
   $('recognizerChoice').hidden=window.QihangOralClient?.local||!configured;
   if(!S.recognitionChosen)$('recognitionMode').value=configured?'independent_fr':'xiaozhi';
   $('recognizerMessage').textContent=S.boot.french_asr?.message||'';
+  if(S.boot.advanced)$('levelPicker').hidden=false;
   return S.boot;
 }
 async function pollProvider() {
@@ -66,6 +69,7 @@ async function connectSocket() {
       const data = JSON.parse(event.data);
       if(data.type === 'welcome') {clearTimeout(timeout);resolve();}
       if(data.type === 'session') {S.session=data.session;renderSession();}
+      if(data.type === 'record_deadline') S.recordUntil=data.until;
       if(data.type === 'state') {S.state=data.state;$('voiceState').textContent=data.message;if(S.stream && data.state!=='recording') stopCapture(false);updateButtons();}
       if(data.type === 'audio_format') {S.rate=data.rate;S.epoch=data.epoch;}
       if(data.type === 'clear_audio') {stopPlayback();S.epoch=data.epoch;}
@@ -136,9 +140,10 @@ function updateButtons() {
   const confirming=!!S.session?.awaiting_confirmation;
   const local=!!window.QihangOralClient?.local;
   const channelReady=S.socket?.readyState===WebSocket.OPEN;
-  const canCapture=local?!['recognizing','confirming'].includes(S.state):S.state==='idle'&&!playing();
+  const exam=delf?.isAdvanced(S.session), deadline=exam?delf.examClock(S.session):null;
+  const canCapture=exam?['idle','stopped'].includes(S.state)&&!playing()&&(!deadline||Date.now()/1000<deadline||S.session.finish_round?.answer_due):local?!['recognizing','confirming'].includes(S.state):S.state==='idle'&&!playing();
   $('mic').disabled=!active || confirming || S.actionBusy || S.micBusy || (!recording&&!canCapture);
-  const label=recording?'我说完了':S.micBusy?'正在开启麦克风':!S.session?'请先开始练习':S.session?.phase==='preparation'?'请先结束准备':S.session?.phase==='ended'?'练习已结束':S.session?.progress?.completed?'本环节已完成':confirming?'请先确认文字':S.state==='recognizing'?'正在识别':S.actionBusy?'正在连接考官':!channelReady?'重新连接并说话':local&&(playing()||S.state==='speaking')?'打断并说话':'开始说话';
+  const label=recording?'我说完了':S.micBusy?'正在开启麦克风':!S.session?'请先开始练习':S.session?.phase==='preparation'?'请先结束准备':S.session?.phase==='ended'?'练习已结束':S.session?.progress?.completed?'本环节已完成':confirming?'请先确认文字':S.state==='recognizing'?'正在识别':exam&&!recording&&playing()?'请听考官说完':S.actionBusy?'正在连接考官':!channelReady?'重新连接并说话':local&&(playing()||S.state==='speaking')?'打断并说话':'开始说话';
   $('mic').classList.toggle('recording',recording);$('micLabel').textContent=label;$('mic').setAttribute('aria-label',label);$('mic').title=label;
   $('sendText').disabled=!active || S.actionBusy || recording || S.state!=='idle' || playing();
   for(const id of ['nextStage','finishPrep','nextKeyword','resume']) $(id).disabled=S.actionBusy || recording || confirming || S.state==='recognizing';
@@ -147,6 +152,11 @@ function updateButtons() {
   for(const id of ['abort','finish','endTop']) $(id).disabled=S.actionBusy || !S.session || S.session.phase==='ended';
   for(const b of document.querySelectorAll('[data-card-index]'))b.disabled=S.actionBusy||recording||confirming||S.state!=='idle';
   $('nextKeyword').disabled=S.actionBusy||recording||confirming||S.state!=='idle';
+  if(exam){
+    const s=S.session;
+    $('delfConfirm').disabled=S.actionBusy||delf.choiceKeys(s).some(part=>!s.chosen[part]);
+    $('nextStage').disabled=S.actionBusy||recording||S.micBusy||!['idle','stopped'].includes(S.state)||playing()||!s.progress.can_advance;
+  }
   $('viewExample').disabled=S.actionBusy||recording||playing()||!['idle','stage_complete','stopped'].includes(S.state);
 }
 
@@ -175,23 +185,38 @@ function openGuide(part,resume=false){
 }
 function renderProgress(){
  const s=S.session;if(!s||s.phase==='ended')return;const stage=s.stages[s.stage_index];
+ if(delf?.isAdvanced(s)){
+   if(s.phase!=='active')return;
+   const left=Math.max(0,Math.ceil(s.stage_until-(s.solo_processing_at||Date.now()/1000)));
+   $('remainingTime').textContent=s.mode==='practice'?formatTime(Math.max(0,Math.floor(Date.now()/1000-s.stage_started))):formatTime(left);
+   $('stageMessage').textContent=S.state==='recognizing'?'正在转写已保存的发言。':s.mode==='simulation'&&left===0?'时间已到，完成当前一轮交流后收尾。':delf.parts[stage].hint;
+   $('nextStage').hidden=s.stage_index===s.stages.length-1||s.mode==='simulation';
+   return;
+ }
  const p=s.progress||{};const target=p.target_seconds||({intro:90,exchange:120,roleplay:120}[stage]);
  const seconds=Math.max(0,Math.floor(Date.now()/1000-(s.stage_started||s.created)));const left=Math.max(0,target-seconds);
  $('stageStatus').hidden=s.phase==='preparation';$('stageStatus').classList.toggle('complete',!!p.completed);
  $('stageProgress').textContent=p.completed?'本环节已完成':stage==='exchange'?`词卡进度 ${(s.exchange_done||[]).length} / ${s.keywords.length}`:`已完成 ${p.answers||0} 轮回答`;
- $('stageMessage').textContent=p.completed?(s.stage_index<s.stages.length-1?'点击“下一个环节”继续。':'点击“结束并复盘”，回听本次练习。'):stage==='intro'?'本次练习安排4–6轮回答，考官会继续追问学习、家庭和爱好。':stage==='exchange'?'每张词卡由你问一个问题；六张交流完成后收尾。':'完成任务后礼貌告别，考官会明确收尾。';
+ $('stageMessage').textContent=p.completed?(s.stage_index<s.stages.length-1?'点击“下一个环节”继续。':'点击“结束并复盘”，回听本次练习。'):stage==='intro'?'先回答姓名和年龄，再交流其他主题；本轮问题答完、考官收尾后结束。':stage==='exchange'?'每张词卡由你问一个问题；六张交流完成后收尾。':'完成任务后礼貌告别，考官会明确收尾。';
  $('targetTime').textContent=p.completed?'已结束':seconds>=target?'参考时长已到':'距参考时长';
  $('remainingTime').textContent=p.completed?'✓':`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
  if(!p.completed&&seconds>=target)$('stageMessage').textContent+=' 参考时间已到，完成当前交流后收尾；不会截断录音。';
 }
+if(window.QihangShortAudioExperiment&&window.QihangOralClient?.local){
+ const label=node('label','短句加速（试验）'),check=node('input');check.type='checkbox';check.id='shortAudioMode';check.checked=window.QihangOralClient.shortAudioEnabled;
+ check.onchange=()=>window.QihangOralClient.setShortAudioMode(check.checked);label.append(check);document.querySelector('.mic-options')?.append(label);
+ const note=node('p','若识别变差，可关闭短句加速，按完整窗口重新录音。','quiet');label.parentElement?.append(note);
+}
 function transcript(target, session, audio=false) {
   target.replaceChildren();
-  if(!session.messages.length) {const current=session.stages[session.stage_index];target.append(node('div',session.phase==='preparation'?'准备好后，开始和考官交流。':current==='exchange'?'轮到你提问 · À vous de poser une question.':current==='roleplay'?'可以先打招呼 · Vous pouvez commencer.':'考官即将和你打招呼…','empty-dialogue'));return;}
-  for(const row of session.messages) {
+  if(!session.messages.length) {const current=session.stages[session.stage_index];target.append(node('div',session.phase==='preparation'?'准备好后，开始和考官交流。':current==='exchange'?'轮到你提问 · À vous de poser une question.':current==='roleplay'?'可以先打招呼 · Vous pouvez commencer.':delf?.openingCue(current)?'由你开始这一环节。':'考官即将和你打招呼…','empty-dialogue'));return;}
+  const messages=window.QihangOralClient?.displayMessages?.(session.messages)||session.messages;
+  for(const row of messages) {
     const box=node('div',undefined,'bubble'+(row.role==='user'?' user':''));
     box.append(node('div',(row.role==='user'?'你':'Camille')+(audio?' · '+(stageNames[row.stage]||''):''),'who'));
     box.append(node('p',row.text || (row.audio?(row.interrupted?'录音已保存 · 本次发言被中断':['failed','cancelled'].includes(row.recognition_status)?'未识别成功 · 可回听或重新录音':'录音已保存 · 等待识别'):'尚未收到识别文字')));
     if(row.recognition)box.append(node('small','独立法语识别 · 原始转写','revision-note'));
+    if(row.recognition&&window.QihangShortAudioExperiment)box.append(node('small',`识别 ${(row.recognition.elapsed_ms/1000).toFixed(1)}秒 · 编码 ${(row.recognition.encoder_ms/1000).toFixed(1)}秒 · 计算窗口 ${((row.recognition.audio_context||1500)/50).toFixed(1)}秒`,'revision-note'));
     if(row.asr_reviews?.length) {
       box.append(node('span','本地法语复核（独立候选）：'+(row.asr_reviews.at(-1).text||'未识别出文字'),'asr-note'));
       box.append(node('small','两种识别都可能出错，请结合原声确认。','asr-note quiet'));
@@ -228,8 +253,18 @@ async function reviewRecording(sid,row,button) {
 }
 function renderSession() {
   const session=S.session;if(!session) return;
-  if(session.phase==='ended') return;
+  if(session.phase==='ended'){
+    if(delf?.isAdvanced(session)&&!$('practice').hidden&&!S.actionBusy)openReview(session.id).catch(error=>notice(error.message));
+    return;
+  }
   show('practice');
+  if(delf?.isAdvanced(session)){renderDelf(session);return;}
+  $('practiceGrid').classList.remove('delf-live');$('practiceGrid').hidden=false;$('conversation').hidden=false;$('conversation').classList.remove('delf-quiet');$('delfChoice').hidden=true;$('delfCards').hidden=true;
+  $('taskDetails').hidden=false;$('currentPrompt').hidden=true;$('transcript').hidden=false;$('micSettings').hidden=false;
+  $('abort').hidden=false;$('resume').hidden=false;$('finishPrep').hidden=false;$('finishPrep').textContent='结束准备，开始口试';$('viewExample').hidden=false;$('endTop').textContent='← 结束并保存';
+  $('examinerLevel').textContent='你的 A1 法语考官';$('prepInfo').textContent='准备信息交换关键词和情景任务。引导问答无需准备。';
+  $('stageStatus').classList.remove('exam-timer');
+
   const pending=window.QihangOralClient?.local?null:session.messages.find(m=>m.id===session.awaiting_confirmation);
   const form=$('recognitionForm');form.hidden=!pending;
   if(pending && form.dataset.row!==pending.id) {form.dataset.row=pending.id;$('confirmedTranscript').value=pending.revisions?.at(-1)?.text||pending.text||'';}
@@ -266,9 +301,112 @@ function renderSession() {
   const last=[...session.messages].reverse().find(m=>m.role==='user'&&m.audio);
   $('lastRecording').hidden=!last;
   if(last) {const src=`/api/sessions/${session.id}/audio/${last.audio}`;if(($('lastAudio').dataset.recordingSource||$('lastAudio').getAttribute('src'))!==src)setRecording($('lastAudio'),src);}
-  transcript($('transcript'),{...session,messages:session.messages.filter(m=>m.stage===stage)});renderProgress();updateButtons();
+  const audioOnly=['intro','roleplay'].includes(stage);
+  $('transcript').hidden=audioOnly;$('micSettings').hidden=audioOnly;
+  if(audioOnly)$('transcript').replaceChildren();
+  if(!audioOnly)transcript($('transcript'),{...session,messages:session.messages.filter(m=>m.stage===stage)});renderProgress();updateButtons();
 }
-async function start(part) {if(!S.boot){notice('页面正在连接，请稍候');return;}await action(async()=>{await ensureAudio();await connectSocket();S.state='waiting';await send('start',{part,mode:$('mode').value,scene:$('scene').value,recognition_mode:$('recognitionMode').value,confirm_transcript:!!S.boot.capabilities?.confirm_transcript && $('confirmRecognition').checked});$('hintBox').hidden=true;});}
+function formatTime(seconds){
+  const n=Math.max(0,seconds);
+  return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
+}
+function delfCard(card){
+  const box=node('article',undefined,'delf-paper');box.lang='fr';
+  box.append(node('h3',card.title));
+  for(const value of [card.consigne,card.document,card.prompt,card.situation,card.role])if(value)box.append(node('p',value));
+  if(card.credit)box.append(node('small',card.credit,'quiet'));
+  const link=node('a','Source · France Éducation international ↗','quiet');
+  link.href=card.source;link.target='_blank';link.rel='noopener noreferrer';box.append(link);
+  return box;
+}
+function renderDelf(s){
+  const stage=delf.currentPart(s),part=delf.parts[stage],spec=delf.exams[s.level];
+  const selecting=s.phase==='selecting',preparing=s.phase==='preparation',simulation=s.mode==='simulation';
+  $('modeTag').textContent=s.level+' · '+(simulation?'模拟考试':'熟悉流程');
+  $('examinerLevel').textContent='DELF '+s.level+' 法语考官';
+  $('steps').hidden=false;$('steps').replaceChildren(...s.stages.map((key,index)=>node('div',`${index+1}  ${delf.parts[key].name}`,'step'+(index===s.stage_index&&!preparing?' current':index<s.stage_index?' done':''))));
+  $('delfChoice').hidden=!selecting;$('practiceGrid').hidden=selecting;
+  $('practiceGrid').classList.toggle('delf-live',simulation&&s.phase==='active');
+  $('conversation').hidden=preparing;$('taskDetails').hidden=true;$('currentPrompt').hidden=true;
+  $('prep').hidden=!preparing;$('finishPrep').hidden=!preparing;$('finishPrep').textContent='跳过准备，开始口试';
+  $('taskEyebrow').textContent=preparing?'PRÉPARATION':part.fr;
+  $('taskTitle').textContent=preparing?'准备时间':part.name;
+  $('taskHint').textContent=preparing?'只准备下方选定的原题。倒计时结束后进入第一环节。':part.hint;
+  $('prepInfo').textContent='可以在纸上记关键词和提纲。';
+  $('prepClock').textContent=preparing?formatTime(Math.ceil(s.prep_until-Date.now()/1000)):'';
+  $('stageStatus').hidden=preparing||selecting;$('stageStatus').classList.remove('complete');
+  $('stageProgress').textContent=part.name;$('targetTime').textContent=simulation?'剩余时间':'本环节已用';
+  $('elapsed').textContent='';
+  $('showHint').hidden=true;$('hintBox').hidden=true;$('viewExample').hidden=true;
+  $('abort').hidden=simulation;$('resume').hidden=false;
+  $('micSettings').hidden=simulation;$('transcript').hidden=simulation;
+  $('finish').hidden=preparing||selecting||simulation;$('endTop').textContent='← 提前结束并保存';
+  $('nextStage').hidden=preparing||selecting||s.stage_index===s.stages.length-1||simulation;
+  const screen=`${s.id}:${s.phase}:${stage}`;
+  if(S.delfScreen!==screen){S.delfScreen=screen;window.scrollTo(0,0);}
+  const key=`${screen}:${Object.values(s.chosen).map(c=>c.id).join(',')}`;
+  const choices=$('delfChoiceCards'),cards=$('delfCards');
+  if(choices.dataset.renderKey!==key){
+    choices.dataset.renderKey=key;
+    choices.replaceChildren();cards.replaceChildren();
+    if(selecting){
+      const initial=s.stage_started===null;
+      $('delfChoiceTitle').textContent=initial?'抽两题，选一题':'第二部分 · 现场抽题';
+      $('delfChoiceInfo').textContent=initial&&s.level==='A2'?'独白和互动各抽两题，请各选一题。':initial?'阅读两份材料，选择其中一份。':'本环节无准备时间，确认后立即进入互动。';
+      for(const key of delf.choiceKeys(s)){
+        const group=node('section',undefined,'delf-choice-group');
+        group.append(node('h3',delf.parts[key].name));
+        const grid=node('div',undefined,'delf-pair');
+        for(const card of s.drawn[key]){
+          const paper=delfCard(card),selected=s.chosen[key]?.id===card.id;
+          paper.classList.toggle('selected',selected);
+          const button=node('button',selected?'已选 · Sélectionné':'选这道题 · Choisir','button outline');
+          button.type='button';button.setAttribute('aria-pressed',String(selected));
+          button.onclick=()=>action(()=>send('choose_card',{part:key,id:card.id}));paper.append(button);grid.append(paper);
+        }
+        group.append(grid);choices.append(group);
+      }
+      $('delfConfirm').textContent=initial&&simulation?'确认，开始准备':'确认，开始口试';
+    }else{
+      const visible=preparing?spec.prepared.map(part=>s.chosen[part]):[delf.currentCard(s)];
+      for(const card of visible.filter(Boolean))cards.append(delfCard(card));
+      cards.hidden=!cards.children.length;
+    }
+  }
+  $('conversation').classList.toggle('delf-quiet',simulation);
+  const last=simulation?null:[...s.messages].reverse().find(m=>m.stage===stage&&m.role==='user'&&m.audio);
+  $('lastRecording').hidden=!last;
+  if(last){
+    const path=`/api/sessions/${s.id}/audio/${last.audio}`;
+    if($('lastAudio').dataset.recordingSource!==path)setRecording($('lastAudio'),path);
+  }
+  if(!simulation)transcript($('transcript'),{...s,messages:s.messages.filter(m=>m.stage===stage)});
+  renderProgress();updateButtons();
+}
+if(delf){
+  function selectLevel(level){
+    const spec=delf.exams[level];
+    for(const button of $('levelPicker').querySelectorAll('[data-level]'))button.setAttribute('aria-pressed',String(button.dataset.level===level));
+    $('a1Start').hidden=!!spec;$('delfStart').hidden=!spec;
+    document.querySelector('.hero .eyebrow').textContent='DELF · '+level;
+    const title=document.querySelector('.hero h1'),description=document.querySelector('.hero p');
+    title.textContent=spec?'走进 DELF 口试':'从一句 Bonjour，开始自在表达。';
+    description.textContent=spec?'按成人版口试的顺序抽题、准备，与法语考官完成对话。':'和法语考官练习问答、提问与日常对话。每次只专注一段交流。';
+    if(!spec)return;
+    $('delfBegin').dataset.level=level;
+    $('delfTitle').textContent='DELF '+level+' 完整口试';
+    $('delfTiming').textContent=`准备 ${spec.prep/60} 分钟 · 口试 ${spec.total}`;
+    $('delfOutline').replaceChildren(...spec.stages.map(key=>{
+      const part=delf.parts[key];
+      const item=node('li');item.append(node('strong',part.name),node('span',delf.timing(level,key)[2]),node('small',part.fr));return item;
+    }));
+    $('delfInfo').textContent=(level==='A2'?'独白和情景各抽两题选一，合用 10 分钟准备。':level==='B1'?'先抽观点材料，只准备第三部分；第二部分现场抽题。':'两份原文选一，独白和辩论使用同一份材料。')+' 模拟按考试时钟推进。熟悉流程可自行切换环节。';
+  }
+  for(const button of $('levelPicker').querySelectorAll('[data-level]'))button.onclick=()=>selectLevel(button.dataset.level);
+  $('delfBegin').onclick=()=>start('full',$('delfBegin').dataset.level);
+  $('delfConfirm').onclick=()=>action(async()=>{await ensureAudio();await send('commit_choices');});
+}
+async function start(part,level='A1') {if(!S.boot){notice('页面正在连接，请稍候');return;}await action(async()=>{await ensureAudio();await connectSocket();S.state='waiting';await send('start',{part,level,mode:$(level==='A1'?'mode':'delfMode').value,scene:$('scene').value,recognition_mode:$('recognitionMode').value,confirm_transcript:!!S.boot.capabilities?.confirm_transcript && $('confirmRecognition').checked});$('hintBox').hidden=true;});}
 function captureCancelled(){const error=Error('录音已取消 / Enregistrement annulé.');error.captureCancelled=true;return error;}
 function requestInput(audio,current){
   return new Promise((resolve,reject)=>{
@@ -349,7 +487,7 @@ async function beginCapture() {
   } finally {S.micBusy=false;updateButtons();}
 }
 async function stopCapture(submit=true) {
-  S.captureEpoch++;
+  S.captureEpoch++;S.recordUntil=null;
   const stream=S.stream,context=S.inputContext;
   if(submit && S.capture && stream) {
     const capture=S.capture;
@@ -368,14 +506,14 @@ async function showHistory() {
   if(!S.boot.sessions.length) $('historyList').append(node('div','还没有练习记录。完成一次对话后，会保存在这里。','panel review-block muted'));
   for(const session of S.boot.sessions) {
     const button=node('button',undefined,'history-item panel');const info=node('div');
-    info.append(node('strong',stageNames[session.part]+' · '+(session.mode==='simulation'?'模拟':'陪练')),
+    info.append(node('strong',(session.level||'A1')+' · '+stageNames[session.part]+' · '+(session.mode==='simulation'?'模拟':'陪练')),
       node('p',new Date(session.created*1000).toLocaleString('zh-CN')+' · '+(session.ended?'已结束':'未结束，可查看或继续')));
     button.append(info,node('span','查看 →'));button.onclick=()=>action(()=>openReview(session.id));$('historyList').append(button);
   }
 }
 async function openReview(id) {
   const session=await api('/api/sessions/'+id);S.review=session;show('review');
-  $('reviewMeta').textContent=stageNames[session.part]+' · '+new Date(session.created*1000).toLocaleString('zh-CN');
+  $('reviewMeta').textContent=(session.level||'A1')+' · '+stageNames[session.part]+' · '+new Date(session.created*1000).toLocaleString('zh-CN');
   const duration=Math.max(0,Math.round(((session.ended||session.updated)-session.created)/60));
   const user=session.messages.filter(x=>x.role==='user');const seconds=user.reduce((n,x)=>n+(x.seconds||0),0);
   $('reviewStats').replaceChildren();
@@ -383,7 +521,12 @@ async function openReview(id) {
     const card=node('div',undefined,'stat');card.append(node('strong',value),node('span',label));$('reviewStats').append(card);
   }
   transcript($('reviewTranscript'),session,true);
-  $('reviewChecks').textContent=session.checks.length?'你勾选已完成：'+session.checks.join('、'):'本次没有勾选自评任务。可结合录音自行检查。';
+  $('reviewChecks').textContent=delf?.isAdvanced(session)?(session.ended?'结合原题和录音复盘。':'还可以继续本次口试。'):session.checks.length?'你勾选已完成：'+session.checks.join('、'):'本次没有勾选自评任务。可结合录音自行检查。';
+  if(delf?.isAdvanced(session)&&Object.keys(session.chosen).length){
+    const details=node('details');details.append(node('summary','回看本场原题'));
+    for(const card of Object.values(session.chosen))details.append(delfCard(card));
+    $('reviewChecks').append(details);
+  }
   $('restore').hidden=!!session.ended;
   renderEvaluation(session);
 }
@@ -391,15 +534,26 @@ function renderEvaluation(session) {
   clearTimeout(S.evaluationTimer);
   const box=$('evaluationContent'),button=$('evaluate'),state=session.evaluation||{};
   box.replaceChildren();button.hidden=!session.ended;
-  button.disabled=state.status==='pending';button.textContent=state.status==='ready'?'重新生成评价':state.status==='error'?'重试评价':'生成评价';
+  button.disabled=state.status==='pending'||state.voice_status==='pending';button.textContent=state.status==='ready'?'重新生成评价':state.status==='error'?'重试评价':'生成评价';
   if(state.status!=='ready') {
     box.append(node('p',state.status==='pending'?'AI正在回顾这轮对话，请稍候…':state.message||'结束练习后，AI会给出本轮评价和下一步练习建议。','muted'));
-    if(state.status==='pending')S.evaluationTimer=setTimeout(async()=>{
+    if(state.status==='pending'||state.voice_status==='pending')S.evaluationTimer=setTimeout(async()=>{
       if($('review').hidden||S.review?.id!==session.id)return;
       try{const fresh=await api('/api/sessions/'+session.id);S.review=fresh;renderEvaluation(fresh);}catch(e){box.replaceChildren(node('p','评价状态暂时无法获取，点击重试。','muted'));button.disabled=false;button.textContent='重试评价';}
     },2000);
     return;
   }
+  if(state.voice_status==='pending')S.evaluationTimer=setTimeout(async()=>{
+   if($('review').hidden||S.review?.id!==session.id)return;
+   try{const fresh=await api('/api/sessions/'+session.id);S.review=fresh;renderEvaluation(fresh);}catch{}
+  },1500);
+  const voice=node('section',undefined,'evaluation-voice');
+  voice.append(node('h3','语音评价'));
+  if(state.audio){
+   const player=node('audio');player.controls=true;player.preload='none';
+   setRecording(player,'/api/sessions/'+session.id+'/audio/'+state.audio);voice.append(player);
+  }else voice.append(node('p',state.voice_status==='pending'?'考官正在生成语音评价…':'本次未收到考官语音，可重新生成评价。','quiet'));
+  box.append(voice);
   const report=state.report;box.append(node('p',report.summary,'evaluation-summary'));
   for(const stage of report.stages) {
     const card=node('section',undefined,'evaluation-stage');card.append(node('h3',stageNames[stage.stage]));
@@ -418,12 +572,24 @@ $('evaluate').onclick=()=>action(async()=>{
 });
 setInterval(()=>{
   const s=S.session;if(!s || s.phase==='ended') return;
+  if(delf?.isAdvanced(s)){
+    if(document.hidden||$('practice').hidden)return;
+    if(s.phase==='preparation')$('prepClock').textContent=formatTime(Math.ceil(s.prep_until-Date.now()/1000));
+    renderProgress();
+    const now=Date.now()/1000,deadline=delf.examClock(s);
+    if(!S.actionBusy&&!S.micBusy&&S.stream&&S.recordUntil&&now>=S.recordUntil){
+      action(()=>stopCapture(true));
+    }else if(!S.actionBusy&&!S.micBusy&&!S.stream&&S.state!=='recognizing'&&deadline&&now>=deadline&&S.socket?.readyState===WebSocket.OPEN){
+      action(async()=>{await send('clock',{playback_busy:playing()});if(S.session?.ended)await openReview(S.session.id);});
+    }
+    return;
+  }
   const elapsed=Math.max(0,Math.floor(Date.now()/1000-(s.stage_started||s.created)));
   $('elapsed').textContent=String(Math.floor(elapsed/60)).padStart(2,'0')+':'+String(elapsed%60).padStart(2,'0');
   renderProgress();
   if(s.phase==='preparation') {const left=Math.max(0,Math.ceil(s.prep_until-Date.now()/1000));$('prepClock').textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');
     if(!left) {$('voiceState').textContent='准备时间已到，点击“结束准备，开始口试”继续';}}
-},1000);
+},250);
 $('bind').onclick=()=>action(async()=>{$('bind').disabled=true;try{const data=await api('/api/bind',{});providerView(data);S.boot.provider=data;if(data.status==='binding') pollProvider();}finally{$('bind').disabled=S.boot?.provider?.status==='binding';}});
 document.querySelectorAll('[data-part]').forEach(b=>b.onclick=()=>openGuide(b.dataset.part));$('full').onclick=()=>openGuide('full');
 $('guideClose').onclick=closeGuide;$('guideDialog').addEventListener('cancel',e=>{e.preventDefault();closeGuide();});
@@ -439,7 +605,7 @@ $('retrySpeech').onclick=()=>action(async()=>{await ensureAudio();await send('re
 $('abort').onclick=()=>action(async()=>{await stopCapture(false);stopPlayback();await send('abort');});
 $('resume').onclick=()=>action(async()=>{await ensureAudio();const fresh=await connectSocket();await send(fresh?'restore':'resume',fresh?{id:S.session.id}:{});});
 $('nextStage').onclick=()=>action(async()=>{stopPlayback();$('hintBox').hidden=true;await send('next');});
-$('finishPrep').onclick=()=>action(async()=>{await ensureAudio();await send('next');});
+$('finishPrep').onclick=()=>action(async()=>{await ensureAudio();await send(delf?.isAdvanced(S.session)?'skip_preparation':'next');});
 $('nextKeyword').onclick=()=>action(async()=>{stopPlayback();await send('keyword');});
 $('finish').onclick=finish;$('endTop').onclick=finish;
 $('showHint').onclick=()=>{$('hintBox').hidden=!$('hintBox').hidden;};

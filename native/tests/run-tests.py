@@ -30,3 +30,7 @@ with tempfile.TemporaryDirectory(prefix='qihang_storage_tests_') as temporary:
     sources.append(root/'native/tests/SessionStorageTest.java')
     subprocess.run([str(args.jdk/'bin'/('javac'+suffix)),'--release','17','-encoding','UTF-8','-cp',str(args.json_jar),'-d',temporary,*map(str,sources)],check=True)
     subprocess.run([str(args.jdk/'bin'/('java'+suffix)),'-Djava.io.tmpdir='+temporary,'-cp',temporary+os.pathsep+str(args.json_jar),'cn.qihang.oral.SessionStorageTest'],check=True,timeout=30)
+with tempfile.TemporaryDirectory(prefix='qihang_android_loader_tests_') as temporary:
+    sources=[root/'native/common/cn/qihang/oral/NativeLibraries.java',root/'native/tests/NativeLibrariesTest.java']
+    subprocess.run([str(args.jdk/'bin'/('javac'+suffix)),'--release','8','-encoding','UTF-8','-d',temporary,*map(str,sources)],check=True)
+    subprocess.run([str(args.jdk/'bin'/('java'+suffix)),'-cp',temporary,'cn.qihang.oral.NativeLibrariesTest'],check=True,timeout=30)

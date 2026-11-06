@@ -3,7 +3,21 @@ import concurrent.futures, hashlib, json, os, pathlib, re, shutil, subprocess, s
 root=pathlib.Path(__file__).resolve().parent.parent
 base=pathlib.Path('Q:/') if pathlib.Path('Q:/native/cpp/speech.cpp').is_file() else root
 tools=pathlib.Path(os.environ.get('QIHANG_NATIVE_TOOLS',str(base/'.native-tools'))); target=sys.argv[1] if len(sys.argv)>1 else 'android'
-whisper=tools/'whisper.cpp-1.8.3'; opus=tools/'opus-1.5.2'; out=tools/('manual-'+target);out.mkdir(exist_ok=True)
+variant=sys.argv[2] if len(sys.argv)>2 else 'all'
+profiles={'baseline':'armv8-a','fp16':'armv8-a+fp16','dotprod':'armv8-a+fp16+dotprod'}
+if target=='android' and variant=='all':
+    # Each full inference library has its own flags/object cache. The JNI probe
+    # alone loads first; Java selects one supported variant before inference.
+    for name in profiles:subprocess.run([sys.executable,__file__,'android',name],check=True)
+    llvm=tools/'android-ndk-r27d/toolchains/llvm/prebuilt'/('windows-x86_64' if os.name=='nt' else 'linux-x86_64')
+    output=root/'android/jniLibs/arm64-v8a';suffix='.exe' if os.name=='nt' else ''
+    subprocess.run([str(llvm/'bin'/('clang++'+suffix)),'--target=aarch64-none-linux-android26','--sysroot='+str(llvm/'sysroot'),'-march=armv8-a','-std=c++17','-O2','-fPIC','-shared','-static-libstdc++','-Wl,-z,max-page-size=16384','-Wl,--no-undefined',str(base/'native/cpp/android-cpu.cpp'),'-o',str(output/'libqihang_cpu.so')],check=True)
+    manifest={'revision':'android-arm64-variants-1','libraries':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.glob('libqihang*.so'))},'profiles':profiles}
+    (output/'build-manifest.json').write_text(json.dumps(manifest,indent=2))
+    print('Android baseline / FP16 / dotprod libraries and capability probe built.',flush=True)
+    sys.exit(0)
+if target=='android' and variant not in profiles:raise ValueError('Unknown Android CPU variant: '+variant)
+whisper=tools/'whisper.cpp-1.8.3'; opus=tools/'opus-1.5.2'; out=tools/('manual-'+target+('-'+variant if target=='android' else ''));out.mkdir(exist_ok=True)
 def groups(file,names):
     text=(opus/file).read_text(); result=[]
     for name in names:
@@ -24,12 +38,13 @@ config='''#define OPUS_BUILD 1
 (out/'config.h').write_text(config)
 flags=['-O3','-fPIC','-DHAVE_CONFIG_H','-DOPUS_BUILD','-I'+str(out),'-I'+str(opus),'-I'+str(opus/'include'),'-I'+str(opus/'celt'),'-I'+str(opus/'silk'),'-I'+str(opus/'silk/float')]
 if target=='android':
-    llvm=tools/'android-ndk-r27d/toolchains/llvm/prebuilt/windows-x86_64'
-    cc=llvm/'bin/clang.exe';cxx=llvm/'bin/clang++.exe';flags+=['--target=aarch64-none-linux-android26','--sysroot='+str(llvm/'sysroot'),'-march=armv8-a','-D_GNU_SOURCE']
+    llvm=tools/'android-ndk-r27d/toolchains/llvm/prebuilt'/('windows-x86_64' if os.name=='nt' else 'linux-x86_64')
+    suffix='.exe' if os.name=='nt' else ''
+    cc=llvm/'bin'/('clang'+suffix);cxx=llvm/'bin'/('clang++'+suffix);flags+=['--target=aarch64-none-linux-android26','--sysroot='+str(llvm/'sysroot'),'-march='+profiles[variant],'-D_GNU_SOURCE']
     g=whisper/'ggml/src'; common=['ggml.c','ggml.cpp','ggml-alloc.c','ggml-backend.cpp','ggml-opt.cpp','ggml-threading.cpp','ggml-quants.c','gguf.cpp','ggml-backend-reg.cpp','ggml-cpu/ggml-cpu.c','ggml-cpu/ggml-cpu.cpp','ggml-cpu/repack.cpp','ggml-cpu/hbm.cpp','ggml-cpu/quants.c','ggml-cpu/traits.cpp','ggml-cpu/amx/amx.cpp','ggml-cpu/amx/mmq.cpp','ggml-cpu/binary-ops.cpp','ggml-cpu/unary-ops.cpp','ggml-cpu/vec.cpp','ggml-cpu/ops.cpp','ggml-cpu/arch/arm/quants.c','ggml-cpu/arch/arm/repack.cpp']
     sources += [g/n for n in common]+[whisper/'src/whisper.cpp']
     flags+=['-DGGML_USE_CPU','-DGGML_VERSION="0.9.5"','-DGGML_COMMIT="whisper-v1.8.3"','-DWHISPER_VERSION="1.8.3"','-I'+str(whisper/'ggml/include'),'-I'+str(g),'-I'+str(g/'ggml-cpu')]
-    library=root/'android/jniLibs/arm64-v8a/libqihang_speech.so'
+    library=root/('android/jniLibs/arm64-v8a/libqihang_speech'+('' if variant=='baseline' else '_'+variant)+'.so')
 else:
     mingw=pathlib.Path(os.environ.get('QIHANG_MINGW_BIN','D:/mingw64/bin'))
     jdk=pathlib.Path(os.environ.get('QIHANG_JDK_HOME','D:/'))
@@ -38,14 +53,15 @@ else:
 sources += [base/'native/cpp/speech.cpp'];flags+=['-I'+str(whisper/'include')]
 def compile_one(item):
     i,source=item;obj=out/(str(i)+'.o');command=[str(cxx if source.suffix=='.cpp' else cc),*flags,*(['-std=c++17'] if source.suffix=='.cpp' else ['-std=gnu11']),'-c',str(source),'-o',str(obj)]
-    signature=hashlib.sha256((' '.join(command)+str(source.stat().st_mtime_ns)).encode()).hexdigest();stamp=out/(str(i)+'.stamp')
+    headers=''.join(hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(source.parent.glob('*.h'))) if source.parent==base/'native/cpp' else ''
+    signature=hashlib.sha256((' '.join(command)+str(source.stat().st_mtime_ns)+headers).encode()).hexdigest();stamp=out/(str(i)+'.stamp')
     if obj.is_file() and stamp.is_file() and stamp.read_text()==signature:return obj
     result=subprocess.run(command,capture_output=True)
     (out/(str(i)+'.log')).write_bytes(result.stdout+result.stderr)
     if result.returncode:raise RuntimeError(str(source)+'\n'+(result.stdout+result.stderr).decode('utf-8','replace')[-5000:])
     stamp.write_text(signature);return obj
 print('Compiling',target,len(sources),'sources',flush=True)
-with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:objects=list(pool.map(compile_one,enumerate(sources)))
+with concurrent.futures.ThreadPoolExecutor(max_workers=max(1,min(6,int(os.environ.get('QIHANG_NATIVE_JOBS','6'))))) as pool:objects=list(pool.map(compile_one,enumerate(sources)))
 library.parent.mkdir(parents=True,exist_ok=True)
 link=[str(cxx),*([f'--target=aarch64-none-linux-android26','--sysroot='+str(llvm/'sysroot'),'-static-libstdc++','-Wl,-z,max-page-size=16384','-Wl,--no-undefined','-llog','-latomic','-lm'] if target=='android' else ['-static-libgcc','-static-libstdc++']),'-shared','-o',str(library),*[str(o) for o in objects]]
 if target!='android':
