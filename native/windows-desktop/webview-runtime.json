@@ -1,0 +1,13 @@
+{
+  "sdk": {
+    "version": "1.0.4314.35",
+    "url": "https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/1.0.4314.35/microsoft.web.webview2.1.0.4314.35.nupkg",
+    "sha256": "90778deb1b77e36292828b4b5833c9255c27533f40e0ddd55891ae718944edc4"
+  },
+  "runtime": {
+    "version": "156.0.4314.58",
+    "url": "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/b7919cc9-680d-4253-bf32-732988e68aa6/Microsoft.WebView2.FixedVersionRuntime.156.0.4314.58.x64.cab",
+    "size": 310195262,
+    "sha256": "857dcfd6f7035508a29645fa2978c3a6a841f220df77cc366d318894e19f4792"
+  }
+}

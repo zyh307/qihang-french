@@ -1,6 +1,9 @@
 /* Local exam state and transport adapter for the existing oral interface.
  * No remote ASR, shared device identity, server URL or auto-resend of an uncertain turn. */
-import {oralCall as call} from './native-bridge.js';
+import {oralCall as nativeCall} from './native-bridge.js';
+import {createBrowserOralCall} from './browser-client.js';
+import {getOralAudio,sessionAudioIds} from './browser-store.js';
+const call=createBrowserOralCall(nativeCall);
 import {advancePart,chooseCard,commitChoices,createExam,examClock,examProgress,examTask,isAdvanced,openingCue,openPart,parts,recordDeadline} from './delf-exam.js';
 const [bank,delfCards]=await Promise.all(['bank-full.json','delf-cards.json'].map(path=>fetch(path).then(r=>r.json())));
 const now=()=>Date.now()/1000,id=()=>crypto.randomUUID();
@@ -317,7 +320,7 @@ async function api(path,options={}){const body=options.body?JSON.parse(options.b
  else throw Error('此操作不可用 / Action indisponible.');
  return {ok:true,json:async()=>value};
 }
-window.QihangOralClient={local:true,displayMessages,get shortAudioEnabled(){return shortAudio;},setShortAudioMode(value){shortAudio=!!value;try{localStorage.setItem('qihang-short-audio',shortAudio?'on':'off');}catch{}},fetch:api,createSocket(){if(activeChannel&&!activeChannel.closed)activeChannel.close();activeChannel=new LocalChannel();return activeChannel;},workletURL:new URL('capture.js',location.href).href,async setAudio(player,path){const id=path.split('/').at(-1).replace(/\.wav$/,'');const r=await call('audio.read',{id});if(player.dataset.blob)URL.revokeObjectURL(player.dataset.blob);const url=URL.createObjectURL(new Blob([unbase64(r.data)],{type:'audio/wav'}));player.src=url;player.dataset.blob=url;player.dataset.recordingSource=path;},connectionFailed(message){parent.postMessage({type:'qihang-oral-error',message},location.origin);},async offlineBootstrap(){return {provider:{status:'offline',message:'请完成口语准备 / Préparez le mode oral.'},stages:bank.stages,scenes:bank.scenes};},async exportSession(id){const a=await call('session.export',{id});parent.postMessage({type:'qihang-oral-export-archive',name:a.name,data:a.data},location.origin);}};
+window.QihangOralClient={local:true,displayMessages,get shortAudioEnabled(){return shortAudio;},setShortAudioMode(value){shortAudio=!!value;try{localStorage.setItem('qihang-short-audio',shortAudio?'on':'off');}catch{}},fetch:api,createSocket(){if(activeChannel&&!activeChannel.closed)activeChannel.close();activeChannel=new LocalChannel();return activeChannel;},workletURL:new URL('capture.js',location.href).href,async setAudio(player,path){const id=path.split('/').at(-1).replace(/\.wav$/,'');const bytes=await getOralAudio(id);if(!bytes)throw Error('未找到录音 / Audio introuvable.');if(player.dataset.blob)URL.revokeObjectURL(player.dataset.blob);const url=URL.createObjectURL(new Blob([bytes],{type:'audio/wav'}));player.src=url;player.dataset.blob=url;player.dataset.recordingSource=path;},connectionFailed(message){parent.postMessage({type:'qihang-oral-error',message},location.origin);},async offlineBootstrap(){return {provider:{status:'offline',message:'请完成口语准备 / Préparez le mode oral.'},stages:bank.stages,scenes:bank.scenes};},async exportSession(id){const session=await call('session.get',{id}),recordings=[];for(const audioId of sessionAudioIds(session)){const bytes=await getOralAudio(audioId);if(!bytes)throw Error('未找到录音 / Audio introuvable.');recordings.push({id:audioId,bytes});}parent.postMessage({type:'qihang-oral-export-record',session,recordings},location.origin,recordings.map(r=>r.bytes));}};
 document.addEventListener('visibilitychange',()=>{
  const channel=activeChannel;
  if(channel&&!channel.closed)channel.queue=channel.queue.then(()=>document.hidden?channel.suspend():channel.foreground()).catch(e=>channel.emit('notice',{message:e.message}));
@@ -325,3 +328,7 @@ document.addEventListener('visibilitychange',()=>{
 });
 
 document.addEventListener('click',event=>{const link=event.target.closest?.('a[target="_blank"]');if(link?.href?.startsWith('https://')){event.preventDefault();parent.postMessage({type:'qihang-oral-link',url:link.href},location.origin);}});
+window.addEventListener('message',async event=>{if(event.origin!==location.origin||event.source!==parent||event.data?.type!=='qihang-records-flush')return;try{const channel=activeChannel;if(channel&&!channel.closed){channel.queue=channel.queue.then(async()=>{if(channel.session&&!channel.session.ended)await channel.suspend();else{await call('background');if(channel.evaluation){if(channel.evaluation.evaluation.status==='pending')channel.evaluation.evaluation={...channel.evaluation.evaluation,status:'error',message:'点评已暂停，可重新生成 / Relancez l’évaluation.'};await save(channel.evaluation);channel.evaluation=null;clearTimeout(channel.evalDeadline);}}});await channel.queue;}parent.postMessage({type:'qihang-records-flushed',request:event.data.request},location.origin);}catch(e){parent.postMessage({type:'qihang-records-flushed',request:event.data.request,error:e.message},location.origin);}});
+
+window.addEventListener('dragover',event=>{if(event.dataTransfer?.types?.includes('Files'))event.preventDefault();});
+window.addEventListener('drop',event=>{if(!event.dataTransfer?.files?.length)return;event.preventDefault();const files=[...event.dataTransfer.files];if(files.length===1&&files[0].name.toLowerCase().endsWith('.zip'))parent.postMessage({type:'qihang-oral-restore-file',file:files[0]},location.origin);});

@@ -12,6 +12,7 @@
           </view>
           <template v-else>
             <view :class="['exercise-entry',{correct:session.feedback?.correct,incorrect:session.feedback&&!session.feedback.correct}]" @click="retrySpelling"><view v-if="task.mode==='choice'" class="article-picker" @click.stop><button hover-class="none" class="article-trigger" :class="{selected:!!articleSelection}" :disabled="busy||!!session.feedback" :aria-expanded="articleOpen" aria-label="选择冠词 / Choisir un article" @click="toggleArticle"><text v-if="articleSelection">{{ articleSelection }}</text><Bi v-else zh="冠词" fr="Article" small /><Icon name="chevron-down" /></button><Transition name="article-menu"><view v-if="articleOpen" class="article-menu" role="group" aria-label="冠词选项 / Articles"><button v-for="article in task.options" :key="article" hover-class="none" :class="{selected:articleSelection===article}" :aria-pressed="articleSelection===article" @click="selectArticle(article)"><text>{{ article }}</text><Icon v-if="articleSelection===article" name="check" /></button></view></Transition></view><text v-if="task.mode==='given'&&parts.prefix" class="given-article">{{ parts.prefix }}</text><AnswerInput ref="answerInput" v-model="input" :touch="useTouchKeyboard" :active="keyboardOpen" :disabled="busy||!!session.feedback" @update:model-value="draft=$event" @activate="openKeyboard" @blur="focusInput=false" @keydown="physicalInput" /><button v-if="useTouchKeyboard&&!session.feedback" hover-class="none" class="answer-keyboard-toggle" @mousedown.prevent @click.stop="openKeyboard" aria-label="法语键盘 / Clavier français"><Icon name="keyboard" /></button><Icon v-if="session.feedback" :name="session.feedback.correct?'check':'close'" /></view>
+            <DesktopAccents v-if="!useTouchKeyboard" :disabled="busy||submitted||!!session.feedback" @insert="insertAccent" />
             <view v-if="session.feedback" :class="['spelling-result',{correct:session.feedback.correct}]" role="status"><Icon :name="session.feedback.correct?'check':'repeat'" /><Bi :zh="session.feedback.correct?'正确':'再试一次'" :fr="session.feedback.correct?'Correct':'À revoir'" small /></view>
             <SpellingFeedback v-if="session.feedback?.diff" :diff="session.feedback.diff" />
           </template>
@@ -37,6 +38,7 @@ import {primaryMeaning} from '../domain/meanings.js';
 import ExampleSentence from './ExampleSentence.vue';
 import FrenchKeyboard from './FrenchKeyboard.vue';
 import AnswerInput from './AnswerInput.vue';
+import DesktopAccents from './DesktopAccents.vue';
 import {nativeHost} from '../platform/native.js';
 import {playCorrect,playTap} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import DefinitionPanel from './DefinitionPanel.vue';import SpellingFeedback from './SpellingFeedback.vue';
@@ -54,6 +56,7 @@ function openKeyboard(){closeArticle();if(!useTouchKeyboard||props.busy||props.s
 function closeKeyboard(){keyboardOpen.value=false;focusInput.value=false;inputElement()?.blur();}
 function replaceRange(text,backwards=false,forwards=false){answerInput.value?.replaceRange(text,backwards,forwards);}
 function insertText(letter){if(!props.busy&&!props.session.feedback)replaceRange(letter);}
+function insertAccent(letter){if(props.busy||submitted.value||props.session.feedback)return;insertText(letter);answerInput.value?.focus();}
 function deleteCharacter(){if(!props.busy&&!props.session.feedback)replaceRange('',true);}
 function physicalInput(event){
   if(!useTouchKeyboard){if(event.key==='Enter'&&!event.isComposing&&event.keyCode!==229){event.preventDefault();event.stopPropagation();submitSpelling();}return;}

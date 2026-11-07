@@ -27,3 +27,6 @@ Windows随附模型修复增加6组隔离夹具检查：首次直接使用随附
 安卓CPU库选择另加8个Java隔离用例，已纳入run-tests.py；`g++ -std=c++17 native/tests/AndroidCpuTest.cpp -o cpu-test`后执行，覆盖6种HWCAP组合。原生构建`python scripts/build-native.py android`产生基础／FP16／dotprod和基础探测四个so，使用NDK的llvm-readelf核对16KB加载对齐与依赖，llvm-objdump核对扩展指令。替身和交叉编译成功不等于目标手机提速；需记录实际native_library和相同录音的分项耗时，不能承诺某个手机一定达到固定秒数。
 
 test2短句试验：另编译执行AudioWindowTest.cpp，检查6个边界及0.1～120秒支持范围内窗口覆盖全部原样本并额外保留2秒；长录音使用完整上下文。JS另加试验未启用不请求短窗口、明确启用后提交、关闭开关下一条恢复完整窗口及诊断字段保存检查（共6组JS）。原音对照只在私有本地目录进行，不将用户音频放入公开仓库或测试夹具。
+
+
+浏览器统一记录与跨平台备份：在项目根目录运行 `node native/tests/browser-records.test.mjs`。需 Windows + Edge、现有 npm 依赖；检查使用独立临时浏览器上下文和合成 WAV，不访问正式浏览器用户资料、模型、绑定或麦克风。覆盖旧版 IndexedDB 原地升级、原词汇与录音、浏览器口语存储、临时原生缓存、损坏备份拒绝、电脑→移动端→电脑双向恢复、旧词汇备份兼容、重开后保存及恢复后的旧页面写入防护。移动端为浏览器视口模拟，不等于安卓 WebView 真机验证。新增 BrowserRecordsTest.java 验证真实 Java 缓存接口（无模型），纳入 run-tests.py。

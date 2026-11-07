@@ -207,3 +207,8 @@ Inspire 2、3、4 的词汇、例句与真人录音来自用户提供的教材�
 补充词汇录音：fr-FR-DeniseNeural 法语合成音。
 
 常用自反动词补充：依据现有 Wiktionary 法语、英语版本词条校订 76 个独立自反用法；中文释义和中法例句由启航法语编写，音标人工校订。补充数据、用法别名和日期见 src/lexicon/pronominal-supplement.json；新增单词及例句录音为 fr-FR-DeniseNeural 合成音。se rappeler 的直接宾语用法另参考法国法兰西学院：https://www.academie-francaise.fr/se-rappeler-quelque-chose-se-souvenir-de-quelque-chose 。
+
+
+## Windows 独立窗口
+
+Microsoft WebView2 SDK 1.0.4314.35 与 Fixed Version Runtime 156.0.4314.58 x64。下载来源、大小及 SHA-256 固定在 native/windows-desktop/webview-runtime.json；许可随包位于桌面运行/WebView2-LICENSE.txt，运行时内部保留第三方许可。优先使用已安装的 WebView2 Runtime；缺失时由应用自动准备随附的固定版本。普通用户无需安装开发工具。官方分发说明：https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution 。

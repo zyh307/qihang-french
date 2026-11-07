@@ -30,10 +30,10 @@ async function fixture(jobs,options={}){
   }
   return{};
  };
- const window={QihangShortAudioExperiment:options.shortAudioExperiment===true};window.parent={postMessage(){}};
+ const window={QihangShortAudioExperiment:options.shortAudioExperiment===true,addEventListener(){}};window.parent={postMessage(){}};
  const context=vm.createContext({window,parent:window.parent,document:{hidden:false,addEventListener(){}},location:{origin:'http://test.local',href:'http://test.local/static/oral/index.html'},fetch:async path=>({json:async()=>path==='delf-cards.json'?delfCards:bank}),Date:ExamDate,URL,Blob,setTimeout,clearTimeout,performance,crypto:webcrypto,structuredClone,btoa,atob,console});
  const module=new vm.SourceTextModule(source,{context,identifier:'local-client.js'});
- await module.link(name=>name==='./delf-exam.js'?new vm.SourceTextModule(delfSource,{context}):new vm.SyntheticModule(['oralCall'],function(){this.setExport('oralCall',call);},{context}));
+ await module.link(name=>name==='./delf-exam.js'?new vm.SourceTextModule(delfSource,{context}):name==='./browser-client.js'?new vm.SyntheticModule(['createBrowserOralCall'],function(){this.setExport('createBrowserOralCall',native=>native);},{context}):name==='./browser-store.js'?new vm.SyntheticModule(['getOralAudio','sessionAudioIds'],function(){this.setExport('getOralAudio',async()=>null);this.setExport('sessionAudioIds',()=>[]);},{context}):new vm.SyntheticModule(['oralCall'],function(){this.setExport('oralCall',call);},{context}));
  await module.evaluate();
  const channel=window.QihangOralClient.createSocket();channel.onmessage=e=>{if(typeof e.data==='string')messages.push(JSON.parse(e.data));else audioFrames.push(e.data);};
  async function until(condition){const end=performance.now()+5000;while(!condition()){assert.ok(performance.now()<end,'test condition timed out');await new Promise(r=>setTimeout(r,5));}}

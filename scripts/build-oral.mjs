@@ -7,7 +7,9 @@ await fs.cp(path.join(root,'native/licenses'),path.join(output,'licenses'),{recu
 await fs.copyFile(path.join(root,'LICENSE'),path.join(output,'licenses/Qihang-GPL-3.0.txt'));
 await fs.copyFile(path.join(root,'COPYRIGHT'),path.join(output,'licenses/Qihang-COPYRIGHT.txt'));
 for(const name of ['app.js','capture.js','style.css','bank.json'])await fs.copyFile(path.join(root,'oral-assistant/web',name),path.join(output,name));
-for(const name of ['local-client.js','native-bridge.js','bank-full.json','delf-exam.js','delf-cards.json'])await fs.copyFile(path.join(root,'src/oral',name),path.join(output,name));
+for(const name of ['local-client.js','native-bridge.js','bank-full.json','delf-exam.js','delf-cards.json','browser-client.js'])await fs.copyFile(path.join(root,'src/oral',name),path.join(output,name));
+await fs.writeFile(path.join(output,'browser-store.js'),(await fs.readFile(path.join(root,'src/oral/browser-store.js'),'utf8')).replace("'../platform/browser-database.js'","'./browser-database.js'"));
+await fs.copyFile(path.join(root,'src/platform/browser-database.js'),path.join(output,'browser-database.js'));
 await fs.writeFile(path.join(output,'entry.js'),"await import('./local-client.js');\nwindow.QihangDelf = await import('./delf-exam.js');\nawait import('./app.js');\n");
 await fs.copyFile(path.join(root,'src/oral/theme.css'),path.join(output,'theme.css'));
 let html=await fs.readFile(path.join(root,'oral-assistant/web/index.html'),'utf8');

@@ -9,5 +9,5 @@
 import {computed} from 'vue';import Bi from './Bi.vue';
 const props=defineProps({diff:{type:Array,default:()=>[]}});
 const changes=computed(()=>[...new Set(props.diff.filter(p=>p.kind!=='same').map(p=>p.kind))]);
-const labels={missing:['补上缺少的字母','Ajoutez la lettre manquante.'],extra:['删去多余的字母','Retirez la lettre en trop.'],replace:['留意不同的字母或词尾','Vérifiez la lettre ou la terminaison.'],accent:['留意重音符号','Vérifiez les accents.'],case:['留意字母大小写','Vérifiez les majuscules.'],format:['留意空格或标点','Vérifiez les espaces et la ponctuation.']};
+const labels={ligature:['留意连字写法','Vérifiez la ligature.'],missing:['补上缺少的字母','Ajoutez la lettre manquante.'],extra:['删去多余的字母','Retirez la lettre en trop.'],replace:['留意不同的字母或词尾','Vérifiez la lettre ou la terminaison.'],accent:['留意重音符号','Vérifiez les accents.'],case:['留意字母大小写','Vérifiez les majuscules.'],format:['留意空格或标点','Vérifiez les espaces et la ponctuation.']};
 </script>

@@ -15,7 +15,7 @@ const items=[
 {icon:'eye',zh:'多张卡片可同时翻开，3 秒翻回；预览不改变选课',fr:'Plusieurs cartes ouvertes, 3 s ; aperçu sans sélection'},
 {icon:'edit',zh:'答错或查看提示进入错题，同词每轮只计错一次',fr:'Erreur ou indice : une erreur par mot et par série'},
 {icon:'check',zh:'名词可选冠词，或在设置切换自行填写',fr:'Choisir l’article ou l’écrire selon les réglages'},
-{icon:'keyboard',zh:'手机长按滑选重音，松手输入；电脑用实体键盘',fr:'Mobile : maintenir, glisser, relâcher ; ordinateur : clavier physique'},
+{icon:'keyboard',zh:'手机长按滑选重音，松手输入；电脑可用实体键盘和重音按钮',fr:'Mobile : maintenir, glisser, relâcher ; ordinateur : clavier physique et boutons d’accents'},
 {icon:'close',zh:'选错标红，继续选；错题专练不改变复习时间',fr:'Rouge : réessayer ; correction sans changer les révisions'},
 {icon:'edit',zh:'错题按错误次数排序，每天练一次，两次后可移出',fr:'Erreurs : une fois par jour, retrait après 2 révisions'},
 {icon:'clock',zh:'10词显示红点；仅复习发系统通知，错题仅在软件内提醒',fr:'10 mots : point rouge ; notifications pour la révision uniquement'},

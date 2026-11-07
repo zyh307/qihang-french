@@ -1,0 +1,42 @@
+/* The Windows window has its own profile and spacious desktop layout. */
+@media(min-width:900px){
+ html.qihang-desktop .app-frame:not(.is-oral):not(.is-grammar):not(.is-practicing):not(.page-recite)>.main-area{margin-left:204px}
+ html.qihang-desktop .mobile-nav{left:18px;right:auto;top:116px;bottom:auto;transform:none;width:170px;height:auto;min-height:0;padding:10px;display:flex;flex-direction:column;gap:7px;border:1px solid #dce4f1;border-radius:21px;background:#f8faffed}
+ html.qihang-desktop .mobile-nav>uni-button{width:100%;min-width:0;min-height:58px;padding:10px 13px;flex-direction:row;justify-content:flex-start;gap:13px;border-radius:14px}
+ html.qihang-desktop .mobile-nav .bi{text-align:left;align-items:flex-start}
+ html.qihang-desktop .mobile-nav .bi-zh{font-size:13px}html.qihang-desktop .mobile-nav .bi-fr{font-size:10px}
+ html.qihang-desktop .topbar{height:88px;padding:20px 34px}
+ html.qihang-desktop .content{width:100%;max-width:1240px;padding:28px 34px 32px}
+ html.qihang-desktop :is(.page-lesson,.page-lessons,.page-notebook) .content{padding-bottom:28px}
+ html.qihang-desktop .home-dashboard{max-width:1040px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:21px 26px;align-items:stretch}
+ html.qihang-desktop .home-title{grid-column:1/-1;margin-bottom:5px}
+ html.qihang-desktop .home-selection{grid-column:1;grid-row:2/5;display:flex;flex-direction:column;justify-content:center;padding:9px 25px}
+ html.qihang-desktop .home-selection-row{min-height:91px;min-width:0}
+ html.qihang-desktop .home-selection-row>text{min-width:0;overflow-wrap:anywhere}
+ html.qihang-desktop .home-today{grid-column:2;grid-row:2;align-self:end;min-width:0}
+ html.qihang-desktop .home-study-actions{grid-column:2;grid-row:3;align-self:center;min-width:0}
+ html.qihang-desktop .home-resume{grid-column:2;grid-row:4;min-width:0;padding:12px 15px}
+ html.qihang-desktop .home-resume>uni-view{min-width:0;gap:9px}
+ html.qihang-desktop .home-resume>uni-view>text{min-width:0;overflow-wrap:anywhere}
+ html.qihang-desktop .home-review{grid-column:1/-1;grid-row:5;min-height:77px;margin-top:2px}
+ html.qihang-desktop .book-grid{grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:18px}
+ html.qihang-desktop .page-lessons .lesson-catalog .lesson-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+ html.qihang-desktop .page-lessons .lesson-card{min-height:140px}
+ html.qihang-desktop .recitation-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1000px;gap:18px}
+ html.qihang-desktop .recitation-card{height:194px}
+ html.qihang-desktop .recitation-meaning{font-size:14px}
+ html.qihang-desktop .review-word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;align-content:start}
+ html.qihang-desktop .review-word-list .practiced-divider{grid-column:1/-1}
+ html.qihang-desktop .review-word-row{min-width:0}
+ html.qihang-desktop .notebook-search{max-width:460px}
+ html.qihang-desktop .app-settings-page{padding:30px 38px}
+ html.qihang-desktop .app-settings-inner{max-width:1100px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px 30px;align-items:start}
+ html.qihang-desktop .app-settings-inner>.picker-heading{grid-column:1/-1;margin-bottom:4px}
+ html.qihang-desktop .settings-scope-tabs{grid-column:1;grid-template-columns:1fr;gap:11px;position:sticky;top:0;margin:0}
+ html.qihang-desktop .settings-scope-tabs>uni-button{justify-content:flex-start;padding:15px 18px;min-height:66px}
+ html.qihang-desktop .settings-scope-tabs .bi{align-items:flex-start;text-align:left}
+ html.qihang-desktop .app-settings-section{grid-column:2;min-width:0}
+ html.qihang-desktop .practice-content{max-width:1000px;padding-left:38px;padding-right:38px}
+ html.qihang-desktop .oral-content{padding:16px 32px 24px;max-width:1320px}
+}
+@media(min-width:1440px){html.qihang-desktop .page-lessons .lesson-catalog .lesson-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}

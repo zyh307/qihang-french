@@ -1,0 +1,15 @@
+package cn.qihang.oral;
+import java.io.*;import java.nio.file.*;import java.util.*;import org.json.*;
+public final class BrowserRecordsTest {
+ static void require(boolean value,String text){if(!value)throw new AssertionError(text);}
+ static JSONObject call(OralCore c,String method,JSONObject args){JSONObject r=new JSONObject(c.call(J.o("method",method,"args",args).toString()));require(r.getBoolean("ok"),r.optString("error"));return r.getJSONObject("value");}
+ public static void main(String[] args)throws Exception{
+  File root=Files.createTempDirectory("qihang_browser_cache_").toFile();Host host=new Host(){public byte[] protect(byte[] b){return b;}public byte[] unprotect(byte[] b){return b;}public long availableMemory(){return Long.MAX_VALUE;}public void importModel(ModelStore s){}};
+  JSONObject manifest=J.o("id","fixture","filename","absent.bin","size",8,"sha256","fixture","sources",new JSONArray().put(J.o("id","fixture","url","https://example.invalid/model")));OralCore core=new OralCore(root,manifest,J.o(),host);
+  try{require(call(core,"records.capabilities",J.o()).getInt("browserStorage")==1,"Capability missing");String id=UUID.randomUUID().toString();call(core,"session.cache",J.o("session",J.o("id",id,"messages",new JSONArray(),"level","B2")));require(new File(root,"sessions").listFiles().length==0,"Browser session persisted as native history");
+   String audio=UUID.randomUUID().toString();byte[] wav=OralCore.wav(new byte[3200],16000);call(core,"audio.stage.begin",J.o("id",audio,"size",wav.length));call(core,"audio.stage.chunk",J.o("id",audio,"offset",0,"data",Base64.getEncoder().encodeToString(wav)));call(core,"audio.stage.finish",J.o("id",audio,"size",wav.length));require(call(core,"audio.info",J.o("id",audio)).getInt("size")==wav.length,"Cache size mismatch");byte[] read=Base64.getDecoder().decode(call(core,"audio.chunk",J.o("id",audio,"offset",0,"size",wav.length)).getString("data"));require(Arrays.equals(wav,read),"Cached WAV changed");call(core,"audio.release",J.o("id",audio));require(call(core,"audio.info",J.o("id",audio)).getInt("size")==0,"Cache not released");
+   File work=new File(root,"browser-work");String interrupted=UUID.randomUUID().toString();J.atomic(new File(work,interrupted+".pcm.part"),new byte[3200]);J.atomic(new File(work,"recording-active.json"),J.bytes(J.o("audio",interrupted,"session",id,"row",UUID.randomUUID().toString(),"stage","presentation").toString()));JSONArray recovered=call(core,"record.cache.list",J.o()).getJSONArray("recordings");require(recovered.length()==1&&recovered.getJSONObject(0).getBoolean("interrupted"),"Interrupted recording not recoverable");require(new File(root,"sessions").listFiles().length==0,"Recovery wrote native history");call(core,"audio.release",J.o("id",interrupted));require(call(core,"record.cache.list",J.o()).getJSONArray("recordings").length()==0,"Recovery metadata not released");
+   System.out.println("Browser record bridge: memory-only sessions, exact WAV chunking, cache release and interrupted recording recovery passed.");
+  }finally{core.close();}
+ }
+}

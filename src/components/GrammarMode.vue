@@ -100,6 +100,8 @@ import {foldTransition} from '../grammar/motion.js';
 const props=defineProps({settings:{type:Object,default:()=>({...defaultGrammarSettings})},active:{type:Boolean,default:true}});
 const emit=defineEmits(['notice','settings','home']);
 const settings=computed(()=>normalizeGrammarSettings(props.settings));
+import {grammarRevision,writeGrammarRecord} from '../grammar/storage.js';
+const grammarRecordRevision=grammarRevision();
 const STORE_KEY='qihang-grammar-progress-v1',ROUND_KEY='qihang-grammar-round-v1';
 const units=grammarData.units;
 const allLessons=units.flatMap(u=>u.lessons.map(l=>({...l,unitId:u.id,key:u.id+':'+l.id})));
@@ -108,7 +110,7 @@ const pool=buildQuestions(allPoints),byId=new Map(pool.map(q=>[q.id,q]));
 const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch{return null;}};
 const progress=ref(normalizeProgress(read(STORE_KEY),allPoints.map(p=>p.id)));
 let storageWarning=false;
-function persist(key,value){try{localStorage.setItem(key,JSON.stringify(value));}catch{if(!storageWarning){storageWarning=true;emit('notice','本轮记录未能保存，请检查存储空间 / Enregistrement impossible.');}}}
+function persist(key,value){try{writeGrammarRecord(key,value,grammarRecordRevision);}catch{if(!storageWarning){storageWarning=true;emit('notice','本轮记录未能保存，请检查存储空间 / Enregistrement impossible.');}}}
 const pointStat=id=>progress.value[id]||{r:0,w:0};
 function recordAnswer(pointId,correct){const s=pointStat(pointId);progress.value={...progress.value,[pointId]:{r:s.r+(correct?1:0),w:s.w+(correct?0:1),at:Date.now()}};persist(STORE_KEY,progress.value);}
 const bookId=ref('inspire1'),unitId=ref('all'),chosenLessonKey=ref(''),lastStudyKey=ref('');

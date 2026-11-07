@@ -10,17 +10,19 @@
  </view>
 </template>
 <script setup>
-import {ref,onMounted,onUnmounted} from 'vue';import Bi from './Bi.vue';import Icon from './Icon.vue';import OralSetup from './OralSetup.vue';import {oralCall} from '../oral/native-bridge.js';import {download} from '../platform/files.js';
-const emit=defineEmits(['notice','modes','settings','home']),prepared=ref(localStorage.getItem('qihang-oral-prepared-v2')==='1'),oralHome=ref(true),frame=ref(null);let timer,alive=true;
+import {ref,onMounted,onUnmounted} from 'vue';import Bi from './Bi.vue';import Icon from './Icon.vue';import OralSetup from './OralSetup.vue';import {oralCall} from '../oral/native-bridge.js';import {download} from '../platform/files.js';import {oralSessionArchive} from '../platform/records-backup.js';
+const emit=defineEmits(['notice','modes','settings','home','restore-file']),prepared=ref(localStorage.getItem('qihang-oral-prepared-v2')==='1'),oralHome=ref(true),frame=ref(null);let timer,alive=true;
 const frameURL=new URL('static/oral/index.html',window.location.href).href;
 function enter(){prepared.value=true;localStorage.setItem('qihang-oral-prepared-v2','1');}
 function receiveStatus(value){if(value.recognizer?.ready===false||!value.model?.ready&&value.model?.state!=='checking')prepared.value=false;else if(!prepared.value&&localStorage.getItem('qihang-oral-prepared-v2')==='1'&&value.provider?.status==='connected'&&value.microphone)enter();}
 async function refresh(){try{const status=await oralCall('status');if(!alive)return;const native=window.QihangNative;if(typeof native?.microphonePermission==='function'&&native.microphonePermission()!=='granted'){prepared.value=false;return;}if(status.recognizer?.ready===false||!status.model.ready&&status.model.state!=='checking')prepared.value=false;else if(!prepared.value&&localStorage.getItem('qihang-oral-prepared-v2')==='1'&&status.model.ready)prepared.value=true;}catch{}}
 async function receive(event){if(event.origin!==location.origin||event.source!==(frame.value?.$el||frame.value)?.contentWindow)return;const data=event.data;
+ if(data?.type==='qihang-oral-restore-file'&&data.file instanceof File)emit('restore-file',data.file);
  if(data?.type==='qihang-oral-view'){oralHome.value=data.home===true;emit('home',oralHome.value);}
  if(data?.type==='qihang-oral-error')emit('notice',data.message);
  if(data?.type==='qihang-oral-native-state')refresh();
  if(data?.type==='qihang-oral-link'&&data.url?.startsWith('https://'))window.QihangNative?.openExternalLink?window.QihangNative.openExternalLink(data.url):window.open(data.url,'_blank','noopener,noreferrer');
+ if(data?.type==='qihang-oral-export-record'){try{const bytes=await oralSessionArchive(data.session,data.recordings);await download(`${data.session.level||'A1'}-${data.session.id}.zip`,bytes,'application/zip');}catch(e){emit('notice',e.message);}}
  if(data?.type==='qihang-oral-export-archive'&&/^[AB][12]-[a-z0-9-]+\.zip$/i.test(data.name)&&typeof data.data==='string'&&data.data.length<110*1024*1024){try{const bytes=Uint8Array.from(atob(data.data),c=>c.charCodeAt(0));await download(data.name,bytes,'application/zip');}catch(e){emit('notice',e.message);}}
 }
 onMounted(()=>{emit('home',true);refresh();timer=setInterval(refresh,2000);window.addEventListener('message',receive);});onUnmounted(()=>{alive=false;clearInterval(timer);window.removeEventListener('message',receive);});

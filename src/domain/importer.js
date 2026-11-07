@@ -243,13 +243,13 @@ export function masterRowsToLesson(rows,meta,files={},library=[]){
   });
   return validateLesson(attachExampleResources(p,files));
 }
-export function unpack(bytes) {
-  if (bytes.length > 200 * 1024 * 1024) fail('压缩包不能超过 200 MB / Archive limitée à 200 Mo.');
+export function unpack(bytes,limits={}) {
+  if (bytes.length > (limits.compressed||200 * 1024 * 1024)) fail('压缩包过大 / Archive trop volumineuse.');
   let total = 0; const seen = new Set();
   return unzipSync(bytes, { filter: e => {
     if (seen.has(e.name) || e.name.startsWith('/') || /^[A-Za-z]:/.test(e.name) || e.name.includes('\\') || e.name.split('/').includes('..')) fail('压缩包路径无效或重复 / Chemin invalide dans le ZIP.');
     seen.add(e.name); total += e.originalSize;
-    if (total > 500 * 1024 * 1024 || e.originalSize > 20 * 1024 * 1024 || seen.size > 10000) fail('解压内容过大 / Contenu décompressé trop volumineux.');
+    if (total > (limits.total||500 * 1024 * 1024) || e.originalSize > (limits.file||20 * 1024 * 1024) || seen.size > (limits.entries||10000)) fail('解压内容过大 / Contenu décompressé trop volumineux.');
     return true;
   } });
 }

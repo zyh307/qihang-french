@@ -1,7 +1,11 @@
-const base=s=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr');
+const base=s=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr').replace(/œ/g,'oe').replace(/æ/g,'ae');
 const punctuation=s=>!/[\p{L}\p{N}]/u.test(s);
 export function spellingDiff(input,expected){
-  const a=[...String(input).normalize('NFC')],b=[...String(expected).normalize('NFC')];
+  // Keep an expanded ligature together so accepted oe/œ is one highlighted
+  // spelling difference instead of a missing letter plus a wrong letter.
+  const left=String(input).normalize('NFC'),right=String(expected).normalize('NFC');
+  const tokens=text=>/[œæ]/i.test(left+right)?(text.match(/oe|ae|[\s\S]/giu)||[]):[...text];
+  const a=tokens(left),b=tokens(right);
   if(a.length>300||b.length>300)return[{kind:'replace',actual:a.join(''),expected:b.join('')}];
   const d=Array.from({length:a.length+1},()=>new Uint16Array(b.length+1));
   for(let i=0;i<=a.length;i++)d[i][0]=i;
@@ -11,7 +15,7 @@ export function spellingDiff(input,expected){
   while(i||j){
     if(i&&j&&d[i][j]===d[i-1][j-1]+Number(a[i-1]!==b[j-1])){
       const actual=a[--i],expected=b[--j];
-      const kind=actual===expected?'same':actual.toLocaleLowerCase('fr')===expected.toLocaleLowerCase('fr')?'case':base(actual)===base(expected)?'accent':punctuation(actual)&&punctuation(expected)?'format':'replace';
+      const kind=actual===expected?'same':actual.toLocaleLowerCase('fr')===expected.toLocaleLowerCase('fr')?'case':base(actual)===base(expected)?(/[œæ]/i.test(actual+expected)?'ligature':'accent'):punctuation(actual)&&punctuation(expected)?'format':'replace';
       changes.push({kind,actual,expected});
     }else if(j&&d[i][j]===d[i][j-1]+1){const expected=b[--j];changes.push({kind:punctuation(expected)?'format':'missing',actual:'',expected});}
     else{const actual=a[--i];changes.push({kind:punctuation(actual)?'format':'extra',actual,expected:''});}

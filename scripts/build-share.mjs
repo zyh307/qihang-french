@@ -9,10 +9,13 @@ const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const appName=JSON.parse(await fs.readFile(path.join(app,'src/manifest.json'),'utf8')).name;
 const startName=`启动${appName}.bat`;
 const output=path.join(app,'分享版'),web=path.join(output,'网页');
+const desktop=path.join(app,'native/build/desktop'),desktopManifest=JSON.parse(await fs.readFile(path.join(desktop,'desktop-files.json'),'utf8'));
+if(desktopManifest.version!==JSON.parse(await fs.readFile(path.join(app,'package.json'),'utf8')).version)throw Error('请先构建当前版本 EXE');
 await fs.access(path.join(app,'dist/build/h5/index.html'));
 const dictionaryAudioIndex=JSON.parse(await fs.readFile(path.join(app,'dist/build/h5/static/lexicon/audio/index.json'),'utf8'));
 const dictionaryAudioFiles=new Set(Object.values(dictionaryAudioIndex.entries).map(clip=>clip.file));
 await fs.mkdir(output,{recursive:true});
+for(const file of desktopManifest.files){const target=path.join(output,file.name);await fs.mkdir(path.dirname(target),{recursive:true});await fs.copyFile(path.join(desktop,file.name),target);}
 // Replace only the generated web resources; never copy browser profiles or backups.
 if((await fs.realpath(output)).toLowerCase()!==output.toLowerCase())throw new Error('分享目录不能指向项目外部');
 await fs.cp(path.join(app,'native/build/windows-host'),path.join(output,'口语运行'),{recursive:true});
@@ -34,9 +37,8 @@ const start=await fs.readFile(path.join(app,'launcher/start.bat'),'utf8');
 await fs.writeFile(path.join(output,startName),start.replace(/\r?\n/g,'\r\n'),'utf8');
 await fs.copyFile(path.join(app,'SOURCES.md'),path.join(output,'SOURCES.md'));
 for(const name of ['LICENSE','COPYRIGHT'])await fs.copyFile(path.join(app,name),path.join(output,name));
-const guide=await fs.readFile(path.join(app,'docs/使用教程.md'),'utf8');
-const plainGuide=guide.replace(/^#{1,3} /gm,'').replace(/^```.*$/gm,'').replace(/`/g,'').replace(/\*\*/g,'');
-await fs.writeFile(path.join(output,'使用说明.txt'),'\uFEFF'+plainGuide.replace(/\r?\n/g,'\r\n'),'utf8');
+const guide=(await fs.readFile(path.join(app,'docs/快速开始.txt'),'utf8')).replaceAll('__VERSION__',JSON.parse(await fs.readFile(path.join(app,'package.json'),'utf8')).version);
+await fs.writeFile(path.join(output,'使用说明.txt'),'\uFEFF'+guide.replace(/\r?\n/g,'\r\n'),'utf8');
 await fs.copyFile(path.join(app,'src/static/使用教程.html'),path.join(output,'使用教程.html'));
 
 const launch=`@echo off\r\nchcp 65001 >nul\r\nstart "" "%~dp0分享版\\${startName}"\r\n`;
@@ -49,7 +51,7 @@ let streamError;stream.on('error',error=>{streamError=error;});
 const zipper=new Zip((error,bytes,final)=>{if(error)throw error;stream.write(bytes);if(final)stream.end();});
 let count=0;
 async function addFile(relative){
- const entry=new ZipDeflate(appName+'/'+relative.replaceAll('\\','/'),{level:1});zipper.add(entry);count++;
+ const entry=new ZipDeflate(appName+'/'+relative.replaceAll('\\','/'),{level:relative.endsWith('.cab')?0:1});zipper.add(entry);count++;
  for await(const bytes of createReadStream(path.join(output,relative),{highWaterMark:256*1024})){
   if(streamError)throw streamError;entry.push(bytes,false);if(stream.writableNeedDrain)await once(stream,'drain');
  }
@@ -64,7 +66,8 @@ async function addWeb(directory='网页'){
 }
 await addWeb();
 await addWeb('口语运行');
-for(const name of [startName,'使用说明.txt','使用教程.html','SOURCES.md','LICENSE','COPYRIGHT'])await addFile(name);
+await addWeb('桌面运行');
+for(const name of [appName+'.exe','Microsoft.Web.WebView2.Core.dll','Microsoft.Web.WebView2.WinForms.dll','WebView2Loader.dll','使用说明.txt','使用教程.html','SOURCES.md','LICENSE','COPYRIGHT'])await addFile(name);
 const completed=once(stream,'finish');zipper.end();await completed;if(streamError)throw streamError;
 await fs.rename(archive+'.part',archive);
 if((await fs.stat(archive)).size>=2*1024*1024*1024)throw Error('Windows 包超过 GitHub 单资产限制，请检查运行资源。');

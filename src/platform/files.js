@@ -1,11 +1,13 @@
 import {validateConjugationSessions} from '../conjugation/sessions.js';
 import {ensureConjugationCards} from '../conjugation/catalog.js';
 import {playSpeech,stopSpeech} from './speech.js';
-import { unzipSync, zipSync, strToU8, strFromU8 } from 'fflate';
+import { strToU8, strFromU8 } from 'fflate';
 import { unpack, validateLesson } from '../domain/importer.js';
 import { migrateSessions, packageKey, sessionKey, reviewPackage, MIXED_REVIEW_KEY,MIXED_ERRORS_KEY,MIXED_FAVORITES_KEY } from '../domain/learning.js';
 import {nativeExport} from './native.js';
 import {wordAudioEntries} from '../domain/word-display.js';
+import {recordSnapshot} from './browser-database.js';
+import {addBrowserRecords,readBrowserRecords,zipRecords} from './records-backup.js';
 export function chooseFile(accept,multiple=false) {
   return new Promise(resolve => {
     const input = document.createElement('input'); input.type = 'file'; input.accept = accept; input.multiple=multiple; input.style.display = 'none'; document.body.appendChild(input);
@@ -17,14 +19,15 @@ export async function download(name, bytes, mime = 'application/octet-stream') {
   const url = URL.createObjectURL(new Blob([bytes], { type: mime })), link = document.createElement('a'); link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
 }
 export async function exportBackup(data, repository) {
-  const files = { 'snapshot.json': strToU8(JSON.stringify(data)) };
-  for (const audio of await repository.allAudio()) files[`audio/${audio.id}.bin`] = audio.bytes;
-  return zipSync(files, { level: 3 });
+  const snap=await recordSnapshot({wordAudio:false}),files = { 'snapshot.json': strToU8(JSON.stringify(snap.state||data)) };
+  await addBrowserRecords(files,snap);
+  return zipRecords(files);
 }
 export async function readBackup(file) {
-  const files = unpack(new Uint8Array(await file.arrayBuffer()));
+  if(file.size>512*1024*1024)throw Error('备份不能超过 512 MB / Sauvegarde limitée à 512 Mo.');
+  const files = unpack(new Uint8Array(await file.arrayBuffer()),{compressed:512*1024*1024,total:1024*1024*1024,file:40*1024*1024,entries:30000});
   if (!files['snapshot.json']) throw new Error('不是学习备份文件 / Ce fichier n’est pas une sauvegarde.');
-  const data = JSON.parse(strFromU8(files['snapshot.json']));
+  const records=await readBrowserRecords(files),data = JSON.parse(strFromU8(files['snapshot.json']));
   if(data.settings?.sounds!==undefined&&typeof data.settings.sounds!=='boolean')throw new Error('声音设置无效 / Sons invalides.');
   if(data.settings?.articleMode&&!['choice','typed'].includes(data.settings.articleMode))throw new Error('冠词设置无效 / Mode des articles invalide.');
   if(data.settings?.reviewMode&&!['both','spelling'].includes(data.settings.reviewMode))throw new Error('复习设置无效 / Mode de révision invalide.');
@@ -62,7 +65,7 @@ export async function readBackup(file) {
     for (const w of p.words) for (const f of wordAudioEntries(w)) if (f.audioKey && !seen.has(f.audioKey)) {
       if(f.audioKey.startsWith('tts:')){const text=decodeURIComponent(f.audioKey.slice(4));if(!text.trim()||text.length>3000)throw Error('合成语音内容无效 / Texte invalide.');continue;}
       if (!/^[a-f0-9]{64}$/.test(f.audioKey)) throw new Error('备份缺少录音 / Audio manquant dans la sauvegarde.');
-      if(!files[`audio/${f.audioKey}.bin`]&&f.conjugationAudio)continue;
+      if(!files[`audio/${f.audioKey}.bin`]&&(f.conjugationAudio||records?.wordAudio==='installed'))continue;
       if(!files[`audio/${f.audioKey}.bin`])throw new Error('备份缺少录音 / Audio manquant dans la sauvegarde.');
       const bytes = files[`audio/${f.audioKey}.bin`];
       const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2, '0')).join('');
@@ -84,14 +87,14 @@ export async function readBackup(file) {
       if(!f.audioKey||f.audioKey.startsWith('tts:')||seen.has(f.audioKey))continue;
       const bytes=files[`audio/${f.audioKey}.bin`];
       // Static conjugation clips are bundled and may not have been cached yet.
-      if(!bytes){if(f.conjugationAudio)continue;throw Error('备份缺少录音 / Audio manquant.');}
+      if(!bytes){if(f.conjugationAudio||records?.wordAudio==='installed')continue;throw Error('备份缺少录音 / Audio manquant.');}
       const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');
       if(hash!==f.audioKey)throw Error('录音校验失败 / Vérification audio échouée.');
       assets.push({id:hash,bytes});seen.add(hash);
       }
     }
   }
-  return { data, assets };
+  return { data, assets, records };
 }
 let currentAudio, currentUrl, audioSerial=0;
 export function stopAudio() { stopSpeech();audioSerial++; if (currentAudio) { currentAudio.pause(); currentAudio.removeAttribute('src'); currentAudio = null; } if (currentUrl) { URL.revokeObjectURL(currentUrl); currentUrl = null; } }

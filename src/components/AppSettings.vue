@@ -8,6 +8,7 @@
    <Transition name="panel-switch" mode="out-in"><view :key="scope" class="app-settings-section">
     <template v-if="scope==='general'">
      <section class="glass settings-card"><button hover-class="none" class="toggle-row" @click="setting('sounds',data.settings.sounds===false)"><Bi zh="按键与提示音" fr="Sons de l’application" small /><view :class="['toggle',{on:data.settings.sounds!==false}]" /></button><button hover-class="none" class="setting-action" @click="$emit('share')"><Icon name="upload" /><Bi zh="分享学习记录" fr="Partager mes progrès" /><Icon name="arrow" /></button></section>
+     <section class="glass settings-card"><button hover-class="none" class="setting-action" :disabled="busy||!dataReady" @click="$emit('backup')"><Icon name="download" /><Bi zh="全部记录备份" fr="Sauvegarder toutes les données" /><Icon name="arrow" /></button><button hover-class="none" class="setting-action" :disabled="busy||!dataReady" @click="$emit('restore')"><Icon name="upload" /><Bi zh="恢复记录" fr="Restaurer les données" /><Icon name="arrow" /></button><Bi zh="手机与电脑通用，可拖入 ZIP 恢复；不含词汇音频。" fr="Compatible mobile et ordinateur. Déposez le ZIP pour restaurer." small /></section>
      <view class="manual-about"><text>{{ appManifest.name }} · {{ appManifest.versionName }}</text><text>Cap sur le français</text></view>
     </template>
     <template v-else-if="scope==='vocabulary'">
@@ -44,8 +45,8 @@
      </section>
      <section v-else-if="vocabularySection==='data'" class="glass settings-card">
       <button hover-class="none" class="setting-action" @click="$emit('import')"><Icon name="plus" /><Bi zh="导入课次" fr="Importer" /><Icon name="arrow" /></button>
-      <button hover-class="none" class="setting-action" :disabled="busy" @click="$emit('backup')"><Icon name="download" /><Bi zh="词汇备份（含录音）" fr="Sauvegarder le vocabulaire" /><Icon name="arrow" /></button>
-      <button hover-class="none" class="setting-action" :disabled="busy" @click="$emit('restore')"><Icon name="upload" /><Bi zh="恢复词汇备份" fr="Restaurer le vocabulaire" /><Icon name="arrow" /></button>
+      <button hover-class="none" class="setting-action" :disabled="busy" @click="$emit('backup')"><Icon name="download" /><Bi zh="全部记录备份" fr="Sauvegarder toutes les données" /><Icon name="arrow" /></button>
+      <button hover-class="none" class="setting-action" :disabled="busy" @click="$emit('restore')"><Icon name="upload" /><Bi zh="恢复记录" fr="Restaurer les données" /><Icon name="arrow" /></button>
      </section>
      <section v-else class="glass settings-card"><StudyGuide /></section>
      </view></Transition>

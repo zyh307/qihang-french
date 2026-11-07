@@ -115,7 +115,7 @@ export function reviewLessons(data,today=day()){
   });
 }
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-export const normalize = s => String(s ?? '').normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu, '');
+export const normalize = s => String(s ?? '').normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr').replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[^\p{L}\p{N}]/gu, '');
 const exact = s => String(s ?? '').normalize('NFC').replace(/[’‘]/g, "'").trim().replace(/\s+/g, ' ');
 export function checkAnswer(input, expected, fuzzy = true) {
   const answer = exact(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === exact(expected));
