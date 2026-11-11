@@ -22,7 +22,7 @@
     "translatedExamples": 18949,
     "authoredExamples": 1055
   },
-  "sha256": "4e2b9234ded9b07f420143b66fec6a63ecf858255633fcfcf5ab46a902e74e92",
+  "sha256": "01e7a25791804bd72e5242d61c0a339273af4b9d640209ba094382f60ae118bc",
   "inputs": {
     "zh-simp.jsonl": "42082dd36a33515102325e3e0f709d85997348ee8b2c20f66a5482533c30d478",
     "zh-trad.jsonl": "53cac0a16dcc9ac0eb0150aaa3125ce30158973f291e17781bf091b0c1ae85af",
@@ -40,10 +40,10 @@
   },
   "audio": {
     "voice": "fr-FR-DeniseNeural",
-    "clips": 38260,
-    "files": 3734,
-    "bytes": 396386944,
-    "indexSHA256": "19958bd2dd002ae949607e4f76975551c71577ec43a82c1e5a2eff3c6fdc6e01"
+    "clips": 38619,
+    "files": 4183,
+    "bytes": 403874484,
+    "indexSHA256": "db5560c4306f6ace5f33b73922502b3defe0918df375244941f9e532faedac2f"
   },
   "supplement": {
     "lexiqueRepository": "https://github.com/chrplr/openlexicon",

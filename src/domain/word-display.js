@@ -62,3 +62,8 @@ export function exampleAudio(word){
   return {id:`example:${word.id}:${audioKey}`,audioKey,text:example.fr};
 }
 export const wordAudioEntries=word=>[...word.forms,...word.forms.map(f=>f.example).filter(Boolean)];
+
+export function partOfSpeech(word){if(word.conjugation)return 'v.';const text=String(word.sourcePos||word.pos||'').trim();if(/loc[.]?\s*pr[ée]p/i.test(text))return 'loc. prép.';const labels=[[/\bpr[ée]p/i,'prép.'],[/\badj/i,'adj.'],[/\badv/i,'adv.'],[/\bpron/i,'pron.'],[/\binterj/i,'interj.'],[/\bconj/i,'conj.'],[/\bv(?:[.\s]|$)/i,'v.'],[/^n(?:[.\s]|m|f|$)/i,'n.'],[/\bloc/i,'loc.']].filter(([re])=>re.test(text)).map(([,label])=>label);if(labels.includes('n.')){const genders=[...new Set((word.forms||[]).map(f=>f.gender).filter(g=>g==='m'||g==='f'))];if(genders.length)labels[labels.indexOf('n.')]='n. '+genders.map(g=>g+'.').join(' / ');}return [...new Set(labels)].join(' / ')||String(word.pos||'').replace(/\s+/g,' ').trim();}
+
+export function testsBothGenders(word){const tested=new Set((word.forms||[]).filter(f=>f.tested).map(f=>f.gender));return tested.has('m')&&tested.has('f');}
+export function cardPartOfSpeech(word){return testsBothGenders(word)?partOfSpeech(word).replace(/\s+[mf]\.(?:\s*\/\s*[mf]\.)*/g,'').trim():partOfSpeech(word);}

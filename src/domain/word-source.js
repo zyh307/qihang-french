@@ -22,6 +22,7 @@ export function makeWordSourceLookup(data){
   for(const name of names(w))if(!textbook.has(name))textbook.set(name,lessonSourceLabel(p));
  }
  return (p,w)=>{
+  if(w.fosAuthority?.source)return w.fosAuthority.source;
   for(const name of names(w))if(textbook.has(name))return textbook.get(name);
   const sourceKey=w.origin?.lessonKey,original=sourceKey?data.library.find(p=>p.book.id+':'+p.lesson.id===sourceKey):p;
   const key=w.origin?.progressKey||(sourceKey?sourceKey+':'+w.origin.wordId:p.book.id+':'+p.lesson.id+':'+w.id);

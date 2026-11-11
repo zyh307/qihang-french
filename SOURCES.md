@@ -212,3 +212,5 @@ Inspire 2、3、4 的词汇、例句与真人录音来自用户提供的教材�
 ## Windows 独立窗口
 
 Microsoft WebView2 SDK 1.0.4314.35 与 Fixed Version Runtime 156.0.4314.58 x64。下载来源、大小及 SHA-256 固定在 native/windows-desktop/webview-runtime.json；许可随包位于桌面运行/WebView2-LICENSE.txt，运行时内部保留第三方许可。优先使用已安装的 WebView2 Runtime；缺失时由应用自动准备随附的固定版本。普通用户无需安装开发工具。官方分发说明：https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution 。
+
+FOS 1：用户提供的六份 FOS_1_LECON PDF，仅录入 Vocabulaire et expressions 板块。课内释义与来源页保留；无原例句的词条配套撰写法中例句，单词及例句采用 fr-FR-DeniseNeural 合成录音。资料不据此声明为公有领域。

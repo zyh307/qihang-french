@@ -1,4 +1,3 @@
-// Generated from the provided textbook packages.
 export const ADDITIONAL_BUNDLED_BOOKS = [
   {
     "id": "inspire2",
@@ -20,5 +19,13 @@ export const ADDITIONAL_BUNDLED_BOOKS = [
     "file": "inspire4.zip",
     "lessons": 27,
     "words": 650
+  },
+  {
+    "id": "fos1",
+    "contentId": "2916eb171b74093b7405fb00d804535e041b9ae98a8102654811fac0a3b7b42c",
+    "file": "fos1.zip",
+    "lessons": 6,
+    "words": 236,
+    "recordings": 453
   }
 ];

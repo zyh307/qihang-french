@@ -19,7 +19,7 @@
       <view v-if="record.words.length || record.attempts" class="day-detail-stats"><view><strong>{{ record.words.length }}</strong><Bi zh="完成词数" fr="mots terminés" small /></view><view><strong>{{ record.reviews.length }}</strong><Bi zh="其中复习" fr="dont révisés" small /></view><view><strong>{{ record.attempts }}</strong><Bi zh="作答次数" fr="réponses" small /></view><view><strong>{{ record.attempts ? Math.round(record.correct/record.attempts*100)+'%' : '—' }}</strong><Bi zh="正确率" fr="réussite" small /></view></view>
       <view v-if="words.length" class="calendar-words"><button hover-class="none" v-for="word in words" :key="word.id" :disabled="!word.package||!word.word" @click="$emit('word',{p:word.package,w:word.word})"><text lang="fr">{{ word.text }}</text><text>{{ word.meaning }}</text><text class="muted">{{ word.label }}</text><Icon v-if="word.package" name="arrow" /></button></view>
       <Bi v-else :zh="selected>today?'这一天还未到来。':record.attempts?'当天有练习作答，尚未完成整词。':'这一天还没有学习记录。'" :fr="selected>today?'Cette journée est à venir.':record.attempts?'Des réponses, mais aucun mot terminé.':'Aucune activité enregistrée ce jour-là.'" small />
-      <Bi zh="每日完成词数含复习，同词不重复计数。" fr="Révisions comprises, un seul compte par mot et par jour." small />
+      <Bi zh="含复习；同词每天计一次，变位按时态计。" fr="Révisions comprises ; une fois par jour et par mot ou temps verbal." small />
     </view>
   </view>
 </template>
@@ -29,6 +29,7 @@ import Bi from './Bi.vue'; import Icon from './Icon.vue';
 import { day } from '../domain/learning.js';
 import { monthCells, monthSummary, shiftMonth } from '../domain/calendar.js';
 import { displayForm } from '../domain/word-display.js';
+import { lemmaFor } from '../conjugation/catalog.js';
 const props=defineProps({activity:Object,library:Array}); defineEmits(['word']);
 const today=ref(day()),month=ref(today.value.slice(0,7)),selected=ref(today.value);
 const weekdays=[['一','Lun.'],['二','Mar.'],['三','Mer.'],['四','Jeu.'],['五','Ven.'],['六','Sam.'],['日','Dim.']];
@@ -38,8 +39,10 @@ const frenchMonth=computed(()=>new Intl.DateTimeFormat('fr-FR',{month:'long',yea
 const selectedFrench=computed(()=>new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(`${selected.value}T12:00:00`)));
 const record=computed(()=>({words:[],reviews:[],attempts:0,correct:0,...props.activity[selected.value]}));
 const words=computed(()=>record.value.words.map(id=>{
-  const [book,wid]=id.split(':'),p=props.library.find(p=>p.book.id===book&&p.words.some(w=>w.id===wid)),w=p?.words.find(w=>w.id===wid);
-  return{id,package:p,word:w,text:w?w.forms.map(f=>displayForm(w,f)).join(' / '):wid,meaning:w?.meanings.join('；')||'词条已归档 · Entrée archivée',label:p?`${p.book.title} · ${p.lesson.id}`:book};
+  const [book,wid,tense]=id.split(':'),p=props.library.find(p=>p.book.id===book&&p.words.some(w=>w.id===wid)),base=p?.words.find(w=>w.id===wid);
+  const lemma=tense&&base?lemmaFor(base):null;
+  const w=lemma?{...base,conjugationUnit:true,conjugation:{lemma,tense,baseWordId:base.id}}:base;
+  return{id,package:p,word:w,text:lemma?`${lemma} · ${tense}`:w?w.forms.map(f=>displayForm(w,f)).join(' / '):wid,meaning:w?.meanings.join('；')||'词条已归档 · Entrée archivée',label:p?`${p.book.title} · ${p.lesson.id}`:book};
 }));
 function selectDate(date){selected.value=date;month.value=date.slice(0,7);}
 function changeMonth(offset){month.value=shiftMonth(month.value,offset);selected.value=month.value===today.value.slice(0,7)?today.value:`${month.value}-01`;}

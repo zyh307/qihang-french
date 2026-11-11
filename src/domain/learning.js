@@ -1,10 +1,21 @@
 import {newReviewRecord,nextReviewDate,completeReviewRecord,migrateReviewPlans} from './review-plan.js';
+import {preferredGroupSize} from './group-size.js';
+import {studyPaused,recordStudyFailure} from './study-pressure.js';
 import {primaryMeaning} from './meanings.js';
+import {choiceMeaningKeys,meaningsOverlap,unambiguousChoices} from './choice-meanings.js';
+import {distractorExclusion} from './choice-eligibility.js';
 import {spellingSimilarity,sameWordFamily,isShopVocabulary} from './choice-similarity.js';
-let practiceDictionary=[],dictionaryGrams=new Map(),dictionaryShops=[];
+let practiceDictionary=[],dictionaryGrams=new Map(),dictionaryShops=[],optionDictionary=new Map(),optionMeaningCache=new WeakMap();
+function optionMeaning(word){
+ if(String(word.id).startsWith('dictionary:')){let cached=optionMeaningCache.get(word);if(!cached){const label=primaryMeaning(word);cached={label,keys:choiceMeaningKeys([label,...word.meanings])};optionMeaningCache.set(word,cached);}return cached;}
+ const label=primaryMeaning(word);return {label,keys:choiceMeaningKeys([label,...word.meanings])};
+}
+export const practiceOptionWord=id=>optionDictionary.get(id)||null;
 const grams=text=>{const value=String(text).normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');return [...new Set(Array.from({length:Math.max(0,value.length-1)},(_,i)=>value.slice(i,i+2)))];};
 export function setPracticeDictionary(entries){
- practiceDictionary=entries.filter(e=>e.frequency===undefined||e.frequency>=3.8).sort((a,b)=>(b.frequency||0)-(a.frequency||0)).map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]}));
+ optionMeaningCache=new WeakMap();
+ optionDictionary=new Map(entries.map(e=>['dictionary:'+e.id,{id:'dictionary:'+e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]}]));
+ practiceDictionary=entries.filter(e=>e.frequency===undefined||e.frequency>=3.8).sort((a,b)=>(b.frequency||0)-(a.frequency||0)).map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]})).filter(w=>!distractorExclusion(w));
  dictionaryShops=practiceDictionary.filter(w=>isShopVocabulary(w.forms[0].text));
  dictionaryGrams=new Map();for(const w of practiceDictionary)for(const gram of grams(w.forms[0].text)){if(!dictionaryGrams.has(gram))dictionaryGrams.set(gram,[]);dictionaryGrams.get(gram).push(w);}
 }
@@ -90,6 +101,11 @@ export function migrateSessions(data){
     s.mistakeWordIds??=[...new Set((s.jobs||[]).filter(job=>job.failed).map(job=>s.lessonKey==='review:all'?job.wordId:s.lessonKey+':'+job.wordId))];
     data.activeSessions[s.lessonKey]||=key;
   }
+  let mixed;
+  for(const s of Object.values(data.sessions)){
+    const p=s.lessonKey==='review:all'?(mixed||=reviewPackage(data)):data.library.find(p=>packageKey(p)===s.lessonKey);
+    if(p){prunePausedWords(data,p,s,day());repairSessionChoices(data,p,s);if(!s.question&&!s.feedback&&s.phase!=='done')refresh(data,p,s,day());}
+  }
   if(!data.lastPractice){const latest=Object.values(data.sessions).sort((a,b)=>(a.updatedAt||Date.parse(a.started+'T12:00:00'))-(b.updatedAt||Date.parse(b.started+'T12:00:00'))).at(-1);if(latest)data.lastPractice={lessonKey:latest.lessonKey,sessionKey:latest.key};}
   return data;
 }
@@ -99,10 +115,24 @@ export function sessionRemaining(s){
   return s.group.filter(id=>!s.doneWords.includes(id)).length;
 }
 function sessionProgressTotal(s){
-  return Math.max(0,(s.roundNumber||1)-1)*ROUND_SIZE+new Set([...(s.pending||[]),...(s.group||[]),...(s.doneWords||[])]).size;
+  return Math.max(0,(s.roundNumber||1)-1)*(s.roundSize||roundSize(s))+new Set([...(s.pending||[]),...(s.group||[]),...(s.doneWords||[])]).size;
 }
-export function sessionProgress(data,p,s){
+export function sessionProgress(data,p,s,today=day()){
   if(!p||!s)return {completed:0,total:0,percent:0};
+  if(s.mode==='review'){
+    const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]);
+    if((s.reviewDate||s.started)!==today){
+      // Display the new day's counter immediately, even before the next save.
+      const plan=new Set([...(s.phase==='done'?[]:(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))),...p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length).map(w=>w.id)]);
+      return {completed:0,total:plan.size,percent:0};
+    }
+    if(Array.isArray(s.reviewDailyIds)){
+      const plan=new Set(s.reviewDailyIds),carry=s.reviewDailyCarry||0;
+      const total=plan.size+carry,left=[...remaining].filter(id=>plan.has(id)).length;
+      const completed=Math.max(0,total-left);
+      return {completed,total,percent:total?completed/total*100:0};
+    }
+  }
   const total=s.mode==='learn'?p.words.filter(isVocabularyWord).length:s.progressTotal??sessionProgressTotal(s);
   const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]).size;
   const completed=Math.max(0,Math.min(total,s.mode==='learn'?p.words.filter(w=>isVocabularyWord(w)&&getProgress(data,p,w).notebook!=='practice').length:total-remaining));
@@ -117,11 +147,14 @@ export function reviewLessons(data,today=day()){
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 export const normalize = s => String(s ?? '').normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr').replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[^\p{L}\p{N}]/gu, '');
 const exact = s => String(s ?? '').normalize('NFC').replace(/[’‘]/g, "'").trim().replace(/\s+/g, ' ');
+const formatKey=s=>String(s??'').normalize('NFC').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');
+function formattedArticle(input){const text=formatKey(input);for(const prefix of ["de l'",'de la','une','les','des','aux','un','le','la','du',"l'",'en','au','à']){const key=formatKey(prefix);if(text.startsWith(key)&&text.length>key.length)return {prefix,answer:text.slice(key.length)};}return {prefix:'',answer:text};}
+function countJobFailure(job,today){if(!job)return false;if(job.pressureDate===today)return false;job.pressureDate=today;return true;}
 export function checkAnswer(input, expected, fuzzy = true) {
-  const answer = exact(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === exact(expected));
-  return { correct, fuzzy: correct && answer !== exact(expected), expected };
+  const answer = formatKey(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === formatKey(expected));
+  return { correct, fuzzy: correct && answer !== formatKey(expected), formatted:correct&&String(input).normalize('NFC')!==String(expected).normalize('NFC'), expected };
 }
-export function initialState(library) { return { schema: 1, library, settings: { groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', sounds:true, notifications:true,reviewReminders:true,errorReminders:true,reviewErrorRetry:true,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, errorHistory:{}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
+export function initialState(library) { return { schema: 1, library, settings: { colorTheme:'mist', learnGroupSize:5,reviewGroupSize:10,learnThreeErrorDefer:true,reviewThreeErrorPause:true,groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', sounds:true, notifications:true,reviewReminders:true,errorReminders:true,reviewErrorRetry:true,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, errorHistory:{}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
 export function getProgress(data, p, w) { return data.progress[wordKey(p, w)] || { notebook: 'practice', forms: {} }; }
 export function errorPracticeState(data,p,w,today=day()){
   const history=data.errorHistory?.[wordKey(p,w)]||{},errors=testedForms(w).map(f=>data.errors[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);
@@ -140,10 +173,12 @@ export function studyDays(data,p,w,today=day()){
   return Math.max(1,Math.floor((calendar(today)-calendar(dates[0]))/86400000)+1);
 }
 export function dueForms(data, p, w, today = day()) {
+  if(studyPaused(data,p,w,today))return [];
   const r = getProgress(data, p, w);
   return r.notebook === 'review' ? testedForms(w).filter(f => nextReviewDate(r.forms[f.id],data.settings)&&nextReviewDate(r.forms[f.id],data.settings)<=today) : [];
 }
 export function reviewDaysLeft(data,p,w,today=day()){
+  if(studyPaused(data,p,w,today)){const next=testedForms(w).flatMap(f=>getProgress(data,p,w).forms[f.id]?.remedialDates||[]).filter(date=>date>today).sort()[0];return next?Math.round((Date.parse(next+'T12:00:00')-Date.parse(today+'T12:00:00'))/86400000):1;}
   const r=getProgress(data,p,w),due=testedForms(w).map(f=>nextReviewDate(r.forms[f.id],data.settings)).filter(Boolean).sort()[0];
   if(!due)return null;
   const utc=value=>{const [y,m,d]=value.split('-').map(Number);return Date.UTC(y,m-1,d);};
@@ -151,7 +186,7 @@ export function reviewDaysLeft(data,p,w,today=day()){
 }
 export function lessonStats(data,p,today=day()){
  const units=[...p.words.filter(isVocabularyWord).map(w=>[w]),...conjugationUnits(data,p).map(u=>u.cards)],result={total:units.length,practice:0,review:0,known:0,due:0,favorites:0};
- for(const cards of units){const records=cards.map(w=>getProgress(data,p,w)),place=records.some(r=>r.notebook==='practice')?'practice':records.every(r=>r.notebook==='known')?'known':'review';result[place]++;if(cards.some(w=>dueForms(data,p,w,today).length))result.due++;if(cards.some(w=>data.favorites[wordKey(p,w)]))result.favorites++;}
+ for(const cards of units){const records=cards.map(w=>getProgress(data,p,w)),place=records.some(r=>r.notebook==='practice'||r.pendingLearning)?'practice':records.every(r=>r.notebook==='known')?'known':'review';result[place]++;if(cards.some(w=>dueForms(data,p,w,today).length))result.due++;if(cards.some(w=>data.favorites[wordKey(p,w)]))result.favorites++;}
  result.completed=result.review+result.known;return result;
 }
 export function recordLessonCompletions(data) {
@@ -160,7 +195,7 @@ export function recordLessonCompletions(data) {
     const key=packageKey(p);
     if (data.lessonCompletions[key] || !p.words.length) continue;
     const units=[...p.words.filter(isVocabularyWord),...conjugationPracticeWords(data,p)],progress=units.map(w=>getProgress(data,p,w));
-    if (progress.some(r=>r.notebook==='practice')) continue;
+    if (progress.some(r=>r.notebook==='practice'||r.pendingLearning)) continue;
     const dates=units.flatMap((w,i)=>testedForms(w).map(f=>progress[i].forms[f.id]?.learnedAt||progress[i].learnedAt)).filter(Boolean).sort();
     if(dates.length)data.lessonCompletions[key]=dates.at(-1);
   }
@@ -173,6 +208,7 @@ function remember(data, p, w, today, review = false) {
 }
 function ensureProgress(data, p, w) { return data.progress[wordKey(p, w)] ||= { notebook: 'practice', forms: {} }; }
 const ROUND_SIZE=5;
+const roundSize=s=>s.mode==='review'?10:ROUND_SIZE;
 const sequenceFor=s=>s.mode==='review'&&s.reviewMode==='spelling'?['spell']:['recognize','spell'];
 function groupJobs(data,p,s,today=day()){
   return s.group.filter(id=>!s.doneWords.includes(id)).flatMap(id=>{
@@ -197,7 +233,7 @@ function upgradeRounds(data,p,s){
   s.flowVersion=3;s.pending||=[];s.group||=[];s.doneWords||=[];s.jobs||=[];s.roundNumber||=1;
   const active=s.question?.wordId||s.feedback?.wordId;
   const previous=[...new Set([...s.group,...(active?[active]:[])])];
-  const selected=previous.slice(0,ROUND_SIZE);
+  const selected=previous.slice(0,roundSize(s));
   if(active&&!selected.includes(active))selected[selected.length?selected.length-1:0]=active;
   const deferred=previous.filter(id=>!selected.includes(id)&&!s.doneWords.includes(id));
   s.pending=[...new Set([...deferred,...s.pending])].filter(id=>!selected.includes(id));
@@ -210,12 +246,13 @@ function upgradeRounds(data,p,s){
 }
 function openRound(data,p,s,today){
   s.pending=[...new Set(s.pending)].filter(id=>{
-    const w=p.words.find(w=>w.id===id);if(!w)return false;
+    const w=p.words.find(w=>w.id===id);if(!w||studyPaused(data,p,w,today))return false;
     return s.mode==='review'?dueForms(data,p,w,today).length:s.mode==='errors'?errorPracticeEligible(data,p,w,today):s.mode==='favorites'?data.favorites[wordKey(p,w)]&&testedForms(w).length:s.mode==='direct'?testedForms(w).length:getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt);
   });
   if(!s.pending.length){s.phase='done';return;}
   if(s.mode==='errors')s.pending.sort((a,b)=>errorPracticeState(data,p,p.words.find(w=>w.id===b),today).errorCount-errorPracticeState(data,p,p.words.find(w=>w.id===a),today).errorCount);
-  s.group=s.pending.splice(0,ROUND_SIZE);s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
+  s.optionSets={};s.reviewSpellingShuffled=false;
+  if(s.tailReady){s.tailRound=true;delete s.tailReady;}s.roundSize=s.tailRound?s.pending.length:preferredGroupSize(data.settings,s.mode);s.group=s.pending.splice(0,s.roundSize);s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
   s.stats={attempts:0,correct:0};s.newKnownWordIds=[];s.question=null;s.feedback=null;s.phase='practice';
   s.jobs=groupJobs(data,p,s,today);refresh(data,p,s,today);
 }
@@ -257,7 +294,8 @@ function finishWord(data, p, w, session, today) {
     if(session.mode==='errors'||getProgress(data,p,w).notebook!=='practice'){remember(data,p,w,today);return;}
   }
   const progress = ensureProgress(data, p, w);
-  if (progress.notebook === 'practice' && testedForms(w).every(f => progress.forms[f.id]?.learnedAt)) {
+  if ((progress.notebook === 'practice'||progress.pendingLearning) && testedForms(w).every(f => progress.forms[f.id]?.learnedAt)) {
+    delete progress.pendingLearning;
     const source=wordContext(data,p,w),learnedBefore=progress.learnedAt||data.library.some(other=>other.book.id===source.p.book.id&&other.words.some(x=>x.id===source.w.id&&getProgress(data,other,x).learnedAt));
     progress.firstStudiedAt ||= today;
     if(!learnedBefore)progress.newLearnedAt ||= today;
@@ -282,55 +320,165 @@ export function newWordIdsForDay(data,today=day()){
   }
   return [...dates].filter(([id,date])=>date===today&&(!learned.has(id)||learned.get(id)>=date)).map(([id])=>id);
 }
-export function makeOptions(data, p, word, form, kind, random = Math.random, mode='learn') {
-  const meaningSet = new Set(word.meanings.map(normalize));
-  const sharesMeaning = w => w.meanings.some(m => meaningSet.has(normalize(m)));
+export function makeOptions(data, p, word, form, kind, random = Math.random, mode='learn', retained=[]) {
+  const resolve=id=>p.words.find(w=>w.id===id||w.origin?.wordId===id)||practiceOptionWord(id);
+  const correct={id:word.id,label:kind==='recognize'?primaryMeaning(word):displayForm(word,form)};
+  const updated=retained.map(option=>{
+    if(option.id===word.id)return correct;
+    const source=resolve(option.id);
+    return source&&kind==='recognize'?{...option,label:primaryMeaning(source)}:option;
+  });
+  const valid=kind==='recognize'?unambiguousChoices(updated,word,primaryMeaning(word),resolve):updated;
+  if(valid.length===4&&new Set(valid.map(option=>option.id)).size===4&&valid.some(option=>option.id===word.id))return valid;
+  const meaningSet = choiceMeaningKeys([primaryMeaning(word),...word.meanings]);
+  const sharesMeaning = w => meaningsOverlap(meaningSet,optionMeaning(w).keys);
   const exactText=text=>String(text).normalize('NFC').toLocaleLowerCase('fr').replaceAll('’',"'").replace(/\s+/g,' ').trim();
   const sameText = w => w.forms.some(f => exactText(displayForm(w,f)) === exactText(displayForm(word,form)));
   const target=spellingParts(word,form).answer,shop=isShopVocabulary(target);
   const sameFamily=w=>w.forms.some(f=>sameWordFamily(target,spellingParts(w,f).answer));
   const local = p.words.filter(w => w.id !== word.id && (!p.reviewPool||w.origin.lessonKey===word.origin.lessonKey) && !sharesMeaning(w) && !sameText(w)&&!sameFamily(w));
   const learned = p.reviewPool?p.words.filter(w=>w.origin.lessonKey!==word.origin.lessonKey&&getProgress(data,p,w).notebook!=='practice'&&!sharesMeaning(w)&&!sameText(w)):data.library.filter(other => other.book.id === p.book.id && packageKey(other) !== packageKey(p)).flatMap(other => other.words.filter(w => getProgress(data, other, w).notebook !== 'practice' && !sharesMeaning(w) && !sameText(w)).map(w => ({ ...w })));
+  const localIds=new Set(local.map(w=>w.id));
   const recentKey = `${wordKey(p, word)}:${form.id}:${kind}`;
+  data.recentOptions||={};
   const recent = data.recentOptions[recentKey] || [];
   const seen = new Set([normalize(kind === 'recognize' ? primaryMeaning(word) : displayForm(word,form))]);
   const candidates = [];
+  const meaningSeen = new Set(meaningSet);
+  const seenIds=new Set([word.id]);
+  for(const option of valid){
+    if(seenIds.has(option.id)||candidates.length===3)continue;
+    seenIds.add(option.id);seen.add(normalize(option.label));candidates.push(option);
+    const source=resolve(option.id);
+    for(const key of choiceMeaningKeys([option.label,...(source?.meanings||[])]))meaningSeen.add(key);
+  }
   const shopPeers=shop?data.library.flatMap(p=>p.words).filter(w=>w.forms.some(f=>isShopVocabulary(spellingParts(w,f).answer))&&/[店铺房]|超市|商场/u.test(primaryMeaning(w))):[];
   const external=kind==='recognize'?[...shopPeers,...dictionaryCandidates(target)].filter(w=>(!w.lexiconId||w.lexiconId!==word.lexiconId)&&!sharesMeaning(w)&&!sameText(w)&&!sameFamily(w)):[];
   const otherLearned=learned.filter(w=>!sameFamily(w));
-  const pools = mode==='learn'?[local,otherLearned.concat(external)]:[local.concat(otherLearned,external)];
-  for (const pool of pools) {
-    const shuffled = pool.map(w => {
-      const similarity=Math.max(...w.forms.map(f=>Math.max(spellingSimilarity(target,spellingParts(w,f).answer),shop&&isShopVocabulary(spellingParts(w,f).answer)?.72:0))),r=random();
-      const score=similarity>=.5?similarity-(recent.includes(w.id)?.15:0):-1-(recent.includes(w.id)?.2:0);
-      return {w,r,score};
+  // Relax only the spelling threshold if the nearby/same-lesson pool is short.
+  // Keep all semantic, family and label checks when using common fallback words.
+  const pools = (mode==='learn'?[local,otherLearned.concat(external)]:[local.concat(otherLearned,external)]).map(words=>({words,nearby:true}));
+  pools.push({words:()=>[...data.library.flatMap(p=>p.words),...practiceDictionary],nearby:false});
+  for (const {words,nearby} of pools) {
+    if(candidates.length===3)break;
+    const pool=typeof words==='function'?words():words;
+    const shuffled = pool.filter(w=>!seenIds.has(w.id)&&!distractorExclusion(w)&&!sharesMeaning(w)&&!sameText(w)&&!sameFamily(w)).map(w => {
+      const similarity=Math.max(...w.forms.map(f=>spellingSimilarity(target,spellingParts(w,f).answer))),r=random();
+      const score=!nearby||similarity>=.5?similarity-(recent.includes(w.id)?.15:0):-1-(recent.includes(w.id)?.2:0);
+      return {w,r,score,similarity};
     }).sort((a,b)=>b.score-a.score||a.r-b.r);
-    for (const { w } of shuffled) {
-      const f = testedForms(w)[0] || w.forms[0], label = kind === 'recognize' ? primaryMeaning(w) : displayForm(w,f);
+    for (const { w,similarity } of shuffled) {
+      if(nearby&&!localIds.has(w.id)&&similarity<.45)continue;
+      if(seenIds.has(w.id))continue;
+      if(w.forms.every(f=>/^(?:se|s['’])$/iu.test(spellingParts(w,f).answer.trim())))continue;
+      const f = testedForms(w)[0] || w.forms[0], label = kind === 'recognize' ? optionMeaning(w).label : displayForm(w,f);
       if (seen.has(normalize(label)) || w.id === word.id) continue;
-      seen.add(normalize(label)); candidates.push({ id: w.id, label, french: w.forms.map(f=>displayForm(w,f)).join(" / ") });
+      if(kind==='recognize'){
+        const keys=optionMeaning(w).keys;
+        if(meaningsOverlap(keys,meaningSeen))continue;
+        for(const key of keys)meaningSeen.add(key);
+      }
+      seenIds.add(w.id);seen.add(normalize(label)); candidates.push({ id: w.id, label, pos:w.pos||w.sourcePos||'', french: w.forms.map(f=>displayForm(w,f)).join(" / ") });
       if (candidates.length === 3) break;
     }
     if (candidates.length === 3) break;
   }
   data.recentOptions[recentKey] = candidates.map(c => c.id);
-  const options = [{ id: word.id, label: kind === 'recognize' ? primaryMeaning(word) : displayForm(word,form) }, ...candidates];
+  if(candidates.length!==3)throw new Error('选项无法准备，请重新进入练习 / Impossible de préparer les quatre choix. Réessayez.');
+  // Retain valid saved choices in their positions and append replacements once.
+  if(retained.length){const byId=new Map([correct,...candidates].map(option=>[option.id,option]));const options=[];for(const old of retained){if(byId.has(old.id)){options.push(byId.get(old.id));byId.delete(old.id);}}return [...options,...byId.values()];}
+  const options = [correct, ...candidates];
   return options.map(o => ({ ...o, r: random() })).sort((a, b) => a.r - b.r).map(({ r, ...o }) => o);
 }
+export function repairSessionChoices(data,p,s){
+  for(const q of [s.question,s.feedback?.question]){
+    if(q?.kind!=='recognize')continue;
+    const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);
+    if(!word||!form)continue;
+    const options=makeOptions(data,p,word,form,q.kind,Math.random,s.mode,q.options||[]);
+    if(JSON.stringify(options)!==JSON.stringify(q.options))q.options=options;
+    s.optionSets||={};s.optionSets[word.id+'|'+q.kind]=clone(options);
+    if(q.rejectedIds)q.rejectedIds=q.rejectedIds.filter(id=>options.some(option=>option.id===id));
+  }
+}
+function rememberQuestionOptions(s){
+  const q=s.question||s.feedback?.question;
+  if(q)s.lastPresentedQuestion={wordId:q.wordId,kind:q.kind};
+  if(q?.options?.length){s.optionSets||={};const key=q.wordId+'|'+q.kind;if(!s.optionSets[key])s.optionSets[key]=clone(q.options);}
+}
+function prunePausedWords(data,p,s,today){
+ if(!s)return;
+ if(s.deferredDate!==today){s.deferredDate=today;s.deferredWordIds=[];}
+ if(!s.learningTailIds?.length&&!Object.values(data.studyPressure||{}).some(record=>record.pausedOn===today))return;
+ const ids=new Set([...(s.group||[]),...(s.pending||[]),...(s.jobs||[]).map(job=>job.wordId)]),byId=new Map(p.words.map(w=>[w.id,w]));
+ const paused=new Set([...ids].filter(id=>{const w=byId.get(id);return w&&(studyPaused(data,p,w,today)||!s.tailRound&&s.learningTailIds?.includes(id))&&!(s.doneWords||[]).includes(id);}));
+ if(!paused.size)return;
+ s.deferredWordIds||=[];const added=[...paused].filter(id=>!s.deferredWordIds.includes(id));s.deferredWordIds.push(...added);
+ s.pending=(s.pending||[]).filter(id=>!paused.has(id));s.jobs=(s.jobs||[]).filter(job=>!paused.has(job.wordId));s.group=(s.group||[]).filter(id=>!paused.has(id));
+ if(s.reviewDailyIds)s.reviewDailyIds=s.reviewDailyIds.filter(id=>!paused.has(id));
+ if(s.mode!=='review'&&Number.isFinite(s.progressTotal))s.progressTotal=Math.max(s.doneWords?.length||0,s.progressTotal-added.filter(id=>!s.learningTailIds?.includes(id)).length);
+ if(s.optionSets)for(const key of Object.keys(s.optionSets))if(paused.has(key.split('|')[0]))delete s.optionSets[key];
+ if(paused.has(s.question?.wordId)&&!s.question.hinted)s.question=null;
+}
 function refresh(data, p, s, today) {
+  prunePausedWords(data,p,s,today);
+  repairSessionChoices(data,p,s);
+  rememberQuestionOptions(s);
   if (s.feedback || s.question) return;
-  if (!s.jobs.length) { s.phase='done';return; }
+  if (!s.jobs.length) {if(!s.pending.length&&!s.tailRound&&s.learningTailIds?.length){s.pending=[...new Set(s.learningTailIds)];s.tailReady=true;}s.phase='done';return; }
   // Finish recognition for this round, including consolidation, before spelling.
   const recognize=s.jobs.findIndex(job=>job.sequence[job.stage]==='recognize');
   if(recognize>0)s.jobs.unshift(s.jobs.splice(recognize,1)[0]);
+  if(recognize<0&&s.mode==='review'&&s.reviewSpellingShuffled===false){const before=s.jobs.map(j=>j.wordId+':'+j.formId);for(let i=s.jobs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s.jobs[i],s.jobs[j]]=[s.jobs[j],s.jobs[i]];}if(s.jobs.length>1&&s.jobs.every((j,i)=>j.wordId+':'+j.formId===before[i]))s.jobs.push(s.jobs.shift());s.reviewSpellingShuffled=true;}
+  if(recognize<0&&s.lastPresentedQuestion?.kind==='recognize'&&s.jobs[0]?.wordId===s.lastPresentedQuestion.wordId){
+    const spaced=s.jobs.findIndex(job=>job.wordId!==s.lastPresentedQuestion.wordId&&job.sequence[job.stage]==='spell');
+    if(spaced>0)s.jobs.unshift(s.jobs.splice(spaced,1)[0]);
+  }
   const job = s.jobs[0], word = p.words.find(w => w.id === job.wordId), form = word.forms.find(f => f.id === job.formId);
   let kind = job.sequence[job.stage], options;
-  if (kind !== 'spell') { options = makeOptions(data, p, word, form, kind,Math.random,s.mode); if (options.length < 2) { kind = 'spell'; options = undefined; } }
+  if(kind!=='spell'){s.optionSets||={};const key=word.id+'|'+kind;const saved=makeOptions(data,p,word,form,kind,Math.random,s.mode,s.optionSets[key]||[]);s.optionSets[key]=clone(saved);options=shuffled(clone(saved));}
+  s.lastPresentedQuestion={wordId:word.id,kind};
   s.question = { id: uid(), kind, wordId: word.id, formId: form.id, options, hinted: false };
 }
-export function startSession(data, p, mode = 'learn', ids = null, today = day()) {
+// Refresh only the waiting queue on a new local day. Frozen work in the
+// current round (including retry stages and choices) is retained.
+function rollReviewDay(data,p,s,today){
+  if(!s||s.mode!=='review')return;
+  if((s.reviewDate||s.started)===today){
+    if(!Array.isArray(s.reviewDailyIds)){
+      const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]);
+      s.reviewDailyIds=[...remaining];
+      s.reviewDailyCarry=Math.max(0,(s.progressTotal??sessionProgressTotal(s))-remaining.size);
+    }
+    return;
+  }
+  const active=new Set(s.phase==='done'?[]:(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id)));
+  const due=p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length).map(w=>w.id);
+  const dueSet=new Set(due);
+  const waiting=[...new Set(s.pending||[])].filter(id=>dueSet.has(id)&&!active.has(id));
+  const queued=new Set([...active,...waiting]);
+  const added=shuffled(due.filter(id=>!queued.has(id)));
+  s.pending=[...waiting,...added];
+  if(s.optionSets)s.optionSets=Object.fromEntries(Object.entries(s.optionSets).filter(([key])=>active.has(key.split('|')[0])));
+  s.reviewDate=today;
+  // The daily counter starts with today's unfinished words; yesterday's
+  // completed groups are history, not work to repeat or count again today.
+  s.reviewDailyIds=[...new Set([...active,...s.pending])];
+  s.reviewDailyCarry=0;
+  s.progressTotal=s.reviewDailyIds.length;
+}
+export function refreshReviewQueues(data,today=day()){
+  const mixed=reviewPackage(data);
+  for(const s of Object.values(data.sessions||{})){
+    if(s.mode!=='review')continue;
+    const p=s.lessonKey==='review:all'?mixed:data.library.find(p=>packageKey(p)===s.lessonKey);
+    if(p)rollReviewDay(data,p,s,today);
+  }
+}
+export function startSession(data, p, mode = 'learn', ids = null, today = day(), keyOverride = null) {
   migrateSessions(data);
-  const key=sessionKey(p,mode,ids),old=data.sessions[key];
+  const key=keyOverride||sessionKey(p,mode,ids),old=data.sessions[key];
+  if(mode==='review')rollReviewDay(data,p,old,today);
   if(mode==='errors'&&old&&old.phase!=='done'){
     const eligible=new Set(p.words.filter(w=>errorPracticeEligible(data,p,w,today)).map(w=>w.id));
     old.pending=old.pending.filter(id=>eligible.has(id));old.jobs=old.jobs.filter(job=>eligible.has(job.wordId));
@@ -338,14 +486,15 @@ export function startSession(data, p, mode = 'learn', ids = null, today = day())
     if((old.question&&!eligible.has(old.question.wordId))||(old.feedback&&!eligible.has(old.feedback.wordId))){old.question=null;old.feedback=null;}
     refresh(data,p,old,today);
   }
-  if (old && old.phase !== 'done') {touched(data,p,old);return old;}
+  if (old && old.phase !== 'done') {refresh(data,p,old,today);touched(data,p,old);return old;}
   if(old?.pending.length){continueRound(data,p,key,today);if(old.phase!=='done')return old;}
   const words = ids ? p.words.filter(w => isVocabularyWord(w)&&ids.includes(w.id)) : p.words.filter(w => mode === 'review' ? dueForms(data, p, w, today).length :mode==='errors'?errorPracticeEligible(data,p,w,today): mode==='favorites'?!!data.favorites[wordKey(p,w)]:mode==='direct'||getProgress(data, p, w).notebook === 'practice');
-  for(let i=words.length-1;i>=0;i--)if(!isVocabularyWord(words[i]))words.splice(i,1);
-  if (!words.length) throw new Error('暂无待练单词 / Aucun mot à pratiquer.');
+  for(let i=words.length-1;i>=0;i--)if(!isVocabularyWord(words[i])||studyPaused(data,p,words[i],today))words.splice(i,1);
+  if (!words.length) throw new Error(p.words.some(w=>studyPaused(data,p,w,today))?'今天的难词先暂停，明天继续 / Reprenez ces mots demain.':'暂无待练单词 / Aucun mot à pratiquer.');
   if(mode==='errors')words.sort((a,b)=>errorPracticeState(data,p,b,today).errorCount-errorPracticeState(data,p,a,today).errorCount);
   else if(mode==='favorites')words.sort((a,b)=>dedicatedPracticeState(data,p,a,mode).count-dedicatedPracticeState(data,p,b,mode).count);
   const s = { id: uid(), flowVersion:3, roundNumber:1, mode, reviewMode: data.settings.reviewMode || 'both', removeErrors:mode==='errors'&&data.settings.errorAutoRemove!==false,pending: (mode==='review'||mode==='learn'&&data.settings.shuffleLearning?shuffled(words):words).map(w => w.id), total: 0, doneWords: [], group: [], jobs: [], newKnownWordIds:[], acquiredWordIds:[], phase: 'practice', stats: { attempts: 0, correct: 0 }, started: today, question: null, feedback: null };
+  if(mode==='review'){s.reviewDate=today;s.reviewDailyIds=words.map(w=>w.id);s.reviewDailyCarry=0;}
   s.progressTotal=words.length;s.key=key;s.lessonKey=packageKey(p);data.sessions[key] = s;touched(data,p,s);openRound(data,p,s,today); return s;
 }
 export function startMixedReview(data,today=day()){
@@ -360,18 +509,19 @@ export function startErrorPractice(data,today=day()){
   return startSession(data,reviewPackage(data),'errors',null,today);
 }
 export function continueRound(data,p,key,today=day()){
-  const s=getSession(data,p,key);if(!s||s.phase!=='done'||!s.pending.length)return s;
+  const s=getSession(data,p,key);rollReviewDay(data,p,s,today);if(!s||s.phase!=='done'||!s.pending.length)return s;
   s.roundNumber=(s.roundNumber||1)+1;openRound(data,p,s,today);touched(data,p,s);return s;
 }
 export function revealHint(data, p,key) {
   const s=getSession(data,p,key),q=s?.question;
   if(q&&q.kind==='spell'&&!q.hinted){
     const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);
-    if(word&&form)recordMistake(data,p,word,form,'',day(),'hint',s);
+    if(word&&form)recordMistake(data,p,word,form,'',day(),'hint',s,countJobFailure(s.jobs[0],day()));
     q.hinted=true;s.jobs[0].needsReinforcement=true;s.jobs[0].failed=true;touched(data,p,s);
+    prunePausedWords(data,p,s,day());
   }
 }
-function recordMistake(data,p,word,form,input,today,reason='answer',session=null){
+function recordMistake(data,p,word,form,input,today,reason='answer',session=null,countDaily=true){
   data.errors||={};data.errorHistory||={};const base=wordKey(p,word),key=`${base}:${form.id}`,previous=data.errors[key];
   const active=testedForms(word).some(f=>data.errors[`${base}:${f.id}`]);
   const history=data.errorHistory[base]||={count:0,reviewCount:0,cycleReviews:0};
@@ -380,14 +530,17 @@ function recordMistake(data,p,word,form,input,today,reason='answer',session=null
   if(!counted){history.count=(history.count||0)+1;if(session)session.mistakeWordIds.push(base);}
   history.lastErrorDate=today;
   data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(previous?.count||0)+(counted?0:1),last:today,input:String(input),reason,practiced:false};
+  const learningOnly=!!session&&(session.mode==='learn'||session.mode==='direct'&&(session.importedPractice&&!session.importedRelearning||getProgress(data,p,word).notebook==='practice'));
+ const deferred=countDaily?recordStudyFailure(data,p,word,today,learningOnly):studyPaused(data,p,word,today);if(deferred&&learningOnly){session.learningTailIds||=[];if(!session.learningTailIds.includes(word.id))session.learningTailIds.push(word.id);}return deferred;
 }
 export function retryAfterHint(data,p,today=day(),key){
   const s=getSession(data,p,key);if(!s?.question?.hinted)return;
   s.question=null;touched(data,p,s);refresh(data,p,s,today);
 }
 export function submitAnswer(data, p, id, input, today = day(),key) {
-  const s = getSession(data,p,key), q = s?.question;
+  const s = getSession(data,p,key);rollReviewDay(data,p,s,today);const q = s?.question;
   if (!q || q.id !== id || s.feedback || q.kind === 'judge') throw new Error('题目已更新，请继续 / Continuez avec la question actuelle.');
+  rememberQuestionOptions(s);
   const job = s.jobs.shift(), word = p.words.find(w => w.id === q.wordId), form = word.forms.find(f => f.id === q.formId);
   let result;
   if (q.options) {
@@ -397,7 +550,7 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
   } else {
     if (!String(input).trim()) { s.jobs.unshift(job); throw new Error('请输入答案 / Saisissez une réponse.'); }
     const parts=spellingParts(word,form),task=spellingTask(word,form,data.settings.articleMode||'choice');
-    const parsed=splitNounArticle(input),needsArticle=['choice','typed'].includes(task.mode);
+    const parsed=formattedArticle(input),needsArticle=['choice','typed'].includes(task.mode);
     if(needsArticle){
       const validArticle=task.mode==='choice'?parsed.prefix.toLocaleLowerCase('fr').replaceAll('’',"'")===parts.prefix.toLocaleLowerCase('fr').replaceAll('’',"'"):articleAgrees(word,form,parsed.prefix);
       result=checkAnswer(parsed.answer,parts.answer,data.settings.fuzzy);
@@ -405,23 +558,24 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
       const prefix=validArticle?parsed.prefix:parts.prefix;
       result.expected=prefix+(/['’]$/.test(prefix)?'':' ')+parts.answer;
     }else{
-      const full=parts.prefix&&!!parsed.prefix;
+      const full=parts.prefix&&(!!parsed.prefix||formatKey(input)===formatKey(parts.text));
       result=checkAnswer(input,full?parts.text:parts.answer,data.settings.fuzzy);result.expected=parts.text;
     }
-    result.input=String(input).normalize('NFC');result.diff=spellingDiff(result.input,result.expected);
+    result.input=String(input).normalize('NFC');result.diff=spellingDiff(result.input,result.expected);result.formatted=result.correct&&result.input!==result.expected;
   }
   const a = activity(data, today); a.attempts++; s.stats.attempts++; if (result.correct) { a.correct++; s.stats.correct++; }
-  if(!result.correct){job.failed=true;job.needsReinforcement=true;recordMistake(data,p,word,form,input,today,'answer',s);}
-  if(q.options&&!result.correct){
+  if(!result.correct){job.failed=true;job.needsReinforcement=true;result.deferred=recordMistake(data,p,word,form,input,today,'answer',s,countJobFailure(job,today));result.learningDeferred=result.deferred&&!!s.learningTailIds?.includes(word.id);}
+  if(q.options&&!result.correct&&!result.deferred){
     s.jobs.unshift(job);
     q.rejectedIds||=[];q.rejectedIds.push(input);touched(data,p,s);
     return {...result,retryChoice:true};
   }
+  if(q.options&&result.deferred){q.rejectedIds||=[];q.rejectedIds.push(input);}
   const passed = result.correct && !q.hinted;
-  if (passed) job.stage++;
+  if (passed) {job.stage++;delete job.pressureDate;}
   // A wrong or hinted answer stays first until answered independently.
-  if (!passed) s.jobs.unshift(job);
-  else {
+  if (!passed&&!result.deferred) s.jobs.unshift(job);
+  else if(passed) {
     if (job.stage < job.sequence.length) s.jobs.push(job);
     if (job.needsReinforcement) {
       if(!s.jobs.some(other=>other.wordId===word.id&&other.formId===form.id&&other.reinforcement)){
@@ -437,16 +591,17 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
   }
   s.feedback = { ...result, hinted: q.hinted, wordId: word.id, formId: form.id, questionKind: q.kind, question: clone(q), input: String(input), retry:!passed };
   s.question = null;
+  if(result.deferred)prunePausedWords(data,p,s,today);
   touched(data,p,s);
   return s.feedback;
 }
-export function advance(data, p, today = day(),key) { const s = getSession(data,p,key); s.feedback = null;touched(data,p,s);refresh(data, p, s, today); }
+export function advance(data, p, today = day(),key) { const s = getSession(data,p,key);rememberQuestionOptions(s);rollReviewDay(data,p,s,today); s.feedback = null;touched(data,p,s);refresh(data, p, s, today); }
 export function moveWord(data,p,word,target,today=day()){
   if(!['practice','review','known'].includes(target))throw new Error('无效的词本 / Carnet invalide.');
   const original=wordContext(data,p,word);p=original.p;word=original.w;
   const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;
   if(target==='practice')r.forms={};
-  else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={...newReviewRecord(r.forms[f.id]?.learnedAt||r.learnedAt||today),known:target==='known',due:target==='known'?null:addDays(r.forms[f.id]?.learnedAt||r.learnedAt||today,1)};remember(data,p,word,today);}
+  else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={...newReviewRecord(r.forms[f.id]?.learnedAt||r.learnedAt||today),known:target==='known',due:target==='known'?null:addDays(r.forms[f.id]?.learnedAt||r.learnedAt||today,1)};if(target==='known')remember(data,p,word,today);}
   for(const s of Object.values(data.sessions).filter(s=>!['errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)||s.mode==='direct'&&s.lessonKey==='review:all'&&(s.importedPractice||s.dictionaryPractice)))){
     const mixed=s.lessonKey==='review:all'||s.key===MIXED_REVIEW_KEY,engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
     const entry=engine.words.find(w=>w.id===id);if(!entry)continue;
@@ -516,8 +671,8 @@ export function installLesson(data, pkg) {
   }
 }
 
-export function recordConjugationAttempt(data,p,w,correct,session,reason='answer',today=day()){
- const a=activity(data,today);a.attempts++;if(correct)a.correct++;else recordMistake(data,p,w,testedForms(w)[0],'',today,reason,session);
+export function recordConjugationAttempt(data,p,w,correct,session,reason='answer',today=day(),countDaily=true,countPressure=countDaily){
+ const a=activity(data,today);if(countDaily){a.attempts++;if(correct)a.correct++;}if(!correct)return recordMistake(data,p,w,testedForms(w)[0],'',today,reason,session,countPressure);
 }
 export function completeConjugationWord(data,p,w,mode='learn',failed=false,today=day()){
  const current=getProgress(data,p,w);if(current.notebook==='known'&&mode!=='errors')return;

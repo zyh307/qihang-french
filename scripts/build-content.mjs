@@ -80,16 +80,18 @@ const speechIndex=JSON.parse(await fs.readFile(path.join(app,'src/static/lexicon
 const usedIds=new Set(state.library.flatMap(p=>p.words.map(w=>w.id)));let nextSerial=1;
 for(const extra of curriculumAdditions){
  const pkg=state.library.find(p=>p.lesson.id===extra.lesson);if(!pkg)throw Error('补充词汇课次不存在：'+extra.lesson);
- if(pkg.words.some(w=>w.pos==='v.'&&w.forms.some(f=>normalize(f.text)===normalize(extra.word))))continue;
- const row=dictionary.find(w=>w.word===extra.word&&w.pos==='v.');if(!row)throw Error('补充词汇资料缺失：'+extra.word);
- const word=dictionaryEntry(row);
+ if(extra.pos){const present=pkg.words.find(w=>w.forms.some(f=>normalize(f.text)===normalize(extra.word)));if(present){present.pos=extra.pos;present.sourcePos=extra.pos;continue;}}
+ if(pkg.words.some(w=>w.pos===(extra.pos||'v.')&&w.forms.some(f=>normalize(f.text)===normalize(extra.word))))continue;
+ const row=dictionary.find(w=>w.word===extra.word&&(extra.pos||w.pos==='v.'));if(!row)throw Error('补充词汇资料缺失：'+extra.word);
+ const word=dictionaryEntry({...row,...(extra.pos?{pos:extra.pos}:{})});
  while(usedIds.has(`w${String(nextSerial).padStart(6,'0')}`))nextSerial++;
  word.id=`w${String(nextSerial++).padStart(6,'0')}`;usedIds.add(word.id);
- word.order=Math.max(0,...pkg.words.map(w=>w.order))+1;word.meanings=[extra.meaning];word.primaryMeaning=extra.meaning;
- word.curriculumAddition='inspire1-verbs-20261103';
+ word.order=Math.max(0,...pkg.words.map(w=>w.order))+1;if(extra.meaning){word.meanings=[extra.meaning];word.primaryMeaning=extra.meaning;}
+ word.curriculumAddition=extra.pos?'inspire1-positions-20261111':'inspire1-verbs-20261103';
+ if(extra.tenses)word.conjugationPlan={infinitive:true,tenses:[...extra.tenses]};
  const form=word.forms[0];form.id=word.id+'-base';form.gender=null;form.source=`Inspire 1 · ${extra.lesson}`;
- form.example={fr:extra.fr,zh:extra.zh,source:'启航法语 · 例句',authored:true,audioKey:spokenKey(extra.fr)};
- for(const text of [extra.word,extra.fr])if(!speechIndex[createHash('sha256').update(text).digest('hex')])throw Error('补充词汇录音缺失：'+text);
+ if(extra.fr)form.example={fr:extra.fr,zh:extra.zh,source:'启航法语 · 例句',authored:true,audioKey:spokenKey(extra.fr)};
+ for(const text of [extra.word,extra.fr].filter(Boolean))if(!speechIndex[createHash('sha256').update(text).digest('hex')])throw Error('补充词汇录音缺失：'+text);
  pkg.words.push(word);names.add(extra.lesson+'-'+extra.word);sentenceNames.add(extra.lesson+'-'+extra.word+'-example');
 }
 applyCourseEntrySplits(state);

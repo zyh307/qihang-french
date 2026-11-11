@@ -76,4 +76,5 @@ for(const number of [2,3,4]){
  catalog.push({id:bookId,contentId:id,file:bookId+'.zip',lessons:stats.lessons,words:stats.words});
  console.log(input.book.title+': '+JSON.stringify(stats));
 }
+if(catalog.length){try{const previous=await import('../src/domain/content-books.js');for(const b of previous.ADDITIONAL_BUNDLED_BOOKS)if(b.id==='fos1')catalog.push(b);}catch{}}
 if(catalog.length)await fs.writeFile(path.join(app,'src/domain/content-books.js'),'// Generated from the provided textbook packages.\nexport const ADDITIONAL_BUNDLED_BOOKS = '+JSON.stringify(catalog,null,2)+';\n');

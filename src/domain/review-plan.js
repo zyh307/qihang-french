@@ -6,7 +6,7 @@ export function shiftDate(value,n){const d=new Date(value+'T12:00:00');d.setDate
 function elapsed(a,b){return Math.round((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/86400000);}
 function localToday(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 export function newReviewRecord(today){return {learnedAt:today,reviewAnchor:today,scheduleVersion:3,reviewIndex:0,due:shiftDate(today,1),known:false};}
-export function nextReviewDate(form,settings={}){if(!form||form.known)return null;return [form.due,settings.reviewErrorRetry!==false?form.retryDue:null].filter(v=>datePattern.test(v||'')).sort()[0]||null;}
+export function nextReviewDate(form,settings={}){if(!form||form.known)return null;return [form.due,settings.reviewErrorRetry!==false?form.retryDue:null,...(form.remedialDates||[])].filter(v=>datePattern.test(v||'')).sort()[0]||null;}
 export function nextNormalReview(anchor,today){
  const index=offsets.findIndex(n=>shiftDate(anchor,n)>today);
  if(index>=0)return {reviewIndex:index,due:shiftDate(anchor,offsets[index]),longReview:REVIEW_DAYS[index]>30};
@@ -14,11 +14,20 @@ export function nextNormalReview(anchor,today){
  return {reviewIndex:offsets.length,due:shiftDate(anchor,lastOffset+cycle*30),longReview:true};
 }
 export function completeReviewRecord(form,settings,today,failed){
+ if(!form.learnedAt){const remedialDates=form.remedialDates||[];Object.assign(form,newReviewRecord(today),{remedialDates});delete form.pendingLearning;}
  const anchor=form.reviewAnchor||form.learnedAt;
+ // A retry is a single extra visit, not a new daily review chain. A normal
+ // review (including an overdue one) may create one next-day retry. Multiple
+ // attempts on that normal-review day still belong to the same normal visit.
+ const normalReview=!!form.due&&form.due<=today||form.lastNormalReviewedAt===today;
  if(form.lastNormalReviewedAt!==today&&form.due&&form.due<=today){Object.assign(form,nextNormalReview(anchor,today));form.lastNormalReviewedAt=today;}
  if(form.retryDue&&form.retryDue<=today)delete form.retryDue;
- if(failed&&settings.reviewErrorRetry!==false)form.retryDue=shiftDate(today,1);
+ if(failed&&normalReview&&settings.reviewErrorRetry!==false)form.retryDue=shiftDate(today,1);
  form.lastReviewedAt=today;form.known=false;form.scheduleVersion=3;
+ if(form.remedialDates?.some(date=>date<=today)&&form.lastRemedialReviewedAt!==today){
+  const dates=[...form.remedialDates].sort();dates.shift();let next=today;
+  form.remedialDates=dates.map(date=>{const earliest=shiftDate(next,1);next=date>earliest?date:earliest;return next;});form.lastRemedialReviewedAt=today;
+ }
 }
 export function migrateReviewPlans(data,today=localToday()){
  for(const r of Object.values(data.progress||{}))for(const f of Object.values(r.forms||{})){

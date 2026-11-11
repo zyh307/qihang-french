@@ -192,7 +192,13 @@ public final class MainActivity extends Activity {
         @JavascriptInterface public String notificationPermission(){return ReminderReceiver.permission(MainActivity.this);}
         @JavascriptInterface public String exactAlarmPermission(){return ReminderReceiver.exactPermission(MainActivity.this);}
         @JavascriptInterface public String reviewReminderStatus(){return trustedPage()?ReminderReceiver.status(MainActivity.this):"{}";}
-        @JavascriptInterface public void openBackgroundSettings(){runOnUiThread(()->{if(!trustedPage())return;try{startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));}catch(RuntimeException ignored){}});}
+        @JavascriptInterface public void openBackgroundSettings(){runOnUiThread(()->{
+            if(!trustedPage())return;
+            if("xiaomi".equalsIgnoreCase(Build.MANUFACTURER)||"redmi".equalsIgnoreCase(Build.BRAND)){
+                try{startActivity(new Intent().setComponent(new android.content.ComponentName("com.miui.securitycenter","com.miui.permcenter.autostart.AutoStartManagementActivity")).putExtra("package_name",getPackageName()));return;}catch(RuntimeException unavailable){}
+            }
+            try{startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));}catch(RuntimeException ignored){}
+        });}
         @JavascriptInterface public void openBatterySettings(){runOnUiThread(()->{if(!trustedPage())return;try{startActivity(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));}catch(RuntimeException ignored){try{startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));}catch(RuntimeException unavailable){}}});}
         @JavascriptInterface public void openExactAlarmSettings(){runOnUiThread(()->{if(!trustedPage()||Build.VERSION.SDK_INT<31)return;try{startActivity(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())));}catch(RuntimeException ignored){}});}
         @JavascriptInterface public String microphonePermission(){return trustedPage()?MainActivity.this.microphonePermission():"denied";}
@@ -266,7 +272,7 @@ public final class MainActivity extends Activity {
         current.postDelayed(()->{if(resumed&&webView==current){current.postInvalidateOnAnimation();container.postInvalidateOnAnimation();}},180);
     }
     @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)restoreFrame();}
-    @Override protected void onResume(){super.onResume();resumed=true;if(webView!=null){webView.onResume();webView.resumeTimers();restoreFrame();openReviewIntent();ReminderReceiver.check(this);microphonePermissionResult();}}
-    @Override protected void onPause(){resumed=false;if(oralCore!=null){final cn.qihang.oral.OralCore current=oralCore;new Thread(current::background,"qihang-oral-pause").start();}if(webView!=null)webView.onPause();super.onPause();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(webView!=null){webView.onResume();webView.resumeTimers();restoreFrame();openReviewIntent();ReminderReceiver.schedule(this,true);ReminderReceiver.check(this);microphonePermissionResult();}}
+    @Override protected void onPause(){resumed=false;new Thread(()->{try{ReminderReceiver.schedule(getApplicationContext(),true);}catch(RuntimeException ignored){}},"qihang-reminder-arm").start();if(oralCore!=null){final cn.qihang.oral.OralCore current=oralCore;new Thread(current::background,"qihang-oral-pause").start();}if(webView!=null)webView.onPause();super.onPause();}
     @Override protected void onDestroy(){bridgeTrusted=false;if(oralCore!=null){final cn.qihang.oral.OralCore current=oralCore;oralCore=null;new Thread(current::close,"qihang-oral-close").start();}if(microphoneRequest!=null){microphoneRequest.deny();microphoneRequest=null;}if(fileCallback!=null)fileCallback.onReceiveValue(null);pendingBytes=null;if(webView!=null){container.removeView(webView);webView.destroy();webView=null;}super.onDestroy();}
 }

@@ -3,6 +3,10 @@ import contextualMeanings from '../lexicon/contextual-primary-meanings.json' wit
 import {definitionText} from './definition-text.js';
 import definitionCorrections from '../lexicon/reviewed-definition-corrections.json' with {type:'json'};
 const glossLabel=value=>String(value||'').trim()==='DIY'?'手工制作，家居修缮（DIY）':value;
+export function usageNote(word){
+ const text=word?.lexiconWord||word?.word||word?.forms?.[0]?.text;
+ return String(text||'').normalize('NFC').trim()==='nouvel'?'用于元音或哑音 h 开头的阳性单数名词前 / Devant un nom masculin singulier commençant par une voyelle ou un h muet.':'';
+}
 function shortSense(value){
  const original=definitionText(glossLabel(value)),short=original.replace(/^[1-9]\.\s*/u,'').replace(/［[^］]*］|【[^】]*】|\[[^\]]*\]|〈[^〉]*〉|（[^）]*）|\([^)]*\)/g,'').split(/(?:adv|adj|n|v|loc|prép|art)\./i)[0].split(/[；;\n]/)[0].trim();
  return !/\p{Script=Han}/u.test(short)&&/\p{Script=Han}/u.test(original)?original:short;

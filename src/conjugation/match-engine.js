@@ -1,12 +1,13 @@
 // Persisted, platform-independent matching session. All scoring stays in the controller.
+import {groupSize} from '../domain/group-size.js';
 const clone = x => JSON.parse(JSON.stringify(x));
 export const wordKey = e => `${e.verbe}|${e.temps}`;
 const taskKey = e => `${wordKey(e)}|${e.personne}`;
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
 export function mix(items) { const a = [...items]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-export function smallGroups(items) {
+export function smallGroups(items,limit=3) {
   const groups = []; let at = 0;
-  while (at < items.length) { const size = Math.min(3, items.length - at); groups.push(items.slice(at, at + size)); at += size; }
+  while (at < items.length) { const size = Math.min(groupSize(limit,3), items.length - at); groups.push(items.slice(at, at + size)); at += size; }
   return groups;
 }
 const require = (ok, text) => { if (!ok) throw new Error(text); };
@@ -20,8 +21,7 @@ export class MatchSession {
     }
   }
   static create(entries, options, env) {
-    const verbs=[...new Set(entries.map(e=>e.verbe))];
-    const groups=smallGroups(verbs).map(group=>({entries:clone(entries.filter(e=>group.includes(e.verbe)))}));
+    const groups=smallGroups(entries,options.groupSize||3).map(group=>({entries:clone(group)}));
     const s = { game: true, game_version: 1, mode: options.mode || 'learn', direct: Boolean(options.direct), source: options.source || 'learn', level: options.level || '', temps: options.tense || entries[0]?.temps || '现在时', settings: clone(options.settings || {}), groups, cursor: -1, done: 0, completed_words: [], question: null };
     s.game_version = 2;
     s.match_rounds = s.mode === 'review' || entries.every(e => e.reviewed) ? 1 : 2;
@@ -29,6 +29,8 @@ export class MatchSession {
   }
   activate() {
     const s = this.s;
+    if(s.cursor+1>=s.groups.length&&s.learningTailEntries?.length){s.groups.push({entries:s.learningTailEntries});s.learningTailEntries=[];s.tailRound=true;}
+    if(s.cursor>=0&&this.env.groupSize&&!s.tailRound){const future=s.groups.slice(s.cursor+1).flatMap(group=>group.entries);s.groups.splice(s.cursor+1,Infinity,...smallGroups(future,this.env.groupSize).map(entries=>({entries})));}
     if (++s.cursor >= s.groups.length) return false;
     s.entries = clone(s.groups[s.cursor].entries); s.batch_done = 0; s.decisions = {};
     s.match_rounds = s.mode === 'review' || s.entries.every(e => e.reviewed) ? 1 : 2;
@@ -61,10 +63,21 @@ export class MatchSession {
       if (s.phase === 'judge') entry = s.entries.find(e => wordKey(e) === s.judges[0]);
       else entry = s.pending[0];
       if (s.phase === 'match') {
+        // Saved mixed boards may have stranded forms after an equivalent-form
+        // match. Keep completed pairs; put only the unanswered tasks on a new
+        // board instead of rewriting the person printed on a remaining card.
+        if(s.board){
+          const b=s.board,persons=b.left.filter(id=>!b.matched_left.includes(id)).map(id=>b.left_persons?.[id]||b.cards.find(card=>card.key===id)?.personne);
+          const playable=b.cards.some(card=>!b.matched_right.includes(card.key)&&persons.some(person=>this.env.forms(card.verbe,card.temps)[person]===card.form));
+          if(!playable)s.board=null;
+        }
         if (!s.board || s.board.matched_left.length === s.board.cards.length) {
-          const cards = s.pending.slice(0, 6).map(e => { const forms = this.env.forms(e.verbe, e.temps); return { ...e, form: forms[e.personne], accepts: Object.keys(forms).filter(p => forms[p] === forms[e.personne]) }; });
+          // One verb and tense per board: equivalent spellings can then match
+          // any compatible person without changing labels or stranding cards.
+          const cards = s.pending.filter(e=>wordKey(e)===wordKey(s.pending[0])).slice(0, 6).map(e => { const forms = this.env.forms(e.verbe, e.temps); return { ...e, form: forms[e.personne], accepts: Object.keys(forms).filter(p => forms[p] === forms[e.personne]) }; });
           s.board = { id: uid(), cards, left: mix(cards.map(e => e.key)), right: mix(cards.map(e => e.key)), left_persons: Object.fromEntries(cards.map(e => [e.key, e.personne])), matched_left: [], matched_right: [] };
         }
+        entry=s.board.cards.find(card=>!s.board.matched_right.includes(card.key));
       }
       const q = { id: uid(), game: true, mode: s.mode, direct: s.direct, source: s.source, round: s.phase, level: s.level, verbe: entry.verbe, temps: entry.temps, personne: entry.personne, batch_index: s.cursor + 1, batch_count: s.groups.length, batch_verbs: s.entries.map(e => e.verbe), batch_entries: s.entries.map(e => ({ verbe: e.verbe, temps: e.temps })), done: s.done, total: s.done + this.remaining(), group_done: s.batch_done, match_rounds: s.match_rounds, game_round: s.cycle };
       q.is_reinforcement = s.phase === 'match' && Boolean(s.repeating);
@@ -98,10 +111,6 @@ export class MatchSession {
       entry = correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
       if (correct) {
         b.matched_left.push(left.key); b.matched_right.push(form.key);
-        if (person !== form.personne) {
-          const slot = b.left.find(id => !b.matched_left.includes(id) && b.left_persons[id] === form.personne);
-          if (slot) b.left_persons[slot] = person;
-        }
       } else if (!s.repeating) { s.match_retry ||= {}; s.match_retry[entry.key] = clone(entry); }
     } else {
       entry = s.pending[0]; expected = this.env.forms(entry.verbe, entry.temps)[entry.personne];
@@ -109,12 +118,14 @@ export class MatchSession {
       correct = this.env.check(String(body.answer).trim(), expected, s.settings.fuzzy !== false);
       if (!correct) { s.fill_retry ||= {}; s.fill_retry[entry.key] = 1; }
     }
-    this.env.record(correct, entry);
+    const deferred=!correct&&this.env.record(correct, entry)===true;
+    if(correct)this.env.record(correct,entry);
+    if(deferred){this.defer(entry);return {correct:false,expected,deferred:true,matched:s.phase==='match',next:this.question()};}
     if (correct) {
       s.pending = s.pending.filter(e => e.key !== entry.key); s.done++; s.batch_done++;
       if (s.phase === 'fill' && s.fill_retry?.[entry.key]) { delete s.fill_retry[entry.key]; s.pending.push(entry); if (s.pending.length > 1 && s.pending[0].key === entry.key) [s.pending[0], s.pending[1]] = [s.pending[1], s.pending[0]]; }
       if (s.phase === 'fill' && !s.pending.some(e => wordKey(e) === wordKey(entry)) && !s.completed_words.includes(wordKey(entry))) {
-        this.env.complete(entry, s); if (!s.completed_words.includes(wordKey(entry))) s.completed_words.push(wordKey(entry));
+        this.env.complete(entry, s);if(s.deferred_words)s.deferred_words=s.deferred_words.filter(id=>id!==wordKey(entry)); if (!s.completed_words.includes(wordKey(entry))) s.completed_words.push(wordKey(entry));
       }
     }
     return { correct, expected, matched: s.phase === 'match', next: this.question() };
@@ -123,6 +134,16 @@ export class MatchSession {
     const s = this.s; s.done = Math.max(0, s.done - s.batch_done);
     s.groups[s.cursor].entries = s.entries.filter(e => !excluded.has(wordKey(e)));
     s.cursor--; this.activate(); return this.question();
+  }
+  defer(entry){
+    const s=this.s,id=wordKey(entry),belongs=e=>wordKey(e)===id;
+    s.deferred_words||=[];if(!s.deferred_words.includes(id))s.deferred_words.push(id);
+    if(this.env.deferToTail?.(entry)&&!s.tailRound){const source=s.entries.find(e=>wordKey(e)===id);if(source){s.learningTailEntries||=[];if(!s.learningTailEntries.some(e=>wordKey(e)===id))s.learningTailEntries.push(clone(source));}}
+    for(const group of s.groups)group.entries=group.entries.filter(e=>!belongs(e));
+    s.entries=(s.entries||[]).filter(e=>!belongs(e));s.pending=(s.pending||[]).filter(e=>!belongs(e));s.judges=(s.judges||[]).filter(key=>key!==id);
+    for(const key of Object.keys(s.match_retry||{}))if(key.startsWith(id+'|'))delete s.match_retry[key];
+    for(const key of Object.keys(s.fill_retry||{}))if(key.startsWith(id+'|'))delete s.fill_retry[key];
+    s.board=null;s.question=null;
   }
   remove(selected, returned = []) {
     const s = this.s;

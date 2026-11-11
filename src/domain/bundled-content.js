@@ -22,11 +22,12 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
             for(const form of word.forms)form.id=word.id+form.id.slice(oldId.length);existing.words.push(word);continue;
           }
           const oldForms=original.forms;for(const field of ['pos','sourcePos','sourceText','meanings','curriculumAuthority'])original[field]=clone(fresh[field]);
+          if(fresh.fosAuthority)original.fosAuthority=clone(fresh.fosAuthority);
           if(!original.primaryMeaningChosen)original.primaryMeaning=fresh.primaryMeaning;
           original.forms=fresh.forms.map((form,index)=>{
             const previous=oldForms.find(f=>normalize(f.text)===normalize(form.text)&&f.gender===form.gender);
             const updated=clone(form);updated.id=previous?.id||original.id+form.id.slice(fresh.id.length);
-            if(previous?.audioKey&&form.audioOrigin!=='textbook-human')for(const field of ['audioKey','audio','audioOrigin'])if(previous[field]!==undefined)updated[field]=previous[field];
+            if(previous?.audioKey&&form.audioOrigin!=='textbook-human'&&form.audioOrigin!=='fos-synthetic')for(const field of ['audioKey','audio','audioOrigin'])if(previous[field]!==undefined)updated[field]=previous[field];
             return updated;
           });
         }
@@ -51,7 +52,11 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
       if(existing.bundled){
         let added=false;
         for(const original of source.words.filter(w=>w.curriculumAddition)){
-          if(existing.words.some(w=>w.pos===original.pos&&w.forms.some(f=>original.forms.some(fresh=>normalize(f.text)===normalize(fresh.text)))))continue;
+          const present=existing.words.find(w=>w.pos===original.pos&&w.forms.some(f=>original.forms.some(fresh=>normalize(f.text)===normalize(fresh.text))));
+          if(present){
+            if(original.conjugationPlan){const old=present.conjugationPlan||{infinitive:true,tenses:['现在时']};present.conjugationPlan={...old,infinitive:true,tenses:[...new Set([...(old.tenses||[]),...original.conjugationPlan.tenses])]};}
+            continue;
+          }
           const word=clone(original),oldId=word.id;word.id=nextId();
           for(const form of word.forms)form.id=word.id+form.id.slice(oldId.length);
           word.order=Math.max(0,...existing.words.map(w=>w.order))+1;existing.words.push(word);data.reservedWordIds=[...new Set([...(data.reservedWordIds||[]),word.id])];added=true;

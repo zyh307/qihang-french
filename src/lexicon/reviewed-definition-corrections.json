@@ -5663,5 +5663,23 @@
       "胜过"
     ],
     "previousPrimary": "胜过"
+  },
+  "chasseur": {
+    "meaning": "猎人",
+    "meanings": [
+      "猎人，打猎者",
+      "穿制服的服务员",
+      "轻步兵，轻骑兵",
+      "战斗机，战斗机飞行员",
+      "特种用途的舰船或车辆"
+    ],
+    "previousMeanings": [
+      "n. 打猎者，猎人chasseur n.m. 穿制服的服务员；轻步兵，轻骑兵；歼击机，战斗机，歼击机飞行员，战斗机飞行员；特种用途的舰，船，车辆~　réaction 喷射式战斗机"
+    ],
+    "previousPrimary": "打猎者，猎人chasseur",
+    "invalidMeanings": [
+      "打猎者，猎人chasseur",
+      "猎人chasseur"
+    ]
   }
 }

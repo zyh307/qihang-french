@@ -14,7 +14,7 @@ function insert(letter,event){playTap();emit('insert',event.shiftKey?letter.toLo
 .desktop-accents{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .desktop-accents>button{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:34px;height:34px;padding:0 9px;margin:0;border:1px solid #d8e1ef;border-radius:9px;background:#f5f8fd;color:#526b91;font:20px/1 Georgia,serif;transition:background-color .12s,transform .12s;cursor:pointer}
 .desktop-accents>button::after{border:0}
-.desktop-accents>button:active:not(:disabled){background:#e3ebf7;transform:scale(.95)}
+.desktop-accents>button:active:not(:disabled){background:#e3ebf7;transform:none}
 .desktop-accents>button:focus-visible{outline:2px solid #8da8cf;outline-offset:2px}
 .desktop-accents>button:disabled{opacity:.42;cursor:default}
 </style>

@@ -1,6 +1,6 @@
 import {splitNounArticle,spellingParts} from './word-display.js';
 const exact=value=>String(value||'').normalize('NFC').toLocaleLowerCase('fr').replaceAll('’',"'").replace(/\s+/g,' ').trim();
-export const isTextbook=id=>/^inspire[1-4]$/.test(id||'');
+export const isTextbook=id=>/^(?:inspire[1-4]|fos1)$/.test(id||'');
 export const curriculumFormKey=(word,form)=>{const gender=form.gender||splitNounArticle(form.text).gender||(/n\.m/i.test(word.sourcePos||'')?'m':/n\.f/i.test(word.sourcePos||'')?'f':null);return word.pos+':'+exact(spellingParts(word,form).answer)+(word.pos==='n.'?':'+(gender||'?'):'');};
 export function curriculumForms(text,sourcePos){
  if(text==='se sentir (bien, mal, fatigué(e))')return {pos:'v.',audioFormIndex:2,forms:[{text:'se sentir bien',meaning:'感觉良好',gender:null,tested:true,audio:null,ipa:'/sə sɑ̃tiʁ bjɛ̃/'},{text:'se sentir mal',meaning:'感觉不适',gender:null,tested:true,audio:null,ipa:'/sə sɑ̃tiʁ mal/'},{text:'se sentir fatigué',meaning:'感到疲惫',gender:'m',tested:true,audio:null,ipa:'/sə sɑ̃tiʁ fatiɡe/'},{text:'se sentir fatiguée',meaning:'感到疲惫',gender:'f',tested:false,audio:null,ipa:'/sə sɑ̃tiʁ fatiɡe/'}]};
@@ -29,10 +29,10 @@ export function curriculumForms(text,sourcePos){
 // notebook membership, progress or frozen practice queues.
 export function applyTextbookContent(data){
  const lookup=new Map();
- for(const p of data.library.filter(p=>isTextbook(p.book.id)))for(const w of p.words)if(w.curriculumAuthority)for(const f of w.forms){const key=curriculumFormKey(w,f),old=lookup.get(key);if(!old||f.audioOrigin==='textbook-human'&&old.f.audioOrigin!=='textbook-human')lookup.set(key,{p,w,f});}
+ for(const p of data.library.filter(p=>isTextbook(p.book.id)&&p.book.id!=='fos1'))for(const w of p.words)if(w.curriculumAuthority)for(const f of w.forms){const key=curriculumFormKey(w,f),old=lookup.get(key);if(!old||f.audioOrigin==='textbook-human'&&old.f.audioOrigin!=='textbook-human')lookup.set(key,{p,w,f});}
  let updated=0;
  for(const p of data.library.filter(p=>!isTextbook(p.book.id)))for(const w of p.words){
-  if(w.conjugation)continue;
+  if(w.conjugation||w.fosAuthority)continue;
   for(const f of w.forms){
    const key=curriculumFormKey(w,f),entry=lookup.get(key)||(w.pos==='n.'?lookup.get(key.replace(/:[mf]$/,':?')):null);if(!entry)continue;
    const source=entry.w,form=entry.f;w.meanings=[...source.meanings];

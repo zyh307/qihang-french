@@ -1,7 +1,11 @@
 import {playTap} from './feedback-sounds.js';
 import {keepWindowsRuntimeAlive} from './windows-runtime.js';
+import {installInteractionMotion} from './interaction-motion.js';
+import {installColorTheme} from './color-theme.js';
 export function accessibleButtons() {
   const stopRuntimeHeartbeat = keepWindowsRuntimeAlive();
+  const stopInteractionMotion = installInteractionMotion();
+  const stopColorTheme = installColorTheme();
   // uni-app injects its component defaults after App.vue's CSS. Reset only the
   // low-specificity button defaults after mount; authored class styles still win.
   const style = document.createElement('style');
@@ -37,17 +41,9 @@ export function accessibleButtons() {
     });
   };
   document.addEventListener('visibilitychange',resumeFrame);window.addEventListener('pageshow',resumeFrame);window.addEventListener('qihang-resume',resumeFrame);
-  const effects=new Set(),pulses=new Set();
   const pulse=event=>{
-    const button=event.target.closest?.('uni-button,[role="button"]');if(!button||button.getAttribute('disabled')==='true'||button.getAttribute('aria-disabled')==='true'||button.closest?.('[data-manual-tap]'))return;
+    const button=event.target.closest?.('uni-button,button,[role="button"]');if(!button||(button.hasAttribute('disabled')&&button.getAttribute('disabled')!=='false')||button.getAttribute('aria-disabled')==='true'||button.closest?.('[data-manual-tap]'))return;
     playTap();
-    // Same original keyframes and duration, without forcing synchronous layout.
-    if(button.animate){
-      const animation=button.animate([{filter:'brightness(.96)',transform:'scale(.985)'},{filter:'brightness(1)',transform:'scale(1)'}],{duration:280,easing:'ease-out'});
-      effects.add(animation);animation.onfinish=()=>effects.delete(animation);animation.oncancel=()=>effects.delete(animation);
-    }else{
-      button.classList.add('tap-feedback');const timer=setTimeout(()=>{button.classList.remove('tap-feedback');pulses.delete(timer);},350);pulses.add(timer);
-    }
   };
   document.addEventListener('click',pulse,true);
   const inputSound=event=>{if(event.target?.matches?.('input,textarea'))playTap();};
@@ -60,5 +56,5 @@ export function accessibleButtons() {
     if (!bound.has(el)) { bound.add(el); el.addEventListener('keydown', e => { if (e.target === el && ['Enter',' '].includes(e.key)) { e.preventDefault(); if (el.getAttribute('disabled') !== 'true') el.click(); } }); }
   });
   update(); const observer = new MutationObserver(records=>{for(const record of records){if(record.type==='attributes')update(record.target);else for(const node of record.addedNodes)if(node.nodeType===1)update(node);}}); observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled']});
-  return () => { stopRuntimeHeartbeat();document.removeEventListener('visibilitychange',resumeFrame);window.removeEventListener('pageshow',resumeFrame);window.removeEventListener('qihang-resume',resumeFrame);clearTimeout(focusTimer);document.documentElement.classList.remove('keyboard-stable');window.removeEventListener('scroll',keepPosition);window.visualViewport?.removeEventListener('scroll',keepPosition);document.removeEventListener('focusin',focusIn);document.removeEventListener('focusout',focusOut);observer.disconnect(); style.remove();window.removeEventListener('resize',viewport);window.visualViewport?.removeEventListener('resize',viewport);document.removeEventListener('click',pulse,true);document.removeEventListener('input',inputSound,true);document.removeEventListener('keydown',enterSound,true);for(const timer of pulses)clearTimeout(timer);for(const animation of effects)animation.cancel(); };
+  return () => { stopRuntimeHeartbeat();stopInteractionMotion();stopColorTheme();document.removeEventListener('visibilitychange',resumeFrame);window.removeEventListener('pageshow',resumeFrame);window.removeEventListener('qihang-resume',resumeFrame);clearTimeout(focusTimer);document.documentElement.classList.remove('keyboard-stable');window.removeEventListener('scroll',keepPosition);window.visualViewport?.removeEventListener('scroll',keepPosition);document.removeEventListener('focusin',focusIn);document.removeEventListener('focusout',focusOut);observer.disconnect(); style.remove();window.removeEventListener('resize',viewport);window.visualViewport?.removeEventListener('resize',viewport);document.removeEventListener('click',pulse,true);document.removeEventListener('input',inputSound,true);document.removeEventListener('keydown',enterSound,true); };
 }

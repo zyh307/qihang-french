@@ -35,7 +35,7 @@ const nonempty = v => typeof v === 'string' && v.trim().length > 0;
 const positive = v => Number.isInteger(v) && v > 0;
 export function validateLesson(p) {
   if (!p || p.schemaVersion !== 1) fail('格式版本必须为 1 / Version de format : 1.');
-  if (!['inspire1','inspire2','inspire3','inspire4','personal'].includes(p.book?.id) || !nonempty(p.book?.title)) fail('教材编号无效 / Manuel invalide.');
+  if (!['inspire1','inspire2','inspire3','inspire4','fos1','personal'].includes(p.book?.id) || !nonempty(p.book?.title)) fail('教材编号无效 / Manuel invalide.');
   if (p.book.level !== undefined) fail('请移除旧等级字段 book.level / Retirez le champ book.level.');
   if (!/^L(0[1-9]|[1-9]\d)$/.test(p.lesson?.id) || !nonempty(p.lesson.title) || !positive(p.lesson.order) || !positive(p.lesson.version)) fail('课次编号、名称、排序或版本错误 / Informations de leçon invalides.');
   if (!Array.isArray(p.words) || !p.words.length || p.words.length > (p.book?.id==='personal'?30000:5000)) fail('词库需要 1–5000 个词条 / Entre 1 et 5 000 entrées.');

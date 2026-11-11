@@ -13,3 +13,9 @@
 .navigation-fade-enter-active,.navigation-fade-leave-active{transition:opacity .18s ease,transform .22s cubic-bezier(.2,.7,.3,1)}.navigation-fade-enter-from,.navigation-fade-leave-to{opacity:0;transform:translateY(8px)}.navigation-fade-leave-active{pointer-events:none}
 @media(prefers-reduced-motion:reduce){.mode-choice,.navigation-fade-enter-active,.navigation-fade-leave-active{transition:none}.navigation-fade-enter-from,.navigation-fade-leave-to{transform:none}}
 @media(max-width:720px){.is-grammar .topbar{padding-left:15px;padding-right:15px}}
+
+/* A single persistent menu control morphs above the drawer, at the top left. */
+.mode-switch-space{width:86px;height:39px;flex-shrink:0}.mode-menu-control{position:fixed;left:20px;top:max(25px,env(safe-area-inset-top));z-index:131;min-width:86px;justify-content:flex-start;box-sizing:border-box;background:var(--theme-panel,#f8faff);color:var(--accent-dark,#7890b4)}.mode-menu-control>.bi{transition:opacity .16s}.mode-menu-control.drawer-open>.bi{opacity:0}.mode-drawer{padding-top:max(25px,env(safe-area-inset-top))}.mode-drawer-heading{min-height:39px;padding-left:91px;margin-bottom:18px}.mode-menu-control.drawer-open{border-color:transparent;background:transparent}.mode-menu-control .menu-glyph{overflow:visible}
+@media(max-width:720px){.mode-switch-space{width:81px;height:35px}.mode-menu-control{left:14px;top:max(10px,env(safe-area-inset-top));min-width:81px}.mode-drawer{padding-top:max(10px,env(safe-area-inset-top))}.mode-drawer-heading{padding-left:79px;min-height:35px}}
+@media(min-width:900px){html.qihang-desktop .mode-switch-space{display:none}}
+@media(prefers-reduced-motion:reduce){.mode-menu-control>.bi{transition:none}}
