@@ -1,8 +1,16 @@
 # 启航法语：AI 项目分析与接手说明
 
-最后更新状态：本地2.7.0（Android20700）两端成品已生成。用户已追加明确授权提交GitHub并发布Release，正在执行。阴阳性共用选择、黄色性别和全主题正误/状态配色已包含；静态编译/签名/归档通过，未做功能/浏览器/真机测试。
+最后更新状态：2.7.0（Android20700）Windows/安卓本地交付、GitHub源码提交与正式Release均完成。阴阳性共用选择、黄色性别与五主题状态配色已包含；签名/归档和远端6附件大小及SHA-256核对通过，未做功能/浏览器/真机测试。
 
 ## 当前任务与准确状态
+
+
+2026-11-14 用户授权的GitHub更新与正式Release已完成（覆盖下方所有待提交/待发布状态）：main源码提交 c0ed2eecdbd72989b2bb80aca552c6aa0aab54df，注解tag v2.7.0指向同一源码提交。公开正式Release ID 444892483，链接 https://github.com/zyh307/qihang-french/releases/tag/v2.7.0，draft=false、prerelease=false，latest及不带身份的公开API均指向v2.7.0。
+
+6个附件均为uploaded且GitHub服务器返回的SHA-256/字节数与本地逐个匹配：QihangFrench-Android-v2.7.0.apk、QihangFrench-Windows-v2.7.0.zip、ggml-model-q5_0.bin、QihangFrench-Model-Licenses.zip、QihangFrench-QuickStart-v2.7.0.txt、SHA256SUMS.txt。README已改到v2.7.0真实下载文件，并去掉已移除特殊导入的旧说明。Release更新说明只列新增功能与简短下载操作。公开主下载HEAD结果：[{"name": "ggml-model-q5_0.bin", "http": 200, "bytes": 1081140203}, {"name": "QihangFrench-Android-v2.7.0.apk", "http": 200, "bytes": 445148615}, {"name": "QihangFrench-Windows-v2.7.0.zip", "http": 200, "bytes": 1285918433}]。
+
+本地成品仍在启航法语-正式版-v2.7.0；源码提交使用显式产品目录清单，444个文件/约57MB，新增音频与构建所需源码均纳入。暂存/分享文件敏感路径及凭证模式扫描通过；模型、程序包、个人身份/绑定/记录、密钥和处理缓存不入源码仓库。GitHub身份从现有Git凭证管理器在内存中使用，未把凭证写入项目、日志、记录、包或提交。交接文档后续同步提交仅更新本文件，不改tag所对应的应用源码或已发布成品。未启动应用，未运行规则/功能/页面/浏览器、实体手机或小智联调；真实动画、主题效果与旧会话恢复需后续用户实际使用反馈，不能以构建或附件校验声称已实测。
+
 
 
 2026-11-14 本地2.7.0/20700交付已完成，用户后续明确要求“更新github并发布release”（本条覆盖后面的无GitHub授权/正在本地生成状态）。首次完整build:share完成资料/录音准备、H5与Windows原生/EXE；补齐遗漏的进度/弹层/口语状态等主题表面色后，最终uni build及build-share重编两端共用网页，Android --skip-web复用最终H5。原生版本、包名/证书、固定数据位置及原资料/ID保持。只保留一套当前2.0源码，1.0与旧正式版未改。
