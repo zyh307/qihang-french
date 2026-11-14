@@ -25,7 +25,7 @@ function dictionaryCandidates(text){
  return [...new Set([...similar,...(isShopVocabulary(text)?dictionaryShops:[]),...practiceDictionary.slice(0,100)])];
 }
 import {isVocabularyWord,conjugationPracticeWords,conjugationPackages,conjugationUnits} from '../conjugation/catalog.js';
-import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees } from './word-display.js';
+import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees, testsBothGenders } from './word-display.js';
 import { spellingDiff } from './spelling-diff.js';
 export const clone = v => JSON.parse(JSON.stringify(v));
 export const day = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -50,6 +50,25 @@ function rememberKnown(session,word){
   if(!session.acquiredWordIds.includes(word.id))session.acquiredWordIds.push(word.id);
 }
 export const testedForms = w => w.forms.filter(f => f.tested);
+// Repair stale pending flags without resetting completed forms or review dates.
+export function reconcileLearningProgress(data,p=null){
+  const packages=p?[p]:[...data.library,...conjugationPackages(data)],seen=new Set();
+  for(const pkg of packages)for(const w of pkg.words){
+    const key=wordKey(pkg,w);if(seen.has(key))continue;seen.add(key);
+    const r=data.progress[key],forms=testedForms(w);if(!r||!forms.length)continue;
+    if(r.notebook==='known'){delete r.pendingLearning;continue;}
+    const complete=f=>{const state=r.forms?.[f.id];return !!(state&&(state.learnedAt||state.known||r.learnedAt&&(state.due||state.scheduleVersion||state.reviewIndex!==undefined)));};
+    if(forms.every(complete)){
+      delete r.pendingLearning;
+      if(r.notebook==='practice')r.notebook=forms.every(f=>r.forms[f.id].known)?'known':'review';
+      r.learnedAt ||= forms.map(f=>r.forms[f.id]?.learnedAt).filter(Boolean).sort().at(-1);
+      if(r.learnedAt)r.firstStudiedAt ||= r.learnedAt;
+    }else if(r.notebook==='review'&&(r.pendingLearning||Object.keys(r.forms||{}).length)){
+      // Only genuinely unfinished forms return to the lesson; finished forms stay intact.
+      r.notebook='practice';r.pendingLearning=true;
+    }
+  }
+}
 export const sessionKey=(p,mode='learn',ids=null)=>`${packageKey(p)}${mode==='learn'?'':mode==='review'?':review':mode==='favorites'?':favorites':mode==='errors'?':errors'+(ids?.length?':'+[...new Set(ids)].sort().join(','):''):':direct:'+(ids?.length?[...new Set(ids)].sort().join(','):'all')}`;
 export const getSession=(data,p,key)=>data.sessions[key||data.activeSessions?.[packageKey(p)]||packageKey(p)];
 export function removeDemoLessons(data) {
@@ -104,7 +123,7 @@ export function migrateSessions(data){
   let mixed;
   for(const s of Object.values(data.sessions)){
     const p=s.lessonKey==='review:all'?(mixed||=reviewPackage(data)):data.library.find(p=>packageKey(p)===s.lessonKey);
-    if(p){prunePausedWords(data,p,s,day());repairSessionChoices(data,p,s);if(!s.question&&!s.feedback&&s.phase!=='done')refresh(data,p,s,day());}
+    if(p){upgradeGenderRecognition(p,s);prunePausedWords(data,p,s,day());repairSessionChoices(data,p,s);if(!s.question&&!s.feedback&&s.phase!=='done')refresh(data,p,s,day());}
   }
   if(!data.lastPractice){const latest=Object.values(data.sessions).sort((a,b)=>(a.updatedAt||Date.parse(a.started+'T12:00:00'))-(b.updatedAt||Date.parse(b.started+'T12:00:00'))).at(-1);if(latest)data.lastPractice={lessonKey:latest.lessonKey,sessionKey:latest.key};}
   return data;
@@ -148,7 +167,14 @@ const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.ran
 export const normalize = s => String(s ?? '').normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr').replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[^\p{L}\p{N}]/gu, '');
 const exact = s => String(s ?? '').normalize('NFC').replace(/[’‘]/g, "'").trim().replace(/\s+/g, ' ');
 const formatKey=s=>String(s??'').normalize('NFC').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');
-function formattedArticle(input){const text=formatKey(input);for(const prefix of ["de l'",'de la','une','les','des','aux','un','le','la','du',"l'",'en','au','à']){const key=formatKey(prefix);if(text.startsWith(key)&&text.length>key.length)return {prefix,answer:text.slice(key.length)};}return {prefix:'',answer:text};}
+function formattedArticle(input,expected={}){
+ const text=formatKey(input),answer=normalize(expected.answer||''),preferred=formatKey(expected.prefix||'');
+ // Compare with the current noun before considering longer article prefixes.
+ if(preferred&&text.startsWith(preferred)&&normalize(text.slice(preferred.length))===answer)return {prefix:expected.prefix,answer:text.slice(preferred.length)};
+ const separated=splitNounArticle(input);if(separated.prefix&&separated.answer)return separated;
+ const candidates=["de l'",'de la','une','les','des','aux','un','le','la','du',"l'",'en','au','à'].flatMap(prefix=>{const key=formatKey(prefix);return text.startsWith(key)&&text.length>key.length?[{prefix,answer:text.slice(key.length)}]:[];});
+ return candidates.find(item=>normalize(item.answer)===answer)||candidates[0]||{prefix:'',answer:text};
+}
 function countJobFailure(job,today){if(!job)return false;if(job.pressureDate===today)return false;job.pressureDate=today;return true;}
 export function checkAnswer(input, expected, fuzzy = true) {
   const answer = formatKey(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === formatKey(expected));
@@ -214,8 +240,24 @@ function groupJobs(data,p,s,today=day()){
   return s.group.filter(id=>!s.doneWords.includes(id)).flatMap(id=>{
     const w=p.words.find(w=>w.id===id);if(!w)return [];
     const forms=s.mode==='review'?dueForms(data,p,w,today):s.mode==='errors'?(errorPracticeEligible(data,p,w,today)?testedForms(w).filter(f=>data.errors[`${wordKey(p,w)}:${f.id}`]):[]):testedForms(w);
-    return forms.filter(f=>s.mode!=='learn'||!getProgress(data,p,w).forms[f.id]?.learnedAt).map(f=>({wordId:id,formId:f.id,sequence:sequenceFor(s),stage:0,failed:false}));
+    return forms.filter(f=>s.mode!=='learn'||!getProgress(data,p,w).forms[f.id]?.learnedAt).map((f,index)=>({wordId:id,formId:f.id,sequence:testsBothGenders(w)&&index>0?['spell']:sequenceFor(s),stage:0,failed:false}));
   });
+}
+function upgradeGenderRecognition(p,s){
+  if(s.sharedRecognitionVersion===1||s.phase==='done'||!Array.isArray(s.jobs))return;
+  const active=s.question||(s.feedback?.retry?s.feedback.question:null);
+  for(const id of new Set(s.jobs.map(job=>job.wordId))){
+    const word=p.words.find(w=>w.id===id);if(!word||!testsBothGenders(word))continue;
+    const jobs=s.jobs.filter(job=>job.wordId===id);
+    // Keep the visible question and its rejected choices. Only remove future
+    // duplicate recognition stages; every form retains its own spelling job.
+    const candidates=jobs.filter(job=>!job.reinforcement&&job.sequence.slice(job.stage).includes('recognize')&&job.sequence.slice(job.stage).includes('spell'));
+    const visible=active?.wordId===id&&active.kind==='recognize'?candidates.find(job=>job.formId===active.formId):null;
+    const answered=jobs.some(job=>job.sequence.slice(0,job.stage).includes('recognize'))||s.feedback?.wordId===id&&s.feedback.questionKind==='recognize'&&s.feedback.correct&&!s.feedback.retry;
+    const keep=visible||(!answered?candidates[0]:null);
+    for(const job of candidates)if(job!==keep)job.sequence=job.sequence.filter((kind,index)=>index<job.stage||kind!=='recognize');
+  }
+  s.sharedRecognitionVersion=1;
 }
 function upgradePracticeFlow(data,p,s){
   if(s.phase==='judge'){
@@ -244,6 +286,25 @@ function upgradeRounds(data,p,s){
   if(!s.feedback&&s.question?.kind==='spell'&&s.jobs.some(j=>j.sequence[j.stage]==='recognize'))s.question=null;
   refresh(data,p,s,day());
 }
+const splitWaitingRounds=(count,size)=>Array.from({length:Math.ceil(count/size)},(_,i)=>Math.min(size,count-i*size));
+function waitingRoundPlan(s,size){
+  const plan=s.pendingRoundSizes;
+  return s.pendingPlanBase===size&&Array.isArray(plan)&&plan.every(n=>Number.isInteger(n)&&n>0&&n<=15)&&plan.reduce((a,b)=>a+b,0)===s.pending.length?plan:splitWaitingRounds(s.pending.length,size);
+}
+export function appendLearningWords(data,p,s,ids=null,today=day()){
+  if(!s||!(s.mode==='learn'||s.importedPractice&&s.importedCourseLearning!==false&&!s.importedRelearning))return;
+  const included=new Set([...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id)),...(s.pending||[]),...(s.learningTailIds||[])]),scope=ids?new Set(ids):null;
+  const added=p.words.filter(w=>isVocabularyWord(w)&&(!scope||scope.has(w.id))&&!included.has(w.id)&&!studyPaused(data,p,w,today)&&getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt)).map(w=>w.id);
+  if(!added.length)return;
+  if(s.tailReady){const tail=new Set(s.learningTailIds||[]);s.pending=s.pending.filter(id=>!tail.has(id));delete s.tailReady;delete s.pendingRoundSizes;}
+  const size=preferredGroupSize(data.settings,s.mode),plan=waitingRoundPlan(s,size),oldCount=s.pending.length;
+  s.pending.push(...added);
+  let remaining=added.length;
+  if(plan.length){const last=plan.length-1,fill=Math.min(15-plan[last],remaining);plan[last]+=fill;remaining-=fill;}
+  if(remaining)plan.push(...splitWaitingRounds(remaining,size));
+  s.pendingRoundSizes=plan;s.pendingPlanBase=size;
+  s.progressTotal=(s.progressTotal??sessionProgressTotal({...s,pending:s.pending.slice(0,oldCount)}))+added.length;
+}
 function openRound(data,p,s,today){
   s.pending=[...new Set(s.pending)].filter(id=>{
     const w=p.words.find(w=>w.id===id);if(!w||studyPaused(data,p,w,today))return false;
@@ -251,8 +312,14 @@ function openRound(data,p,s,today){
   });
   if(!s.pending.length){s.phase='done';return;}
   if(s.mode==='errors')s.pending.sort((a,b)=>errorPracticeState(data,p,p.words.find(w=>w.id===b),today).errorCount-errorPracticeState(data,p,p.words.find(w=>w.id===a),today).errorCount);
-  s.optionSets={};s.reviewSpellingShuffled=false;
-  if(s.tailReady){s.tailRound=true;delete s.tailReady;}s.roundSize=s.tailRound?s.pending.length:preferredGroupSize(data.settings,s.mode);s.group=s.pending.splice(0,s.roundSize);s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
+  s.optionSets={};s.reviewSpellingShuffled=false;s.sharedRecognitionVersion=1;
+  const size=preferredGroupSize(data.settings,s.mode),plan=waitingRoundPlan(s,size);
+  s.tailRound=!!s.tailReady;delete s.tailReady;
+  s.roundSize=s.tailRound?s.pending.length:plan.shift()||size;
+  s.pendingRoundSizes=s.tailRound?[]:plan;s.pendingPlanBase=size;
+  s.group=s.pending.splice(0,s.roundSize);
+  if(s.tailRound)s.learningTailIds=(s.learningTailIds||[]).filter(id=>!s.group.includes(id));
+  s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
   s.stats={attempts:0,correct:0};s.newKnownWordIds=[];s.question=null;s.feedback=null;s.phase='practice';
   s.jobs=groupJobs(data,p,s,today);refresh(data,p,s,today);
 }
@@ -421,6 +488,7 @@ function prunePausedWords(data,p,s,today){
  if(paused.has(s.question?.wordId)&&!s.question.hinted)s.question=null;
 }
 function refresh(data, p, s, today) {
+  upgradeGenderRecognition(p,s);
   prunePausedWords(data,p,s,today);
   repairSessionChoices(data,p,s);
   rememberQuestionOptions(s);
@@ -478,6 +546,7 @@ export function refreshReviewQueues(data,today=day()){
 export function startSession(data, p, mode = 'learn', ids = null, today = day(), keyOverride = null) {
   migrateSessions(data);
   const key=keyOverride||sessionKey(p,mode,ids),old=data.sessions[key];
+  if(mode==='learn'){reconcileLearningProgress(data,p);if(old)appendLearningWords(data,p,old,ids,today);}
   if(mode==='review')rollReviewDay(data,p,old,today);
   if(mode==='errors'&&old&&old.phase!=='done'){
     const eligible=new Set(p.words.filter(w=>errorPracticeEligible(data,p,w,today)).map(w=>w.id));
@@ -516,22 +585,24 @@ export function revealHint(data, p,key) {
   const s=getSession(data,p,key),q=s?.question;
   if(q&&q.kind==='spell'&&!q.hinted){
     const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);
-    if(word&&form)recordMistake(data,p,word,form,'',day(),'hint',s,countJobFailure(s.jobs[0],day()));
+    if(word&&form){const today=day(),deferred=recordMistake(data,p,word,form,'',today,'hint',s,countJobFailure(s.jobs[0],today));if(deferred)q.deferral={date:today,wordId:word.id,learning:!!s.learningTailIds?.includes(word.id)};}
     q.hinted=true;s.jobs[0].needsReinforcement=true;s.jobs[0].failed=true;touched(data,p,s);
     prunePausedWords(data,p,s,day());
   }
 }
 function recordMistake(data,p,word,form,input,today,reason='answer',session=null,countDaily=true){
-  data.errors||={};data.errorHistory||={};const base=wordKey(p,word),key=`${base}:${form.id}`,previous=data.errors[key];
-  const active=testedForms(word).some(f=>data.errors[`${base}:${f.id}`]);
-  const history=data.errorHistory[base]||={count:0,reviewCount:0,cycleReviews:0};
-  if(!active)history.cycleReviews=0;
-  const counted=session?(session.mistakeWordIds||=[]).includes(base):false;
-  if(!counted){history.count=(history.count||0)+1;if(session)session.mistakeWordIds.push(base);}
-  history.lastErrorDate=today;
-  data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(previous?.count||0)+(counted?0:1),last:today,input:String(input),reason,practiced:false};
-  const learningOnly=!!session&&(session.mode==='learn'||session.mode==='direct'&&(session.importedPractice&&!session.importedRelearning||getProgress(data,p,word).notebook==='practice'));
- const deferred=countDaily?recordStudyFailure(data,p,word,today,learningOnly):studyPaused(data,p,word,today);if(deferred&&learningOnly){session.learningTailIds||=[];if(!session.learningTailIds.includes(word.id))session.learningTailIds.push(word.id);}return deferred;
+  const learningOnly=!!session&&(session.mode==='learn'||!['review','errors'].includes(session.mode)&&(session.importedPractice&&!session.importedRelearning||getProgress(data,p,word).notebook==='practice'));
+  if(!learningOnly){
+    data.errors||={};data.errorHistory||={};const base=wordKey(p,word),key=`${base}:${form.id}`,previous=data.errors[key];
+    const active=testedForms(word).some(f=>data.errors[`${base}:${f.id}`]);
+    const history=data.errorHistory[base]||={count:0,reviewCount:0,cycleReviews:0};
+    if(!active)history.cycleReviews=0;
+    const counted=session?(session.mistakeWordIds||=[]).includes(base):false;
+    if(!counted){history.count=(history.count||0)+1;if(session)session.mistakeWordIds.push(base);}
+    history.lastErrorDate=today;
+    data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(previous?.count||0)+(counted?0:1),last:today,input:String(input),reason,practiced:false};
+  }
+  const deferred=countDaily?recordStudyFailure(data,p,word,today,learningOnly):studyPaused(data,p,word,today);if(deferred&&learningOnly){session.learningTailIds||=[];if(!session.learningTailIds.includes(word.id))session.learningTailIds.push(word.id);}return deferred;
 }
 export function retryAfterHint(data,p,today=day(),key){
   const s=getSession(data,p,key);if(!s?.question?.hinted)return;
@@ -550,7 +621,7 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
   } else {
     if (!String(input).trim()) { s.jobs.unshift(job); throw new Error('请输入答案 / Saisissez une réponse.'); }
     const parts=spellingParts(word,form),task=spellingTask(word,form,data.settings.articleMode||'choice');
-    const parsed=formattedArticle(input),needsArticle=['choice','typed'].includes(task.mode);
+    const parsed=formattedArticle(input,parts),needsArticle=['choice','typed'].includes(task.mode);
     if(needsArticle){
       const validArticle=task.mode==='choice'?parsed.prefix.toLocaleLowerCase('fr').replaceAll('’',"'")===parts.prefix.toLocaleLowerCase('fr').replaceAll('’',"'"):articleAgrees(word,form,parsed.prefix);
       result=checkAnswer(parsed.answer,parts.answer,data.settings.fuzzy);
@@ -564,7 +635,7 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
     result.input=String(input).normalize('NFC');result.diff=spellingDiff(result.input,result.expected);result.formatted=result.correct&&result.input!==result.expected;
   }
   const a = activity(data, today); a.attempts++; s.stats.attempts++; if (result.correct) { a.correct++; s.stats.correct++; }
-  if(!result.correct){job.failed=true;job.needsReinforcement=true;result.deferred=recordMistake(data,p,word,form,input,today,'answer',s,countJobFailure(job,today));result.learningDeferred=result.deferred&&!!s.learningTailIds?.includes(word.id);}
+  if(!result.correct){job.failed=true;job.needsReinforcement=true;result.deferred=recordMistake(data,p,word,form,input,today,'answer',s,countJobFailure(job,today));result.learningDeferred=result.deferred&&!!s.learningTailIds?.includes(word.id);if(result.deferred)result.deferredOn=today;}
   if(q.options&&!result.correct&&!result.deferred){
     s.jobs.unshift(job);
     q.rejectedIds||=[];q.rejectedIds.push(input);touched(data,p,s);
@@ -599,7 +670,7 @@ export function advance(data, p, today = day(),key) { const s = getSession(data,
 export function moveWord(data,p,word,target,today=day()){
   if(!['practice','review','known'].includes(target))throw new Error('无效的词本 / Carnet invalide.');
   const original=wordContext(data,p,word);p=original.p;word=original.w;
-  const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;
+  const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;delete r.pendingLearning;
   if(target==='practice')r.forms={};
   else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={...newReviewRecord(r.forms[f.id]?.learnedAt||r.learnedAt||today),known:target==='known',due:target==='known'?null:addDays(r.forms[f.id]?.learnedAt||r.learnedAt||today,1)};if(target==='known')remember(data,p,word,today);}
   for(const s of Object.values(data.sessions).filter(s=>!['errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)||s.mode==='direct'&&s.lessonKey==='review:all'&&(s.importedPractice||s.dictionaryPractice)))){

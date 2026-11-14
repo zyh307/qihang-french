@@ -1,5 +1,5 @@
 import {validateConjugationSessions} from '../conjugation/sessions.js';
-import {ensureConjugationCards} from '../conjugation/catalog.js';
+import {ensureConjugationCards,TENSES} from '../conjugation/catalog.js';
 import {playSpeech,stopSpeech} from './speech.js';
 import { strToU8, strFromU8 } from 'fflate';
 import { unpack, validateLesson } from '../domain/importer.js';
@@ -49,6 +49,7 @@ export async function readBackup(file) {
   for(const [members,orders,serial,catalog]of [['importedWords','importedWordOrder','importedWordSerial','importedLessonCatalog'],['specialImportedWords','specialImportedWordOrder','specialImportedWordSerial','specialImportedLessonCatalog']]){
    const validId=id=>typeof id==='string'&&/^L\d{2,}$/.test(id)&&Number.isSafeInteger(Number(id.slice(1)))&&Number(id.slice(1))>0;
    if(data[members]!==undefined&&(!data[members]||Array.isArray(data[members])||typeof data[members]!=='object'||Object.values(data[members]).some(r=>!r||!Number.isFinite(r.at)||r.at<0||!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||r.lessonId!==undefined&&!validId(r.lessonId)||r.lessonIds!==undefined&&(!Array.isArray(r.lessonIds)||!r.lessonIds.length||r.lessonIds.some(id=>!validId(id))||new Set(r.lessonIds).size!==r.lessonIds.length))))throw Error('导入课次无效 / Leçons importées invalides.');
+   if(Object.values(data[members]||{}).some(r=>r.units!==undefined&&(!r.units||typeof r.units.infinitive!=='boolean'||!Array.isArray(r.units.tenses)||r.units.tenses.length>3||new Set(r.units.tenses).size!==r.units.tenses.length||r.units.tenses.some(t=>!TENSES.some(item=>item.id===t)))))throw Error('导入词条范围无效 / Éléments importés invalides.');
    if(data[orders]!==undefined){const values=Object.values(data[orders]);if(!data[orders]||Array.isArray(data[orders])||values.some(n=>!Number.isSafeInteger(n)||n<1)||new Set(values).size!==values.length||!Number.isSafeInteger(data[serial])||data[serial]<Math.max(0,...values))throw Error('导入顺序无效 / Ordre invalide.');}
    if(data[catalog]!==undefined&&(!data[catalog]||Array.isArray(data[catalog])||typeof data[catalog]!=='object'||Object.entries(data[catalog]).some(([id,r])=>!validId(id)||!r||r.id!==id||r.order!==Number(id.slice(1)))))throw Error('课次目录无效 / Catalogue invalide.');
   }
@@ -60,12 +61,21 @@ export async function readBackup(file) {
   for (const p of [...data.library,reviewPackage(data)]) {
     if(!p.reviewPool)validateLesson(p);
     for(const [key,s]of Object.entries(data.sessions).filter(([,s])=>s.lessonKey===packageKey(p))) {
-      const base=packageKey(p),prefix=base+':'+s.mode+':',ids=key.startsWith(prefix)?key.slice(prefix.length):null;
+      let scopeKey=key;
+      if(s.importedPractice===true&&key.includes(':collection:')){
+        const index=key.lastIndexOf(':collection:'),suffix=key.slice(index+12),collection=encodeURIComponent(s.importedLessonKey||'');
+        if(!collection||![collection,collection+':course',collection+':word'].includes(suffix))throw Error('导入练习课次无效 / Leçon importée invalide.');
+        scopeKey=key.slice(0,index);
+      }
+      const base=packageKey(p),prefix=base+':'+s.mode+':',ids=scopeKey.startsWith(prefix)?scopeKey.slice(prefix.length):null;
       const scoped=['direct','errors'].includes(s.mode)&&ids&&(ids==='all'||ids.split(',').every(id=>p.words.some(w=>w.id===id)));
       if(p.reviewPool&&!((s.importedPractice===true||s.dictionaryPractice===true)&&s.mode==='direct'&&scoped)&&!((key===MIXED_REVIEW_KEY&&s.mode==='review')||(key===MIXED_ERRORS_KEY&&s.mode==='errors')||(key===MIXED_FAVORITES_KEY&&s.mode==='favorites')))throw new Error('复习进度无效 / Révision invalide.');
       if(!['learn','review','direct','errors','favorites'].includes(s.mode)||(key!==sessionKey(p,s.mode)&&!scoped))throw new Error('练习分类与课次不一致 / Session incompatible avec cette leçon.');
       if(s.mistakeWordIds!==undefined&&(!Array.isArray(s.mistakeWordIds)||!s.mistakeWordIds.every(id=>typeof id==='string')))throw new Error('错题轮次记录无效 / Erreurs de série invalides.');
       if(s.removeErrors!==undefined&&typeof s.removeErrors!=='boolean')throw new Error('错题设置无效 / Erreurs invalides.');
+      for(const field of ['importedCourseLearning','importedRelearning'])if(s[field]!==undefined&&typeof s[field]!=='boolean')throw Error('导入练习记录无效 / Session importée invalide.');
+      if(s.pendingRoundSizes!==undefined&&(!Array.isArray(s.pendingRoundSizes)||s.pendingRoundSizes.some(n=>!Number.isInteger(n)||n<1||n>15)))throw Error('待练分组无效 / Séries en attente invalides.');
+      if(s.pendingPlanBase!==undefined&&(!Number.isInteger(s.pendingPlanBase)||s.pendingPlanBase<3||s.pendingPlanBase>15))throw Error('待练词数无效 / Taille de série invalide.');
       if (!['judge', 'practice', 'done'].includes(s.phase) || !Array.isArray(s.jobs) || !Array.isArray(s.pending) || !Array.isArray(s.group)) throw new Error('练习进度损坏 / Session invalide.');
       for (const id of [...s.pending, ...s.group, ...s.jobs.map(j => j.wordId)]) if (!p.words.some(w => w.id === id)) throw new Error('备份练习与词库不一致 / Session incompatible.');
       for(const field of ['doneWords','newKnownWordIds','acquiredWordIds'])if(s[field]!==undefined&&(!Array.isArray(s[field])||s[field].some(id=>!p.words.some(w=>w.id===id))))throw new Error('练习词条记录无效 / Mots de session invalides.');

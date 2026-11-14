@@ -1,31 +1,31 @@
 import {distractorExclusion} from './choice-eligibility.js';
 import {sameWordFamily} from './choice-similarity.js';
 import {spellingParts} from './word-display.js';
-// Conservative synonym groups for Chinese answer choices. Keep negation,
-// direction and qualifiers: resembling text alone does not imply equivalence.
-const groups=[
- ['穿','穿衣','穿衣服','穿着','穿着衣服','穿着衣服的','穿衣的','着衣','着装','给……穿','给……穿衣','穿上','穿上衣服'],
- ['睡觉','睡眠','睡着','入睡','上床睡觉','去睡觉'],
- ['再次见到','再次见面','再次相见','重新见到','重新见面','再见面','再见到','重逢'],
- ['休闲','休憩','闲暇','空闲时间','闲暇时间'],['爱好','业余爱好','兴趣爱好'],['开心','高兴','愉快','快乐'],['漂亮','美丽','好看'],['想起','记起','回想起','记得'],['离开','离去','走开'],['开车','驾车','驾驶汽车'],
- ['见面','会面','相见'],['看见','看到','见到'],
- ['自行车','脚踏车','单车'],['出租车','计程车','的士'],
- ['公交车','公共汽车','公共汽車','巴士'],['地铁','地下铁'],
- ['手机','移动电话'],['电脑','计算机'],['因特网','互联网'],
- ['电影院','影剧院'],['影片','电影'],['照片','相片'],
- ['买','购买'],['卖','出售'],['工作','上班'],
- ['开始','起始'],['结束','完结'],['立刻','立即','马上'],
- ['经常','常常','时常'],['有时','有时候'],['每天','每日']
-];
-const plain=value=>String(value??'').normalize('NFKC').replaceAll('著','着').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');
-const aliases=new Map(groups.flatMap((group,index)=>group.map(value=>[plain(value),'synonym:'+index])));
-export function choiceMeaningKeys(values){
- return new Set((Array.isArray(values)?values:[values]).flatMap(value=>String(value??'')
-  .replace(/（[^）]*）|\([^)]*\)|\[[^\]]*\]|【[^】]*】/gu,'')
-  .split(/[，,、；;\n/／]+/u)).map(plain).filter(Boolean).map(value=>aliases.get(value)||value));
+import {splitChoiceSenses,semanticLabel,semanticContrast} from './choice-semantic-core.js';
+import {reviewedSemanticGroups} from './choice-semantic-groups.js';
+import derivedSemantics from '../lexicon/choice-semantic-index.json' with {type:'json'};
+// Keep raw semantic cores as well as independent synonym memberships. An
+// opaque alias alone used to lose compound/short-word comparisons.
+const aliases=new Map();
+for(const [index,group]of [...reviewedSemanticGroups,...derivedSemantics.groups].entries())for(const label of group){const key=semanticLabel(label);if(!aliases.has(key))aliases.set(key,new Set());aliases.get(key).add('@sense:'+index);}
+const cachedKeys=new Map();
+function senseKeys(key){let result=cachedKeys.get(key);if(!result){result=[key,...(aliases.get(key)||[])];if(cachedKeys.size>8192)cachedKeys.clear();cachedKeys.set(key,result);}return result;}
+export function choiceMeaningKeys(values){return new Set(splitChoiceSenses(values).flatMap(senseKeys));}
+function nearbyChinese(a,b){
+ if(a===b)return true;
+ if(!/\p{Script=Han}/u.test(a)||!/\p{Script=Han}/u.test(b)||Math.min(a.length,b.length)<2||semanticContrast(a,b))return false;
+ if(a.includes(b)||b.includes(a))return true;
+ if(Math.min(a.length,b.length)<3)return false;
+ let previous=Array(b.length+1).fill(0);for(const char of a){const next=[0];for(let i=0;i<b.length;i++)next.push(char===b[i]?previous[i]+1:Math.max(previous[i+1],next[i]));previous=next;}
+ return previous[b.length]/Math.max(a.length,b.length)>=.78;
 }
-function nearbyChinese(a,b){if(a===b)return true;if(a.startsWith('synonym:')||b.startsWith('synonym:')||!/[\u4e00-\u9fff]/u.test(a+b)||Math.min(a.length,b.length)<2)return false;const pairs=[['不',''],['无','有'],['上','下'],['前','后'],['左','右'],['进','出'],['买','卖']];if(pairs.some(([x,y])=>y?(a.includes(x)&&b.includes(y)||a.includes(y)&&b.includes(x)):(a.includes(x)!==b.includes(x))))return false;if(a.includes(b)||b.includes(a))return true;if(Math.min(a.length,b.length)<3)return false;let previous=Array(b.length+1).fill(0);for(const char of a){const next=[0];for(let i=0;i<b.length;i++)next.push(char===b[i]?previous[i]+1:Math.max(previous[i+1],next[i]));previous=next;}return previous[b.length]/Math.max(a.length,b.length)>=.78;}
-export const meaningsOverlap=(left,right)=>[...left].some(a=>[...right].some(b=>nearbyChinese(a,b)));
+export function meaningsOverlap(left,right){
+ // Shared semantic memberships are a cheap set lookup. Only actual Chinese
+ // cores need the more expensive phrase comparison, not every opaque tag.
+ for(const key of left)if(right.has(key))return true;
+ const a=[...left].filter(key=>key[0]!=='@'),b=[...right].filter(key=>key[0]!=='@');
+ return a.some(x=>b.some(y=>nearbyChinese(x,y)));
+}
 
 // Also hide ambiguous distractors in a previously saved question, while keeping
 // its valid choices, order, question ID and learning position unchanged.

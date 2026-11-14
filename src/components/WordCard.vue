@@ -1,6 +1,6 @@
 <template>
   <view :class="['word-card','glass',{'definition-card':definition}]">
-    <view class="word-heading"><view class="word-meaning"><text v-fit-text="2">{{ primaryMeaning(word) }}</text><text class="pos">{{ word.sourcePos || word.pos }}</text></view><button hover-class="none" v-if="!hideFavorite" class="icon-button favorite" :class="{ marked: favorite }" @click="$emit('favorite', word)" :aria-label="favorite ? '取消收藏 / Retirer des favoris' : '收藏 / Ajouter aux favoris'"><SuccessIcon name="heart" :active="favorite" :item-key="'word:'+(word.lexiconId||word.id)" /></button></view>
+    <view class="word-heading"><view class="word-meaning"><text v-fit-text="2">{{ primaryMeaning(word) }}</text><text class="meaning-pos" :title="cardPartOfSpeech(word)">{{ cardPartOfSpeech(word) }}</text></view><button hover-class="none" v-if="!hideFavorite" class="icon-button favorite" :class="{ marked: favorite }" @click="$emit('favorite', word)" :aria-label="favorite ? '取消收藏 / Retirer des favoris' : '收藏 / Ajouter aux favoris'"><SuccessIcon name="heart" :active="favorite" :item-key="'word:'+(word.lexiconId||word.id)" /></button></view>
     <view v-if="definition&&allowMeaningChoice&&meaningOptions.length>1" ref="meaningPicker" class="primary-meaning-picker"><button class="primary-meaning-toggle" hover-class="none" :disabled="busy" :aria-expanded="meaningPickerOpen" @click="meaningPickerOpen=!meaningPickerOpen"><Bi zh="主释义" fr="Sens principal" small inline/><Icon name="chevron-down" :class="{expanded:meaningPickerOpen}"/></button><Transition name="page-fade"><view v-if="meaningPickerOpen" class="primary-meaning-options"><button v-for="meaning in meaningOptions" :key="meaning" :class="['primary-meaning-choice',{selected:primaryMeaning(word)===meaning}]" hover-class="none" :disabled="busy" :aria-pressed="primaryMeaning(word)===meaning" @click="chooseMeaning(meaning)"><text>{{ meaning }}</text><Icon v-if="primaryMeaning(word)===meaning" name="check"/></button></view></Transition></view>
     <view class="paired-forms">
       <template v-for="(form,index) in word.forms" :key="form.id">
@@ -24,7 +24,7 @@ import SuccessIcon from './SuccessIcon.vue';
 import {vFitText} from '../platform/fit-text.js';
 import {primaryMeaning,primaryMeaningOptions,meaningPoints,usageNote} from '../domain/meanings.js';
 import { computed,ref,watch,onMounted,onUnmounted } from 'vue'; import ExampleSentence from './ExampleSentence.vue'; import Icon from './Icon.vue'; import Bi from './Bi.vue';
-import { displayForm, sharedExample, exampleAudio, testsBothGenders } from '../domain/word-display.js';
+import { displayForm, sharedExample, exampleAudio, testsBothGenders, cardPartOfSpeech } from '../domain/word-display.js';
 const props=defineProps({ word: Object, hideFavorite:Boolean, favorite: Boolean, playing: String, actions: Boolean,practiceSession:Object,definition:Boolean,allowMeaningChoice:Boolean,busy:Boolean,sourceLabel:String,showSource:{type:Boolean,default:true} }); const emit=defineEmits(['favorite', 'audio', 'practice', 'move','primary-meaning']);
 const meaningPickerOpen=ref(false),meaningPicker=ref(null);
 function closeMeaningPicker(event){

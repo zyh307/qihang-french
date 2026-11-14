@@ -1,0 +1,45 @@
+/* One color contract for native HTML and uni-app buttons; geometry stays local. */
+html[data-color-theme] :is(button,uni-button){--control-bg:var(--theme-tint);--control-ink:var(--ink);--control-line:var(--theme-border)}
+html[data-color-theme] :is(button,uni-button):not(.correct):not(.incorrect):not(.wrong):not(.recording){background:var(--control-bg)!important;color:var(--control-ink)!important;border-color:var(--control-line)!important}
+html[data-color-theme] :is(button,uni-button):is(.selected,.active,.marked,[aria-pressed="true"]){--control-bg:var(--theme-soft);--control-ink:var(--accent-dark);--control-line:var(--accent)}
+html[data-color-theme] :is(.text-button,.back-link,.inline-action,.toggle-row,.lesson-select-main,.lesson-word-main,.notebook-entry-main,.primary-meaning-toggle,.recitation-details,.recitation-conjugation,.keyboard-hide){--control-bg:transparent;--control-ink:var(--accent-dark);--control-line:transparent}
+html[data-color-theme] :is(.icon-button,.audio-button,.example-audio,.answer-keyboard-toggle,.lesson-pin,.lesson-preview,.lesson-add,.learning-adjust-open,.primary-meaning-choice){--control-bg:var(--theme-panel);--control-ink:var(--accent-dark)}
+html[data-color-theme] :is(button,uni-button):is(.button.primary,.button.dark,.mic,.keyboard-confirm,.home-review){--control-bg:linear-gradient(150deg,var(--theme-button-light,var(--accent)),var(--theme-button-dark,var(--accent-dark)));--control-ink:#fff;--control-line:rgba(var(--theme-rgb),.35)}
+html[data-color-theme] :is(.button.primary,.button.dark,.mic,.keyboard-confirm,.home-review)[class]:not(.recording){box-shadow:0 5px 18px rgba(var(--theme-rgb),.18),inset 0 1px #ffffff50}
+html[data-color-theme] :is(.button.primary,.button.dark,.mic,.keyboard-confirm,.home-review)[class] :is(.bi-zh,.bi-fr,.icon){color:#fff!important}
+html[data-color-theme] :is(button,uni-button) :is(.bi-zh,.bi-fr,.icon){color:inherit}
+html[data-color-theme] .app-frame :is(.icon-button,.audio-button,.example-audio,.lesson-pin,.learning-adjust-open)>.icon{color:inherit!important}
+html[data-color-theme] .app-frame .icon-button.favorite.marked{color:var(--accent-dark)!important}
+html[data-color-theme] :is(.exercise-option,.grammar-option,.conj-match-card,.quick-word-choice):not(.correct):not(.incorrect){--control-bg:var(--theme-panel);--control-ink:var(--ink)}
+html[data-color-theme] :is(.exercise-option,.grammar-option,.conj-match-card,.quick-word-choice).selected{--control-bg:var(--theme-soft);--control-line:var(--accent)}
+html[data-color-theme] :is(.option-letter,.wrong-option-word){color:var(--muted)}
+html[data-color-theme] .theme-choice{--control-bg:var(--theme-panel)}
+html[data-color-theme] .theme-choice.selected{--control-bg:var(--theme-soft)}
+html[data-color-theme] .spring-toggle{background:var(--theme-border)!important;border-color:var(--theme-border)!important}
+html[data-color-theme] .spring-toggle.on{background:var(--accent)!important;border-color:var(--accent)!important}
+html[data-color-theme] .spring-toggle .toggle-thumb{background:#fff}
+html[data-color-theme] :is(input[type="checkbox"],input[type="radio"],input[type="range"]){accent-color:var(--accent)}
+html[data-color-theme] :is(.radio>uni-view,.notebook-selection-item.selected .notebook-selection-check,.theme-check){background:var(--theme-soft);border-color:var(--accent);color:var(--accent-dark)}
+html[data-color-theme] :is(.uni-slider-track,.group-size-fill){background:var(--accent)!important}
+html[data-color-theme] :is(.uni-slider-thumb,.uni-slider-handle-wrapper){color:var(--accent)}
+html[data-color-theme] :is(select,.uni-slider-handle){border-color:var(--theme-border);color:var(--ink)}
+html[data-color-theme] .french-keyboard{background:var(--theme-tint)!important;border-color:var(--theme-border)}
+html[data-color-theme] .french-keyboard .keyboard-key{--control-bg:var(--theme-field);--control-ink:var(--ink)}
+html[data-color-theme] .french-keyboard .keyboard-action{--control-bg:var(--theme-border)}
+html[data-color-theme] .french-keyboard .keyboard-action.active{--control-bg:var(--theme-soft);--control-ink:var(--accent-dark)}
+html[data-color-theme] .french-keyboard .keyboard-key.pressed{--control-bg:var(--theme-soft)}
+html[data-color-theme] .french-keyboard .keyboard-confirm{--control-bg:var(--accent);--control-ink:#fff}
+html[data-color-theme] .french-keyboard .keyboard-confirm[class]:not(:disabled){color:#fff!important}
+html[data-color-theme] .french-keyboard .keyboard-confirm:disabled{--control-bg:var(--theme-border);--control-ink:var(--muted)}
+html[data-color-theme] .french-keyboard :is(.keyboard-accents,.keyboard-key-preview){background:var(--theme-field);border-color:var(--theme-border);color:var(--ink)}
+html[data-color-theme] .french-keyboard :is(.keyboard-accents,.keyboard-key-preview)::after{background:var(--theme-field);border-color:var(--theme-border)}
+html[data-color-theme] .french-keyboard .accent-option{color:var(--ink)}
+html[data-color-theme] .french-keyboard .accent-option.selected{background:var(--accent);color:#fff!important}
+html[data-color-theme] .desktop-accents :is(button,uni-button){--control-bg:var(--theme-soft);--control-ink:var(--accent-dark)}
+html[data-color-theme] .calendar-day{--control-bg:rgba(var(--theme-rgb),.05);--control-ink:var(--muted);--control-line:transparent}
+html[data-color-theme] .calendar-day.practiced{--control-bg:rgba(var(--theme-rgb),.15)}
+html[data-color-theme] .calendar-day.today{--control-line:var(--accent)}
+html[data-color-theme] .calendar-day.outside:not(.selected){--control-bg:transparent}
+html[data-color-theme] .calendar-day.selected{--control-bg:var(--accent);--control-ink:#fff;--control-line:var(--accent)}
+html[data-color-theme] .mode-menu-control.drawer-open{--control-bg:var(--theme-panel);--control-line:var(--theme-border);--control-ink:var(--accent-dark)}
+html[data-color-theme] :is(button,uni-button,input,select,[role="slider"]):focus-visible{outline-color:rgba(var(--theme-rgb),.55)!important}

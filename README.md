@@ -4,13 +4,13 @@
 
 ## 下载
 
-[打开下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.6.5)
+[打开下载页](https://github.com/zyh307/qihang-french/releases/tag/v2.7.0)
 
 | 设备 | 下载文件 | 打开方式 |
 |---|---|---|
-| Windows | [启航法语 · Windows](https://github.com/zyh307/qihang-french/releases/download/v2.6.5/QihangFrench-Windows-v2.6.5.zip) | 完整解压，双击“启航法语.exe” |
-| 安卓 | [启航法语 · Android](https://github.com/zyh307/qihang-french/releases/download/v2.6.5/QihangFrench-Android-v2.6.5.apk) | 下载后安装 |
-| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.6.5/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
+| Windows | [启航法语 · Windows](https://github.com/zyh307/qihang-french/releases/download/v2.7.0/QihangFrench-Windows-v2.7.0.zip) | 完整解压，双击“启航法语.exe” |
+| 安卓 | [启航法语 · Android](https://github.com/zyh307/qihang-french/releases/download/v2.7.0/QihangFrench-Android-v2.7.0.apk) | 下载后安装 |
+| 口语练习，两端通用 | [ggml-model-q5_0.bin](https://github.com/zyh307/qihang-french/releases/download/v2.7.0/ggml-model-q5_0.bin) | 设置 → 口语 → 导入本地模型 |
 
 词库包含 18,949 个词条，支持逗号导入，新增 76 个常用自反动词及其词组用法。课内录音、课外单词和例句录音均已内置，安装后可离线播放，无需另下语音包。
 
@@ -33,9 +33,11 @@ Windows 使用独立窗口，记录保存在固定位置，同电脑更新后自
 
 ## 词汇与语法
 
-Inspire 1–4 和 FOS 1 均可逐课学习，教材录音及来源信息随课提供。词汇支持逐课背诵、选择、拼写、收藏、错题及定期复习。语法按单元进入课次，先看本课概览，再逐个学习语法点，各单元综合练习分别保存进度。教材分别记住上次选择的 Lesson；普通导入和特殊导入分开管理，支持新建 Lesson 或向已有课次加词，学习进度与原词统一。候选词显示已有位置，导入结果列出成功单词及 Lesson；学完自动进入复习本，也可上滑标记已会。
+Inspire 1–4 和 FOS 1 均可逐课学习，教材录音及来源信息随课提供。词汇支持逐课背诵、选择、拼写、收藏、错题及定期复习。语法按单元进入课次，先看本课概览，再逐个学习语法点，各单元综合练习分别保存进度。教材分别记住上次选择的 Lesson；导入本支持新建 Lesson 或向已有课次加词，学习进度与原词统一。候选词显示已有位置，导入结果列出成功单词及 Lesson；学完自动进入复习本，也可上滑标记已会。
 
 新学、复习每组词数可分别调整为 3–15 个。新学三错可移到最后单独练习，复习三错可当天暂停并安排后续复习，两项均可在设置中独立关闭。设置还提供五套主题配色。
+
+阴阳性都考的词共用一道中文选择题，填空分别练习，性别用黄色标明。选择、填空和变位的正误反馈随主题配色变化。
 
 [资料导入教程](docs/使用教程.md)
 

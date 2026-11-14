@@ -1,0 +1,84 @@
+/* Shared state colors; theme changes never change type, geometry or motion. */
+:root{
+ --positive-bg:#e8eef9;--positive-line:#a4b4d5;--positive-ink:#4b6395;
+ --negative-bg:#f9e9ee;--negative-line:#d7a3b2;--negative-ink:#974d64;
+ --attention-bg:#fff0b8;--attention-line:#d4ba68;--attention-ink:#725b22;
+ --recording-bg:#ad6579;
+}
+:root[data-color-theme="sage"]{
+ --positive-bg:#e4f0e8;--positive-line:#9bbba6;--positive-ink:#406c52;
+ --negative-bg:#f7eae6;--negative-line:#d4a89d;--negative-ink:#92594c;
+ --attention-bg:#f6efbe;--attention-line:#c8b86e;--attention-ink:#706024;
+ --recording-bg:#a86b5e;
+}
+:root[data-color-theme="apricot"]{
+ --positive-bg:#f5e9da;--positive-line:#c9a681;--positive-ink:#88623e;
+ --negative-bg:#f9e7e3;--negative-line:#d7a093;--negative-ink:#a05a49;
+ --attention-bg:#fff0bd;--attention-line:#d2b773;--attention-ink:#80602c;
+ --recording-bg:#b26955;
+}
+:root[data-color-theme="lilac"]{
+ --positive-bg:#eee7f6;--positive-line:#b7a2cf;--positive-ink:#73548f;
+ --negative-bg:#f7e7ee;--negative-line:#d5a0b5;--negative-ink:#97556f;
+ --attention-bg:#fcf0c2;--attention-line:#cdb582;--attention-ink:#78602c;
+ --recording-bg:#aa657f;
+}
+:root[data-color-theme="rose"]{
+ --positive-bg:#f6e5ed;--positive-line:#cda0b5;--positive-ink:#94556f;
+ --negative-bg:#f9e5e2;--negative-line:#d69b92;--negative-ink:#a45348;
+ --attention-bg:#fff0c4;--attention-line:#d3b57c;--attention-ink:#815e2a;
+ --recording-bg:#b76064;
+}
+html:root[data-color-theme] :is(.exercise-option.correct,.conj-match-card.correct,.grammar-option.correct,.exercise-entry.correct){background:var(--positive-bg)!important;border-color:var(--positive-line)!important;color:var(--positive-ink)!important}
+html:root[data-color-theme] :is(.exercise-option.incorrect,.conj-match-card.incorrect,.grammar-option.wrong,.exercise-entry.incorrect){background:var(--negative-bg)!important;border-color:var(--negative-line)!important;color:var(--negative-ink)!important}
+html:root[data-color-theme] :is(.exercise-option.correct,.exercise-option.incorrect,.conj-match-card.correct,.conj-match-card.incorrect,.grammar-option.correct,.grammar-option.wrong) :is(uni-text,text,.icon,.bi-zh,.bi-fr){color:inherit!important}
+html:root[data-color-theme] .exercise-entry:is(.correct,.incorrect) :is(input,.uni-input-input){color:inherit!important;-webkit-text-fill-color:currentColor}
+html:root[data-color-theme] :is(.spelling-result.correct,.import-success,.state-tag.success,.success-note,.completed-lessons-heading,.new-known-summary>.bi){color:var(--positive-ink)!important}
+html:root[data-color-theme] :is(.spelling-result:not(.correct),.quick-import-error,.setup-error,.error-prompt){color:var(--negative-ink)!important}
+html:root[data-color-theme] .wrong-option-word{color:var(--negative-ink)!important}
+html:root[data-color-theme] :is(.state-tag.success,.success-note,.stage-status.complete,.feedback-card:not(.wrong),.grammar-feedback.ok){background:var(--positive-bg)!important;border-color:var(--positive-line)!important;color:var(--positive-ink)!important}
+html:root[data-color-theme] :is(.setup-error,.feedback-card.wrong,.grammar-feedback.no){background:var(--negative-bg)!important;border-color:var(--negative-line)!important;color:var(--negative-ink)!important}
+html:root[data-color-theme] :is(.grammar-feedback.ok,.grammar-feedback.no,.success-note,.setup-error) :is(.bi-zh,.bi-fr,.icon){color:inherit!important}
+html:root[data-color-theme] .new-known-summary>uni-button{--control-bg:var(--positive-bg);--control-line:var(--positive-line);--control-ink:var(--positive-ink)}
+html:root[data-color-theme] .new-known-summary>uni-button :is(uni-text,.icon){color:var(--positive-ink)!important}
+html:root[data-color-theme] .status-dot{background:var(--positive-line)!important}
+html:root[data-color-theme] .completed-lessons-heading>text{color:var(--muted)!important}
+html:root[data-color-theme] .completion-icon{background:linear-gradient(140deg,var(--theme-soft),var(--theme-panel));color:var(--accent-dark);border-color:var(--theme-border)}
+html:root[data-color-theme] .conj-verb{background:var(--theme-panel);border-color:var(--theme-border)}
+html:root[data-color-theme] .conj-verb>text:first-child{color:var(--accent-dark)}
+html:root[data-color-theme] .conj-verb :is(.conj-batch-meaning,.conj-batch-tense){color:var(--muted)}
+html:root[data-color-theme] .mic.recording{background:var(--recording-bg)!important;color:#fff!important;border-color:var(--negative-line)!important}
+html:root[data-color-theme] .diff-part:not(.same){background:var(--negative-bg)!important;color:var(--negative-ink)!important;border-color:var(--negative-line)!important}
+html:root[data-color-theme] .diff-text.expected .diff-part:not(.same){background:var(--positive-bg)!important;color:var(--positive-ink)!important;border-color:var(--positive-line)!important}
+html:root[data-color-theme] .spelling-feedback :is(.diff-text,.diff-text.expected) .diff-part:is(.accent,.ligature){background:var(--attention-bg)!important;color:var(--attention-ink)!important;border-color:var(--attention-line)!important}
+html:root[data-color-theme] .spelling-feedback :is(.diff-text,.diff-text.expected) .diff-part:is(.case,.format){background:var(--theme-soft)!important;color:var(--accent-dark)!important;border-color:var(--theme-border)!important}
+html:root[data-color-theme] .diff-notes>.bi{background:var(--theme-panel);border-color:var(--theme-border)}
+html:root[data-color-theme] :is(.gender-emphasis,.form-meta .gender.gender-emphasis,.recitation-pos .gender-emphasis,.exercise-prompt .gender-emphasis){background:var(--attention-bg)!important;color:var(--attention-ink)!important}
+html:root[data-color-theme] :is(.pattern-note,.info-banner,.import-warnings){background:var(--theme-soft);border-color:var(--theme-border);color:var(--accent-dark)}
+html:root[data-color-theme] :is(.goal-track,.book-progress,.session-progress,.quiz-progress,.grammar-lesson-meter){background:var(--theme-border)}
+html:root[data-color-theme] :is(.goal-track,.book-progress,.session-progress)>uni-view,html:root[data-color-theme] :is(.quiz-progress,.grammar-lesson-meter)>:is(view,uni-view){background:var(--accent)}
+html:root[data-color-theme] :is(.lesson-dock,.toast,.share-actions){background:var(--theme-nav);border-color:var(--theme-border);color:var(--ink)}
+html:root[data-color-theme] :is(.word-preview,.page-shade){background:var(--theme-paper)}
+html:root[data-color-theme] .page-shade .modal-heading{background:var(--theme-nav)}
+html:root[data-color-theme] :is(.primary-meaning-options,.grammar-settings,.model-card,.stat,.step-number,.import-drop){background:var(--theme-panel);border-color:var(--theme-border);color:var(--ink)}
+html:root[data-color-theme] :is(.grammar-hook,.oral-performance-note,.notice){background:var(--attention-bg);border-color:var(--attention-line);color:var(--attention-ink)}
+html:root[data-color-theme] :is(.ready-message,.connection,.feedback-symbol){background:var(--positive-bg);border-color:var(--positive-line);color:var(--positive-ink)}
+html:root[data-color-theme] :is(.pill,.guide-example,.current-prompt,.poster-wrap,.achievement){background:var(--theme-soft);color:var(--ink)}
+html:root[data-color-theme] .pill i{background:var(--muted)}
+html:root[data-color-theme] .pill i.ready{background:var(--positive-ink)}
+html:root[data-color-theme] .step.done{border-color:var(--positive-line)}
+html:root[data-color-theme] .part:hover:not(:disabled){border-color:var(--accent)}
+html:root[data-color-theme] .achievement-badge{background:linear-gradient(145deg,var(--theme-soft),var(--positive-line));color:var(--positive-ink)}
+html:root[data-color-theme] .lesson-card.is-selected{background:var(--theme-soft);border-color:var(--accent)}
+html:root[data-color-theme] .lesson-card:hover{background:var(--theme-panel)}
+html:root[data-color-theme] .lesson-card.is-selected:hover{background:var(--theme-soft)}
+html:root[data-color-theme] .lesson-word-row.is-learned{background:rgba(var(--theme-rgb),.045)}
+html:root[data-color-theme] .practice-badge{background:var(--recording-bg);color:#fff}
+html:root[data-color-theme] .answer-native-caret{background:var(--accent)}
+html:root[data-color-theme] :is(.setup-delete-shade,.mode-drawer-shade,.modal-shade,.drawer-shade){background:rgba(var(--theme-rgb),.23)}
+html:root[data-color-theme] :is(.spelling-input,.spelling-entry.with-article,.import-fields input){background:var(--theme-field);border-color:var(--theme-border);color:var(--ink)}
+html:root[data-color-theme] .choice-dot.unknown{background:var(--negative-line)}
+html:root[data-color-theme] .choice-dot.familiar{background:var(--attention-line)}
+html:root[data-color-theme] .choice-dot.known{background:var(--positive-line)}
+html:root[data-color-theme] .spinner{border-color:var(--theme-border);border-top-color:var(--accent)}
+html:root[data-color-theme] .card-right{--control-bg:var(--theme-soft)}

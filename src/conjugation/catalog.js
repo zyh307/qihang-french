@@ -32,7 +32,7 @@ export function conjugationPracticeWords(data,p){
  if(!p)return [];
  if(p.reviewPool)return p.words.filter(w=>!w.conjugation).flatMap(base=>{
   const lesson=base.origin?.lessonKey,wordId=base.origin?.wordId;
-  return (data.conjugationDecks?.[lesson]||[]).filter(w=>w.conjugation.baseWordId===wordId&&!w.studyDisabled).map(w=>({...w,id:lesson+':'+w.id,conjugation:{...w.conjugation,baseWordId:base.id},origin:{...base.origin,wordId:w.id,progressKey:lesson+':'+w.id}}));
+  return (data.conjugationDecks?.[lesson]||[]).filter(w=>w.conjugation.baseWordId===wordId&&!w.studyDisabled&&(!base.importedUnitTenses||base.importedUnitTenses.includes(w.conjugation.tense))).map(w=>({...w,id:lesson+':'+w.id,conjugation:{...w.conjugation,baseWordId:base.id},origin:{...base.origin,wordId:w.id,progressKey:lesson+':'+w.id}}));
  });
  const bases=new Set(p.words.filter(w=>!w.conjugation).map(w=>w.id));
  return (data.conjugationDecks?.[lessonId(p)]||[]).filter(w=>!w.studyDisabled&&bases.has(w.conjugation.baseWordId));

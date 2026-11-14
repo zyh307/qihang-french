@@ -40,10 +40,10 @@
   },
   "audio": {
     "voice": "fr-FR-DeniseNeural",
-    "clips": 38619,
-    "files": 4183,
-    "bytes": 403874484,
-    "indexSHA256": "db5560c4306f6ace5f33b73922502b3defe0918df375244941f9e532faedac2f"
+    "clips": 38988,
+    "files": 4552,
+    "bytes": 407146272,
+    "indexSHA256": "1962580d49372e5d0731963421221cbe8140ec794133309824273312021108c3"
   },
   "supplement": {
     "lexiqueRepository": "https://github.com/chrplr/openlexicon",

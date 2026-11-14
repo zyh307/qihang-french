@@ -5,9 +5,17 @@ export const wordKey = e => `${e.verbe}|${e.temps}`;
 const taskKey = e => `${wordKey(e)}|${e.personne}`;
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
 export function mix(items) { const a = [...items]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+export const MATCH_BOARD_SIZE=6;
+function mixedTasks(tasks,limit){
+  const buckets=new Map();for(const task of tasks){const key=wordKey(task);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(task);}
+  const result=[];while(result.length<limit&&buckets.size)for(const key of mix([...buckets.keys()])){
+    const bucket=buckets.get(key);result.push(bucket.shift());if(!bucket.length)buckets.delete(key);if(result.length===limit)break;
+  }
+  return result;
+}
 export function smallGroups(items,limit=3) {
-  const groups = []; let at = 0;
-  while (at < items.length) { const size = Math.min(groupSize(limit,3), items.length - at); groups.push(items.slice(at, at + size)); at += size; }
+  const groups=[],waiting=[...items],size=groupSize(limit,3);
+  while(waiting.length){const group=[],lemmas=new Set();for(let i=0;i<waiting.length&&group.length<size;){const entry=waiting[i];if(lemmas.has(entry.verbe)){i++;continue;}group.push(entry);lemmas.add(entry.verbe);waiting.splice(i,1);}groups.push(group);}
   return groups;
 }
 const require = (ok, text) => { if (!ok) throw new Error(text); };
@@ -29,17 +37,82 @@ export class MatchSession {
   }
   activate() {
     const s = this.s;
-    if(s.cursor+1>=s.groups.length&&s.learningTailEntries?.length){s.groups.push({entries:s.learningTailEntries});s.learningTailEntries=[];s.tailRound=true;}
-    if(s.cursor>=0&&this.env.groupSize&&!s.tailRound){const future=s.groups.slice(s.cursor+1).flatMap(group=>group.entries);s.groups.splice(s.cursor+1,Infinity,...smallGroups(future,this.env.groupSize).map(entries=>({entries})));}
+    if(s.cursor+1>=s.groups.length&&s.learningTailEntries?.length){s.groups.push(...smallGroups(s.learningTailEntries,this.env.groupSize||3).map(entries=>({entries})));s.learningTailEntries=[];s.tailRound=true;}
+    if(s.cursor>=0&&this.env.groupSize&&!s.tailRound&&!s.groups.slice(s.cursor+1).some(g=>g.continuation)){const future=s.groups.slice(s.cursor+1).flatMap(group=>group.entries);s.groups.splice(s.cursor+1,Infinity,...smallGroups(future,this.env.groupSize).map(entries=>({entries})));}
     if (++s.cursor >= s.groups.length) return false;
     s.entries = clone(s.groups[s.cursor].entries); s.batch_done = 0; s.decisions = {};
     s.match_rounds = s.mode === 'review' || s.entries.every(e => e.reviewed) ? 1 : 2;
     s.judges = s.entries.map(wordKey);
     s.phase = 'judge'; s.cycle = 0; s.pending = []; s.board = null;
     s.match_retry = {}; s.fill_retry = {}; s.repeating = false;
+    const continuation=s.groups[s.cursor].continuation;
+    if(continuation){
+      Object.assign(s,clone(continuation),{board:null,question:null});
+      const keys=new Set(s.entries.map(wordKey));s.pending=s.pending.filter(e=>keys.has(wordKey(e)));s.judges=s.judges.filter(id=>keys.has(id));
+      s.match_retry=Object.fromEntries(Object.entries(s.match_retry).filter(([,e])=>keys.has(wordKey(e))));
+      s.fill_retry=Object.fromEntries(Object.entries(s.fill_retry).filter(([id])=>keys.has(id.split('|').slice(0,2).join('|'))));
+      delete s.groups[s.cursor].continuation;
+    }
     return true;
   }
+  regroup(limit=3){
+    const s=this.s,size=groupSize(limit,3),current=s.groups[s.cursor];
+    if(!current||!s.entries?.length)return false;
+    const valid=entries=>entries.length<=size&&new Set(entries.map(e=>e.verbe)).size===entries.length;
+    // A resumed large group must not replay its already answered person forms.
+    // Carry each deferred part at the same phase, match cycle and retry queue.
+    if(!valid(s.entries)){
+      const active=wordKey(s.question?.verbe?s.question:s.pending?.[0]||s.entries[0]);
+      const ordered=[...s.entries].sort((a,b)=>Number(wordKey(b)===active)-Number(wordKey(a)===active));
+      const chunks=smallGroups(ordered,size),snapshot={phase:s.phase,cycle:s.cycle,match_rounds:s.match_rounds,repeating:s.repeating,pressureTurn:s.pressureTurn||0};
+      const continuation=entries=>{
+        const keys=new Set(entries.map(wordKey)),belongs=e=>keys.has(wordKey(e));
+        return {...snapshot,judges:(s.judges||[]).filter(id=>keys.has(id)),
+          decisions:Object.fromEntries(Object.entries(s.decisions||{}).filter(([id])=>keys.has(id))),
+          pending:clone((s.pending||[]).filter(belongs)),
+          match_retry:Object.fromEntries(Object.entries(s.match_retry||{}).filter(([,e])=>belongs(e))),
+          fill_retry:Object.fromEntries(Object.entries(s.fill_retry||{}).filter(([id])=>keys.has(id.split('|').slice(0,2).join('|'))))};
+      };
+      const records=chunks.map(entries=>({entries:clone(entries),continuation:continuation(entries)}));
+      const first=records.shift();s.entries=first.entries;current.entries=clone(first.entries);
+      Object.assign(s,first.continuation);
+      if(s.board){
+        const keys=new Set(s.entries.map(wordKey));s.board.cards=s.board.cards.filter(e=>keys.has(wordKey(e)));
+        const cards=new Set(s.board.cards.map(e=>e.key));
+        for(const field of ['left','right','matched_left','matched_right'])s.board[field]=s.board[field].filter(id=>cards.has(id));
+        if(s.question?.board)s.question.board=clone(s.board);
+      }
+      s.groups.splice(s.cursor+1,0,...records);
+    }
+    const future=s.groups.slice(s.cursor+1),replacement=[];let waiting=[];
+    const flush=()=>{replacement.push(...smallGroups(waiting,size).map(entries=>({entries})));waiting=[];};
+    for(const group of future){if(group.continuation){flush();for(const entries of smallGroups(group.entries,size)){
+      const keys=new Set(entries.map(wordKey)),c=clone(group.continuation);
+      c.pending=c.pending.filter(e=>keys.has(wordKey(e)));c.judges=c.judges.filter(id=>keys.has(id));
+      c.decisions=Object.fromEntries(Object.entries(c.decisions).filter(([id])=>keys.has(id)));
+      c.match_retry=Object.fromEntries(Object.entries(c.match_retry).filter(([,e])=>keys.has(wordKey(e))));
+      c.fill_retry=Object.fromEntries(Object.entries(c.fill_retry).filter(([id])=>keys.has(id.split('|').slice(0,2).join('|'))));
+      replacement.push({entries,continuation:c});
+    }}else waiting.push(...group.entries);}
+    flush();s.groups.splice(s.cursor+1,Infinity,...replacement);
+    if(s.question){s.question.batch_index=s.cursor+1;s.question.batch_count=s.groups.length;s.question.batch_verbs=s.entries.map(e=>e.verbe);s.question.batch_entries=s.entries.map(e=>({verbe:e.verbe,temps:e.temps}));}
+    s.grouping_version=3;return true;
+  }
   tasks() { return this.s.entries.filter(e => this.s.decisions[wordKey(e)] !== 1).flatMap(e => e.personnes.map(personne => ({ verbe: e.verbe, temps: e.temps, personne, key: taskKey({ ...e, personne }) }))); }
+  matchCards(){
+    const chosen=mixedTasks(this.s.pending,MATCH_BOARD_SIZE),used=new Set(chosen.map(e=>e.key));
+    const expand=entries=>entries.flatMap(e=>Object.keys(this.env.forms(e.verbe,e.temps)).map(personne=>({verbe:e.verbe,temps:e.temps,personne,key:taskKey({...e,personne}),filler:true})));
+    const add=entries=>{for(const task of mixedTasks(expand(entries).filter(e=>!used.has(e.key)),MATCH_BOARD_SIZE-chosen.length)){chosen.push(task);used.add(task.key);}};
+    if(chosen.length<MATCH_BOARD_SIZE)add(this.s.entries);
+    if(chosen.length<MATCH_BOARD_SIZE){
+      const verbs=new Set(this.s.entries.map(e=>e.verbe)),extra=[];
+      for(const e of [...this.s.groups.flatMap(g=>g.entries),...(this.env.supplementary?.()||[])]){
+        if(verbs.has(e.verbe))continue;if(verbs.size>=3)break;verbs.add(e.verbe);extra.push(e);
+      }
+      add(extra);
+    }
+    return chosen.map(e=>({...e,form:this.env.forms(e.verbe,e.temps)[e.personne]}));
+  }
   remaining() {
     const s = this.s, rounds = s.match_rounds + 1;
     const future = s.groups.slice(s.cursor + 1).reduce((n, g) => n + g.entries.length, 0);
@@ -52,7 +125,8 @@ export class MatchSession {
     while (true) {
       if (s.cursor < 0 && !this.activate() || s.cursor >= s.groups.length) return { completed: true, mode: s.mode, game: true };
       if (s.phase === 'judge' && !s.judges.length) { s.phase = 'match'; s.cycle = 1; s.pending = mix(this.tasks()); }
-      if (s.phase !== 'judge' && !s.pending.length) {
+      const boardUnfinished=s.phase==='match'&&s.board&&s.board.matched_left.length<s.board.cards.length;
+      if (s.phase !== 'judge' && !s.pending.length&&!boardUnfinished) {
         if (s.phase === 'match' && s.cycle < s.match_rounds) { s.cycle++; s.pending = mix(this.tasks()); s.board = null; s.repeating = false; }
         else if (s.phase === 'match' && !s.repeating && Object.keys(s.match_retry || {}).length) { s.pending = mix(Object.values(s.match_retry)); s.match_retry = {}; s.repeating = true; s.board = null; }
         else if (s.phase === 'match') { s.phase = 'fill'; s.pending = mix(this.tasks()); s.board = null; }
@@ -67,17 +141,15 @@ export class MatchSession {
         // match. Keep completed pairs; put only the unanswered tasks on a new
         // board instead of rewriting the person printed on a remaining card.
         if(s.board){
-          const b=s.board,persons=b.left.filter(id=>!b.matched_left.includes(id)).map(id=>b.left_persons?.[id]||b.cards.find(card=>card.key===id)?.personne);
-          const playable=b.cards.some(card=>!b.matched_right.includes(card.key)&&persons.some(person=>this.env.forms(card.verbe,card.temps)[person]===card.form));
+          const b=s.board,left=b.cards.filter(card=>!b.matched_left.includes(card.key));
+          const playable=b.cards.some(card=>!b.matched_right.includes(card.key)&&left.some(slot=>this.env.forms(b.rule===2?slot.verbe:card.verbe,b.rule===2?slot.temps:card.temps)[b.left_persons?.[slot.key]||slot.personne]===card.form));
           if(!playable)s.board=null;
         }
         if (!s.board || s.board.matched_left.length === s.board.cards.length) {
-          // One verb and tense per board: equivalent spellings can then match
-          // any compatible person without changing labels or stranding cards.
-          const cards = s.pending.filter(e=>wordKey(e)===wordKey(s.pending[0])).slice(0, 6).map(e => { const forms = this.env.forms(e.verbe, e.temps); return { ...e, form: forms[e.personne], accepts: Object.keys(forms).filter(p => forms[p] === forms[e.personne]) }; });
-          s.board = { id: uid(), cards, left: mix(cards.map(e => e.key)), right: mix(cards.map(e => e.key)), left_persons: Object.fromEntries(cards.map(e => [e.key, e.personne])), matched_left: [], matched_right: [] };
+          const cards=this.matchCards();
+          s.board = { id: uid(),rule:2,cards,left:mix(cards.map(e=>e.key)),right:mix(cards.map(e=>e.key)),left_persons:Object.fromEntries(cards.map(e=>[e.key,e.personne])),matched_left:[],matched_right:[] };
         }
-        entry=s.board.cards.find(card=>!s.board.matched_right.includes(card.key));
+        entry=s.board.cards.find(card=>!(s.board.rule===2?s.board.matched_left:s.board.matched_right).includes(card.key));
       }
       const q = { id: uid(), game: true, mode: s.mode, direct: s.direct, source: s.source, round: s.phase, level: s.level, verbe: entry.verbe, temps: entry.temps, personne: entry.personne, batch_index: s.cursor + 1, batch_count: s.groups.length, batch_verbs: s.entries.map(e => e.verbe), batch_entries: s.entries.map(e => ({ verbe: e.verbe, temps: e.temps })), done: s.done, total: s.done + this.remaining(), group_done: s.batch_done, match_rounds: s.match_rounds, game_round: s.cycle };
       q.is_reinforcement = s.phase === 'match' && Boolean(s.repeating);
@@ -105,21 +177,21 @@ export class MatchSession {
       const form = b.cards.find(e => e.key === body.form_key);
       require(left && form && !b.matched_left.includes(left.key) && !b.matched_right.includes(form.key), '请选择两张尚未消除的卡片。');
       b.left_persons ||= Object.fromEntries(b.cards.map(e => [e.key, e.personne]));
-      const person = b.left_persons[left.key], forms = this.env.forms(form.verbe, form.temps);
+      const person = b.left_persons[left.key], forms = this.env.forms(b.rule===2?left.verbe:form.verbe,b.rule===2?left.temps:form.temps);
       expected = forms[person] || form.form;
       correct = forms[person] === form.form;
-      entry = correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
+      entry = b.rule===2?{...left,personne:person}:correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
       if (correct) {
         b.matched_left.push(left.key); b.matched_right.push(form.key);
-      } else if (!s.repeating) { s.match_retry ||= {}; s.match_retry[entry.key] = clone(entry); }
+      } else if (!s.repeating&&!entry.filler) { s.match_retry ||= {}; s.match_retry[entry.key] = clone(entry); }
     } else {
       entry = s.pending[0]; expected = this.env.forms(entry.verbe, entry.temps)[entry.personne];
       require(String(body.answer || '').trim(), '请先输入答案。');
       correct = this.env.check(String(body.answer).trim(), expected, s.settings.fuzzy !== false);
       if (!correct) { s.fill_retry ||= {}; s.fill_retry[entry.key] = 1; }
     }
-    const deferred=!correct&&this.env.record(correct, entry)===true;
-    if(correct)this.env.record(correct,entry);
+    const deferred=!correct&&!entry.filler&&this.env.record(correct, entry)===true;
+    if(correct&&!entry.filler)this.env.record(correct,entry);
     if(deferred){this.defer(entry);return {correct:false,expected,deferred:true,matched:s.phase==='match',next:this.question()};}
     if (correct) {
       s.pending = s.pending.filter(e => e.key !== entry.key); s.done++; s.batch_done++;

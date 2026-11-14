@@ -7,3 +7,6 @@ html uni-button:active:not(:disabled),html button:active:not(:disabled){transfor
 .known-touch-ripple{position:fixed;z-index:2501;pointer-events:none;width:180px;height:180px;margin:-90px 0 0 -90px;border:1px solid rgba(var(--theme-rgb,100,116,177),.32);border-radius:50%;background:radial-gradient(circle,transparent 45%,rgba(var(--theme-rgb,100,116,177),.07) 78%,transparent);animation:known-touch-wave .62s cubic-bezier(.15,.65,.25,1) both}
 @keyframes known-touch-wave{0%{opacity:.7;transform:scale(.04)}100%{opacity:0;transform:scale(1.35)}}
 @media(prefers-reduced-motion:reduce){.menu-glyph>uni-view{transition:none}.favorite-particles{display:none}.spring-toggle .toggle-thumb{will-change:auto}}
+
+/* Group completion and the next question share one uninterrupted transition. */
+.round-step-enter-active{transition:opacity .14s ease-out,transform .14s cubic-bezier(.2,.7,.3,1)}.round-step-leave-active{transition:opacity .09s ease-in,transform .09s ease-in;pointer-events:none}.round-step-enter-from{opacity:0;transform:translateY(6px)}.round-step-leave-to{opacity:0;transform:translateY(-4px)}@media(prefers-reduced-motion:reduce){.round-step-enter-active,.round-step-leave-active{transition:none}.round-step-enter-from,.round-step-leave-to{transform:none}}

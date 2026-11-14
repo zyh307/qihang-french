@@ -222,7 +222,6 @@ function transcript(target, session, audio=false) {
       box.append(node('small','两种识别都可能出错，请结合原声确认。','asr-note quiet'));
     }
     if(row.revisions?.length) box.append(node('span','你的修订稿：'+row.revisions.at(-1).text,'revision-note'));
-    if(row.confirmation_status) box.append(node('small',row.confirmation_status==='automatic'?'本机转写 · 自动回复':row.confirmation_status==='confirmed'?'已由你确认后用于对话':row.confirmation_status==='cancelled'?'此条已放弃，原录音保留':row.confirmation_status==='not_sent'?'尚未发送 · 可重新录音':window.QihangOralClient?.local?'正在本机识别':'等待你确认，考官暂不回复','revision-note'));
     if(row.role==='user' && row.audio && !row.recognition_status && S.boot?.local_asr?.available) {
       const review=node('button',S.localReviews.has(row.id)?'正在本机复核…':row.asr_reviews?.length?'重新复核':'本地法语复核','text-button');
       review.dataset.action='local-review';review.dataset.rowId=row.id;review.disabled=S.localReviews.has(row.id);

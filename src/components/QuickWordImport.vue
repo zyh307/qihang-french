@@ -1,6 +1,6 @@
 <template>
  <view class="word-preview quick-import-page"><view class="word-preview-content">
-  <view class="practice-top import-top"><button class="icon-button back-control" hover-class="none" @click="$emit('close')" :disabled="loading||saving" aria-label="返回 / Retour"><Icon name="back"/></button><Bi :zh="destination.bookId==='special'?'特殊导入':'导入单词'" fr="Importer des mots"/></view>
+  <view class="practice-top import-top"><button class="icon-button back-control" hover-class="none" @click="$emit('close')" :disabled="loading||saving" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="导入单词" fr="Importer des mots"/></view>
   <view class="quick-import-body">
    <view class="import-destination"><select :value="destination.lessonId" @change="$emit('destination',$event.target.value)" aria-label="导入到 Lesson / Leçon de destination"><option value="">自动分课 · Automatique</option><option v-for="p in lessons" :key="p.lesson.id" :value="p.lesson.id">{{ p.lesson.id }}</option></select><button class="icon-button" hover-class="none" @click="$emit('newLesson')" aria-label="新增 Lesson / Nouvelle leçon"><Icon name="plus"/></button></view><text class="muted">用逗号隔开 · Séparez les mots par des virgules.</text>
    <textarea auto-height v-model="input" :adjust-position="false" class="quick-import-input" maxlength="12000" placeholder="bonjour, un livre, hôtel" :disabled="loading||saving"/>
@@ -25,9 +25,10 @@
    <view v-if="importedRows.length" class="quick-import-receipt" role="status" aria-live="polite">
     <template v-if="successfulRows.length"><view class="import-success"><Icon name="check"/><Bi :zh="'成功导入 '+successfulRows.length+' 个词'" :fr="successfulRows.length+' mots importés'" small/></view><view v-for="word in successfulRows" :key="word.key" class="imported-word-result"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
     <template v-if="duplicateRows.length"><Bi :zh="'已在导入本 · '+duplicateRows.length+' 个词'" :fr="'Déjà importés · '+duplicateRows.length" small/><view v-for="word in duplicateRows" :key="word.key" class="imported-word-result duplicate"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
+    <template v-if="reviewSkippedRows.length"><Bi :zh="'已在复习本，未导入 · '+reviewSkippedRows.length+' 个词'" :fr="'Déjà en révision, non importés · '+reviewSkippedRows.length" small/><view v-for="word in reviewSkippedRows" :key="word.key" class="imported-word-result duplicate"><text lang="fr">{{ word.word }}</text><text>{{ word.lesson }}</text></view></template>
    </view>
   </view>
-  <ConjugationOptions v-if="selected.some(needsConjugationChoice)" v-model="conjugationPlan" :existing="existingTenses"/>
+  <ConjugationOptions v-if="selected.some(needsConjugationChoice)" :key="conjugationChoiceKey" v-model="conjugationPlan" :existing="existingTenses"/>
   <view v-if="results.length&&selected.length" class="exercise-footer"><button class="button primary wide" hover-class="none" :disabled="!selected.length||saving||loading" @click="submit"><Icon name="upload"/><Bi :zh="saving?'正在导入':'导入 '+selected.length+' 个词'" :fr="saving?'Importation…':'Importer '+selected.length+' mots'" small/></button></view>
  </view></view>
 </template>
@@ -36,11 +37,11 @@ import {computed,ref,watch} from 'vue';
 import ConjugationOptions from './ConjugationOptions.vue';
 import {TENSES} from '../conjugation/catalog.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';
-import {splitWords,makeLookup,makeImportLocationLookup,needsConjugationChoice} from '../domain/quick-import.js';
+import {splitWords,makeLookup,makeImportLocationLookup,makeReviewImportLookup,needsConjugationChoice} from '../domain/quick-import.js';
 const props=defineProps({library:Array,data:Object,destination:Object,lessons:Array}),emit=defineEmits(['close','import','destination','newLesson']);
 const input=ref(''),results=ref([]),error=ref(''),importedRows=ref([]),loading=ref(false),saving=ref(false);let dictionary;
 watch(input,()=>{results.value=[];error.value='';importedRows.value=[];});
-const successfulRows=computed(()=>importedRows.value.filter(row=>row.added)),duplicateRows=computed(()=>importedRows.value.filter(row=>!row.added));
+const successfulRows=computed(()=>importedRows.value.filter(row=>row.added)),duplicateRows=computed(()=>importedRows.value.filter(row=>!row.added&&!row.skipped)),reviewSkippedRows=computed(()=>importedRows.value.filter(row=>row.skipped==='review'));
 const choiceRows=computed(()=>results.value.filter(row=>!row.missing)),missingRows=computed(()=>results.value.filter(row=>row.missing));
 const candidateLocations=computed(()=>{
  const locate=makeImportLocationLookup(props.data||{library:props.library||[]}),map=new Map();
@@ -49,12 +50,14 @@ const candidateLocations=computed(()=>{
 });
 function rememberImports(lessons=[],rows=[]){
  const all=new Map(importedRows.value.map(row=>[row.key,row]));
- for(const row of rows)all.set(row.key,{...row,added:row.added||all.get(row.key)?.added||false});
+ for(const row of rows)all.set(row.key,{...row,added:!row.skipped&&(row.added||all.get(row.key)?.added||false)});
  importedRows.value=[...all.values()];
 }
-const conjugationPlan=ref({infinitive:true,tenses:[]});
+const conjugationPlan=ref({infinitive:true,tenses:[]}),conjugationChoiceKey=ref(0);
 const existingTenses=computed(()=>[...new Set(selected.value.flatMap(e=>(candidateLocations.value.get(e.id)||[]).flatMap(location=>location.tenses||[])))]);
 const selected=computed(()=>results.value.flatMap(r=>r.options.filter(o=>o.id===r.selected)));
+function resetConjugationChoice(){conjugationPlan.value={infinitive:true,tenses:[]};conjugationChoiceKey.value++;}
+watch(()=>selected.value.filter(needsConjugationChoice).map(entry=>entry.id).sort().join('|'),resetConjugationChoice);
 async function lookup(){
  document.activeElement?.blur();const words=splitWords(input.value);
  if(words.length>200){error.value='每次最多 200 个词 / 200 mots maximum.';return;}
@@ -65,11 +68,11 @@ async function lookup(){
    try{r=await fetch(new URL('static/lexicon/french.json',document.baseURI),{signal:controller.signal});}finally{clearTimeout(timer);}
    if(!r.ok)throw Error();const data=await r.json();if(data.schema!==1||!Array.isArray(data.entries)||!data.entries.length)throw Error();dictionary=data.entries;
   }
-  const resolve=makeLookup(dictionary,props.library),matched=[];results.value=[];
+  const resolve=makeLookup(dictionary,props.library),reviewLookup=makeReviewImportLookup(props.data||{library:props.library||[],progress:{}}),matched=[];results.value=[];resetConjugationChoice();
   for(let i=0;i<words.length;i++){
    const row=resolve(words[i]),certain=row.options.length===1&&row.kind!=='typo';
-   if(certain&&!needsConjugationChoice(row.options[0]))matched.push(row.options[0]);
-   else{row.selected=certain?row.options[0].id:'';results.value.push(row);}
+   if(certain&&(reviewLookup(row.options[0])||!needsConjugationChoice(row.options[0])))matched.push(row.options[0]);
+   else{row.selected='';results.value.push(row);}
    if(i%8===0)await new Promise(r=>setTimeout(r,0));
   }
   if(matched.length){saving.value=true;emit('import',matched.map(e=>({...e,conjugationPlan:conjugationPlan.value})),(success,lessons,rows)=>{saving.value=false;if(success)rememberImports(lessons,rows);},true);}

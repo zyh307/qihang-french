@@ -1,15 +1,16 @@
 <template>
   <view class="practice-panel" @click="closeArticle">
     <Transition :name="definitionVisible?'definition-sheet':motion==='none'?'no-motion':question?.kind==='recognize'?'recognition-sheet':motion==='page'?'word-switch-page':'word-switch-slide'" mode="out-in">
-      <DefinitionPanel v-if="definitionVisible" key="definition" ref="definitionCard" :pkg="sourcePkg||pkg" :source-label="sourceLabel" :word="word" :favorite="favorite" :playing="playing" :busy="busy" :known="known" :allow-known="session.mode!=='errors'" :allow-remove="false" @remove="removeImported" @primary-meaning="$emit('primary-meaning',$event)" @favorite="$emit('favorite',word)" @audio="$emit('audio',$event)" @known="forwardKnown" @continue="continueDefinition"><Bi v-if="session.deferredDate===day()&&!session.tailRound&&session.deferredWordIds?.includes(word.id)" class="study-pause-note" :zh="session.learningTailIds?.includes(word.id)?'本组先跳过，最后单独练习。':'本词今天暂停，随后三天复习。'" :fr="session.learningTailIds?.includes(word.id)?'Ce mot sera travaillé dans la dernière série.':'Pause pour ce mot. Révisions les trois jours suivants.'" small/></DefinitionPanel>
+      <DefinitionPanel v-if="definitionVisible" key="definition" ref="definitionCard" :pkg="sourcePkg||pkg" :source-label="sourceLabel" :word="word" :favorite="favorite" :playing="playing" :busy="busy" :known="known" :allow-known="session.mode!=='errors'" :allow-remove="false" @remove="removeImported" @primary-meaning="$emit('primary-meaning',$event)" @favorite="$emit('favorite',word)" @audio="$emit('audio',$event)" @known="forwardKnown" @continue="continueDefinition"></DefinitionPanel>
       <view v-else-if="question" :key="question.kind==='spell'?'spell:'+question.wordId+':'+question.formId:'question:'+question.id" class="exercise-screen" :class="{'is-recognition':question.kind==='recognize'}">
         <view class="exercise-body">
           <view class="exercise-head"><Bi :zh="question.kind==='recognize'?'选择中文':'写出法语'" :fr="question.kind==='recognize'?'Choisir le sens':'Écrire le mot'" small /><view v-if="question.kind==='recognize'" class="recognition-audio-controls"><button v-if="sentenceRecording" hover-class="none" class="round-audio sentence-audio" @click="$emit('audio',sentenceRecording)" aria-label="播放例句 / Écouter la phrase"><Icon name="phrase" /></button></view></view>
-          <view v-if="question.kind==='spell'" class="exercise-prompt"><text lang="zh">{{ form?.meaning||primaryMeaning(word) }}</text><text class="question-detail">{{ questionDetail }}<template v-if="form?.questionHint"> · {{ form.questionHint }}</template></text></view>
+          <view v-if="question.kind==='spell'" class="exercise-prompt spelling-prompt"><text lang="zh">{{ form?.meaning||primaryMeaning(word) }}</text><text v-if="questionDetail" :class="['meaning-pos',{'gender-emphasis':testsBothGenders(word)&&!!form?.gender}]">{{ questionDetail }}</text><text v-if="form?.questionHint" class="question-detail">{{ form.questionHint }}</text></view>
+          <view v-else-if="testsBothGenders(word)" class="exercise-prompt"><text v-fit-text="{lines:1,min:12,nowrap:true}" lang="fr">{{ recognitionForms.map(f=>displayForm(word,f)).join(' / ') }}</text><view class="recognition-genders"><template v-for="(candidate,index) in recognitionForms" :key="candidate.id"><text v-if="index" aria-hidden="true">/</text><text class="gender-emphasis">{{ candidate.gender==='m'?'阳性 · m.':'阴性 · f.' }}</text></template></view></view>
           <view v-else class="exercise-prompt"><text lang="fr">{{ displayForm(word,form) }}</text><text class="question-detail">{{ questionDetail }}<template v-if="form?.questionHint"> · {{ form.questionHint }}</template></text></view>
           <view v-if="question.kind==='recognize'&&example?.fr" class="exercise-context"><ExampleSentence :text="example.fr" :word="word" /></view>
           <view v-if="question.options" class="exercise-options">
-            <button v-for="(option,index) in visibleOptions" :key="option.id" hover-class="none" :class="['exercise-option',{correct:session.feedback?.correct&&option.id===word.id,incorrect:question.rejectedIds?.includes(option.id)}]" :disabled="busy||submitted||!!session.feedback||question.rejectedIds?.includes(option.id)" @click="submit(option.id)"><text class="option-letter">{{ String.fromCharCode(65+index) }}</text><text>{{ option.label }}<text class="wrong-option-word" :class="{visible:question.rejectedIds?.includes(option.id)}">{{ question.rejectedIds?.includes(option.id)?(option.french||optionWord(option.id)):' ' }}</text></text><Icon v-if="question.rejectedIds?.includes(option.id)||(session.feedback?.correct&&option.id===word.id)" :name="option.id===word.id?'check':'close'" /></button>
+            <button v-for="(option,index) in visibleOptions" :key="option.id" hover-class="none" :class="['exercise-option',{correct:session.feedback?.correct&&option.id===word.id,incorrect:question.rejectedIds?.includes(option.id)}]" :disabled="busy||submitted||!!session.feedback||question.rejectedIds?.includes(option.id)" @click="submit(option.id)"><text class="option-letter">{{ String.fromCharCode(65+index) }}</text><text class="option-meaning">{{ option.label }}</text><text class="wrong-option-word" :class="{visible:question.rejectedIds?.includes(option.id)}">{{ question.rejectedIds?.includes(option.id)?(option.french||optionWord(option.id)):'' }}</text><Icon v-if="question.rejectedIds?.includes(option.id)||(session.feedback?.correct&&option.id===word.id)" :name="option.id===word.id?'check':'close'" /></button>
           </view>
           <template v-else>
             <view :class="['exercise-entry',{correct:session.feedback?.correct,incorrect:session.feedback&&!session.feedback.correct}]" @click="retrySpelling"><view v-if="task.mode==='choice'" class="article-picker" @click.stop><button hover-class="none" class="article-trigger" :class="{selected:!!articleSelection}" :disabled="busy||!!session.feedback" :aria-expanded="articleOpen" aria-label="选择冠词 / Choisir un article" @click="toggleArticle"><text v-if="articleSelection">{{ articleSelection }}</text><Bi v-else zh="冠词" fr="Article" small /><Icon name="chevron-down" /></button><Transition name="article-menu"><view v-if="articleOpen" class="article-menu" role="group" aria-label="冠词选项 / Articles"><button v-for="article in task.options" :key="article" hover-class="none" :class="{selected:articleSelection===article}" :aria-pressed="articleSelection===article" @click="selectArticle(article)"><text>{{ article }}</text><Icon v-if="articleSelection===article" name="check" /></button></view></Transition></view><text v-if="task.mode==='given'&&parts.prefix" class="given-article">{{ parts.prefix }}</text><AnswerInput ref="answerInput" v-model="input" :touch="useTouchKeyboard" :active="keyboardOpen" :disabled="busy||!!session.feedback" @update:model-value="draft=$event" @activate="openKeyboard" @blur="focusInput=false" @keydown="physicalInput" /><button v-if="useTouchKeyboard&&!session.feedback" hover-class="none" class="answer-keyboard-toggle" @mousedown.prevent @click.stop="openKeyboard" aria-label="法语键盘 / Clavier français"><Icon name="keyboard" /></button><Icon v-if="session.feedback" :name="session.feedback.correct?'check':'close'" /></view>
@@ -17,7 +18,7 @@
             <view v-if="session.feedback" :class="['spelling-result',{correct:session.feedback.correct}]" role="status"><Icon :name="session.feedback.correct?'check':'repeat'" /><Bi :zh="session.feedback.correct?'正确':'再试一次'" :fr="session.feedback.correct?'Correct':'À revoir'" small /></view>
             <SpellingFeedback v-if="session.feedback?.diff&&!session.feedback.deferred" :diff="session.feedback.diff" />
           </template>
-          <Bi v-if="session.feedback?.deferred" class="study-pause-note" zh="本词今天暂停，随后三天复习。" fr="Pause pour ce mot. Révisions les trois jours suivants." small/>
+
         </view>
         <view class="exercise-footer question-actions">
           <template v-if="session.feedback?.deferred"><button v-if="question.kind==='spell'" hover-class="none" class="button secondary" :disabled="busy" @click="showHint"><Icon name="eye"/><Bi zh="释义" fr="Fiche" small/></button><button hover-class="none" class="button primary" :disabled="busy" @click="$emit('next')"><Bi zh="继续" fr="Continuer" small/><Icon name="arrow"/></button></template>
@@ -36,7 +37,6 @@
 </template>
 <script setup>
 import {computed,ref,watch,nextTick,onUnmounted} from 'vue';
-import {day} from '../domain/learning.js';
 import {primaryMeaning} from '../domain/meanings.js';
 import ExampleSentence from './ExampleSentence.vue';
 import FrenchKeyboard from './FrenchKeyboard.vue';
@@ -45,7 +45,7 @@ import DesktopAccents from './DesktopAccents.vue';
 import {nativeHost} from '../platform/native.js';
 import {playCorrect,playTap} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import DefinitionPanel from './DefinitionPanel.vue';import SpellingFeedback from './SpellingFeedback.vue';
-import {displayForm,spellingParts,spellingTask,sharedExample,splitNounArticle,exampleAudio} from '../domain/word-display.js';
+import {displayForm,spellingParts,spellingTask,sharedExample,splitNounArticle,exampleAudio,testsBothGenders} from '../domain/word-display.js';
 const props=defineProps({pkg:Object,sourcePkg:Object,sourceLabel:String,session:Object,word:Object,form:Object,favorite:Boolean,known:Boolean,playing:String,busy:Boolean,allowRemove:Boolean,motion:String,articleMode:String});
 const emit=defineEmits(['answer','next','hint','retry-hint','known','favorite','audio','audio-stop','remove','primary-meaning']);
 const useTouchKeyboard=!!nativeHost()||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -74,6 +74,7 @@ function physicalInput(event){
 const parts=computed(()=>spellingParts(props.word,props.form));
 const task=computed(()=>spellingTask(props.word,props.form,props.articleMode||'choice'));
 const example=computed(()=>sharedExample(props.word).example);
+const recognitionForms=computed(()=>(props.word.forms||[]).filter(f=>f.tested&&['m','f'].includes(f.gender)));
 const sentenceRecording=computed(()=>exampleAudio(props.word));
 const recognitionRecording=computed(()=>sentenceRecording.value||audioForm.value);
 const questionDetail=computed(()=>question.value?.kind==='spell'&&['choice','typed'].includes(task.value.mode)&&props.word.forms.length===1?props.word.pos:props.form?.gender?(props.form.gender==='m'?'阳性 · m.':'阴性 · f.'):props.word.sourcePos||props.word.pos);

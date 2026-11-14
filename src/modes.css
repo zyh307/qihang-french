@@ -19,3 +19,7 @@
 @media(max-width:720px){.mode-switch-space{width:81px;height:35px}.mode-menu-control{left:14px;top:max(10px,env(safe-area-inset-top));min-width:81px}.mode-drawer{padding-top:max(10px,env(safe-area-inset-top))}.mode-drawer-heading{padding-left:79px;min-height:35px}}
 @media(min-width:900px){html.qihang-desktop .mode-switch-space{display:none}}
 @media(prefers-reduced-motion:reduce){.mode-menu-control>.bi{transition:none}}
+.mode-menu-control.drawer-open{left:28px;top:calc(max(25px,env(safe-area-inset-top)) + 3.5px);width:32px;min-width:32px;height:32px;min-height:32px;padding:0;gap:0;justify-content:center;border-radius:10px}
+.mode-menu-control.drawer-open>.bi{display:none}
+.mode-menu-control.drawer-open::before{content:'';position:absolute;inset:-6px;pointer-events:auto}
+@media(max-width:720px){.mode-menu-control.drawer-open{left:17px;top:calc(max(10px,env(safe-area-inset-top)) + 1.5px)}}

@@ -9,6 +9,9 @@ const families=[['boire','boisson','buveur','buvable'],['lire','lecture','lecteu
 const prefixes=['anti','auto','contre','entre','inter','sous','super','trans','ap','com','con','de','des','dis','en','em','in','im','mal','me','pre','re','sur'];
 const suffixes=['ante','antes','ant','iquement','eusement','issement','ification','isation','ation','ition','ateur','atrice','ement','ienne','euse','ance','ence','iste','isme','ique','aire','able','ible','iere','erie','ite','eux','eur','ien','ier','age','ion','ive','if','inal','ial','al','ale','elle','el','ie','er','ir','re'];
 const rootsCache=new Map();
+const phraseFunctionWords=new Set(['a','au','aux','de','du','des','en','le','la','les','l','un','une','d','et','ou','se','s','ce','cet','cette','ces','mon','ma','mes','ton','ta','tes','son','sa','ses']);
+const phraseWords=text=>(String(text).match(/\p{L}+/gu)||[]).map(plain).filter(word=>word.length>=3&&!phraseFunctionWords.has(word));
+const phraseNegation=/(?:^|[\s'’])(?:ne|n|pas|sans|non|ni|aucun|aucune|jamais)(?:$|[\s'’])/iu;
 function familyRoots(word){
  if(rootsCache.has(word))return rootsCache.get(word);
  const singular=word.replace(/(?:s|x)$/u,''),forms=new Set([word,singular]);
@@ -27,8 +30,16 @@ export function sameWordFamily(left,right){
  const a=plain(l),b=plain(r);
  if(a===b)return true;
  if(variantKeys.has(a)&&variantKeys.get(a)===variantKeys.get(b))return true;
- // Fixed expressions sharing a small word are still distinct vocabulary items.
- if(/\s/u.test(l)||/\s/u.test(r))return false;
+ // A phrase and its content word/derivative are ambiguous Chinese choices:
+ // deuxième rue / deuxième, première rue / premier. Two different phrases
+ // sharing a verb or article remain eligible; do not merge negated phrases.
+ if(/\s/u.test(l)||/\s/u.test(r)){
+  if(phraseNegation.test(l)||phraseNegation.test(r))return false;
+  const left=phraseWords(l),right=phraseWords(r);
+  if(!/\s/u.test(l)&&left.length===1)return right.some(word=>sameWordFamily(left[0],word));
+  if(!/\s/u.test(r)&&right.length===1)return left.some(word=>sameWordFamily(word,right[0]));
+  return false;
+ }
  // These spellings resemble each other without being noun/adjective derivatives.
  if((a.startsWith('heureu')&&b==='heure')||(b.startsWith('heureu')&&a==='heure'))return false;
  if((a.startsWith('terribl')&&b==='terre')||(b.startsWith('terribl')&&a==='terre'))return false;

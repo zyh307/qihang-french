@@ -1,11 +1,17 @@
 import {conjugationSpeech} from './speech-text.js';
 import {studyPaused,studyPressureKey} from '../domain/study-pressure.js';
-import {preferredGroupSize} from '../domain/group-size.js';
 import {MatchSession,smallGroups,wordKey as entryKey} from './match-engine.js';
 import {primaryMeaning} from '../domain/meanings.js';
-import {conjugations,conjugationPracticeWords,conjugationPackages,ensureConjugationCards,normalizePlan,lemmaFor,isIrregularLemma} from './catalog.js';
+import {conjugations,conjugationPracticeWords,conjugationPackages,ensureConjugationCards,normalizePlan,lemmaFor,isIrregularLemma,sourceVerbEntries} from './catalog.js';
 import {day,packageKey,wordKey,getProgress,dueForms,checkAnswer,completeConjugationWord,recordConjugationAttempt,wordContext,errorPracticeEligible} from '../domain/learning.js';
 const keyFor=(v,t,p)=>`${v}|${t}|${p}`;
+export const CONJUGATION_GROUP_SIZE=3;
+export function conjugationProgress(s){
+ const units=s.mode==='review'&&s.reviewDailyUnits?s.reviewDailyUnits:[...s.engine.groups.flatMap(g=>g.entries),...(s.engine.learningTailEntries||[])].map(entryKey);
+ const completed=new Set(s.mode==='review'?s.reviewDoneToday||[]:s.engine.completed_words||[]),byLemma=new Map();
+ for(const id of units){const lemma=id.split('|')[0];if(!byLemma.has(lemma))byLemma.set(lemma,new Set());byLemma.get(lemma).add(id);}
+ return {total:byLemma.size,completed:[...byLemma.values()].filter(ids=>[...ids].every(id=>completed.has(id))).length};
+}
 function mergeDailyReview(data,key,s){
  const today=day();if(s.mode!=='review'||s.reviewQueueDate===today||s.done||s.retired)return;
  const queued=new Set([...(s.engine.pending||[]).map(entryKey),...s.engine.groups.slice(s.engine.cursor+1).flatMap(group=>group.entries.map(entryKey)),...(s.engine.phase==='fill'?[]:(s.engine.entries||[]).map(entryKey))]);
@@ -19,7 +25,7 @@ function mergeDailyReview(data,key,s){
  }
  for(const [id,list]of refs)s.refs[id]=list;
  s.completedForms=s.completedForms.filter(id=>!refs.has(id));s.engine.completed_words=s.engine.completed_words.filter(id=>!added.has(id));
- s.engine.groups.push(...smallGroups([...added.values()],preferredGroupSize(data.settings,'review')).map(entries=>({entries})));
+ s.engine.groups.push(...smallGroups([...added.values()],CONJUGATION_GROUP_SIZE).map(entries=>({entries})));
  const sameDay=!s.reviewQueueDate&&day(new Date(s.updatedAt||s.created))===today;const completed=sameDay?[...s.engine.completed_words]:[];s.reviewQueueDate=today;s.reviewDailyUnits=[...new Set([...queued,...added.keys(),...completed])];s.reviewDoneToday=completed;
 }
 export function pendingConjugations(data,pkg=null,mode='learn'){
@@ -33,7 +39,7 @@ export function startConjugationSession(data,pkg=null,mode='learn',scope=null){
  if(old?.retired){data.conjugationSessionArchive||=[];data.conjugationSessionArchive.push({key,...old});}
  const candidates=pendingConjugations(data,pkg,mode).filter(({w})=>!scope||(w.conjugation.baseWordId===scope.baseWordId&&w.conjugation.tense===scope.tense));if(!candidates.length)throw Error('暂无待练变位 / Aucune conjugaison à pratiquer.');const refs={},entries=new Map();
  for(const {p,w} of candidates){const c=w.conjugation,id=keyFor(c.lemma,c.tense,c.person);(refs[id]||=[]).push({lesson:packageKey(p),wordId:w.id});const base=p.words.find(base=>base.id===c.baseWordId),e=entries.get(c.lemma+'|'+c.tense)||{verbe:c.lemma,temps:c.tense,personnes:[],meaning:primaryMeaning(base)||primaryMeaning(w)};if(!e.personnes.includes(c.person))e.personnes.push(c.person);entries.set(c.lemma+'|'+c.tense,e);}
- const engine=MatchSession.create([...entries.values()],{mode:mode==='review'?'review':'learn',direct:true,groupSize:preferredGroupSize(data.settings,mode),settings:{fuzzy:data.settings.fuzzy}},{}).s;
+ const engine=MatchSession.create([...entries.values()],{mode:mode==='review'?'review':'learn',direct:true,groupSize:CONJUGATION_GROUP_SIZE,settings:{fuzzy:data.settings.fuzzy}},{}).s;
  data.conjugationSessions[key]={schema:1,engine,refs,mode,paused:false,done:false,completedForms:[],mistakeWordIds:[],failedForms:[],created:Date.now(),updatedAt:Date.now(),...(mode==='review'?{reviewQueueDate:day(),reviewDailyUnits:[...entries.keys()],reviewDoneToday:[]}: {})};data.lastConjugationKey=key;conjugationQuestion(data,key);return key;
 }
 // Restore display text for saved rounds without changing their questions or progress.
@@ -51,7 +57,22 @@ function restoreMeanings(data,s){
 }
 function contexts(data,s,entry){return (s.refs[keyFor(entry.verbe,entry.temps,entry.personne)]||[]).flatMap(r=>{const p=data.library.find(p=>packageKey(p)===r.lesson),w=(data.conjugationDecks?.[r.lesson]||[]).find(w=>w.id===r.wordId);return p&&w?[{p,w}]:[];});}
 function countConjugationVisit(s,e){const today=day(),engine=s.engine,unit=entryKey(e),token=today+':'+engine.phase+':'+(engine.phase==='match'?engine.board?.id:keyFor(e.verbe,e.temps,e.personne)+':'+(engine.pressureTurn||0));s.pressureFailureVisits||={};if(s.pressureFailureVisits[unit]===token)return false;s.pressureFailureVisits[unit]=token;return true;}
-function engineFor(data,s){restoreMeanings(data,s);return new MatchSession(s.engine,{deferToTail:e=>contexts(data,s,e).some(({w})=>s.learningTailIds?.includes(w.id)),groupSize:preferredGroupSize(data.settings,s.mode),forms:conjugations,check:(a,b,f)=>checkAnswer(a,b,f).correct,known:()=>{},complete:()=>{},record:(correct,e)=>{const countPressure=correct?false:countConjugationVisit(s,e);if(correct&&s.engine.phase==='fill')s.engine.pressureTurn=(s.engine.pressureTurn||0)+1;let deferred=false;const seen=new Set(),pressures=new Set();for(const {p,w} of contexts(data,s,e)){const key=wordKey(p,w);if(seen.has(key))continue;seen.add(key);const pressure=studyPressureKey(p,w);deferred=!!recordConjugationAttempt(data,p,w,correct,s,'answer',day(),!pressures.has(pressure),countPressure&&!pressures.has(pressure))||deferred;pressures.add(pressure);}if(deferred&&s.reviewDailyUnits)s.reviewDailyUnits=s.reviewDailyUnits.filter(id=>id!==entryKey(e));if(!correct){const id=keyFor(e.verbe,e.temps,e.personne);if(!s.failedForms.includes(id))s.failedForms.push(id);}return deferred;}});}
+function supplementaryEntries(data,s){
+ const tense=s.engine.entries?.[0]?.temps,seen=new Set(),entries=[];
+ for(const p of conjugationPackages(data))for(const w of p.words){const c=w.conjugation,key=c.lemma+'|'+c.tense;if(c.tense!==tense||seen.has(key))continue;seen.add(key);entries.push({verbe:c.lemma,temps:c.tense});}
+ for(const row of sourceVerbEntries()){const key=row.word+'|'+tense;if(!seen.has(key)&&Object.keys(conjugations(row.word,tense)).length){seen.add(key);entries.push({verbe:row.word,temps:tense});}}
+ return entries;
+}
+function engineFor(data,s){restoreMeanings(data,s);const engine=new MatchSession(s.engine,{deferToTail:e=>contexts(data,s,e).some(({w})=>s.learningTailIds?.includes(w.id)),groupSize:CONJUGATION_GROUP_SIZE,supplementary:()=>supplementaryEntries(data,s),forms:conjugations,check:(a,b,f)=>checkAnswer(a,b,f).correct,known:()=>{},complete:()=>{},record:(correct,e)=>{const countPressure=correct?false:countConjugationVisit(s,e);if(correct&&s.engine.phase==='fill')s.engine.pressureTurn=(s.engine.pressureTurn||0)+1;let deferred=false;const seen=new Set(),pressures=new Set();for(const {p,w} of contexts(data,s,e)){const key=wordKey(p,w);if(seen.has(key))continue;seen.add(key);const pressure=studyPressureKey(p,w);deferred=!!recordConjugationAttempt(data,p,w,correct,s,'answer',day(),!pressures.has(pressure),countPressure&&!pressures.has(pressure))||deferred;pressures.add(pressure);}if(deferred&&s.reviewDailyUnits)s.reviewDailyUnits=s.reviewDailyUnits.filter(id=>id!==entryKey(e));if(!correct){const id=keyFor(e.verbe,e.temps,e.personne);if(!s.failedForms.includes(id))s.failedForms.push(id);}return deferred;}});
+ if(s.engine.grouping_version!==3&&!s.done&&!s.retired&&engine.regroup(CONJUGATION_GROUP_SIZE)){
+  const q=s.engine.question;
+  for(const view of [s.viewQuestion,s.nextQuestion])if(q&&view?.batch_index===q.batch_index){
+   for(const key of ['batch_index','batch_count','batch_verbs','batch_entries'])view[key]=JSON.parse(JSON.stringify(q[key]));
+   if(view.id===q.id&&q.board)view.board=JSON.parse(JSON.stringify(q.board));
+  }
+ }
+ return engine;
+}
 export function conjugationQuestion(data,key){const s=data.conjugationSessions?.[key];if(!s)return null;const engine=engineFor(data,s);let q=engine.question();while(q.round==='judge')q=engine.answer({id:q.id,choice:3}).next;if(q.completed)s.done=true;s.viewQuestion=q;return q;}
 export function answerConjugation(data,key,body){const s=data.conjugationSessions[key];if(s.paused||s.done)throw Error('请继续练习 / Reprenez la série.');mergeDailyReview(data,key,s);const engine=engineFor(data,s),q=s.engine.question,cursor=s.engine.cursor;const entry={verbe:q.verbe,temps:q.temps,personne:q.personne};const previousView=s.viewQuestion;const result=engine.answer(body);result.input=body.answer||'';result.formatted=q.round==='fill'&&result.correct&&result.input.normalize('NFC')!==result.expected.normalize('NFC');result.fuzzy=q.round==='fill'&&checkAnswer(body.answer,conjugations(q.verbe,q.temps)[q.personne],data.settings.fuzzy).fuzzy;result.spoken=result.correct?conjugationSpeech(q.round==='fill'?q.personne:(q.board.left_persons?.[body.person_key]||q.board.cards.find(card=>card.key===body.person_key)?.personne),result.expected):'';
  if(result.correct&&q.round==='fill'){
@@ -81,11 +102,16 @@ export function hintConjugation(data,key,questionId){
 export function validateConjugationSessions(data){
  for(const s of Object.values(data.conjugationSessions||{})){
   if(s.schema!==1||!s.engine?.game||!Array.isArray(s.engine.groups)||!s.refs||!Array.isArray(s.completedForms)||!['learn','review','errors','direct','favorites'].includes(s.mode)||s.engine.groups.some(g=>!Array.isArray(g.entries)||g.entries.some(e=>typeof e.verbe!=='string'||!Array.isArray(e.personnes)||(!s.retired&&!s.done&&e.personnes.some(p=>!conjugations(e.verbe,e.temps)[p])))))throw Error('变位进度无效 / Progression invalide.');
+  for(const group of s.engine.groups)if(group.continuation){
+   const c=group.continuation,units=new Map(group.entries.map(e=>[entryKey(e),e]));
+   const validTask=e=>e&&units.get(entryKey(e))?.personnes.includes(e.personne)&&e.key===keyFor(e.verbe,e.temps,e.personne);
+   if(!['judge','match','fill'].includes(c.phase)||!Number.isInteger(c.cycle)||c.cycle<0||![1,2].includes(c.match_rounds)||c.cycle>c.match_rounds||typeof c.repeating!=='boolean'||!Array.isArray(c.pending)||!c.pending.every(validTask)||!Array.isArray(c.judges)||!c.judges.every(id=>units.has(id))||!c.decisions||!c.match_retry||!c.fill_retry||!Object.values(c.match_retry).every(validTask))throw Error('变位续练进度无效 / Reprise de conjugaison invalide.');
+  }
   for(const refs of Object.values(s.refs))for(const ref of refs){const p=data.library.find(p=>packageKey(p)===ref.lesson);if(!p||![...p.words,...(data.conjugationDecks?.[ref.lesson]||[])].some(w=>w.id===ref.wordId&&w.conjugation))throw Error('变位进度与词条不符 / Mots incompatibles.');}
  }
 }
 
-export function advanceConjugationUI(data,key,automatic=false){const s=data.conjugationSessions[key];mergeDailyReview(data,key,s);if(s.nextQuestion){s.viewQuestion=s.nextQuestion;delete s.nextQuestion;}if(!automatic)s.paused=false;}
+export function advanceConjugationUI(data,key,automatic=false){const s=data.conjugationSessions[key];engineFor(data,s);mergeDailyReview(data,key,s);if(s.nextQuestion){s.viewQuestion=s.nextQuestion;delete s.nextQuestion;}if(!automatic)s.paused=false;}
 
 export function startWordConjugationPractice(data,entry,tense){
  const source=wordContext(data,entry.p,entry.w),p=data.library.find(item=>packageKey(item)===packageKey(source.p))||source.p,w=p.words.find(item=>item.id===source.w.id)||source.w,lemma=lemmaFor(w);

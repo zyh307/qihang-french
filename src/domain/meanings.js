@@ -59,7 +59,7 @@ export function applyMeaningCorrections(data){
    for(const f of w.forms)if(exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr))f.example.meaning=curriculumFix.meaning;
    if(!w.primaryMeaningChosen)w.primaryMeaning=curriculumFix.meaning;
   }
-  if(w.conjugation||w.curriculumAuthority)continue;
+  if(w.conjugation||w.curriculumAuthority||w.headingSupplement)continue;
   const key=w.lexiconWord||w.forms?.[0]?.text?.replace(/^(?:un|une|le|la)\s+/i,'');
   const definition=definitionCorrections[key];
   const matchesDefinition=definition&&w.lexiconWord&&[definition.previousMeanings,definition.meanings,reviewedExamples[key]?.meanings].some(meanings=>meanings&&JSON.stringify(w.meanings)===JSON.stringify(meanings));

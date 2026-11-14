@@ -30,7 +30,7 @@
       </div>
       <div class="full panel"><div><h3>准备好完整练一次了吗？</h3><p>连续完成三个部分，感受完整口试节奏。</p></div><button id="full" class="button outline">开始完整练习 →</button></div>
       <div class="scene-setting"><label for="scene">情景对话场景</label><select id="scene"><option value="random">随机场景 · 每次换一题</option></select><span id="bankInfo">题卡为原创练习材料</span></div>
-      <p class="quiet intro-note">电脑网页原型 · 一次连接一个练习窗口 · 首次使用请允许浏览器访问麦克风</p>
+      <p class="quiet intro-note">首次使用请允许麦克风访问</p>
       </div>
       <section id="delfStart" class="panel delf-start" aria-labelledby="delfTitle" hidden>
         <div class="section-top"><div><span class="eyebrow">ÉPREUVE ORALE · SUJETS OFFICIELS</span><h2 id="delfTitle"></h2><p id="delfTiming"></p></div>
@@ -80,6 +80,6 @@
   </main>
   <dialog id="revisionDialog"><form id="revisionForm"><h2>记一份修订稿</h2><p class="quiet">原始识别文字会保留。修订稿单独保存，便于复盘；不会冒充平台识别结果。</p><span class="label">原始识别</span><p id="originalTranscript"></p><label for="revisionText">你实际想表达的内容</label><textarea id="revisionText" rows="4" maxlength="2000"></textarea><div class="dialog-actions"><button id="revisionCancel" type="button" class="button outline">取消</button><button type="submit" class="button dark">保存修订稿</button></div></form></dialog>
   <dialog id="guideDialog" class="guide-dialog" aria-labelledby="guideTitle"><div class="guide-heading"><div><span class="eyebrow">AVANT DE COMMENCER</span><h2 id="guideTitle"></h2></div><button id="guideClose" class="text-button" aria-label="关闭环节说明">×</button></div><nav id="guideTabs" class="guide-tabs" aria-label="选择示范环节"></nav><div class="guide-layout"><details class="guide-example"><summary>对话示范 · Exemple</summary><figure><video id="guideVideo" controls playsinline preload="metadata"></video><figcaption><strong>对话案例</strong><span>观看这段示范，了解考官与考生各自要做什么。</span><a href="https://www.bilibili.com/video/BV1V3411S7HT/?p=2" target="_blank" rel="noopener noreferrer">来源：爱丽丝的法语日记 · B站原视频第2集 ↗</a></figcaption><p id="guideVideoError" class="quiet" hidden>视频暂时无法播放，可打开原视频；也可以直接练习。</p></figure></details><div class="guide-notes"><h3>这个环节怎么进行？</h3><ol id="guideSteps"></ol><div class="guide-ending"><strong>什么时候结束？</strong><p id="guideEnding"></p></div><button id="guideStart" class="button dark">开始练习 · Commencer</button><p class="quiet">示范时长不代表考试固定时长。</p><a class="quiet" href="https://www.france-education-international.fr/document/manuel-candidat-delf-a1" target="_blank" rel="noopener noreferrer">官方考生指南 · Guide officiel ↗</a></div></div></dialog>
-  <footer class="wrap">Parlons <span>Petit à petit, on progresse.</span><small id="version">A1 · 开发原型</small></footer>
+  <footer class="wrap">Parlons <span>Petit à petit, on progresse.</span><small id="version">DELF A1–B2</small></footer>
   <script src="/assets/app.js" defer></script>
 </body></html>

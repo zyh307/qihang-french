@@ -9,6 +9,7 @@ import {curriculumForms} from '../src/domain/curriculum.js';
 import {displayForm,spellingParts} from '../src/domain/word-display.js';
 import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
 import {primaryMeaning,applyMeaningCorrections} from '../src/domain/meanings.js';
+import {applyHeadingSupplement} from './inspire-heading-supplement.mjs';
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),materials=path.resolve(app,'../词库');
 const speech=JSON.parse(await fs.readFile(path.join(app,'src/static/lexicon/audio/index.json'),'utf8')).entries;
 const sha=value=>createHash('sha256').update(value).digest('hex');
@@ -67,8 +68,10 @@ for(const number of [2,3,4]){
   if(!lessons.has(lessonId))lessons.set(lessonId,{schemaVersion:1,book:input.book,lesson:{id:lessonId,title:'Lesson '+Number(lessonId.slice(1)),order:Number(lessonId.slice(1)),version:1},sourceFormat:'textbook-package',words:[]});
   const lesson=lessons.get(lessonId);word.order=lesson.words.length+1;lesson.words.push(word);
  }
- const library=[...lessons.values()].sort((a,b)=>a.lesson.order-b.lesson.order);applyMeaningCorrections({library});applyExampleAudioCorrections({library});for(const p of library){try{validateLesson(p);}catch(error){throw Error(input.book.title+' '+p.lesson.id+': '+error.message);}}
- const stats={lessons:library.length,words:input.entries.length,recordings:humanWords,splitForms,fallbackForms,silentForms,exampleRecordings:library.flatMap(p=>p.words).filter(w=>w.forms[0].example?.audioKey).length,missingHuman:library.flatMap(p=>p.words).filter(w=>!w.forms.some(f=>f.audioOrigin==='textbook-human')).map(w=>w.id),missing:library.flatMap(p=>p.words.flatMap(w=>w.forms.filter(f=>!f.audioKey).map(f=>({word:w.id,form:f.id,text:displayForm(w,f)}))))};
+ const library=[...lessons.values()].sort((a,b)=>a.lesson.order-b.lesson.order);applyMeaningCorrections({library});applyExampleAudioCorrections({library});
+ const headingWords=applyHeadingSupplement(library,speech);
+ for(const p of library){try{validateLesson(p);}catch(error){throw Error(input.book.title+' '+p.lesson.id+': '+error.message);}}
+ const stats={lessons:library.length,words:library.reduce((sum,p)=>sum+p.words.length,0),headingWords,recordings:humanWords,splitForms,fallbackForms,silentForms,exampleRecordings:library.flatMap(p=>p.words).filter(w=>w.forms[0].example?.audioKey).length,missingHuman:library.flatMap(p=>p.words).filter(w=>!w.forms.some(f=>f.audioOrigin==='textbook-human')).map(w=>w.id),missing:library.flatMap(p=>p.words.flatMap(w=>w.forms.filter(f=>!f.audioKey).map(f=>({word:w.id,form:f.id,text:displayForm(w,f)}))))};
  const id=sha(JSON.stringify(library)+[...audio.keys()].join(''));
  const manifest={schema:1,id,bookId,library,audio:[...audio.keys()],stats};
  const files={'manifest.json':strToU8(JSON.stringify(manifest))};for(const [hash,bytes]of audio)files['audio/'+hash+'.bin']=bytes;

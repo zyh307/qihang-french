@@ -26,8 +26,11 @@ export function makeWordSourceLookup(data){
   for(const name of names(w))if(textbook.has(name))return textbook.get(name);
   const sourceKey=w.origin?.lessonKey,original=sourceKey?data.library.find(p=>p.book.id+':'+p.lesson.id===sourceKey):p;
   const key=w.origin?.progressKey||(sourceKey?sourceKey+':'+w.origin.wordId:p.book.id+':'+p.lesson.id+':'+w.id);
-  const sequence=data.importedWordOrder?.[key];
-  if((original?.book.id==='personal'||p.book.id==='imported')&&data.importedWords?.[key]&&Number.isSafeInteger(sequence)&&sequence>0)return '导入本 · L'+String(Math.floor((sequence-1)/30)+1).padStart(2,'0');
+  if(original?.book.id==='personal'||['imported'].includes(p.book.id))for(const [title,members,orders]of [['导入本',data.importedWords,data.importedWordOrder]]){
+   const base=w.conjugation?.baseWordId,parent=base?(base.includes(':')?base:(sourceKey||original?.book.id+':'+original?.lesson.id)+':'+base):key,memberKey=members?.[key]?key:parent;
+   const record=members?.[memberKey],sequence=orders?.[memberKey];if(!record||!Number.isSafeInteger(sequence)||sequence<1)continue;
+   const ids=record.lessonIds?.length?record.lessonIds:[record.lessonId||'L'+String(Math.floor((sequence-1)/30)+1).padStart(2,'0')];return title+' · '+ids.join(' / ');
+  }
   return original?.book.id==='personal'?'导入本':lessonSourceLabel(original||p);
  };
 }

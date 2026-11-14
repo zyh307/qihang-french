@@ -13,6 +13,7 @@ import {vocabularyCorrections} from '../src/domain/vocabulary-corrections.js';
 import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
 import {applyCourseEntrySplits} from '../src/domain/course-entry-splits.js';
 import {applyMeaningCorrections} from '../src/domain/meanings.js';
+import {applyHeadingSupplement} from './inspire-heading-supplement.mjs';
 
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const materials=path.resolve(app,'../词库/Inspire1');
@@ -97,6 +98,7 @@ for(const extra of curriculumAdditions){
 applyCourseEntrySplits(state);
 applyMeaningCorrections(state);
 applyExampleAudioCorrections(state);
+const headingWords=applyHeadingSupplement(state.library,speechIndex);
 for(const pkg of state.library)validateLesson(pkg);
 const id=createHash('sha256').update(JSON.stringify(state.library)).update([...audio.keys()].join('')).digest('hex');
 const manifest={schema:1,id,library:state.library,audio:[...audio.keys()],stats:{lessons:ids.length,words:state.library.reduce((sum,p)=>sum+p.words.length,0),recordings:state.library.flatMap(p=>p.words).reduce((sum,w)=>sum+w.forms.filter(f=>f.audioKey).length,0),exampleRecordings:state.library.flatMap(p=>p.words).filter(w=>w.forms.some(f=>f.example?.audioKey)).length,missing}};
@@ -108,4 +110,4 @@ await fs.writeFile(path.join(app,'src/domain/content-version.js'),`// Generated 
 // per-form clips. The workbook still uses its existing simple audio filenames.
 const importAudio={'examples.json':files['examples.json']};for(const name of [...names,...sentenceNames])importAudio[name]=files[name];
 await fs.writeFile(path.join(materials,'词形录音.zip'),zipSync(importAudio,{level:6}));
-console.log(`Inspire 1：${manifest.stats.lessons} 课，${manifest.stats.words} 词，${names.size} 段单词录音，${sentenceNames.size} 段例句录音。`);
+console.log(`Inspire 1：${manifest.stats.lessons} 课，${manifest.stats.words} 词，新增 ${headingWords} 个标题词。`);

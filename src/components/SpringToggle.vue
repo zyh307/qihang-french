@@ -7,7 +7,9 @@ watch(()=>props.on,(on)=>{
  const current=getComputedStyle(el),from={transform:current.transform,width:current.width};effect?.cancel();
  if(!el.animate||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
  const end=on?16:0,direction=on?1:-1;
- effect=el.animate([from,{transform:'translateX(4px)',width:'25px',offset:.38},{transform:`translateX(${end+direction*1.2}px)`,width:'17.6px',offset:.72},{transform:`translateX(${end-direction*.4}px)`,width:'16.8px',offset:.87},{transform:`translateX(${end}px)`,width:'17px'}],{duration:380,easing:'cubic-bezier(.22,.7,.3,1)'});
+ effect=el.animate([from,{transform:'translateX(4px)',width:'25px',offset:.38},{transform:`translateX(${end+direction*1.2}px)`,width:'17.6px',offset:.72},{transform:`translateX(${end-direction*.4}px)`,width:'16.8px',offset:.87},{transform:`translateX(${end}px)`,width:'17px'}],{duration:520,easing:'cubic-bezier(.22,.7,.3,1)'});
 });
 onUnmounted(()=>effect?.cancel());
 </script>
+
+<style scoped>.spring-toggle{transition:background-color .52s ease,border-color .52s ease}@media(prefers-reduced-motion:reduce){.spring-toggle{transition:none}}</style>

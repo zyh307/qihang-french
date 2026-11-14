@@ -1,17 +1,25 @@
 <template>
   <view class="word-preview conjugation-details"><view class="word-preview-content">
     <view class="practice-top"><button data-conjugation-close class="icon-button back-control" hover-class="none" @click="back" aria-label="返回 / Retour"><Icon name="back" /></button><view class="practice-location conj-location"><text lang="fr">{{ lemma }}</text><text v-if="meaning" class="conj-meaning" lang="zh">{{ meaning }}</text></view></view>
-    <view v-if="actions" class="definition-title conj-action-row"><Icon name="grammar"/><Bi zh="变位释义" fr="Conjugaison" small/><view class="definition-tools"><button v-if="isIrregularLemma(lemma)" class="text-button" hover-class="none" :disabled="working" @click="practice"><Icon name="repeat"/><Bi zh="专练" fr="Pratiquer" small/></button><button class="text-button" hover-class="none" :disabled="working" @click="moveOpen=true"><Icon name="notebook"/><Bi zh="词本" fr="Carnet" small/></button></view><button class="icon-button favorite" :class="{marked:status.favorite}" hover-class="none" :disabled="working" @click="actions.favorite(word,pkg,tense)" aria-label="收藏当前时态 / Ajouter ce temps aux favoris"><SuccessIcon name="heart" :active="!!status.favorite" :item-key="'conjugation:'+(pkg?.book?.id||'')+':'+(pkg?.lesson?.id||'')+':'+lemma+':'+tense" /></button></view>
+    <view v-if="actions" class="definition-title conj-action-row"><Icon name="grammar"/><Bi zh="变位释义" fr="Conjugaison" small/><view class="definition-tools"><button v-if="isIrregularLemma(lemma)" class="text-button" hover-class="none" :disabled="working" @click="practice"><Icon name="repeat"/><Bi zh="专练" fr="Pratiquer" small/></button><button class="text-button" hover-class="none" :disabled="working" @click="openMove"><Icon name="notebook"/><Bi zh="词本" fr="Carnet" small/></button></view><button class="icon-button favorite" :class="{marked:status.favorite}" hover-class="none" :disabled="working" @click="actions.favorite(word,pkg,tense)" aria-label="收藏当前时态 / Ajouter ce temps aux favoris"><SuccessIcon name="heart" :active="!!status.favorite" :item-key="'conjugation:'+(pkg?.book?.id||'')+':'+(pkg?.lesson?.id||'')+':'+lemma+':'+tense" /></button></view>
     <view class="conj-tense-tabs" role="group" aria-label="选择时态 / Choisir un temps"><button v-for="t in availableTenses" :key="t.id" hover-class="none" :class="{selected:tense===t.id}" :aria-pressed="tense===t.id" @click="tense=t.id"><text>{{ t.id }}</text></button></view>
     <view class="conj-detail-scroll">
       <view class="conj-person-grid"><button v-for="p in PERSONS" :key="p" class="conj-person-card" hover-class="none" :disabled="!forms[p]||forms[p]==='—'" :aria-label="personLabel(p)+' '+(forms[p]||'—')" @click="$emit('audio',recording(spokenForm(lemma,tense,p),p))"><text class="conj-person-label" lang="fr">{{ personLabel(p) }}</text><text class="conj-person-form" lang="fr">{{ forms[p]||'—' }}</text><Icon v-if="forms[p]&&forms[p]!=='—'" name="sound" /></button></view>
     </view>
     <view v-if="actions" class="exercise-footer"><KnownAction :disabled="working||!Object.keys(forms).length" :known="status.known" @confirm="move('known')"/></view>
-    <view v-if="moveOpen" class="modal-shade confirm-shade" @click.self="moveOpen=false"><view class="modal small-modal"><view class="modal-heading"><button class="icon-button back-control" hover-class="none" @click="moveOpen=false" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="调整词本" fr="Changer de carnet"/></view><text class="move-word">{{ lemma }} · {{ tense }}</text><button v-for="target in targets.filter(t=>t.id!=='known')" :key="target.id" class="setting-action" hover-class="none" :disabled="working" @click="move(target.id)"><Icon :name="target.icon"/><Bi :zh="target.zh" :fr="target.fr"/><Icon name="arrow"/></button><KnownAction :disabled="working" @confirm="move('known')"/></view></view>
+    <view v-if="moveOpen" class="modal-shade confirm-shade" @click.self="moveOpen=false"><view class="modal small-modal"><view class="modal-heading"><button class="icon-button back-control" hover-class="none" @click="moveOpen=false" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="调整词本" fr="Changer de carnet"/></view><text class="move-word">{{ lemma }}</text>
+      <NotebookSelection :word="word" v-model="adjustmentSelection" :disabled="working"/>
+      <button class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust('favorite')"><SuccessIcon name="heart" :active="adjustmentState.favorite" :item-key="'adjust-conj:'+lemma"/><Bi :zh="adjustmentState.favorite?'取消收藏':'收藏'" fr="Favoris"/><Icon :name="adjustmentState.favorite?'check':'plus'"/></button>
+      <button v-for="target in targets.filter(t=>t.id!=='known')" :key="target.id" class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust(target.id)"><Icon :name="target.icon"/><Bi :zh="target.zh" :fr="target.fr"/><Icon name="arrow"/></button>
+      <button class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust('imported')"><Icon :name="adjustmentState.imported?'trash':'plus'"/><Bi :zh="adjustmentState.imported?'移出导入本':'加入导入本'" :fr="adjustmentState.imported?'Retirer des mots importés':'Ajouter aux mots importés'"/><Icon name="arrow"/></button>
+      <KnownAction :disabled="working||!adjustmentState.selected" @confirm="adjust('known')"/>
+    </view></view>
   </view></view>
 </template>
 <script setup>
 import KnownAction from './KnownAction.vue';
+import NotebookSelection from './NotebookSelection.vue';
+import {defaultNotebookSelection} from '../domain/notebook-adjustment.js';
 import SuccessIcon from './SuccessIcon.vue';
 import {ref,computed,inject,watch} from 'vue';
 import {playKnown} from '../platform/feedback-sounds.js';
@@ -22,6 +30,14 @@ import {PERSONS,TENSES,conjugations,spokenForm,recording,lemmaFor,isIrregularLem
 const props=defineProps({word:Object,pkg:Object});const emit=defineEmits(['close','audio']);
 const actions=inject('conjugationActions',null),moveOpen=ref(false),working=computed(()=>actions?.busy.value),status=computed(()=>actions?.status(props.word,props.pkg,tense.value)||{known:false,favorite:false});
 const meaning=computed(()=>primaryMeaning(actions?.original?.(props.word,props.pkg)?.w||props.word)||(verbMeanings[lemma.value]||'').split('；')[0]);
+const adjustmentSelection=ref({infinitive:false,tenses:[]});
+const adjustmentState=computed(()=>actions?.selectionStatus({p:props.pkg,w:props.word},adjustmentSelection.value)||{selected:0,imported:false,favorite:false});
+function openMove(){adjustmentSelection.value=defaultNotebookSelection(props.word,tense.value);moveOpen.value=true;}
+async function adjust(target){
+ if(working.value||!adjustmentState.value.selected)return;
+ if(target==='imported')target=adjustmentState.value.imported?'remove-imported':'add-imported';
+ if(await actions.adjust({p:props.pkg,w:props.word},adjustmentSelection.value,target)){if(target!=='favorite')moveOpen.value=false;if(target==='known')playKnown();}
+}
 function back(){if(moveOpen.value)moveOpen.value=false;else emit('close');}
 const targets=[{id:'practice',zh:'待学',fr:'À apprendre',icon:'book'},{id:'review',zh:'复习本',fr:'À réviser',icon:'repeat'},{id:'known',zh:'已会本',fr:'Acquis',icon:'check'}];
 async function move(target){if(working.value)return;if(await actions.move(props.word,props.pkg,tense.value,target)){moveOpen.value=false;if(target==='known')playKnown();}}

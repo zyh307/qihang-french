@@ -2,6 +2,7 @@ import {unzipSync,strFromU8} from 'fflate';
 import {clone,packageKey,installLesson,normalize} from './learning.js';
 import {BUNDLED_CONTENT_ID} from './content-version.js';
 import {ADDITIONAL_BUNDLED_BOOKS} from './content-books.js';
+import {headingWordKeys} from './heading-word-key.js';
 
 const fingerprint=word=>JSON.stringify([word.pos,word.meanings,word.forms.map(f=>[f.text,f.gender,f.tested])]);
 export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
@@ -10,12 +11,26 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
   const registry=new Map(data.library.flatMap(p=>p.words.map(w=>[fingerprint(w),w]))),sourceIds=new Map();let serial=1;
   const nextId=()=>{while(used.has(`w${String(serial).padStart(6,'0')}`))serial++;const id=`w${String(serial++).padStart(6,'0')}`;used.add(id);return id;};
   let installed=0;
+  const headingAlreadyPresent=(bookId,word)=>{
+    const keys=headingWordKeys(word);
+    return data.library.some(p=>p.book.id===bookId&&p.words.some(w=>[...headingWordKeys(w)].some(key=>keys.has(key))));
+  };
+  const appendHeading=(pkg,source)=>{
+    if(headingAlreadyPresent(pkg.book.id,source))return false;
+    const word=clone(source),oldId=word.id;word.id=nextId();
+    word.order=Math.max(0,...pkg.words.map(w=>w.order))+1;
+    for(const form of word.forms)form.id=word.id+form.id.slice(oldId.length);
+    pkg.words.push(word);data.reservedWordIds=[...new Set([...(data.reservedWordIds||[]),word.id])];
+    return true;
+  };
   for(const source of bundle.library){
     // A user's imported lesson is authoritative, even with the same lesson number.
     const existing=data.library.find(p=>packageKey(p)===packageKey(source));
     if(existing){
       if(source.words.some(w=>w.curriculumAuthority)){
+        let headingsAdded=false;
         for(const fresh of source.words){
+          if(fresh.headingSupplement){headingsAdded=appendHeading(existing,fresh)||headingsAdded;continue;}
           const original=existing.words.find(w=>w.audioNumber===fresh.audioNumber&&w.forms.some(f=>fresh.forms.some(g=>normalize(f.text)===normalize(g.text))));
           if(!original){
             const word=clone(fresh),oldId=word.id;word.id=nextId();word.order=Math.max(0,...existing.words.map(w=>w.order))+1;
@@ -31,6 +46,7 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
             return updated;
           });
         }
+        if(headingsAdded){existing.lesson.version++;if(data.lessonCompletions)delete data.lessonCompletions[packageKey(existing)];}
         existing.bundled=true;installed++;continue;
       }
       if(source.curriculumRevision>(existing.curriculumRevision||0)){
@@ -52,6 +68,7 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
       if(existing.bundled){
         let added=false;
         for(const original of source.words.filter(w=>w.curriculumAddition)){
+          if(original.headingSupplement){added=appendHeading(existing,original)||added;continue;}
           const present=existing.words.find(w=>w.pos===original.pos&&w.forms.some(f=>original.forms.some(fresh=>normalize(f.text)===normalize(fresh.text))));
           if(present){
             if(original.conjugationPlan){const old=present.conjugationPlan||{infinitive:true,tenses:['现在时']};present.conjugationPlan={...old,infinitive:true,tenses:[...new Set([...(old.tenses||[]),...original.conjugationPlan.tenses])]};}
@@ -90,6 +107,7 @@ export function mergeBundledLessons(data,bundle,expectedId=BUNDLED_CONTENT_ID){
       continue;
     }
     const pkg=clone(source);pkg.bundled=true;
+    pkg.words=pkg.words.filter(w=>!w.headingSupplement||!headingAlreadyPresent(pkg.book.id,w));
     for(const word of pkg.words){
       const signature=fingerprint(word),previous=registry.get(signature),original=word.id;
       word.id=sourceIds.get(original)||previous?.id||(used.has(word.id)?nextId():word.id);used.add(word.id);sourceIds.set(original,word.id);

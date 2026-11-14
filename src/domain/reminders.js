@@ -13,7 +13,7 @@ export function practiceReminderItems(data,today=day()){
     if(errorPracticeEligible(data,p,w,today))errors.push(wordKey(p,w));
   }
   const unit=id=>{const [book,lesson,wid,...rest]=id.split(':'),w=data.conjugationDecks?.[book+':'+lesson]?.find(w=>w.id===wid);return w?book+':'+lesson+':'+w.conjugation.baseWordId+':'+w.conjugation.tense+(rest.length?':'+rest.join(':'):''):id;};
-  const dates=new Map();for(const id of review){const mapped=unit(id),at=mapped.lastIndexOf(':'),key=mapped.slice(0,at),date=mapped.slice(at+1);if(!dates.has(key)||date<dates.get(key))dates.set(key,date);}
+  const dates=new Map();for(const id of review){const [book,lesson,wid]=id.split(':'),card=data.conjugationDecks?.[book+':'+lesson]?.find(w=>w.id===wid),at=id.lastIndexOf(':'),date=id.slice(at+1),key=card?'conjugation:'+encodeURIComponent(card.conjugation.lemma):id.slice(0,at);if(!dates.has(key)||date<dates.get(key))dates.set(key,date);}
   return {review:[...dates].map(([key,date])=>key+':'+date),errors:[...new Set(errors.map(unit))]};
 }
 export function syncPracticeBadges(data,today=day()){
