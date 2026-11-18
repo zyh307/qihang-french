@@ -21,6 +21,7 @@ french_asr.json
 venv/
 .tools/
 .media/
+.desktop/
 node_modules/
 __pycache__/
 *.py[cod]

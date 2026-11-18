@@ -633,10 +633,17 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     app.cleanup_ctx.append(lifecycle)
 
     async def index(request):
+        if request.query.get('desktop') == '1':
+            shell = ROOT / '.desktop' / 'index.html'
+            if not shell.is_file():
+                return web.Response(status=503, text='请在项目根目录运行 node scripts/build-lecture.mjs，再刷新朗读页。')
+            return web.FileResponse(shell)
         return web.FileResponse(ROOT / 'web' / 'index.html')
 
     async def asset(request):
         name = request.match_info['name']
+        if name in ('desktop.js', 'desktop.css'):
+            return web.FileResponse(ROOT / '.desktop' / name)
         if name not in ('app.js', 'style.css', 'capture.js'):
             raise web.HTTPNotFound()
         return web.FileResponse(ROOT / 'web' / name)
@@ -783,6 +790,8 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     app.router.add_post('/api/sessions/{sid}/evaluation', evaluate)
     app.router.add_get('/api/sessions/{sid}/audio/{name}', recording)
     app.router.add_get('/ws', ws_handler)
+    from lecture import install as install_lecture
+    install_lecture(app, data_dir)
     return app
 
 

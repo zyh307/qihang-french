@@ -4,6 +4,10 @@
 
 ## 当前任务与准确状态
 
+2026-11-19 桌面独立口语服务新增读课文入口及逐词判定。法语数字的不同书写形式、教材人名和酒店预订语境的转写差异使用同一份对齐结果评分和着色。安装及本机材料目录见 `oral-assistant/README.md`。
+
+验证状态：本分支口语 Python 测试 87 项通过，桌面朗读前端构建通过。临时数据目录下验证了朗读页、JS/CSS、空材料目录和原考试首页。此次为源码交付，尚未发布新版安装包，待独立验收。
+
 
 2026-11-14 用户授权的GitHub更新与正式Release已完成（覆盖下方所有待提交/待发布状态）：main源码提交 c0ed2eecdbd72989b2bb80aca552c6aa0aab54df，注解tag v2.7.0指向同一源码提交。公开正式Release ID 444892483，链接 https://github.com/zyh307/qihang-french/releases/tag/v2.7.0，draft=false、prerelease=false，latest及不带身份的公开API均指向v2.7.0。
 
