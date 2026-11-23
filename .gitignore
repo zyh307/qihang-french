@@ -50,3 +50,6 @@ android/signing/
 
 # Private per-install storage selection; never share it or personal data
 /.qihang-data.json
+
+# Game assets supplied privately by the local user.
+assets-private/

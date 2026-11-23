@@ -1,6 +1,10 @@
 <template>
  <view class="oral-mode-local">
   <view class="oral-local-bar"><Bi zh="DELF A1–B2 口语" fr="Expression orale" small /><button class="oral-settings-button" hover-class="none" @click="emit('settings')"><Icon name="settings" /><Bi zh="设置" fr="Réglages" small /></button></view>
+  <aside v-if="desktop && (!prepared || oralHome)" class="oral-performance-note">
+   <a href="http://127.0.0.1:8127/?desktop=1&amp;daily=1" target="_blank" rel="noopener">打开电脑日常口语 ↗</a>
+   <span>读课文、接拍串说、看提示换一格和口语小镇。首次使用先启动本机日常口语服务。</span>
+  </aside>
   <aside v-if="!prepared || oralHome" class="oral-performance-note" aria-label="口语练习设备建议">
    <strong>建议使用性能较好的电脑练习</strong>
    <span>口语模式在本机识别录音。设备性能较低时，可能出现卡顿或长时间等待回复。</span>
@@ -12,6 +16,7 @@
 <script setup>
 import {ref,onMounted,onUnmounted} from 'vue';import Bi from './Bi.vue';import Icon from './Icon.vue';import OralSetup from './OralSetup.vue';import {oralCall} from '../oral/native-bridge.js';import {download} from '../platform/files.js';import {oralSessionArchive} from '../platform/records-backup.js';
 const emit=defineEmits(['notice','modes','settings','home','restore-file']),prepared=ref(localStorage.getItem('qihang-oral-prepared-v2')==='1'),oralHome=ref(true),frame=ref(null);let timer,alive=true;
+const desktop=!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 const frameURL=new URL('static/oral/index.html',window.location.href).href;
 function enter(){prepared.value=true;localStorage.setItem('qihang-oral-prepared-v2','1');}
 function receiveStatus(value){if(value.recognizer?.ready===false||!value.model?.ready&&value.model?.state!=='checking')prepared.value=false;else if(!prepared.value&&localStorage.getItem('qihang-oral-prepared-v2')==='1'&&value.provider?.status==='connected'&&value.microphone)enter();}

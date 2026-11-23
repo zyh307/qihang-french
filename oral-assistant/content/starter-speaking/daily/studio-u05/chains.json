@@ -1,0 +1,108 @@
+{
+  "lesson_id": "studio-u05",
+  "version": 1,
+  "label": "Inspire 1 · Unité 5 原创拓展",
+  "title": {
+    "fr": "Décrire son quotidien",
+    "zh": "描述日常与运动"
+  },
+  "source": "Inspire 1 · Unité 5 主题拓展 · 原创示范（合成）",
+  "chains": [
+    {
+      "id": "chain-1",
+      "groups": [
+        "Après le petit déjeuner",
+        "je prends le bus pour aller travailler."
+      ],
+      "pause_after_words": [
+        4
+      ],
+      "short_groups": [
+        "Après le petit déjeuner",
+        "je prends le bus pour aller travailler."
+      ],
+      "demo_wav": "studio-u05-chain-1.wav",
+      "short_demo_wav": "studio-u05-chain-1.wav"
+    },
+    {
+      "id": "chain-2",
+      "groups": [
+        "Tous les mercredis matin",
+        "nous faisons du sport dans le parc."
+      ],
+      "pause_after_words": [
+        4
+      ],
+      "short_groups": [
+        "Tous les mercredis matin",
+        "nous faisons du sport dans le parc."
+      ],
+      "demo_wav": "studio-u05-chain-2.wav",
+      "short_demo_wav": "studio-u05-chain-2.wav"
+    },
+    {
+      "id": "chain-3",
+      "groups": [
+        "Je prépare mon sac",
+        "avant de partir pour le cours de danse."
+      ],
+      "pause_after_words": [
+        4
+      ],
+      "short_groups": [
+        "Je prépare mon sac",
+        "avant de partir pour le cours de danse."
+      ],
+      "demo_wav": "studio-u05-chain-3.wav",
+      "short_demo_wav": "studio-u05-chain-3.wav"
+    },
+    {
+      "id": "chain-4",
+      "groups": [
+        "Elle rentre vers six heures",
+        "et elle prépare le dîner."
+      ],
+      "pause_after_words": [
+        5
+      ],
+      "short_groups": [
+        "Elle rentre vers six heures",
+        "et elle prépare le dîner."
+      ],
+      "demo_wav": "studio-u05-chain-4.wav",
+      "short_demo_wav": "studio-u05-chain-4.wav"
+    },
+    {
+      "id": "chain-5",
+      "groups": [
+        "Le mardi soir",
+        "je retrouve mon frère près de la piscine."
+      ],
+      "pause_after_words": [
+        3
+      ],
+      "short_groups": [
+        "Le mardi soir",
+        "je retrouve mon frère près de la piscine."
+      ],
+      "demo_wav": "studio-u05-chain-5.wav",
+      "short_demo_wav": "studio-u05-chain-5.wav"
+    },
+    {
+      "id": "chain-6",
+      "groups": [
+        "À la fin de la semaine",
+        "nous allons ensemble au marché."
+      ],
+      "pause_after_words": [
+        6
+      ],
+      "short_groups": [
+        "À la fin de la semaine",
+        "nous allons ensemble au marché."
+      ],
+      "demo_wav": "studio-u05-chain-6.wav",
+      "short_demo_wav": "studio-u05-chain-6.wav"
+    }
+  ]
+}

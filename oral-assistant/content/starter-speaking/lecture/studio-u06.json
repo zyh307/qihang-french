@@ -1,0 +1,47 @@
+{
+  "id": "studio-u06",
+  "unit": 6,
+  "lesson": 20,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 806,
+  "title": {
+    "fr": "Raconter une expérience",
+    "zh": "讲述一次经历"
+  },
+  "source": "Inspire 1 · Unité 6 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 806,
+      "start": 0.0,
+      "end": 3.5294375,
+      "fr": "Samedi dernier, j’ai pris un train pour aller au bord de la mer.",
+      "zh": "上周六，我坐火车去了海边。"
+    },
+    {
+      "id": "s2",
+      "piste": 806,
+      "start": 3.7294375,
+      "end": 6.9801875,
+      "fr": "À midi, nous avons acheté du pain et des fruits au marché.",
+      "zh": "中午，我们在市场买了面包和水果。"
+    },
+    {
+      "id": "s3",
+      "piste": 806,
+      "start": 7.1801875,
+      "end": 10.105875,
+      "fr": "Il a plu un peu, mais nous avons marché sur la plage.",
+      "zh": "下了一点雨，不过我们还是在沙滩上走了走。"
+    },
+    {
+      "id": "s4",
+      "piste": 806,
+      "start": 10.305875,
+      "end": 13.661125,
+      "fr": "Le soir, je suis rentré avec trois photos pour ma grand-mère.",
+      "zh": "傍晚，我带着三张照片回家，准备给奶奶看。"
+    }
+  ]
+}

@@ -6,6 +6,8 @@
 
 ## 当前功能
 
+桌面端支持逐句读课文。首次在仓库根目录运行 `npm ci` 和 `node scripts/build-lecture.mjs`，启动本机口语助手和法语识别服务后，打开 [桌面朗读](http://127.0.0.1:8127/?desktop=1&read=1)。内置八篇原创主题练习，也可在 `.media/lecture/` 安装已获授权的原声课包。识别、逐词反馈、续读和复习队列均在本机运行。
+
 | 模块 | 已实现内容 |
 | --- | --- |
 | 引导问答 | 14类主题、42个预设问句；每次随机顺序和问法，根据已聊内容继续追问 |
@@ -44,6 +46,10 @@ py -3.12 -m venv .venv
 不同硬件和驱动仍需实测。CPU运行可在首次启动生成的 `.speech/engine.json` 中设 `{"device":"cpu"}`，之后在无练习时重启自己的识别服务。
 
 macOS / Linux使用 `python3.12 -m venv .venv` 与 `.venv/bin/python` 执行同样的安装、模型下载和 `launch.py` 命令；本次公开导出在Windows自测，不承诺其他系统的GPU配置已验证。
+
+### 桌面日常口语
+
+从仓库根目录运行 `npm ci` 和 `node scripts/build-lecture.mjs`。安装本机模型后，双击 `启动日常口语.cmd` 或运行 `python launch.py --daily`，即可打开 [日常练习](http://127.0.0.1:8127/?desktop=1&daily=1)。内容范围、软件入口和安装步骤见 [项目概览](../docs/项目概览.md)。
 
 ### 模型与下载
 

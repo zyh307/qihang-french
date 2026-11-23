@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "id": "inspire1-u4",
+  "unit": 4,
+  "theme": {
+    "zh": "城市与出行",
+    "fr": "En ville"
+  },
+  "targets": [
+    "Comment aller à… ?",
+    "Allez tout droit, puis tournez…",
+    "C’est à côté de…",
+    "Si tu veux, on va…"
+  ],
+  "vocabulary": [
+    "la gare",
+    "la mairie",
+    "le musée",
+    "le parc",
+    "le cinéma",
+    "la rue",
+    "aller",
+    "tourner",
+    "tout droit",
+    "à droite",
+    "à gauche",
+    "à côté de"
+  ],
+  "retell": "Je cherche ___. Pour y aller, ___. C’est près de ___. Si tu veux, on ___.",
+  "cards": [
+    {
+      "id": "ask",
+      "prompt": "刚下火车，向路人打招呼，问去市政厅或博物馆怎么走。",
+      "hint": "先选一个目的地，再问路。",
+      "starter": "Bonjour, comment aller… ?",
+      "model": "Bonjour ! Comment aller à la mairie ?",
+      "variants": [
+        "Excusez-moi, où se trouve le musée ?"
+      ],
+      "criteria": [
+        [
+          "问位置或路线",
+          [
+            "comment aller",
+            "comment est ce que je peux aller",
+            "comment je peux aller",
+            "où est",
+            "où se trouve",
+            "où se situe",
+            "pour aller"
+          ]
+        ],
+        [
+          "说出目的地",
+          [
+            "mairie",
+            "musée"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "guide",
+      "prompt": "你现在是路人。告诉游客先直走再左转或右转，再用一个地标说明位置。",
+      "hint": "记住三个信息：直行、转弯、地标。",
+      "starter": "Allez tout droit, puis…",
+      "model": "Allez tout droit, puis tournez à droite. Le musée est à côté du parc.",
+      "variants": [
+        "Va tout droit et tourne à gauche. La mairie est près de la gare."
+      ],
+      "criteria": [
+        [
+          "直行",
+          [
+            "allez tout droit",
+            "aller tout droit",
+            "va tout droit",
+            "continuez tout droit",
+            "continue tout droit"
+          ]
+        ],
+        [
+          "转向",
+          [
+            "à droite",
+            "à gauche"
+          ]
+        ],
+        [
+          "地标位置",
+          [
+            "à côté du parc",
+            "près de la gare",
+            "en face de la mairie",
+            "près du musée",
+            "à côté de la gare"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "invite",
+      "prompt": "给朋友留一句邀请，约去公园或电影院，再说一个见面时间。",
+      "hint": "选地点，再选今天、明天或具体几点。",
+      "starter": "Si tu veux, on va…",
+      "model": "Si tu veux, on va au cinéma ? On se retrouve à huit heures.",
+      "variants": [
+        "Tu veux aller au parc demain ?",
+        "Ça te dit d’aller au cinéma ce soir ?"
+      ],
+      "criteria": [
+        [
+          "发出邀请",
+          [
+            "si tu veux",
+            "tu veux",
+            "ça te dit",
+            "on va",
+            "allons"
+          ]
+        ],
+        [
+          "约定地点",
+          [
+            "au cinéma",
+            "au parc"
+          ]
+        ],
+        [
+          "约定时间",
+          [
+            "ce soir",
+            "demain",
+            "aujourd'hui",
+            "heures",
+            "heure",
+            "midi"
+          ]
+        ]
+      ]
+    }
+  ]
+}

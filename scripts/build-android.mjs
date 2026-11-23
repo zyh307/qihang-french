@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {isPrivateAssetPath} from './private-assets.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
@@ -66,7 +67,7 @@ const contents=unzipSync(fs.readFileSync(path.join(build,'resources.apk')));
 const web=path.join(root,'dist/build/h5');
 const dictionaryAudioIndex=JSON.parse(fs.readFileSync(path.join(web,'static/lexicon/audio/index.json'),'utf8'));
 const dictionaryAudioFiles=new Set(Object.values(dictionaryAudioIndex.entries).map(clip=>clip.file));
-function addAssets(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isSymbolicLink())throw new Error('网页资源不能包含外部链接');if(entry.isDirectory())addAssets(file);else{
+function addAssets(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(isPrivateAssetPath(path.relative(web,file)))continue;if(entry.isSymbolicLink())throw new Error('网页资源不能包含外部链接');if(entry.isDirectory())addAssets(file);else{
  const relative=path.relative(web,file).replaceAll('\\','/');if(/^static\/lexicon\/audio\/[a-f0-9]{64}\.mp3$/.test(relative)&&!dictionaryAudioFiles.has(path.basename(relative)))continue;if(refreshRepairWeb&&relative.startsWith('static/'))continue;
  let bytes=fs.readFileSync(file);
  if(refreshRepairWeb&&/\.(?:js|html|json|css)$/.test(relative)){
@@ -152,6 +153,7 @@ run(path.join(java,'java.exe'),['-jar',path.join(tools,'lib/apksigner.jar'),'sig
 run(path.join(java,'java.exe'),['-jar',path.join(tools,'lib/apksigner.jar'),'verify','--verbose',apk]);
 run(path.join(tools,'zipalign.exe'),['-c','4',apk]);
 const packed=unzipSync(fs.readFileSync(apk)),assets=Object.keys(packed).filter(name=>name.startsWith('assets/')&&!name.endsWith('/'));
+if(assets.some(isPrivateAssetPath))throw new Error('APK 包含私有游戏素材');
 for(const name of assets)if(!expectedAssets[name]?.equals(Buffer.from(packed[name])))throw new Error('APK 资源不匹配：'+name);
 const expectedSpeech=repairAssets&&!(refreshRepairWeb&&repairRevision>=7)?repairAssets['lib/arm64-v8a/libqihang_speech.so']:fs.readFileSync(path.join(root,'android/jniLibs/arm64-v8a/libqihang_speech.so'));
 if(!Buffer.from(expectedSpeech).equals(Buffer.from(packed['lib/arm64-v8a/libqihang_speech.so'])))throw new Error('原生识别库与预期文件不一致');

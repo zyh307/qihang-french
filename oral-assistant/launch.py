@@ -22,6 +22,8 @@ def health():
 
 
 def main():
+    if '--daily' in sys.argv and not (ROOT / '.desktop/desktop.html').is_file():
+        raise RuntimeError('请在项目根目录运行 node scripts/build-lecture.mjs，生成日常口语页面。')
     from speech_service import ensure_service
     ensure_service(ROOT/'.local')
     state = health()
@@ -49,8 +51,9 @@ def main():
             time.sleep(.1)
         else: raise RuntimeError('启动超时，请查看 .local/service.log')
     (ROOT/'.local/runtime.json').write_text(json.dumps({'build':BUILD,'pid':state['pid'],'url':URL},indent=2),encoding='utf-8')
-    if '--no-browser' not in sys.argv: webbrowser.open(URL)
-    print(URL)
+    launch_url = URL + '?desktop=1&daily=1' if '--daily' in sys.argv else URL
+    if '--no-browser' not in sys.argv: webbrowser.open(launch_url)
+    print(launch_url)
 
 
 if __name__ == '__main__': main()

@@ -35,7 +35,21 @@ def make_speech_app(root,port=8132,engine=None,token=None):
     async def health(request):return web.json_response({'build':BUILD,'pid':os.getpid(),**engine.state})
     async def transcribe(request):
         if request.content_type!='audio/wav':raise ValueError('请提交WAV录音')
-        return web.json_response(await engine.transcribe(await request.read()))
+        detail=request.query.get('detail')
+        if detail not in (None,'words'):raise ValueError('不支持的识别证据类型')
+        continuous=request.query.get('continuous')
+        alternate=request.query.get('alternate')
+        if continuous is not None and (continuous!='1' or detail!='words'):
+            raise ValueError('连续音频复识需要逐词证据')
+        if alternate is not None and (alternate!='1' or continuous!='1'):
+            raise ValueError('备用识别需要连续短录音和逐词证据')
+        data=await request.read()
+        if alternate:
+            return web.json_response(await engine.transcribe_alternate_wav(data))
+        if continuous:
+            return web.json_response(await engine.transcribe(data,word_evidence=True,continuous=True))
+        result=await engine.transcribe(data,word_evidence=True) if detail else await engine.transcribe(data)
+        return web.json_response(result)
     async def warmup(request):return web.json_response(await engine.warmup())
     async def cleanup(app):
         task=getattr(engine,'task',None)

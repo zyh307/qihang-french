@@ -13,9 +13,10 @@
     await ready;if(!endpoint)throw Error('请先连接口语服务 / Connectez le service oral.');
     if(!/^\/(api\/|examples\/)/.test(path))throw Error('无效的服务路径');
     const headers=new Headers(options.headers||{});headers.set('Authorization','Bearer '+accessCode);
-    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);let response;
+    const unitRecording=/^\/api\/(unit-practice|lecture)\/.+\/record(?:\?|$)/.test(path);
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),unitRecording?155000:12000);let response;
     try{response=await nativeFetch(url(path),{...options,headers,credentials:'omit',signal:options.signal||controller.signal});}finally{clearTimeout(timer);}
-    if(path==='/api/bootstrap')report('qihang-oral-status',{connected:response.ok});
+    if(path==='/api/bootstrap'||path.startsWith('/api/lecture?layout='))report('qihang-oral-status',{connected:response.ok});
     return response;
   }
   async function mediaURL(path){
@@ -23,6 +24,7 @@
     return media.get(path);
   }
   window.QihangOralClient={ready,fetch:request,
+    localService:()=>!!endpoint && ['127.0.0.1','localhost','[::1]'].includes(new URL(endpoint).hostname),
     socketURL:()=>url('/ws').replace(/^http/,'ws'),socketProtocols:()=>['qihang-oral-v1','token.'+accessCode],
     workletURL:new URL('capture.js',location.href).href,mediaURL,
     setAudio:async(player,path)=>{player.dataset.recordingSource=path;const value=await mediaURL(path);if(player.dataset.recordingSource===path)player.src=value;},

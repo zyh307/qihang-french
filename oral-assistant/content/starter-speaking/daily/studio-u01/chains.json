@@ -1,0 +1,108 @@
+{
+  "lesson_id": "studio-u01",
+  "version": 1,
+  "label": "Inspire 1 · Unité 1 原创拓展",
+  "title": {
+    "fr": "Se rencontrer en classe",
+    "zh": "初次见面与课堂"
+  },
+  "source": "Inspire 1 · Unité 1 主题拓展 · 原创示范（合成）",
+  "chains": [
+    {
+      "id": "chain-1",
+      "groups": [
+        "Bonjour Madame",
+        "nous sommes les nouveaux élèves du cours de français."
+      ],
+      "pause_after_words": [
+        2
+      ],
+      "short_groups": [
+        "Bonjour Madame",
+        "nous sommes les nouveaux élèves du cours de français."
+      ],
+      "demo_wav": "studio-u01-chain-1.wav",
+      "short_demo_wav": "studio-u01-chain-1.wav"
+    },
+    {
+      "id": "chain-2",
+      "groups": [
+        "Sur cette table",
+        "vous avez les cahiers pour toute la classe."
+      ],
+      "pause_after_words": [
+        3
+      ],
+      "short_groups": [
+        "Sur cette table",
+        "vous avez les cahiers pour toute la classe."
+      ],
+      "demo_wav": "studio-u01-chain-2.wav",
+      "short_demo_wav": "studio-u01-chain-2.wav"
+    },
+    {
+      "id": "chain-3",
+      "groups": [
+        "Mon stylo est dans mon sac",
+        "avec mon livre de français."
+      ],
+      "pause_after_words": [
+        6
+      ],
+      "short_groups": [
+        "Mon stylo est dans mon sac",
+        "avec mon livre de français."
+      ],
+      "demo_wav": "studio-u01-chain-3.wav",
+      "short_demo_wav": "studio-u01-chain-3.wav"
+    },
+    {
+      "id": "chain-4",
+      "groups": [
+        "Pardon Monsieur",
+        "est-ce que vous pouvez parler un peu plus lentement ?"
+      ],
+      "pause_after_words": [
+        2
+      ],
+      "short_groups": [
+        "Pardon Monsieur",
+        "est-ce que vous pouvez parler un peu plus lentement ?"
+      ],
+      "demo_wav": "studio-u01-chain-4.wav",
+      "short_demo_wav": "studio-u01-chain-4.wav"
+    },
+    {
+      "id": "chain-5",
+      "groups": [
+        "La porte est ouverte",
+        "et les élèves entrent dans la salle."
+      ],
+      "pause_after_words": [
+        4
+      ],
+      "short_groups": [
+        "La porte est ouverte",
+        "et les élèves entrent dans la salle."
+      ],
+      "demo_wav": "studio-u01-chain-5.wav",
+      "short_demo_wav": "studio-u01-chain-5.wav"
+    },
+    {
+      "id": "chain-6",
+      "groups": [
+        "À demain tout le monde",
+        "le cours commence à neuf heures."
+      ],
+      "pause_after_words": [
+        5
+      ],
+      "short_groups": [
+        "À demain tout le monde",
+        "le cours commence à neuf heures."
+      ],
+      "demo_wav": "studio-u01-chain-6.wav",
+      "short_demo_wav": "studio-u01-chain-6.wav"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "lesson_id": "studio-u05",
+  "version": 1,
+  "label": "Inspire 1 · Unité 5 原创拓展",
+  "title": {
+    "fr": "Décrire son quotidien",
+    "zh": "描述日常与运动"
+  },
+  "source": "Inspire 1 · Unité 5 主题拓展 · 原创示范（合成）",
+  "frames": [
+    {
+      "id": "sport",
+      "template": "Je fais {slot}.",
+      "candidates": [
+        {
+          "id": "muscu",
+          "form": "de la muscu",
+          "condition": "力量训练",
+          "pronunciation": "/də la mys.ky/",
+          "demo_wav": "studio-u05-sport-muscu.wav"
+        },
+        {
+          "id": "sport",
+          "form": "du sport",
+          "condition": "一般体育运动",
+          "pronunciation": "/dy spɔʁ/",
+          "demo_wav": "studio-u05-sport-sport.wav"
+        }
+      ],
+      "prompts": [
+        {
+          "id": "muscu-1",
+          "target": "muscu",
+          "cue": "说你会做力量训练。"
+        },
+        {
+          "id": "muscu-2",
+          "target": "muscu",
+          "cue": "你平时做力量训练。"
+        },
+        {
+          "id": "sport-1",
+          "target": "sport",
+          "cue": "说你平时做运动。"
+        },
+        {
+          "id": "sport-2",
+          "target": "sport",
+          "cue": "说你有运动习惯。"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "muscu",
+          "accepted": true
+        },
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "sport",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "muscu",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "sport",
+          "accepted": true
+        }
+      ],
+      "validation": {
+        "blind_test": "通过",
+        "listened": true,
+        "asr_hits": "继承已验证的 du sport / de la muscu 对子；本包使用原创句框与合成示范。"
+      }
+    },
+    {
+      "id": "mardi",
+      "template": "Le mardi, je fais {slot}.",
+      "candidates": [
+        {
+          "id": "muscu",
+          "form": "de la muscu",
+          "condition": "力量训练",
+          "pronunciation": "/də la mys.ky/",
+          "demo_wav": "studio-u05-mardi-muscu.wav"
+        },
+        {
+          "id": "sport",
+          "form": "du sport",
+          "condition": "一般体育运动",
+          "pronunciation": "/dy spɔʁ/",
+          "demo_wav": "studio-u05-mardi-sport.wav"
+        }
+      ],
+      "prompts": [
+        {
+          "id": "muscu-1",
+          "target": "muscu",
+          "cue": "说你星期二做力量训练。"
+        },
+        {
+          "id": "muscu-2",
+          "target": "muscu",
+          "cue": "说你每周二练力量。"
+        },
+        {
+          "id": "sport-1",
+          "target": "sport",
+          "cue": "说你星期二做运动。"
+        },
+        {
+          "id": "sport-2",
+          "target": "sport",
+          "cue": "说星期二是你的运动日。"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "muscu",
+          "accepted": true
+        },
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "sport",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "muscu",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "sport",
+          "accepted": true
+        }
+      ],
+      "validation": {
+        "blind_test": "通过",
+        "listened": true,
+        "asr_hits": "继承已验证的 du sport / de la muscu 对子；本包使用原创句框与合成示范。"
+      }
+    },
+    {
+      "id": "frere",
+      "template": "Avec mon frère, je fais {slot}.",
+      "candidates": [
+        {
+          "id": "muscu",
+          "form": "de la muscu",
+          "condition": "力量训练",
+          "pronunciation": "/də la mys.ky/",
+          "demo_wav": "studio-u05-frere-muscu.wav"
+        },
+        {
+          "id": "sport",
+          "form": "du sport",
+          "condition": "一般体育运动",
+          "pronunciation": "/dy spɔʁ/",
+          "demo_wav": "studio-u05-frere-sport.wav"
+        }
+      ],
+      "prompts": [
+        {
+          "id": "muscu-1",
+          "target": "muscu",
+          "cue": "说你和哥哥或弟弟做力量训练。"
+        },
+        {
+          "id": "muscu-2",
+          "target": "muscu",
+          "cue": "说你和兄弟一起练力量。"
+        },
+        {
+          "id": "sport-1",
+          "target": "sport",
+          "cue": "说你和哥哥或弟弟做运动。"
+        },
+        {
+          "id": "sport-2",
+          "target": "sport",
+          "cue": "说你和兄弟一起参加体育活动。"
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "muscu",
+          "accepted": true
+        },
+        {
+          "prompt": "muscu-1",
+          "spoken_candidate": "sport",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "muscu",
+          "accepted": false
+        },
+        {
+          "prompt": "sport-1",
+          "spoken_candidate": "sport",
+          "accepted": true
+        }
+      ],
+      "validation": {
+        "blind_test": "通过",
+        "listened": true,
+        "asr_hits": "继承已验证的 du sport / de la muscu 对子；本包使用原创句框与合成示范。"
+      }
+    }
+  ]
+}

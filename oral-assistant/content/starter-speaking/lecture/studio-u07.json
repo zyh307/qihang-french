@@ -1,0 +1,47 @@
+{
+  "id": "studio-u07",
+  "unit": 7,
+  "lesson": 24,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 807,
+  "title": {
+    "fr": "Donner son avis",
+    "zh": "表达看法和偏好"
+  },
+  "source": "Inspire 1 · Unité 7 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 807,
+      "start": 0.0,
+      "end": 3.842875,
+      "fr": "Dans notre rue, un nouveau restaurant propose trois plats chaque midi.",
+      "zh": "我们这条街有一家新餐厅，每天中午提供三道菜。"
+    },
+    {
+      "id": "s2",
+      "piste": 807,
+      "start": 4.042875,
+      "end": 7.3285,
+      "fr": "Je trouve la soupe bonne, mais mon ami préfère le poisson.",
+      "zh": "我觉得汤很好喝，但我朋友更喜欢鱼。"
+    },
+    {
+      "id": "s3",
+      "piste": 807,
+      "start": 7.5285,
+      "end": 10.918625,
+      "fr": "La terrasse est très jolie et le service est assez rapide.",
+      "zh": "露台很漂亮，上菜也挺快。"
+    },
+    {
+      "id": "s4",
+      "piste": 807,
+      "start": 11.118625,
+      "end": 13.9746875,
+      "fr": "Pour le prix, je pense que c’est une bonne adresse.",
+      "zh": "就价格来说，我觉得这是个好去处。"
+    }
+  ]
+}

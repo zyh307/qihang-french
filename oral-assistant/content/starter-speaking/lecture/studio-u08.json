@@ -1,0 +1,47 @@
+{
+  "id": "studio-u08",
+  "unit": 8,
+  "lesson": 28,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 808,
+  "title": {
+    "fr": "Demander une information",
+    "zh": "查询信息与确认路线"
+  },
+  "source": "Inspire 1 · Unité 8 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 808,
+      "start": 0.0,
+      "end": 2.8560625,
+      "fr": "Ce matin, je dois aller à la mairie avant mon cours.",
+      "zh": "今天早上，上课前我得去一趟市政厅。"
+    },
+    {
+      "id": "s2",
+      "piste": 808,
+      "start": 3.0560625,
+      "end": 6.5855,
+      "fr": "Sur le plan, le bâtiment est entre la poste et la pharmacie.",
+      "zh": "地图上，那栋楼在邮局和药房之间。"
+    },
+    {
+      "id": "s3",
+      "piste": 808,
+      "start": 6.7855,
+      "end": 9.6995625,
+      "fr": "Une dame me conseille de prendre la deuxième rue à gauche.",
+      "zh": "一位女士建议我在第二条街左转。"
+    },
+    {
+      "id": "s4",
+      "piste": 808,
+      "start": 9.8995625,
+      "end": 13.1619375,
+      "fr": "Je vérifie aussi les horaires, car la mairie ferme à midi.",
+      "zh": "我也查一下办公时间，因为市政厅中午关门。"
+    }
+  ]
+}

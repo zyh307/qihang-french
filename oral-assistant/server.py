@@ -569,7 +569,8 @@ class Bridge:
             self.save()
 
 
-def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
+def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None, *, cookie_name='oral_local',
+             game_private_assets=None):
     cookie = secrets.token_urlsafe(32)
     origins = {f'http://127.0.0.1:{port}', f'http://localhost:{port}'}
     app_client = AppClient(data_dir)
@@ -587,7 +588,7 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
         else:
             if request.host not in {f'127.0.0.1:{port}', f'localhost:{port}'}:
                 return web.json_response({'error': '仅允许从本机访问'}, status=403)
-            if request.path not in ('/', '/api/health') and request.cookies.get('oral_local') != cookie:
+            if request.path not in ('/', '/api/health') and request.cookies.get(cookie_name) != cookie:
                 return web.json_response({'error': '请从首页重新打开'}, status=401)
             if request.method != 'GET' or request.path == '/ws':
                 if request.headers.get('Origin') not in origins:
@@ -608,7 +609,7 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
         response.headers['X-Content-Type-Options'] = 'nosniff'
         response.headers['Referrer-Policy'] = 'no-referrer'
         if request.path == '/':
-            response.set_cookie('oral_local', cookie, httponly=True, samesite='Strict')
+            response.set_cookie(cookie_name, cookie, httponly=True, samesite='Strict')
             response.headers['Content-Security-Policy'] = "default-src 'self'; connect-src 'self' ws://127.0.0.1:* ws://localhost:*; media-src 'self' blob:; style-src 'self'; script-src 'self'; frame-ancestors 'none'"
         return response
 
@@ -633,11 +634,18 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     app.cleanup_ctx.append(lifecycle)
 
     async def index(request):
+        if request.query.get('desktop') == '1':
+            shell = ROOT / '.desktop' / 'desktop.html'
+            if not shell.is_file():
+                return web.Response(status=503, text='请在项目根目录运行 node scripts/build-lecture.mjs，再刷新朗读页。')
+            return web.FileResponse(shell)
         return web.FileResponse(ROOT / 'web' / 'index.html')
 
     async def asset(request):
         name = request.match_info['name']
-        if name not in ('app.js', 'style.css', 'capture.js'):
+        if name in ('desktop.js', 'desktop.css', 'opening-comic.png'):
+            return web.FileResponse(ROOT / '.desktop' / name)
+        if name not in ('app.js', 'style.css', 'capture.js', 'practice-audio-gate.js'):
             raise web.HTTPNotFound()
         return web.FileResponse(ROOT / 'web' / name)
 
@@ -658,7 +666,7 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     async def bootstrap(request):
         await app['french_asr'].refresh()
         return web.json_response({'build': BUILD, 'provider': app['provider'].state,
-                                  'capabilities':{'confirm_transcript':True,'independent_fr':True},
+                                  'capabilities':{'confirm_transcript':True,'independent_fr':True,'unit_practice':True,'lecture':True},
                                   'french_asr':app['french_asr'].state,
                                   'local_asr':app['local_asr'].state,
                                   'stages': STAGES, 'scenes': SCENES, 'sessions': app['store'].listing(),
@@ -783,6 +791,16 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None):
     app.router.add_post('/api/sessions/{sid}/evaluation', evaluate)
     app.router.add_get('/api/sessions/{sid}/audio/{name}', recording)
     app.router.add_get('/ws', ws_handler)
+    from unit_practice import install
+    install(app, data_dir)
+    from lecture import install as install_lecture
+    install_lecture(app, data_dir)
+    from daily_practice import install as install_daily_practice
+    install_daily_practice(app, data_dir)
+    from game_private_art import install as install_game_art
+    install_game_art(app, game_private_assets, app_client.allowed)
+    from game_private_radio import install as install_game_radio
+    install_game_radio(app, game_private_assets, app_client.allowed)
     return app
 
 

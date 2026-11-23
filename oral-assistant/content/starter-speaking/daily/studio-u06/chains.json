@@ -1,0 +1,108 @@
+{
+  "lesson_id": "studio-u06",
+  "version": 1,
+  "label": "Inspire 1 · Unité 6 原创拓展",
+  "title": {
+    "fr": "Raconter une expérience",
+    "zh": "讲述一次经历"
+  },
+  "source": "Inspire 1 · Unité 6 主题拓展 · 原创示范（合成）",
+  "chains": [
+    {
+      "id": "chain-1",
+      "groups": [
+        "Hier après le travail",
+        "j’ai rencontré Nina devant la grande gare."
+      ],
+      "pause_after_words": [
+        4
+      ],
+      "short_groups": [
+        "Hier après le travail",
+        "j’ai rencontré Nina devant la grande gare."
+      ],
+      "demo_wav": "studio-u06-chain-1.wav",
+      "short_demo_wav": "studio-u06-chain-1.wav"
+    },
+    {
+      "id": "chain-2",
+      "groups": [
+        "Ce matin nous avons pris le train",
+        "pour visiter une ville."
+      ],
+      "pause_after_words": [
+        7
+      ],
+      "short_groups": [
+        "Ce matin nous avons pris le train",
+        "pour visiter une ville."
+      ],
+      "demo_wav": "studio-u06-chain-2.wav",
+      "short_demo_wav": "studio-u06-chain-2.wav"
+    },
+    {
+      "id": "chain-3",
+      "groups": [
+        "On a acheté trois pommes",
+        "et un sandwich près du parc."
+      ],
+      "pause_after_words": [
+        5
+      ],
+      "short_groups": [
+        "On a acheté trois pommes",
+        "et un sandwich près du parc."
+      ],
+      "demo_wav": "studio-u06-chain-3.wav",
+      "short_demo_wav": "studio-u06-chain-3.wav"
+    },
+    {
+      "id": "chain-4",
+      "groups": [
+        "Je suis rentré assez tôt",
+        "parce que le dernier bus partait bientôt."
+      ],
+      "pause_after_words": [
+        5
+      ],
+      "short_groups": [
+        "Je suis rentré assez tôt",
+        "parce que le dernier bus partait bientôt."
+      ],
+      "demo_wav": "studio-u06-chain-4.wav",
+      "short_demo_wav": "studio-u06-chain-4.wav"
+    },
+    {
+      "id": "chain-5",
+      "groups": [
+        "Pendant les vacances",
+        "notre famille a passé trois jours à Lyon."
+      ],
+      "pause_after_words": [
+        3
+      ],
+      "short_groups": [
+        "Pendant les vacances",
+        "notre famille a passé trois jours à Lyon."
+      ],
+      "demo_wav": "studio-u06-chain-5.wav",
+      "short_demo_wav": "studio-u06-chain-5.wav"
+    },
+    {
+      "id": "chain-6",
+      "groups": [
+        "Nous avons pris beaucoup de photos",
+        "devant le petit musée."
+      ],
+      "pause_after_words": [
+        6
+      ],
+      "short_groups": [
+        "Nous avons pris beaucoup de photos",
+        "devant le petit musée."
+      ],
+      "demo_wav": "studio-u06-chain-6.wav",
+      "short_demo_wav": "studio-u06-chain-6.wav"
+    }
+  ]
+}

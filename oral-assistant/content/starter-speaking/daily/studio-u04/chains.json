@@ -1,0 +1,108 @@
+{
+  "lesson_id": "studio-u04",
+  "version": 1,
+  "label": "Inspire 1 · Unité 4 原创拓展",
+  "title": {
+    "fr": "Préparer une sortie",
+    "zh": "约时间与安排出行"
+  },
+  "source": "Inspire 1 · Unité 4 主题拓展 · 原创示范（合成）",
+  "chains": [
+    {
+      "id": "chain-1",
+      "groups": [
+        "Pour samedi matin",
+        "est-ce que tu veux venir au musée avec moi ?"
+      ],
+      "pause_after_words": [
+        3
+      ],
+      "short_groups": [
+        "Pour samedi matin",
+        "est-ce que tu veux venir au musée avec moi ?"
+      ],
+      "demo_wav": "studio-u04-chain-1.wav",
+      "short_demo_wav": "studio-u04-chain-1.wav"
+    },
+    {
+      "id": "chain-2",
+      "groups": [
+        "On se donne rendez-vous à huit heures",
+        "devant le cinéma du quartier."
+      ],
+      "pause_after_words": [
+        8
+      ],
+      "short_groups": [
+        "On se donne rendez-vous à huit heures",
+        "devant le cinéma du quartier."
+      ],
+      "demo_wav": "studio-u04-chain-2.wav",
+      "short_demo_wav": "studio-u04-chain-2.wav"
+    },
+    {
+      "id": "chain-3",
+      "groups": [
+        "On se retrouve près de la gare",
+        "à trois heures et demie."
+      ],
+      "pause_after_words": [
+        7
+      ],
+      "short_groups": [
+        "On se retrouve près de la gare",
+        "à trois heures et demie."
+      ],
+      "demo_wav": "studio-u04-chain-3.wav",
+      "short_demo_wav": "studio-u04-chain-3.wav"
+    },
+    {
+      "id": "chain-4",
+      "groups": [
+        "Je prends le bus de midi",
+        "et je marche jusqu’au parc."
+      ],
+      "pause_after_words": [
+        6
+      ],
+      "short_groups": [
+        "Je prends le bus de midi",
+        "et je marche jusqu’au parc."
+      ],
+      "demo_wav": "studio-u04-chain-4.wav",
+      "short_demo_wav": "studio-u04-chain-4.wav"
+    },
+    {
+      "id": "chain-5",
+      "groups": [
+        "Tu peux venir avec ton frère",
+        "il reste deux places libres."
+      ],
+      "pause_after_words": [
+        6
+      ],
+      "short_groups": [
+        "Tu peux venir avec ton frère",
+        "il reste deux places libres."
+      ],
+      "demo_wav": "studio-u04-chain-5.wav",
+      "short_demo_wav": "studio-u04-chain-5.wav"
+    },
+    {
+      "id": "chain-6",
+      "groups": [
+        "La piscine ouvre le dimanche",
+        "mais elle ferme assez tôt."
+      ],
+      "pause_after_words": [
+        5
+      ],
+      "short_groups": [
+        "La piscine ouvre le dimanche",
+        "mais elle ferme assez tôt."
+      ],
+      "demo_wav": "studio-u04-chain-6.wav",
+      "short_demo_wav": "studio-u04-chain-6.wav"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {Zip,ZipDeflate} from 'fflate';
 import {createReadStream,createWriteStream} from 'node:fs';
 import {once} from 'node:events';
+import {isPrivateAssetPath} from './private-assets.mjs';
 
 const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const appName=JSON.parse(await fs.readFile(path.join(app,'src/manifest.json'),'utf8')).name;
@@ -15,10 +16,10 @@ await fs.access(path.join(app,'dist/build/h5/index.html'));
 const dictionaryAudioIndex=JSON.parse(await fs.readFile(path.join(app,'dist/build/h5/static/lexicon/audio/index.json'),'utf8'));
 const dictionaryAudioFiles=new Set(Object.values(dictionaryAudioIndex.entries).map(clip=>clip.file));
 await fs.mkdir(output,{recursive:true});
-for(const file of desktopManifest.files){const target=path.join(output,file.name);await fs.mkdir(path.dirname(target),{recursive:true});await fs.copyFile(path.join(desktop,file.name),target);}
+for(const file of desktopManifest.files){if(isPrivateAssetPath(file.name))continue;const target=path.join(output,file.name);await fs.mkdir(path.dirname(target),{recursive:true});await fs.copyFile(path.join(desktop,file.name),target);}
 // Replace only the generated web resources; never copy browser profiles or backups.
 if((await fs.realpath(output)).toLowerCase()!==output.toLowerCase())throw new Error('分享目录不能指向项目外部');
-await fs.cp(path.join(app,'native/build/windows-host'),path.join(output,'口语运行'),{recursive:true});
+await fs.cp(path.join(app,'native/build/windows-host'),path.join(output,'口语运行'),{recursive:true,filter:source=>!isPrivateAssetPath(path.relative(app,source))});
 // Model weights are a separate Release asset. Remove only our old generated
 // bundle directory so rebuilding over an earlier share package cannot leak it.
 const oldModels=path.join(output,'口语运行/models');
@@ -32,7 +33,7 @@ await fs.rm(path.join(output,'口语运行/extra-audio-manifest.json'),{force:tr
 const previousWeb=await fs.lstat(web).catch(error=>{if(error.code!=='ENOENT')throw error;return null;});
 if(path.dirname(web)!==output||previousWeb?.isSymbolicLink())throw new Error('网页资源路径无效');
 await fs.rm(web,{recursive:true,force:true});
-await fs.cp(path.join(app,'dist/build/h5'),web,{recursive:true,filter:source=>!/[\\/]static[\\/]lexicon[\\/]audio[\\/][a-f0-9]{64}\.mp3$/.test(source)||dictionaryAudioFiles.has(path.basename(source))});
+await fs.cp(path.join(app,'dist/build/h5'),web,{recursive:true,filter:source=>!isPrivateAssetPath(path.relative(app,source))&&(!/[\\/]static[\\/]lexicon[\\/]audio[\\/][a-f0-9]{64}\.mp3$/.test(source)||dictionaryAudioFiles.has(path.basename(source)))});
 const start=await fs.readFile(path.join(app,'launcher/start.bat'),'utf8');
 await fs.writeFile(path.join(output,startName),start.replace(/\r?\n/g,'\r\n'),'utf8');
 await fs.copyFile(path.join(app,'SOURCES.md'),path.join(output,'SOURCES.md'));
@@ -51,6 +52,7 @@ let streamError;stream.on('error',error=>{streamError=error;});
 const zipper=new Zip((error,bytes,final)=>{if(error)throw error;stream.write(bytes);if(final)stream.end();});
 let count=0;
 async function addFile(relative){
+ if(isPrivateAssetPath(relative))return;
  const entry=new ZipDeflate(appName+'/'+relative.replaceAll('\\','/'),{level:relative.endsWith('.cab')?0:1});zipper.add(entry);count++;
  for await(const bytes of createReadStream(path.join(output,relative),{highWaterMark:256*1024})){
   if(streamError)throw streamError;entry.push(bytes,false);if(stream.writableNeedDrain)await once(stream,'drain');
@@ -60,6 +62,7 @@ async function addFile(relative){
 async function addWeb(directory='网页'){
   for(const entry of await fs.readdir(path.join(output,directory),{withFileTypes:true})){
     const relative=path.join(directory,entry.name);
+    if(isPrivateAssetPath(relative))continue;
     if(entry.isSymbolicLink())throw new Error('分享资源不能包含外部链接');
     if(entry.isDirectory())await addWeb(relative);else await addFile(relative);
   }

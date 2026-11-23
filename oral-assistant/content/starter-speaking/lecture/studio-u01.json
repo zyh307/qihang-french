@@ -1,0 +1,47 @@
+{
+  "id": "studio-u01",
+  "unit": 1,
+  "lesson": 1,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 801,
+  "title": {
+    "fr": "Se rencontrer en classe",
+    "zh": "初次见面与课堂"
+  },
+  "source": "Inspire 1 · Unité 1 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 801,
+      "start": 0.0,
+      "end": 3.3785,
+      "fr": "Bonjour, je suis Nora et je viens pour le cours de français.",
+      "zh": "你好，我是诺拉，我来上法语课。"
+    },
+    {
+      "id": "s2",
+      "piste": 801,
+      "start": 3.5785,
+      "end": 6.6203125,
+      "fr": "Dans mon sac, j’ai un cahier bleu et deux stylos noirs.",
+      "zh": "我的包里有一本蓝色笔记本和两支黑色笔。"
+    },
+    {
+      "id": "s3",
+      "piste": 801,
+      "start": 6.8203125,
+      "end": 9.6879375,
+      "fr": "À la fin du cours, je dis au revoir à mes voisins.",
+      "zh": "下课时，我向旁边的同学道别。"
+    },
+    {
+      "id": "s4",
+      "piste": 801,
+      "start": 9.8879375,
+      "end": 13.6611875,
+      "fr": "Demain, je retrouve la classe devant la petite salle du premier étage.",
+      "zh": "明天我在一楼的小教室门口和同学会合。"
+    }
+  ]
+}

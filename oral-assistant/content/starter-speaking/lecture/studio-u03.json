@@ -1,0 +1,47 @@
+{
+  "id": "studio-u03",
+  "unit": 3,
+  "lesson": 8,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 803,
+  "title": {
+    "fr": "Présenter ses proches",
+    "zh": "介绍亲友"
+  },
+  "source": "Inspire 1 · Unité 3 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 803,
+      "start": 0.0,
+      "end": 2.9605,
+      "fr": "Voici une photo de ma famille prise près de la maison.",
+      "zh": "这是一张在家附近拍的全家福。"
+    },
+    {
+      "id": "s2",
+      "piste": 803,
+      "start": 3.1605,
+      "end": 6.5041875,
+      "fr": "Ma sœur Clara porte un manteau vert et une écharpe jaune.",
+      "zh": "我妹妹克拉拉穿着绿色大衣，戴着黄色围巾。"
+    },
+    {
+      "id": "s3",
+      "piste": 803,
+      "start": 6.7041875,
+      "end": 10.419375,
+      "fr": "Notre grand-père aime les trains et parle souvent de sa ville.",
+      "zh": "我们的爷爷喜欢火车，经常讲起自己的城市。"
+    },
+    {
+      "id": "s4",
+      "piste": 803,
+      "start": 10.619375,
+      "end": 14.67125,
+      "fr": "Le dimanche, nous préparons un repas et nous jouons ensemble après.",
+      "zh": "星期天我们一起做饭，饭后一起玩。"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "studio-u02",
+  "unit": 2,
+  "lesson": 4,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 802,
+  "title": {
+    "fr": "Échanger ses coordonnées",
+    "zh": "交换联系方式"
+  },
+  "source": "Inspire 1 · Unité 2 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 802,
+      "start": 0.0,
+      "end": 3.3088125,
+      "fr": "Ce soir, je rencontre Lina au café près de la gare.",
+      "zh": "今晚我在车站附近的咖啡馆见莉娜。"
+    },
+    {
+      "id": "s2",
+      "piste": 802,
+      "start": 3.5088125,
+      "end": 6.7944375,
+      "fr": "Elle habite à Lille et elle travaille dans une petite librairie.",
+      "zh": "她住在里尔，在一家小书店工作。"
+    },
+    {
+      "id": "s3",
+      "piste": 802,
+      "start": 6.9944375,
+      "end": 10.19875,
+      "fr": "Je note son numéro dans mon téléphone pour lui écrire demain.",
+      "zh": "我把她的号码记在手机里，好明天给她发消息。"
+    },
+    {
+      "id": "s4",
+      "piste": 802,
+      "start": 10.39875,
+      "end": 13.9978125,
+      "fr": "Nous échangeons aussi nos adresses et nous prenons un jus de pomme.",
+      "zh": "我们还交换了地址，喝了一杯苹果汁。"
+    }
+  ]
+}

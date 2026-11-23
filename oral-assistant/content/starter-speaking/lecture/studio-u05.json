@@ -1,0 +1,47 @@
+{
+  "id": "studio-u05",
+  "unit": 5,
+  "lesson": 16,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 805,
+  "title": {
+    "fr": "Décrire son quotidien",
+    "zh": "描述日常与运动"
+  },
+  "source": "Inspire 1 · Unité 5 主题拓展 · 原创示范（合成）",
+  "featured": true,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 805,
+      "start": 0.0,
+      "end": 2.9489375,
+      "fr": "Je commence ma journée à sept heures dans mon petit appartement.",
+      "zh": "我每天七点在自己的小公寓里开始一天。"
+    },
+    {
+      "id": "s2",
+      "piste": 805,
+      "start": 3.1489375,
+      "end": 6.4345625,
+      "fr": "Après le petit déjeuner, je vais à pied au marché du quartier.",
+      "zh": "吃过早餐，我步行去街区的市场。"
+    },
+    {
+      "id": "s3",
+      "piste": 805,
+      "start": 6.6345625,
+      "end": 10.14075,
+      "fr": "Le soir, je retrouve deux amis au gymnase près du pont.",
+      "zh": "傍晚我和两个朋友在桥边的健身馆见面。"
+    },
+    {
+      "id": "s4",
+      "piste": 805,
+      "start": 10.34075,
+      "end": 13.5799375,
+      "fr": "Nous rentrons avant la nuit et je prépare du riz aux légumes.",
+      "zh": "我们天黑前回家，我做一份蔬菜米饭。"
+    }
+  ]
+}

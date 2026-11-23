@@ -21,6 +21,7 @@ french_asr.json
 venv/
 .tools/
 .media/
+.desktop/
 node_modules/
 __pycache__/
 *.py[cod]
@@ -38,3 +39,8 @@ __pycache__/
 *.bin
 测试证据/
 test-results/
+qihang-daily-test-*/
+*.jsonl
+/content/*
+!/content/starter-speaking/
+!/content/starter-speaking/**/*.wav

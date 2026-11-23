@@ -1,0 +1,47 @@
+{
+  "id": "studio-u04",
+  "unit": 4,
+  "lesson": 12,
+  "book": "Inspire 1 · 原创拓展",
+  "piste": 804,
+  "title": {
+    "fr": "Préparer une sortie",
+    "zh": "约时间与安排出行"
+  },
+  "source": "Inspire 1 · Unité 4 主题拓展 · 原创示范（合成）",
+  "featured": false,
+  "sentences": [
+    {
+      "id": "s1",
+      "piste": 804,
+      "start": 0.0,
+      "end": 4.028625,
+      "fr": "Samedi après-midi, Nora et moi cherchons une activité près de chez nous.",
+      "zh": "周六下午，诺拉和我想找个离家近的活动。"
+    },
+    {
+      "id": "s2",
+      "piste": 804,
+      "start": 4.228625,
+      "end": 7.51425,
+      "fr": "Le musée ouvre à deux heures et le billet coûte cinq euros.",
+      "zh": "博物馆两点开门，门票五欧元。"
+    },
+    {
+      "id": "s3",
+      "piste": 804,
+      "start": 7.71425,
+      "end": 11.0695,
+      "fr": "Nous prenons le tram et nous descendons devant le grand jardin.",
+      "zh": "我们坐有轨电车，在大花园前面下车。"
+    },
+    {
+      "id": "s4",
+      "piste": 804,
+      "start": 11.2695,
+      "end": 14.7756875,
+      "fr": "Après la visite, nous retrouvons Lina pour boire un chocolat chaud.",
+      "zh": "参观后，我们和莉娜碰面去喝热巧克力。"
+    }
+  ]
+}
