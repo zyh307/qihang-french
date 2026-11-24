@@ -1,17 +1,41 @@
-// The collection effect must outlive the definition card that triggered it.
-export function finishCollection(element) {
-  if (!element?.cloneNode || !document.body) return;
-  const layer = document.createElement('div'), target = element.cloneNode(true);
-  layer.setAttribute('aria-hidden', 'true');
-  Object.assign(layer.style, {position:'fixed',inset:'0',zIndex:'270',pointerEvents:'none'});
-  target.classList.remove('accepted');
-  target.classList.add('ready');
-  target.style.setProperty('--near', '1');
-  layer.appendChild(target);
-  document.body.appendChild(layer);
-  let timer, frame;
-  const remove = () => { clearTimeout(timer); cancelAnimationFrame(frame); layer.remove(); };
-  target.querySelector('.drop-core')?.addEventListener('animationend', remove, {once:true});
-  frame = requestAnimationFrame(() => target.classList.add('accepted'));
-  timer = setTimeout(remove, 650);
+import {h,render} from 'vue';
+import CollectionAchievement from '../components/CollectionAchievement.vue';
+import {playKnown} from './feedback-sounds.js';
+
+let activeCleanup;
+
+// Acknowledgement belongs to the completed save, not to a mounted card.
+// This callback survives when saving advances a question or closes a sheet.
+export function prepareCollection(){
+ let completed=false;
+ return saved=>{
+  if(completed)return;
+  completed=true;
+  if(saved===true)finishCollection();
+ };
+}
+
+export function finishCollection(){
+ if(!document.body||document.hidden)return;
+ activeCleanup?.();
+ const host=document.createElement('div');
+ let removed=false,timeout;
+ const cleanup=()=>{
+  if(removed)return;
+  removed=true;
+  clearTimeout(timeout);
+  document.removeEventListener('visibilitychange',onVisibility);
+  render(null,host);
+  host.remove();
+  if(activeCleanup===cleanup)activeCleanup=null;
+ };
+ const onVisibility=()=>{if(document.hidden)cleanup();};
+ activeCleanup=cleanup;
+ document.body.appendChild(host);
+ document.addEventListener('visibilitychange',onVisibility);
+ timeout=setTimeout(cleanup,1800);
+ try{
+  render(h(CollectionAchievement,{onFinished:cleanup}),host);
+  playKnown();
+ }catch{cleanup();}
 }

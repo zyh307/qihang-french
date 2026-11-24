@@ -1,19 +1,21 @@
-import catalog from './source-catalog.json' with {type:'json'};
+import sourceCatalog from './source-catalog.json' with {type:'json'};
+import irCatalog from './ir-catalog.json' with {type:'json'};
 import audio from './audio.json' with {type:'json'};
 import ipa from './phonetics.json' with {type:'json'};
 import {conjugationSpeech,speechTextKey} from './speech-text.js';
 import {verbMeanings} from './verb-meanings.js';
+export const catalog={...irCatalog,...sourceCatalog};
 export const PERSONS=['je','tu','il','nous','vous','ils'];
 export const TENSES=[{id:'现在时',fr:'Présent'},{id:'复合过去时',fr:'Passé composé'},{id:'未完成过去时',fr:'Imparfait'}];
 export const defaultPlan=()=>({infinitive:true,tenses:['现在时']});
 export function normalizePlan(value){return {infinitive:value?.infinitive!==false,tenses:[...new Set(Array.isArray(value?.tenses)?value.tenses.filter(t=>TENSES.some(x=>x.id===t)):['现在时'])]};}
-export const lemmaFor=word=>word?.conjugation?.lemma||word?.forms?.map(f=>f.text.normalize('NFC').trim().replace(/[’‘]/g,"'").toLocaleLowerCase('fr')).find(t=>catalog[t])||null;
-export const conjugations=(lemma,tense='现在时')=>catalog[lemma]?.[tense]||{};
+const lemmaKey=value=>speechTextKey(value).toLocaleLowerCase('fr');
+export const lemmaFor=word=>word?.conjugation?.lemma||word?.forms?.map(f=>lemmaKey(f.text)).find(t=>Object.hasOwn(catalog,t))||null;
+export const conjugations=(lemma,tense='现在时')=>catalog[lemmaKey(lemma)]?.[tense]||{};
 export const isVerb=word=>!!word&&!word.conjugation&&(/^(v\.|v$|verb)/i.test(word.pos||'')||/^v[.\s]/i.test(word.sourcePos||''))&&!!lemmaFor(word);
-// Eligibility follows the complete source app, including rendre and confondre.
-export const isSupportedLemma=lemma=>Object.hasOwn(catalog,lemma);
+export const isSupportedLemma=lemma=>Object.hasOwn(catalog,lemmaKey(lemma));
 export const isConjugationVerb=isVerb;
-export const sourceVerbEntries=()=>Object.keys(catalog).map(word=>({id:'conjugation:'+word,word,pos:'v.',meanings:verbMeanings[word].split('；'),ipa:ipa[word]||'',conjugationSource:true}));
+export const sourceVerbEntries=()=>Object.keys(sourceCatalog).map(word=>({id:'conjugation:'+word,word,pos:'v.',meanings:verbMeanings[word].split('；'),ipa:ipa[word]||'',conjugationSource:true}));
 // Compare attested forms, never generate missing forms for the learner.
 const irregularCache=new Map();
 export function isIrregularLemma(lemma){
@@ -53,8 +55,11 @@ export function ensureConjugationCards(data){
  const known=new Map([...Object.entries(data.conjugationWordIds||{}),...decks.map(w=>[w.conjugation.baseWordId+'|'+w.conjugation.tense+'|'+w.conjugation.person,w.id])]);let added=0;
  for(const p of data.library){
   const deck=data.conjugationDecks[lessonId(p)]||=[];
+  // Explicit imported tense memberships must remain backed by active cards,
+  // including records made before import stopped replacing existing plans.
+  for(const w of p.words){const member=data.importedWords?.[lessonId(p)+':'+w.id];if(!member?.units?.tenses?.length||!isConjugationVerb(w))continue;const plan=normalizePlan(w.conjugationPlan),selected=normalizePlan(member.units).tenses;w.conjugationPlan={...plan,tenses:[...new Set([...plan.tenses,...selected])]};}
   const byId=new Map(p.words.map(w=>[w.id,w]));
-  for(const card of deck){const base=byId.get(card.conjugation.baseWordId),c=card.conjugation;card.studyDisabled=!isConjugationVerb(base)||c.lemma!==lemmaFor(base)||conjugations(c.lemma,c.tense)[c.person]!==c.form||!normalizePlan(base?.conjugationPlan).tenses.includes(c.tense);}
+  for(const card of deck){const base=byId.get(card.conjugation.baseWordId),c=card.conjugation;card.studyDisabled=!isConjugationVerb(base)||c.lemma!==lemmaFor(base)||conjugations(c.lemma,c.tense)[c.person]!==c.form||!normalizePlan(base?.conjugationPlan).tenses.includes(c.tense);if(c.lemma==='prendre'&&c.tense==='现在时'&&c.person==='vous'&&c.form==='prenez'){for(const form of card.forms){const text=conjugationSpeech(c.person,c.form);Object.assign(form,recording(text,form.id),{ipa:ipa[speechTextKey(text)]||form.ipa});}}}
   const base=p.words.filter(isConjugationVerb),existing=new Set(deck.map(w=>w.conjugation.baseWordId+'|'+w.conjugation.tense+'|'+w.conjugation.person));let order=Math.max(0,...p.words.map(w=>w.order||0),...deck.map(w=>w.order||0));
   for(const w of base){const lemma=lemmaFor(w),plan=normalizePlan(w.conjugationPlan);
    for(const tense of plan.tenses)for(const person of PERSONS){const form=conjugations(lemma,tense)[person];if(!form||form==='—')continue;const identity=w.id+'|'+tense+'|'+person;if(existing.has(identity))continue;const id=known.get(identity)||allocate();known.set(identity,id);used.add(id);const text=conjugationSpeech(person,form),rec=recording(text,id+'-base');
@@ -72,6 +77,9 @@ export async function prepareConjugationAudio(data,repository,fetcher=fetch){
 }
 
 export function conjugationUnits(data,p){
- const groups=new Map();for(const w of conjugationPracticeWords(data,p)){const c=w.conjugation,key=c.baseWordId+'|'+c.tense;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(w);}
- return [...groups.values()].map(cards=>({cards,w:{...cards[0],sourcePos:'v. · '+cards[0].conjugation.tense,forms:[{...cards[0].forms[0],text:cards[0].conjugation.lemma,audioKey:null}],conjugationUnit:true}}));
+ const groups=new Map();for(const w of conjugationPracticeWords(data,p)){const c=w.conjugation,key=c.lemma+'|'+c.tense;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(w);}
+ return [...groups.values()].map(cards=>{
+  const anchor=cards.find(card=>{const c=card.conjugation,base=c.baseWordId,key=base.includes(':')?base:(card.origin?.lessonKey||lessonId(p))+':'+base,member=data.importedWords?.[key];return member&&(!member.units||member.units.tenses.includes(c.tense));})||cards[0];
+  return {cards,w:{...anchor,sourcePos:'v. · '+anchor.conjugation.tense,forms:[{...anchor.forms[0],text:anchor.conjugation.lemma,audioKey:null}],conjugationUnit:true,conjugationProgressKeys:cards.map(card=>card.origin?.progressKey||lessonId(p)+':'+card.id)}};
+ });
 }

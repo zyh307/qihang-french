@@ -56,22 +56,22 @@ function countdown(readyAt) {
 </template>
 
 <style scoped>
-.town-stock{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 14px;color:#3b4d3c}
-.town-stock span{border-radius:6px;background:#e9efdc;padding:5px 8px}
+.town-stock{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 14px;color:var(--ui-b92a978fd0e0,#3b4d3c)}
+.town-stock span{border-radius:6px;background:var(--ui-e9df8f700601,#e9efdc);padding:5px 8px}
 .shop-list,.farm-grid{padding:0;margin:0;list-style:none}
-.shop-good,.farm-cell{padding:10px;border:1px solid #c9cdb8;border-radius:8px;background:#f9f6e8}
+.shop-good,.farm-cell{padding:10px;border:1px solid var(--ui-1ec16f4e4920,#c9cdb8);border-radius:8px;background:var(--ui-3599ab9684ab,#f9f6e8)}
 .shop-good{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px}
 .shop-good div{display:grid;gap:4px}
 .shop-good span,.town-stock,.farm-help,.farm-cell p,.farm-cell span{font-size:13px}
 .shop-action{text-align:right}
-.shop-action small,.farm-cell small{color:#765036}
+.shop-action small,.farm-cell small{color:var(--ui-df0f0a0596c8,#765036)}
 .farm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .farm-cell div{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.farm-cell[data-stage=planted]{background:#f8f1da}
-.farm-cell[data-stage=watered]{background:#e3eeed;border-color:#bbd3cb}
-.farm-cell[data-stage=ready]{background:#e9f1d2;border-color:#b4c68b}
-.farm-cell p{margin:7px 0;color:#4c5947}
+.farm-cell[data-stage=planted]{background:var(--ui-dc8bea486ed1,#f8f1da)}
+.farm-cell[data-stage=watered]{background:var(--ui-2e82c49ba412,#e3eeed);border-color:var(--ui-f3d22815e80b,#bbd3cb)}
+.farm-cell[data-stage=ready]{background:var(--ui-049cdabb065d,#e9f1d2);border-color:var(--ui-1ae38c5e28be,#b4c68b)}
+.farm-cell p{margin:7px 0;color:var(--ui-07bcbf80e21e,#4c5947)}
 .farm-cell small{display:block;margin-top:5px}
-button{min-height:34px;padding:5px 11px;border-radius:6px;background:#315d45;color:white;font-weight:650}
-button:disabled{background:#e5e5d7;color:#5a5d50;cursor:default}
+button{min-height:34px;padding:5px 11px;border-radius:6px;background:var(--ui-0a37db1b48d0,#315d45);color:white;font-weight:650}
+button:disabled{background:var(--ui-e21b55aabbf9,#e5e5d7);color:var(--ui-a75f9766d7a5,#5a5d50);cursor:default}
 </style>

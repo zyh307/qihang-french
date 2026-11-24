@@ -1,7 +1,10 @@
 import { unzipSync, zipSync } from 'fflate';
+import {unzipAsync} from '../platform/archive.js';
+import {parseJSONText} from '../platform/read-json.js';
 import { packageKey } from './learning.js';
 import { spellingParts, splitNounArticle, wordAudioEntries } from './word-display.js';
 import {correctMasterRow,vocabularyCorrections} from './vocabulary-corrections.js';
+import {applyFormRelations,registerForm,relationGender} from './form-relations.js';
 export const SIMPLE_HEADERS = ['法语单词','词性','中文释义','法语例句','例句翻译','书本出处'];
 export const NUMBERED_HEADERS = ['音频编号',...SIMPLE_HEADERS];
 export const MASTER_HEADERS = ['课次','序号','法语','音标','词性','中文','例句','音频','真人音频','状态'];
@@ -20,14 +23,14 @@ export function numberedAudioCandidates(word,form,lessonId) {
   if(!shared)return [];
   const names=[];
   // Previously distributed packages can still provide separate m/f recordings.
-  if(word.forms.length>1&&form.gender){
+  if(word.forms.length>1&&(form.gender||registerForm(word,form))){
     const separate=`${word.audioNumber}-${audioSuffix(word,form)}.mp3`;
     names.push(separate,...(lessonId?[`${lessonId}_${separate}`]:[]));
   }
   names.push(shared,...(lessonId?[`${lessonId}_${shared}`]:[]));
   return names;
 }
-const audioSuffix=(word,form)=>word.forms.filter(f=>f.gender===form.gender)[0]===form?form.gender:'base';
+const audioSuffix=(word,form)=>registerForm(word,form)?form.id?.match(/-(m|f)$/u)?.[1]||(word.forms.indexOf(form)===0?'m':'f'):word.forms.filter(f=>f.gender===form.gender)[0]===form?form.gender:'base';
 export const HEADERS = ['主词条ID', '形式ID', '法语形式', '词性', '性别', '中文释义', '是否考试', '音频文件', '音标', '法语例句', '例句翻译', '书本出处', '变化说明', '题目限定', '课内顺序'];
 export const POS = ['n.', 'adj.', 'v.', 'adv.', 'prép.', 'pron.', 'art.', 'conj.', 'interj.', 'loc.', 'num.'];
 const fail = s => { throw new Error(s); };
@@ -58,8 +61,9 @@ export function validateLesson(p) {
       if (!new RegExp(`^${w.id}-(m|f|base|v[1-9][0-9]*)$`).test(f.id) || forms.has(f.id)) fail(`${where}.id：形式编号无效或重复 / ID de forme invalide.`); forms.add(f.id);
       if (!nonempty(f.text) || typeof f.tested !== 'boolean' || !['m', 'f', null].includes(f.gender)) fail(`${where}：形式、性别或考试标记错误 / Forme, genre ou indicateur invalide.`);
       const article=w.pos==='n.'?splitNounArticle(f.text):null;
+      const historicalRegisterId=f.gender===null&&!!registerForm(w,f);
       if(article?.prefix&&!article.answer)fail(`${where}.text：冠词后需填写名词 / Ajoutez le nom après l’article.`);
-      if ((w.pos === 'n.' && !f.gender && !article.prefix) || (f.id.endsWith('-m') && f.gender !== 'm') || (f.id.endsWith('-f') && f.gender !== 'f') || (article?.gender&&f.gender&&article.gender!==f.gender)) fail(`${where}.gender：请检查冠词、性别与编号 / Vérifiez l’article, le genre et l’identifiant.`);
+      if ((w.pos === 'n.' && !f.gender && !article.prefix) || (!historicalRegisterId&&f.id.endsWith('-m')&&f.gender!=='m') || (!historicalRegisterId&&f.id.endsWith('-f')&&f.gender!=='f') || (article?.gender&&f.gender&&article.gender!==f.gender)) fail(`${where}.gender：请检查冠词、性别与编号 / Vérifiez l’article, le genre et l’identifiant.`);
       if (f.audio !== null && (typeof f.audio !== 'string' || !/^audio\/[A-Za-z0-9_-]+\.mp3$/.test(f.audio))) fail(`${where}.audio：音频路径错误 / Chemin audio invalide.`);
       if (f.example !== undefined && (!nonempty(f.example?.fr) || (f.example.zh!==undefined&&typeof f.example.zh!=='string'))) fail(`${where}.example：例句或翻译格式错误 / Phrase ou traduction invalide.`);
       if(f.example?.audio!==undefined&&f.example.audio!==null&&!/^audio\/[A-Za-z0-9_-]+\.mp3$/.test(f.example.audio))fail(`${where}.example.audio：例句录音路径错误 / Audio de phrase invalide.`);
@@ -93,7 +97,7 @@ export function rowsToLesson(rows, meta, files = {}, library = []) {
 }
 const literal=s=>String(s||'').normalize('NFC').trim().toLocaleLowerCase('fr').replace(/\s+/g,' ');
 const compatibleGender=(pos,a,b)=>a===b||(pos==='n.'&&(!a||!b));
-const identity=w=>JSON.stringify([w.pos,[...w.meanings].sort(),w.forms.map(f=>[f.gender,literal(spellingParts(w,f).answer)]).sort()]);
+const identity=w=>JSON.stringify([w.pos,[...w.meanings].sort(),w.forms.map(f=>[relationGender(w,f),literal(spellingParts(w,f).answer)]).sort()]);
 const audioStem=(word,form)=>spellingParts(word,form).answer.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 export function simpleAudioName(word,form){
   const stem=audioStem(word,form),shared=word.forms.some(f=>f!==form&&audioStem(word,f)===stem);
@@ -130,11 +134,11 @@ export function simpleRowsToLesson(rows,meta,files={},library=[]){
       w.forms[1].tested=!regular;w.patternNote=regular?'阴性加 e，只考阳性 / Féminin en -e, masculin évalué':'两种形式分别考 / Deux formes à pratiquer';
     }
     const signature=identity(w);if(seen.has(signature))fail(`${at}：本课词条重复 / Mot en double dans cette leçon.`);seen.add(signature);
-    const old=registry.get(signature)||existingWords.find(candidate=>candidate.pos===w.pos&&JSON.stringify([...candidate.meanings].sort())===JSON.stringify([...w.meanings].sort())&&candidate.forms.some(a=>w.forms.some(b=>compatibleGender(w.pos,a.gender,b.gender)&&literal(spellingParts(candidate,a).answer)===literal(spellingParts(w,b).answer))));
+    const old=registry.get(signature)||existingWords.find(candidate=>candidate.pos===w.pos&&JSON.stringify([...candidate.meanings].sort())===JSON.stringify([...w.meanings].sort())&&candidate.forms.some(a=>w.forms.some(b=>compatibleGender(w.pos,relationGender(candidate,a),relationGender(w,b))&&literal(spellingParts(candidate,a).answer)===literal(spellingParts(w,b).answer))));
     w.id=old?.id||nextId();if(old)w.meanings=[...old.meanings];
     const matchedOldForms=new Set();
     w.forms.forEach(f=>{
-      const candidates=(old?.forms||[]).filter(o=>!matchedOldForms.has(o.id)&&compatibleGender(w.pos,o.gender,f.gender)&&literal(spellingParts(old,o).answer)===literal(spellingParts(w,f).answer));
+      const candidates=(old?.forms||[]).filter(o=>!matchedOldForms.has(o.id)&&compatibleGender(w.pos,relationGender(old,o),relationGender(w,f))&&literal(spellingParts(old,o).answer)===literal(spellingParts(w,f).answer));
       const exactGender=candidates.filter(o=>o.gender===f.gender);
       const previous=exactGender.length===1?exactGender[0]:candidates.length===1?candidates[0]:null;
       if(previous){matchedOldForms.add(previous.id);if(!f.gender&&previous.gender)f.gender=previous.gender;}
@@ -145,6 +149,7 @@ export function simpleRowsToLesson(rows,meta,files={},library=[]){
     const fr=cell(3),zh=cell(4);if(Boolean(fr)!==Boolean(zh))fail(`${at}：例句和翻译须同时填写 / Phrase et traduction requises.`);
     if(fr)w.forms[0].example={fr,zh};if(cell(5))w.forms[0].source=cell(5);words.push(w);
   });
+  for(const word of words)applyFormRelations(word);
   return validateLesson({schemaVersion:1,book:{id:'inspire1',title:'Inspire 1'},lesson:{id:meta.id,title:meta.title,order:Number(meta.order),version:Number(meta.version)},words});
 }
 function resolveAudioFile(files,name){
@@ -237,21 +242,28 @@ export function masterRowsToLesson(rows,meta,files={},library=[]){
     w.sourceAudio=filename;
     const audio=resolveAudioFile(files,filename);
     for(const f of w.forms){
-      const separate=f.gender?resolveAudioFile(files,filename.slice(0,-4)+'-'+audioSuffix(w,f)+'.mp3'):null;
+      const separate=f.gender||registerForm(w,f)?resolveAudioFile(files,filename.slice(0,-4)+'-'+audioSuffix(w,f)+'.mp3'):null;
       f.audio=separate||audio;
     }
   });
+  for(const word of p.words)applyFormRelations(word);
   return validateLesson(attachExampleResources(p,files));
 }
-export function unpack(bytes,limits={}) {
+function zipOptions(bytes,limits={},extract=true) {
   if (bytes.length > (limits.compressed||200 * 1024 * 1024)) fail('压缩包过大 / Archive trop volumineuse.');
   let total = 0; const seen = new Set();
-  return unzipSync(bytes, { filter: e => {
+  return { filter: e => {
     if (seen.has(e.name) || e.name.startsWith('/') || /^[A-Za-z]:/.test(e.name) || e.name.includes('\\') || e.name.split('/').includes('..')) fail('压缩包路径无效或重复 / Chemin invalide dans le ZIP.');
     seen.add(e.name); total += e.originalSize;
     if (total > (limits.total||500 * 1024 * 1024) || e.originalSize > (limits.file||20 * 1024 * 1024) || seen.size > (limits.entries||10000)) fail('解压内容过大 / Contenu décompressé trop volumineux.');
-    return true;
-  } });
+    return extract;
+  } };
+}
+export function unpack(bytes,limits={}){return unzipSync(bytes,zipOptions(bytes,limits));}
+export async function unpackAsync(bytes,limits={}){
+  // Validate every path/size before dispatching decompression; preflight extracts nothing.
+  unzipSync(bytes,zipOptions(bytes,limits,false));
+  return unzipAsync(bytes);
 }
 export async function parseImport(file, meta, library = []) {
   let audioFile;
@@ -264,17 +276,17 @@ export async function parseImport(file, meta, library = []) {
   const bytes = new Uint8Array(await file.arrayBuffer());
   const ext = file.name.toLowerCase().split('.').pop();
   let pkg, files = {};
-  if(audioFile){if(file.size+audioFile.size>200*1024*1024)fail('资料总大小超过 200 MB / Fichiers trop volumineux.');files=unpack(new Uint8Array(await audioFile.arrayBuffer()));}
-  if (ext === 'json') pkg = JSON.parse(new TextDecoder().decode(bytes));
+  if(audioFile){if(file.size+audioFile.size>200*1024*1024)fail('资料总大小超过 200 MB / Fichiers trop volumineux.');files=await unpackAsync(new Uint8Array(await audioFile.arrayBuffer()));}
+  if (ext === 'json') pkg = await parseJSONText(new TextDecoder().decode(bytes));
   else if (ext === 'xlsx') pkg = await parseExcel(bytes, meta, files, library);
   else if (ext === 'zip') {
-    files = unpack(bytes);
+    files = await unpackAsync(bytes);
     const workbooks=Object.keys(files).filter(name=>/\.xlsx$/i.test(name)&&!name.split('/').at(-1).startsWith('~$'));
     const json = files['lesson.json'], xlsx = workbooks.length===1?files[workbooks[0]]:null;
     if (Boolean(json) === Boolean(xlsx)||workbooks.length>1) fail('ZIP 中需有一份词表 Excel 或 lesson.json / Un seul fichier de contenu.');
-    pkg = json ? JSON.parse(new TextDecoder().decode(json)) : await parseExcel(xlsx, meta, files, library);
+    pkg = json ? await parseJSONText(new TextDecoder().decode(json)) : await parseExcel(xlsx, meta, files, library);
   } else fail('请选择 ZIP、XLSX 或 JSON / Choisissez ZIP, XLSX ou JSON.');
-  attachExampleResources(pkg,files);validateLesson(pkg);
+  attachExampleResources(pkg,files);for(const word of pkg.words)applyFormRelations(word);validateLesson(pkg);
   delete pkg.demo;
   const assets = [], warnings = [], cached = new Map();
   for (const w of pkg.words) {

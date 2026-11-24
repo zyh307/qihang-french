@@ -38,7 +38,8 @@ const frenchMonth=computed(()=>new Intl.DateTimeFormat('fr-FR',{month:'long',yea
 const selectedFrench=computed(()=>new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(`${selected.value}T12:00:00`)));
 const record=computed(()=>({words:[],reviews:[],attempts:0,correct:0,...props.activity[selected.value]}));
 const words=computed(()=>record.value.words.map(id=>{
-  const [book,wid,tense]=id.split(':'),p=props.library.find(p=>p.book.id===book&&p.words.some(w=>w.id===wid)),base=p?.words.find(w=>w.id===wid);
+  const [book,part,detail]=id.split(':'),full=/^w\d{6}$/.test(detail||''),wid=full?detail:part,tense=full?null:detail;
+  const p=props.library.find(item=>item.book.id===book&&(!full||item.lesson.id===part)&&item.words.some(word=>word.id===wid)),base=p?.words.find(word=>word.id===wid);
   const lemma=tense&&base?lemmaFor(base):null;
   const w=lemma?{...base,conjugationUnit:true,conjugation:{lemma,tense,baseWordId:base.id}}:base;
   return{id,package:p,word:w,text:lemma?`${lemma} · ${tense}`:w?w.forms.map(f=>displayForm(w,f)).join(' / '):wid,meaning:w?.meanings.join('；')||'词条已归档 · Entrée archivée',label:p?`${p.book.title} · ${p.lesson.id}`:book};

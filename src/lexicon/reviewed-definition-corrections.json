@@ -3157,7 +3157,7 @@
     "previousMeanings": [
       "面团布丁"
     ],
-    "previousPrimary": "面团布丁"
+    "previousPrimary": "肉汁奶酪薯条"
   },
   "location": {
     "meaning": "租赁，出租",
@@ -5681,5 +5681,687 @@
       "打猎者，猎人chasseur",
       "猎人chasseur"
     ]
+  },
+  "pot": {
+    "meaning": "罐",
+    "meanings": [
+      "罐",
+      "花盆",
+      "锅"
+    ],
+    "previousMeanings": [
+      "盆"
+    ],
+    "previousPrimary": "盆"
+  },
+  "boite": {
+    "meaning": "盒子",
+    "meanings": [
+      "盒子",
+      "罐头",
+      "公司（口语）"
+    ],
+    "previousMeanings": [
+      "boîte的1990年后拼写"
+    ],
+    "previousPrimary": "boîte的1990年后拼写",
+    "invalidMeanings": [
+      "boîte的1990年后拼写"
+    ]
+  },
+  "gobelet": {
+    "meaning": "无柄杯",
+    "meanings": [
+      "无柄杯"
+    ],
+    "previousMeanings": [
+      "烟火筒"
+    ],
+    "previousPrimary": "烟火筒",
+    "invalidMeanings": [
+      "烟火筒"
+    ]
+  },
+  "gentil": {
+    "meaning": "亲切的，友善的",
+    "meanings": [
+      "亲切的，友善的",
+      "乖的"
+    ],
+    "previousMeanings": [
+      "和谐的"
+    ],
+    "previousPrimary": "和谐的",
+    "invalidMeanings": [
+      "和谐的"
+    ]
+  },
+  "primeur": {
+    "meaning": "初上市的时鲜",
+    "meanings": [
+      "初上市的时鲜",
+      "抢先，优先",
+      "果蔬商"
+    ],
+    "previousMeanings": [
+      "崭新"
+    ],
+    "previousPrimary": "崭新",
+    "invalidMeanings": [
+      "崭新"
+    ]
+  },
+  "rayon": {
+    "meaning": "商品区",
+    "meanings": [
+      "商品区",
+      "光线",
+      "半径"
+    ],
+    "previousMeanings": [
+      "光线"
+    ],
+    "previousPrimary": "光线"
+  },
+  "rapporteur": {
+    "meaning": "报告人",
+    "meanings": [
+      "报告人",
+      "量角器",
+      "爱打小报告的人"
+    ],
+    "previousMeanings": [
+      "记者"
+    ],
+    "previousPrimary": "记者",
+    "invalidMeanings": [
+      "记者"
+    ]
+  },
+  "formidable": {
+    "meaning": "极好的，了不起的",
+    "meanings": [
+      "极好的，了不起的",
+      "可怕的"
+    ],
+    "previousMeanings": [
+      "非常的"
+    ],
+    "previousPrimary": "非常的",
+    "invalidMeanings": [
+      "非常的"
+    ]
+  },
+  "vocation": {
+    "meaning": "志向，使命感",
+    "meanings": [
+      "志向，使命感",
+      "天职"
+    ],
+    "previousMeanings": [
+      "职业"
+    ],
+    "previousPrimary": "职业",
+    "invalidMeanings": [
+      "职业"
+    ]
+  },
+  "forfait": {
+    "meaning": "弃权",
+    "meanings": [
+      "弃权",
+      "包价，套餐",
+      "承包"
+    ],
+    "previousMeanings": [
+      "承包"
+    ],
+    "previousPrimary": "承包"
+  },
+  "menu": {
+    "meaning": "菜单",
+    "meanings": [
+      "菜单",
+      "套餐",
+      "细小的"
+    ],
+    "previousMeanings": [
+      "瘦的"
+    ],
+    "previousPrimary": "瘦的",
+    "invalidMeanings": [
+      "瘦的"
+    ]
+  },
+  "numéro": {
+    "meaning": "号码，编号",
+    "meanings": [
+      "号码，编号",
+      "期号",
+      "节目"
+    ],
+    "previousMeanings": [
+      "数字"
+    ],
+    "previousPrimary": "数字"
+  },
+  "technique": {
+    "meaning": "技术，技巧",
+    "meanings": [
+      "技术，技巧",
+      "技术上的"
+    ],
+    "previousMeanings": [
+      "技术上的"
+    ],
+    "previousPrimary": "技术上的"
+  },
+  "sensibilité": {
+    "meaning": "敏感，感受力",
+    "meanings": [
+      "敏感，感受力",
+      "灵敏度"
+    ],
+    "previousMeanings": [
+      "感觉",
+      "灵敏度"
+    ],
+    "previousPrimary": "感觉"
+  },
+  "frustration": {
+    "meaning": "挫败感",
+    "meanings": [
+      "挫败感"
+    ],
+    "previousMeanings": [
+      "失望"
+    ],
+    "previousPrimary": "失望",
+    "invalidMeanings": [
+      "失望"
+    ]
+  },
+  "joindre": {
+    "meaning": "联系",
+    "meanings": [
+      "联系",
+      "连接，接合",
+      "附上"
+    ],
+    "previousMeanings": [
+      "加入",
+      "接合",
+      "加上"
+    ],
+    "previousPrimary": "加入"
+  },
+  "attention": {
+    "meaning": "当心，注意",
+    "meanings": [
+      "当心，注意",
+      "专心，留意",
+      "体贴，关心"
+    ],
+    "previousMeanings": [
+      "n.f. 当心，专心，注意，细心；〈书〉亲切，殷勤，体贴interj. ~! 当心!小心!A~　la voiture! 当心车子!"
+    ],
+    "previousPrimary": "亲切，殷勤，体贴interj. ~! 当心!小心!A~　la voiture! 当心车子!"
+  },
+  "cesse": {
+    "meaning": "停歇",
+    "meanings": [
+      "停歇",
+      "不停地（sans cesse）"
+    ],
+    "previousMeanings": [
+      "n.f. n'avoir （pas，point） de ~ que（+subj.） 〈书〉在...之前不停止，在...之前不休息sans ~ 不停地，不断地"
+    ],
+    "previousPrimary": "n'avoir  de ~ que 在...之前不停止，在...之前不休息sans ~ 不停地，不断地"
+  },
+  "conquis": {
+    "meaning": "征服了",
+    "meanings": [
+      "征服了",
+      "被打动的",
+      "放肆地（en pays conquis）"
+    ],
+    "previousMeanings": [
+      "adj. Se conduire comme en pays ~ （在别人家里）无所顾忌，肆无忌惮，随心所欲"
+    ],
+    "previousPrimary": "Se conduire comme en pays ~ 无所顾忌，肆无忌惮，随心所欲"
+  },
+  "capturer": {
+    "meaning": "捕获，逮住",
+    "meanings": [
+      "捕获，逮住"
+    ],
+    "previousMeanings": [
+      "v.t. 捕获，逮住:capturer vivants des ennemis 活捉一些敌人； capturer un animal feroce 捕获一头猛兽； capturer un navire ennemi ［喻］捕获一艘敌船 ；捕捉（制动，掣子，按钮）"
+    ],
+    "previousPrimary": "捕获，逮住:capturer vivants des ennemis 活捉一些敌人"
+  },
+  "dialecte": {
+    "meaning": "方言",
+    "meanings": [
+      "方言"
+    ],
+    "previousMeanings": [
+      "社会上从属于地方或国家标准语的语言，一般在历史上与标准语同源，但不是其变体或子代语言。",
+      "方言"
+    ],
+    "previousPrimary": "社会上从属于地方或国家标准语的语言，一般在历史上与标准语同源，但不是其变体或子代语言。"
+  },
+  "colin-tampon": {
+    "meaning": "毫不在乎",
+    "meanings": [
+      "毫不在乎（se soucier comme de colin-tampon）"
+    ],
+    "previousMeanings": [
+      "n.m. Se soucier de qqch comme de ~ 〈俗〉对某事毫不在乎"
+    ],
+    "previousPrimary": "Se soucier de qqch comme de ~ 对某事毫不在乎"
+  },
+  "approchant": {
+    "meaning": "临近的",
+    "meanings": [
+      "临近的",
+      "相似的"
+    ],
+    "previousMeanings": [
+      "adj. Quelque chose d'~ 类似物，近似数~ de ...和...相似的"
+    ],
+    "previousPrimary": "Quelque chose d'~ 类似物，近似数~ de ...和...相似的"
+  },
+  "censurer": {
+    "meaning": "审查，删禁",
+    "meanings": [
+      "审查，删禁",
+      "指责，批评",
+      "弹劾"
+    ],
+    "previousMeanings": [
+      "v.t. 1. 指责，批评:censurer la conduite de qn 指责某人的行为； 2. ［宗］眨责； 3. 查禁（书报，电影，戏剧等）:censurer un journal 查禁一家报纸； censurer trios lignes （审查时）删除三行字； 4. 弹劾:censurer un depute 弹劾一个议员"
+    ],
+    "previousPrimary": "指责，批评:censurer la conduite de qn 指责某人的行为"
+  },
+  "commercer": {
+    "meaning": "经商，通商",
+    "meanings": [
+      "经商，通商",
+      "交往"
+    ],
+    "previousMeanings": [
+      "v.i. 1. 通商，经商，进行贸易:commercer avec les pays voisins 和邻国进行贸易； 2. ［转］交往"
+    ],
+    "previousPrimary": "通商，经商，进行贸易:commercer avec les pays voisins 和邻国进行贸易"
+  },
+  "corroborer": {
+    "meaning": "证实，佐证",
+    "meanings": [
+      "证实，佐证"
+    ],
+    "previousMeanings": [
+      "v.t. ［罕］使强壮；",
+      "v.t. ［转］证实，确证:ces faits corrob orent mon opinion.这些事实证实了我的看法."
+    ],
+    "previousPrimary": "证实，确证:ces faits corrob orent mon opinio"
+  },
+  "consister": {
+    "meaning": "由……组成",
+    "meanings": [
+      "由……组成",
+      "在于"
+    ],
+    "previousMeanings": [
+      "v.i. 1. consister en， consister dans 包括，由...组成：En quoi consiste votre projet? 你的计划包括些什么样?； 2. consister a 在于...： le style d'etude revolutionnaire qui consiste a lier la theorie la pratique理论联系实际的革命学风"
+    ],
+    "previousPrimary": "consister en， consister dans 包括，由...组成：En quoi consiste votre projet? 你的计划包括些什么样?"
+  },
+  "c'est l'hôpital qui se fout de la charité": {
+    "meaning": "五十步笑百步",
+    "meanings": [
+      "五十步笑百步"
+    ],
+    "previousMeanings": [
+      "c'est l'hôpital qui se moque de la charité的另一种写法"
+    ],
+    "previousPrimary": "c'est l'hôpital qui se moque de la charité的另一种写法"
+  },
+  "c'est l'hôpital qui se moque de l'infirmerie": {
+    "meaning": "五十步笑百步",
+    "meanings": [
+      "五十步笑百步"
+    ],
+    "previousMeanings": [
+      "c'est l'hôpital qui se moque de la charité的另一种写法"
+    ],
+    "previousPrimary": "c'est l'hôpital qui se moque de la charité的另一种写法"
+  },
+  "boîte": {
+    "meaning": "盒子",
+    "meanings": [
+      "盒子",
+      "罐头",
+      "一盒，一箱",
+      "公司（口语）",
+      "夜总会（boîte de nuit）"
+    ],
+    "previousMeanings": [
+      "n.f. 盒，箱，匣；一盒，一箱，一匣；工作场所，公司，企业~ de nuit 夜总会"
+    ],
+    "previousPrimary": "盒子（通常带盖）"
+  },
+  "reporter": {
+    "meaning": "推迟",
+    "meanings": [
+      "推迟",
+      "转移",
+      "转录"
+    ],
+    "previousMeanings": [
+      "使转移"
+    ],
+    "previousPrimary": "使转移"
+  },
+  "préfecture": {
+    "meaning": "行政区",
+    "meanings": [
+      "行政区",
+      "省政府，省府"
+    ],
+    "previousMeanings": [
+      "省"
+    ],
+    "previousPrimary": "行政机关所在地（法国省府等）"
+  },
+  "lequel": {
+    "meaning": "哪个",
+    "meanings": [
+      "哪个（疑问代词）",
+      "……的那个（关系代词）"
+    ],
+    "previousMeanings": [
+      "关系代词，后接后置词，等同于英语的which、that、whom。",
+      "(疑问代词) 哪个"
+    ],
+    "previousPrimary": "哪个"
+  },
+  "moustache": {
+    "meaning": "胡子",
+    "meanings": [
+      "胡子",
+      "上唇的胡子"
+    ],
+    "previousMeanings": [
+      "髭"
+    ],
+    "previousPrimary": "髭",
+    "invalidMeanings": [
+      "髭"
+    ]
+  },
+  "barbe": {
+    "meaning": "胡子（下巴及面颊）",
+    "meanings": [
+      "胡子（下巴及面颊）",
+      "动物的须",
+      "植物的芒刺"
+    ],
+    "previousMeanings": [
+      "n.f. 胡子，胡须，髯；（某些动物的）须；鸟羽支；芒，芒刺；〈俗〉厌烦；interj. 〈俗〉厌烦恼火，不耐烦n.m. et adj. 柏柏尔马"
+    ],
+    "previousPrimary": "胡子，胡须，髯",
+    "invalidMeanings": [
+      "胡子，胡须，髯"
+    ]
+  },
+  "millet": {
+    "meaning": "小米",
+    "meanings": [
+      "小米"
+    ],
+    "previousMeanings": [
+      "稷"
+    ],
+    "previousPrimary": "稷",
+    "invalidMeanings": [
+      "稷"
+    ]
+  },
+  "cheville": {
+    "meaning": "脚踝",
+    "meanings": [
+      "脚踝",
+      "木钉，插销",
+      "弦轴"
+    ],
+    "previousMeanings": [
+      "n.f. 踝，踝骨；木钉；销，栓，楔；［乐］弦轴；（诗中）凑音步、韵脚的词"
+    ],
+    "previousPrimary": "踝，踝骨"
+  },
+  "avide": {
+    "meaning": "贪婪的",
+    "meanings": [
+      "贪婪的",
+      "渴望的"
+    ],
+    "previousMeanings": [
+      "渴望的，觊觎的",
+      "贪婪的"
+    ],
+    "previousPrimary": "渴望的，觊觎的"
+  },
+  "veau": {
+    "meaning": "小牛肉",
+    "meanings": [
+      "小牛肉",
+      "小牛",
+      "小牛皮"
+    ],
+    "previousMeanings": [
+      "牛犊",
+      "牛犊肉",
+      "小牛皮"
+    ],
+    "previousPrimary": "牛犊"
+  },
+  "certain": {
+    "meaning": "一定的",
+    "meanings": [
+      "一定的",
+      "某个，某些",
+      "确定的，确信的"
+    ],
+    "previousMeanings": [
+      "adj. 肯定的，一定的；确信无疑的，确实的，确凿的；相当大的adj. 某一个，有一个；某些，有些；~s，certaines pron.pl. 某些事情，有些事情；某些人，有些人"
+    ],
+    "previousPrimary": "肯定的，一定的"
+  },
+  "sanguine": {
+    "meaning": "红粉笔",
+    "meanings": [
+      "红粉笔",
+      "红褐色素描"
+    ],
+    "previousMeanings": [
+      "酊"
+    ],
+    "previousPrimary": "酊",
+    "invalidMeanings": [
+      "酊"
+    ]
+  },
+  "milan": {
+    "meaning": "鹰类猛禽",
+    "meanings": [
+      "鹰类猛禽"
+    ],
+    "previousMeanings": [
+      "鸢"
+    ],
+    "previousPrimary": "鸢",
+    "invalidMeanings": [
+      "鸢"
+    ]
+  },
+  "est": {
+    "meaning": "东的，东部的",
+    "meanings": [
+      "东的，东部的",
+      "东，东部"
+    ],
+    "previousMeanings": [
+      "东的，东部的",
+      "东，东部"
+    ],
+    "previousPrimary": "东的，东部的"
+  },
+  "un": {
+    "meaning": "统一的，单一的",
+    "meanings": [
+      "统一的，单一的",
+      "一个",
+      "全部的"
+    ],
+    "previousMeanings": [
+      "统一的，单一的，合成一体的，不能分割的。",
+      "一个。",
+      "全部的，所有的。",
+      "一个，其中一个。"
+    ],
+    "previousPrimary": "统一的，单一的，合成一体的"
+  },
+  "le": {
+    "meaning": "定冠词（阳性单数）",
+    "meanings": [
+      "定冠词（阳性单数）"
+    ],
+    "previousMeanings": [
+      "阳性、单数（le后面的词以元音开头时，一律发生连读，元音省略，le变成l'。同de连用时，de le 结合成 du，同à连用时，à le 结合成 au。）",
+      "表示阳性单数的宾语（同de连用时，de le 不结合成 du）"
+    ],
+    "previousPrimary": "阳性、单数"
+  },
+  "que": {
+    "meaning": "引导陈述从句",
+    "meanings": [
+      "引导陈述从句"
+    ],
+    "previousMeanings": [
+      "作关系代词时\nQue作直接宾语，性数和先行词一致。所以如果从句中如果有以avoir构成的复合时态，过去分词要与que性数一致。"
+    ],
+    "previousPrimary": "作关系代词时"
+  },
+  "a": {
+    "meaning": "字母 a",
+    "meanings": [
+      "字母 a"
+    ],
+    "previousMeanings": [
+      "法语字母中第一个字母，小写为a"
+    ],
+    "previousPrimary": "法语字母中第一个字母，小写为a"
+  },
+  "en plus de": {
+    "meaning": "除了……之外还",
+    "meanings": [
+      "除了……之外还"
+    ],
+    "previousMeanings": [
+      "除了……之外还"
+    ],
+    "previousPrimary": "除了……之外还"
+  },
+  "en fait de": {
+    "meaning": "在……方面",
+    "meanings": [
+      "在……方面"
+    ],
+    "previousMeanings": [
+      "关于……，在……方面"
+    ],
+    "previousPrimary": "关于……，在……方面"
+  },
+  "de ce fait": {
+    "meaning": "因此，所以",
+    "meanings": [
+      "因此，所以"
+    ],
+    "previousMeanings": [
+      "因此，所以"
+    ],
+    "previousPrimary": "因此，所以"
+  },
+  "de rien": {
+    "meaning": "不用谢",
+    "meanings": [
+      "不用谢"
+    ],
+    "previousMeanings": [
+      "（被说谢谢以后的回答）不用谢，没事"
+    ],
+    "previousPrimary": "不用谢，没事"
+  },
+  "à temps": {
+    "meaning": "及时",
+    "meanings": [
+      "及时"
+    ],
+    "previousMeanings": [
+      "adv. 及时的",
+      "v. 时间（时代，时机，次）"
+    ],
+    "previousPrimary": "及时的"
+  },
+  "dire que": {
+    "meaning": "竟然，居然",
+    "meanings": [
+      "竟然，居然"
+    ],
+    "previousMeanings": [
+      "竟然，居然（后接陈述从句）"
+    ],
+    "previousPrimary": "竟然，居然"
+  },
+  "être": {
+    "meaning": "是",
+    "meanings": [
+      "是",
+      "在",
+      "存在"
+    ],
+    "previousMeanings": [
+      "存在",
+      "是，为 （系动词）",
+      "在 （系动词）",
+      "有，存在 （现一般用il y a）"
+    ],
+    "previousPrimary": "存在"
+  },
+  "alors que": {
+    "meaning": "而，却",
+    "meanings": [
+      "而，却",
+      "当……时",
+      "尽管，虽然"
+    ],
+    "previousMeanings": [
+      "尽管，虽然",
+      "当，在...时"
+    ],
+    "previousPrimary": "尽管，虽然"
+  },
+  "dit": {
+    "meaning": "所说的，约定的",
+    "meanings": [
+      "所说的，约定的",
+      "称为"
+    ],
+    "previousMeanings": [
+      "所说的",
+      "称为"
+    ],
+    "previousPrimary": "所说的"
   }
 }

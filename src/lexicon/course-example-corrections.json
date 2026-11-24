@@ -253,5 +253,17 @@
     "forms": [
       "retenir"
     ]
+  },
+  {
+    "book": "fos1",
+    "lesson": "L01",
+    "wordId": "w600029",
+    "sourceText": "un calcul",
+    "previousFr": "Il faut calculer la distance parcourue.",
+    "fr": "Ce calcul est correct.",
+    "zh": "这个计算是正确的。",
+    "meaning": "计算",
+    "source": "启航法语编写",
+    "authored": true
   }
 ]

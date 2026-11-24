@@ -297,6 +297,6 @@ onBeforeUnmount(() => {
 <style scoped>
 .fluency h2{margin-top:16px}.fluency p{line-height:1.6}
 .groups{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0;min-height:60px;align-items:start}
-.groups span{font:clamp(20px,2vw,28px)/1.35 Georgia,serif;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:#f6f9f4}
+.groups span{font:clamp(20px,2vw,28px)/1.35 Georgia,serif;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:var(--ui-1e3fc6eba2ca,#f6f9f4)}
 .fluency .actions{margin-top:18px}
 </style>

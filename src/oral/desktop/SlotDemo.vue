@@ -434,17 +434,17 @@ onBeforeUnmount(() => { disposed = true; unregisterAudio?.(); window.removeEvent
         <button class="secondary" @click="downloadLog">下载判定日志</button>
       </div>
     </template>
-    <p v-else-if="busy" role="status">正在加载试玩课…</p>
+    <p v-else-if="busy" role="status">正在打开练习…</p>
   </section>
 </template>
 
 <style scoped>
 .slot h2{margin-top:20px}.slot p{line-height:1.6}.frame{font:26px Georgia,serif}
 .options{list-style:none;display:flex;flex-wrap:wrap;gap:12px;padding:0;margin:18px 0}
-.options li{display:grid;gap:8px;padding:14px;border:1px solid var(--line);border-radius:10px;background:#f6f9f4}
+.options li{display:grid;gap:8px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--ui-1e3fc6eba2ca,#f6f9f4)}
 .options li>span{font:22px Georgia,serif}
-.target-sentence,.options .target-option{background:var(--mint);border:1px solid #58856a}
-.target-sentence{padding:12px 16px;border-radius:10px;color:#173c28}
-.target-option strong{color:#245b3a;font-size:13px}
+.target-sentence,.options .target-option{background:var(--mint);border:1px solid var(--ui-f4f6d1387a26,#58856a)}
+.target-sentence{padding:12px 16px;border-radius:10px;color:var(--ui-e2b5f81b8f7f,#173c28)}
+.target-option strong{color:var(--ui-1277028d4f25,#245b3a);font-size:13px}
 .slot-feedback li{padding:8px}.slot-feedback p{margin:4px 0}
 </style>

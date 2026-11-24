@@ -1,0 +1,3826 @@
+{
+  "9fd7a97b6356": {
+    "value": "#5279b5",
+    "role": "base"
+  },
+  "d09a15f2de32": {
+    "value": "#f3f5fb",
+    "role": "base"
+  },
+  "b9da53a0420a": {
+    "value": "#dce5f1",
+    "role": "base"
+  },
+  "32e953f89b01": {
+    "value": "#8b9db9",
+    "role": "base"
+  },
+  "06543dea30c1": {
+    "value": "#fff",
+    "role": "base"
+  },
+  "6c32fc9114c3": {
+    "value": "#f3f6fc",
+    "role": "base"
+  },
+  "34d3689400f5": {
+    "value": "#a8bbda",
+    "role": "base"
+  },
+  "26861465f9af": {
+    "value": "#607fa8",
+    "role": "base"
+  },
+  "e75664986d2d": {
+    "value": "#e7eefb",
+    "role": "base"
+  },
+  "48a67ce5d9a7": {
+    "value": "#7c8da5",
+    "role": "base"
+  },
+  "e509653ab173": {
+    "value": "#d9e2ee",
+    "role": "base"
+  },
+  "1d63c1c7e509": {
+    "value": "#f8faff",
+    "role": "base"
+  },
+  "4fc07a19affa": {
+    "value": "#9fb6d9",
+    "role": "base"
+  },
+  "adb34d2a8777": {
+    "value": "#adc2df22",
+    "role": "base"
+  },
+  "97ee0ed55f0f": {
+    "value": "#d4dfef",
+    "role": "base"
+  },
+  "cb9052e1cd21": {
+    "value": "#f0f5fc",
+    "role": "base"
+  },
+  "c6a0d2107b66": {
+    "value": "#617a9e0b",
+    "role": "base"
+  },
+  "258010b5c19e": {
+    "value": "#93a3bc",
+    "role": "base"
+  },
+  "08e486632f49": {
+    "value": "#526e96",
+    "role": "base"
+  },
+  "9f555ab6c2e6": {
+    "value": "#8ba3c5",
+    "role": "base"
+  },
+  "c4092ca8e583": {
+    "value": "#9db5d8",
+    "role": "base"
+  },
+  "ad5b8b0925be": {
+    "value": "#d8e1ef",
+    "role": "base"
+  },
+  "15cf02b46a3e": {
+    "value": "#f7faff",
+    "role": "base"
+  },
+  "2bc21996156e": {
+    "value": "#e5edfb",
+    "role": "base"
+  },
+  "eb6438568d22": {
+    "value": "#a0b6d6",
+    "role": "base"
+  },
+  "24da282e6353": {
+    "value": "#dbe4f0",
+    "role": "base"
+  },
+  "14257323fb44": {
+    "value": "#f5f8fe",
+    "role": "base"
+  },
+  "c683d6c8b10c": {
+    "value": "#587296",
+    "role": "base"
+  },
+  "ac74441efc95": {
+    "value": "#7387a6",
+    "role": "base"
+  },
+  "a1da6d1413f2": {
+    "value": "#9cabc1",
+    "role": "base"
+  },
+  "8af46712ab7b": {
+    "value": "#ccd9ec",
+    "role": "base"
+  },
+  "8f2d2b8a5c0b": {
+    "value": "#526f96",
+    "role": "base"
+  },
+  "f21d0b1bd79d": {
+    "value": "#edf3fb",
+    "role": "base"
+  },
+  "86392750f2d3": {
+    "value": "#e1eafb",
+    "role": "base"
+  },
+  "cbd42ad11b58": {
+    "value": "#8ea9d1",
+    "role": "base"
+  },
+  "6b7b9b5eeacb": {
+    "value": "#e2f2e8",
+    "role": "positive"
+  },
+  "56eae84357ea": {
+    "value": "#94bba4",
+    "role": "positive"
+  },
+  "85051faad215": {
+    "value": "#f9e8ed",
+    "role": "negative"
+  },
+  "45120865d840": {
+    "value": "#dba8b2",
+    "role": "negative"
+  },
+  "22d337716d1e": {
+    "value": "#f5f8fd",
+    "role": "base"
+  },
+  "1b484dada4b8": {
+    "value": "#526b91",
+    "role": "base"
+  },
+  "2e9ec8dbe89d": {
+    "value": "#e3ebf7",
+    "role": "base"
+  },
+  "3154442a071e": {
+    "value": "#8da8cf",
+    "role": "base"
+  },
+  "3e6aa9211149": {
+    "value": "#cbd4e3",
+    "role": "base"
+  },
+  "73e5d201e049": {
+    "value": "#dfe5ef",
+    "role": "base"
+  },
+  "5292e87ba119": {
+    "value": "#304b711e",
+    "role": "base"
+  },
+  "e8fad7356af5": {
+    "value": "#7e8da8",
+    "role": "base"
+  },
+  "9f582c558b71": {
+    "value": "#34465f",
+    "role": "base"
+  },
+  "482d3db90b88": {
+    "value": "#7a8ba363",
+    "role": "base"
+  },
+  "2477510e57ec": {
+    "value": "#d3def0",
+    "role": "base"
+  },
+  "3d782157f34f": {
+    "value": "#bcc9dc",
+    "role": "base"
+  },
+  "e6f716250ae6": {
+    "value": "#3d6dab",
+    "role": "base"
+  },
+  "a7976c1f4beb": {
+    "value": "#72819a",
+    "role": "base"
+  },
+  "3a4c92a0ba0f": {
+    "value": "#7189b4",
+    "role": "base"
+  },
+  "c6133597e1a8": {
+    "value": "#a9b8d2",
+    "role": "base"
+  },
+  "245453707bac": {
+    "value": "#e9edf5",
+    "role": "base"
+  },
+  "d07d9a1aee25": {
+    "value": "#bdcadc",
+    "role": "base"
+  },
+  "e13153c54916": {
+    "value": "#354b7236",
+    "role": "base"
+  },
+  "34f22752c994": {
+    "value": "#6c8abe",
+    "role": "base"
+  },
+  "d84af3a0d510": {
+    "value": "#6c85aa",
+    "role": "base"
+  },
+  "4fa32784ac22": {
+    "value": "#9daec7",
+    "role": "base"
+  },
+  "fe3a7140f937": {
+    "value": "#e3eaf6",
+    "role": "base"
+  },
+  "b7f3b62f74f1": {
+    "value": "#9bb2d5",
+    "role": "base"
+  },
+  "172fa6084c5c": {
+    "value": "#e1e8f2",
+    "role": "base"
+  },
+  "0c52b11c92cc": {
+    "value": "#98accb",
+    "role": "base"
+  },
+  "81fd8b1e0762": {
+    "value": "#6d86ab",
+    "role": "base"
+  },
+  "b3c191f2b863": {
+    "value": "#92a5bf",
+    "role": "base"
+  },
+  "1eb6bc3e7f62": {
+    "value": "#9bafcc",
+    "role": "base"
+  },
+  "75aa31042a82": {
+    "value": "#a6bcdb",
+    "role": "base"
+  },
+  "61687892bfd2": {
+    "value": "#e9f0fc",
+    "role": "base"
+  },
+  "8d2abb83c5ad": {
+    "value": "#ffffffae",
+    "role": "base"
+  },
+  "c3d054593474": {
+    "value": "#637da7",
+    "role": "base"
+  },
+  "89abb0dbcc3e": {
+    "value": "#99abc6",
+    "role": "base"
+  },
+  "d1e65b4cdeda": {
+    "value": "#7690b7",
+    "role": "base"
+  },
+  "3d19340b5f11": {
+    "value": "#dbe4f1",
+    "role": "base"
+  },
+  "dda5ed2bf0a6": {
+    "value": "#ffffffb8",
+    "role": "base"
+  },
+  "80d1ced67d17": {
+    "value": "#8c9db8",
+    "role": "base"
+  },
+  "d8a4696f121a": {
+    "value": "#5f7da7",
+    "role": "base"
+  },
+  "f3037ce954ae": {
+    "value": "#6e85a8",
+    "role": "base"
+  },
+  "eca094d81e32": {
+    "value": "#546c90",
+    "role": "base"
+  },
+  "bd03bdfa8c1b": {
+    "value": "#7687a4",
+    "role": "base"
+  },
+  "aa5e90716fb3": {
+    "value": "#edf2fa9c",
+    "role": "base"
+  },
+  "a71f93e62d2f": {
+    "value": "#899ab4",
+    "role": "base"
+  },
+  "a5515138aebc": {
+    "value": "#607b9f",
+    "role": "base"
+  },
+  "2efbc6446ba5": {
+    "value": "#8f815f",
+    "role": "base"
+  },
+  "990b20b31644": {
+    "value": "#f9f5e9",
+    "role": "base"
+  },
+  "81920dcc2c6f": {
+    "value": "#7c8faa",
+    "role": "base"
+  },
+  "a6392e30c560": {
+    "value": "#8eaaab",
+    "role": "base"
+  },
+  "7461d339867f": {
+    "value": "#e4eaf5",
+    "role": "base"
+  },
+  "6ea2c8e3ecaf": {
+    "value": "#99aed4",
+    "role": "base"
+  },
+  "7b1df8807ede": {
+    "value": "#8b9cb6",
+    "role": "base"
+  },
+  "7a76174bf031": {
+    "value": "#9aabc3",
+    "role": "base"
+  },
+  "2734d902873b": {
+    "value": "#506788",
+    "role": "base"
+  },
+  "f22fc5576349": {
+    "value": "#d9e3f1",
+    "role": "base"
+  },
+  "5d4b056cb400": {
+    "value": "#607b9e",
+    "role": "base"
+  },
+  "d6fb27f844c1": {
+    "value": "#edf2fa",
+    "role": "base"
+  },
+  "c2467e6ee50a": {
+    "value": "#9aafcc",
+    "role": "base"
+  },
+  "011e36214104": {
+    "value": "#9fb6db",
+    "role": "base"
+  },
+  "be801d9a78f1": {
+    "value": "#edf6f1",
+    "role": "positive"
+  },
+  "e2862ef6f06f": {
+    "value": "#accabb",
+    "role": "positive"
+  },
+  "705e8121ae1a": {
+    "value": "#5b856f",
+    "role": "positive"
+  },
+  "75309883f609": {
+    "value": "#fbefef",
+    "role": "negative"
+  },
+  "b8f3d3ed71c8": {
+    "value": "#dfb8bc",
+    "role": "negative"
+  },
+  "71dfaae4b3c6": {
+    "value": "#ab747d",
+    "role": "negative"
+  },
+  "972c4ac51782": {
+    "value": "#d9e8e0",
+    "role": "base"
+  },
+  "0f43d87f3f1a": {
+    "value": "#f1f7f3",
+    "role": "base"
+  },
+  "88306805d536": {
+    "value": "#6b8b7c",
+    "role": "base"
+  },
+  "047c0e725011": {
+    "value": "#faf3f2",
+    "role": "negative"
+  },
+  "ae36fbcc2cdf": {
+    "value": "#ead6d8",
+    "role": "negative"
+  },
+  "6c1cd42d7cdb": {
+    "value": "#ab7c83",
+    "role": "negative"
+  },
+  "6f1ff20733f6": {
+    "value": "#627f9c",
+    "role": "base"
+  },
+  "b8fe9310d92b": {
+    "value": "#7b8ca6",
+    "role": "base"
+  },
+  "9e325d78baea": {
+    "value": "#f9fbff",
+    "role": "base"
+  },
+  "bd6702e0cc00": {
+    "value": "#6c84ac",
+    "role": "base"
+  },
+  "5668d92c7a68": {
+    "value": "#9aaac2",
+    "role": "base"
+  },
+  "95da20565165": {
+    "value": "#e1e8f1",
+    "role": "negative"
+  },
+  "1829b47ca1ad": {
+    "value": "#708baa",
+    "role": "negative"
+  },
+  "e6a013883ade": {
+    "value": "#a17e87",
+    "role": "negative"
+  },
+  "ff30eb7bb01e": {
+    "value": "#9aafcd",
+    "role": "base"
+  },
+  "8689ecc210fb": {
+    "value": "#93a7c5",
+    "role": "base"
+  },
+  "a9bbe522fa1f": {
+    "value": "#9db3d7",
+    "role": "base"
+  },
+  "98830056d1e3": {
+    "value": "#98abc5",
+    "role": "base"
+  },
+  "702b34148e15": {
+    "value": "#92a7c4",
+    "role": "base"
+  },
+  "ea622211c74b": {
+    "value": "#a0b3cf",
+    "role": "base"
+  },
+  "36119b6fadca": {
+    "value": "#93a5bf",
+    "role": "base"
+  },
+  "09ec8decff40": {
+    "value": "#53688d18",
+    "role": "base"
+  },
+  "27da1d53b1f4": {
+    "value": "#394c6d35",
+    "role": "base"
+  },
+  "5cfec593e038": {
+    "value": "#394c6d25",
+    "role": "base"
+  },
+  "a268188be8c3": {
+    "value": "#a4b2e3",
+    "role": "base"
+  },
+  "787b1145c0df": {
+    "value": "#f0f3fa",
+    "role": "base"
+  },
+  "e6c96566b148": {
+    "value": "#ffffffdd",
+    "role": "base"
+  },
+  "6c2518ab572c": {
+    "value": "#3240570d",
+    "role": "base"
+  },
+  "f0d541f0a938": {
+    "value": "#dae4f2",
+    "role": "base"
+  },
+  "11e74bacb7a8": {
+    "value": "#eef3fb",
+    "role": "base"
+  },
+  "95c1c91ce599": {
+    "value": "#7d92b4",
+    "role": "base"
+  },
+  "7a0b9a30b045": {
+    "value": "#e3dfd1",
+    "role": "base"
+  },
+  "09021e23a3e6": {
+    "value": "#faf7ee",
+    "role": "base"
+  },
+  "ccc5b3b9af93": {
+    "value": "#574c33",
+    "role": "base"
+  },
+  "420f078511b6": {
+    "value": "#78849a",
+    "role": "base"
+  },
+  "32c904e11acd": {
+    "value": "#8290a8",
+    "role": "base"
+  },
+  "0055f07a3eab": {
+    "value": "#e8ecf9",
+    "role": "base"
+  },
+  "585e5cbf97e7": {
+    "value": "#d7dff1",
+    "role": "base"
+  },
+  "7150870be4a2": {
+    "value": "#fff9",
+    "role": "base"
+  },
+  "d96306d29943": {
+    "value": "#e8ecf7",
+    "role": "base"
+  },
+  "056824a1bdc0": {
+    "value": "#ffffff85",
+    "role": "base"
+  },
+  "e21b5f74e3d1": {
+    "value": "#edf0f8",
+    "role": "base"
+  },
+  "3127b7624673": {
+    "value": "#7b88a5",
+    "role": "base"
+  },
+  "d762e3dc4954": {
+    "value": "#e6f0ea",
+    "role": "positive"
+  },
+  "1ef497e3eb45": {
+    "value": "#4e7863",
+    "role": "positive"
+  },
+  "5fab82bcc7bc": {
+    "value": "#8b94a7",
+    "role": "base"
+  },
+  "82654cf2420c": {
+    "value": "#8490a5",
+    "role": "base"
+  },
+  "9bc04a7db616": {
+    "value": "#64738c",
+    "role": "base"
+  },
+  "625c49fbc2bb": {
+    "value": "#eef0f8",
+    "role": "base"
+  },
+  "32dc9fa7ace9": {
+    "value": "#73809b",
+    "role": "base"
+  },
+  "f87042692434": {
+    "value": "#eaf2ed",
+    "role": "positive"
+  },
+  "f52bd8962423": {
+    "value": "#567565",
+    "role": "positive"
+  },
+  "b9a05a6a8d31": {
+    "value": "#77849a",
+    "role": "base"
+  },
+  "9b22c0df3f9d": {
+    "value": "#ffffff90",
+    "role": "base"
+  },
+  "4ec85fe014a5": {
+    "value": "#d9dfed",
+    "role": "base"
+  },
+  "d89c13a6cdc7": {
+    "value": "#8a95a9",
+    "role": "base"
+  },
+  "d2166c068bcd": {
+    "value": "#a3b0cc",
+    "role": "base"
+  },
+  "fb9f6e197760": {
+    "value": "#748198",
+    "role": "base"
+  },
+  "e24201843e7e": {
+    "value": "#566783",
+    "role": "base"
+  },
+  "9097c99341db": {
+    "value": "#f5f6fb",
+    "role": "base"
+  },
+  "a5feaf4ef934": {
+    "value": "#7c879a",
+    "role": "base"
+  },
+  "4a632ead11b6": {
+    "value": "#f4f5fa",
+    "role": "base"
+  },
+  "549717f95fc3": {
+    "value": "#63718a",
+    "role": "base"
+  },
+  "38e25c575cca": {
+    "value": "#929bae",
+    "role": "base"
+  },
+  "f34cb8cf8eec": {
+    "value": "#d5deef",
+    "role": "base"
+  },
+  "2d009d1778c4": {
+    "value": "#edf1fa",
+    "role": "base"
+  },
+  "062a97a8c47c": {
+    "value": "#8290aa",
+    "role": "base"
+  },
+  "b9fc8d7c51af": {
+    "value": "#4e7d65",
+    "role": "base"
+  },
+  "2ea8d17da616": {
+    "value": "#fbf0ed",
+    "role": "negative"
+  },
+  "bc3d239787aa": {
+    "value": "#a26457",
+    "role": "negative"
+  },
+  "3f6982aa9f14": {
+    "value": "#ffffff60",
+    "role": "base"
+  },
+  "8cbeda935636": {
+    "value": "#8290a6",
+    "role": "base"
+  },
+  "277b89136284": {
+    "value": "#537660",
+    "role": "positive"
+  },
+  "1280dba3a651": {
+    "value": "#26354e36",
+    "role": "base"
+  },
+  "082774f1b1a4": {
+    "value": "#f8f9fd",
+    "role": "base"
+  },
+  "926d7c5b65de": {
+    "value": "#dce4f1",
+    "role": "base"
+  },
+  "4e24da21164e": {
+    "value": "#ffffffd9",
+    "role": "base"
+  },
+  "b5e6260e95d6": {
+    "value": "#7085a407",
+    "role": "base"
+  },
+  "89eeba3a2d41": {
+    "value": "#49617f",
+    "role": "base"
+  },
+  "65eda1fb6ebd": {
+    "value": "#94a5bc",
+    "role": "base"
+  },
+  "a814ced23185": {
+    "value": "#f9fbfe",
+    "role": "base"
+  },
+  "7cb29025ddcb": {
+    "value": "#a8bddc",
+    "role": "base"
+  },
+  "154c51ac860c": {
+    "value": "#edf3fc",
+    "role": "base"
+  },
+  "3f8b157b9d3d": {
+    "value": "#ae9370",
+    "role": "base"
+  },
+  "970e198c8d5f": {
+    "value": "#b97780",
+    "role": "negative"
+  },
+  "7ccbcf728c92": {
+    "value": "#9aaac1",
+    "role": "base"
+  },
+  "7f88b38c4dd9": {
+    "value": "#739d8c",
+    "role": "positive"
+  },
+  "2f9ff39f3d20": {
+    "value": "#8799ac",
+    "role": "base"
+  },
+  "d21d7045e214": {
+    "value": "#e4ebf0",
+    "role": "base"
+  },
+  "aa6306916338": {
+    "value": "#8d9ba9",
+    "role": "base"
+  },
+  "448a2dd75d3e": {
+    "value": "#597b6b",
+    "role": "base"
+  },
+  "cf40e904fbda": {
+    "value": "#97a6b4",
+    "role": "base"
+  },
+  "c1f5a94e8fbe": {
+    "value": "#8a98a8",
+    "role": "base"
+  },
+  "3ac529c09150": {
+    "value": "#edf2fc",
+    "role": "base"
+  },
+  "88c09a740350": {
+    "value": "#617cad",
+    "role": "base"
+  },
+  "c47c4a23f95c": {
+    "value": "#9b8082",
+    "role": "base"
+  },
+  "836bc9d059f7": {
+    "value": "#98a7bd",
+    "role": "base"
+  },
+  "c4e970d223a5": {
+    "value": "#ffffffa8",
+    "role": "base"
+  },
+  "2cf359ada2bb": {
+    "value": "#8294b0",
+    "role": "base"
+  },
+  "e0f45ae9678e": {
+    "value": "#dce4ee",
+    "role": "base"
+  },
+  "06a4d1ca21df": {
+    "value": "#607b9824",
+    "role": "base"
+  },
+  "7f4947d38100": {
+    "value": "#f8faffed",
+    "role": "base"
+  },
+  "b0c31f2cadb8": {
+    "value": "#62749420",
+    "role": "base"
+  },
+  "ec1ebf8b3d83": {
+    "value": "#71809b",
+    "role": "base"
+  },
+  "874d818dbe77": {
+    "value": "#cdd7e9",
+    "role": "base"
+  },
+  "a0b07dc394e4": {
+    "value": "#546d9c",
+    "role": "base"
+  },
+  "376664d546a7": {
+    "value": "#a0aec5",
+    "role": "base"
+  },
+  "ea7b8de256b4": {
+    "value": "#91a0b8",
+    "role": "base"
+  },
+  "a530b4251da6": {
+    "value": "#cdd7ea",
+    "role": "base"
+  },
+  "c9b76e976fcd": {
+    "value": "#fff8",
+    "role": "base"
+  },
+  "8dcd66098c53": {
+    "value": "#8493ad",
+    "role": "base"
+  },
+  "8e25adbbe589": {
+    "value": "#e4eafa",
+    "role": "base"
+  },
+  "5039c97a8d3b": {
+    "value": "#8b9fc5",
+    "role": "base"
+  },
+  "851f4f13b646": {
+    "value": "#405d93",
+    "role": "base"
+  },
+  "a75f5cce6ac4": {
+    "value": "#94a0b6",
+    "role": "base"
+  },
+  "548c1c2e55fe": {
+    "value": "#556d99",
+    "role": "base"
+  },
+  "b91ffabd35d7": {
+    "value": "#8998b3",
+    "role": "base"
+  },
+  "97541f57f109": {
+    "value": "#637491",
+    "role": "base"
+  },
+  "ba5e80212d8f": {
+    "value": "#ccdaef",
+    "role": "base"
+  },
+  "252ba5852396": {
+    "value": "#637eb3",
+    "role": "base"
+  },
+  "81e73665ded0": {
+    "value": "#ecf1fc",
+    "role": "base"
+  },
+  "e0b7c2d46b48": {
+    "value": "#2d4265",
+    "role": "base"
+  },
+  "fd3d52604fdc": {
+    "value": "#ccd7e9",
+    "role": "base"
+  },
+  "ac620f431464": {
+    "value": "#344b72",
+    "role": "base"
+  },
+  "166177061bbd": {
+    "value": "#8b9dbb",
+    "role": "base"
+  },
+  "3b5ac113e7d8": {
+    "value": "#e1f3e8",
+    "role": "positive"
+  },
+  "67587065bafa": {
+    "value": "#7daf90",
+    "role": "positive"
+  },
+  "c814c02634b3": {
+    "value": "#35634a",
+    "role": "positive"
+  },
+  "ed3fd02aad44": {
+    "value": "#fae7e9",
+    "role": "negative"
+  },
+  "df8de2e4c6a6": {
+    "value": "#cc939f",
+    "role": "negative"
+  },
+  "a25a0008f9b7": {
+    "value": "#984f60",
+    "role": "negative"
+  },
+  "3359c67076b4": {
+    "value": "#8292ac",
+    "role": "base"
+  },
+  "9b35ae3dcccd": {
+    "value": "#becde5",
+    "role": "base"
+  },
+  "f145c21a87e3": {
+    "value": "#8795ad",
+    "role": "base"
+  },
+  "1d46aca3a0fb": {
+    "value": "#f3fbf6",
+    "role": "positive"
+  },
+  "42108a9522c9": {
+    "value": "#fff9fa",
+    "role": "negative"
+  },
+  "9c1b0f6b3379": {
+    "value": "#e9eef9",
+    "role": "base"
+  },
+  "4a7f3b3e8f8e": {
+    "value": "#627ca7",
+    "role": "base"
+  },
+  "c408b6fc0e14": {
+    "value": "#b07682",
+    "role": "base"
+  },
+  "b7637a1da05c": {
+    "value": "#6b997e",
+    "role": "positive"
+  },
+  "d846f48c2449": {
+    "value": "#7f91ad",
+    "role": "base"
+  },
+  "8beb34eeaa80": {
+    "value": "#5c6e8d",
+    "role": "base"
+  },
+  "64a5f8558729": {
+    "value": "#7485a3",
+    "role": "base"
+  },
+  "3357572d8043": {
+    "value": "#e9effb",
+    "role": "base"
+  },
+  "7486430e74bd": {
+    "value": "#d8e3f6",
+    "role": "base"
+  },
+  "00231329fdbe": {
+    "value": "#344e7a",
+    "role": "base"
+  },
+  "44ce3eece123": {
+    "value": "#7c8da8",
+    "role": "base"
+  },
+  "8cc27100c2e2": {
+    "value": "#8191ad",
+    "role": "base"
+  },
+  "da0ba27d153e": {
+    "value": "#f4f6fc70",
+    "role": "positive"
+  },
+  "3575bb1e4dea": {
+    "value": "#547c72",
+    "role": "positive"
+  },
+  "155f3db3e3a1": {
+    "value": "#8ca79e",
+    "role": "positive"
+  },
+  "4724bea217e6": {
+    "value": "#d8efe5",
+    "role": "positive"
+  },
+  "a09d168e75da": {
+    "value": "#a5cdbb",
+    "role": "positive"
+  },
+  "6744647e842b": {
+    "value": "#7dab992b",
+    "role": "positive"
+  },
+  "1f8ed431ca84": {
+    "value": "#fff",
+    "role": "positive"
+  },
+  "87d42a9cfe43": {
+    "value": "#eef3ff",
+    "role": "base"
+  },
+  "c496405704b9": {
+    "value": "#95abce",
+    "role": "base"
+  },
+  "d5f97ac4e1c9": {
+    "value": "#ffffffc9",
+    "role": "base"
+  },
+  "252691ce3ca0": {
+    "value": "#7b899f",
+    "role": "base"
+  },
+  "327e4d2f0b31": {
+    "value": "#f4f6fcd9",
+    "role": "positive"
+  },
+  "4e1b31a3d78e": {
+    "value": "#8191ab",
+    "role": "base"
+  },
+  "abe6c13ca5c7": {
+    "value": "#6e809f",
+    "role": "base"
+  },
+  "66c1c2723003": {
+    "value": "#5d769c",
+    "role": "base"
+  },
+  "600198b395a0": {
+    "value": "#ffffffb0",
+    "role": "base"
+  },
+  "d6f184a5e4c5": {
+    "value": "#465977",
+    "role": "base"
+  },
+  "eb2a73f2c9df": {
+    "value": "#718b83",
+    "role": "base"
+  },
+  "9c777dfa6ffc": {
+    "value": "#96a39e",
+    "role": "base"
+  },
+  "75b4b7bcfeb5": {
+    "value": "#eaf0fc",
+    "role": "base"
+  },
+  "c89cc0b03589": {
+    "value": "#d6e1f5",
+    "role": "base"
+  },
+  "5e7ac70737d7": {
+    "value": "#3f5986",
+    "role": "base"
+  },
+  "908b64cda819": {
+    "value": "#f2f5fb",
+    "role": "base"
+  },
+  "b92c8cd988fa": {
+    "value": "#f6f6fc",
+    "role": "base"
+  },
+  "6224ed11064d": {
+    "value": "#f4f5fb",
+    "role": "base"
+  },
+  "3650fcb85765": {
+    "value": "#f3f5fbf5",
+    "role": "base"
+  },
+  "9e62b166321c": {
+    "value": "#e5edf9",
+    "role": "base"
+  },
+  "50c4394a8ced": {
+    "value": "#b4c7e6",
+    "role": "base"
+  },
+  "1c44087afd47": {
+    "value": "#4f72a8",
+    "role": "base"
+  },
+  "0ffd35f78664": {
+    "value": "#c3d3ed",
+    "role": "base"
+  },
+  "2347af2b66bc": {
+    "value": "#5a79a8",
+    "role": "base"
+  },
+  "2c803113885f": {
+    "value": "#dce9fd",
+    "role": "base"
+  },
+  "8aebf3e8f8df": {
+    "value": "#8da9d5",
+    "role": "base"
+  },
+  "7178b33d76e0": {
+    "value": "#3c6096",
+    "role": "base"
+  },
+  "8a5005d54c62": {
+    "value": "#c6d3e9",
+    "role": "base"
+  },
+  "0de15f174104": {
+    "value": "#eef3fc",
+    "role": "base"
+  },
+  "5d6e8f067914": {
+    "value": "#637b9f",
+    "role": "base"
+  },
+  "06c5dd5db293": {
+    "value": "#e5edfc",
+    "role": "base"
+  },
+  "bcc747463e9e": {
+    "value": "#3d5a87",
+    "role": "base"
+  },
+  "3fb5f2067b7e": {
+    "value": "#9eb3d9",
+    "role": "base"
+  },
+  "daa0cf8d0999": {
+    "value": "#ccd8ed",
+    "role": "base"
+  },
+  "56a0948db1c1": {
+    "value": "#60739a28",
+    "role": "base"
+  },
+  "f9ea6b866fe8": {
+    "value": "#506c97",
+    "role": "base"
+  },
+  "2b79697602a6": {
+    "value": "#354e79",
+    "role": "base"
+  },
+  "7a7cf8ae5bec": {
+    "value": "#d0dcee",
+    "role": "base"
+  },
+  "97a1d013609e": {
+    "value": "#eaf0fb",
+    "role": "base"
+  },
+  "9b3b617448b1": {
+    "value": "#5b74a2",
+    "role": "base"
+  },
+  "52b9538be9fb": {
+    "value": "#d6e0ef",
+    "role": "base"
+  },
+  "33f727d2ced9": {
+    "value": "#f8faffb8",
+    "role": "base"
+  },
+  "23903e81d7bc": {
+    "value": "#7890b4",
+    "role": "base"
+  },
+  "e9c3b61caebc": {
+    "value": "#3349682e",
+    "role": "base"
+  },
+  "5f47f95a62e8": {
+    "value": "#f5f7fcf7",
+    "role": "base"
+  },
+  "254dc2e66d8c": {
+    "value": "#47618a17",
+    "role": "base"
+  },
+  "8083c26a7b5a": {
+    "value": "#eaf0fa",
+    "role": "base"
+  },
+  "45c10323896b": {
+    "value": "#95a8c6",
+    "role": "base"
+  },
+  "ec6464558ddd": {
+    "value": "#d6e2f7",
+    "role": "base"
+  },
+  "831c68896e2b": {
+    "value": "#728fba",
+    "role": "base"
+  },
+  "5ea7f5625685": {
+    "value": "#405579",
+    "role": "base"
+  },
+  "a804d87823fa": {
+    "value": "#7186b1",
+    "role": "base"
+  },
+  "c1c367263fac": {
+    "value": "#8b9bb5",
+    "role": "base"
+  },
+  "5192c6580050": {
+    "value": "#d8e2f0",
+    "role": "base"
+  },
+  "6b1c4912fddb": {
+    "value": "#f5f7fc",
+    "role": "base"
+  },
+  "fdc445259a57": {
+    "value": "#e5ecf8",
+    "role": "base"
+  },
+  "e7513f4fc92b": {
+    "value": "#d4deef",
+    "role": "base"
+  },
+  "18cfdddaf9f8": {
+    "value": "#556f9d",
+    "role": "base"
+  },
+  "c51bf2e1634e": {
+    "value": "#f4f7fbd9",
+    "role": "base"
+  },
+  "1c0cf9b3c7ac": {
+    "value": "#63779a0a",
+    "role": "base"
+  },
+  "e565fb4fa7bd": {
+    "value": "#9ba9bf",
+    "role": "base"
+  },
+  "1184b2f1672f": {
+    "value": "#a4b4cf",
+    "role": "base"
+  },
+  "173eb3bd2054": {
+    "value": "#7f94b6",
+    "role": "base"
+  },
+  "1ae580bbae3d": {
+    "value": "#8192c0",
+    "role": "base"
+  },
+  "8cba3e48d9c5": {
+    "value": "#657bab",
+    "role": "base"
+  },
+  "67cc5da573cb": {
+    "value": "#6d82ae20",
+    "role": "base"
+  },
+  "33f0d1e49a5d": {
+    "value": "#d6e1f0",
+    "role": "base"
+  },
+  "d5c93fe16865": {
+    "value": "#6f87ae",
+    "role": "base"
+  },
+  "06e9c8030bc0": {
+    "value": "#ecf1fa",
+    "role": "base"
+  },
+  "f7e5e5e15649": {
+    "value": "#8195b5",
+    "role": "base"
+  },
+  "22a9ae008d0e": {
+    "value": "#86ab9a",
+    "role": "positive"
+  },
+  "02e0d175a49b": {
+    "value": "#d6e1ee",
+    "role": "base"
+  },
+  "307407e01987": {
+    "value": "#fbfcff",
+    "role": "base"
+  },
+  "6c252b4b36f4": {
+    "value": "#fbf4ed",
+    "role": "base"
+  },
+  "0af39b08cffb": {
+    "value": "#e6d7c5",
+    "role": "base"
+  },
+  "c6d75c2ba491": {
+    "value": "#f7f9fd",
+    "role": "base"
+  },
+  "57431c8b0260": {
+    "value": "#e2eaf8",
+    "role": "base"
+  },
+  "9ced51f6decc": {
+    "value": "#6e88b3",
+    "role": "base"
+  },
+  "4613f7143d79": {
+    "value": "#edf5ef",
+    "role": "positive"
+  },
+  "5d03a75ff51d": {
+    "value": "#526d95",
+    "role": "base"
+  },
+  "61c6b67275b0": {
+    "value": "#e3ebf8",
+    "role": "base"
+  },
+  "45ab721f04cd": {
+    "value": "#bc7f87",
+    "role": "negative"
+  },
+  "c57d887bd2c8": {
+    "value": "#d1def0",
+    "role": "base"
+  },
+  "5f08fa49eff6": {
+    "value": "#7d92b5",
+    "role": "base"
+  },
+  "9a91f3b51e5f": {
+    "value": "#8fa8cf",
+    "role": "base"
+  },
+  "380cbb953b41": {
+    "value": "#97aed0",
+    "role": "base"
+  },
+  "d3bb81d239a8": {
+    "value": "#7c94b9",
+    "role": "base"
+  },
+  "9522d6864e7f": {
+    "value": "#ffffffb3",
+    "role": "base"
+  },
+  "7813e977ba10": {
+    "value": "#617899",
+    "role": "base"
+  },
+  "d89ff8473d1c": {
+    "value": "#5b7fac",
+    "role": "base"
+  },
+  "4f16a5ce8f3d": {
+    "value": "#ffffff55",
+    "role": "base"
+  },
+  "ad18840383b0": {
+    "value": "#ffffff05",
+    "role": "base"
+  },
+  "8afd10b1ead3": {
+    "value": "#d3deed",
+    "role": "base"
+  },
+  "f445aa3256cc": {
+    "value": "#8094b4",
+    "role": "base"
+  },
+  "7efc480d834d": {
+    "value": "#33496855",
+    "role": "base"
+  },
+  "a973938314dc": {
+    "value": "#98a4ba",
+    "role": "base"
+  },
+  "ab20e07fe9c0": {
+    "value": "#dce3f1",
+    "role": "base"
+  },
+  "7dbb38a52fb3": {
+    "value": "#8197b9",
+    "role": "base"
+  },
+  "3710df6adde4": {
+    "value": "#526b95",
+    "role": "base"
+  },
+  "2a255eecafa5": {
+    "value": "#a4b2c9",
+    "role": "base"
+  },
+  "a7ff74ad9c6f": {
+    "value": "#8293ad",
+    "role": "base"
+  },
+  "992976ff63b5": {
+    "value": "#6684aa",
+    "role": "base"
+  },
+  "5fc3b28633e5": {
+    "value": "#8ea5c5",
+    "role": "base"
+  },
+  "9891be589c8a": {
+    "value": "#a2afc5",
+    "role": "base"
+  },
+  "8dd9b7187a4b": {
+    "value": "#9fb2d4",
+    "role": "base"
+  },
+  "b5f98403e966": {
+    "value": "#9aaeca",
+    "role": "base"
+  },
+  "1a1e42d1b580": {
+    "value": "#7991a9",
+    "role": "base"
+  },
+  "c070ef2c9f80": {
+    "value": "#98a8bf",
+    "role": "base"
+  },
+  "3c0ccec7c335": {
+    "value": "#edf1f9",
+    "role": "base"
+  },
+  "7711c0375e9c": {
+    "value": "#a6b3c7",
+    "role": "base"
+  },
+  "db841ff4e8f9": {
+    "value": "#f7eed7",
+    "role": "base"
+  },
+  "fc5e230de744": {
+    "value": "#b19554",
+    "role": "base"
+  },
+  "3d75ef8c8d9f": {
+    "value": "#debf7166",
+    "role": "base"
+  },
+  "8494e2c4757d": {
+    "value": "#91a8d0",
+    "role": "base"
+  },
+  "9768da5aed29": {
+    "value": "#edf2fd",
+    "role": "base"
+  },
+  "e91cfdf4c949": {
+    "value": "#d6e1f2",
+    "role": "base"
+  },
+  "021d9c46bf4e": {
+    "value": "#728baf",
+    "role": "base"
+  },
+  "2cf3c4aa5057": {
+    "value": "#eff1f688",
+    "role": "base"
+  },
+  "f4f3acf464a2": {
+    "value": "#ad9054",
+    "role": "base"
+  },
+  "0b7abc5b2217": {
+    "value": "#58729b",
+    "role": "base"
+  },
+  "4a53ee9d7b77": {
+    "value": "#e9effa",
+    "role": "base"
+  },
+  "a05b9766a48c": {
+    "value": "#94a2b8",
+    "role": "base"
+  },
+  "931188d387d0": {
+    "value": "#9eb5dc66",
+    "role": "base"
+  },
+  "6eb39af081cb": {
+    "value": "#d5dfed",
+    "role": "base"
+  },
+  "7f60f8088c8b": {
+    "value": "#61789f0b",
+    "role": "base"
+  },
+  "a96ce13b4497": {
+    "value": "#425c83",
+    "role": "base"
+  },
+  "cf72f1e8dec6": {
+    "value": "#ebf1fa",
+    "role": "base"
+  },
+  "6b47534d2809": {
+    "value": "#95a3b8",
+    "role": "base"
+  },
+  "de2f661ce849": {
+    "value": "#7185a4",
+    "role": "base"
+  },
+  "55a4f7d9a06e": {
+    "value": "#f3f7fd",
+    "role": "base"
+  },
+  "fbc5fb60167c": {
+    "value": "#8197b7",
+    "role": "base"
+  },
+  "26f9ea260bf9": {
+    "value": "#dfeafb",
+    "role": "base"
+  },
+  "0b4a1eec2fb3": {
+    "value": "#597fac",
+    "role": "base"
+  },
+  "bd64aff70ad4": {
+    "value": "#8799b4",
+    "role": "base"
+  },
+  "1e9e3c8ce252": {
+    "value": "#d6e1ef",
+    "role": "base"
+  },
+  "4d98e3cb67b9": {
+    "value": "#a3b1c6",
+    "role": "base"
+  },
+  "f383e3564ce7": {
+    "value": "#dce5f2",
+    "role": "base"
+  },
+  "18d0e13bb224": {
+    "value": "#7f93b0",
+    "role": "base"
+  },
+  "350fe92213ed": {
+    "value": "#e7cd875c",
+    "role": "attention"
+  },
+  "ab5e8f289270": {
+    "value": "#dbe3f1",
+    "role": "base"
+  },
+  "fa2a3f4e0c7b": {
+    "value": "#fff0b9",
+    "role": "attention"
+  },
+  "a2640756f6e0": {
+    "value": "#876c22",
+    "role": "attention"
+  },
+  "9825c883a30b": {
+    "value": "#d4ba68",
+    "role": "attention"
+  },
+  "0233ce6a584d": {
+    "value": "#e0e7f1",
+    "role": "base"
+  },
+  "b000f71d1800": {
+    "value": "#839c85",
+    "role": "positive"
+  },
+  "353b4ea5392b": {
+    "value": "#dce8de",
+    "role": "positive"
+  },
+  "996fea44366a": {
+    "value": "#f2f7f2",
+    "role": "positive"
+  },
+  "6d882cd061f4": {
+    "value": "#5e7b64",
+    "role": "positive"
+  },
+  "282ef09ca3bd": {
+    "value": "#8b9c8d",
+    "role": "positive"
+  },
+  "fb6a8d922314": {
+    "value": "#94ab97",
+    "role": "positive"
+  },
+  "7885d3d691cb": {
+    "value": "#fff0f0",
+    "role": "negative"
+  },
+  "d1f4f782feca": {
+    "value": "#e2a4a7",
+    "role": "negative"
+  },
+  "38cd4b8dbac9": {
+    "value": "#ad515a",
+    "role": "negative"
+  },
+  "ff36afbc9e8e": {
+    "value": "#ced9eb",
+    "role": "base"
+  },
+  "57986cb40df4": {
+    "value": "#586d92",
+    "role": "base"
+  },
+  "03f8239afb90": {
+    "value": "#8495b1",
+    "role": "base"
+  },
+  "3e10cb728fef": {
+    "value": "#4a6a9e",
+    "role": "base"
+  },
+  "a6579865a0b8": {
+    "value": "#dce4ef",
+    "role": "base"
+  },
+  "3d74cf0ac6e6": {
+    "value": "#8b9cb4",
+    "role": "base"
+  },
+  "dfa245a9a41d": {
+    "value": "#d66d75",
+    "role": "base"
+  },
+  "16d3cdf68705": {
+    "value": "#f6f8fd",
+    "role": "base"
+  },
+  "e38f66f37532": {
+    "value": "#d5e0ef",
+    "role": "base"
+  },
+  "cb731a30cd7e": {
+    "value": "#f0f4fc",
+    "role": "base"
+  },
+  "bc43b164f6ef": {
+    "value": "#6079a509",
+    "role": "base"
+  },
+  "4b2454b7ed48": {
+    "value": "#e6eefb",
+    "role": "base"
+  },
+  "944dbc269553": {
+    "value": "#dce6f7",
+    "role": "base"
+  },
+  "7c1f9f85513a": {
+    "value": "#9db4d7",
+    "role": "base"
+  },
+  "945a23564189": {
+    "value": "#718ab91a",
+    "role": "base"
+  },
+  "0a1d13ec1c21": {
+    "value": "#f0f5fd",
+    "role": "base"
+  },
+  "acd0c38385df": {
+    "value": "#9bb3d8",
+    "role": "base"
+  },
+  "d284cd7cc211": {
+    "value": "#e5eefc",
+    "role": "base"
+  },
+  "a79431da04f9": {
+    "value": "#dbe7f8",
+    "role": "base"
+  },
+  "9de80d8618d7": {
+    "value": "#c57a92",
+    "role": "base"
+  },
+  "ab9a1e35288a": {
+    "value": "#faedf3",
+    "role": "base"
+  },
+  "dfd69b772ebc": {
+    "value": "#efd0dd",
+    "role": "base"
+  },
+  "31848b2aaef5": {
+    "value": "#a3646b",
+    "role": "negative"
+  },
+  "db183dec37f4": {
+    "value": "#aab6c8",
+    "role": "base"
+  },
+  "6b00e5d9aebd": {
+    "value": "#bccfe8",
+    "role": "base"
+  },
+  "f1a97a14acf3": {
+    "value": "#e7effb",
+    "role": "base"
+  },
+  "6b1764e4a0f9": {
+    "value": "#627fa7",
+    "role": "base"
+  },
+  "e9babc273200": {
+    "value": "#9fb7d32b",
+    "role": "base"
+  },
+  "bd73864b1097": {
+    "value": "#a7b4c8",
+    "role": "base"
+  },
+  "71ac0018a22f": {
+    "value": "#91a1b9",
+    "role": "base"
+  },
+  "e3ab1fbf2772": {
+    "value": "#e1e7f0",
+    "role": "base"
+  },
+  "ba588e10acb9": {
+    "value": "#6d7d94",
+    "role": "base"
+  },
+  "1600efc5a6a7": {
+    "value": "#99a8bd",
+    "role": "base"
+  },
+  "ed09e56d46ca": {
+    "value": "#b48f97",
+    "role": "base"
+  },
+  "9b2520cc1861": {
+    "value": "#fff4d9",
+    "role": "base"
+  },
+  "6853fc86781e": {
+    "value": "#b69652",
+    "role": "base"
+  },
+  "078d7d7d67a2": {
+    "value": "#edda9d",
+    "role": "base"
+  },
+  "47d9575639ea": {
+    "value": "#725b22",
+    "role": "attention"
+  },
+  "5b2a8191561c": {
+    "value": "#fff0b8",
+    "role": "attention"
+  },
+  "955554f5306f": {
+    "value": "#27354e",
+    "role": "base"
+  },
+  "5a85a248b4b0": {
+    "value": "#8690a3",
+    "role": "base"
+  },
+  "d8ca55cd9de0": {
+    "value": "#6474b1",
+    "role": "base"
+  },
+  "dca729cf674a": {
+    "value": "#4b5c97",
+    "role": "base"
+  },
+  "82176d0b7cad": {
+    "value": "rgba(103,119,156,.13)",
+    "role": "base"
+  },
+  "9bd185ffc12b": {
+    "value": "rgba(255,255,255,.62)",
+    "role": "base"
+  },
+  "41a0ca4c64dc": {
+    "value": "rgba(60,73,112,.045)",
+    "role": "base"
+  },
+  "7d120a3a7f36": {
+    "value": "rgba(255,255,255,.95)",
+    "role": "base"
+  },
+  "e6a32881efaa": {
+    "value": "rgba(205,210,243,.48)",
+    "role": "base"
+  },
+  "bd28b9407172": {
+    "value": "rgba(211,229,225,.32)",
+    "role": "base"
+  },
+  "a230858a9505": {
+    "value": "#a2a9ba",
+    "role": "base"
+  },
+  "83994f2caee4": {
+    "value": "#7e88a1",
+    "role": "base"
+  },
+  "aef347f2bc6c": {
+    "value": "rgba(255,255,255,.9)",
+    "role": "base"
+  },
+  "c8401fbce883": {
+    "value": "#8b96ad",
+    "role": "base"
+  },
+  "2ffc82d4edbd": {
+    "value": "#7e88a0",
+    "role": "base"
+  },
+  "25345824ec26": {
+    "value": "rgba(222,228,244,.45)",
+    "role": "base"
+  },
+  "4630a4c0162f": {
+    "value": "#98a0b7",
+    "role": "base"
+  },
+  "ee1b77c8c7f9": {
+    "value": "#8d96a9",
+    "role": "base"
+  },
+  "dc551feb24bd": {
+    "value": "#7e8ac1",
+    "role": "base"
+  },
+  "7946dafe5d48": {
+    "value": "#6373ab",
+    "role": "base"
+  },
+  "8f0cd0489570": {
+    "value": "#6474b122",
+    "role": "base"
+  },
+  "be6e35f6c4fc": {
+    "value": "#ffffff50",
+    "role": "base"
+  },
+  "3afa366ffb7e": {
+    "value": "#ffffff35",
+    "role": "base"
+  },
+  "489f663bca74": {
+    "value": "#e8ebfb",
+    "role": "base"
+  },
+  "2814ee50c730": {
+    "value": "rgba(255,255,255,.7)",
+    "role": "base"
+  },
+  "9bb92e611200": {
+    "value": "#9aa3b5",
+    "role": "base"
+  },
+  "d6fb78c2b7f1": {
+    "value": "#e7ebf5",
+    "role": "base"
+  },
+  "f72b01537852": {
+    "value": "#edf0f9",
+    "role": "base"
+  },
+  "2d506dddf5a1": {
+    "value": "rgba(245,246,252,.64)",
+    "role": "base"
+  },
+  "84868f782b8b": {
+    "value": "#8896c6",
+    "role": "base"
+  },
+  "8067319ec0ca": {
+    "value": "#6776ab",
+    "role": "base"
+  },
+  "f35cd9a8b75f": {
+    "value": "#ffffff80",
+    "role": "base"
+  },
+  "81bdfa6dc9f3": {
+    "value": "#6e7bb220",
+    "role": "base"
+  },
+  "f049195fb362": {
+    "value": "#929ab0",
+    "role": "base"
+  },
+  "d079c64ead55": {
+    "value": "#a4adbe",
+    "role": "base"
+  },
+  "0af4375b3696": {
+    "value": "#929bb0",
+    "role": "base"
+  },
+  "2d2a6db4d0bd": {
+    "value": "rgba(255,255,255,.83)",
+    "role": "base"
+  },
+  "91acd04cf23f": {
+    "value": "#50629406",
+    "role": "base"
+  },
+  "9b2d8676642b": {
+    "value": "#3e4e79",
+    "role": "base"
+  },
+  "7579ca29d7c4": {
+    "value": "#8995b7",
+    "role": "base"
+  },
+  "c1cc924d791f": {
+    "value": "#e6e9f266",
+    "role": "base"
+  },
+  "5c752ba1794e": {
+    "value": "#f6f7fb",
+    "role": "base"
+  },
+  "2c05df0e0424": {
+    "value": "#7f8eb5",
+    "role": "base"
+  },
+  "cf0b456cba26": {
+    "value": "#e0e6f3",
+    "role": "base"
+  },
+  "93444170e52f": {
+    "value": "#7183b215",
+    "role": "base"
+  },
+  "74084d6740a5": {
+    "value": "#bec8df",
+    "role": "base"
+  },
+  "f1130730c7a7": {
+    "value": "#91b9a6",
+    "role": "positive"
+  },
+  "edc5cdc22504": {
+    "value": "#ffffff78",
+    "role": "base"
+  },
+  "96097c162e7a": {
+    "value": "#9ba4b7",
+    "role": "base"
+  },
+  "94f39dc1b80b": {
+    "value": "#7e8aa2",
+    "role": "base"
+  },
+  "6b0a217f2fac": {
+    "value": "#8c96ac",
+    "role": "base"
+  },
+  "1480b7a1896d": {
+    "value": "#e5e9f2",
+    "role": "base"
+  },
+  "dbc7ca3670f2": {
+    "value": "#7183a4",
+    "role": "base"
+  },
+  "96aa7ad1874e": {
+    "value": "#ffffffc0",
+    "role": "base"
+  },
+  "827e4591f31b": {
+    "value": "#8590a7",
+    "role": "base"
+  },
+  "80f5c647362f": {
+    "value": "#a3aabd",
+    "role": "base"
+  },
+  "26d05c9d34fa": {
+    "value": "#bec6e4",
+    "role": "base"
+  },
+  "e8d90157150f": {
+    "value": "#a7b0c6",
+    "role": "base"
+  },
+  "7b5fea1db1c6": {
+    "value": "#e6eaf5",
+    "role": "base"
+  },
+  "3cdff3ee79ff": {
+    "value": "#a4b0d8",
+    "role": "base"
+  },
+  "8d263f9ee8e1": {
+    "value": "#a5aebe",
+    "role": "base"
+  },
+  "0bda7c7a28ee": {
+    "value": "#485c8d0a",
+    "role": "base"
+  },
+  "c54abc264b88": {
+    "value": "#b0bbcc",
+    "role": "base"
+  },
+  "15cc76e65be8": {
+    "value": "#e9eef8",
+    "role": "base"
+  },
+  "d80e4b2735f9": {
+    "value": "#8593b6",
+    "role": "base"
+  },
+  "68f503ecd439": {
+    "value": "#eef0f5",
+    "role": "base"
+  },
+  "a71fc60d96e5": {
+    "value": "#b7c0d0",
+    "role": "base"
+  },
+  "beca7bb7b767": {
+    "value": "#8e98ac",
+    "role": "base"
+  },
+  "6d414739125a": {
+    "value": "#e5eaf6",
+    "role": "base"
+  },
+  "af614c0e46d0": {
+    "value": "#9eadd0",
+    "role": "base"
+  },
+  "0558f3abe304": {
+    "value": "#9aa8be",
+    "role": "base"
+  },
+  "efa70ca0c909": {
+    "value": "#a2aabd",
+    "role": "base"
+  },
+  "74851bdeaa91": {
+    "value": "#7f8aa6",
+    "role": "base"
+  },
+  "5bac552af679": {
+    "value": "#a0a9bb",
+    "role": "base"
+  },
+  "2467dce57fbc": {
+    "value": "#9aa4b8",
+    "role": "base"
+  },
+  "29b07ad2aede": {
+    "value": "#a8b1c1",
+    "role": "base"
+  },
+  "4aa802ff8d1b": {
+    "value": "#8693ac",
+    "role": "base"
+  },
+  "04f77dca0a83": {
+    "value": "#8797b6",
+    "role": "base"
+  },
+  "c06cd4ee86a9": {
+    "value": "#e8edf780",
+    "role": "base"
+  },
+  "894bb6d375b5": {
+    "value": "#ffffffa0",
+    "role": "base"
+  },
+  "13a538413b22": {
+    "value": "#929eb8",
+    "role": "base"
+  },
+  "2645d36d51b4": {
+    "value": "#7d8ba8",
+    "role": "base"
+  },
+  "42e09480ca8c": {
+    "value": "#97a5c4",
+    "role": "base"
+  },
+  "81966755112e": {
+    "value": "#929db4",
+    "role": "base"
+  },
+  "db144795c3ae": {
+    "value": "#9aa5b9",
+    "role": "base"
+  },
+  "8fa205728f15": {
+    "value": "#b99a70",
+    "role": "base"
+  },
+  "9ae11d8701ca": {
+    "value": "#e6eaf3",
+    "role": "base"
+  },
+  "c0e132c85799": {
+    "value": "#a4b3d6",
+    "role": "base"
+  },
+  "31dc54430c7d": {
+    "value": "#c4cde0",
+    "role": "base"
+  },
+  "084c2d91d963": {
+    "value": "#8a99bb",
+    "role": "base"
+  },
+  "8a74cb5a5c04": {
+    "value": "#ffffff65",
+    "role": "base"
+  },
+  "5880ffb7f4d3": {
+    "value": "#a3aec4",
+    "role": "base"
+  },
+  "03c6f3d5d28c": {
+    "value": "#727f9a",
+    "role": "base"
+  },
+  "c4eb39984f00": {
+    "value": "#a2acc0",
+    "role": "base"
+  },
+  "f04c874be64e": {
+    "value": "#b18aa0",
+    "role": "base"
+  },
+  "7c8c5ff0b885": {
+    "value": "#cda0b32b",
+    "role": "base"
+  },
+  "8c27afef7f40": {
+    "value": "#374969",
+    "role": "base"
+  },
+  "9a4a84e17eb3": {
+    "value": "#8d9dbd",
+    "role": "base"
+  },
+  "1e1bf0945dbb": {
+    "value": "#e9eefb",
+    "role": "base"
+  },
+  "60560f299721": {
+    "value": "#b195a3",
+    "role": "base"
+  },
+  "9dc153f27e97": {
+    "value": "#f6edf1",
+    "role": "base"
+  },
+  "d2778a16ebcb": {
+    "value": "#a4abba",
+    "role": "base"
+  },
+  "82ae75dd45a9": {
+    "value": "#8a9ab9",
+    "role": "base"
+  },
+  "11ea2b266cef": {
+    "value": "#9aa6bd",
+    "role": "base"
+  },
+  "0022fcccb4c3": {
+    "value": "#dde4f2",
+    "role": "base"
+  },
+  "a731dd1236af": {
+    "value": "#78869f",
+    "role": "base"
+  },
+  "0edd4265252f": {
+    "value": "#9aa4b7",
+    "role": "base"
+  },
+  "1361df48907f": {
+    "value": "#abb2bf",
+    "role": "base"
+  },
+  "414996138ed7": {
+    "value": "#a2a8b8",
+    "role": "base"
+  },
+  "ef842c6b957b": {
+    "value": "#f8f9ffcc",
+    "role": "base"
+  },
+  "447264f8c58d": {
+    "value": "#5364920e",
+    "role": "base"
+  },
+  "37ecbf14cee2": {
+    "value": "#e2e7f4",
+    "role": "base"
+  },
+  "789f2ca65f7b": {
+    "value": "#98aad1",
+    "role": "base"
+  },
+  "2f45b9feef0c": {
+    "value": "#9ca6ba",
+    "role": "base"
+  },
+  "fd314f87159b": {
+    "value": "#d9b3a7",
+    "role": "negative"
+  },
+  "e1c9c1ee3c76": {
+    "value": "#d3c394",
+    "role": "attention"
+  },
+  "eedd565261e6": {
+    "value": "#a3bfb0",
+    "role": "positive"
+  },
+  "a847c31da243": {
+    "value": "#ffffffa6",
+    "role": "base"
+  },
+  "a214876278bf": {
+    "value": "#6676a11a",
+    "role": "base"
+  },
+  "08628b6d3af1": {
+    "value": "#8394bb",
+    "role": "base"
+  },
+  "cabea0ad4bf3": {
+    "value": "#9aa4b9",
+    "role": "base"
+  },
+  "81d6a7c6f2ff": {
+    "value": "#e7ebf4",
+    "role": "base"
+  },
+  "2800c450775b": {
+    "value": "#ffffff94",
+    "role": "base"
+  },
+  "55bcbd159fb1": {
+    "value": "#edf1fc",
+    "role": "base"
+  },
+  "a6d041b43114": {
+    "value": "#cdd7ed",
+    "role": "base"
+  },
+  "80c9774b15e1": {
+    "value": "#b8c1d3",
+    "role": "base"
+  },
+  "23adbb97449f": {
+    "value": "#b5bed0",
+    "role": "base"
+  },
+  "2bf0e18b862c": {
+    "value": "#d8e0f1",
+    "role": "base"
+  },
+  "7479fffa12e2": {
+    "value": "#e9edf6",
+    "role": "base"
+  },
+  "b5a898ff9ef3": {
+    "value": "#8594b3",
+    "role": "base"
+  },
+  "c2dc175a3d5f": {
+    "value": "#f3f8f4c2",
+    "role": "base"
+  },
+  "136959216be4": {
+    "value": "#e2eee6",
+    "role": "positive"
+  },
+  "823704b65fad": {
+    "value": "#87a595",
+    "role": "positive"
+  },
+  "29aabb8e52a1": {
+    "value": "#faf4f0b2",
+    "role": "negative"
+  },
+  "18f70302992d": {
+    "value": "#f1e4dd",
+    "role": "negative"
+  },
+  "47bac345f7d4": {
+    "value": "#bd9d89",
+    "role": "negative"
+  },
+  "bc8c6a788251": {
+    "value": "#e0e9f8",
+    "role": "base"
+  },
+  "2d141b0559b0": {
+    "value": "#ecedf8",
+    "role": "base"
+  },
+  "11e5a345fc23": {
+    "value": "#9daed1",
+    "role": "base"
+  },
+  "feb2f6d15daa": {
+    "value": "#879bc0",
+    "role": "base"
+  },
+  "533129a9b9ce": {
+    "value": "#8c98b0",
+    "role": "base"
+  },
+  "f51134a6b080": {
+    "value": "#ffffffc4",
+    "role": "base"
+  },
+  "14e0f8737e43": {
+    "value": "#a5b3ce",
+    "role": "base"
+  },
+  "d9f3fd1a382d": {
+    "value": "#939fb6",
+    "role": "base"
+  },
+  "ee9d9980e6f5": {
+    "value": "#7c91b7",
+    "role": "base"
+  },
+  "f8d6f9b37180": {
+    "value": "#e8edf480",
+    "role": "base"
+  },
+  "8da97a46e43c": {
+    "value": "#acb5c6",
+    "role": "base"
+  },
+  "dc2aed18db21": {
+    "value": "#bdc5d4",
+    "role": "base"
+  },
+  "8bbaeecc4515": {
+    "value": "#d9e2f5",
+    "role": "base"
+  },
+  "880f0b89ec56": {
+    "value": "#748ab0",
+    "role": "base"
+  },
+  "d111da0dd03b": {
+    "value": "#e5eaf460",
+    "role": "base"
+  },
+  "1251fdf4f4ac": {
+    "value": "#95a1b9",
+    "role": "base"
+  },
+  "ddcb16ae2e58": {
+    "value": "#667dab",
+    "role": "base"
+  },
+  "3aab38d30c11": {
+    "value": "#60719409",
+    "role": "base"
+  },
+  "80ad3c4ec979": {
+    "value": "#e0e6f1",
+    "role": "base"
+  },
+  "f24c65b6f1c4": {
+    "value": "#d7deeb",
+    "role": "base"
+  },
+  "2c604a2fc5bd": {
+    "value": "#8b9cc7",
+    "role": "base"
+  },
+  "1a027e9b310b": {
+    "value": "#cdd8ec",
+    "role": "base"
+  },
+  "28db9d9630b3": {
+    "value": "#eef2fb94",
+    "role": "base"
+  },
+  "c6a3cf1734a8": {
+    "value": "#bdc8df",
+    "role": "base"
+  },
+  "50d071d2f77d": {
+    "value": "#8b9fc7",
+    "role": "base"
+  },
+  "f158adaebf83": {
+    "value": "#9baac6",
+    "role": "base"
+  },
+  "a4ca19c8ffb6": {
+    "value": "#35436438",
+    "role": "base"
+  },
+  "8ece0fc2c064": {
+    "value": "#f8f9fdf2",
+    "role": "base"
+  },
+  "30fd48780619": {
+    "value": "#2d3d631e",
+    "role": "base"
+  },
+  "ad153d95ebfc": {
+    "value": "#929db2",
+    "role": "base"
+  },
+  "0a65b92d3e25": {
+    "value": "#919cb1",
+    "role": "base"
+  },
+  "a6ea03b82fdb": {
+    "value": "#e9edf6a0",
+    "role": "base"
+  },
+  "442599eaefaa": {
+    "value": "#7c8aa6",
+    "role": "base"
+  },
+  "a173cb9eb400": {
+    "value": "#7f8ca6",
+    "role": "base"
+  },
+  "73fc74d0b3f2": {
+    "value": "#7f93b9",
+    "role": "base"
+  },
+  "09ab20ddd534": {
+    "value": "#dde5f2",
+    "role": "base"
+  },
+  "604f6388fadb": {
+    "value": "#c7d2e9",
+    "role": "base"
+  },
+  "269021f80c91": {
+    "value": "#9cacca",
+    "role": "base"
+  },
+  "afecb4dfca4a": {
+    "value": "#8399bf",
+    "role": "base"
+  },
+  "733f73a47ded": {
+    "value": "#f8f1e5",
+    "role": "base"
+  },
+  "31ef9a45e1fd": {
+    "value": "#a99a85",
+    "role": "base"
+  },
+  "35a4c02a92b9": {
+    "value": "#f9fafff0",
+    "role": "base"
+  },
+  "04d99b148c11": {
+    "value": "#293f7420",
+    "role": "base"
+  },
+  "9823a86c0a85": {
+    "value": "#e0e6f4",
+    "role": "base"
+  },
+  "183ca86c33a9": {
+    "value": "#8fa2c8",
+    "role": "base"
+  },
+  "3bd72a522561": {
+    "value": "#e6eaf4",
+    "role": "base"
+  },
+  "f1c8b3e1863a": {
+    "value": "#3b4d7420",
+    "role": "base"
+  },
+  "0c4f60e44876": {
+    "value": "#fdfdff",
+    "role": "base"
+  },
+  "5a9057a3cef9": {
+    "value": "#879cc5",
+    "role": "base"
+  },
+  "f009ebcc46be": {
+    "value": "#8794af",
+    "role": "base"
+  },
+  "296e4d51296e": {
+    "value": "#9ca6b8",
+    "role": "base"
+  },
+  "5f7e654e8d0e": {
+    "value": "#f7f8fdd9",
+    "role": "base"
+  },
+  "cb42d2ce102d": {
+    "value": "#60739a05",
+    "role": "base"
+  },
+  "aa9028006bbc": {
+    "value": "#a3adc1",
+    "role": "base"
+  },
+  "676a3053a0b5": {
+    "value": "#7488b4",
+    "role": "base"
+  },
+  "85b3a0e0363a": {
+    "value": "#28334d35",
+    "role": "base"
+  },
+  "13c8bc970e64": {
+    "value": "#25355712",
+    "role": "base"
+  },
+  "6a7ec4855dda": {
+    "value": "#f5f6fce8",
+    "role": "base"
+  },
+  "aa064e7c336c": {
+    "value": "#f7f8fddf",
+    "role": "base"
+  },
+  "1fdfd656e8a0": {
+    "value": "#60739a14",
+    "role": "base"
+  },
+  "0f5569cf4c5a": {
+    "value": "#ffffffed",
+    "role": "base"
+  },
+  "ef4de16e1bf4": {
+    "value": "#929fb9",
+    "role": "base"
+  },
+  "316cd51dd45a": {
+    "value": "#627bb0",
+    "role": "base"
+  },
+  "eba40b51e361": {
+    "value": "#c4ccdc",
+    "role": "base"
+  },
+  "bd60281142c4": {
+    "value": "#99a5ba",
+    "role": "base"
+  },
+  "18f958d2e8fc": {
+    "value": "#7383a2",
+    "role": "base"
+  },
+  "c9f149f694e3": {
+    "value": "#a4b2e34d",
+    "role": "base"
+  },
+  "8d177d5adfc4": {
+    "value": "#8a97b0",
+    "role": "base"
+  },
+  "725ac82241c2": {
+    "value": "#edf0f680",
+    "role": "base"
+  },
+  "4869eb1ed0dd": {
+    "value": "#6e7c95",
+    "role": "base"
+  },
+  "0a825201841e": {
+    "value": "#e1e7f3",
+    "role": "base"
+  },
+  "19c6342ba9f1": {
+    "value": "#8d9cba",
+    "role": "base"
+  },
+  "877ec712c5a8": {
+    "value": "#e1e8f6",
+    "role": "base"
+  },
+  "34cf322433f3": {
+    "value": "#637eae",
+    "role": "base"
+  },
+  "b4ddb60a7349": {
+    "value": "#92a6d2",
+    "role": "base"
+  },
+  "f8baee4abccf": {
+    "value": "#7185b5",
+    "role": "base"
+  },
+  "902149924674": {
+    "value": "#657bb322",
+    "role": "base"
+  },
+  "a8a8558f5938": {
+    "value": "#ecf0fb",
+    "role": "base"
+  },
+  "edf4dcc53c1f": {
+    "value": "#b1c2e4",
+    "role": "base"
+  },
+  "befcb16dd9c3": {
+    "value": "#829ccd",
+    "role": "base"
+  },
+  "de3a2b2bb08d": {
+    "value": "#e3e9f8",
+    "role": "base"
+  },
+  "3ade911a363b": {
+    "value": "#b7c5e4",
+    "role": "base"
+  },
+  "52405a2ec8b8": {
+    "value": "#9daac3",
+    "role": "base"
+  },
+  "434896c97ee8": {
+    "value": "#ffffffdb",
+    "role": "base"
+  },
+  "f0e8d16ccd59": {
+    "value": "#c7d1e7",
+    "role": "base"
+  },
+  "f0277878a1ae": {
+    "value": "#647390",
+    "role": "base"
+  },
+  "635d89219618": {
+    "value": "#4a618207",
+    "role": "base"
+  },
+  "da4f8c4e98a4": {
+    "value": "#e0e7f8",
+    "role": "base"
+  },
+  "94b1c885fcf8": {
+    "value": "#7088bf",
+    "role": "base"
+  },
+  "b15b19d801bc": {
+    "value": "#354f89",
+    "role": "base"
+  },
+  "bbe62743db9d": {
+    "value": "#536eaa18",
+    "role": "base"
+  },
+  "4128705d5896": {
+    "value": "#6077a5",
+    "role": "base"
+  },
+  "1d7ca417e5a4": {
+    "value": "#cbd5e9",
+    "role": "base"
+  },
+  "a725035eb18b": {
+    "value": "#7890c1",
+    "role": "base"
+  },
+  "3174d2fb0edb": {
+    "value": "#e5ebfa",
+    "role": "base"
+  },
+  "bd1ff60e4297": {
+    "value": "#7188bc",
+    "role": "base"
+  },
+  "425c7b2d13e6": {
+    "value": "#637fb7",
+    "role": "base"
+  },
+  "3c75d0ed1ce4": {
+    "value": "#bccbe6",
+    "role": "base"
+  },
+  "c0552eac6150": {
+    "value": "#ffffffde",
+    "role": "base"
+  },
+  "cdf529214e1a": {
+    "value": "#526c9d08",
+    "role": "base"
+  },
+  "df59d58fc653": {
+    "value": "#edf2ff",
+    "role": "base"
+  },
+  "b5b2a9856a10": {
+    "value": "#7e98ca",
+    "role": "base"
+  },
+  "ae1af616e078": {
+    "value": "#526c9d16",
+    "role": "base"
+  },
+  "06e25d687bbc": {
+    "value": "#e5ecfb",
+    "role": "base"
+  },
+  "0ee44212e61f": {
+    "value": "#5773aa",
+    "role": "base"
+  },
+  "7e86f64e7941": {
+    "value": "#c5d1e8",
+    "role": "base"
+  },
+  "425c0e3ed7fc": {
+    "value": "#8da5d1",
+    "role": "base"
+  },
+  "615384509f03": {
+    "value": "#e0e5ef",
+    "role": "base"
+  },
+  "25aeab15e5ed": {
+    "value": "#d0d8e9",
+    "role": "base"
+  },
+  "4864243b276b": {
+    "value": "#e4ebfb",
+    "role": "base"
+  },
+  "fb0bbbb08bdf": {
+    "value": "#3c578f",
+    "role": "base"
+  },
+  "13138c4cb661": {
+    "value": "#b9c8e3",
+    "role": "base"
+  },
+  "bcf36db7f9d4": {
+    "value": "#718abc",
+    "role": "base"
+  },
+  "089f9b03da79": {
+    "value": "#e1e9fa",
+    "role": "base"
+  },
+  "f5d3568c53aa": {
+    "value": "#3e5c97",
+    "role": "base"
+  },
+  "7c5936cc580b": {
+    "value": "#e0e8f8",
+    "role": "base"
+  },
+  "2ed9fa1b0b6f": {
+    "value": "#c0cee9",
+    "role": "base"
+  },
+  "9c07d7bdb811": {
+    "value": "#48699f",
+    "role": "base"
+  },
+  "7efdc7621668": {
+    "value": "#617caa",
+    "role": "base"
+  },
+  "ab0ad2278fc8": {
+    "value": "#bccbe5",
+    "role": "base"
+  },
+  "50b513a8d8ea": {
+    "value": "#506c9e",
+    "role": "base"
+  },
+  "6a3bc9c56cee": {
+    "value": "#ffffffdf",
+    "role": "base"
+  },
+  "ec5eda16a1e0": {
+    "value": "#526fa8",
+    "role": "base"
+  },
+  "f34f227c9723": {
+    "value": "#7387ad",
+    "role": "base"
+  },
+  "c7da715a3f37": {
+    "value": "#dfe8f9",
+    "role": "base"
+  },
+  "2558d0d32a15": {
+    "value": "#e6ecf8",
+    "role": "base"
+  },
+  "c0bead9e9a17": {
+    "value": "#cbd7ed",
+    "role": "base"
+  },
+  "c1c655ccaf5f": {
+    "value": "#c5d4ee",
+    "role": "base"
+  },
+  "a549056cb3f8": {
+    "value": "#5c7bae",
+    "role": "base"
+  },
+  "aa44b68ad675": {
+    "value": "#bdcce6",
+    "role": "base"
+  },
+  "1267dbe75d36": {
+    "value": "#5b72a0",
+    "role": "base"
+  },
+  "fae63ec4d3d4": {
+    "value": "#b5bfd0",
+    "role": "base"
+  },
+  "3ed96e37c67d": {
+    "value": "#9eacc4",
+    "role": "base"
+  },
+  "133ca26c2c80": {
+    "value": "#7189bd",
+    "role": "base"
+  },
+  "e93135b4241a": {
+    "value": "#617bac",
+    "role": "base"
+  },
+  "f6b1f890f437": {
+    "value": "#8ba3d0",
+    "role": "base"
+  },
+  "bf6d00c74c17": {
+    "value": "#6c86b4",
+    "role": "base"
+  },
+  "d73004bcf2d2": {
+    "value": "#6980aa",
+    "role": "base"
+  },
+  "f7a1ebf7509b": {
+    "value": "#b9cae8",
+    "role": "base"
+  },
+  "aefc4c67401d": {
+    "value": "#ffffffe8",
+    "role": "base"
+  },
+  "4207b8f56d8f": {
+    "value": "#edf2ffba",
+    "role": "base"
+  },
+  "5752d49e53b9": {
+    "value": "#829ecf",
+    "role": "base"
+  },
+  "95f57480d6f0": {
+    "value": "#f4f7ff",
+    "role": "base"
+  },
+  "f36a6f61601f": {
+    "value": "#c8d3e6",
+    "role": "base"
+  },
+  "5529fe1d72fe": {
+    "value": "#f9e3e3",
+    "role": "base"
+  },
+  "f82c108324b4": {
+    "value": "#a44750",
+    "role": "base"
+  },
+  "19b715af6fe2": {
+    "value": "#cd7a84",
+    "role": "base"
+  },
+  "c019c19b0725": {
+    "value": "#e2f1e9",
+    "role": "base"
+  },
+  "c5bdcc702fdc": {
+    "value": "#2f705b",
+    "role": "base"
+  },
+  "2c5537d66d38": {
+    "value": "#7cb59d",
+    "role": "base"
+  },
+  "1d2293046673": {
+    "value": "#f8ecd4",
+    "role": "attention"
+  },
+  "63c0cbbc4480": {
+    "value": "#856323",
+    "role": "attention"
+  },
+  "e314e7b200e4": {
+    "value": "#caac66",
+    "role": "attention"
+  },
+  "feae474ec7f3": {
+    "value": "#ece6fa",
+    "role": "base"
+  },
+  "e6965f0e7697": {
+    "value": "#766395",
+    "role": "base"
+  },
+  "06e9af5c1d34": {
+    "value": "#b4a1cf",
+    "role": "base"
+  },
+  "6a0e8e358006": {
+    "value": "#d6deeb",
+    "role": "base"
+  },
+  "186d77a77477": {
+    "value": "#dde4ef",
+    "role": "base"
+  },
+  "d4c032f12e38": {
+    "value": "#536b92",
+    "role": "base"
+  },
+  "85e0c087142a": {
+    "value": "#78869b",
+    "role": "base"
+  },
+  "5b5de5c09a8d": {
+    "value": "#8d98ad",
+    "role": "base"
+  },
+  "8f23b72996d0": {
+    "value": "#8795ab",
+    "role": "base"
+  },
+  "b36218e19dae": {
+    "value": "#becce5",
+    "role": "base"
+  },
+  "094f4aadf969": {
+    "value": "#c6d2e7",
+    "role": "base"
+  },
+  "76f77980c689": {
+    "value": "#edf2fb",
+    "role": "base"
+  },
+  "501cfc1a39fd": {
+    "value": "#f6f7f4",
+    "role": "base"
+  },
+  "e19d77a85b46": {
+    "value": "#243d35",
+    "role": "base"
+  },
+  "c0e091ac4903": {
+    "value": "#758079",
+    "role": "base"
+  },
+  "9667dac43189": {
+    "value": "#2d6853",
+    "role": "base"
+  },
+  "0d57307ee22e": {
+    "value": "#e2e7df",
+    "role": "base"
+  },
+  "be5d70a419d7": {
+    "value": "#edf2e9",
+    "role": "base"
+  },
+  "fbd6b3491cc1": {
+    "value": "#9e3e36",
+    "role": "base"
+  },
+  "5667ef726cc1": {
+    "value": "#8fbc9b",
+    "role": "base"
+  },
+  "edc340d87db4": {
+    "value": "#b6beb4",
+    "role": "base"
+  },
+  "09472b66e71d": {
+    "value": "#4b9570",
+    "role": "positive"
+  },
+  "faaf0118902c": {
+    "value": "#f0f3eb",
+    "role": "base"
+  },
+  "248723bc339b": {
+    "value": "#cfd9cd",
+    "role": "base"
+  },
+  "f4916c5eb838": {
+    "value": "#94b39b",
+    "role": "base"
+  },
+  "13613858a479": {
+    "value": "#9ab097",
+    "role": "base"
+  },
+  "b2ad6e8b90ab": {
+    "value": "#ead5c3",
+    "role": "base"
+  },
+  "2d81c816db0a": {
+    "value": "#fff6e9",
+    "role": "base"
+  },
+  "aade1a1a03f5": {
+    "value": "#835632",
+    "role": "base"
+  },
+  "11a5bcc4c5be": {
+    "value": "#adc4aa",
+    "role": "base"
+  },
+  "7b95faa00be4": {
+    "value": "#e8eee3",
+    "role": "base"
+  },
+  "ba1f77889ce3": {
+    "value": "#f1f4ef",
+    "role": "base"
+  },
+  "7c33b0a58b10": {
+    "value": "#e8f0e9",
+    "role": "base"
+  },
+  "20366e05df9b": {
+    "value": "#fcfdfb",
+    "role": "base"
+  },
+  "6d1bc09bc9dc": {
+    "value": "#a24e44",
+    "role": "negative"
+  },
+  "87d69418e566": {
+    "value": "#203d3540",
+    "role": "base"
+  },
+  "acb2bc9f5a05": {
+    "value": "#8aaa94",
+    "role": "base"
+  },
+  "361902fce80a": {
+    "value": "#17271f",
+    "role": "base"
+  },
+  "27bdfb7e744b": {
+    "value": "#f7f9f4",
+    "role": "base"
+  },
+  "37f35ba423e1": {
+    "value": "#e8f1e7",
+    "role": "positive"
+  },
+  "1cb42f94fdfb": {
+    "value": "#dce4da",
+    "role": "base"
+  },
+  "3550c5ba2208": {
+    "value": "#536458",
+    "role": "base"
+  },
+  "242f7b7d4efb": {
+    "value": "#f3f6ef",
+    "role": "base"
+  },
+  "59125eda2de7": {
+    "value": "#99ae8f",
+    "role": "base"
+  },
+  "eddf3fd2c5d1": {
+    "value": "#244638",
+    "role": "base"
+  },
+  "8fe327a0fa4f": {
+    "value": "#d7dfef",
+    "role": "base"
+  },
+  "64aa6b286222": {
+    "value": "#f5f7fe",
+    "role": "base"
+  },
+  "739739457586": {
+    "value": "#354b75",
+    "role": "base"
+  },
+  "a783716b52cd": {
+    "value": "#425e93",
+    "role": "base"
+  },
+  "4fd1fb76fc16": {
+    "value": "#dbe2ef",
+    "role": "base"
+  },
+  "56e4010df815": {
+    "value": "#526786",
+    "role": "base"
+  },
+  "ea7576014aac": {
+    "value": "#23344c",
+    "role": "base"
+  },
+  "eb9bafec1c8b": {
+    "value": "#506ba1",
+    "role": "base"
+  },
+  "c2c21480b2d3": {
+    "value": "#2b3e59",
+    "role": "base"
+  },
+  "a5d7ebeb35fe": {
+    "value": "#78683f",
+    "role": "attention"
+  },
+  "88c795e19a6c": {
+    "value": "#fff6da",
+    "role": "attention"
+  },
+  "7fb986a80514": {
+    "value": "#0007",
+    "role": "base"
+  },
+  "c6e2367eefb8": {
+    "value": "#0004",
+    "role": "base"
+  },
+  "0b0e9e288aa6": {
+    "value": "#17233f38",
+    "role": "base"
+  },
+  "9145d78035be": {
+    "value": "#17233f18",
+    "role": "base"
+  },
+  "0ac1519efbce": {
+    "value": "#111",
+    "role": "base"
+  },
+  "2aacc3ee461a": {
+    "value": "#0008",
+    "role": "base"
+  },
+  "ba1fb3335d4a": {
+    "value": "#0005",
+    "role": "base"
+  },
+  "38f471f3c828": {
+    "value": "#dbe3cb",
+    "role": "base"
+  },
+  "14985e22a688": {
+    "value": "#cbd9bc",
+    "role": "base"
+  },
+  "020fe175317c": {
+    "value": "#aaba9e",
+    "role": "base"
+  },
+  "9980255b5277": {
+    "value": "#fdfdf7",
+    "role": "base"
+  },
+  "809655853b2a": {
+    "value": "#223e38",
+    "role": "base"
+  },
+  "c03293a37481": {
+    "value": "#d5ddc9",
+    "role": "base"
+  },
+  "81309ffb5573": {
+    "value": "#f6f5eb",
+    "role": "base"
+  },
+  "bc7ac8f39ebd": {
+    "value": "#e8eedc",
+    "role": "base"
+  },
+  "b68e019c4de2": {
+    "value": "#576848",
+    "role": "base"
+  },
+  "193c2dc564a7": {
+    "value": "#233f31",
+    "role": "base"
+  },
+  "24a4b0b39857": {
+    "value": "#384e40",
+    "role": "base"
+  },
+  "54ffdeaa4e43": {
+    "value": "#506253",
+    "role": "base"
+  },
+  "0a37db1b48d0": {
+    "value": "#315d45",
+    "role": "base"
+  },
+  "779336caea08": {
+    "value": "#ecf0e3",
+    "role": "base"
+  },
+  "e5993ce870e1": {
+    "value": "#344b3d",
+    "role": "base"
+  },
+  "246e27a50913": {
+    "value": "#c5d1bd",
+    "role": "base"
+  },
+  "29491b380df4": {
+    "value": "#921f38",
+    "role": "negative"
+  },
+  "2d85834d82c4": {
+    "value": "#f0f0e4",
+    "role": "base"
+  },
+  "1203756d0ffe": {
+    "value": "#bdcbb6",
+    "role": "base"
+  },
+  "4c4a38587068": {
+    "value": "#395345",
+    "role": "base"
+  },
+  "8ede64087988": {
+    "value": "#507c54",
+    "role": "base"
+  },
+  "eff954839d04": {
+    "value": "#e1e6d5",
+    "role": "base"
+  },
+  "b66454993467": {
+    "value": "#bdc8ac",
+    "role": "base"
+  },
+  "42cc39660890": {
+    "value": "#365446",
+    "role": "base"
+  },
+  "d65ba2a66cdc": {
+    "value": "#e9d499",
+    "role": "base"
+  },
+  "40710b63d5d6": {
+    "value": "#513925",
+    "role": "base"
+  },
+  "a53ba676613a": {
+    "value": "#cfe8e3",
+    "role": "base"
+  },
+  "234753ed9d32": {
+    "value": "#224f54",
+    "role": "base"
+  },
+  "5dc12f893a80": {
+    "value": "#d6eb9d",
+    "role": "positive"
+  },
+  "aecf74e76d0e": {
+    "value": "#325221",
+    "role": "positive"
+  },
+  "ba99946b4a23": {
+    "value": "#342b27dc",
+    "role": "base"
+  },
+  "232eeccc2f48": {
+    "value": "#fff6dc",
+    "role": "base"
+  },
+  "1be0193bd4ee": {
+    "value": "#52412d",
+    "role": "base"
+  },
+  "046a2f2d306c": {
+    "value": "#806485",
+    "role": "base"
+  },
+  "ac5aeeff3308": {
+    "value": "#fff5de",
+    "role": "base"
+  },
+  "cb3424a72b9a": {
+    "value": "#35253a",
+    "role": "base"
+  },
+  "0fd33ed8317f": {
+    "value": "#859774",
+    "role": "base"
+  },
+  "b5e9eb611eb9": {
+    "value": "#31513b",
+    "role": "base"
+  },
+  "6a47f5c31177": {
+    "value": "#201d25a6",
+    "role": "base"
+  },
+  "bf80552ddd78": {
+    "value": "#7b567e",
+    "role": "base"
+  },
+  "ce9a1ad5abb0": {
+    "value": "#2c2630",
+    "role": "base"
+  },
+  "4d74e1b0214b": {
+    "value": "#9eab87",
+    "role": "base"
+  },
+  "dab366638d50": {
+    "value": "#fffdf0",
+    "role": "base"
+  },
+  "8f68227cd5f2": {
+    "value": "#283e30",
+    "role": "base"
+  },
+  "620ba3964da7": {
+    "value": "#434f3e",
+    "role": "base"
+  },
+  "04973c8e1e81": {
+    "value": "#aeb7a3",
+    "role": "base"
+  },
+  "d679faae3ef1": {
+    "value": "#faf9ee",
+    "role": "base"
+  },
+  "553ce88edc06": {
+    "value": "#101015",
+    "role": "base"
+  },
+  "866f7eeac750": {
+    "value": "#eee8d7",
+    "role": "base"
+  },
+  "bd122e8c4de4": {
+    "value": "#f1dda7",
+    "role": "base"
+  },
+  "983995a3ec9b": {
+    "value": "#666273",
+    "role": "base"
+  },
+  "0ccae3cde40a": {
+    "value": "#252431",
+    "role": "base"
+  },
+  "d2d127a57410": {
+    "value": "#f4edda",
+    "role": "base"
+  },
+  "12941583c63b": {
+    "value": "#a5966d",
+    "role": "base"
+  },
+  "143325f0e93d": {
+    "value": "#38303a",
+    "role": "base"
+  },
+  "2c0068edf9d3": {
+    "value": "#383543",
+    "role": "base"
+  },
+  "0ac48279a7d8": {
+    "value": "#191823",
+    "role": "base"
+  },
+  "d050ff7602eb": {
+    "value": "#1a1923",
+    "role": "base"
+  },
+  "ba317299ac3c": {
+    "value": "#252331",
+    "role": "base"
+  },
+  "8fbe80311c89": {
+    "value": "#f3eedf",
+    "role": "base"
+  },
+  "f9daa10decfd": {
+    "value": "#f0b9aa",
+    "role": "negative"
+  },
+  "b10dc28de597": {
+    "value": "#423523",
+    "role": "base"
+  },
+  "06620f56fd37": {
+    "value": "#fff5db",
+    "role": "base"
+  },
+  "e2ee229986cf": {
+    "value": "#d4bc8f",
+    "role": "base"
+  },
+  "cc57ad1c5801": {
+    "value": "#d6c09b",
+    "role": "base"
+  },
+  "0b11a5f7d6d4": {
+    "value": "#fcf2dc",
+    "role": "base"
+  },
+  "264d9ca42b6a": {
+    "value": "#403422",
+    "role": "base"
+  },
+  "5a5697638d2c": {
+    "value": "#775d36",
+    "role": "base"
+  },
+  "e74f3a388f5b": {
+    "value": "#69583e",
+    "role": "base"
+  },
+  "d781917a2b8e": {
+    "value": "#795c3a",
+    "role": "base"
+  },
+  "03dede170bad": {
+    "value": "#645334",
+    "role": "base"
+  },
+  "04890fde7566": {
+    "value": "#3e5f46",
+    "role": "base"
+  },
+  "e888c3be5be3": {
+    "value": "#fffbef",
+    "role": "base"
+  },
+  "400ea030f4d7": {
+    "value": "#c5a974",
+    "role": "base"
+  },
+  "b4141d9af0de": {
+    "value": "#3c2e2133",
+    "role": "base"
+  },
+  "00f402c9125f": {
+    "value": "#634e34",
+    "role": "base"
+  },
+  "5f4203af8763": {
+    "value": "#fff8e6",
+    "role": "base"
+  },
+  "694ca65a7de6": {
+    "value": "#f0e2bc",
+    "role": "base"
+  },
+  "4530905c12dd": {
+    "value": "#892b21",
+    "role": "base"
+  },
+  "b92a978fd0e0": {
+    "value": "#3b4d3c",
+    "role": "base"
+  },
+  "e9df8f700601": {
+    "value": "#e9efdc",
+    "role": "base"
+  },
+  "1ec16f4e4920": {
+    "value": "#c9cdb8",
+    "role": "base"
+  },
+  "3599ab9684ab": {
+    "value": "#f9f6e8",
+    "role": "base"
+  },
+  "df0f0a0596c8": {
+    "value": "#765036",
+    "role": "base"
+  },
+  "dc8bea486ed1": {
+    "value": "#f8f1da",
+    "role": "base"
+  },
+  "2e82c49ba412": {
+    "value": "#e3eeed",
+    "role": "base"
+  },
+  "f3d22815e80b": {
+    "value": "#bbd3cb",
+    "role": "base"
+  },
+  "049cdabb065d": {
+    "value": "#e9f1d2",
+    "role": "positive"
+  },
+  "1ae38c5e28be": {
+    "value": "#b4c68b",
+    "role": "positive"
+  },
+  "07bcbf80e21e": {
+    "value": "#4c5947",
+    "role": "base"
+  },
+  "e21b55aabbf9": {
+    "value": "#e5e5d7",
+    "role": "base"
+  },
+  "a75f9766d7a5": {
+    "value": "#5a5d50",
+    "role": "base"
+  },
+  "25f84423ecd6": {
+    "value": "#576d66",
+    "role": "base"
+  },
+  "6e38ab92e2bf": {
+    "value": "#194e40",
+    "role": "base"
+  },
+  "a32ec3730368": {
+    "value": "#dce5de",
+    "role": "base"
+  },
+  "971b607ea8ef": {
+    "value": "#f7f9f5",
+    "role": "base"
+  },
+  "adfba3d93bdd": {
+    "value": "#e5efe3",
+    "role": "base"
+  },
+  "56770ea3f467": {
+    "value": "#267653",
+    "role": "base"
+  },
+  "0905e686ce6f": {
+    "value": "#e2f1cb",
+    "role": "base"
+  },
+  "1303d2e4d2e1": {
+    "value": "#bacabe",
+    "role": "base"
+  },
+  "729e97763d7e": {
+    "value": "#d4dfd4",
+    "role": "base"
+  },
+  "52a8973afc5c": {
+    "value": "#19382913",
+    "role": "base"
+  },
+  "78cacb8c9070": {
+    "value": "#d9e9da",
+    "role": "base"
+  },
+  "c6851be03fa4": {
+    "value": "#c4dac7",
+    "role": "base"
+  },
+  "8a7d322b2b21": {
+    "value": "#f0f3f7",
+    "role": "base"
+  },
+  "38b6ee1dadec": {
+    "value": "#384960",
+    "role": "base"
+  },
+  "2aff3d354e85": {
+    "value": "#d6dfe6",
+    "role": "base"
+  },
+  "357b7b06f23a": {
+    "value": "#afbdc9",
+    "role": "base"
+  },
+  "f7212783bff2": {
+    "value": "#b7c3ce",
+    "role": "base"
+  },
+  "3054a609d673": {
+    "value": "#6b997e",
+    "role": "base"
+  },
+  "336840075e03": {
+    "value": "#f0f2ec",
+    "role": "base"
+  },
+  "ac1d8fe5dd4d": {
+    "value": "#bed3bc",
+    "role": "base"
+  },
+  "3776b11f5766": {
+    "value": "#e1e7dc",
+    "role": "base"
+  },
+  "195948e4c2be": {
+    "value": "#58725b",
+    "role": "base"
+  },
+  "9129eaafb366": {
+    "value": "#f3f7e9",
+    "role": "base"
+  },
+  "4971d8246a50": {
+    "value": "#cad4c6",
+    "role": "base"
+  },
+  "cab09131b39f": {
+    "value": "#dfe8db",
+    "role": "base"
+  },
+  "55d4cd29725a": {
+    "value": "#608d70",
+    "role": "base"
+  },
+  "d38c0c4877e2": {
+    "value": "#a9b6a8",
+    "role": "base"
+  },
+  "946b1911016d": {
+    "value": "#657a68",
+    "role": "base"
+  },
+  "aa8a445bccd4": {
+    "value": "#34724d",
+    "role": "base"
+  },
+  "df9a3c690a9d": {
+    "value": "#a44549",
+    "role": "base"
+  },
+  "5cf40527b28b": {
+    "value": "#ae842f",
+    "role": "base"
+  },
+  "eea53fc9f8be": {
+    "value": "#176342",
+    "role": "base"
+  },
+  "afc465162f3f": {
+    "value": "#795500",
+    "role": "base"
+  },
+  "9ad2cc605ac0": {
+    "value": "#a32e39",
+    "role": "base"
+  },
+  "a3f48dd85aa1": {
+    "value": "#8f433f",
+    "role": "negative"
+  },
+  "30baeca3b2d5": {
+    "value": "#fff2d9",
+    "role": "base"
+  },
+  "189c9b33287e": {
+    "value": "#67481b",
+    "role": "base"
+  },
+  "1e3fc6eba2ca": {
+    "value": "#f6f9f4",
+    "role": "base"
+  },
+  "97b8daef3114": {
+    "value": "#c2d1b5",
+    "role": "base"
+  },
+  "6277d66cf008": {
+    "value": "#224b38",
+    "role": "base"
+  },
+  "6258ea8d076f": {
+    "value": "#fffdf6",
+    "role": "base"
+  },
+  "d405619ed96c": {
+    "value": "#405743",
+    "role": "base"
+  },
+  "5f87c6bf1465": {
+    "value": "#f2f7ef",
+    "role": "base"
+  },
+  "99a562a6aa0d": {
+    "value": "#dce8da",
+    "role": "base"
+  },
+  "309774c5c0f8": {
+    "value": "#dce5ee",
+    "role": "base"
+  },
+  "6b55521b9e07": {
+    "value": "#e7efe5",
+    "role": "base"
+  },
+  "e876c0c3dea8": {
+    "value": "#e6efe4",
+    "role": "base"
+  },
+  "2e0345654e82": {
+    "value": "#28583d",
+    "role": "base"
+  },
+  "84faa42c57c9": {
+    "value": "#9cae9f",
+    "role": "base"
+  },
+  "b80f170b8107": {
+    "value": "#b7c7ba",
+    "role": "base"
+  },
+  "697454aaa548": {
+    "value": "#f9fbf8",
+    "role": "base"
+  },
+  "10988d92b2d0": {
+    "value": "#19382906",
+    "role": "base"
+  },
+  "2638bb537a2b": {
+    "value": "#94b49d",
+    "role": "base"
+  },
+  "eae995ddca8a": {
+    "value": "#795a17",
+    "role": "base"
+  },
+  "3c2517a317ef": {
+    "value": "#fbefcb",
+    "role": "base"
+  },
+  "734677676847": {
+    "value": "#e7ede7",
+    "role": "base"
+  },
+  "bd3899513150": {
+    "value": "#659273",
+    "role": "base"
+  },
+  "f4f6d1387a26": {
+    "value": "#58856a",
+    "role": "base"
+  },
+  "e2b5f81b8f7f": {
+    "value": "#173c28",
+    "role": "base"
+  },
+  "1277028d4f25": {
+    "value": "#245b3a",
+    "role": "base"
+  },
+  "0790873b9afb": {
+    "value": "#0002",
+    "role": "base"
+  }
+}

@@ -1,4 +1,5 @@
 import {splitNounArticle,spellingParts} from './word-display.js';
+import {applyFormRelations} from './form-relations.js';
 const exact=value=>String(value||'').normalize('NFC').toLocaleLowerCase('fr').replaceAll('’',"'").replace(/\s+/g,' ').trim();
 export const isTextbook=id=>/^(?:inspire[1-4]|fos1)$/.test(id||'');
 export const curriculumFormKey=(word,form)=>{const gender=form.gender||splitNounArticle(form.text).gender||(/n\.m/i.test(word.sourcePos||'')?'m':/n\.f/i.test(word.sourcePos||'')?'f':null);return word.pos+':'+exact(spellingParts(word,form).answer)+(word.pos==='n.'?':'+(gender||'?'):'');};
@@ -23,7 +24,7 @@ export function curriculumForms(text,sourcePos){
  if(clean.includes('(e)')&&pos!=='n.')for(const f of forms)if(f.gender==='f')f.tested=false;
  if(names.join('|')==='chez soi|chez moi|chez toi')forms.forEach((f,i)=>{f.meaning=['在自己家','在我家','在你家'][i];});
  if(names.join('|')==="l'œil|les yeux")forms.forEach((f,i)=>{f.gender='m';f.questionHint=i?'复数 · Pluriel':'单数 · Singulier';});
- return {pos,forms};
+ applyFormRelations({pos,forms});return {pos,forms};
 }
 // Textbook content replaces generic dictionary content without changing IDs,
 // notebook membership, progress or frozen practice queues.
@@ -36,7 +37,7 @@ export function applyTextbookContent(data){
   for(const f of w.forms){
    const key=curriculumFormKey(w,f),entry=lookup.get(key)||(w.pos==='n.'?lookup.get(key.replace(/:[mf]$/,':?')):null);if(!entry)continue;
    const source=entry.w,form=entry.f;w.meanings=[...source.meanings];
-   if(!w.primaryMeaningChosen||!w.meanings.some(m=>m.includes(w.primaryMeaning))){w.primaryMeaning=source.primaryMeaning;w.primaryMeaningChosen=false;}
+   if(!w.primaryMeaningChosen)w.primaryMeaning=source.primaryMeaning;
    w.curriculumAuthority={...source.curriculumAuthority};f.source=form.source||source.forms[0].source;
    if(form.ipa&&(f.text===form.text||form.audioOrigin==='textbook-human'))f.ipa=form.ipa;
    for(const field of ['meaning','questionHint'])if(form[field])f[field]=form[field];

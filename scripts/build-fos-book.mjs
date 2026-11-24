@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';import {zipSync,strToU8} from 'fflate';import {validateLesson} from '../src/domain/importer.js';
+import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),material=path.resolve(root,'../词库/FOS1'),sha=b=>createHash('sha256').update(b).digest('hex');
 if(!await fs.access(path.join(material,'book-source.json')).then(()=>true,()=>false)){await fs.access(path.join(root,'src/static/content/fos1.zip'));console.log('保留已有 FOS 1 内置资料。');process.exit(0);}
 const input=JSON.parse(await fs.readFile(path.join(material,'book-source.json'),'utf8')),recordings=JSON.parse(await fs.readFile(path.join(material,'录音/recordings.json'),'utf8'));
@@ -15,7 +16,7 @@ for(let lesson=1;lesson<=6;lesson++){
   for(const [i,f]of e.preparedForms.entries())forms.push({id:e.id+'-'+(i?'v'+(i+1):'base'),text:f.text,gender:f.gender,tested:!(e.word==='gradué(e)'&&i===1),audio:null,audioKey:await recording(f.text),audioOrigin:'fos-synthetic',ipa:f.ipa,source,example:{...example},...(f.meaning?{meaning:f.meaning}:{}),...(e.pos!=='n.'?{literal:true}:{})});
   p.words.push({id:e.id,order:p.words.length+1,audioNumber:String(p.words.length+1).padStart(3,'0'),sourceText:e.word,sourcePos:e.sourcePos,pos:e.pos,meanings:[...new Set([...e.meanings,...previousDictionary.filter(row=>e.preparedForms.some(f=>bare(f.text)===bare(row.word))).flatMap(row=>row.meanings)])],primaryMeaning:e.meaning,curriculumAuthority:{book:'fos1',lesson:p.lesson.id,page:e.page},fosAuthority:{revision:input.revision,source},forms,...(e.notation?{notation:e.notation}:{}),...(e.translationSource?{translationSource:e.translationSource}:{})});
  }
- validateLesson(p);library.push(p);
+ applyExampleAudioCorrections({library:[p]});validateLesson(p);library.push(p);
 }
 const id=sha(JSON.stringify(library)+[...audio.keys()].join('')),stats={lessons:6,words:library.reduce((s,p)=>s+p.words.length,0),recordings:audio.size};
 const bundle={schema:1,id,bookId:'fos1',library,audio:[...audio.keys()],stats},files={'manifest.json':strToU8(JSON.stringify(bundle))};for(const [key,bytes]of audio)files['audio/'+key+'.bin']=bytes;

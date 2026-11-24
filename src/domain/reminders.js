@@ -1,20 +1,21 @@
 import {conjugationPackages} from '../conjugation/catalog.js';
-import {nextReviewDate} from './review-plan.js';
-import { day, addDays, dueForms, wordKey, errorPracticeEligible } from './learning.js';
+import { day, addDays, dueForms, formReviewDate, wordKey, errorPracticeEligible } from './learning.js';
+import {logicalVocabularyKey,uniqueVocabularyEntries} from './vocabulary-identity.js';
 export function dueLessons(data, today = day()) {
-  return [...data.library,...conjugationPackages(data)].map(p=>({p,words:p.words.filter(w=>dueForms(data,p,w,today).length)})).filter(x=>x.words.length);
+  const entries=uniqueVocabularyEntries([...data.library,...conjugationPackages(data)].flatMap(p=>p.words.filter(w=>dueForms(data,p,w,today).length).map(w=>({p,w}))),data),groups=new Map();
+  for(const {p,w}of entries){if(!groups.has(p))groups.set(p,{p,words:[]});groups.get(p).words.push(w);}
+  return [...groups.values()];
 }
 export const PRACTICE_THRESHOLD=10,REMINDER_INTERVAL_DAYS={review:1,errors:2};
 export function practiceReminderItems(data,today=day()){
-  const review=[],errors=[];
+  const dates=new Map(),errors=new Set();
   for(const p of [...data.library,...conjugationPackages(data)])for(const w of p.words){
-    const due=dueForms(data,p,w,today).map(f=>nextReviewDate(data.progress[wordKey(p,w)]?.forms[f.id],data.settings)).filter(Boolean).sort()[0];
-    if(due)review.push(wordKey(p,w)+':'+due);
-    if(errorPracticeEligible(data,p,w,today))errors.push(wordKey(p,w));
+    const due=dueForms(data,p,w,today).map(f=>formReviewDate(data.progress[wordKey(p,w)],f,data.settings)).filter(Boolean).sort()[0];
+    const key=w.conjugation?'conjugation:'+encodeURIComponent(w.conjugation.lemma):logicalVocabularyKey(p,w);
+    if(due&&(!dates.has(key)||due<dates.get(key)))dates.set(key,due);
+    if(errorPracticeEligible(data,p,w,today))errors.add(w.conjugation?p.book.id+':'+p.lesson.id+':'+w.conjugation.baseWordId+':'+w.conjugation.tense:key);
   }
-  const unit=id=>{const [book,lesson,wid,...rest]=id.split(':'),w=data.conjugationDecks?.[book+':'+lesson]?.find(w=>w.id===wid);return w?book+':'+lesson+':'+w.conjugation.baseWordId+':'+w.conjugation.tense+(rest.length?':'+rest.join(':'):''):id;};
-  const dates=new Map();for(const id of review){const [book,lesson,wid]=id.split(':'),card=data.conjugationDecks?.[book+':'+lesson]?.find(w=>w.id===wid),at=id.lastIndexOf(':'),date=id.slice(at+1),key=card?'conjugation:'+encodeURIComponent(card.conjugation.lemma):id.slice(0,at);if(!dates.has(key)||date<dates.get(key))dates.set(key,date);}
-  return {review:[...dates].map(([key,date])=>key+':'+date),errors:[...new Set(errors.map(unit))]};
+  return {review:[...dates].map(([key,date])=>key+':'+date),errors:[...errors]};
 }
 export function syncPracticeBadges(data,today=day()){
   data.reminders||={};const badges=data.reminders.badges||={},items=practiceReminderItems(data,today);

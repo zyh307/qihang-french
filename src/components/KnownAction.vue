@@ -1,12 +1,12 @@
 <template><button ref="button" hover-class="none" :class="['button','known-action',secondary?'secondary':'primary']" :disabled="disabled||known" aria-label="向上拖入已会区域 / Glisser vers Acquis" @click.prevent><Icon :name="known?'check':'badge'"/><Bi zh="已会" fr="Acquis" small/></button><Teleport to="body"><view v-if="drag" class="known-drop-layer"><SlideDropTarget ref="dropTarget" :x="drag.x" :y="drag.y" :ready="drag.ready" :progress="drag.progress" :accepted="drag.accepted"/></view></Teleport></template>
 <script setup>
-import {ref,onMounted,onUnmounted,watch} from 'vue';import {finishCollection} from '../platform/collection-feedback.js';import Icon from './Icon.vue';import Bi from './Bi.vue';import SlideDropTarget from './SlideDropTarget.vue';
+import {ref,onMounted,onUnmounted,watch} from 'vue';import {prepareCollection} from '../platform/collection-feedback.js';import Icon from './Icon.vue';import Bi from './Bi.vue';import SlideDropTarget from './SlideDropTarget.vue';
 const props=defineProps({disabled:Boolean,known:Boolean,secondary:Boolean}),emit=defineEmits(['confirm']),button=ref(null),dropTarget=ref(null),drag=ref(null);let el,id,startY;
 function release(){const old=id;id=null;try{if(old!==null&&old!==undefined)el?.releasePointerCapture?.(old);}catch{}}
 function cancel(){if(drag.value?.accepted)return;release();drag.value=null;}
-function target(ready=false){const r=el.getBoundingClientRect();return {x:Math.max(56,Math.min(window.innerWidth-56,r.left+r.width/2)),y:Math.max(62,r.top-96),ready,progress:ready?1:0,accepted:false};}
-function accept(){if(!drag.value)return;finishCollection(dropTarget.value?.$el||dropTarget.value);drag.value={...drag.value,accepted:true};release();drag.value=null;emit('confirm');}
-function down(e){if(props.disabled||props.known||drag.value?.accepted||e.button!==0||e.isPrimary===false)return;e.preventDefault();id=e.pointerId;startY=e.clientY;drag.value=target();el.setPointerCapture?.(id);}
+function target(ready=false,x){const r=el.getBoundingClientRect();return {x:Math.max(48,Math.min(window.innerWidth-48,x??r.left+r.width/2)),y:Math.max(62,r.top-96),ready,progress:ready?1:0,accepted:false};}
+function accept(){if(!drag.value)return;const complete=prepareCollection();drag.value={...drag.value,accepted:true};release();drag.value=null;emit('confirm',complete);}
+function down(e){if(props.disabled||props.known||drag.value?.accepted||e.button!==0||e.isPrimary===false)return;e.preventDefault();id=e.pointerId;startY=e.clientY;drag.value=target(false,e.clientX);el.setPointerCapture?.(id);}
 function move(e){if(id!==e.pointerId||!drag.value||drag.value.accepted)return;e.preventDefault();const distance=Math.hypot(e.clientX-drag.value.x,e.clientY-drag.value.y);drag.value={...drag.value,progress:Math.max(0,1-distance/145),ready:startY-e.clientY>=64&&distance<=44};}
 function up(e){if(id!==e.pointerId||!drag.value)return;move(e);if(e.type==='pointerup'&&drag.value.ready)accept();else cancel();}
 function key(e){if(props.disabled||props.known||drag.value?.accepted)return;if(e.key==='ArrowUp'){e.preventDefault();drag.value=target(true);}else if(e.key==='Enter'&&drag.value){e.preventDefault();accept();}else if(e.key==='Escape'&&drag.value){e.preventDefault();e.stopPropagation();cancel();}}

@@ -10,7 +10,7 @@ import TownPanel from './TownPanel.vue'
 import OpeningStory from './OpeningStory.vue'
 import RadioHud from './RadioHud.vue'
 
-const props = defineProps({autoEnter:Boolean, returnMessage:String, radio:Object})
+const props = defineProps({autoEnter:Boolean, returnMessage:String, radio:Object, immersive:Boolean})
 const emit = defineEmits(['leave', 'created', 'adventure'])
 const forceCc0 = new URLSearchParams(location.search).get('assetSource') === 'cc0'
 const loaded = loadSave()
@@ -25,6 +25,7 @@ const playing = ref(false)
 const player = ref(profile.value?.position)
 const canvas = ref(null), viewport = ref(null), action = ref(null), dialog = ref(null)
 const scale = ref(2)
+const viewportSize = shallowRef({width:0,height:0})
 const modal = ref(null)
 const opening = ref(false)
 const working = ref(false), townNotice = ref(''), townError = ref('')
@@ -54,8 +55,18 @@ const plotMarkers = {planted:'种', watered:'水', ready:'熟'}
 const gateTitle = nodeId => portalTitle(nodeId, profile.value.unlocked)
 const unlockedGates = computed(() => player.value?.zone === 'field' ?
   NODES.filter(node => profile.value.unlocked.includes(node.id) && node.id !== closest.value?.id) : [])
-const sceneStyle = computed(() => ({width: zone.value.cols * TILE * scale.value + 'px',
-  aspectRatio: zone.value.cols + ' / ' + zone.value.rows}))
+const sceneStyle = computed(() => {
+  const {cols,rows} = zone.value
+  const tile = TILE * scale.value
+  const width = cols * tile
+  const height = rows * tile
+  const style = {width:width+'px',aspectRatio:cols+' / '+rows}
+  if (!props.immersive) return style
+  const view = viewportSize.value
+  const left = Math.max(0,Math.min(width-view.width,player.value.x*tile-view.width/2))
+  const top = Math.max(0,Math.min(height-view.height,player.value.y*tile-view.height/2))
+  return {...style,left:-left+'px',top:-top+'px'}
+})
 const art = shallowRef({})
 let artRevision = 0
 let raf, lastFrame, renderer, resizeObserver, clockTimer, dirty = false, checkpointAt = 0
@@ -145,6 +156,12 @@ async function finishIntro() {
 function resize() {
   if (viewport.value && zone.value) {
     const width = viewport.value.clientWidth
+    if (props.immersive) {
+      const height = viewport.value.clientHeight
+      viewportSize.value = {width,height}
+      scale.value = Math.max((width+1)/(TILE*zone.value.cols),(height+1)/(TILE*zone.value.rows))
+      return
+    }
     const height = window.innerHeight - viewport.value.getBoundingClientRect().top - 68
     const fit = Math.floor(Math.min(width / (TILE * zone.value.cols), height / (TILE * zone.value.rows)))
     scale.value = Math.min(3, Math.max(1, fit))
@@ -342,7 +359,7 @@ onBeforeUnmount(() => {
 
 <template>
   <OpeningStory v-if="intro" :busy="introSaving" :error="error" :local-audio="!forceCc0" @complete="finishIntro"/>
-  <section v-else-if="!playing" class="game-landing">
+  <section v-else-if="!playing" class="game-landing" :class="{'town-landing':immersive}">
     <div class="game-intro">
       <p lang="fr">Le village des mots</p>
       <h1>口语小镇</h1>
@@ -365,7 +382,7 @@ onBeforeUnmount(() => {
       </AppearanceEditor>
     </form>
   </section>
-  <section v-else class="world">
+  <section v-else class="world" :class="{'town-world':immersive}">
     <header class="world-head">
       <div><p class="zone-fr" lang="fr">{{ zone.subtitle }}</p><h1 aria-live="polite">{{ zone.title }}</h1></div>
       <div class="world-account">
@@ -448,7 +465,7 @@ onBeforeUnmount(() => {
     <footer id="game-controls" class="world-controls">
       <span><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 或方向键移动</span>
       <span><kbd>空格</kbd> / <kbd>回车</kbd> 交互</span>
-      <button class="game-secondary" :inert="!!modal" @click="emit('leave')">返回日常练习</button>
+      <button v-if="!immersive" class="game-secondary" :inert="!!modal" @click="emit('leave')">返回日常练习</button>
     </footer>
     <p v-if="!modal && (townNotice || returnMessage)" class="game-receipt" role="status">{{ townNotice || returnMessage }}</p>
     <p v-if="error" class="game-error" role="alert">{{ error }}</p>
@@ -457,48 +474,62 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .game-landing,.world{max-width:960px;margin:32px auto 0}
-.game-intro,.character,.world{border:1px solid #d5ddc9;border-radius:18px;background:#f6f5eb}
-.game-intro{padding:25px 30px;background:#e8eedc}
-.game-intro p[lang],.zone-fr{margin:0 0 5px;color:#576848;font:italic 16px Georgia,serif}
-.game-intro h1,.world h1{color:#233f31}
-.game-intro p:not([lang]){margin:10px 0 15px;color:#384e40}
+.game-intro,.character,.world{border:1px solid var(--ui-c03293a37481,#d5ddc9);border-radius:18px;background:var(--ui-81309ffb5573,#f6f5eb)}
+.game-intro{padding:25px 30px;background:var(--ui-bc7ac8f39ebd,#e8eedc)}
+.game-intro p[lang],.zone-fr{margin:0 0 5px;color:var(--ui-b68e019c4de2,#576848);font:italic 16px Georgia,serif}
+.game-intro h1,.world h1{color:var(--ui-193c2dc564a7,#233f31)}
+.game-intro p:not([lang]){margin:10px 0 15px;color:var(--ui-24a4b0b39857,#384e40)}
 .replay-story{margin-left:8px}
 .character{margin-top:16px;padding:23px}
 .character h2{margin:0 0 12px}
 .name-label{display:grid;gap:5px;font-size:14px;font-weight:600}
-.name-label input,.scene-settings select{width:100%;height:38px;border:1px solid #aaba9e;border-radius:7px;background:#fdfdf7;color:#223e38;padding:5px 8px;font:inherit}
+.name-label input,.scene-settings select{width:100%;height:38px;border:1px solid var(--ui-020fe175317c,#aaba9e);border-radius:7px;background:var(--ui-9980255b5277,#fdfdf7);color:var(--ui-809655853b2a,#223e38);padding:5px 8px;font:inherit}
 .name-label input{max-width:240px}
-#game-id-help{margin:4px 0 14px;font-size:13px;color:#506253}
+#game-id-help{margin:4px 0 14px;font-size:13px;color:var(--ui-54ffdeaa4e43,#506253)}
 .game-primary,.game-secondary{padding:8px 14px;border-radius:7px;min-height:38px;font-weight:650}
-.game-primary{background:#315d45;color:white}
-.game-secondary{background:#ecf0e3;color:#344b3d;border:1px solid #c5d1bd}
-.game-error{color:#921f38}
-.world{padding:16px clamp(12px,3vw,26px);background:#f0f0e4}
+.game-primary{background:var(--ui-0a37db1b48d0,#315d45);color:white}
+.game-secondary{background:var(--ui-779336caea08,#ecf0e3);color:var(--ui-e5993ce870e1,#344b3d);border:1px solid var(--ui-246e27a50913,#c5d1bd)}
+.game-error{color:var(--ui-29491b380df4,#921f38)}
+.world{padding:16px clamp(12px,3vw,26px);background:var(--ui-2d85834d82c4,#f0f0e4)}
 .world-head,.world-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .world-head{padding-bottom:12px}
 .world h1{font-size:30px}
-.player-id{border:1px solid #bdcbb6;border-radius:8px;padding:6px 10px;color:#395345;overflow-wrap:anywhere}
+.player-id{border:1px solid var(--ui-1203756d0ffe,#bdcbb6);border-radius:8px;padding:6px 10px;color:var(--ui-4c4a38587068,#395345);overflow-wrap:anywhere}
 .world-account{display:flex;gap:8px;flex-wrap:wrap}
 .level{display:flex;gap:6px;align-items:center}
-.level progress{width:68px;height:9px;accent-color:#507c54}
-.game-receipt{margin:10px 0 0;color:#315d45;font-weight:650}
-.world-viewport{overflow:auto;background:#e1e6d5;border:1px solid #bdc8ac;border-radius:10px;padding:0}
+.level progress{width:68px;height:9px;accent-color:var(--ui-8ede64087988,#507c54)}
+.game-receipt{margin:10px 0 0;color:var(--ui-0a37db1b48d0,#315d45);font-weight:650}
+.world-viewport{overflow:auto;background:var(--ui-eff954839d04,#e1e6d5);border:1px solid var(--ui-b66454993467,#bdc8ac);border-radius:10px;padding:0}
 .map-frame{position:relative;margin:auto}
+.town-landing{min-height:100dvh;max-width:none;margin:0;padding:8px 12px 12px 60px;background:var(--ui-bc7ac8f39ebd,#e8eedc)}
+.town-world{position:relative;height:100dvh;max-width:none;margin:0;padding:0;border:0;border-radius:0}
+.town-world .world-viewport{position:absolute;inset:0;overflow:hidden;border:0;border-radius:0}
+.town-world .map-frame{position:absolute;margin:0}
+.town-world .world-head{position:absolute;z-index:1;inset:8px 12px auto 60px;align-items:flex-start;padding:0;pointer-events:none}
+.town-world .world-head>div:first-child,.town-world .player-id{background:var(--ui-81309ffb5573,#f6f5eb)}
+.town-world .world-head>div:first-child{padding:5px 10px;border-radius:8px}
+.town-world .world-head h1{font-size:20px}
+.town-world .zone-fr{margin-bottom:0;font-size:13px}
+.town-world .world-account{pointer-events:auto}
+.town-world .world-controls,.town-world .game-receipt,.town-world .game-error{position:absolute;z-index:1;left:8px;margin:0;padding:5px 8px;border-radius:8px;background:var(--ui-81309ffb5573,#f6f5eb)}
+.town-world .world-controls{bottom:8px}
+.town-world .game-receipt,.town-world .game-error{bottom:49px}
+.town-world .rift-overlay{position:fixed;z-index:20}
 .map-frame>canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
-.map-frame>canvas:focus-visible{outline:3px solid #365446;outline-offset:-3px}
+.map-frame>canvas:focus-visible{outline:3px solid var(--ui-42cc39660890,#365446);outline-offset:-3px}
 .map-label,.rift-hint{position:absolute;transform:translate(-50%,-50%);pointer-events:none}
-.plot-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:none;padding:2px 4px;border-radius:3px;background:#e9d499;color:#513925;font-size:11px;font-weight:700}
-.plot-marker[data-stage=watered]{background:#cfe8e3;color:#224f54}
-.plot-marker[data-stage=ready]{background:#d6eb9d;color:#325221}
-.map-label{padding:2px 5px;border-radius:3px;background:#342b27dc;color:#fff6dc;font-size:11px;white-space:nowrap}
-.door-label{background:#52412d}
-.rift-hint{transform:translate(-50%,-100%);padding:6px 9px;border:1px solid #806485;border-radius:6px;background:#fff5de;color:#35253a;font-size:13px;font-weight:650;white-space:nowrap}
+.plot-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:none;padding:2px 4px;border-radius:3px;background:var(--ui-d65ba2a66cdc,#e9d499);color:var(--ui-40710b63d5d6,#513925);font-size:11px;font-weight:700}
+.plot-marker[data-stage=watered]{background:var(--ui-a53ba676613a,#cfe8e3);color:var(--ui-234753ed9d32,#224f54)}
+.plot-marker[data-stage=ready]{background:var(--ui-5dc12f893a80,#d6eb9d);color:var(--ui-aecf74e76d0e,#325221)}
+.map-label{padding:2px 5px;border-radius:3px;background:var(--ui-ba99946b4a23,#342b27dc);color:var(--ui-232eeccc2f48,#fff6dc);font-size:11px;white-space:nowrap}
+.door-label{background:var(--ui-1be0193bd4ee,#52412d)}
+.rift-hint{transform:translate(-50%,-100%);padding:6px 9px;border:1px solid var(--ui-046a2f2d306c,#806485);border-radius:6px;background:var(--ui-ac5aeeff3308,#fff5de);color:var(--ui-cb3424a72b9a,#35253a);font-size:13px;font-weight:650;white-space:nowrap}
 .rift-hint kbd{margin-left:4px}
-.town-hint{border-color:#859774;color:#31513b}
-.rift-overlay{position:absolute;inset:0;display:grid;place-items:center;background:#201d25a6}
+.town-hint{border-color:var(--ui-0fd33ed8317f,#859774);color:var(--ui-b5e9eb611eb9,#31513b)}
+.rift-overlay{position:absolute;inset:0;display:grid;place-items:center;background:var(--ui-6a47f5c31177,#201d25a6)}
 .town-overlay{position:fixed;z-index:20}
-.rift-dialog{max-width:calc(100% - 22px);width:320px;padding:14px;border:2px solid #7b567e;border-radius:9px;background:#fff5de;color:#2c2630}
-.town-dialog{width:470px;max-height:calc(100dvh - 32px);overflow:auto;border-color:#9eab87;background:#fffdf0;color:#283e30}
+.rift-dialog{max-width:calc(100% - 22px);width:320px;padding:14px;border:2px solid var(--ui-bf80552ddd78,#7b567e);border-radius:9px;background:var(--ui-ac5aeeff3308,#fff5de);color:var(--ui-ce9a1ad5abb0,#2c2630)}
+.town-dialog{width:470px;max-height:calc(100dvh - 32px);overflow:auto;border-color:var(--ui-4d74e1b0214b,#9eab87);background:var(--ui-dab366638d50,#fffdf0);color:var(--ui-8f68227cd5f2,#283e30)}
 .town-close{margin-top:12px}
 .outfit-editor,.scene-settings{margin-top:12px}
 .scene-settings{display:grid;gap:5px}
@@ -506,6 +537,6 @@ onBeforeUnmount(() => {
 .rift-dialog h2{margin:0;font-size:19px}
 .rift-dialog p{margin:8px 0 12px;font-size:14px}
 .dialog-choices,.world-controls{display:flex;gap:8px;align-items:center}
-.world-controls{padding-top:12px;color:#434f3e;font-size:13px}
-kbd{display:inline-block;padding:1px 4px;border:1px solid #aeb7a3;border-radius:4px;background:#faf9ee;color:#384e40;font:inherit}
+.world-controls{padding-top:12px;color:var(--ui-620ba3964da7,#434f3e);font-size:13px}
+kbd{display:inline-block;padding:1px 4px;border:1px solid var(--ui-04973c8e1e81,#aeb7a3);border-radius:4px;background:var(--ui-d679faae3ef1,#faf9ee);color:var(--ui-24a4b0b39857,#384e40);font:inherit}
 </style>

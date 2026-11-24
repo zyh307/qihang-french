@@ -1,23 +1,55 @@
+import {vocabularyIdentity,uniqueVocabularyEntries,uniqueVocabularyWords,logicalVocabularyKey} from './vocabulary-identity.js';
 import {newReviewRecord,nextReviewDate,completeReviewRecord,migrateReviewPlans} from './review-plan.js';
 import {preferredGroupSize} from './group-size.js';
-import {studyPaused,recordStudyFailure} from './study-pressure.js';
-import {primaryMeaning} from './meanings.js';
+import {studyPaused,recordStudyFailure,conjugationReviewPaused} from './study-pressure.js';
+import {primaryMeaning,questionMeaning} from './meanings.js';
+import {hasMeaningNuance} from './meaning-nuances.js';
+import {distinctiveSpellingHint,confusableSpellings} from './spelling-hint.js';
+import {runCooperatively} from '../platform/ui-work.js';
 import {choiceMeaningKeys,meaningsOverlap,unambiguousChoices} from './choice-meanings.js';
 import {distractorExclusion} from './choice-eligibility.js';
 import {spellingSimilarity,sameWordFamily,isShopVocabulary} from './choice-similarity.js';
-let practiceDictionary=[],dictionaryGrams=new Map(),dictionaryShops=[],optionDictionary=new Map(),optionMeaningCache=new WeakMap();
+let practiceDictionary=[],dictionaryGrams=new Map(),dictionaryShops=[],optionDictionary=new Map(),optionMeaningCache=new WeakMap(),spellingMeaningIndex=new Map(),meaningHintRevision=0;
+const SPELLING_HINT_POLICY=3;
 function optionMeaning(word){
  if(String(word.id).startsWith('dictionary:')){let cached=optionMeaningCache.get(word);if(!cached){const label=primaryMeaning(word);cached={label,keys:choiceMeaningKeys([label,...word.meanings])};optionMeaningCache.set(word,cached);}return cached;}
  const label=primaryMeaning(word);return {label,keys:choiceMeaningKeys([label,...word.meanings])};
 }
 export const practiceOptionWord=id=>optionDictionary.get(id)||null;
 const grams=text=>{const value=String(text).normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr').replace(/[^\p{L}\p{N}]/gu,'');return [...new Set(Array.from({length:Math.max(0,value.length-1)},(_,i)=>value.slice(i,i+2)))];};
-export function setPracticeDictionary(entries){
- optionMeaningCache=new WeakMap();
- optionDictionary=new Map(entries.map(e=>['dictionary:'+e.id,{id:'dictionary:'+e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]}]));
- practiceDictionary=entries.filter(e=>e.frequency===undefined||e.frequency>=3.8).sort((a,b)=>(b.frequency||0)-(a.frequency||0)).map(e=>({id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]})).filter(w=>!distractorExclusion(w));
- dictionaryShops=practiceDictionary.filter(w=>isShopVocabulary(w.forms[0].text));
- dictionaryGrams=new Map();for(const w of practiceDictionary)for(const gram of grams(w.forms[0].text)){if(!dictionaryGrams.has(gram))dictionaryGrams.set(gram,[]);dictionaryGrams.get(gram).push(w);}
+function* practiceDictionarySteps(entries){
+ const options=new Map(),common=[],shops=[],byGram=new Map(),byMeaning=new Map();let count=0;
+ for(const e of entries){
+  options.set('dictionary:'+e.id,{id:'dictionary:'+e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]});
+  if(++count%64===0)yield;
+ }
+ for(const e of entries.filter(e=>e.frequency===undefined||e.frequency>=3.8).sort((a,b)=>(b.frequency||0)-(a.frequency||0))){
+  const w={id:'dictionary:'+e.id,lexiconId:e.id,pos:e.pos,meanings:e.meanings,primaryMeaning:e.primaryMeaning,forms:[{text:e.word,gender:e.gender||null,tested:true}]};
+  if(!distractorExclusion(w)){
+   common.push(w);if(isShopVocabulary(w.forms[0].text))shops.push(w);
+   for(const gram of grams(w.forms[0].text)){if(!byGram.has(gram))byGram.set(gram,[]);byGram.get(gram).push(w);}
+   for(const sense of choiceMeaningKeys([primaryMeaning(w)])){if(!byMeaning.has(sense))byMeaning.set(sense,[]);byMeaning.get(sense).push(w);}
+  }
+  if(++count%32===0)yield;
+ }
+ return {options,common,shops,byGram,byMeaning};
+}
+let dictionaryBuild=0;
+function publishPracticeDictionary(index){optionMeaningCache=new WeakMap();optionDictionary=index.options;practiceDictionary=index.common;dictionaryShops=index.shops;dictionaryGrams=index.byGram;spellingMeaningIndex=index.byMeaning;meaningHintRevision++;}
+export function setPracticeDictionary(entries){dictionaryBuild++;const steps=practiceDictionarySteps(entries);let next;do{next=steps.next();}while(!next.done);publishPracticeDictionary(next.value);}
+export async function setPracticeDictionaryAsync(entries){const revision=++dictionaryBuild,index=await runCooperatively(practiceDictionarySteps(entries));if(revision===dictionaryBuild)publishPracticeDictionary(index);}
+function spellingInitial(p,word,form){
+ const label=questionMeaning(word,form);if(form.questionHint||hasMeaningNuance(word,label))return '';
+ const answer=spellingParts(word,form).answer,forms=word.forms.map(f=>spellingParts(word,f).answer),keys=choiceMeaningKeys([label]),peers=new Map(),pos=w=>String(w.pos||w.sourcePos||'').split(/[.\s]/u)[0];
+ const confirmed=new Set(confusableSpellings(answer).map(normalize));if(!confirmed.size)return '';
+ const collect=candidate=>{
+  if(candidate.id===word.id)return;
+  for(const f of candidate.forms||[]){const text=spellingParts(candidate,f).answer;if(!confirmed.has(normalize(text))||forms.some(value=>normalize(value)===normalize(text)||!/[\s'’]/u.test(value)&&!/[\s'’]/u.test(text)&&sameWordFamily(value,text)))continue;peers.set(normalize(text),{text,pos:pos(candidate)});}
+ };
+ for(const key of keys)for(const candidate of spellingMeaningIndex.get(key)||[])collect(candidate);
+ for(const candidate of p.words)if(candidate.id!==word.id&&meaningsOverlap(keys,choiceMeaningKeys([primaryMeaning(candidate)])))collect(candidate);
+ const all=[...peers.values()],comparable=all.filter(peer=>peer.pos===pos(word));
+ return distinctiveSpellingHint(answer,(comparable.length?comparable:all).map(peer=>peer.text));
 }
 function dictionaryCandidates(text){
  const scores=new Map();for(const gram of grams(text))for(const word of dictionaryGrams.get(gram)||[])scores.set(word,(scores.get(word)||0)+1);
@@ -25,13 +57,53 @@ function dictionaryCandidates(text){
  return [...new Set([...similar,...(isShopVocabulary(text)?dictionaryShops:[]),...practiceDictionary.slice(0,100)])];
 }
 import {isVocabularyWord,conjugationPracticeWords,conjugationPackages,conjugationUnits} from '../conjugation/catalog.js';
-import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees, testsBothGenders } from './word-display.js';
+import { spellingParts, displayForm, splitNounArticle, spellingTask, articleAgrees, choiceArticleAgrees, testsBothGenders,practiceForms,practiceForm,sharedPracticeForms } from './word-display.js';
 import { spellingDiff } from './spelling-diff.js';
 export const clone = v => JSON.parse(JSON.stringify(v));
 export const day = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 export const addDays = (date, n) => { const d = new Date(`${date}T12:00:00`); d.setDate(d.getDate() + n); return day(d); };
 export const packageKey = p => `${p.book.id}:${p.lesson.id}`;
 export const wordKey = (p, w) => w?.origin?.progressKey || `${packageKey(p)}:${typeof w === 'string' ? w : w.id}`;
+export function lessonWithAdditions(data, lesson) {
+  if (!lesson) return lesson;
+  const refs = data.lessonAdditions?.[packageKey(lesson)];
+  if (!Array.isArray(refs) || !refs.length) return lesson;
+  const words = [...lesson.words];
+  const seen = new Set(words.filter(isVocabularyWord).map(w => logicalVocabularyKey(lesson, w)));
+  let order = words.reduce((max, w) => Math.max(max, w.order || 0), 0);
+  for (const ref of refs) {
+    const source = data.library.find(p => packageKey(p) === ref?.lesson);
+    const word = source?.words.find(w => w.id === ref.word && !w.conjugation && !w.studyDisabled);
+    if (!word) continue;
+    const identity = logicalVocabularyKey(source, word);
+    if (seen.has(identity)) continue;
+    seen.add(identity);
+    const key = wordKey(source, word);
+    words.push({...word, id:key, order:++order, lessonAddition:true,
+      ...(word.conjugationPlan ? {conjugationPlan:{infinitive:true,tenses:[]}} : {}),
+      origin:{progressKey:key, lessonKey:packageKey(source), wordId:word.id, bookId:source.book.id}});
+  }
+  return words.length === lesson.words.length ? lesson : {...lesson, words};
+}
+
+function pruneLessonAdditions(p, s) {
+  // Supplemental IDs are canonical source keys. Built-in IDs retain their
+  // original shape, including if a textbook update moves an original word.
+  const available = new Set(p.words.map(w => w.id));
+  const missing = id => typeof id === 'string' && id.includes(':') && !available.has(id);
+  const removed = new Set([...(s.group || []), ...(s.pending || [])].filter(missing));
+  for (const field of ['group','pending','doneWords','acquiredWordIds','newKnownWordIds','deferredWordIds','learningTailIds','reviewDailyIds']) {
+    if (Array.isArray(s[field]) && s[field].some(missing)) s[field] = s[field].filter(id => !missing(id));
+  }
+  if (s.jobs?.some(job => missing(job.wordId))) s.jobs = s.jobs.filter(job => !missing(job.wordId));
+  if (missing(s.question?.wordId)) s.question = null;
+  if (missing(s.feedback?.wordId)) s.feedback = null;
+  if (removed.size) {
+    s.total = s.group?.length || 0;
+    if (Number.isFinite(s.progressTotal)) s.progressTotal = Math.max(0, s.progressTotal - removed.size);
+    delete s.pendingRoundSizes;
+  }
+}
 export const MIXED_REVIEW_KEY='review:all:review';
 export const MIXED_ERRORS_KEY='review:all:errors';
 export const MIXED_FAVORITES_KEY='review:all:favorites';
@@ -44,12 +116,29 @@ export function wordContext(data,p,w){
   return {p:original||p,w:original?.words.find(item=>item.id===w.origin.wordId)||(data.conjugationDecks?.[w.origin.lessonKey]||[]).find(item=>item.id===w.origin.wordId)||w};
 }
 function shuffled(items,random=Math.random){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
-function rememberKnown(session,word){
-  session.newKnownWordIds||=[];session.acquiredWordIds||=[];
-  if(!session.newKnownWordIds.includes(word.id))session.newKnownWordIds.push(word.id);
-  if(!session.acquiredWordIds.includes(word.id))session.acquiredWordIds.push(word.id);
+const reviewRoundKey=session=>session.id+':'+(session.roundNumber||1);
+function recordReviewAcquisition(record,session,today){
+  record.reviewAcquiredOn=today;
+  record.reviewAcquiredRound=reviewRoundKey(session);
 }
-export const testedForms = w => w.forms.filter(f => f.tested);
+function clearReviewAcquisition(record){
+  delete record.reviewAcquiredOn;
+  delete record.reviewAcquiredRound;
+}
+export function reviewAcquiredEntries(data,p,session,today=day()){
+  if(!p||session?.mode!=='review'||session.phase!=='done')return [];
+  const group=new Set(session.group||[]),round=reviewRoundKey(session);
+  const entries=[];
+  for(const w of p.words){
+    if(w.conjugation||!group.has(w.id))continue;
+    const record=data.progress[wordKey(p,w)];
+    // Older saved rounds only have the acquisition date. The frozen group
+    // still identifies the words eligible for that round's recap.
+    if(record?.notebook==='known'&&record.reviewAcquiredOn===today&&(!record.reviewAcquiredRound||record.reviewAcquiredRound===round))entries.push(wordContext(data,p,w));
+  }
+  return uniqueVocabularyEntries(entries,data);
+}
+export const testedForms = practiceForms;
 // Repair stale pending flags without resetting completed forms or review dates.
 export function reconcileLearningProgress(data,p=null){
   const packages=p?[p]:[...data.library,...conjugationPackages(data)],seen=new Set();
@@ -63,7 +152,7 @@ export function reconcileLearningProgress(data,p=null){
       if(r.notebook==='practice')r.notebook=forms.every(f=>r.forms[f.id].known)?'known':'review';
       r.learnedAt ||= forms.map(f=>r.forms[f.id]?.learnedAt).filter(Boolean).sort().at(-1);
       if(r.learnedAt)r.firstStudiedAt ||= r.learnedAt;
-    }else if(r.notebook==='review'&&(r.pendingLearning||Object.keys(r.forms||{}).length)){
+    }else if(r.notebook==='review'&&forms.some(f=>!f.studySupplement&&!complete(f))&&(r.pendingLearning||Object.keys(r.forms||{}).length)){
       // Only genuinely unfinished forms return to the lesson; finished forms stay intact.
       r.notebook='practice';r.pendingLearning=true;
     }
@@ -113,7 +202,8 @@ export function migrateSessions(data){
       s.feedback.retry=true;
     }
     s.key=key;s.lessonKey||=key.split(':').slice(0,2).join(':');
-    const pkg=data.library.find(p=>packageKey(p)===s.lessonKey);
+    const pkg=lessonWithAdditions(data,data.library.find(p=>packageKey(p)===s.lessonKey));
+    if(pkg)pruneLessonAdditions(pkg,s);
     if(pkg&&(!s.flowVersion||s.flowVersion<2))upgradePracticeFlow(data,pkg,s);
     if(pkg&&s.flowVersion<3)upgradeRounds(data,pkg,s);
     s.progressTotal??=sessionProgressTotal(s);
@@ -122,8 +212,8 @@ export function migrateSessions(data){
   }
   let mixed;
   for(const s of Object.values(data.sessions)){
-    const p=s.lessonKey==='review:all'?(mixed||=reviewPackage(data)):data.library.find(p=>packageKey(p)===s.lessonKey);
-    if(p){upgradeGenderRecognition(p,s);prunePausedWords(data,p,s,day());repairSessionChoices(data,p,s);if(!s.question&&!s.feedback&&s.phase!=='done')refresh(data,p,s,day());}
+    const p=s.lessonKey==='review:all'?(mixed||=reviewPackage(data)):lessonWithAdditions(data,data.library.find(p=>packageKey(p)===s.lessonKey));
+    if(p){consolidateSharedFormJobs(p,s);upgradeGenderRecognition(p,s);prunePausedWords(data,p,s,day());repairSessionChoices(data,p,s);if(!s.question&&!s.feedback&&s.phase!=='done')refresh(data,p,s,day());}
   }
   if(!data.lastPractice){const latest=Object.values(data.sessions).sort((a,b)=>(a.updatedAt||Date.parse(a.started+'T12:00:00'))-(b.updatedAt||Date.parse(b.started+'T12:00:00'))).at(-1);if(latest)data.lastPractice={lessonKey:latest.lessonKey,sessionKey:latest.key};}
   return data;
@@ -139,22 +229,23 @@ function sessionProgressTotal(s){
 export function sessionProgress(data,p,s,today=day()){
   if(!p||!s)return {completed:0,total:0,percent:0};
   if(s.mode==='review'){
-    const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]);
+    const byId=new Map(p.words.map(w=>[w.id,w])),unit=id=>{const w=byId.get(id);return w?logicalVocabularyKey(p,w):id;};
+    const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))].map(unit));
     if((s.reviewDate||s.started)!==today){
       // Display the new day's counter immediately, even before the next save.
-      const plan=new Set([...(s.phase==='done'?[]:(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))),...p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length).map(w=>w.id)]);
+      const plan=new Set([...(s.phase==='done'?[]:(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))),...p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length).map(w=>w.id)].map(unit));
       return {completed:0,total:plan.size,percent:0};
     }
     if(Array.isArray(s.reviewDailyIds)){
-      const plan=new Set(s.reviewDailyIds),carry=s.reviewDailyCarry||0;
+      const plan=new Set(s.reviewDailyIds.map(unit)),carry=s.reviewDailyCarry||0;
       const total=plan.size+carry,left=[...remaining].filter(id=>plan.has(id)).length;
       const completed=Math.max(0,total-left);
       return {completed,total,percent:total?completed/total*100:0};
     }
   }
-  const total=s.mode==='learn'?p.words.filter(isVocabularyWord).length:s.progressTotal??sessionProgressTotal(s);
+  const total=s.mode==='learn'?uniqueVocabularyWords(p,p.words.filter(isVocabularyWord)).length:s.progressTotal??sessionProgressTotal(s);
   const remaining=new Set([...(s.pending||[]),...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id))]).size;
-  const completed=Math.max(0,Math.min(total,s.mode==='learn'?p.words.filter(w=>isVocabularyWord(w)&&getProgress(data,p,w).notebook!=='practice').length:total-remaining));
+  const completed=Math.max(0,Math.min(total,s.mode==='learn'?uniqueVocabularyWords(p,p.words.filter(w=>isVocabularyWord(w)&&getProgress(data,p,w).notebook!=='practice')).length:total-remaining));
   return {completed,total,percent:total?completed/total*100:0};
 }
 export function reviewLessons(data,today=day()){
@@ -180,16 +271,32 @@ export function checkAnswer(input, expected, fuzzy = true) {
   const answer = formatKey(input), correct = answer.length > 0 && (fuzzy ? normalize(answer) === normalize(expected) : answer === formatKey(expected));
   return { correct, fuzzy: correct && answer !== formatKey(expected), formatted:correct&&String(input).normalize('NFC')!==String(expected).normalize('NFC'), expected };
 }
-export function initialState(library) { return { schema: 1, library, settings: { colorTheme:'mist', learnGroupSize:5,reviewGroupSize:10,learnThreeErrorDefer:true,reviewThreeErrorPause:true,groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', sounds:true, notifications:true,reviewReminders:true,errorReminders:true,reviewErrorRetry:true,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, errorHistory:{}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
-export function getProgress(data, p, w) { return data.progress[wordKey(p, w)] || { notebook: 'practice', forms: {} }; }
+export function initialState(library) { return { schema: 1, library, settings: { colorTheme:'mist', learnGroupSize:5,reviewGroupSize:10,learnThreeErrorDefer:true,reviewThreeErrorPause:true,groupSize: 5, dailyGoal: 10, fuzzy: true, reviewMode: 'both', wordMotion:'slide', articleMode:'choice', builtInKeyboard:true, sounds:true, notifications:true,reviewReminders:true,errorReminders:true,reviewErrorRetry:true,reminderTime:'08:00',shuffleLearning:false,errorAutoRemove:true }, progress: {}, sessions: {}, favorites: {}, errors: {}, errorHistory:{}, activity: {}, recentOptions: {}, lessonCompletions:{}, reminders:{} }; }
+export function getProgress(data, p, w) {
+ const record=data.progress[wordKey(p,w)]||{notebook:'practice',forms:{}};
+ if(!w?.conjugationUnit)return record;
+ // A tense card represents all its persons, not just the first card (je).
+ const keys=w.conjugationProgressKeys||conjugationPracticeWords(data,p).filter(card=>card.conjugation.lemma===w.conjugation.lemma&&card.conjugation.tense===w.conjugation.tense).map(card=>wordKey(p,card));
+ if(!keys.length)return record;
+ const records=keys.map(key=>data.progress[key]||{notebook:'practice',forms:{}}),pending=records.some(r=>r.notebook==='practice'||r.pendingLearning);
+ const first=records.flatMap(r=>[r.firstStudiedAt,r.learnedAt]).filter(Boolean).sort()[0];
+ return {...record,notebook:pending?'practice':records.every(r=>r.notebook==='known')?'known':'review',pendingLearning:pending,...(first?{firstStudiedAt:first}:{})};
+}
 export function errorPracticeState(data,p,w,today=day()){
-  const history=data.errorHistory?.[wordKey(p,w)]||{},errors=testedForms(w).map(f=>data.errors[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);
-  return {active:errors.length>0,errorCount:history.count??errors.reduce((sum,error)=>sum+(error.count||0),0),reviewCount:history.reviewCount||0,cycleReviews:history.cycleReviews||0,doneToday:history.lastReviewDate===today};
+  const history=data.errorHistory?.[wordKey(p,w)]||{},errors=wordErrorRecords(data,p,w);
+  return {active:errors.length>0,errorCount:errors.length?Math.max(1,history.count??errors.reduce((sum,error)=>sum+(error.count||0),0),...errors.map(error=>error.count||0)):history.count||0,reviewCount:history.reviewCount||0,cycleReviews:history.cycleReviews||0,doneToday:history.lastReviewDate===today};
+}
+function wordErrorRecords(data,p,w){return (w.forms||[]).map(f=>data.errors?.[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);}
+export function errorPracticeForms(data,p,w){
+  const forms=testedForms(w),direct=forms.filter(f=>data.errors?.[`${wordKey(p,w)}:${f.id}`]);
+  // A retained error on a now display-only form still belongs to this word.
+  // Practice its current tested form without inventing or deleting a record.
+  return direct.length?direct:wordErrorRecords(data,p,w).length?forms.slice(0,1):[];
 }
 export function errorPracticeEligible(data,p,w,today=day()){const state=errorPracticeState(data,p,w,today);return state.active&&!state.doneToday;}
 export function dedicatedPracticeState(data,p,w,mode='direct'){
   const count=data.directProgress?.[wordKey(p,w)]?.practiceCount||0;
-  const errors=testedForms(w).map(f=>data.errors[`${wordKey(p,w)}:${f.id}`]).filter(Boolean);
+  const errors=wordErrorRecords(data,p,w);
   return {count,practiced:count>0&&(mode!=='errors'||errors.length>0&&errors.every(error=>error.practiced!==false))};
 }
 export function studyDays(data,p,w,today=day()){
@@ -199,25 +306,31 @@ export function studyDays(data,p,w,today=day()){
   return Math.max(1,Math.floor((calendar(today)-calendar(dates[0]))/86400000)+1);
 }
 export function dueForms(data, p, w, today = day()) {
-  if(studyPaused(data,p,w,today))return [];
+  if(studyPaused(data,p,w,today)||w.conjugation&&conjugationReviewPaused(data,w.conjugation.lemma,today))return [];
   const r = getProgress(data, p, w);
-  return r.notebook === 'review' ? testedForms(w).filter(f => nextReviewDate(r.forms[f.id],data.settings)&&nextReviewDate(r.forms[f.id],data.settings)<=today) : [];
+  return r.notebook === 'review' ? testedForms(w).filter(f => {const due=formReviewDate(r,f,data.settings);return due&&due<=today;}) : [];
+}
+export function formReviewDate(record,form,settings){
+  const progress=record?.forms?.[form.id];
+  return form.studySupplement&&!progress?.learnedAt&&!progress?.known?record?.learnedAt:nextReviewDate(progress,settings);
 }
 export function reviewDaysLeft(data,p,w,today=day()){
   if(studyPaused(data,p,w,today)){const next=testedForms(w).flatMap(f=>getProgress(data,p,w).forms[f.id]?.remedialDates||[]).filter(date=>date>today).sort()[0];return next?Math.round((Date.parse(next+'T12:00:00')-Date.parse(today+'T12:00:00'))/86400000):1;}
-  const r=getProgress(data,p,w),due=testedForms(w).map(f=>nextReviewDate(r.forms[f.id],data.settings)).filter(Boolean).sort()[0];
+  const r=getProgress(data,p,w),due=testedForms(w).map(f=>formReviewDate(r,f,data.settings)).filter(Boolean).sort()[0];
   if(!due)return null;
+  if(due<=today&&w.conjugation&&conjugationReviewPaused(data,w.conjugation.lemma,today))return 1;
   const utc=value=>{const [y,m,d]=value.split('-').map(Number);return Date.UTC(y,m-1,d);};
   return Math.max(0,Math.round((utc(due)-utc(today))/86400000));
 }
 export function lessonStats(data,p,today=day()){
- const units=[...p.words.filter(isVocabularyWord).map(w=>[w]),...conjugationUnits(data,p).map(u=>u.cards)],result={total:units.length,practice:0,review:0,known:0,due:0,favorites:0};
+ const units=[...uniqueVocabularyWords(p,p.words.filter(isVocabularyWord)).map(w=>[w]),...conjugationUnits(data,p).map(u=>u.cards)],result={total:units.length,practice:0,review:0,known:0,due:0,favorites:0};
  for(const cards of units){const records=cards.map(w=>getProgress(data,p,w)),place=records.some(r=>r.notebook==='practice'||r.pendingLearning)?'practice':records.every(r=>r.notebook==='known')?'known':'review';result[place]++;if(cards.some(w=>dueForms(data,p,w,today).length))result.due++;if(cards.some(w=>data.favorites[wordKey(p,w)]))result.favorites++;}
  result.completed=result.review+result.known;return result;
 }
 export function recordLessonCompletions(data) {
   data.lessonCompletions ||= {};
-  for (const p of data.library) {
+  for (const base of data.library) {
+    const p=lessonWithAdditions(data,base);
     const key=packageKey(p);
     if (data.lessonCompletions[key] || !p.words.length) continue;
     const units=[...p.words.filter(isVocabularyWord),...conjugationPracticeWords(data,p)],progress=units.map(w=>getProgress(data,p,w));
@@ -239,7 +352,7 @@ const sequenceFor=s=>s.mode==='review'&&s.reviewMode==='spelling'?['spell']:['re
 function groupJobs(data,p,s,today=day()){
   return s.group.filter(id=>!s.doneWords.includes(id)).flatMap(id=>{
     const w=p.words.find(w=>w.id===id);if(!w)return [];
-    const forms=s.mode==='review'?dueForms(data,p,w,today):s.mode==='errors'?(errorPracticeEligible(data,p,w,today)?testedForms(w).filter(f=>data.errors[`${wordKey(p,w)}:${f.id}`]):[]):testedForms(w);
+    const forms=s.mode==='review'?dueForms(data,p,w,today):s.mode==='errors'?(errorPracticeEligible(data,p,w,today)?errorPracticeForms(data,p,w):[]):testedForms(w);
     return forms.filter(f=>s.mode!=='learn'||!getProgress(data,p,w).forms[f.id]?.learnedAt).map((f,index)=>({wordId:id,formId:f.id,sequence:testsBothGenders(w)&&index>0?['spell']:sequenceFor(s),stage:0,failed:false}));
   });
 }
@@ -258,6 +371,30 @@ function upgradeGenderRecognition(p,s){
     for(const job of candidates)if(job!==keep)job.sequence=job.sequence.filter((kind,index)=>index<job.stage||kind!=='recognize');
   }
   s.sharedRecognitionVersion=1;
+}
+function consolidateSharedFormJobs(p,s){
+  if(!s.jobs?.length)return;
+  const words=new Map(p.words.map(w=>[w.id,w])),groups=new Map(),active=s.question||s.feedback?.question,removed=new Set();
+  for(const job of s.jobs){const word=words.get(job.wordId),form=word?.forms.find(f=>f.id===job.formId);if(!form||sharedPracticeForms(word,form).length<2)continue;const key=job.wordId+'|'+practiceForm(word,form).id;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(job);}
+  for(const jobs of groups.values()){
+    if(new Set(jobs.map(job=>job.formId)).size<2)continue;
+    const word=words.get(jobs[0].wordId),visible=active?.wordId===word.id&&jobs.some(job=>job.formId===active.formId)?active.formId:null,formId=visible||practiceForm(word,word.forms.find(f=>f.id===jobs[0].formId)).id;
+    const main=jobs.filter(job=>!job.reinforcement),keep=main.find(job=>job.formId===visible)||[...main].sort((a,b)=>b.stage-a.stage)[0];
+    if(keep){
+      const completed=new Set(main.flatMap(job=>job.sequence.slice(0,job.stage)));
+      for(const job of main){
+        if(job===keep)continue;
+        for(const kind of job.sequence.slice(job.stage))if(!keep.sequence.includes(kind)&&!completed.has(kind))keep.sequence.push(kind);
+        keep.failed||=job.failed;keep.needsReinforcement||=job.needsReinforcement;removed.add(job);
+      }
+    }
+    const reinforcement=new Set();
+    for(const job of jobs){
+      job.formId=formId;
+      if(job.reinforcement){const key=job.sequence.slice(job.stage).join('|');if(reinforcement.has(key))removed.add(job);else reinforcement.add(key);}
+    }
+  }
+  s.jobs=s.jobs.filter(job=>!removed.has(job));
 }
 function upgradePracticeFlow(data,p,s){
   if(s.phase==='judge'){
@@ -289,30 +426,36 @@ function upgradeRounds(data,p,s){
 const splitWaitingRounds=(count,size)=>Array.from({length:Math.ceil(count/size)},(_,i)=>Math.min(size,count-i*size));
 function waitingRoundPlan(s,size){
   const plan=s.pendingRoundSizes;
-  return s.pendingPlanBase===size&&Array.isArray(plan)&&plan.every(n=>Number.isInteger(n)&&n>0&&n<=15)&&plan.reduce((a,b)=>a+b,0)===s.pending.length?plan:splitWaitingRounds(s.pending.length,size);
+  return s.pendingPlanBase===size&&Array.isArray(plan)&&plan.every(n=>Number.isInteger(n)&&n>0&&n<=size)&&plan.reduce((a,b)=>a+b,0)===s.pending.length?plan:splitWaitingRounds(s.pending.length,size);
 }
 export function appendLearningWords(data,p,s,ids=null,today=day()){
   if(!s||!(s.mode==='learn'||s.importedPractice&&s.importedCourseLearning!==false&&!s.importedRelearning))return;
   const included=new Set([...(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id)),...(s.pending||[]),...(s.learningTailIds||[])]),scope=ids?new Set(ids):null;
-  const added=p.words.filter(w=>isVocabularyWord(w)&&(!scope||scope.has(w.id))&&!included.has(w.id)&&!studyPaused(data,p,w,today)&&getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt)).map(w=>w.id);
+  const includedWords=new Set(p.words.filter(w=>included.has(w.id)).map(w=>logicalVocabularyKey(p,w)));
+  const added=uniqueVocabularyWords(p,p.words.filter(w=>isVocabularyWord(w)&&(!scope||scope.has(w.id))&&!includedWords.has(logicalVocabularyKey(p,w))&&!studyPaused(data,p,w,today)&&getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt))).map(w=>w.id);
   if(!added.length)return;
   if(s.tailReady){const tail=new Set(s.learningTailIds||[]);s.pending=s.pending.filter(id=>!tail.has(id));delete s.tailReady;delete s.pendingRoundSizes;}
   const size=preferredGroupSize(data.settings,s.mode),plan=waitingRoundPlan(s,size),oldCount=s.pending.length;
   s.pending.push(...added);
   let remaining=added.length;
-  if(plan.length){const last=plan.length-1,fill=Math.min(15-plan[last],remaining);plan[last]+=fill;remaining-=fill;}
+  if(plan.length){const last=plan.length-1,fill=Math.min(size-plan[last],remaining);plan[last]+=fill;remaining-=fill;}
   if(remaining)plan.push(...splitWaitingRounds(remaining,size));
   s.pendingRoundSizes=plan;s.pendingPlanBase=size;
   s.progressTotal=(s.progressTotal??sessionProgressTotal({...s,pending:s.pending.slice(0,oldCount)}))+added.length;
 }
 function openRound(data,p,s,today){
-  s.pending=[...new Set(s.pending)].filter(id=>{
+  const byId=new Map(p.words.map(w=>[w.id,w]));
+  const uniquePending=new Set(uniqueVocabularyWords(p,s.pending.map(id=>byId.get(id)).filter(Boolean)).map(w=>w.id));
+  s.pending=[...new Set(s.pending)].filter(id=>uniquePending.has(id)).filter(id=>{
     const w=p.words.find(w=>w.id===id);if(!w||studyPaused(data,p,w,today))return false;
     return s.mode==='review'?dueForms(data,p,w,today).length:s.mode==='errors'?errorPracticeEligible(data,p,w,today):s.mode==='favorites'?data.favorites[wordKey(p,w)]&&testedForms(w).length:s.mode==='direct'?testedForms(w).length:getProgress(data,p,w).notebook==='practice'&&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt);
   });
   if(!s.pending.length){s.phase='done';return;}
   if(s.mode==='errors')s.pending.sort((a,b)=>errorPracticeState(data,p,p.words.find(w=>w.id===b),today).errorCount-errorPracticeState(data,p,p.words.find(w=>w.id===a),today).errorCount);
   s.optionSets={};s.reviewSpellingShuffled=false;s.sharedRecognitionVersion=1;
+  // Capture the current preference only when a new group begins. Existing
+  // questions, retries and the saved order within this group remain frozen.
+  if(s.mode==='review')s.reviewMode=data.settings.reviewMode==='spelling'?'spelling':'both';
   const size=preferredGroupSize(data.settings,s.mode),plan=waitingRoundPlan(s,size);
   s.tailRound=!!s.tailReady;delete s.tailReady;
   s.roundSize=s.tailRound?s.pending.length:plan.shift()||size;
@@ -320,16 +463,24 @@ function openRound(data,p,s,today){
   s.group=s.pending.splice(0,s.roundSize);
   if(s.tailRound)s.learningTailIds=(s.learningTailIds||[]).filter(id=>!s.group.includes(id));
   s.total=s.group.length;s.doneWords=[];s.mistakeWordIds=[];
-  s.stats={attempts:0,correct:0};s.newKnownWordIds=[];s.question=null;s.feedback=null;s.phase='practice';
+  s.stats={attempts:0,correct:0};s.question=null;s.feedback=null;s.phase='practice';
   s.jobs=groupJobs(data,p,s,today);refresh(data,p,s,today);
 }
 
-function completeForm(data, p, w, f, session, job, today) {
+function completeForm(data,p,w,f,session,job,today){
+  completeSingleForm(data,p,w,f,session,job,today);
+  for(const alias of sharedPracticeForms(w,f)){
+    for(const table of ['progress','directProgress']){const record=data[table]?.[wordKey(p,w)];if(record?.forms?.[f.id])record.forms[alias.id]=record.forms[f.id];}
+    const error=data.errors?.[wordKey(p,w)+':'+f.id],other=data.errors?.[wordKey(p,w)+':'+alias.id];if(error&&other)other.practiced=error.practiced;
+  }
+}
+function completeSingleForm(data, p, w, f, session, job, today) {
   if(['direct','errors','favorites'].includes(session.mode)){
     data.directProgress||={};const r=data.directProgress[wordKey(p,w)]||={forms:{}};
     r.forms[f.id]={completedAt:today,count:(r.forms[f.id]?.count||0)+1};
     if(session.mode==='errors'){
       if(data.errors[`${wordKey(p,w)}:${f.id}`])data.errors[`${wordKey(p,w)}:${f.id}`].practiced=true;
+      else for(const error of wordErrorRecords(data,p,w))error.practiced=true;
     }else if(getProgress(data,p,w).notebook==='practice'){
       const progress=ensureProgress(data,p,w);
       if(!progress.forms[f.id]?.learnedAt)progress.forms[f.id]=newReviewRecord(today);
@@ -339,10 +490,11 @@ function completeForm(data, p, w, f, session, job, today) {
   const progress = ensureProgress(data, p, w);
   if (session.mode === 'review') {
     const wasKnown=progress.notebook==='known';
-    const r = progress.forms[f.id];
+    const r = progress.forms[f.id] ||= {};
     completeReviewRecord(r,data.settings,today,!!job.failed);
     progress.notebook = testedForms(w).every(x => progress.forms[x.id]?.known) ? 'known' : 'review';
-    if(!wasKnown&&progress.notebook==='known')rememberKnown(session,w);
+    if(!wasKnown&&progress.notebook==='known')recordReviewAcquisition(progress,session,today);
+    else if(progress.notebook!=='known')clearReviewAcquisition(progress);
   } else if (progress.notebook === 'practice' && !progress.forms[f.id]?.learnedAt) {
     progress.forms[f.id] = newReviewRecord(today);
   }
@@ -353,7 +505,7 @@ function finishWord(data, p, w, session, today) {
   if(session.mode==='errors'){
     data.errorHistory||={};const key=wordKey(p,w),history=data.errorHistory[key]||={count:0,reviewCount:0,cycleReviews:0};
     if(history.lastReviewDate!==today){history.reviewCount=(history.reviewCount||0)+1;history.cycleReviews=(history.cycleReviews||0)+1;history.lastReviewDate=today;}
-    if(session.removeErrors&&history.cycleReviews>=2)for(const form of testedForms(w))delete data.errors[`${key}:${form.id}`];
+    if(session.removeErrors&&history.cycleReviews>=2)for(const form of w.forms)delete data.errors[`${key}:${form.id}`];
   }
   if(['direct','errors','favorites'].includes(session.mode)){
     data.directProgress||={};const r=data.directProgress[wordKey(p,w)]||={forms:{}};
@@ -459,6 +611,7 @@ export function makeOptions(data, p, word, form, kind, random = Math.random, mod
 }
 export function repairSessionChoices(data,p,s){
   for(const q of [s.question,s.feedback?.question]){
+    if(q?.kind==='spell'){const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);if(word&&form){const label=questionMeaning(word,form);if(q.initialHintMeaning!==label||q.initialHintRevision!==meaningHintRevision||q.initialHintPolicy!==SPELLING_HINT_POLICY){q.initialHint=spellingInitial(p,word,form);q.initialHintMeaning=label;q.initialHintRevision=meaningHintRevision;q.initialHintPolicy=SPELLING_HINT_POLICY;}}continue;}
     if(q?.kind!=='recognize')continue;
     const word=p.words.find(w=>w.id===q.wordId),form=word?.forms.find(f=>f.id===q.formId);
     if(!word||!form)continue;
@@ -488,8 +641,10 @@ function prunePausedWords(data,p,s,today){
  if(paused.has(s.question?.wordId)&&!s.question.hinted)s.question=null;
 }
 function refresh(data, p, s, today) {
+  consolidateSharedFormJobs(p,s);
   upgradeGenderRecognition(p,s);
   prunePausedWords(data,p,s,today);
+  pruneSharedCompleted(data,p,s,today);
   repairSessionChoices(data,p,s);
   rememberQuestionOptions(s);
   if (s.feedback || s.question) return;
@@ -506,7 +661,23 @@ function refresh(data, p, s, today) {
   let kind = job.sequence[job.stage], options;
   if(kind!=='spell'){s.optionSets||={};const key=word.id+'|'+kind;const saved=makeOptions(data,p,word,form,kind,Math.random,s.mode,s.optionSets[key]||[]);s.optionSets[key]=clone(saved);options=shuffled(clone(saved));}
   s.lastPresentedQuestion={wordId:word.id,kind};
-  s.question = { id: uid(), kind, wordId: word.id, formId: form.id, options, hinted: false };
+  s.question = { id: uid(), kind, wordId: word.id, formId: form.id, options, hinted: false,...(kind==='spell'?{initialHint:spellingInitial(p,word,form),initialHintMeaning:questionMeaning(word,form),initialHintRevision:meaningHintRevision,initialHintPolicy:SPELLING_HINT_POLICY}:{}) };
+}
+// A saved round can refer to an alias learned in another lesson. Retain its
+// original IDs and feedback, but do not ask for the completed word again.
+function pruneSharedCompleted(data,p,s,today){
+ const learning=s.mode==='learn'||s.importedPractice&&s.importedCourseLearning&&!s.importedRelearning;
+ if(!learning&&s.mode!=='review')return;
+ const scope=new Set([...(s.pending||[]),...(s.group||[])]),finished=new Set();
+ for(const w of p.words){
+  if(!scope.has(w.id)||!data.sharedVocabulary?.records?.[w.vocabularyMerge?.key||vocabularyIdentity(w)])continue;
+  const record=getProgress(data,p,w);
+  if(learning?record.notebook!=='practice':record.notebook==='known'||!dueForms(data,p,w,today).length)finished.add(w.id);
+ }
+ if(!finished.size)return;
+ s.pending=s.pending.filter(id=>!finished.has(id));s.jobs=s.jobs.filter(job=>!finished.has(job.wordId));
+ for(const id of s.group)if(finished.has(id)&&!s.doneWords.includes(id))s.doneWords.push(id);
+ if(!s.feedback&&finished.has(s.question?.wordId))s.question=null;
 }
 // Refresh only the waiting queue on a new local day. Frozen work in the
 // current round (including retry stages and choices) is retained.
@@ -521,17 +692,17 @@ function rollReviewDay(data,p,s,today){
     return;
   }
   const active=new Set(s.phase==='done'?[]:(s.group||[]).filter(id=>!(s.doneWords||[]).includes(id)));
-  const due=p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length).map(w=>w.id);
-  const dueSet=new Set(due);
-  const waiting=[...new Set(s.pending||[])].filter(id=>dueSet.has(id)&&!active.has(id));
-  const queued=new Set([...active,...waiting]);
-  const added=shuffled(due.filter(id=>!queued.has(id)));
+  const due=uniqueVocabularyWords(p,p.words.filter(w=>isVocabularyWord(w)&&dueForms(data,p,w,today).length)).map(w=>w.id);
+  const byId=new Map(p.words.map(w=>[w.id,w])),unit=id=>{const w=byId.get(id);return w?logicalVocabularyKey(p,w):id;};
+  const dueSet=new Set(due.map(unit)),queued=new Set([...active].map(unit));
+  const waiting=[...new Set(s.pending||[])].filter(id=>{const key=unit(id);if(!dueSet.has(key)||queued.has(key))return false;queued.add(key);return true;});
+  const added=shuffled(due.filter(id=>!queued.has(unit(id))));
   s.pending=[...waiting,...added];
   if(s.optionSets)s.optionSets=Object.fromEntries(Object.entries(s.optionSets).filter(([key])=>active.has(key.split('|')[0])));
   s.reviewDate=today;
   // The daily counter starts with today's unfinished words; yesterday's
   // completed groups are history, not work to repeat or count again today.
-  s.reviewDailyIds=[...new Set([...active,...s.pending])];
+  s.reviewDailyIds=uniqueVocabularyWords(p,[...active,...s.pending].map(id=>byId.get(id)).filter(Boolean)).map(w=>w.id);
   s.reviewDailyCarry=0;
   s.progressTotal=s.reviewDailyIds.length;
 }
@@ -539,7 +710,7 @@ export function refreshReviewQueues(data,today=day()){
   const mixed=reviewPackage(data);
   for(const s of Object.values(data.sessions||{})){
     if(s.mode!=='review')continue;
-    const p=s.lessonKey==='review:all'?mixed:data.library.find(p=>packageKey(p)===s.lessonKey);
+    const p=s.lessonKey==='review:all'?mixed:lessonWithAdditions(data,data.library.find(p=>packageKey(p)===s.lessonKey));
     if(p)rollReviewDay(data,p,s,today);
   }
 }
@@ -557,12 +728,13 @@ export function startSession(data, p, mode = 'learn', ids = null, today = day(),
   }
   if (old && old.phase !== 'done') {refresh(data,p,old,today);touched(data,p,old);return old;}
   if(old?.pending.length){continueRound(data,p,key,today);if(old.phase!=='done')return old;}
-  const words = ids ? p.words.filter(w => isVocabularyWord(w)&&ids.includes(w.id)) : p.words.filter(w => mode === 'review' ? dueForms(data, p, w, today).length :mode==='errors'?errorPracticeEligible(data,p,w,today): mode==='favorites'?!!data.favorites[wordKey(p,w)]:mode==='direct'||getProgress(data, p, w).notebook === 'practice');
+  let words = ids ? p.words.filter(w => isVocabularyWord(w)&&ids.includes(w.id)) : p.words.filter(w => mode === 'review' ? dueForms(data, p, w, today).length :mode==='errors'?errorPracticeEligible(data,p,w,today): mode==='favorites'?!!data.favorites[wordKey(p,w)]:mode==='direct'||getProgress(data, p, w).notebook === 'practice');
+  words=uniqueVocabularyWords(p,words);
   for(let i=words.length-1;i>=0;i--)if(!isVocabularyWord(words[i])||studyPaused(data,p,words[i],today))words.splice(i,1);
   if (!words.length) throw new Error(p.words.some(w=>studyPaused(data,p,w,today))?'今天的难词先暂停，明天继续 / Reprenez ces mots demain.':'暂无待练单词 / Aucun mot à pratiquer.');
   if(mode==='errors')words.sort((a,b)=>errorPracticeState(data,p,b,today).errorCount-errorPracticeState(data,p,a,today).errorCount);
   else if(mode==='favorites')words.sort((a,b)=>dedicatedPracticeState(data,p,a,mode).count-dedicatedPracticeState(data,p,b,mode).count);
-  const s = { id: uid(), flowVersion:3, roundNumber:1, mode, reviewMode: data.settings.reviewMode || 'both', removeErrors:mode==='errors'&&data.settings.errorAutoRemove!==false,pending: (mode==='review'||mode==='learn'&&data.settings.shuffleLearning?shuffled(words):words).map(w => w.id), total: 0, doneWords: [], group: [], jobs: [], newKnownWordIds:[], acquiredWordIds:[], phase: 'practice', stats: { attempts: 0, correct: 0 }, started: today, question: null, feedback: null };
+  const s = { id: uid(), flowVersion:3, roundNumber:1, mode, reviewMode: data.settings.reviewMode || 'both', removeErrors:mode==='errors'&&data.settings.errorAutoRemove!==false,pending: (mode==='review'||mode==='learn'&&data.settings.shuffleLearning?shuffled(words):words).map(w => w.id), total: 0, doneWords: [], group: [], jobs: [], phase: 'practice', stats: { attempts: 0, correct: 0 }, started: today, question: null, feedback: null };
   if(mode==='review'){s.reviewDate=today;s.reviewDailyIds=words.map(w=>w.id);s.reviewDailyCarry=0;}
   s.progressTotal=words.length;s.key=key;s.lessonKey=packageKey(p);data.sessions[key] = s;touched(data,p,s);openRound(data,p,s,today); return s;
 }
@@ -581,6 +753,29 @@ export function continueRound(data,p,key,today=day()){
   const s=getSession(data,p,key);rollReviewDay(data,p,s,today);if(!s||s.phase!=='done'||!s.pending.length)return s;
   s.roundNumber=(s.roundNumber||1)+1;openRound(data,p,s,today);touched(data,p,s);return s;
 }
+export function canRegroupLearning(s){
+  return !!s&&(s.mode==='learn'||s.importedPractice&&s.importedCourseLearning!==false&&!s.importedRelearning)
+    &&(sessionRemaining(s)>0||s.pending?.length>0||s.learningTailIds?.length>0);
+}
+export function regroupLearning(data,p,key,today=day()){
+  const s=getSession(data,p,key);
+  if(!canRegroupLearning(s))return false;
+  const finished=new Set(s.doneWords||[]),byId=new Map(p.words.map(w=>[w.id,w]));
+  const active=s.phase==='done'?[]:s.group.filter(id=>!finished.has(id));
+  const candidates=[...new Set([...active,...s.pending,...(s.learningTailIds||[])])]
+    .filter(id=>!finished.has(id)).map(id=>byId.get(id))
+    .filter(w=>w&&isVocabularyWord(w)&&!studyPaused(data,p,w,today)&&getProgress(data,p,w).notebook==='practice'
+      &&testedForms(w).some(f=>!getProgress(data,p,w).forms[f.id]?.learnedAt));
+  const words=uniqueVocabularyWords(p,candidates);
+  if(!words.length)return false;
+  s.pending=words.map(w=>w.id);
+  for(const field of ['pendingRoundSizes','pendingPlanBase','tailReady','tailRound','learningTailIds','lastPresentedQuestion','feedback','question','deferredWordIds'])delete s[field];
+  s.id=uid();
+  s.roundNumber=(s.roundNumber||1)+1;
+  openRound(data,p,s,today);
+  touched(data,p,s);
+  return true;
+}
 export function revealHint(data, p,key) {
   const s=getSession(data,p,key),q=s?.question;
   if(q&&q.kind==='spell'&&!q.hinted){
@@ -594,7 +789,7 @@ function recordMistake(data,p,word,form,input,today,reason='answer',session=null
   const learningOnly=!!session&&(session.mode==='learn'||!['review','errors'].includes(session.mode)&&(session.importedPractice&&!session.importedRelearning||getProgress(data,p,word).notebook==='practice'));
   if(!learningOnly){
     data.errors||={};data.errorHistory||={};const base=wordKey(p,word),key=`${base}:${form.id}`,previous=data.errors[key];
-    const active=testedForms(word).some(f=>data.errors[`${base}:${f.id}`]);
+    const active=errorPracticeState(data,p,word,today).active;
     const history=data.errorHistory[base]||={count:0,reviewCount:0,cycleReviews:0};
     if(!active)history.cycleReviews=0;
     const counted=session?(session.mistakeWordIds||=[]).includes(base):false;
@@ -602,6 +797,7 @@ function recordMistake(data,p,word,form,input,today,reason='answer',session=null
     history.lastErrorDate=today;
     data.errors[key]={wordId:word.origin?.wordId||word.id,formId:form.id,lesson:word.origin?.lessonKey||packageKey(p),count:(previous?.count||0)+(counted?0:1),last:today,input:String(input),reason,practiced:false};
   }
+  if(word.conjugation&&session?.mode==='review')return false;
   const deferred=countDaily?recordStudyFailure(data,p,word,today,learningOnly):studyPaused(data,p,word,today);if(deferred&&learningOnly){session.learningTailIds||=[];if(!session.learningTailIds.includes(word.id))session.learningTailIds.push(word.id);}return deferred;
 }
 export function retryAfterHint(data,p,today=day(),key){
@@ -623,7 +819,7 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
     const parts=spellingParts(word,form),task=spellingTask(word,form,data.settings.articleMode||'choice');
     const parsed=formattedArticle(input,parts),needsArticle=['choice','typed'].includes(task.mode);
     if(needsArticle){
-      const validArticle=task.mode==='choice'?parsed.prefix.toLocaleLowerCase('fr').replaceAll('’',"'")===parts.prefix.toLocaleLowerCase('fr').replaceAll('’',"'"):articleAgrees(word,form,parsed.prefix);
+      const validArticle=task.mode==='choice'?choiceArticleAgrees(word,form,parsed.prefix):articleAgrees(word,form,parsed.prefix);
       result=checkAnswer(parsed.answer,parts.answer,data.settings.fuzzy);
       result.correct=result.correct&&validArticle;result.fuzzy=result.correct&&result.fuzzy;
       const prefix=validArticle?parsed.prefix:parts.prefix;
@@ -667,17 +863,23 @@ export function submitAnswer(data, p, id, input, today = day(),key) {
   return s.feedback;
 }
 export function advance(data, p, today = day(),key) { const s = getSession(data,p,key);rememberQuestionOptions(s);rollReviewDay(data,p,s,today); s.feedback = null;touched(data,p,s);refresh(data, p, s, today); }
-export function moveWord(data,p,word,target,today=day()){
+export function moveWord(data,p,word,target,today=day(),reviewSessionKey){
   if(!['practice','review','known'].includes(target))throw new Error('无效的词本 / Carnet invalide.');
   const original=wordContext(data,p,word);p=original.p;word=original.w;
   const r=ensureProgress(data,p,word),wasKnown=r.notebook==='known';r.notebook=target;delete r.pendingLearning;
+  if(target!=='known'||!wasKnown)clearReviewAcquisition(r);
+  const review=data.sessions[reviewSessionKey];
+  if(target==='known'&&!wasKnown&&review?.mode==='review'&&review.phase==='practice'){
+    const reviewWordId=review.lessonKey==='review:all'?wordKey(p,word):review.lessonKey===packageKey(p)?word.id:null;
+    const activeWordId=(review.question||review.feedback?.question)?.wordId;
+    if(reviewWordId&&reviewWordId===activeWordId)recordReviewAcquisition(r,review,today);
+  }
   if(target==='practice')r.forms={};
   else{r.learnedAt||=today;for(const f of testedForms(word))r.forms[f.id]={...newReviewRecord(r.forms[f.id]?.learnedAt||r.learnedAt||today),known:target==='known',due:target==='known'?null:addDays(r.forms[f.id]?.learnedAt||r.learnedAt||today,1)};if(target==='known')remember(data,p,word,today);}
   for(const s of Object.values(data.sessions).filter(s=>!['errors','favorites'].includes(s.mode)&&(s.key===MIXED_REVIEW_KEY||(s.lessonKey||s.key?.split(':').slice(0,2).join(':'))===packageKey(p)||s.mode==='direct'&&s.lessonKey==='review:all'&&(s.importedPractice||s.dictionaryPractice)))){
     const mixed=s.lessonKey==='review:all'||s.key===MIXED_REVIEW_KEY,engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
     const entry=engine.words.find(w=>w.id===id);if(!entry)continue;
     const inRound=s.group.includes(id),active=s.phase!=='done';
-    if(target==='known'&&!wasKnown&&inRound&&s.mode==='review')rememberKnown(s,entry);
     s.pending=s.pending.filter(item=>item!==id);s.jobs=s.jobs.filter(job=>job.wordId!==id);
     if(target==='practice'){
       if(active&&inRound){s.doneWords=s.doneWords.filter(item=>item!==id);if(s.mode==='learn')s.jobs.push(...groupJobs(data,engine,{...s,group:[id]},today));else s.doneWords.push(id);}
@@ -687,9 +889,9 @@ export function moveWord(data,p,word,target,today=day()){
     if(active)refresh(data,engine,s,today);
   }
 }
-export function markWordKnown(data,p,word,today=day()){
+export function markWordKnown(data,p,word,today=day(),reviewSessionKey){
   const original=wordContext(data,p,word);p=original.p;word=original.w;
-  moveWord(data,p,word,'known',today);
+  moveWord(data,p,word,'known',today,reviewSessionKey);
   for(const s of Object.values(data.sessions).filter(s=>s.lessonKey===packageKey(p)&&s.mode==='direct'||s.mode==='direct'&&(s.importedPractice||s.dictionaryPractice)&&s.lessonKey==='review:all'||s.key===MIXED_FAVORITES_KEY)){
     const mixed=s.lessonKey==='review:all',engine=mixed?reviewPackage(data):p,id=mixed?wordKey(p,word):word.id;
     const present=s.group.includes(id);
@@ -748,7 +950,7 @@ export function recordConjugationAttempt(data,p,w,correct,session,reason='answer
 export function completeConjugationWord(data,p,w,mode='learn',failed=false,today=day()){
  const current=getProgress(data,p,w);if(current.notebook==='known'&&mode!=='errors')return;
  const effective=mode==='errors'?'errors':mode==='review'&&current.notebook==='review'?'review':current.notebook==='practice'?'learn':'direct';
- const session={mode:effective,removeErrors:data.settings.errorAutoRemove!==false,doneWords:[],newKnownWordIds:[],acquiredWordIds:[]};
+ const session={mode:effective,removeErrors:data.settings.errorAutoRemove!==false,doneWords:[]};
  for(const f of testedForms(w))completeForm(data,p,w,f,session,{failed},today);
  finishWord(data,p,w,session,today);
 }

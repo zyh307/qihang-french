@@ -17,8 +17,8 @@ using Microsoft.Web.WebView2.WinForms;
 [assembly:AssemblyTitle("启航法语")]
 [assembly:AssemblyProduct("启航法语")]
 [assembly:AssemblyCompany("启航 AI 俱乐部")]
-[assembly:AssemblyVersion("__VERSION__.0")]
-[assembly:AssemblyFileVersion("__VERSION__.0")]
+[assembly:AssemblyVersion("__ASSEMBLY_VERSION__")]
+[assembly:AssemblyFileVersion("__ASSEMBLY_VERSION__")]
 namespace QihangFrench {
  internal static class Program {
   [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern IntPtr FindWindow(string cls,string title);
@@ -49,7 +49,11 @@ namespace QihangFrench {
   readonly string dataRoot;readonly WebView2 web=new WebView2();readonly Label status=new Label();
   readonly HttpClient http=new HttpClient(new HttpClientHandler{UseProxy=false});
   Process host;bool ownsHost,ready,closing,allowClose;TaskCompletionSource<bool> closeReady;
-  public AppWindow(string data){dataRoot=data;Text="启航法语";Width=1180;Height=850;MinimumSize=new Size(430,640);StartPosition=FormStartPosition.CenterScreen;Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);BackColor=Color.FromArgb(244,247,252);web.Dock=DockStyle.Fill;Controls.Add(web);status.Dock=DockStyle.Fill;status.Text="正在打开启航法语…\r\nOuverture de l’application…";status.TextAlign=ContentAlignment.MiddleCenter;status.Font=new Font("Microsoft YaHei UI",12);Controls.Add(status);
+  readonly OralWorkshop workshop;
+  FormBorderStyle? previousTownBorder;
+  Rectangle previousTownBounds;
+  FormWindowState previousTownState;
+  public AppWindow(string data){dataRoot=data;workshop=new OralWorkshop(data,Port);Text="启航法语";Width=1180;Height=850;MinimumSize=new Size(430,640);StartPosition=FormStartPosition.CenterScreen;Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);BackColor=Color.FromArgb(244,247,252);web.Dock=DockStyle.Fill;Controls.Add(web);status.Dock=DockStyle.Fill;status.Text="正在打开启航法语…\r\nOuverture de l’application…";status.TextAlign=ContentAlignment.MiddleCenter;status.Font=new Font("Microsoft YaHei UI",12);Controls.Add(status);
    var menu=new MenuStrip();var records=new ToolStripMenuItem("记录");records.DropDownItems.Add("导出备份",null,async(s,e)=>{if(ready)await web.ExecuteScriptAsync("window.dispatchEvent(new Event('qihang-backup'))");});records.DropDownItems.Add("打开记录位置",null,(s,e)=>Process.Start(new ProcessStartInfo(dataRoot){UseShellExecute=true}));menu.Items.Add(records);MainMenuStrip=menu;Controls.Add(menu);menu.Dock=DockStyle.Top;
 #if DESKTOP_CHECKS
    if(!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("QIHANG_DESKTOP_CHECK_ROOT"))){ShowInTaskbar=false;WindowState=FormWindowState.Minimized;}
@@ -77,24 +81,130 @@ namespace QihangFrench {
    var environment=await CoreWebView2Environment.CreateAsync(engine,Path.Combine(dataRoot,"BrowserRecords"),options);await web.EnsureCoreWebView2Async(environment);var settings=web.CoreWebView2.Settings;settings.AreDevToolsEnabled=false;settings.AreDefaultContextMenusEnabled=false;settings.IsStatusBarEnabled=false;settings.AreBrowserAcceleratorKeysEnabled=true;
    web.CoreWebView2.NavigationStarting+=(s,e)=>{Uri uri;if(e.Uri.StartsWith("blob:"+Origin,StringComparison.Ordinal))return;if(!Uri.TryCreate(e.Uri,UriKind.Absolute,out uri)||!e.Uri.StartsWith(Origin,StringComparison.Ordinal)){e.Cancel=true;if(uri!=null&&uri.Scheme=="https")External(uri.AbsoluteUri);}};
    web.CoreWebView2.NewWindowRequested+=(s,e)=>{e.Handled=true;Uri uri;if(Uri.TryCreate(e.Uri,UriKind.Absolute,out uri)&&uri.Scheme=="https")External(uri.AbsoluteUri);};
-   web.CoreWebView2.PermissionRequested+=(s,e)=>{if(e.Uri.StartsWith(Origin,StringComparison.Ordinal)&&e.PermissionKind==CoreWebView2PermissionKind.Microphone)e.State=CoreWebView2PermissionState.Allow;};
+   web.CoreWebView2.PermissionRequested+=(s,e)=>{if((e.Uri.StartsWith(Origin,StringComparison.Ordinal)||workshop.Owns(e.Uri))&&e.PermissionKind==CoreWebView2PermissionKind.Microphone)e.State=CoreWebView2PermissionState.Allow;};
    web.CoreWebView2.DownloadStarting+=(s,e)=>{using(var deferral=e.GetDeferral())using(var dialog=new SaveFileDialog()){dialog.FileName=Path.GetFileName(e.ResultFilePath);dialog.Filter="所有文件|*.*";if(dialog.ShowDialog(this)==DialogResult.OK){e.ResultFilePath=dialog.FileName;e.Handled=true;}else e.Cancel=true;}};
-   web.CoreWebView2.WebMessageReceived+=(s,e)=>{if(!e.Source.StartsWith(Origin,StringComparison.Ordinal))return;try{var value=Program.Json.Deserialize<Dictionary<string,object>>(e.WebMessageAsJson);
+   web.CoreWebView2.WebMessageReceived+=async(s,e)=>{if(!e.Source.StartsWith(Origin,StringComparison.Ordinal))return;try{var value=Program.Json.Deserialize<Dictionary<string,object>>(e.WebMessageAsJson);
+    object active;
+    if(!closing&&value.ContainsKey("type")&&(string)value["type"]=="qihang-town-window"&&value.TryGetValue("active",out active)&&active is bool){
+     SetTownChrome((bool)active);return;
+    }
+    if(!closing&&value.ContainsKey("type")&&(string)value["type"]=="qihang-workshop-folder"){
+     string resources=Path.Combine(dataRoot,"OralWorkshop","Resources");
+     Directory.CreateDirectory(Path.Combine(resources,"Model"));
+     Directory.CreateDirectory(Path.Combine(resources,"Lecture"));
+     Process.Start(new ProcessStartInfo(resources){UseShellExecute=true});return;
+    }
+    if(!closing&&value.ContainsKey("type")&&(string)value["type"]=="qihang-workshop-open"){
+     string url=null,error=null;
+     try{url=await workshop.Open();}catch(WorkshopUnavailable failure){error=failure.Code;}catch{error="start";}
+     if(!closing&&web.CoreWebView2!=null)web.CoreWebView2.PostWebMessageAsJson(Program.Json.Serialize(new{type="qihang-workshop",url,error}));
+     return;
+    }
 #if DESKTOP_CHECKS
     if(value.ContainsKey("type")&&(string)value["type"]=="qihang-check-close"){BeginInvoke(new Action(Close));return;}
 #endif
     if(closeReady!=null&&value.ContainsKey("type")&&(string)value["type"]=="qihang-close-ready")closeReady.TrySetResult(!value.ContainsKey("error"));}catch{}};
-   web.CoreWebView2.NavigationCompleted+=(s,e)=>{if(e.IsSuccess){ready=true;status.Visible=false;web.Focus();
+   web.CoreWebView2.NavigationCompleted+=(s,e)=>{if(e.IsSuccess){SetTownChrome(false);ready=true;status.Visible=false;web.Focus();
 #if DESKTOP_CHECKS
     File.WriteAllText(Path.Combine(dataRoot,"desktop-check.json"),Program.Json.Serialize(new{version=Version,profile=Path.Combine(dataRoot,"BrowserRecords"),hostPid=host==null?0:host.Id}));
 #endif
    }else status.Text="页面未能打开，请重新启动。\r\nRelancez l’application.";};web.CoreWebView2.Navigate(Origin);
   }catch(Exception e){status.Text=e.Message;StopHost();}}
+  void SetTownChrome(bool active){
+   if(active==previousTownBorder.HasValue)return;
+   if(active){
+    previousTownBorder=FormBorderStyle;
+    previousTownState=WindowState;
+    previousTownBounds=Bounds;
+    MainMenuStrip.Visible=false;
+    FormBorderStyle=FormBorderStyle.None;
+   }else{
+    FormBorderStyle=previousTownBorder.Value;
+    previousTownBorder=null;
+    MainMenuStrip.Visible=true;
+   }
+   WindowState=previousTownState;
+   if(WindowState==FormWindowState.Normal)Bounds=previousTownBounds;
+  }
   string PrepareRuntime(){var metadata=Program.Json.Deserialize<Dictionary<string,object>>(File.ReadAllText(Path.Combine(Program.Home,"桌面运行/webview-runtime.json")));var runtime=(Dictionary<string,object>)metadata["runtime"];string version=(string)runtime["version"],expected=(string)runtime["sha256"],cache=Path.Combine(dataRoot,"ApplicationRuntime","WebView2-"+version),marker=Path.Combine(cache,"ready.txt");if(File.Exists(marker)&&File.ReadAllText(marker)==expected){var installed=Directory.GetFiles(cache,"msedgewebview2.exe",SearchOption.AllDirectories);if(installed.Length==1)return Path.GetDirectoryName(installed[0]);}
    string cab=Path.Combine(Program.Home,"桌面运行/WebView2Runtime.cab");if(Program.HashFile(cab)!=expected)throw new IOException("程序文件不完整，请重新完整解压。");string temporary=Path.Combine(Path.GetTempPath(),"QihangWebView-"+Guid.NewGuid().ToString("N").Substring(0,8));Directory.CreateDirectory(temporary);var start=new ProcessStartInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System),"expand.exe"),"-F:* "+Program.Quote(cab)+" "+Program.Quote(temporary)){UseShellExecute=false,CreateNoWindow=true,WindowStyle=ProcessWindowStyle.Hidden,RedirectStandardOutput=true,RedirectStandardError=true};using(var process=Process.Start(start)){string output=process.StandardOutput.ReadToEnd();process.StandardError.ReadToEnd();process.WaitForExit();if(process.ExitCode!=0)throw new IOException("应用准备失败，请检查剩余空间后重试。");}var exe=Directory.GetFiles(temporary,"msedgewebview2.exe",SearchOption.AllDirectories);if(exe.Length!=1)throw new IOException("应用组件不完整，请重新解压。");string folder=Path.GetDirectoryName(exe[0]);using(var acl=Process.Start(new ProcessStartInfo("icacls.exe",Program.Quote(folder)+" /grant *S-1-15-2-1:(OI)(CI)(RX) *S-1-15-2-2:(OI)(CI)(RX) /T /Q"){UseShellExecute=false,CreateNoWindow=true,WindowStyle=ProcessWindowStyle.Hidden,RedirectStandardOutput=true})){acl.StandardOutput.ReadToEnd();acl.WaitForExit();if(acl.ExitCode!=0)throw new IOException("应用组件无法读取，请检查当前用户权限。");}Directory.CreateDirectory(Path.GetDirectoryName(cache));if(Directory.Exists(cache))Directory.Move(cache,cache+".old-"+Guid.NewGuid().ToString("N").Substring(0,8));if(Path.GetPathRoot(folder)==Path.GetPathRoot(cache))Directory.Move(folder,cache);else{Directory.CreateDirectory(cache);foreach(string file in Directory.GetFiles(folder,"*",SearchOption.AllDirectories)){string target=Path.Combine(cache,file.Substring(folder.Length+1));Directory.CreateDirectory(Path.GetDirectoryName(target));File.Copy(file,target);}}File.WriteAllText(Path.Combine(cache,"ready.txt"),expected);if(temporary.StartsWith(Path.GetTempPath(),StringComparison.OrdinalIgnoreCase)&&Path.GetFileName(temporary).StartsWith("QihangWebView-"))Directory.Delete(temporary,true);return Path.GetDirectoryName(Directory.GetFiles(cache,"msedgewebview2.exe",SearchOption.AllDirectories)[0]);
   }
   static void External(string url){try{Process.Start(new ProcessStartInfo(url){UseShellExecute=true});}catch{}}
   async void OnClosing(object sender,FormClosingEventArgs e){if(allowClose)return;e.Cancel=true;if(closing)return;closing=true;try{if(ready){closeReady=new TaskCompletionSource<bool>();await web.ExecuteScriptAsync("window.dispatchEvent(new Event('qihang-host-close'))");var finished=await Task.WhenAny(closeReady.Task,Task.Delay(25000));if(finished!=closeReady.Task||!closeReady.Task.Result){MessageBox.Show("记录尚在保存，请稍后再退出。","启航法语");closing=false;return;}}web.Dispose();StopHost();allowClose=true;Close();}catch{closing=false;MessageBox.Show("记录尚未保存，请稍后再退出。","启航法语");}}
-  void StopHost(){if(ownsHost&&host!=null){try{if(!host.HasExited)host.Kill();}catch{}host.Dispose();host=null;}http.CancelPendingRequests();}
+  void StopHost(){workshop.Dispose();if(ownsHost&&host!=null){try{if(!host.HasExited)host.Kill();}catch{}host.Dispose();host=null;}http.CancelPendingRequests();}
+ }
+
+ internal sealed class WorkshopUnavailable : Exception {
+  internal readonly string Code;
+  internal WorkshopUnavailable(string code){Code=code;}
+ }
+
+ internal sealed class OralWorkshop : IDisposable {
+  readonly string folder=Path.Combine(Program.Home,"桌面口语练习室");
+  readonly string data,origin;
+  readonly int port=18127,parentPort;
+  Process child;
+  Task<string> startup;
+  string entryUrl;
+  bool disposed;
+
+  internal OralWorkshop(string dataRoot,int appPort){
+   data=Path.Combine(dataRoot,"OralWorkshop");
+   parentPort=appPort;
+#if DESKTOP_CHECKS
+   int testPort;
+   if(Int32.TryParse(Environment.GetEnvironmentVariable("QIHANG_DESKTOP_CHECK_WORKSHOP_PORT"),out testPort)&&testPort>=1024&&testPort<=65535)port=testPort;
+#endif
+   origin="http://127.0.0.1:"+port+"/";
+  }
+
+  internal bool Owns(string url){return entryUrl!=null&&child!=null&&!child.HasExited&&url.StartsWith(origin,StringComparison.Ordinal);}
+
+  internal async Task<string> Open(){
+   if(disposed)throw new ObjectDisposedException("OralWorkshop");
+   if(Owns(origin))return entryUrl;
+   var pending=startup??(startup=Start());
+   try{return await pending;}
+   finally{if(startup==pending)startup=null;}
+  }
+
+  async Task<string> Start(){
+   Stop();
+   string script=Path.Combine(folder,"integrated_desktop.py");
+   if(!File.Exists(script))throw new WorkshopUnavailable("files");
+   string python=Path.Combine(folder,"python","python.exe");
+   if(!File.Exists(python))python=Path.Combine(folder,".venv","Scripts","python.exe");
+   if(!File.Exists(python))python=Environment.GetEnvironmentVariable("QIHANG_ORAL_PYTHON");
+   if(String.IsNullOrEmpty(python)||!Path.IsPathRooted(python)||!File.Exists(python))throw new WorkshopUnavailable("runtime");
+   string args=Program.Quote(script)+" --data "+Program.Quote(data)+" --port "+port+" --parent-port "+parentPort;
+   var start=new ProcessStartInfo(python,args){
+    WorkingDirectory=folder,UseShellExecute=false,CreateNoWindow=true,WindowStyle=ProcessWindowStyle.Hidden,
+    RedirectStandardInput=true,RedirectStandardOutput=true
+   };
+   start.EnvironmentVariables["PYTHONDONTWRITEBYTECODE"]="1";
+   try{
+    var process=Process.Start(start);
+    child=process;
+    var handshake=process.StandardOutput.ReadLineAsync();
+    if(await Task.WhenAny(handshake,Task.Delay(15000))!=handshake)throw new WorkshopUnavailable("start");
+    string message=await handshake;
+    if(disposed||process.HasExited||String.IsNullOrEmpty(message))throw new WorkshopUnavailable("start");
+    var response=Program.Json.Deserialize<Dictionary<string,string>>(message);
+    string entry;
+    if(!response.TryGetValue("entry",out entry)||String.IsNullOrEmpty(entry))throw new WorkshopUnavailable("start");
+    entryUrl=origin+"?desktop=1&entry="+Uri.EscapeDataString(entry);
+    return entryUrl;
+   }catch{Stop();throw;}
+  }
+
+  void Stop(){
+   entryUrl=null;
+   if(child==null)return;
+   try{child.StandardInput.Close();if(!child.WaitForExit(300))child.Kill();}catch{}
+   child.Dispose();
+   child=null;
+  }
+
+  public void Dispose(){disposed=true;Stop();}
  }
 }

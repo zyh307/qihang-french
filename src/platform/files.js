@@ -2,12 +2,14 @@ import {validateConjugationSessions} from '../conjugation/sessions.js';
 import {ensureConjugationCards,TENSES} from '../conjugation/catalog.js';
 import {playSpeech,stopSpeech} from './speech.js';
 import { strToU8, strFromU8 } from 'fflate';
-import { unpack, validateLesson } from '../domain/importer.js';
-import { migrateSessions, packageKey, sessionKey, reviewPackage, MIXED_REVIEW_KEY,MIXED_ERRORS_KEY,MIXED_FAVORITES_KEY } from '../domain/learning.js';
+import { unpackAsync, validateLesson } from '../domain/importer.js';
+import {parseJSONText} from './read-json.js';
+import { migrateSessions, packageKey, sessionKey, reviewPackage, lessonWithAdditions, MIXED_REVIEW_KEY,MIXED_ERRORS_KEY,MIXED_FAVORITES_KEY } from '../domain/learning.js';
 import {nativeExport} from './native.js';
 import {wordAudioEntries} from '../domain/word-display.js';
 import {recordSnapshot} from './browser-database.js';
 import {addBrowserRecords,readBrowserRecords,zipRecords} from './records-backup.js';
+import {registerForm} from '../domain/form-relations.js';
 export function chooseFile(accept,multiple=false) {
   return new Promise(resolve => {
     const input = document.createElement('input'); input.type = 'file'; input.accept = accept; input.multiple=multiple; input.style.display = 'none'; document.body.appendChild(input);
@@ -18,18 +20,30 @@ export async function download(name, bytes, mime = 'application/octet-stream') {
   const native=nativeExport(name,bytes,mime);if(native)return await native;
   const url = URL.createObjectURL(new Blob([bytes], { type: mime })), link = document.createElement('a'); link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
 }
+export function backupStateForExport(state) {
+  const library=state.library.map(lesson=>({...lesson,words:lesson.words.map(word=>{
+    if(!word.forms.some(form=>form.gender===null&&/-(m|f)$/.test(form.id)&&registerForm(word,form)))return word;
+    return {...word,forms:word.forms.map(form=>{
+      const legacyGender=form.id.match(/-(m|f)$/)?.[1];
+      return legacyGender&&form.gender===null&&registerForm(word,form)?{...form,gender:legacyGender}:form;
+    })};
+  })}));
+  return {...state,library};
+}
 export async function exportBackup(data, repository) {
-  const snap=await recordSnapshot({wordAudio:false}),files = { 'snapshot.json': strToU8(JSON.stringify(snap.state||data)) };
+  const snap=await recordSnapshot({wordAudio:false});
+  const files = { 'snapshot.json': strToU8(JSON.stringify(backupStateForExport(snap.state||data))) };
   await addBrowserRecords(files,snap);
   return zipRecords(files);
 }
 export async function readBackup(file) {
   if(file.size>512*1024*1024)throw Error('备份不能超过 512 MB / Sauvegarde limitée à 512 Mo.');
-  const files = unpack(new Uint8Array(await file.arrayBuffer()),{compressed:512*1024*1024,total:1024*1024*1024,file:40*1024*1024,entries:30000});
+  const files = await unpackAsync(new Uint8Array(await file.arrayBuffer()),{compressed:512*1024*1024,total:1024*1024*1024,file:40*1024*1024,entries:30000});
   if (!files['snapshot.json']) throw new Error('不是学习备份文件 / Ce fichier n’est pas une sauvegarde.');
-  const records=await readBrowserRecords(files),data = JSON.parse(strFromU8(files['snapshot.json']));
+  const records=await readBrowserRecords(files),data = await parseJSONText(strFromU8(files['snapshot.json']));
   for(const name of ['learnGroupSize','reviewGroupSize'])if(data.settings?.[name]!==undefined&&(!Number.isInteger(data.settings[name])||data.settings[name]<3||data.settings[name]>15))throw new Error('每组词数应为3—15 / De 3 à 15 mots par série.');
   if(data.settings?.sounds!==undefined&&typeof data.settings.sounds!=='boolean')throw new Error('声音设置无效 / Sons invalides.');
+  if(data.settings?.builtInKeyboard!==undefined&&typeof data.settings.builtInKeyboard!=='boolean')throw new Error('键盘设置无效 / Clavier invalide.');
   if(data.settings?.articleMode&&!['choice','typed'].includes(data.settings.articleMode))throw new Error('冠词设置无效 / Mode des articles invalide.');
   if(data.settings?.reviewMode&&!['both','spelling'].includes(data.settings.reviewMode))throw new Error('复习设置无效 / Mode de révision invalide.');
   if(data.settings?.wordMotion&&!['slide','page','none'].includes(data.settings.wordMotion))throw new Error('动效设置无效 / Animation invalide.');
@@ -56,10 +70,15 @@ export async function readBackup(file) {
   if(data.errorHistory!==undefined&&(!data.errorHistory||typeof data.errorHistory!=='object'||Array.isArray(data.errorHistory)||Object.values(data.errorHistory).some(h=>!h||['count','reviewCount','cycleReviews'].some(key=>!Number.isInteger(h[key])||h[key]<0)||['lastReviewDate','lastErrorDate'].some(key=>h[key]!==undefined&&!/^\d{4}-\d{2}-\d{2}$/.test(h[key])))))throw new Error('错题历史无效 / Historique d’erreurs invalide.');
   if(data.reminders?.badges&&Object.values(data.reminders.badges).some(b=>!b||typeof b.pending!=='boolean'||!Array.isArray(b.acknowledged)||!b.acknowledged.every(id=>typeof id==='string')||(b.ackDate!==undefined&&!/^\d{4}-\d{2}-\d{2}$/.test(b.ackDate))))throw new Error('提醒记录无效 / Rappels invalides.');
   for(const field of ['lastPopupDates','lastSentDates'])if(data.reminders?.[field]&&Object.values(data.reminders[field]).some(value=>typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value)))throw new Error('提醒日期无效 / Date de rappel invalide.');
+  if (data.lessonAdditions!==undefined && (!data.lessonAdditions || typeof data.lessonAdditions!=='object' || Array.isArray(data.lessonAdditions) ||
+      Object.entries(data.lessonAdditions).some(([key,refs])=>!/^(inspire[1-4]|fos1):L\d+$/.test(key)||!Array.isArray(refs)||refs.some(ref=>
+        !ref||typeof ref.lesson!=='string'||!ref.lesson.includes(':')||typeof ref.word!=='string'||!/^w\d{6}$/.test(ref.word)))))
+    throw Error('课次补充词条无效 / Mots ajoutés invalides.');
   migrateSessions(data);
   const assets = [], seen = new Set();
-  for (const p of [...data.library,reviewPackage(data)]) {
-    if(!p.reviewPool)validateLesson(p);
+  for (const source of [...data.library,reviewPackage(data)]) {
+    if(!source.reviewPool)validateLesson(source);
+    const p=lessonWithAdditions(data,source);
     for(const [key,s]of Object.entries(data.sessions).filter(([,s])=>s.lessonKey===packageKey(p))) {
       let scopeKey=key;
       if(s.importedPractice===true&&key.includes(':collection:')){

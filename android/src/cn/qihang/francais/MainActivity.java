@@ -102,9 +102,9 @@ public final class MainActivity extends Activity {
 
             @Override public boolean onShowFileChooser(WebView view,ValueCallback<Uri[]> callback,FileChooserParams params){
                 if(fileCallback!=null)fileCallback.onReceiveValue(null);fileCallback=callback;
+                String[] accepts=params.getAcceptTypes();
                 Intent intent=new Intent(Intent.ACTION_OPEN_DOCUMENT);intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,params.getMode()==FileChooserParams.MODE_OPEN_MULTIPLE);
-                String[] accepts=params.getAcceptTypes();
                 if(accepts.length==1&&accepts[0].startsWith("image/"))intent.setType("image/*");
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 try{startActivityForResult(intent,PICK_FILE);}catch(RuntimeException error){fileCallback.onReceiveValue(null);fileCallback=null;}
@@ -134,7 +134,8 @@ public final class MainActivity extends Activity {
         return path.equals("/")?"index.html":path.substring(1);
     }
     private static String mime(String path){
-        if(path.endsWith(".html"))return "text/html";if(path.endsWith(".js"))return "application/javascript";
+        if(path.endsWith(".html"))return "text/html";if(path.endsWith(".js")||path.endsWith(".mjs"))return "application/javascript";
+        if(path.endsWith(".wasm"))return "application/wasm";
         if(path.endsWith(".css"))return "text/css";if(path.endsWith(".json"))return "application/json";
         if(path.endsWith(".svg"))return "image/svg+xml";if(path.endsWith(".png"))return "image/png";
         if(path.endsWith(".jpg")||path.endsWith(".jpeg"))return "image/jpeg";
@@ -177,6 +178,15 @@ public final class MainActivity extends Activity {
         }
     }
     public final class NativeBridge {
+        @JavascriptInterface public boolean copyText(String text){
+            if(!trustedPage()||text==null||text.isEmpty())return false;
+            try{
+                android.content.ClipboardManager clipboard=getSystemService(android.content.ClipboardManager.class);
+                if(clipboard==null)return false;
+                clipboard.setPrimaryClip(ClipData.newPlainText("启航法语",text));
+                return true;
+            }catch(RuntimeException ignored){return false;}
+        }
         @JavascriptInterface public String oralCall(String payload){
             try{
                 if(!trustedPage())return "{\"ok\":false,\"error\":\"Accès refusé\"}";

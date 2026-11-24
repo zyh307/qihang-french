@@ -69,8 +69,9 @@
           "pos": "n.",
           "meanings": [
             "飞船",
-            "船",
-            "管"
+            "船舰",
+            "宇宙飞船",
+            "血管"
           ],
           "primaryMeaning": "飞船",
           "curriculumAuthority": {
@@ -296,7 +297,9 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "飞行"
+            "飞行",
+            "航班",
+            "飞行，航班"
           ],
           "primaryMeaning": "飞行",
           "curriculumAuthority": {
@@ -340,7 +343,8 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "任务"
+            "任务",
+            "使命"
           ],
           "primaryMeaning": "任务",
           "curriculumAuthority": {
@@ -699,6 +703,7 @@
           "pos": "n.",
           "meanings": [
             "高度、海拔",
+            "海拔高度",
             "n.f. 高度；海拔，海拔高度；mal de l'~［d'~］高山症，航空病，高空缺氧不适症"
           ],
           "primaryMeaning": "高度、海拔",
@@ -1024,7 +1029,8 @@
           "meanings": [
             "测量",
             "尺寸是",
-            "衡量"
+            "衡量",
+            "长度为"
           ],
           "primaryMeaning": "测量",
           "curriculumAuthority": {
@@ -1320,14 +1326,15 @@
               "ipa": "/kal.kyl/",
               "source": "FOS 1 · L01",
               "example": {
-                "fr": "Il faut calculer la distance parcourue.",
-                "zh": "需要计算行驶距离。",
+                "fr": "Ce calcul est correct.",
+                "zh": "这个计算是正确的。",
                 "meaning": "计算",
-                "sourceKind": "companion",
-                "source": "FOS 1 · L01 · 配套例句",
-                "audioKey": "e29fd5f83301a76723d040a7ac086776fb6528cb039bcc06eddc411cee86caf9",
-                "audioOrigin": "fos-synthetic",
-                "translationOrigin": "fos"
+                "sourceKind": "authored",
+                "source": "启航法语编写",
+                "authored": true,
+                "translationOrigin": "reviewed",
+                "audioKey": "tts:Ce%20calcul%20est%20correct.",
+                "audioOrigin": "synthesized"
               }
             }
           ]
@@ -1387,7 +1394,8 @@
           "pos": "n.",
           "meanings": [
             "数字",
-            "数量，数字"
+            "数量，数字",
+            "数"
           ],
           "primaryMeaning": "数字",
           "curriculumAuthority": {
@@ -1432,7 +1440,8 @@
           "pos": "n.",
           "meanings": [
             "数字符号",
-            "n.m. 数字；数目，总数，总额；密码，译电处；密码数字，字母组合；姓名起首字母组成的图案"
+            "n.m. 数字；数目，总数，总额；密码，译电处；密码数字，字母组合；姓名起首字母组成的图案",
+            "数字"
           ],
           "primaryMeaning": "数字符号",
           "curriculumAuthority": {
@@ -2238,6 +2247,7 @@
           "pos": "n.",
           "meanings": [
             "计算机",
+            "电脑",
             "计算机，电脑"
           ],
           "primaryMeaning": "计算机",
@@ -2601,6 +2611,7 @@
           "pos": "n.",
           "meanings": [
             "物理学",
+            "外貌的",
             "身体的"
           ],
           "primaryMeaning": "物理学",
@@ -4341,6 +4352,8 @@
           "pos": "n.",
           "meanings": [
             "油箱",
+            "储水池",
+            "储液罐",
             "水库，蓄水池",
             "槽，罐，库"
           ],
@@ -4497,6 +4510,7 @@
           "pos": "n.",
           "meanings": [
             "飞行，航班",
+            "航班",
             "飞行"
           ],
           "primaryMeaning": "飞行，航班",
@@ -4631,6 +4645,7 @@
           "pos": "n.",
           "meanings": [
             "发动机",
+            "马达",
             "引擎",
             "动力",
             "动力的，推动的"
@@ -5042,7 +5057,8 @@
             "力",
             "势",
             "能量、力量",
-            "〈物理〉功率"
+            "〈物理〉功率",
+            "幂"
           ],
           "primaryMeaning": "功率",
           "curriculumAuthority": {
@@ -5719,6 +5735,7 @@
           "pos": "n.",
           "meanings": [
             "幂",
+            "功率",
             "力",
             "势",
             "能量、力量",
@@ -5816,7 +5833,8 @@
             "基部，底部，基础",
             "下部，下方",
             "底边，底线，底面",
-            "［大地测量学］基线"
+            "［大地测量学］基线",
+            "底边"
           ],
           "primaryMeaning": "底数",
           "curriculumAuthority": {
@@ -6112,7 +6130,8 @@
           "meanings": [
             "测量",
             "尺寸是",
-            "衡量"
+            "衡量",
+            "长度为"
           ],
           "primaryMeaning": "测量",
           "curriculumAuthority": {
@@ -6298,6 +6317,7 @@
           "pos": "n.",
           "meanings": [
             "公式",
+            "套餐（固定组合）",
             "程式、公式"
           ],
           "primaryMeaning": "公式",
@@ -6477,6 +6497,7 @@
           "pos": "n.",
           "meanings": [
             "单位",
+            "单位，整体",
             "单元",
             "统一性",
             "独特性"
@@ -6797,6 +6818,7 @@
           "pos": "n.",
           "meanings": [
             "物理学",
+            "外貌的",
             "身体的"
           ],
           "primaryMeaning": "物理学",
@@ -7264,7 +7286,8 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "长度"
+            "长度",
+            "长"
           ],
           "primaryMeaning": "长度",
           "curriculumAuthority": {
@@ -7309,6 +7332,7 @@
           "pos": "n.",
           "meanings": [
             "角",
+            "角度",
             "n.m. ［数］角；拐角，角落，隅；Arrondir les ~ 〈转〉缓和冲突，调解矛盾；排除困难；~ mort 死角"
           ],
           "primaryMeaning": "角",
@@ -8064,6 +8088,7 @@
           "pos": "n.",
           "meanings": [
             "跑道",
+            "飞机跑道",
             "轨迹，足迹",
             "道路",
             "线索"
@@ -8155,7 +8180,8 @@
           "pos": "n.",
           "meanings": [
             "量角器",
-            "记者"
+            "报告人",
+            "爱打小报告的人"
           ],
           "primaryMeaning": "量角器",
           "curriculumAuthority": {
@@ -9256,6 +9282,7 @@
           "pos": "n.",
           "meanings": [
             "圆心",
+            "中心",
             "［数］心，中心，中央，中点",
             "中心地点，中部",
             "（众多人口或特别的行业构成的）中心，中枢",
@@ -9975,6 +10002,7 @@
           "pos": "n.",
           "meanings": [
             "角",
+            "角度",
             "n.m. ［数］角；拐角，角落，隅；Arrondir les ~ 〈转〉缓和冲突，调解矛盾；排除困难；~ mort 死角"
           ],
           "primaryMeaning": "角",
@@ -10065,6 +10093,7 @@
           "pos": "n.",
           "meanings": [
             "底边",
+            "底数",
             "基部，底部，基础",
             "下部，下方",
             "底边，底线，底面",
@@ -10338,8 +10367,8 @@
           "pos": "v.",
           "meanings": [
             "长度为",
-            "尺寸是",
             "测量",
+            "尺寸是",
             "衡量"
           ],
           "primaryMeaning": "长度为",

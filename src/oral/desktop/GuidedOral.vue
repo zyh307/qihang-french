@@ -26,6 +26,7 @@ const dailyModes=[
 const examSkills={focus:['听题理解','临场应答','组织表达'],support:['词形准确']}
 const view=ref('home'), packs=ref([]), selected=ref(''), queue=ref([]), s=ref(null)
 const gameAvailable=!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+const embedded=window.parent!==window
 const gameCharacter=ref(gameAvailable&&loadGameSave().save?.character.id)
 const gamePractice=ref(null), gameMapOpen=ref(false), gameReceipt=ref('')
 let gameOpening=false, gameSettling=false
@@ -561,8 +562,8 @@ onMounted(()=>{unwatchAudio=registerPlayer(stopSound);history.replaceState({atel
  }})
 onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();unwatchAudio?.();window.removeEventListener('popstate',pop);window.removeEventListener('blur',blur);window.removeEventListener('beforeunload',beforeUnload);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',pagehide)})
 </script>
-<template><main class="desk guided">
-<header class="mast"><div class="brand"><span class="brand-mark" aria-hidden="true"><i/><i/><i/><i/></span>启航法语<span class="divider"/>口语练习</div><nav v-if="view!=='home'"><button v-if="canSave" class="secondary" :disabled="exitBusy" @click="saveExit">{{gamePractice?'保存并回地图':'保存并退出'}}</button><button v-else-if="view!=='games'" class="back" @click="back">← {{gamePractice?'返回地图':dailyReview||view==='read'&&batchSize?'需练习本':view==='scope'||view==='adventure'||dailyMode?'日常练习':'课次列表'}}</button><button class="back" :disabled="canSave&&exitBusy" @click="nav('home')">模式选择</button></nav></header>
+<template><main class="desk guided" :class="{'town-desk':embedded&&view==='adventure'}">
+<header v-if="!embedded||(view!=='games'&&view!=='adventure')" class="mast"><div v-if="!embedded" class="brand"><span class="brand-mark" aria-hidden="true"><i/><i/><i/><i/></span>启航法语<span class="divider"/>口语练习</div><nav v-if="view!=='home'"><button v-if="canSave" class="secondary" :disabled="exitBusy" @click="saveExit">{{gamePractice?'保存并回地图':'保存并退出'}}</button><button v-else-if="view!=='games'&&!(embedded&&view==='scope')" class="back" @click="back">← {{gamePractice?'返回地图':dailyReview||view==='read'&&batchSize?'需练习本':view==='scope'||view==='adventure'||dailyMode?'日常练习':'课次列表'}}</button><button v-if="!embedded" class="back" :disabled="canSave&&exitBusy" @click="nav('home')">模式选择</button></nav></header>
 <p class="alert" role="alert" v-if="error">{{error}} <button v-if="['scope','notebook'].includes(view)" @click="shelf(view,false)">重试</button><button v-else-if="gamePractice?.mode==='lecture'&&!s" @click="openGamePractice(gamePractice,false)">重试</button></p>
 <section v-if="view==='home'" class="landing"><p class="overline">Atelier de français</p><h1>口语练习室</h1><div class="mode-grid">
 <button class="mode daily" @click="nav('games')"><span class="card-fr">Pratique</span><span class="bars" aria-hidden="true"><i v-for="(h,i) in [25,45,68,43,80,96,72,47,68,40,24]" :key="i" :style="{'--bar':h+'%'}"/></span><strong>日常练习</strong><span class="card-foot">跟着课本，练好每一句。<b>↗</b></span></button>
@@ -573,7 +574,7 @@ onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();u
   <span id="exam-summary" class="card-foot">听考官提问，练习问答和情景互动。<b aria-hidden="true">↗</b></span>
 </button></div></section>
 <section v-else-if="view==='games'" class="landing"><p class="overline">Pratique</p><h1>日常练习</h1>
-  <div v-if="gameAvailable" class="practice-launches">
+  <div v-if="gameAvailable&&!embedded" class="practice-launches">
     <button class="game-launch normal-launch" @click="focusPracticeCards">
       <span><strong>正常开始</strong><small>直接选择练习</small></span><b aria-hidden="true">↓</b>
     </button>
@@ -603,7 +604,7 @@ onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();u
     </ul>
   </section>
 </section>
-<GameMode v-else-if="view==='adventure'" :auto-enter="gameMapOpen" :return-message="gameReceipt" :radio="gameRadio"
+<GameMode v-else-if="view==='adventure'" :auto-enter="gameMapOpen" :return-message="gameReceipt" :radio="gameRadio" :immersive="embedded"
   @adventure="startGamePractice" @leave="nav('games')" @created="id=>gameCharacter=id"/>
 <FluencyDemo v-else-if="dailyMode?.id==='fluency'" :request="response" :review="dailyReview" :adventure="gamePractice"
   @game-end="finishGamePractice" @review-session="rememberDailyReview" @return-notebook="shelf('notebook')"/>
@@ -635,22 +636,22 @@ onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();u
 .today-practice{margin-top:28px}.today-practice ul{list-style:none;padding:0;margin:0}.today-practice li{display:flex;flex-wrap:wrap;gap:8px 18px;padding:9px 0;border-bottom:1px solid var(--line)}.today-practice strong{min-width:120px}.today-practice span{color:var(--sub)}
 .skill-key{font-size:13px;line-height:1.5;color:var(--sub);margin:10px 0 0}
 .practice-launches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0 18px}
-.game-launch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:14px 18px;border:1px solid #c2d1b5;border-radius:12px;background:#e9efdc;color:#224b38;text-align:left}
-.normal-launch{background:#fffdf6}
-.game-launch strong{font-size:19px;margin-right:14px}.game-launch small{color:#405743}.game-launch>b{font-size:19px}
+.game-launch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:14px 18px;border:1px solid var(--ui-97b8daef3114,#c2d1b5);border-radius:12px;background:var(--ui-e9df8f700601,#e9efdc);color:var(--ui-6277d66cf008,#224b38);text-align:left}
+.normal-launch{background:var(--ui-6258ea8d076f,#fffdf6)}
+.game-launch strong{font-size:19px;margin-right:14px}.game-launch small{color:var(--ui-d405619ed96c,#405743)}.game-launch>b{font-size:19px}
 @media(max-width:550px){.practice-launches{grid-template-columns:1fr;gap:8px}}
 .daily-grid{margin-top:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
-.daily-grid .radar-card{background:#f2f7ef;padding:18px 15px;min-width:0}
+.daily-grid .radar-card{background:var(--ui-5f87c6bf1465,#f2f7ef);padding:18px 15px;min-width:0}
 .radar-card>span[lang]{margin:0;padding-right:35px;font-size:14px;line-height:1.35}
 .radar-card>strong{margin:5px 0 10px;line-height:1.25;padding-right:30px}
-.radar-card .practice-skills{margin:0 0 11px;background:#fcfdfb;border:1px solid #dce8da;border-radius:12px}
+.radar-card .practice-skills{margin:0 0 11px;background:var(--ui-20366e05df9b,#fcfdfb);border:1px solid var(--ui-99a562a6aa0d,#dce8da);border-radius:12px}
 .radar-card small{font-size:14px}
 .radar-card .go{right:14px;top:16px}
-.exam-practice{--skill-ink:#384960}
+.exam-practice{--skill-ink:var(--ui-38b6ee1dadec,#384960)}
 .exam-practice>strong{margin-top:4px}
-.exam-practice .practice-skills{margin-top:8px;background:#f9fbfe;border:1px solid #dce5ee;border-radius:12px}
+.exam-practice .practice-skills{margin-top:8px;background:var(--ui-a814ced23185,#f9fbfe);border:1px solid var(--ui-309774c5c0f8,#dce5ee);border-radius:12px}
 .exam-practice .skill-key{align-self:center;margin:6px 0 8px}
 @media(max-width:880px){.daily-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.daily-grid{grid-template-columns:1fr}}
-.scope-intro,.warm{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.scope-intro{padding:5px 0 22px}.scope-intro h1{font-size:30px}.warm{background:#e7efe5;border-radius:12px;padding:0 14px;margin-top:14px}.chunks{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.chunks span{background:#e6efe4;border-radius:8px;padding:7px 11px;font:18px Georgia,serif}.guided .sentence-box{padding:clamp(24px,5vh,50px) 0 14px}.game.live em{color:#28583d}.controls>.text-link{display:block;margin:auto}.scope-intro .scope select{max-width:240px}
+.scope-intro,.warm{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.scope-intro{padding:5px 0 22px}.scope-intro h1{font-size:30px}.warm{background:var(--ui-6b55521b9e07,#e7efe5);border-radius:12px;padding:0 14px;margin-top:14px}.chunks{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.chunks span{background:var(--ui-e876c0c3dea8,#e6efe4);border-radius:8px;padding:7px 11px;font:18px Georgia,serif}.guided .sentence-box{padding:clamp(24px,5vh,50px) 0 14px}.game.live em{color:var(--ui-2e0345654e82,#28583d)}.controls>.text-link{display:block;margin:auto}.scope-intro .scope select{max-width:240px}
 </style>

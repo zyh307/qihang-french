@@ -4,6 +4,6 @@ export function speechTextKey(text) {
 
 export function conjugationSpeech(person, form) {
   if (!form || form === '—') return '';
-  if (person === 'je' && /^[aeiouyàâäéèêëîïôöùûühœ]/i.test(form)) return `j’${form}`;
+  if (person === 'je' && /^[aeiouyàâäéèêëîïôöùûühœ]/i.test(form) && !/^ha(?:is\b|ï)/iu.test(form)) return `j’${form}`;
   return `${person} ${form}`;
 }

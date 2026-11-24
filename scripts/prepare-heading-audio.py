@@ -14,7 +14,11 @@ import imageio_ffmpeg
 
 sys.stdout.reconfigure(encoding='utf-8')
 VOICE = 'fr-FR-DeniseNeural'
-WORK = ROOT / '.lexicon-work/heading-import/audio'
+READINGS = '--word-readings' in sys.argv
+CONJUGATION_REPAIR = '--conjugation-repair' in sys.argv
+CUSTOM_TEXTS = '--texts-json' in sys.argv
+REFRESH = CUSTOM_TEXTS and '--refresh' in sys.argv
+WORK = ROOT / ('.lexicon-work/extra-speech/audio' if CUSTOM_TEXTS else '.lexicon-work/conjugation-repair/audio' if CONJUGATION_REPAIR else '.lexicon-work/word-readings/audio' if READINGS else '.lexicon-work/heading-import/audio')
 CACHE = ROOT / '.lexicon-work/voice-batches'
 OUT = ROOT / 'src/static/lexicon/audio'
 UPDATES = ROOT / 'src/static/lexicon/audio-updates'
@@ -29,9 +33,24 @@ def write_json(file, value, pretty=False):
     temporary.write_text(json.dumps(value, ensure_ascii=False, **({'indent': 2} if pretty else {'separators': (',', ':')})) + '\n', encoding='utf-8')
     temporary.replace(file)
 
-supplement = json.loads((ROOT / 'src/lexicon/inspire-heading-supplement.json').read_text(encoding='utf-8'))
-texts = list(dict.fromkeys(text for entry in supplement['entries'] for form in entry['word']['forms']
-                           for text in (form['text'], form['example']['fr'])))
+if CUSTOM_TEXTS:
+    source = (ROOT / sys.argv[sys.argv.index('--texts-json') + 1]).resolve()
+    if not source.is_relative_to(ROOT):
+        raise ValueError('Speech text input must stay within this project.')
+    texts = json.loads(source.read_text(encoding='utf-8'))
+    if not isinstance(texts, list) or not all(isinstance(text, str) and text.strip() for text in texts):
+        raise ValueError('Expected a list of nonempty public speech texts.')
+    texts = list(dict.fromkeys(texts))
+elif CONJUGATION_REPAIR:
+    texts = ['prenez', 'vous prenez']
+elif READINGS:
+    supplement = json.loads((ROOT / 'src/lexicon/word-readings.json').read_text(encoding='utf-8'))
+    texts = list(dict.fromkeys(text for entry in supplement for text in [entry['example']['fr'],
+        *[(('une ' if form['gender'] == 'f' else 'un ') if entry['pos'] == 'n.' else '') + form['text'] for form in entry['forms']]]))
+else:
+    supplement = json.loads((ROOT / 'src/lexicon/inspire-heading-supplement.json').read_text(encoding='utf-8'))
+    texts = list(dict.fromkeys(text for entry in supplement['entries'] for form in entry['word']['forms']
+                               for text in (form['text'], form['example']['fr'])))
 index_file = OUT / 'index.json'
 index = json.loads(index_file.read_text(encoding='utf-8'))
 files_checked = {}
@@ -57,7 +76,7 @@ for text in texts:
         if usable(record):
             index['entries'][key] = record
 
-pending = [text for text in texts if not usable(index['entries'].get(sha(text)))]
+pending = [text for text in texts if REFRESH or not usable(index['entries'].get(sha(text)))]
 semaphore = asyncio.Semaphore(5)
 completed = 0
 failures = []
@@ -68,7 +87,7 @@ async def prepare(text):
     async with semaphore:
         raw = WORK / (key + '.source.mp3')
         try:
-            if not raw.is_file() or raw.stat().st_size < 100:
+            if REFRESH or not raw.is_file() or raw.stat().st_size < 100:
                 for attempt in range(5):
                     try:
                         partial = raw.with_suffix('.mp3.part')
@@ -123,6 +142,23 @@ async def main():
             raise ValueError('Recording unavailable: ' + text)
         write_json(CACHE / ('headings-' + key + '.json'), {key: record})
     write_json(index_file, index)
+    if CONJUGATION_REPAIR:
+        mapping_file = ROOT / 'src/conjugation/audio.json'
+        mapping = json.loads(mapping_file.read_text(encoding='utf-8'))
+        target = ROOT / 'src/static/conjugation/audio'
+        target.mkdir(parents=True, exist_ok=True)
+        for text in texts:
+            record = index['entries'][sha(text)]
+            if not record.get('full'):
+                raise ValueError('Conjugation repair requires a full standalone clip: ' + text)
+            content = (OUT / record['file']).read_bytes()
+            (target / record['file']).write_bytes(content)
+            mapping[text] = record['file'][:-4]
+        write_json(mapping_file, mapping)
+        ipa_file = ROOT / 'src/conjugation/phonetics.json'
+        ipa = json.loads(ipa_file.read_text(encoding='utf-8'))
+        ipa.update({'prenez': 'pʁə.ne', 'vous prenez': 'vu pʁə.ne'})
+        write_json(ipa_file, ipa)
     exact_file = ROOT / '.lexicon-work/lexicon-speech-texts.json'
     exact = json.loads(exact_file.read_text(encoding='utf-8')) if exact_file.is_file() else []
     write_json(exact_file, list(dict.fromkeys(exact + texts)))
@@ -135,6 +171,6 @@ async def main():
     write_json(manifest_file, manifest, pretty=True)
     write_json(WORK.parent / 'audio-summary.json', {'uniqueTexts': len(texts), 'reused': len(texts) - len(pending),
                'synthesized': completed, 'failures': len(failures), 'voice': VOICE})
-    print('All heading recordings are available.', flush=True)
+    print('All requested recordings are available.', flush=True)
 
 asyncio.run(main())

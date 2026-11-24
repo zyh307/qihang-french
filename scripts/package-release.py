@@ -1,4 +1,4 @@
-"""Audit and assemble the public files; model weights stay outside app packages."""
+"""Audit and assemble the public files; speech model weights stay outside app packages."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -10,7 +10,7 @@ import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
+VERSION = json.loads((ROOT / 'src/manifest.json').read_text(encoding='utf-8'))['versionName']
 NAME = json.loads((ROOT / 'src/manifest.json').read_text(encoding='utf-8'))['name']
 OUT = ROOT / f'{NAME}-正式版-v{VERSION}'
 MANIFEST = json.loads((ROOT / 'native/model-manifest.json').read_text(encoding='utf-8'))
@@ -34,8 +34,13 @@ def audit(file, prefix, windows=False):
         for asset in (ROOT / 'dist/build/h5/assets').iterdir():
             if asset.is_file():
                 assert archive.read(prefix + 'assets/' + asset.name) == asset.read_bytes(), asset.name
-        for number in (1, 2, 3, 4):
-            name = f'static/content/inspire{number}.zip'
+        for name in (
+            *(f'static/content/inspire{number}.zip' for number in (1, 2, 3, 4)),
+            'static/content/fos1.zip',
+            'static/lexicon/french.json',
+            'static/lexicon/distractors.json',
+            'static/lexicon/manifest.json',
+        ):
             assert archive.read(prefix + name) == (ROOT / 'src' / name).read_bytes(), name
         for name in ('local-client.js', 'delf-exam.js', 'delf-cards.json', 'app.js', 'entry.js', 'index.html'):
             relative = 'static/oral/' + name
@@ -43,6 +48,7 @@ def audit(file, prefix, windows=False):
         if not windows:
             for name in ('libqihang_speech.so', 'libqihang_cpu.so', 'libqihang_speech_fp16.so', 'libqihang_speech_dotprod.so'):
                 assert archive.read('lib/arm64-v8a/' + name) == (ROOT / 'android/jniLibs/arm64-v8a' / name).read_bytes(), name
+        assert not any('/photo-ocr/' in name for name in names), 'Retired photo OCR in package'
         index = json.loads(archive.read(prefix + 'static/lexicon/audio/index.json'))['entries']
         for name in {clip['file'] for clip in index.values()}:
             assert hashlib.sha256(archive.read(prefix + 'static/lexicon/audio/' + name)).hexdigest() + '.mp3' == name
@@ -59,6 +65,13 @@ def audit(file, prefix, windows=False):
                 assert runtime + name in names, name
             with zipfile.ZipFile(io.BytesIO(archive.read(runtime + 'qihang-oral.jar'))) as jar:
                 assert VERSION.encode() in jar.read('cn/qihang/oral/WindowsApp.class')
+            workshop = NAME + '/桌面口语练习室/'
+            for name in ('integrated_desktop.py', 'scripts/validate_daily_practice.py',
+                         '.desktop/desktop.js', 'python/python.exe', 'python/LICENSE.txt'):
+                assert workshop + name in names, name
+            assert not any(name.startswith(workshop) and any(part in name.split('/')
+                           for part in ('.local', '.models', '.media', '.speech', '.venv'))
+                           for name in names), 'Private workshop files in package'
             assert file.stat().st_size < 2 * 1024**3
 
 

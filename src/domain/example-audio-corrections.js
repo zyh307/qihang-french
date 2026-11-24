@@ -15,7 +15,7 @@ export function applyExampleAudioCorrections(data){
  for(const p of data.library)for(const w of p.words)for(const f of w.forms){
   const fix=corrections.find(c=>courseMatch(p,w,c))||dictionaryCorrections.find(c=>key(w.lexiconWord||f.text)===key(c.word));
   if(fix&&key(f.example?.fr)===key(fix.previousFr)){
-   f.example={fr:fix.fr,zh:fix.zh,sourceKind:'authored',source:'启航法语编写',authored:true,translationOrigin:'reviewed',audioKey:'tts:'+encodeURIComponent(fix.fr),audioOrigin:'synthesized'};
+   f.example={fr:fix.fr,zh:fix.zh,...(fix.meaning?{meaning:fix.meaning}:{}),sourceKind:fix.authored===false?'reference':'authored',source:fix.source||'启航法语编写',authored:fix.authored??true,...(fix.url?{url:fix.url}:{}),translationOrigin:'reviewed',audioKey:'tts:'+encodeURIComponent(fix.fr),audioOrigin:'synthesized'};
    if(fix.meanings&&!w.primaryMeaningChosen){w.meanings=[...fix.meanings];w.primaryMeaning=fix.meaning;}
   }
   const hint=matches.find(c=>courseMatch(p,w,c)&&key(c.fr)===key(f.example?.fr));

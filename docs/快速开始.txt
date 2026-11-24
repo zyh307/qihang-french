@@ -13,7 +13,7 @@ Windows：完整解压 Windows ZIP，双击“启航法语.exe”，保留配套
 换电脑或手机
 旧设备：设置 → 通用 → 全部记录备份，保存 ZIP。
 新电脑：把 ZIP 拖进软件，确认恢复。新手机：设置 → 通用 → 恢复记录，选择同一 ZIP。
-备份含词条、课次、词本、学习进度、语法和口语记录；只有口语录音随备份，不含词汇音频。
+备份含词条、课次、词本、学习进度、语法和 DELF 记录；DELF 录音随备份。
 电脑版记录固定保存在 %LOCALAPPDATA%\QihangFrench；清理外部浏览器的 Cookie 不影响这里的记录。
 
 口语首次使用
@@ -21,5 +21,13 @@ Windows：完整解压 Windows ZIP，双击“启航法语.exe”，保留配套
 2. 允许麦克风，绑定自己的小智账号和智能体；使用软件内的考官配置。
 3. 等待模型和考官就绪后练习。电脑和手机分别绑定。
 词汇和语法无需导入模型。备份不含识别模型和小智绑定，新设备需单独配置。
+
+Windows 的「口语」页可切换 DELF、读课文、日常练习和口语小镇。小镇左上角的返回键可退出沉浸视图。
+在「读课文」或「日常练习」点右上角「口语资料」。
+Model 放 whisper-large-v3-french 的 ctranslate2 文件夹内容。model.bin、config.json、tokenizer.json、vocabulary.json 和 preprocessor_config.json 直接放在 Model 内。
+Lecture 放课文 JSON 和对应的三位编号 WAV 原声，例如 073.wav，音频为 16 kHz 单声道 PCM16。文件规格见包内 LECTURE.md。
+放好后重启软件。只听课文原声可以先装课文，录音评分需要安装 Model。
+接拍串说和看提示换一格的素材位置见包内 DAILY_PRACTICE.md。
+练习室记录保存在 %LOCALAPPDATA%\QihangFrench\OralWorkshop，小镇存档随电脑版网页数据保留。
 
 GitHub 仓库：https://github.com/zyh307/qihang-french

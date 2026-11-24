@@ -570,13 +570,21 @@ class Bridge:
 
 
 def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None, *, cookie_name='oral_local',
-             game_private_assets=None):
+             game_private_assets=None, embedded_parent=None, embedded_token=None, french_asr=None, lecture_media=None):
     cookie = secrets.token_urlsafe(32)
     origins = {f'http://127.0.0.1:{port}', f'http://localhost:{port}'}
     app_client = AppClient(data_dir)
 
     @web.middleware
     async def guard(request, handler):
+        if embedded_parent:
+            # This instance is owned by the desktop window, with a separate session cookie.
+            if request.host != f'127.0.0.1:{port}':
+                raise web.HTTPForbidden()
+            if request.cookies.get(cookie_name) != cookie:
+                entry = request.query.get('entry', '')
+                if request.path != '/' or not entry.isascii() or not secrets.compare_digest(entry, embedded_token):
+                    raise web.HTTPForbidden()
         integrated = app_client.allowed(request)
         if integrated:
             if request.method == 'OPTIONS':
@@ -610,13 +618,14 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None, *,
         response.headers['Referrer-Policy'] = 'no-referrer'
         if request.path == '/':
             response.set_cookie(cookie_name, cookie, httponly=True, samesite='Strict')
-            response.headers['Content-Security-Policy'] = "default-src 'self'; connect-src 'self' ws://127.0.0.1:* ws://localhost:*; media-src 'self' blob:; style-src 'self'; script-src 'self'; frame-ancestors 'none'"
+            ancestor = embedded_parent or "'none'"
+            response.headers['Content-Security-Policy'] = f"default-src 'self'; connect-src 'self' ws://127.0.0.1:* ws://localhost:*; media-src 'self' blob:; style-src 'self'; script-src 'self'; frame-ancestors {ancestor}"
         return response
 
     app = web.Application(middlewares=[guard], client_max_size=64 * 1024)
     app['store'] = Store(data_dir)
     app['local_asr'] = LocalFrenchASR(data_dir)
-    app['french_asr'] = FrenchASRClient(data_dir)
+    app['french_asr'] = french_asr if french_asr is not None else FrenchASRClient(data_dir)
     app['bridge'] = None
     app['evaluator'] = Evaluator(app)
     app['examples_root'] = Path(examples_dir) if examples_dir is not None else ROOT/'web/examples'
@@ -793,10 +802,10 @@ def make_app(data_dir, port=8127, provider_factory=Hosted, examples_dir=None, *,
     app.router.add_get('/ws', ws_handler)
     from unit_practice import install
     install(app, data_dir)
-    from lecture import install as install_lecture
-    install_lecture(app, data_dir)
+    from lecture import MEDIA, install as install_lecture
+    install_lecture(app, data_dir, media=MEDIA if lecture_media is None else lecture_media)
     from daily_practice import install as install_daily_practice
-    install_daily_practice(app, data_dir)
+    install_daily_practice(app, data_dir, enabled_by_default=bool(embedded_parent))
     from game_private_art import install as install_game_art
     install_game_art(app, game_private_assets, app_client.allowed)
     from game_private_radio import install as install_game_radio

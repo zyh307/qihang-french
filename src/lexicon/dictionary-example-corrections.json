@@ -8,5 +8,215 @@
     "meanings": [
       "网球发球直接得分"
     ]
+  },
+  {
+    "word": "pot",
+    "previousFr": "Ne tourne pas autour du pot.",
+    "fr": "Un pot de confiture.",
+    "zh": "一罐果酱。",
+    "meaning": "罐",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "commune",
+    "previousFr": "Beaucoup d'Asiatiques utilisent l'anglais comme langue commune.",
+    "fr": "Un glissement de terrain est survenu dans la commune voisine.",
+    "zh": "邻近城镇发生山体滑坡。",
+    "meaning": "市镇",
+    "source": "Tatoeba #8632287 · Julien_PDC · CC BY 2.0",
+    "url": "https://tatoeba.org/en/sentences/show/8632287",
+    "authored": false
+  },
+  {
+    "word": "tâche",
+    "previousFr": "Tâche de faire plus attention à l'avenir s'il te plaît.",
+    "fr": "Il a accompli sa tâche sans entrain.",
+    "zh": "他毫无热情地完成了他的任务。",
+    "meaning": "任务",
+    "source": "Tatoeba #15354 · sacredceltic · CC BY 2.0",
+    "url": "https://tatoeba.org/en/sentences/show/15354",
+    "authored": false
+  },
+  {
+    "word": "cesse",
+    "previousFr": "De toutes façons, je peux y aller si la pluie cesse.",
+    "fr": "Tom a parlé sans cesse toute la nuit.",
+    "zh": "汤姆说了一整晚。",
+    "meaning": "停歇",
+    "source": "Tatoeba #1049843 · jeo · CC BY 2.0",
+    "url": "https://tatoeba.org/en/sentences/show/1049843",
+    "authored": false
+  },
+  {
+    "word": "bol",
+    "previousFr": "Je pisse un bol, j'enfile une écharpe et on peut y aller.",
+    "fr": "Elle façonne un bol sur son tour de potier.",
+    "zh": "她在陶轮上制作一只碗。",
+    "meaning": "碗",
+    "source": "启航法语 · 例句",
+    "authored": true
+  },
+  {
+    "word": "reporter",
+    "previousFr": "Un reporter est en train d'interviewer Docteur Patterson à propos de Koko, un gorille parlant.",
+    "fr": "Nous devons reporter la réunion à demain.",
+    "zh": "我们必须把会议推迟到明天。",
+    "meaning": "推迟",
+    "authored": true
+  },
+  {
+    "word": "préfecture",
+    "previousFr": "La préfecture du prétoire.",
+    "fr": "Les dégâts du typhon s'étendaient sur plusieurs préfectures.",
+    "zh": "台风的破坏跨越了好几个省。",
+    "source": "Tatoeba #461461 · sacredceltic · CC BY 2.0",
+    "url": "https://tatoeba.org/en/sentences/show/461461",
+    "meaning": "行政区",
+    "authored": false
+  },
+  {
+    "word": "sanguine",
+    "previousFr": "Le cycle de l'eau est à la biosphère ce qu'est la circulation sanguine à l'organisme vivant.",
+    "fr": "Elle dessine un portrait à la sanguine.",
+    "zh": "她用红粉笔画一幅肖像。",
+    "meaning": "红粉笔",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "milan",
+    "previousFr": "Milan Kundera est mon écrivain préféré.",
+    "fr": "Un milan plane au-dessus de la forêt.",
+    "zh": "一只鹰类猛禽在森林上空盘旋。",
+    "meaning": "鹰类猛禽",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "poutine",
+    "previousFr": "\"Nous devons aider le Kirghizistan,\" a dit Poutine à Hu Jintao... dans mon rêve.",
+    "fr": "La poutine contient des frites, du fromage et de la sauce.",
+    "zh": "肉汁奶酪薯条有薯条、奶酪和肉汁。",
+    "meaning": "肉汁奶酪薯条",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "est",
+    "previousFr": "C'est mon amie Rachel, nous sommes allées au lycée ensemble.",
+    "fr": "Le vent vient du côté est.",
+    "zh": "风从东边吹来。",
+    "meaning": "东的，东部的",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "un",
+    "previousFr": "Si je pouvais t'envoyer un marshmallow, Trang, je le ferais.",
+    "fr": "Le peuple est un et indivisible.",
+    "zh": "人民团结一致、不可分割。",
+    "meaning": "统一的，单一的",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "le",
+    "previousFr": "Si je pouvais t'envoyer un marshmallow, Trang, je le ferais.",
+    "fr": "Le livre est sur la table.",
+    "zh": "书在桌上。",
+    "meaning": "定冠词（阳性单数）",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "que",
+    "previousFr": "Depuis que je sais que l'université existe, je veux y aller.",
+    "fr": "Je sais que tu es ici.",
+    "zh": "我知道你在这里。",
+    "meaning": "引导陈述从句",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "a",
+    "previousFr": "Je suis venu à Tokyo il y a trois ans et ai vécu ici depuis.",
+    "fr": "Le mot « ami » commence par la lettre a.",
+    "zh": "单词 ami 以字母 a 开头。",
+    "meaning": "字母 a",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "en plus de",
+    "previousFr": "De plus en plus de couples partent en lune de miel à l'étranger.",
+    "fr": "En plus de son travail, elle suit des cours.",
+    "zh": "除了工作，她还上课。",
+    "meaning": "除了……之外还",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "en fait de",
+    "previousFr": "Tu réfléchis en fait de manière très méticuleuse.",
+    "fr": "En fait de musique, elle préfère le jazz.",
+    "zh": "在音乐方面，她更喜欢爵士乐。",
+    "meaning": "在……方面",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "de ce fait",
+    "previousFr": "J'étais au courant de ce fait.",
+    "fr": "Il pleut ; de ce fait, la sortie est annulée.",
+    "zh": "下雨了，因此外出活动取消。",
+    "meaning": "因此，所以",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "de rien",
+    "previousFr": "Les gens qui aiment ne doutent de rien, ou doutent de tout.",
+    "fr": "— Merci ! — De rien !",
+    "zh": "——谢谢！——不用谢！",
+    "meaning": "不用谢",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "à temps",
+    "previousFr": "L'été dernier j'ai travaillé à temps partiel à la ferme.",
+    "fr": "Nous sommes arrivés à temps.",
+    "zh": "我们及时赶到了。",
+    "meaning": "及时",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "dire que",
+    "previousFr": "Cela va sans dire que M. Tanaka a tout fait par lui-même.",
+    "fr": "Dire que j'ai failli oublier ton anniversaire !",
+    "zh": "我竟然差点忘了你的生日！",
+    "meaning": "竟然，居然",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "dit",
+    "previousFr": "Ne tenez aucun compte de ce qu'il dit.",
+    "fr": "Le jour dit, nous sommes arrivés à midi.",
+    "zh": "约定的那天，我们中午到了。",
+    "meaning": "所说的，约定的",
+    "source": "启航法语编写",
+    "authored": true
+  },
+  {
+    "word": "calcul",
+    "previousFr": "Il faut calculer la distance parcourue.",
+    "fr": "Ce calcul est correct.",
+    "zh": "这个计算是正确的。",
+    "meaning": "计算",
+    "source": "启航法语编写",
+    "authored": true
   }
 ]

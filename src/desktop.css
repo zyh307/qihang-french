@@ -1,7 +1,7 @@
 /* The Windows window has its own profile and spacious desktop layout. */
 @media(min-width:900px){
  html.qihang-desktop .app-frame:not(.is-oral):not(.is-grammar):not(.is-practicing):not(.page-recite)>.main-area{margin-left:204px}
- html.qihang-desktop .mobile-nav{left:18px;right:auto;top:116px;bottom:auto;transform:none;width:170px;height:auto;min-height:0;padding:10px;display:flex;flex-direction:column;gap:7px;border:1px solid #dce4f1;border-radius:21px;background:#f8faffed}
+ html.qihang-desktop .mobile-nav{left:18px;right:auto;top:116px;bottom:auto;transform:none;width:170px;height:auto;min-height:0;padding:10px;display:flex;flex-direction:column;gap:7px;border:1px solid var(--ui-926d7c5b65de,#dce4f1);border-radius:21px;background:var(--ui-7f4947d38100,#f8faffed)}
  html.qihang-desktop .mobile-nav>uni-button{width:100%;min-width:0;min-height:58px;padding:10px 13px;flex-direction:row;justify-content:flex-start;gap:13px;border-radius:14px}
  html.qihang-desktop .mobile-nav .bi{text-align:left;align-items:flex-start}
  html.qihang-desktop .mobile-nav .bi-zh{font-size:13px}html.qihang-desktop .mobile-nav .bi-fr{font-size:10px}

@@ -1,6 +1,6 @@
 import content from '../lexicon/fos1-content.json' with {type:'json'};
 import {unzipSync,strFromU8} from 'fflate';
-import {splitNounArticle} from './word-display.js';
+import {splitNounArticle,nounGender} from './word-display.js';
 import {primaryMeaningOptions} from './meanings.js';
 const exact=text=>String(text||'').normalize('NFC').replaceAll('’',"'").toLocaleLowerCase('fr').replace(/\s+/g,' ').trim();
 const article=/^(?:un|une|des|du|le|la|les|de la|de l['’]|l['’])$/iu;
@@ -8,7 +8,11 @@ export const fosVocabularyKey=text=>{const value=exact(text),parts=splitNounArti
 const name=fosVocabularyKey;
 const legacyName=text=>{const value=exact(text),parts=splitNounArticle(value);return parts.answer&&parts.prefix?parts.answer:value;};
 const posKind=word=>String(word.pos||word.sourcePos||'').toLocaleLowerCase('fr').split(/[.\s]/u)[0];
-const compatible=(old,fresh)=>!posKind(old)||!posKind(fresh)||posKind(old)===posKind(fresh);
+const genders=word=>new Set((word.forms||[{text:word.word,gender:word.gender}]).map(f=>nounGender(word,f)).filter(Boolean));
+const compatible=(old,fresh)=>{
+ if(posKind(old)&&posKind(fresh)&&posKind(old)!==posKind(fresh))return false;
+ const a=genders(old),b=genders(fresh);return !a.size||!b.size||[...a].some(g=>b.has(g));
+};
 const entries=new Map();
 for(const p of content.library)for(const w of p.words)for(const f of w.forms){const key=name(f.text);if(!entries.has(key))entries.set(key,{p,w,f});}
 const legacyEntries=new Map();for(const p of content.library)for(const w of p.words)for(const f of w.forms)if(!legacyEntries.has(legacyName(f.text)))legacyEntries.set(legacyName(f.text),{p,w,f});
@@ -31,7 +35,7 @@ export function applyFosContent(data){
   const match=w.forms.map(f=>entries.get(name(f.text))).find(entry=>entry&&compatible(w,entry.w))||entries.get(name(w.lexiconWord));
   if(match&&!compatible(w,match.w))continue;
   if(!match||w.fosAuthority?.revision>=content.revision)continue;
-  const fresh=match.w;w.meanings=meanings(fresh.meanings,w.meanings||[]);w.primaryMeaning=fresh.primaryMeaning;w.primaryMeaningChosen=false;w.pos=fresh.pos;w.sourcePos=fresh.sourcePos;w.curriculumAuthority={...fresh.curriculumAuthority};w.fosAuthority={...fresh.fosAuthority};w.fosMatchVersion=2;
+  const fresh=match.w;w.meanings=meanings(fresh.meanings,w.meanings||[]);if(!w.primaryMeaningChosen)w.primaryMeaning=fresh.primaryMeaning;w.pos=fresh.pos;w.sourcePos=fresh.sourcePos;w.curriculumAuthority={...fresh.curriculumAuthority};w.fosAuthority={...fresh.fosAuthority};w.fosMatchVersion=2;
   for(const f of w.forms){const source=entries.get(name(f.text));if(!source)continue;f.audioKey=source.f.audioKey;f.audio=null;f.audioOrigin='fos-synthetic';f.source=source.f.source;f.ipa=source.f.ipa||f.ipa;f.example={...source.f.example};if(source.f.meaning)f.meaning=source.f.meaning;else delete f.meaning;}
   corrected.set(w.id,w);corrected.set(p.book.id+':'+p.lesson.id+':'+w.id,w);
  }

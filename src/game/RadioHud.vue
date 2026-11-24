@@ -157,39 +157,39 @@ async function clearMusic() {
 </template>
 
 <style scoped>
-.game-radio{position:relative;max-width:100%;font-size:.8rem;color:#423523;z-index:5}
-.radio-mini{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;padding:.22rem .42rem;background:#fff5db;border:1px solid #d4bc8f;border-radius:.6rem}
-.game-radio button,.game-radio select{min-height:1.8rem;border:1px solid #d6c09b;border-radius:.35rem;background:#fcf2dc;color:#403422;padding:.18rem .42rem;font:inherit;cursor:pointer}
+.game-radio{position:relative;max-width:100%;font-size:.8rem;color:var(--ui-b10dc28de597,#423523);z-index:5}
+.radio-mini{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;padding:.22rem .42rem;background:var(--ui-06620f56fd37,#fff5db);border:1px solid var(--ui-e2ee229986cf,#d4bc8f);border-radius:.6rem}
+.game-radio button,.game-radio select{min-height:1.8rem;border:1px solid var(--ui-cc57ad1c5801,#d6c09b);border-radius:.35rem;background:var(--ui-0b11a5f7d6d4,#fcf2dc);color:var(--ui-264d9ca42b6a,#403422);padding:.18rem .42rem;font:inherit;cursor:pointer}
 .game-radio button:disabled{opacity:.55;cursor:default}
-.game-radio button:focus-visible,.game-radio input:focus-visible,.game-radio select:focus-visible{outline:2px solid #775d36;outline-offset:2px}
+.game-radio button:focus-visible,.game-radio input:focus-visible,.game-radio select:focus-visible{outline:2px solid var(--ui-5a5697638d2c,#775d36);outline-offset:2px}
 .radio-mini .radio-title{display:flex;align-items:center;gap:.4rem;max-width:11rem;border-color:transparent;text-align:left;padding:.12rem .28rem;background:transparent}
 .radio-label{display:grid;min-width:0;line-height:1.15}
 .radio-label strong,.radio-track-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.radio-label small{font-size:.65rem;color:#69583e}
+.radio-label small{font-size:.65rem;color:var(--ui-e74f3a388f5b,#69583e)}
 .radio-note{font-size:1.1rem}
-.radio-chevron{font-size:.8rem;color:#69583e}
+.radio-chevron{font-size:.8rem;color:var(--ui-e74f3a388f5b,#69583e)}
 .radio-mini .radio-mute{display:grid;place-items:center;padding:0;width:1.85rem}
 .radio-speaker{width:1rem;height:1rem}
-.game-radio input[type=range]{accent-color:#795c3a;min-height:1rem}
+.game-radio input[type=range]{accent-color:var(--ui-d781917a2b8e,#795c3a);min-height:1rem}
 .radio-mini-volume{width:3.3rem;margin:0}
-.radio-status{white-space:nowrap;font-size:.69rem;color:#645334}
-.radio-status[data-status=playing]{color:#3e5f46}
-.radio-panel{position:absolute;right:0;top:calc(100% + .4rem);width:min(19rem,calc(100vw - 2rem));padding:.65rem;background:#fffbef;border:1px solid #c5a974;border-radius:.65rem;box-shadow:0 8px 20px #3c2e2133;box-sizing:border-box}
+.radio-status{white-space:nowrap;font-size:.69rem;color:var(--ui-03dede170bad,#645334)}
+.radio-status[data-status=playing]{color:var(--ui-04890fde7566,#3e5f46)}
+.radio-panel{position:absolute;right:0;top:calc(100% + .4rem);width:min(19rem,calc(100vw - 2rem));padding:.65rem;background:var(--ui-e888c3be5be3,#fffbef);border:1px solid var(--ui-400ea030f4d7,#c5a974);border-radius:.65rem;box-shadow:0 8px 20px var(--ui-b4141d9af0de,#3c2e2133);box-sizing:border-box}
 .radio-panel h2{font-size:1rem;margin:0}
 .radio-panel-head,.radio-tabs,.radio-actions,.radio-volume,.radio-resume{display:flex;align-items:center;gap:.38rem}
 .radio-panel-head{justify-content:space-between;margin-bottom:.42rem}
 .radio-tabs button{flex:1}
-.radio-tabs [aria-pressed=true],.game-radio .radio-play{background:#634e34;color:#fff8e6;border-color:#634e34}
+.radio-tabs [aria-pressed=true],.game-radio .radio-play{background:var(--ui-00f402c9125f,#634e34);color:var(--ui-5f4203af8763,#fff8e6);border-color:var(--ui-00f402c9125f,#634e34)}
 .radio-tracks,.radio-failures{max-height:11rem;overflow:auto;padding:0;margin:.45rem 0;list-style:none}
 .radio-tracks button{display:grid;width:100%;grid-template-columns:1rem minmax(0,1fr) 2.75rem;align-items:center;gap:.2rem;text-align:left;border:0;background:transparent}
-.radio-tracks button:hover,.radio-tracks button[aria-current=true]{background:#f0e2bc}
-.radio-duration{text-align:right;color:#645334;font-variant-numeric:tabular-nums}
+.radio-tracks button:hover,.radio-tracks button[aria-current=true]{background:var(--ui-694ca65a7de6,#f0e2bc)}
+.radio-duration{text-align:right;color:var(--ui-03dede170bad,#645334);font-variant-numeric:tabular-nums}
 .radio-empty,.radio-import p{margin:.5rem 0}
-.radio-empty{color:#69583e}
+.radio-empty{color:var(--ui-e74f3a388f5b,#69583e)}
 .radio-actions,.radio-volume,.radio-resume{margin-top:.4rem;flex-wrap:wrap}
 .radio-volume input{flex:1}
-.radio-import{border-top:1px solid #d6c09b;margin-top:.5rem}
-.radio-issue{margin:.45rem 0;color:#892b21;overflow-wrap:anywhere}
+.radio-import{border-top:1px solid var(--ui-cc57ad1c5801,#d6c09b);margin-top:.5rem}
+.radio-issue{margin:.45rem 0;color:var(--ui-4530905c12dd,#892b21);overflow-wrap:anywhere}
 .radio-failures{max-height:4.5rem}
 .radio-failures li{margin-bottom:.2rem;overflow-wrap:anywhere}
 </style>

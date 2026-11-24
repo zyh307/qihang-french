@@ -1,4 +1,7 @@
-import {unzipSync,strFromU8} from 'fflate';
+import {strFromU8} from 'fflate';
+import {unzipAsync} from '../platform/archive.js';
+import {parseJSONText} from '../platform/read-json.js';
+import {yieldToUI} from '../platform/ui-work.js';
 import {clone,packageKey,installLesson,normalize} from './learning.js';
 import {BUNDLED_CONTENT_ID} from './content-version.js';
 import {ADDITIONAL_BUNDLED_BOOKS} from './content-books.js';
@@ -125,11 +128,11 @@ export async function prepareBundledContent(data,fetcher=fetch){
     if(data.bundles?.[book.id]===book.contentId)continue;
     const response=await fetcher(new URL('static/content/'+book.file,window.location.href));
     if(!response.ok)throw new Error('无法读取内置词库 / Vocabulaire intégré inaccessible.');
-    const files=unzipSync(new Uint8Array(await response.arrayBuffer()));
-    const bundle=JSON.parse(strFromU8(files['manifest.json']));
+    const files=await unzipAsync(new Uint8Array(await response.arrayBuffer()));
+    const bundle=await parseJSONText(strFromU8(files['manifest.json']));
     if(bundle.library.some(p=>p.book.id!==book.id))throw Error('教材资料不匹配 / Manuel incorrect.');
     for(const id of bundle.audio){const bytes=files[`audio/${id}.bin`];if(!bytes)throw new Error('内置录音缺失 / Audio intégré absent.');assets.set(id,{id,bytes});}
-    mergeBundledLessons(data,bundle,book.contentId);changed=true;
+    await yieldToUI();mergeBundledLessons(data,bundle,book.contentId);changed=true;await yieldToUI();
   }
   return changed?[...assets.values()]:null;
 }

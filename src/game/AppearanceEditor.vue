@@ -42,9 +42,9 @@ onMounted(draw)
 
 <style scoped>
 .character-editor{display:grid;grid-template-columns:clamp(100px,24%,210px) minmax(0,1fr);gap:clamp(12px,3vw,26px)}
-.avatar-display{min-width:0;display:grid;align-content:center;justify-items:center;gap:8px;background:#dbe3cb;border:1px solid #cbd9bc;border-radius:12px;overflow:hidden;padding:8px;overflow-wrap:anywhere;font-size:14px}
+.avatar-display{min-width:0;display:grid;align-content:center;justify-items:center;gap:8px;background:var(--ui-38f471f3c828,#dbe3cb);border:1px solid var(--ui-14985e22a688,#cbd9bc);border-radius:12px;overflow:hidden;padding:8px;overflow-wrap:anywhere;font-size:14px}
 .avatar-display canvas{width:96px;height:96px;image-rendering:pixelated}
 .appearance{display:grid;grid-template-columns:repeat(auto-fit,minmax(65px,1fr));gap:8px;margin:4px 0 14px}
 .appearance-field{display:grid;gap:5px;font-size:14px;font-weight:600}
-select{width:100%;height:38px;border:1px solid #aaba9e;border-radius:7px;background:#fdfdf7;color:#223e38;padding:5px 8px;font:inherit}
+select{width:100%;height:38px;border:1px solid var(--ui-020fe175317c,#aaba9e);border-radius:7px;background:var(--ui-9980255b5277,#fdfdf7);color:var(--ui-809655853b2a,#223e38);padding:5px 8px;font:inherit}
 </style>

@@ -1,6 +1,10 @@
 // Platform boundary: IndexedDB works in the browser preview and an Android WebView.
 // Native filesystem bridges can replace this adapter without changing learning rules.
 import {openRecordDatabase,recordEpoch,idbDone,idbResult} from './browser-database.js';
+function saveError(cause){
+  if(cause?.name==='QuotaExceededError')return new Error('存储空间不足，记录尚未保存 / Espace insuffisant.');
+  return new Error('记录未保存，请重试 / Enregistrement impossible. Réessayez.',{cause});
+}
 export function createRepository() {
   let epoch;
   const open = openRecordDatabase;
@@ -12,8 +16,10 @@ export function createRepository() {
       const db = await open();epoch??=await recordEpoch();const copy = isolated?state:JSON.parse(JSON.stringify(state));
       return new Promise((resolve, reject) => {
         const tx = db.transaction(['state', 'audio'], 'readwrite'), store = tx.objectStore('state');
-        let stale=false;const revision=store.get('recordsEpoch');revision.onsuccess=()=>{if((revision.result||0)!==epoch){stale=true;tx.abort();return;}const q = store.get('primary');q.onsuccess = () => { if (q.result) store.put(q.result, 'backup'); store.put(copy, 'primary'); };for (const asset of assets) tx.objectStore('audio').put(asset.bytes, asset.id);};
-        tx.oncomplete = resolve; tx.onerror = () => reject(new Error('保存失败，请检查存储空间 / Échec de sauvegarde, vérifiez l’espace libre.')); tx.onabort = () => reject(new Error(stale?'记录已恢复，请重新打开此页面 / Rouvrez cette page.':'保存已中止 / Sauvegarde interrompue.'));
+        let stale=false,failure;
+        const revision=store.get('recordsEpoch');revision.onsuccess=()=>{if((revision.result||0)!==epoch){stale=true;tx.abort();return;}const q=store.get('primary');q.onsuccess=()=>{try{if(q.result)store.put(q.result,'backup');store.put(copy,'primary');for(const asset of assets)tx.objectStore('audio').put(asset.bytes,asset.id);}catch(error){failure=error;tx.abort();}};};
+        tx.oncomplete=resolve;tx.onerror=event=>{failure||=event.target?.error;};
+        tx.onabort=()=>reject(stale?new Error('记录已恢复，请重新打开此页面 / Rouvrez cette page.'):saveError(failure||tx.error));
       });
     },
     async savePreferences(settings){const db=await open();epoch??=await recordEpoch();return new Promise((resolve,reject)=>{const tx=db.transaction('state','readwrite'),store=tx.objectStore('state');let stale=false;const rev=store.get('recordsEpoch');rev.onsuccess=()=>{if((rev.result||0)!==epoch){stale=true;tx.abort();return;}const q=store.get('primary');q.onsuccess=()=>{const state=q.result;if(!state){tx.abort();return;}store.put(state,'backup');state.settings={...settings};if(settings.reviewErrorRetry===false)for(const r of Object.values(state.progress||{}))for(const f of Object.values(r.forms||{}))delete f.retryDue;for(const session of Object.values(state.sessions||{}))if(session.mode==='errors')session.removeErrors=settings.errorAutoRemove!==false;store.put(state,'primary');};};tx.oncomplete=resolve;tx.onerror=()=>reject(Error('偏好未保存 / Préférences non enregistrées.'));tx.onabort=()=>reject(Error(stale?'记录已恢复，请重新打开 / Rouvrez cette page.':'偏好未保存 / Préférences non enregistrées.'));});},

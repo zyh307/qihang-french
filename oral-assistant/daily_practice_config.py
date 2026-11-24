@@ -58,7 +58,7 @@ def rule_settings(cls, overrides):
     return cls(**values)
 
 
-def load_settings(data_dir):
+def load_settings(data_dir, *, enabled_by_default=False):
     path = Path(data_dir) / "daily-practice.json"
     units = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
     if not isinstance(units, dict) or units.keys() - {Mode.FLUENCY, Mode.SLOT}:
@@ -69,7 +69,7 @@ def load_settings(data_dir):
         unit = units.get(mode, {})
         if not isinstance(unit, dict) or unit.keys() - {"enabled", "window_seconds", "rules", "release_seconds"}:
             raise ValueError(f"日常口语配置无效：{mode}")
-        enabled = unit.get("enabled", False)
+        enabled = unit.get("enabled", enabled_by_default)
         seconds = unit.get("window_seconds", seconds)
         if type(enabled) is not bool or type(seconds) is not int or not 1 <= seconds <= 30:
             raise ValueError(f"日常口语开关或窗口无效：{mode}")

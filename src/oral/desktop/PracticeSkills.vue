@@ -50,11 +50,11 @@ const description = computed(() => `训练侧重。主练${props.focus.join('、
 <style scoped>
 .practice-skills{display:grid;justify-items:center;gap:2px;width:100%;padding:3px 0 8px;color:var(--skill-ink,#235544);font-family:inherit;font-style:normal;text-align:center}
 svg{display:block;width:100%;max-width:280px;overflow:visible}
-.skill-ring{fill:none;stroke:#9cae9f;stroke-width:1}
-.skill-spoke{stroke:#b7c7ba;stroke-width:1}
+.skill-ring{fill:none;stroke:var(--ui-84faa42c57c9,#9cae9f);stroke-width:1}
+.skill-spoke{stroke:var(--ui-b80f170b8107,#b7c7ba);stroke-width:1}
 .skill-profile{fill:currentColor;fill-opacity:.15;stroke:currentColor;stroke-width:1.4;stroke-linejoin:round}
-.skill-point{fill:#f9fbf8;stroke:currentColor;stroke-width:1.6}
-.skill-focus{fill:currentColor;stroke:#f9fbf8;stroke-width:1.3}
+.skill-point{fill:var(--ui-697454aaa548,#f9fbf8);stroke:currentColor;stroke-width:1.6}
+.skill-focus{fill:currentColor;stroke:var(--ui-697454aaa548,#f9fbf8);stroke-width:1.3}
 text{fill:var(--sub);font:13px "Microsoft YaHei","Segoe UI",sans-serif}
 .skill-label-focus{fill:currentColor;font-weight:700}
 .skill-main{font-size:13px;line-height:1.55;font-weight:600}

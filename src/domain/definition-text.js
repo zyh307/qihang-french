@@ -10,3 +10,14 @@ export function definitionText(value){
  text=text.replace(prefix,'').replace(/^(?:pl|sg|m|f)\s+(?=\p{Script=Han})/u,'').replace(/(?:\n\s*)?----\s*$/u,'').trim();
  return text;
 }
+
+export function chineseDefinition(value){
+ return definitionText(value)
+  .replace(/（[^）]*）|\([^)]*\)|［[^］]*］|\[[^\]]*\]/gu,match=>/\p{Script=Latin}/u.test(match)&&!/\p{Script=Han}/u.test(match)?'':match)
+  .replace(/[「『“"]?\p{Script=Latin}[\p{Script=Latin}\p{Mark}'’\-]*(?:[\s、,，/]+\p{Script=Latin}[\p{Script=Latin}\p{Mark}'’\-]*)*[」』”"]?/gu,'')
+  .replace(/\s*\+\s*/gu,'')
+  .replace(/\s{2,}/gu,' ')
+  .replace(/[（(［\[]\s*[）)］\]]/gu,'')
+  .replace(/^[的:：,，、；;。]+|[,:：，、；;]+$/gu,'')
+  .trim();
+}

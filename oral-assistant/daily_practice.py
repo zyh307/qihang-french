@@ -13,8 +13,8 @@ from slot_session import DEMO_PACK as FRAMES, install as install_slot
 from word_alignment import TOKEN_LIMIT, Word, align, tokens, words_in_window
 
 
-def install(app, data_dir):
-    settings = load_settings(data_dir)
+def install(app, data_dir, *, enabled_by_default=False):
+    settings = load_settings(data_dir, enabled_by_default=enabled_by_default)
     base = "/api/daily-practice"
     settings_root = Path(data_dir)
     daily_root = settings_root / "daily-speaking/v1"

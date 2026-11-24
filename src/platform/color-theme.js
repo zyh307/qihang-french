@@ -1,16 +1,6 @@
-import paletteCSS from '../color-themes.css?inline';
-import textCSS from '../theme-text-colors.css?inline';
-import uiCSS from '../theme-ui-colors.css?inline';
-import controlsCSS from '../theme-controls.css?inline';
-import feedbackCSS from '../theme-feedback.css?inline';
-const themeCSS=paletteCSS+'\n'+textCSS+'\n'+uiCSS+'\n'+controlsCSS+'\n'+feedbackCSS;
-export const COLOR_THEMES=Object.freeze([
- {id:'mist',zh:'雾蓝',fr:'Bleu brume',paper:'#f4f5fb',soft:'#e7eefb',accent:'#6474b1',ink:'#374963'},
- {id:'sage',zh:'鼠尾草绿',fr:'Vert sauge',paper:'#f2f6f3',soft:'#e5eee8',accent:'#5d7d6c',ink:'#34493f'},
- {id:'apricot',zh:'暖杏',fr:'Abricot doux',paper:'#faf5ef',soft:'#f2e6d9',accent:'#947056',ink:'#504238'},
- {id:'lilac',zh:'柔雾紫',fr:'Lilas doux',paper:'#f6f3f9',soft:'#eae3f2',accent:'#7f6b99',ink:'#484053'},
- {id:'rose',zh:'玫瑰粉',fr:'Rose poudré',paper:'#fbf3f6',soft:'#f3e2e9',accent:'#9b5f79',ink:'#563d49'}
-]);
+import themeCSS from '../ui-palette.css?inline';
+import themePresets from '../theme/presets.json';
+export const COLOR_THEMES=Object.freeze(themePresets);
 const storageKey='qihang-color-theme';
 export const colorThemeId=value=>COLOR_THEMES.some(theme=>theme.id===value)?value:'mist';
 function themeFrame(frame,id){

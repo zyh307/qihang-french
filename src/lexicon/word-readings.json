@@ -1,0 +1,1066 @@
+[
+  {
+    "id": "lex79b996059587d5c6afb9",
+    "legacyIds": ["lex85f7ceb545d1a2d55308"],
+    "word": "nouveau",
+    "aliases": ["nouvel", "nouvelle"],
+    "pos": "adj.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": ["新的"],
+    "primaryMeaning": "新的",
+    "forms": [
+      {"text":"nouveau","gender":"m","tested":true,"ipa":"/nu.vo/","questionHint":"辅音或嘘音 h 前 · Devant une consonne ou un h aspiré"},
+      {"text":"nouvel","gender":"m","tested":true,"ipa":"/nu.vɛl/","questionHint":"元音或哑音 h 前 · Devant une voyelle ou un h muet"},
+      {"text":"nouvelle","gender":"f","tested":true,"ipa":"/nu.vɛl/"}
+    ],
+    "example": {
+      "fr": "J'ai un nouveau téléphone.",
+      "zh": "我有一部新手机。",
+      "meaning": "新的",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexd5b7f78a77e704ed2d3e",
+    "word": "inconnu",
+    "aliases": [
+      "inconnue"
+    ],
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "未知的，不明的",
+      "陌生的"
+    ],
+    "primaryMeaning": "未知的，不明的",
+    "invalidMeanings": [
+      "原因",
+      "未知的事物；陌生人",
+      "陌生人"
+    ],
+    "forms": [
+      {
+        "text": "inconnu",
+        "gender": "m",
+        "tested": true
+      },
+      {
+        "text": "inconnue",
+        "gender": "f",
+        "tested": false
+      }
+    ],
+    "example": {
+      "fr": "La cause de l'incendie est inconnue.",
+      "zh": "起火原因不明。",
+      "meaning": "未知的，不明的",
+      "source": "Tatoeba #496998 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/496998"
+    }
+  },
+  {
+    "id": "lexbdd8bb0e57cc701e1376",
+    "word": "inconnue",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "未知数"
+    ],
+    "primaryMeaning": "未知数",
+    "invalidMeanings": [
+      "原因",
+      "不明的原因",
+      "未知的，不明的"
+    ],
+    "forms": [
+      {
+        "text": "inconnue",
+        "gender": "f",
+        "tested": true
+      }
+    ],
+    "example": {
+      "fr": "Dans cette équation, x est l'inconnue.",
+      "zh": "在这个方程中，x 是未知数。",
+      "meaning": "未知数",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-inconnu-personne",
+    "word": "inconnu",
+    "aliases": [
+      "inconnue"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "陌生人",
+      "未知的事物"
+    ],
+    "primaryMeaning": "陌生人",
+    "forms": [
+      {
+        "text": "inconnu",
+        "gender": "m",
+        "tested": true
+      },
+      {
+        "text": "inconnue",
+        "gender": "f",
+        "tested": false
+      }
+    ],
+    "example": {
+      "fr": "Quand un inconnu est venu parler à Mary, celle-ci ne trouvait plus ses mots.",
+      "zh": "当一个陌生人来和玛丽说话时，她不知道该说什么了。",
+      "meaning": "陌生人",
+      "source": "Tatoeba #334109 · Lumpawurump · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/334109"
+    }
+  },
+  {
+    "id": "lex59208daf46d44c960192",
+    "legacyIds": [
+      "lex6629f0f7bd9f15cd9a13"
+    ],
+    "word": "gros",
+    "aliases": [
+      "grosse"
+    ],
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "胖的",
+      "大的，粗的"
+    ],
+    "primaryMeaning": "胖的",
+    "invalidMeanings": [
+      "大的",
+      "怀孕的",
+      "十二打，罗",
+      "大号字体"
+    ],
+    "forms": [
+      {
+        "text": "gros",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ɡʁo/"
+      },
+      {
+        "text": "grosse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɡʁos/"
+      }
+    ],
+    "example": {
+      "fr": "Il est gros et elle est grosse.",
+      "zh": "他胖，她也胖。",
+      "meaning": "胖的",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex4638989976f7e47e7518",
+    "word": "sanguin",
+    "aliases": [
+      "sanguine"
+    ],
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "血液的"
+    ],
+    "primaryMeaning": "血液的",
+    "forms": [
+      {
+        "text": "sanguin",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/sɑ̃.ɡɛ̃/"
+      },
+      {
+        "text": "sanguine",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/sɑ̃.ɡin/"
+      }
+    ],
+    "example": {
+      "fr": "Très peu nombreux sont ceux qui connaissent leur groupe sanguin.",
+      "zh": "知道自己血型的人没几个。",
+      "source": "Tatoeba #3146924 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/3146924",
+      "meaning": "血液的"
+    }
+  },
+  {
+    "id": "lexa0ad1f02374f9314a7be",
+    "word": "neuf",
+    "pos": "num.",
+    "gender": null,
+    "splitSense": true,
+    "courseIds": [
+      "w000024"
+    ],
+    "meanings": [
+      "九"
+    ],
+    "primaryMeaning": "九",
+    "displacedMeanings": [
+      "崭新的",
+      "新的",
+      "全新的"
+    ],
+    "forms": [
+      {
+        "text": "neuf",
+        "gender": null,
+        "tested": true,
+        "ipa": "/nœf/"
+      }
+    ],
+    "example": {
+      "fr": "Il y a neuf élèves dans la salle.",
+      "zh": "教室里有九名学生。",
+      "meaning": "九",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-neuf-adj",
+    "word": "neuf",
+    "aliases": [
+      "neuve"
+    ],
+    "pos": "adj.",
+    "gender": "m",
+    "splitSense": true,
+    "meanings": [
+      "全新的，未使用过的"
+    ],
+    "primaryMeaning": "全新的，未使用过的",
+    "forms": [
+      {
+        "text": "neuf",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/nœf/"
+      },
+      {
+        "text": "neuve",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/nœv/"
+      }
+    ],
+    "example": {
+      "fr": "Ce téléphone est neuf et cette tablette est neuve.",
+      "zh": "这部手机和这台平板都是全新的。",
+      "meaning": "全新的，未使用过的",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexc8f071fcb45fc339fd31",
+    "word": "livre",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "courseIds": [
+      "w000008"
+    ],
+    "meanings": [
+      "书，书籍"
+    ],
+    "primaryMeaning": "书，书籍",
+    "displacedMeanings": [
+      "磅",
+      "镑",
+      "里拉",
+      "镑；里拉",
+      "【金融】镑；里拉"
+    ],
+    "forms": [
+      {
+        "text": "livre",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/livʁ/"
+      }
+    ],
+    "example": {
+      "fr": "C'est un livre de français.",
+      "zh": "这是一本法语书。",
+      "meaning": "书，书籍",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-livre-poids",
+    "word": "livre",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "磅（重量单位）"
+    ],
+    "primaryMeaning": "磅（重量单位）",
+    "forms": [
+      {
+        "text": "livre",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/livʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Le colis pèse une livre.",
+      "zh": "这个包裹重一磅。",
+      "meaning": "磅（重量单位）",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-livre-monnaie",
+    "word": "livre",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "镑（货币单位）"
+    ],
+    "primaryMeaning": "镑（货币单位）",
+    "forms": [
+      {
+        "text": "livre",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/livʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Ce café coûte une livre sterling.",
+      "zh": "这杯咖啡要一英镑。",
+      "meaning": "镑（货币单位）",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexd1e4a7f2d1d63b0813ff",
+    "word": "pêche",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "courseIds": [
+      "w313004"
+    ],
+    "meanings": [
+      "钓鱼，捕鱼"
+    ],
+    "primaryMeaning": "钓鱼，捕鱼",
+    "displacedMeanings": [
+      "桃子",
+      "精力，活力",
+      "精力",
+      "活力"
+    ],
+    "forms": [
+      {
+        "text": "pêche",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/pɛʃ/"
+      }
+    ],
+    "example": {
+      "fr": "Nous parlons de la pêche.",
+      "zh": "我们在聊钓鱼。",
+      "meaning": "钓鱼，捕鱼",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-peche-fruit",
+    "word": "pêche",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "桃子"
+    ],
+    "primaryMeaning": "桃子",
+    "forms": [
+      {
+        "text": "pêche",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/pɛʃ/"
+      }
+    ],
+    "example": {
+      "fr": "Je mange une pêche bien mûre.",
+      "zh": "我在吃一个熟透的桃子。",
+      "meaning": "桃子",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-peche-energie",
+    "word": "pêche",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "精力，活力（口语）"
+    ],
+    "primaryMeaning": "精力，活力（口语）",
+    "forms": [
+      {
+        "text": "pêche",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/pɛʃ/"
+      }
+    ],
+    "example": {
+      "fr": "J'ai la pêche ce matin.",
+      "zh": "今天早上我精神十足。",
+      "meaning": "精力，活力（口语）",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexbaeab1651af3e1481c2c",
+    "word": "glace",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "冰"
+    ],
+    "primaryMeaning": "冰",
+    "displacedMeanings": [
+      "冰淇淋",
+      "镜子",
+      "冷淡，冷漠",
+      "冷淡",
+      "冷漠"
+    ],
+    "forms": [
+      {
+        "text": "glace",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɡlas/"
+      }
+    ],
+    "example": {
+      "fr": "La glace du lac commence à fondre.",
+      "zh": "湖上的冰开始融化了。",
+      "meaning": "冰",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-glace-dessert",
+    "word": "glace",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "冰淇淋"
+    ],
+    "primaryMeaning": "冰淇淋",
+    "forms": [
+      {
+        "text": "glace",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɡlas/"
+      }
+    ],
+    "example": {
+      "fr": "Je prends une glace à la vanille.",
+      "zh": "我要一份香草冰淇淋。",
+      "meaning": "冰淇淋",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-glace-miroir",
+    "word": "glace",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "镜子"
+    ],
+    "primaryMeaning": "镜子",
+    "forms": [
+      {
+        "text": "glace",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɡlas/"
+      }
+    ],
+    "example": {
+      "fr": "Elle se regarde dans la glace.",
+      "zh": "她在照镜子。",
+      "meaning": "镜子",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-glace-froideur",
+    "word": "glace",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "冰冷，冷漠（比喻）"
+    ],
+    "primaryMeaning": "冰冷，冷漠（比喻）",
+    "forms": [
+      {
+        "text": "glace",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɡlas/"
+      }
+    ],
+    "example": {
+      "fr": "Elle est restée de glace devant ses excuses.",
+      "zh": "面对他的道歉，她毫无反应。",
+      "meaning": "冰冷，冷漠（比喻）",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex314b005120895b20e591",
+    "word": "souris",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "老鼠"
+    ],
+    "primaryMeaning": "老鼠",
+    "displacedMeanings": [
+      "鼠标"
+    ],
+    "forms": [
+      {
+        "text": "souris",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/su.ʁi/"
+      }
+    ],
+    "example": {
+      "fr": "Une souris se cache sous la table.",
+      "zh": "一只老鼠躲在桌子下面。",
+      "meaning": "老鼠",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-souris-informatique",
+    "word": "souris",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "鼠标"
+    ],
+    "primaryMeaning": "鼠标",
+    "forms": [
+      {
+        "text": "souris",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/su.ʁi/"
+      }
+    ],
+    "example": {
+      "fr": "Je clique avec la souris.",
+      "zh": "我用鼠标点击。",
+      "meaning": "鼠标",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex9a258d488bdc2474ae16",
+    "word": "avocat",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "courseIds": [
+      "w405014"
+    ],
+    "meanings": [
+      "律师，辩护人"
+    ],
+    "primaryMeaning": "律师，辩护人",
+    "displacedMeanings": [
+      "鳄梨",
+      "牛油果"
+    ],
+    "forms": [
+      {
+        "text": "avocat",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/a.vɔ.ka/"
+      }
+    ],
+    "example": {
+      "fr": "Voici un avocat.",
+      "zh": "这是一位律师。",
+      "meaning": "律师，辩护人",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-avocat-fruit",
+    "word": "avocat",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "meanings": [
+      "牛油果，鳄梨"
+    ],
+    "primaryMeaning": "牛油果，鳄梨",
+    "forms": [
+      {
+        "text": "avocat",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/a.vɔ.ka/"
+      }
+    ],
+    "example": {
+      "fr": "Je coupe un avocat pour la salade.",
+      "zh": "我切一个牛油果做沙拉。",
+      "meaning": "牛油果，鳄梨",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex1a48b8a28708bb7ea8f6",
+    "word": "lettre",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "字母"
+    ],
+    "primaryMeaning": "字母",
+    "displacedMeanings": [
+      "信",
+      "信件",
+      "字面意思"
+    ],
+    "forms": [
+      {
+        "text": "lettre",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/lɛtʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Le mot « chat » a quatre lettres.",
+      "zh": "单词 chat 有四个字母。",
+      "meaning": "字母",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-lettre-courrier",
+    "word": "lettre",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "信，信件"
+    ],
+    "primaryMeaning": "信，信件",
+    "forms": [
+      {
+        "text": "lettre",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/lɛtʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Elle écrit une lettre à son frère.",
+      "zh": "她给哥哥写信。",
+      "meaning": "信，信件",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-lettre-litteral",
+    "word": "lettre",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "字面意思"
+    ],
+    "primaryMeaning": "字面意思",
+    "forms": [
+      {
+        "text": "lettre",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/lɛtʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Il suit les instructions à la lettre.",
+      "zh": "他严格照着说明做。",
+      "meaning": "字面意思",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex917f771e83f940b557cc",
+    "word": "entrée",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "courseIds": [
+      "w000385"
+    ],
+    "meanings": [
+      "前菜，头盘"
+    ],
+    "primaryMeaning": "前菜，头盘",
+    "displacedMeanings": [
+      "入口",
+      "门厅",
+      "入口，门厅",
+      "进入",
+      "入场券",
+      "开始"
+    ],
+    "forms": [
+      {
+        "text": "entrée",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɑ̃.tʁe/"
+      }
+    ],
+    "example": {
+      "fr": "Comme entrée, une salade.",
+      "zh": "前菜来一份沙拉。",
+      "meaning": "前菜，头盘",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-entree-acces",
+    "word": "entrée",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "courseIds": [
+      "w000514"
+    ],
+    "meanings": [
+      "入口，门厅",
+      "进入，入场"
+    ],
+    "primaryMeaning": "入口，门厅",
+    "displacedMeanings": [
+      "前菜",
+      "头盘",
+      "前菜，头盘",
+      "入场券",
+      "开始"
+    ],
+    "forms": [
+      {
+        "text": "entrée",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɑ̃.tʁe/"
+      }
+    ],
+    "example": {
+      "fr": "L'entrée est petite.",
+      "zh": "入口很小。",
+      "meaning": "入口，门厅",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-entree-billet",
+    "word": "entrée",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "入场券"
+    ],
+    "primaryMeaning": "入场券",
+    "forms": [
+      {
+        "text": "entrée",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɑ̃.tʁe/"
+      }
+    ],
+    "example": {
+      "fr": "J'ai gagné deux entrées pour le musée.",
+      "zh": "我赢得了两张博物馆门票。",
+      "meaning": "入场券",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-entree-debut",
+    "word": "entrée",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "开始，进入某个阶段"
+    ],
+    "primaryMeaning": "开始，进入某个阶段",
+    "forms": [
+      {
+        "text": "entrée",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɑ̃.tʁe/"
+      }
+    ],
+    "example": {
+      "fr": "L'entrée dans la vie active peut être difficile.",
+      "zh": "初入职场可能并不容易。",
+      "meaning": "开始，进入某个阶段",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexe642b12901a6ee51456f",
+    "word": "mode",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "courseIds": [
+      "w930257"
+    ],
+    "meanings": [
+      "时尚，流行"
+    ],
+    "primaryMeaning": "时尚，流行",
+    "displacedMeanings": [
+      "方式",
+      "方式，方法",
+      "方法"
+    ],
+    "forms": [
+      {
+        "text": "mode",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/mɔd/"
+      }
+    ],
+    "example": {
+      "fr": "La mode change chaque saison.",
+      "zh": "时尚每个季节都在变。",
+      "meaning": "时尚，流行",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-mode-maniere",
+    "word": "mode",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "courseIds": [
+      "w930149"
+    ],
+    "meanings": [
+      "方式，模式"
+    ],
+    "primaryMeaning": "方式，模式",
+    "displacedMeanings": [
+      "时尚",
+      "时尚，流行",
+      "流行"
+    ],
+    "forms": [
+      {
+        "text": "mode",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/mɔd/"
+      }
+    ],
+    "example": {
+      "fr": "Ce mode de vie respecte l'environnement.",
+      "zh": "这种生活方式尊重环境。",
+      "meaning": "方式，模式",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lexce69118d2572468ab7ef",
+    "word": "plat",
+    "aliases": [
+      "plate"
+    ],
+    "pos": "adj.",
+    "gender": "m",
+    "splitSense": true,
+    "meanings": [
+      "平坦的，平的"
+    ],
+    "primaryMeaning": "平坦的，平的",
+    "forms": [
+      {
+        "text": "plat",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/pla/"
+      },
+      {
+        "text": "plate",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/plat/"
+      }
+    ],
+    "example": {
+      "fr": "La route est plate jusqu'au village.",
+      "zh": "到村子的这段路很平坦。",
+      "meaning": "平坦的，平的",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-plat-cuisine",
+    "word": "plat",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "courseIds": [
+      "w000386"
+    ],
+    "meanings": [
+      "菜肴，一道菜",
+      "主菜"
+    ],
+    "primaryMeaning": "菜肴，一道菜",
+    "forms": [
+      {
+        "text": "plat",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/pla/"
+      }
+    ],
+    "example": {
+      "fr": "Comme plat, un poulet.",
+      "zh": "主菜来一份鸡肉。",
+      "meaning": "菜肴，一道菜",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex1877f8434a21d296169b",
+    "word": "ferme",
+    "pos": "adj.",
+    "gender": null,
+    "splitSense": true,
+    "meanings": [
+      "坚实的，坚固的"
+    ],
+    "primaryMeaning": "坚实的，坚固的",
+    "forms": [
+      {
+        "text": "ferme",
+        "gender": null,
+        "tested": true,
+        "ipa": "/fɛʁm/"
+      }
+    ],
+    "example": {
+      "fr": "Le matelas est ferme.",
+      "zh": "这张床垫很硬实。",
+      "meaning": "坚实的，坚固的",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-ferme-agriculture",
+    "word": "ferme",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "meanings": [
+      "农场"
+    ],
+    "primaryMeaning": "农场",
+    "forms": [
+      {
+        "text": "ferme",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/fɛʁm/"
+      }
+    ],
+    "example": {
+      "fr": "Ils élèvent des chèvres à la ferme.",
+      "zh": "他们在农场养山羊。",
+      "meaning": "农场",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  }
+]

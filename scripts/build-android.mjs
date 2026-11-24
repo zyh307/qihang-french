@@ -13,7 +13,7 @@ const tools=path.join(sdk,'build-tools/android-15');
 const java=process.env.JAVA_HOME?path.join(process.env.JAVA_HOME,'bin'):'D:/bin';
 const build=path.join(root,'android/build'),signing=path.join(root,'android/signing');
 const output=path.join(root,'安卓安装包');
-let version=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).version;
+let version=JSON.parse(fs.readFileSync(path.join(root,'src/manifest.json'),'utf8')).versionName;
 let appName=JSON.parse(fs.readFileSync(path.join(root,'src/manifest.json'),'utf8')).name;
 let androidManifest=fs.readFileSync(path.join(root,'android/AndroidManifest.xml'),'utf8');
 const repairArgument=process.argv.find(a=>a.startsWith('--repair-existing='));

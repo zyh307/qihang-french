@@ -6,10 +6,16 @@ const taskKey = e => `${wordKey(e)}|${e.personne}`;
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
 export function mix(items) { const a = [...items]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 export const MATCH_BOARD_SIZE=6;
-function mixedTasks(tasks,limit){
-  const buckets=new Map();for(const task of tasks){const key=wordKey(task);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(task);}
-  const result=[];while(result.length<limit&&buckets.size)for(const key of mix([...buckets.keys()])){
-    const bucket=buckets.get(key);result.push(bucket.shift());if(!bucket.length)buckets.delete(key);if(result.length===limit)break;
+function mixedTasks(tasks,limit,seed=[]){
+  const waiting=mix(tasks),result=[],persons=new Map(),verbs=new Map();
+  const remember=task=>{persons.set(task.personne,(persons.get(task.personne)||0)+1);const key=wordKey(task);verbs.set(key,(verbs.get(key)||0)+1);};
+  for(const task of seed)remember(task);
+  while(result.length<limit&&waiting.length){
+    // Spread both person labels and verbs instead of taking the first person
+    // from every verb bucket (which could produce a board full of je or tu).
+    const score=task=>(persons.has(task.personne)?100:0)+(verbs.get(wordKey(task))||0)*10+(persons.get(task.personne)||0);
+    let index=0;for(let i=1;i<waiting.length;i++)if(score(waiting[i])<score(waiting[index]))index=i;
+    const [task]=waiting.splice(index,1);result.push(task);remember(task);
   }
   return result;
 }
@@ -22,6 +28,10 @@ const require = (ok, text) => { if (!ok) throw new Error(text); };
 export class MatchSession {
   constructor(state, env) {
     this.s = state; this.env = env;
+    if(state.board&&state.phase==='match'){
+      state.board.rule=3;
+      if(state.question?.board?.id===state.board.id)state.question.board.rule=3;
+    }
     if (state.game_version < 2) {
       state.match_rounds = Math.max(state.phase === 'match' ? state.cycle : 0, state.mode === 'review' || state.entries?.every(e => e.reviewed) ? 1 : 2);
       state.game_version = 2;
@@ -101,8 +111,9 @@ export class MatchSession {
   tasks() { return this.s.entries.filter(e => this.s.decisions[wordKey(e)] !== 1).flatMap(e => e.personnes.map(personne => ({ verbe: e.verbe, temps: e.temps, personne, key: taskKey({ ...e, personne }) }))); }
   matchCards(){
     const chosen=mixedTasks(this.s.pending,MATCH_BOARD_SIZE),used=new Set(chosen.map(e=>e.key));
-    const expand=entries=>entries.flatMap(e=>Object.keys(this.env.forms(e.verbe,e.temps)).map(personne=>({verbe:e.verbe,temps:e.temps,personne,key:taskKey({...e,personne}),filler:true})));
-    const add=entries=>{for(const task of mixedTasks(expand(entries).filter(e=>!used.has(e.key)),MATCH_BOARD_SIZE-chosen.length)){chosen.push(task);used.add(task.key);}};
+    const expand=entries=>entries.flatMap(e=>Object.entries(this.env.forms(e.verbe,e.temps)).filter(([,form])=>form&&form!=='—').map(([personne])=>({verbe:e.verbe,temps:e.temps,personne,key:taskKey({...e,personne}),filler:true})));
+    const pool=expand(this.s.entries);
+    const add=entries=>{const tasks=expand(entries);pool.push(...tasks);for(const task of mixedTasks(tasks.filter(e=>!used.has(e.key)),MATCH_BOARD_SIZE-chosen.length,chosen)){chosen.push(task);used.add(task.key);}};
     if(chosen.length<MATCH_BOARD_SIZE)add(this.s.entries);
     if(chosen.length<MATCH_BOARD_SIZE){
       const verbs=new Set(this.s.entries.map(e=>e.verbe)),extra=[];
@@ -110,6 +121,16 @@ export class MatchSession {
         if(verbs.has(e.verbe))continue;if(verbs.size>=3)break;verbs.add(e.verbe);extra.push(e);
       }
       add(extra);
+    }
+    // A retry queue can contain only one person. Keep its tasks pending and
+    // replace duplicate-person slots with valid support cards from this group.
+    const pending=new Map(this.s.pending.map(task=>[task.key,task])),target=Math.min(3,new Set(pool.map(task=>task.personne)).size,chosen.length);
+    while(new Set(chosen.map(task=>task.personne)).size<target){
+      const counts=new Map();for(const task of chosen)counts.set(task.personne,(counts.get(task.personne)||0)+1);
+      const candidate=mixedTasks(pool.filter(task=>!used.has(task.key)&&!counts.has(task.personne)),1,chosen)[0];
+      let index=-1;for(let i=chosen.length-1;i>=0;i--)if(counts.get(chosen[i].personne)>1){index=i;break;}
+      if(!candidate||index<0)break;
+      used.delete(chosen[index].key);chosen[index]=pending.get(candidate.key)||candidate;used.add(candidate.key);
     }
     return chosen.map(e=>({...e,form:this.env.forms(e.verbe,e.temps)[e.personne]}));
   }
@@ -143,11 +164,11 @@ export class MatchSession {
         if(s.board){
           const b=s.board,left=b.cards.filter(card=>!b.matched_left.includes(card.key));
           const playable=b.cards.some(card=>!b.matched_right.includes(card.key)&&left.some(slot=>this.env.forms(b.rule===2?slot.verbe:card.verbe,b.rule===2?slot.temps:card.temps)[b.left_persons?.[slot.key]||slot.personne]===card.form));
-          if(!playable)s.board=null;
+          if(!playable){s.board=null;if(!s.pending.length)continue;}
         }
         if (!s.board || s.board.matched_left.length === s.board.cards.length) {
           const cards=this.matchCards();
-          s.board = { id: uid(),rule:2,cards,left:mix(cards.map(e=>e.key)),right:mix(cards.map(e=>e.key)),left_persons:Object.fromEntries(cards.map(e=>[e.key,e.personne])),matched_left:[],matched_right:[] };
+          s.board = { id: uid(),rule:3,cards,left:mix(cards.map(e=>e.key)),right:mix(cards.map(e=>e.key)),left_persons:Object.fromEntries(cards.map(e=>[e.key,e.personne])),matched_left:[],matched_right:[] };
         }
         entry=s.board.cards.find(card=>!(s.board.rule===2?s.board.matched_left:s.board.matched_right).includes(card.key));
       }
@@ -177,10 +198,12 @@ export class MatchSession {
       const form = b.cards.find(e => e.key === body.form_key);
       require(left && form && !b.matched_left.includes(left.key) && !b.matched_right.includes(form.key), '请选择两张尚未消除的卡片。');
       b.left_persons ||= Object.fromEntries(b.cards.map(e => [e.key, e.personne]));
-      const person = b.left_persons[left.key], forms = this.env.forms(b.rule===2?left.verbe:form.verbe,b.rule===2?left.temps:form.temps);
+      const person = b.left_persons[left.key]||left.personne, forms = this.env.forms(b.rule===2?left.verbe:form.verbe,b.rule===2?left.temps:form.temps);
       expected = forms[person] || form.form;
       correct = forms[person] === form.form;
-      entry = b.rule===2?{...left,personne:person}:correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
+      // The visible right-hand form owns the task and its error record. A
+      // different verb on the hidden left slot never changes its person.
+      entry = b.rule===3?form:b.rule===2?{...left,personne:person}:correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
       if (correct) {
         b.matched_left.push(left.key); b.matched_right.push(form.key);
       } else if (!s.repeating&&!entry.filler) { s.match_retry ||= {}; s.match_retry[entry.key] = clone(entry); }
@@ -193,6 +216,12 @@ export class MatchSession {
     const deferred=!correct&&!entry.filler&&this.env.record(correct, entry)===true;
     if(correct&&!entry.filler)this.env.record(correct,entry);
     if(deferred){this.defer(entry);return {correct:false,expected,deferred:true,matched:s.phase==='match',next:this.question()};}
+    // Reinforcement is bounded: a lone real task gets this extra attempt,
+    // then moves on to spelling even if it is still wrong. Keep the failure
+    // recorded; support tiles must never create another retry round.
+    if(!correct&&s.phase==='match'&&s.repeating&&!entry.filler&&s.pending.length===1&&s.pending[0].key===entry.key){
+      s.pending=[];s.match_retry={};s.board=null;
+    }
     if (correct) {
       s.pending = s.pending.filter(e => e.key !== entry.key); s.done++; s.batch_done++;
       if (s.phase === 'fill' && s.fill_retry?.[entry.key]) { delete s.fill_retry[entry.key]; s.pending.push(entry); if (s.pending.length > 1 && s.pending[0].key === entry.key) [s.pending[0], s.pending[1]] = [s.pending[1], s.pending[0]]; }
@@ -208,13 +237,24 @@ export class MatchSession {
     s.cursor--; this.activate(); return this.question();
   }
   defer(entry){
-    const s=this.s,id=wordKey(entry),belongs=e=>wordKey(e)===id;
-    s.deferred_words||=[];if(!s.deferred_words.includes(id))s.deferred_words.push(id);
+    const s=this.s,id=wordKey(entry),wholeLemma=this.env.deferWholeLemma?.(entry);
+    const belongs=e=>wholeLemma?e.verbe===entry.verbe:wordKey(e)===id;
+    const removed=new Set([id,...s.groups.flatMap(group=>group.entries.filter(belongs).map(wordKey))]);
+    s.deferred_words=[...new Set([...(s.deferred_words||[]),...removed])];
     if(this.env.deferToTail?.(entry)&&!s.tailRound){const source=s.entries.find(e=>wordKey(e)===id);if(source){s.learningTailEntries||=[];if(!s.learningTailEntries.some(e=>wordKey(e)===id))s.learningTailEntries.push(clone(source));}}
-    for(const group of s.groups)group.entries=group.entries.filter(e=>!belongs(e));
-    s.entries=(s.entries||[]).filter(e=>!belongs(e));s.pending=(s.pending||[]).filter(e=>!belongs(e));s.judges=(s.judges||[]).filter(key=>key!==id);
-    for(const key of Object.keys(s.match_retry||{}))if(key.startsWith(id+'|'))delete s.match_retry[key];
-    for(const key of Object.keys(s.fill_retry||{}))if(key.startsWith(id+'|'))delete s.fill_retry[key];
+    const removeTasks=state=>{
+      state.pending=(state.pending||[]).filter(e=>!belongs(e));
+      state.judges=(state.judges||[]).filter(key=>!removed.has(key));
+      for(const table of [state.match_retry,state.fill_retry]){
+        for(const key of Object.keys(table||{}))if(removed.has(key.slice(0,key.lastIndexOf('|'))))delete table[key];
+      }
+    };
+    for(const group of s.groups){
+      if(!group.entries.some(belongs))continue;
+      group.entries=group.entries.filter(e=>!belongs(e));
+      if(group.continuation)removeTasks(group.continuation);
+    }
+    s.entries=(s.entries||[]).filter(e=>!belongs(e));removeTasks(s);
     s.board=null;s.question=null;
   }
   remove(selected, returned = []) {

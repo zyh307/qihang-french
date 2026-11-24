@@ -3,7 +3,14 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),tools
 await fs.mkdir(out,{recursive:true});if(path.relative(root,classes)!==path.join('native','build','classes'))throw Error('Invalid build directory');await fs.rm(classes,{recursive:true,force:true});await fs.mkdir(classes,{recursive:true});
 function run(cmd,args){const r=spawnSync(cmd,args,{cwd:root,windowsHide:true,stdio:'inherit'});if(r.error||r.status)throw r.error||Error(cmd+' failed: '+r.status);}
 async function sources(dir){const all=[];for(const e of await fs.readdir(dir,{withFileTypes:true})){if(e.isDirectory())all.push(...await sources(path.join(dir,e.name)));else if(e.name.endsWith('.java'))all.push(path.join(dir,e.name));}return all;}
-run('D:/bin/javac.exe',['-source','17','-target','17','-Xlint:-options','-encoding','UTF-8','-cp',path.join(tools,'json.jar'),'-d',classes,...await sources(path.join(root,'native/common')),...await sources(path.join(root,'native/windows'))]);
+const version=JSON.parse(await fs.readFile(path.join(root,'src/manifest.json'),'utf8')).versionName;
+const hostSource=path.join(root,'native/windows/WindowsApp.java');
+const generatedDir=path.join(root,'native/build/windows-host-source');
+await fs.mkdir(generatedDir,{recursive:true});
+const generatedSource=path.join(generatedDir,'WindowsApp.java');
+await fs.writeFile(generatedSource,(await fs.readFile(hostSource,'utf8')).replaceAll('__VERSION__',version));
+const windowsSources=(await sources(path.join(root,'native/windows'))).map(file=>file===hostSource?generatedSource:file);
+run('D:/bin/javac.exe',['-source','17','-target','17','-Xlint:-options','-encoding','UTF-8','-cp',path.join(tools,'json.jar'),'-d',classes,...await sources(path.join(root,'native/common')),...windowsSources]);
 run('D:/bin/jar.exe',['cf',path.join(out,'qihang-oral.jar'),'-C',classes,'.']);
 await fs.copyFile(path.join(tools,'json.jar'),path.join(out,'json.jar'));
 const asset=JSON.parse(await fs.readFile(path.join(tools,'jre-assets.json'),'utf8'))[0];

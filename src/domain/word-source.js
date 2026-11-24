@@ -22,6 +22,8 @@ export function makeWordSourceLookup(data){
   for(const name of names(w))if(!textbook.has(name))textbook.set(name,lessonSourceLabel(p));
  }
  return (p,w)=>{
+  const merged=w.vocabularyMerge?.source;
+  if(merged?.bookId)return (/^inspire[1-4]$/u.test(merged.bookId)?'INSPIRE '+merged.bookId.slice(-1):String(merged.title||merged.bookId).split(' · ')[0])+' · '+merged.lessonId;
   if(w.fosAuthority?.source)return w.fosAuthority.source;
   for(const name of names(w))if(textbook.has(name))return textbook.get(name);
   const sourceKey=w.origin?.lessonKey,original=sourceKey?data.library.find(p=>p.book.id+':'+p.lesson.id===sourceKey):p;

@@ -13,13 +13,16 @@ export function nextNormalReview(anchor,today){
  const cycle=Math.max(1,Math.floor((elapsed(anchor,today)-lastOffset)/30)+1);
  return {reviewIndex:offsets.length,due:shiftDate(anchor,lastOffset+cycle*30),longReview:true};
 }
+export function isNormalReview(form,today){
+ return !!form&&((!!form.due&&form.due<=today)||form.lastNormalReviewedAt===today);
+}
 export function completeReviewRecord(form,settings,today,failed){
  if(!form.learnedAt){const remedialDates=form.remedialDates||[];Object.assign(form,newReviewRecord(today),{remedialDates});delete form.pendingLearning;}
  const anchor=form.reviewAnchor||form.learnedAt;
  // A retry is a single extra visit, not a new daily review chain. A normal
  // review (including an overdue one) may create one next-day retry. Multiple
  // attempts on that normal-review day still belong to the same normal visit.
- const normalReview=!!form.due&&form.due<=today||form.lastNormalReviewedAt===today;
+ const normalReview=isNormalReview(form,today);
  if(form.lastNormalReviewedAt!==today&&form.due&&form.due<=today){Object.assign(form,nextNormalReview(anchor,today));form.lastNormalReviewedAt=today;}
  if(form.retryDue&&form.retryDue<=today)delete form.retryDue;
  if(failed&&normalReview&&settings.reviewErrorRetry!==false)form.retryDue=shiftDate(today,1);

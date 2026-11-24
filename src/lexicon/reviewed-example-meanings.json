@@ -6830,15 +6830,29 @@
   "boîte": {
     "fr": "Il y a une boîte de thon.",
     "meaning": "罐头",
-    "meanings": ["罐头", "盒子", "罐"],
-    "previousMeanings": ["盒子", "罐"],
+    "meanings": [
+      "罐头",
+      "盒子",
+      "罐"
+    ],
+    "previousMeanings": [
+      "盒子",
+      "罐"
+    ],
     "applyToCurriculum": true
   },
   "boite": {
     "fr": "Il y a une boîte de thon.",
     "meaning": "罐头",
-    "meanings": ["罐头", "盒子", "罐"],
-    "previousMeanings": ["盒子", "罐"],
+    "meanings": [
+      "罐头",
+      "盒子",
+      "罐"
+    ],
+    "previousMeanings": [
+      "盒子",
+      "罐"
+    ],
     "applyToCurriculum": true
   },
   "ace": {
@@ -6854,5 +6868,440 @@
     "invalidMeanings": [
       "幺点"
     ]
+  },
+  "gobelet": {
+    "fr": "Oui, je n’ai soif que de vin sans bouquet, dans ce seul gobelet de la cuisine, épais aux lèvres, où ma langue habituée tâtait une bulle soufflée dans le verre grossier.",
+    "meaning": "无柄杯",
+    "zh": "是的，我只想喝没有香气的葡萄酒，就用厨房里那只厚口沿的杯子；舌头习惯地碰触着粗玻璃里吹出的气泡。"
+  },
+  "rayon": {
+    "fr": "Les mouchoirs sont dans le rayon d'après.",
+    "meaning": "商品区",
+    "zh": "手帕在下一个商品区。"
+  },
+  "primeur": {
+    "fr": "Les figues de primeur sont annoncées.",
+    "meaning": "初上市的时鲜",
+    "zh": "早季无花果上市的消息已经公布。"
+  },
+  "vocation": {
+    "fr": "Pour moi, être médecin n'est pas un emploi, c'est une vocation.",
+    "meaning": "志向，使命感",
+    "zh": "对我来说，当医生不只是一份工作，更是一种使命。"
+  },
+  "forfait": {
+    "fr": "J'ai gagné par forfait",
+    "meaning": "弃权",
+    "zh": "我因对手弃权而获胜。"
+  },
+  "menu": {
+    "fr": "Avez-vous un menu spécial pour les végétariens ?",
+    "meaning": "菜单",
+    "pos": "n.",
+    "gender": "m"
+  },
+  "technique": {
+    "fr": "Avant d'arnaquer une nouvelle victime, un escroc polit son art de l'aveuglement, c'est-à-dire sa technique pour arnaquer les gens.",
+    "meaning": "技术，技巧",
+    "pos": "n.",
+    "gender": "f"
+  },
+  "doux": {
+    "fr": "De façon générale, le climat du Japon est plutôt doux.",
+    "meaning": "温和的"
+  },
+  "vaisseau": {
+    "fr": "Ce vaisseau spatial est propulsé par un moteur ionique.",
+    "meaning": "宇宙飞船",
+    "meanings": [
+      "船舰",
+      "宇宙飞船",
+      "血管"
+    ],
+    "previousMeanings": [
+      "船",
+      "管"
+    ],
+    "zh": "这艘宇宙飞船由离子发动机推进。"
+  },
+  "municipalité": {
+    "fr": "Du devoir pour les municipalités d’assainir les quartiers insalubres des villes manufacturières.",
+    "meaning": "市政府"
+  },
+  "flacon": {
+    "fr": "Sur le buffet, rien qu’une chaîne hi-fi et un flacon d’ambre solaire entamé.",
+    "meaning": "小瓶",
+    "zh": "餐具柜上只有一套音响和一瓶已经用过的防晒液。"
+  },
+  "rapporteur": {
+    "fr": "Le rapporteur a examiné la conjoncture des pays situés au sud de la Méditerranée.",
+    "meaning": "报告人"
+  },
+  "gentil": {
+    "fr": "C'est très gentil de ta part de m'envoyer un si joli cadeau.",
+    "meaning": "亲切的，友善的"
+  },
+  "formidable": {
+    "fr": "Parce que ce président à un certain statut dans l'entreprise, il se trouve à tort formidable.",
+    "meaning": "极好的，了不起的"
+  },
+  "sensibilité": {
+    "fr": "Son ton sévère et sa voix forte masquaient sa sensibilité intérieure et sa nature attentionnée.",
+    "meaning": "敏感，感受力"
+  },
+  "joindre": {
+    "fr": "Nous avons été incapables de les joindre jusqu'à ce qu'il soit trop tard.",
+    "meaning": "联系"
+  },
+  "attention": {
+    "fr": "Attention ! Dépendance émotionnelle n'est pas synonyme d'amour !",
+    "meaning": "当心，注意"
+  },
+  "conquis": {
+    "fr": "Sais-tu qui a conquis le mont Everest en premier ?",
+    "meaning": "征服了"
+  },
+  "approchant": {
+    "fr": "Un critique a observé que les personnages de mes livres sont de préférence présentés dans la perspective de la mort approchante, et que celle-ci dénie toute signification à la vie.",
+    "meaning": "临近的"
+  },
+  "censurer": {
+    "fr": "Je me demande quel sera le premier pays à censurer Tatoeba ?",
+    "meaning": "审查，删禁"
+  },
+  "pot": {
+    "fr": "Un pot de confiture.",
+    "meaning": "罐"
+  },
+  "commune": {
+    "fr": "Un glissement de terrain est survenu dans la commune voisine.",
+    "meaning": "市镇"
+  },
+  "tâche": {
+    "fr": "Il a accompli sa tâche sans entrain.",
+    "meaning": "任务"
+  },
+  "cesse": {
+    "fr": "Tom a parlé sans cesse toute la nuit.",
+    "meaning": "停歇"
+  },
+  "bol": {
+    "fr": "Elle façonne un bol sur son tour de potier.",
+    "meaning": "碗"
+  },
+  "bois": {
+    "fr": "Une maison en bois brûle plus facilement qu'une maison de pierre.",
+    "meaning": "木材"
+  },
+  "reporter": {
+    "fr": "Nous devons reporter la réunion à demain.",
+    "meaning": "推迟"
+  },
+  "préfecture": {
+    "fr": "Les dégâts du typhon s'étendaient sur plusieurs préfectures.",
+    "meaning": "行政区"
+  },
+  "moustache": {
+    "fr": "Il a rasé sa moustache.",
+    "meaning": "胡子",
+    "meanings": [
+      "胡子",
+      "上唇的胡子"
+    ],
+    "previousMeanings": [
+      "髭"
+    ],
+    "invalidMeanings": [
+      "髭"
+    ]
+  },
+  "barbe": {
+    "fr": "Il a laissé pousser sa barbe pour avoir l'air plus mûr.",
+    "meaning": "胡子（下巴及面颊）",
+    "meanings": [
+      "胡子（下巴及面颊）",
+      "动物的须",
+      "植物的芒刺"
+    ],
+    "previousMeanings": [
+      "n.f. 胡子，胡须，髯；（某些动物的）须；鸟羽支；芒，芒刺；〈俗〉厌烦；interj. 〈俗〉厌烦恼火，不耐烦n.m. et adj. 柏柏尔马"
+    ],
+    "invalidMeanings": [
+      "胡子，胡须，髯"
+    ]
+  },
+  "millet": {
+    "fr": "Il sème du millet.",
+    "meaning": "小米",
+    "meanings": [
+      "小米"
+    ],
+    "previousMeanings": [
+      "稷"
+    ],
+    "invalidMeanings": [
+      "稷"
+    ]
+  },
+  "cheville": {
+    "fr": "Cheville, cheville, où es-tu ?",
+    "meaning": "脚踝",
+    "meanings": [
+      "脚踝",
+      "木钉，插销",
+      "弦轴"
+    ],
+    "previousMeanings": [
+      "n.f. 踝，踝骨；木钉；销，栓，楔；［乐］弦轴；（诗中）凑音步、韵脚的词"
+    ]
+  },
+  "avide": {
+    "fr": "Un avare amasse de l'argent non pas parce qu'il est prudent mais parce qu'il est avide.",
+    "meaning": "贪婪的",
+    "meanings": [
+      "贪婪的",
+      "渴望的"
+    ],
+    "previousMeanings": [
+      "渴望的，觊觎的",
+      "贪婪的"
+    ]
+  },
+  "veau": {
+    "fr": "Les pique-assiettes réussirent à s’emparer de tranches de veau par dizaines, qu’ils couronnaient sur leur assiette par une macédoine de légumes […].",
+    "meaning": "小牛肉",
+    "meanings": [
+      "小牛肉",
+      "小牛",
+      "小牛皮"
+    ],
+    "previousMeanings": [
+      "牛犊",
+      "牛犊肉",
+      "小牛皮"
+    ]
+  },
+  "certain": {
+    "fr": "La vieille chaumière avait un certain charme en elle-même.",
+    "meaning": "一定的",
+    "meanings": [
+      "一定的",
+      "某个，某些",
+      "确定的，确信的"
+    ],
+    "previousMeanings": [
+      "adj. 肯定的，一定的；确信无疑的，确实的，确凿的；相当大的adj. 某一个，有一个；某些，有些；~s，certaines pron.pl. 某些事情，有些事情；某些人，有些人"
+    ]
+  },
+  "sanguine": {
+    "fr": "Elle dessine un portrait à la sanguine.",
+    "meaning": "红粉笔",
+    "meanings": [
+      "红粉笔",
+      "红褐色素描"
+    ],
+    "previousMeanings": [
+      "酊"
+    ],
+    "zh": "她用红粉笔画一幅肖像。",
+    "invalidMeanings": [
+      "酊"
+    ]
+  },
+  "milan": {
+    "fr": "Un milan plane au-dessus de la forêt.",
+    "meaning": "鹰类猛禽",
+    "meanings": [
+      "鹰类猛禽"
+    ],
+    "previousMeanings": [
+      "鸢"
+    ],
+    "zh": "一只鹰类猛禽在森林上空盘旋。",
+    "invalidMeanings": [
+      "鸢"
+    ]
+  },
+  "poutine": {
+    "fr": "La poutine contient des frites, du fromage et de la sauce.",
+    "meaning": "肉汁奶酪薯条",
+    "meanings": [
+      "肉汁奶酪薯条"
+    ],
+    "previousMeanings": [
+      "肉汁奶酪薯条"
+    ],
+    "zh": "肉汁奶酪薯条有薯条、奶酪和肉汁。"
+  },
+  "est": {
+    "fr": "Le vent vient du côté est.",
+    "meaning": "东的，东部的",
+    "meanings": [
+      "东的，东部的",
+      "东，东部"
+    ],
+    "previousMeanings": [
+      "东的，东部的",
+      "东，东部"
+    ],
+    "zh": "风从东边吹来。"
+  },
+  "un": {
+    "fr": "Le peuple est un et indivisible.",
+    "meaning": "统一的，单一的",
+    "meanings": [
+      "统一的，单一的",
+      "一个",
+      "全部的"
+    ],
+    "previousMeanings": [
+      "统一的，单一的，合成一体的，不能分割的。",
+      "一个。",
+      "全部的，所有的。",
+      "一个，其中一个。"
+    ],
+    "zh": "人民团结一致、不可分割。"
+  },
+  "le": {
+    "fr": "Le livre est sur la table.",
+    "meaning": "定冠词（阳性单数）",
+    "meanings": [
+      "定冠词（阳性单数）"
+    ],
+    "previousMeanings": [
+      "阳性、单数（le后面的词以元音开头时，一律发生连读，元音省略，le变成l'。同de连用时，de le 结合成 du，同à连用时，à le 结合成 au。）",
+      "表示阳性单数的宾语（同de连用时，de le 不结合成 du）"
+    ],
+    "zh": "书在桌上。"
+  },
+  "que": {
+    "fr": "Je sais que tu es ici.",
+    "meaning": "引导陈述从句",
+    "meanings": [
+      "引导陈述从句"
+    ],
+    "previousMeanings": [
+      "作关系代词时\nQue作直接宾语，性数和先行词一致。所以如果从句中如果有以avoir构成的复合时态，过去分词要与que性数一致。"
+    ],
+    "zh": "我知道你在这里。"
+  },
+  "a": {
+    "fr": "Le mot « ami » commence par la lettre a.",
+    "meaning": "字母 a",
+    "meanings": [
+      "字母 a"
+    ],
+    "previousMeanings": [
+      "法语字母中第一个字母，小写为a"
+    ],
+    "zh": "单词 ami 以字母 a 开头。"
+  },
+  "en plus de": {
+    "fr": "En plus de son travail, elle suit des cours.",
+    "meaning": "除了……之外还",
+    "meanings": [
+      "除了……之外还"
+    ],
+    "previousMeanings": [
+      "除了……之外还"
+    ],
+    "zh": "除了工作，她还上课。"
+  },
+  "en fait de": {
+    "fr": "En fait de musique, elle préfère le jazz.",
+    "meaning": "在……方面",
+    "meanings": [
+      "在……方面"
+    ],
+    "previousMeanings": [
+      "关于……，在……方面"
+    ],
+    "zh": "在音乐方面，她更喜欢爵士乐。"
+  },
+  "de ce fait": {
+    "fr": "Il pleut ; de ce fait, la sortie est annulée.",
+    "meaning": "因此，所以",
+    "meanings": [
+      "因此，所以"
+    ],
+    "previousMeanings": [
+      "因此，所以"
+    ],
+    "zh": "下雨了，因此外出活动取消。"
+  },
+  "de rien": {
+    "fr": "— Merci ! — De rien !",
+    "meaning": "不用谢",
+    "meanings": [
+      "不用谢"
+    ],
+    "previousMeanings": [
+      "（被说谢谢以后的回答）不用谢，没事"
+    ],
+    "zh": "——谢谢！——不用谢！"
+  },
+  "à temps": {
+    "fr": "Nous sommes arrivés à temps.",
+    "meaning": "及时",
+    "meanings": [
+      "及时"
+    ],
+    "previousMeanings": [
+      "adv. 及时的",
+      "v. 时间（时代，时机，次）"
+    ],
+    "zh": "我们及时赶到了。"
+  },
+  "dire que": {
+    "fr": "Dire que j'ai failli oublier ton anniversaire !",
+    "meaning": "竟然，居然",
+    "meanings": [
+      "竟然，居然"
+    ],
+    "previousMeanings": [
+      "竟然，居然（后接陈述从句）"
+    ],
+    "zh": "我竟然差点忘了你的生日！"
+  },
+  "être": {
+    "fr": "Ce ne peut pas être Mary. Elle est à l'hôpital en ce moment.",
+    "meaning": "是",
+    "meanings": [
+      "是",
+      "在",
+      "存在"
+    ],
+    "previousMeanings": [
+      "存在",
+      "是，为 （系动词）",
+      "在 （系动词）",
+      "有，存在 （现一般用il y a）"
+    ]
+  },
+  "alors que": {
+    "fr": "Gcc est un compilateur alors que python est un interpréteur.",
+    "meaning": "而，却",
+    "meanings": [
+      "而，却",
+      "当……时",
+      "尽管，虽然"
+    ],
+    "previousMeanings": [
+      "尽管，虽然",
+      "当，在...时"
+    ]
+  },
+  "dit": {
+    "fr": "Le jour dit, nous sommes arrivés à midi.",
+    "meaning": "所说的，约定的",
+    "meanings": [
+      "所说的，约定的",
+      "称为"
+    ],
+    "previousMeanings": [
+      "所说的",
+      "称为"
+    ],
+    "zh": "约定的那天，我们中午到了。"
   }
 }

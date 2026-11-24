@@ -73,6 +73,11 @@ onMounted(()=>{
 });
 watch(()=>props.modelValue,value=>{if(field&&field.value!==value){field.value=value;field.setSelectionRange(value.length,value.length);updateCaret(true);}});
 watch(()=>props.active,()=>updateCaret(true),{flush:'post'});
+watch(()=>props.touch,touch=>{
+  if(!field)return;
+  field.readOnly=touch;field.inputMode=touch?'none':'text';
+  updateCaret();
+});
 watch(()=>props.disabled,value=>{if(field)field.disabled=value;updateCaret();});
 onUnmounted(()=>{observer?.disconnect();caretAnimation?.cancel();removeListeners();});
 defineExpose({get element(){return field;},focus,blur,replaceRange});
@@ -81,7 +86,7 @@ defineExpose({get element(){return field;},focus,blur,replaceRange});
 .answer-textbox{position:relative;flex:1;width:0;min-width:0;height:44px;font:29px Georgia,serif;overflow:hidden}
 .exercise-entry .answer-textbox>.answer-native-input{display:block;box-sizing:border-box;width:100%;height:100%;padding:0 3px;border:0;outline:0!important;border-radius:0;background:transparent;font:inherit;color:inherit;line-height:normal;box-shadow:none;letter-spacing:inherit;text-align:left;-webkit-appearance:none;appearance:none}
 .touch-answer>.answer-native-input{caret-color:transparent;touch-action:manipulation;-webkit-text-fill-color:currentColor}
-.answer-native-caret{display:block;position:absolute;z-index:2;top:50%;width:2px;height:1.08em;border-radius:1px;background:#5279b5;transform:translateY(-50%);pointer-events:none}
+.answer-native-caret{display:block;position:absolute;z-index:2;top:50%;width:2px;height:1.08em;border-radius:1px;background:var(--ui-9fd7a97b6356,#5279b5);transform:translateY(-50%);pointer-events:none}
 .answer-native-caret[hidden]{display:none}
 @media(max-width:720px){.answer-textbox{font-size:25px;height:42px}}
 @media(prefers-reduced-motion:reduce){.answer-native-caret{opacity:1!important}}

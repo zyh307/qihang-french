@@ -2,32 +2,38 @@ import reviewedExamples from '../lexicon/reviewed-example-meanings.json' with {t
 import contextualMeanings from '../lexicon/contextual-primary-meanings.json' with {type:'json'};
 import {definitionText} from './definition-text.js';
 import definitionCorrections from '../lexicon/reviewed-definition-corrections.json' with {type:'json'};
+import exampleCorrections from '../lexicon/dictionary-example-corrections.json' with {type:'json'};
+import {refinedSense,refinedPrimary} from './meaning-nuances.js';
+import {applyFormRelations} from './form-relations.js';
+import {applyReviewedReading} from './word-readings.js';
+import {preferredNounAudio} from './word-display.js';
 const glossLabel=value=>String(value||'').trim()==='DIY'?'手工制作，家居修缮（DIY）':value;
-export function usageNote(word){
- const text=word?.lexiconWord||word?.word||word?.forms?.[0]?.text;
- return String(text||'').normalize('NFC').trim()==='nouvel'?'用于元音或哑音 h 开头的阳性单数名词前 / Devant un nom masculin singulier commençant par une voyelle ou un h muet.':'';
-}
 function shortSense(value){
  const original=definitionText(glossLabel(value)),short=original.replace(/^[1-9]\.\s*/u,'').replace(/［[^］]*］|【[^】]*】|\[[^\]]*\]|〈[^〉]*〉|（[^）]*）|\([^)]*\)/g,'').split(/(?:adv|adj|n|v|loc|prép|art)\./i)[0].split(/[；;\n]/)[0].trim();
  return !/\p{Script=Han}/u.test(short)&&/\p{Script=Han}/u.test(original)?original:short;
 }
-function splitSenseChunks(value){
- const text=String(value).trim(),chunks=[],closing=[],pairs={'(':')','（':'）','[':']','［':'］','【':'】','〈':'〉'};
- let start=0,count=0;
+function senseTerms(value){
+ const text=String(value).trim(),terms=[],closing=[],pairs={'(':')','（':'）','[':']','［':'］','【':'】','〈':'〉'};
+ let start=0;
  for(let i=0;i<text.length;i++){
   const char=text[i];
   if(pairs[char])closing.push(pairs[char]);
   else if(char===closing.at(-1))closing.pop();
-  else if(!closing.length&&/[，,、]/u.test(char)&&text.slice(start,i).trim()){
-   count++;
-   if(count===3){chunks.push(text.slice(start,i).trim());start=i+1;count=0;}
-  }
+  else if(!closing.length&&/[，,、]/u.test(char)){terms.push(text.slice(start,i).trim());start=i+1;}
  }
- const last=text.slice(start).trim();if(last)chunks.push(last);
+ terms.push(text.slice(start).trim());
+ return terms.filter(Boolean);
+}
+function splitSenseChunks(value){
+ const terms=senseTerms(value),chunks=[];
+ if(terms.length<=3)return [String(value).trim()].filter(Boolean);
+ for(let index=0;index<terms.length;index+=3){
+  chunks.push(terms.slice(index,index+3).join('，'));
+ }
  return chunks;
 }
 export function meaningPoints(word){
- return [...new Set((word?.meanings||[]).flatMap(value=>definitionText(glossLabel(value)).split(/[；;\n\r•●▪]+/u)).map(value=>definitionText(value).replace(/^(?:[-–—]\s+|\d+[.、．)]\s*|[①②③④⑤⑥⑦⑧⑨⑩]\s*)/u,'')).filter(value=>/\p{Script=Han}/u.test(value)).flatMap(splitSenseChunks))];
+ return [...new Set((word?.meanings||[]).flatMap(value=>definitionText(glossLabel(value)).split(/[；;\n\r•●▪]+/u)).map(value=>definitionText(value).replace(/^(?:[-–—]\s+|\d+[.、．)]\s*|[①②③④⑤⑥⑦⑧⑨⑩]\s*)/u,'')).filter(value=>/\p{Script=Han}/u.test(value)).flatMap(splitSenseChunks).map(value=>refinedSense(word,value)))];
 }
 const exampleKey=text=>String(text||'').normalize('NFC').replaceAll('’',"'").replace(/\s+/g,' ').trim();
 export function exampleMeaning(word){
@@ -46,21 +52,57 @@ function senseForPrimary(word,points){
  // their complete sense, without turning commas inside a sense into options.
  return points.find(value=>value===chosen)||points.find(value=>value.split(/[，,、]/u).some(part=>part.trim()===chosen))||chosen;
 }
-export function primaryMeaning(word){const points=meaningPoints(word).map(shortSense).filter(Boolean),chosen=senseForPrimary(word,points);return (word?.primaryMeaningChosen&&chosen)||exampleMeaning(word)||chosen||points[0]||String(word?.meanings?.[0]||'').trim();}
+function mainSense(word,full){
+ if(word?.primaryMeaningChosen&&/(?:\p{Script=Han}|^\d+(?:[.,]\d+)?$)/u.test(word.primaryMeaning||''))return word.primaryMeaning;
+ const points=full.map(shortSense).filter(Boolean),chosen=senseForPrimary(word,points);
+ return refinedPrimary(word,exampleMeaning(word)||chosen||points[0]||String(word?.meanings?.[0]||'').trim());
+}
+export const primaryMeaning=word=>mainSense(word,meaningPoints(word));
+export const questionMeaning=(word,form)=>form?.meaning?refinedPrimary(word,form.meaning):primaryMeaning(word);
+const synonymousTerm=new Map([
+ ['夏季','夏天'],['秋季','秋天'],['春季','春天'],['冬季','冬天'],
+ ['电脑','计算机'],['事实上','实际上'],['同僚','同事'],['太空旅行者','宇航员'],
+]);
+const senseKey=value=>{
+ const clean=value.normalize('NFKC').replace(/^\s*\[(?:阴|阳|阴性|阳性|名词|动词|形容词)\]\s*/u,'').replace(/[\s。．.!！?？]+$/gu,'').trim();
+ return synonymousTerm.get(clean)||clean;
+};
+export const senseSignature=value=>[...new Set(senseTerms(value).map(senseKey).filter(Boolean))].sort().join('|');
+export function distinctSenseOptions(main,points){
+ const claimed=new Set(senseTerms(main).map(senseKey));
+ const result=main?[main]:[];
+ for(const point of points){
+  const terms=senseTerms(point),novel=terms.filter(term=>{
+   const key=senseKey(term);if(!key||claimed.has(key))return false;
+   claimed.add(key);return true;
+  });
+  if(novel.length)result.push(novel.length===terms.length?point:novel.join('，'));
+ }
+ return result;
+}
 export function primaryMeaningOptions(word){
- const points=meaningPoints(word).map(shortSense).filter(Boolean);
- return [...new Set([primaryMeaning(word),...points].filter(Boolean))];
+ const points=meaningPoints(word);
+ return distinctSenseOptions(mainSense(word,points),[...points,...(word?.primaryMeaningChosen&&word.primaryMeaningBeforeChoice?[word.primaryMeaningBeforeChoice]:[])]);
 }
 export function applyMeaningCorrections(data){
  for(const p of data.library)for(const w of p.words){
+  applyReviewedReading(w);
+  applyFormRelations(w);
   const curriculumKey=w.lexiconWord||w.forms?.[0]?.text?.replace(/^(?:un|une|le|la)\s+/i,''),curriculumFix=reviewedExamples[curriculumKey];
   if(curriculumFix?.applyToCurriculum&&w.forms.some(f=>exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr))){
    if(JSON.stringify(w.meanings)===JSON.stringify(curriculumFix.previousMeanings))w.meanings=[...curriculumFix.meanings];
    for(const f of w.forms)if(exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr))f.example.meaning=curriculumFix.meaning;
    if(!w.primaryMeaningChosen)w.primaryMeaning=curriculumFix.meaning;
   }
-  if(w.conjugation||w.curriculumAuthority||w.headingSupplement)continue;
+  if(w.conjugation)continue;
+  if(w.curriculumAuthority||w.headingSupplement){preferredNounAudio(w);continue;}
   const key=w.lexiconWord||w.forms?.[0]?.text?.replace(/^(?:un|une|le|la)\s+/i,'');
+  if(w.lexiconWord)for(const f of w.forms){
+   const fix=exampleCorrections.find(c=>c.word===key&&exampleKey(c.previousFr)===exampleKey(f.example?.fr));
+   if(!fix)continue;
+   f.example={fr:fix.fr,zh:fix.zh,meaning:fix.meaning,source:fix.source||'启航法语编写',authored:fix.authored??true,...(fix.url?{url:fix.url}:{}),translationOrigin:'reviewed',audioKey:'tts:'+encodeURIComponent(fix.fr)};
+   if(w.provenance)Object.assign(w.provenance,{sentence:fix.url||'',sentenceSource:f.example.source,authored:f.example.authored});
+  }
   const definition=definitionCorrections[key];
   const matchesDefinition=definition&&w.lexiconWord&&[definition.previousMeanings,definition.meanings,reviewedExamples[key]?.meanings].some(meanings=>meanings&&JSON.stringify(w.meanings)===JSON.stringify(meanings));
   if(matchesDefinition){
@@ -83,5 +125,6 @@ export function applyMeaningCorrections(data){
    if(context||matchesDefinition||contextualMeanings[key])w.primaryMeaning=context||(matchesDefinition?definition.meaning:contextualMeanings[key]);
    else if(!/\p{Script=Han}/u.test(w.primaryMeaning||''))w.primaryMeaning=primaryMeaning(w);
   }
+  preferredNounAudio(w);
  }
 }

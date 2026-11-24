@@ -1,6 +1,7 @@
 """Build bundled French recordings. No speech engine is needed on user devices."""
 import asyncio,array,bisect,hashlib,json,re,subprocess,sys,time
 from pathlib import Path
+from shutil import copyfile
 sys.stdout.reconfigure(encoding='utf-8')
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'.lexicon-work/python'),str(ROOT.parents[1]/'app/.audio-tools')]
@@ -16,9 +17,15 @@ for row in rows:
  if row['pos']=='n.' and row.get('gender'):
   if row.get('plural'):word='des '+word
   if not re.match(r"^(?:de la\s+|de l['’]|(?:un|une|des|du|le|la|les|en|au|aux|à)(?:\s+|$)|l['’])",word,re.I):word=('une ' if row.get('gender')=='f' else 'un ')+word
- for value in [word,row['example']['fr']]:texts.setdefault(value,None)
+ for value in [word,row.get('example',{}).get('fr')]:
+  if value:texts.setdefault(value,None)
 exact_texts=ROOT/'.lexicon-work/lexicon-speech-texts.json'
 segments=json.loads(exact_texts.read_text(encoding='utf-8')) if exact_texts.exists() else list(texts)
+append=next((a.split('=',1)[1] for a in sys.argv if a.startswith('--append-texts=')),None)
+existing={}
+if append:
+ segments=list(dict.fromkeys(json.loads(Path(append).read_text(encoding='utf-8'))))
+ existing=json.loads((OUT/'index.json').read_text(encoding='utf-8'))['entries']
 wanted={key(text) for text in segments};index={}
 for metadata in WORK.glob('*.json'):
  try:
@@ -26,6 +33,7 @@ for metadata in WORK.glob('*.json'):
   if not isinstance(records,dict):continue
   index.update({k:v for k,v in records.items() if k in wanted and isinstance(v,dict) and (OUT/v['file']).is_file()})
  except (ValueError,KeyError,TypeError):pass
+index.update({k:v for k,v in existing.items() if k in wanted and (OUT/v['file']).is_file()})
 pending=[text for text in segments if key(text) not in index];size=1 if '--single' in sys.argv else 40;batches=[pending[i:i+size] for i in range(0,len(pending),size)]
 done=0;started=time.monotonic()
 print(f'Reusing {len(index)} clips; {len(pending)} remaining',flush=True)
@@ -59,7 +67,7 @@ async def one(group):
   windows=[[(0,len(samples)/8000)]]
  else:
   for event in boundaries:
-   match=re.search(re.escape(event['text']),text[cursor:],re.I)
+   match=re.search(re.escape(event['text'].replace('’',"'")),text[cursor:].replace('’',"'"),re.I)
    if not match:raise ValueError('Cannot align speech: '+event['text'])
    pos=cursor+match.start();cursor+=match.end();i=bisect.bisect_right(starts,pos)-1
    if i<0 or pos>=ends[i]:continue
@@ -88,6 +96,15 @@ async def main():
  (WORK/'failures.json').write_text(json.dumps(failures,ensure_ascii=False),encoding='utf-8')
  if failures:raise RuntimeError(f'{len(failures)} audio batches failed; resume to retry')
  if len(index)!=len(segments):raise RuntimeError('Incomplete audio index')
+ if append:
+  updates=OUT.with_name('audio-updates')
+  updates.mkdir(exist_ok=True)
+  for name in {record['file'] for k,record in index.items() if existing.get(k)!=record}:
+   copyfile(OUT/name,updates/name)
+  existing.update(index)
+  index.update(existing)
+  cached=json.loads(exact_texts.read_text(encoding='utf-8')) if exact_texts.exists() else []
+  exact_texts.write_text(json.dumps(list(dict.fromkeys(cached+segments)),ensure_ascii=False),encoding='utf-8')
  (OUT/'index.json').write_text(json.dumps({'schema':1,'voice':VOICE,'entries':index},separators=(',',':')),encoding='utf-8')
  files={row['file'] for row in index.values()}
  manifest=ROOT/'src/static/lexicon/manifest.json';metadata=json.loads(manifest.read_text(encoding='utf-8'))

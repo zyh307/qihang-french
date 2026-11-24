@@ -1,7 +1,8 @@
 import {conjugationPackages} from '../conjugation/catalog.js';
 import {nextReviewDate} from '../domain/review-plan.js';
-import {day,addDays,wordKey,errorPracticeState} from '../domain/learning.js';
+import {day,addDays,wordKey,errorPracticeState,testedForms} from '../domain/learning.js';
 import {REMINDER_INTERVAL_DAYS} from '../domain/reminders.js';
+import {logicalVocabularyKey} from '../domain/vocabulary-identity.js';
 export const nativeHost=()=>typeof window!=='undefined'?window.QihangNative:null;
 export function nativeExport(name,bytes,mime,share=false){
   const native=nativeHost();
@@ -17,7 +18,7 @@ export function nativeExport(name,bytes,mime,share=false){
 let lastReviewSync='',lastReviewSyncedAt=0,reviewSyncTail=Promise.resolve();
 export function syncNativeReview(data,{force=false}={}){
  const native=nativeHost();
- const units=new Map();for(const p of [...data.library,...conjugationPackages(data)])for(const w of p.words){const r=data.progress[wordKey(p,w)];if(r?.notebook!=='review')continue;const due=w.forms.filter(f=>f.tested).map(f=>nextReviewDate(r.forms[f.id],data.settings)).filter(Boolean).sort()[0],key=w.conjugation?'conjugation:'+w.conjugation.lemma:wordKey(p,w);if(due&&(!units.has(key)||due<units.get(key)))units.set(key,due);}const dates=[...units.values()];
+ const units=new Map();for(const p of [...data.library,...conjugationPackages(data)])for(const w of p.words){const r=data.progress[wordKey(p,w)];if(r?.notebook!=='review')continue;const due=testedForms(w).map(f=>nextReviewDate(r.forms[f.id],data.settings)).filter(Boolean).sort()[0],key=w.conjugation?'conjugation:'+w.conjugation.lemma:logicalVocabularyKey(p,w);if(due&&(!units.has(key)||due<units.get(key)))units.set(key,due);}const dates=[...units.values()];
  const state={enabled:data.settings.reviewReminders!==false,dates:dates.sort(),time:data.settings.reminderTime||'08:00'};
  const payload=JSON.stringify(state);if(!force&&payload===lastReviewSync&&Date.now()-lastReviewSyncedAt<60000)return;
  if(native?.syncReviewSchedule){native.syncReviewSchedule(payload);try{const status=JSON.parse(native.reviewReminderStatus?.()||'null');const ready=!!status&&(!status.enabled||!status.hasWords||(status.notifications==='granted'&&status.scheduled&&!status.error));window.qihangBackgroundReminderReady=ready;if(ready){lastReviewSync=payload;lastReviewSyncedAt=Date.now();}else{lastReviewSync='';}}catch{lastReviewSync='';window.qihangBackgroundReminderReady=false;}}

@@ -20,4 +20,4 @@ const items=[
 ];
 </script>
 
-<style scoped>.guide-sources{display:flex;flex-wrap:wrap;gap:10px;padding:15px 0;align-items:center}.guide-sources>.bi{width:100%}.guide-sources>text{display:block;width:100%;font-size:10px;line-height:1.7;color:#98a7bd}.guide-sources>.text-button{font-size:11px;padding:5px 0}</style>
+<style scoped>.guide-sources{display:flex;flex-wrap:wrap;gap:10px;padding:15px 0;align-items:center}.guide-sources>.bi{width:100%}.guide-sources>text{display:block;width:100%;font-size:10px;line-height:1.7;color:var(--ui-836bc9d059f7,#98a7bd)}.guide-sources>.text-button{font-size:11px;padding:5px 0}</style>
