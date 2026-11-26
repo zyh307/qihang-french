@@ -10,6 +10,9 @@
    <button v-else class="oral-settings-button" hover-class="none" @click="desktop.postMessage({type:'qihang-workshop-folder'})"><Icon name="book" /><Bi zh="口语资料" fr="Ressources" small /></button>
   </view>
   <button v-else class="oral-town-back" hover-class="none" aria-label="退出口语小镇 / Quitter le village" title="退出口语小镇" @click="select('daily')"><Icon name="back" /></button>
+  <view ref="screenStage" class="fade-stage fade-fill">
+  <Transition name="page-fade" @before-leave="retireFadePane">
+  <view :key="oralPane" class="fade-fill">
   <template v-if="section==='delf'">
   <aside v-if="!desktop && (!prepared || oralHome)" class="oral-performance-note" aria-label="口语练习设备建议">
    <strong>建议使用性能较好的电脑练习</strong>
@@ -28,10 +31,12 @@
     <button class="oral-settings-button" hover-class="none" @click="openWorkshop"><Bi zh="重试" fr="Réessayer" small /></button>
    </template>
   </section>
+  </view></Transition></view>
  </view>
 </template>
 <script setup>
-import {computed,ref,onMounted,onUnmounted} from 'vue';import Bi from './Bi.vue';import Icon from './Icon.vue';import OralSetup from './OralSetup.vue';import {oralCall} from '../oral/native-bridge.js';import {download} from '../platform/files.js';import {oralSessionArchive} from '../platform/records-backup.js';
+import {rememberFadeBounds,retireFadePane} from '../platform/page-motion.js';
+import {computed,ref,onMounted,onUnmounted,watch} from 'vue';import Bi from './Bi.vue';import Icon from './Icon.vue';import OralSetup from './OralSetup.vue';import {oralCall} from '../oral/native-bridge.js';import {download} from '../platform/files.js';import {oralSessionArchive} from '../platform/records-backup.js';
 const emit=defineEmits(['notice','modes','settings','home','restore-file']),prepared=ref(localStorage.getItem('qihang-oral-prepared-v2')==='1'),oralHome=ref(true),frame=ref(null);let timer,alive=true;
 const frameURL=new URL('static/oral/index.html',window.location.href).href;
 const desktop=window.chrome?.webview;
@@ -49,6 +54,12 @@ const workshopURL=computed(()=>{
  url.searchParams.set(section.value,'1');
  return url.href;
 });
+const oralPane=computed(()=>section.value+(section.value==='delf'?prepared.value?':ready':':setup':workshopURL.value?':ready':workshopError.value?':error':':loading'));
+const screenStage=ref(null);
+watch(oralPane,()=>{
+ const stage=screenStage.value?.$el||screenStage.value;
+ rememberFadeBounds(stage?.querySelector('.fade-fill:not([inert])'));
+},{flush:'sync'});
 function openWorkshop(){
  if(opening)return;
  workshopAddress.value='';workshopError.value='';

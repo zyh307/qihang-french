@@ -1,9 +1,12 @@
 import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';import {zipSync,strToU8} from 'fflate';import {validateLesson} from '../src/domain/importer.js';
+import {applyFormRelations} from '../src/domain/form-relations.js';
 import {applyExampleAudioCorrections} from '../src/domain/example-audio-corrections.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),material=path.resolve(root,'../词库/FOS1'),sha=b=>createHash('sha256').update(b).digest('hex');
 if(!await fs.access(path.join(material,'book-source.json')).then(()=>true,()=>false)){await fs.access(path.join(root,'src/static/content/fos1.zip'));console.log('保留已有 FOS 1 内置资料。');process.exit(0);}
 const input=JSON.parse(await fs.readFile(path.join(material,'book-source.json'),'utf8')),recordings=JSON.parse(await fs.readFile(path.join(material,'录音/recordings.json'),'utf8'));
 const previousDictionary=JSON.parse(await fs.readFile(path.join(root,'src/static/lexicon/french.json'),'utf8')).entries;
+const lexicalPart=row=>String(row.pos||'').toLowerCase().match(/^(n|adj|v)(?:[.\s]|$)/u)?.[1];
+const compatiblePart=(left,right)=>!lexicalPart(left)||!lexicalPart(right)||lexicalPart(left)===lexicalPart(right);
 const bare=t=>t.normalize('NFC').toLocaleLowerCase('fr').replaceAll('’',"'").replace(/^(?:un|une|le|la|les|des)\s+|^l['’]/iu,'');
 const library=[],audio=new Map(),indexPath=path.join(root,'src/static/lexicon/audio/index.json'),index=JSON.parse(await fs.readFile(indexPath,'utf8'));
 async function recording(text){const entry=recordings[text];if(!entry)throw Error('FOS 1 录音缺失：'+text);const bytes=await fs.readFile(path.join(material,'录音',entry.file)),hash=sha(bytes);if(entry.file!==hash+'.mp3'||bytes.length<1000)throw Error('FOS 1 音频不完整');audio.set(hash,bytes);index.entries[sha(text)]={file:hash+'.mp3',start:0,end:entry.duration,full:true};return hash;}
@@ -14,7 +17,8 @@ for(let lesson=1;lesson<=6;lesson++){
   const example={fr:e.fr,zh:e.zh,meaning:e.meaning,sourceKind:e.exampleSource==='textbook'?'textbook':'companion',source:source+(e.exampleSource==='textbook'?'':' · 配套例句'),audioKey:await recording(e.fr),audioOrigin:'fos-synthetic',translationOrigin:'fos'};
   const forms=[];
   for(const [i,f]of e.preparedForms.entries())forms.push({id:e.id+'-'+(i?'v'+(i+1):'base'),text:f.text,gender:f.gender,tested:!(e.word==='gradué(e)'&&i===1),audio:null,audioKey:await recording(f.text),audioOrigin:'fos-synthetic',ipa:f.ipa,source,example:{...example},...(f.meaning?{meaning:f.meaning}:{}),...(e.pos!=='n.'?{literal:true}:{})});
-  p.words.push({id:e.id,order:p.words.length+1,audioNumber:String(p.words.length+1).padStart(3,'0'),sourceText:e.word,sourcePos:e.sourcePos,pos:e.pos,meanings:[...new Set([...e.meanings,...previousDictionary.filter(row=>e.preparedForms.some(f=>bare(f.text)===bare(row.word))).flatMap(row=>row.meanings)])],primaryMeaning:e.meaning,curriculumAuthority:{book:'fos1',lesson:p.lesson.id,page:e.page},fosAuthority:{revision:input.revision,source},forms,...(e.notation?{notation:e.notation}:{}),...(e.translationSource?{translationSource:e.translationSource}:{})});
+  const word={id:e.id,order:p.words.length+1,audioNumber:String(p.words.length+1).padStart(3,'0'),sourceText:e.word,sourcePos:e.sourcePos,pos:e.pos,meanings:[...new Set([...e.meanings,...previousDictionary.filter(row=>compatiblePart(row,e)&&e.preparedForms.some(f=>bare(f.text)===bare(row.word))).flatMap(row=>row.meanings)])],primaryMeaning:e.meaning,curriculumAuthority:{book:'fos1',lesson:p.lesson.id,page:e.page},fosAuthority:{revision:input.revision,source},forms,...(e.notation?{notation:e.notation}:{}),...(e.translationSource?{translationSource:e.translationSource}:{})};
+  applyFormRelations(word);p.words.push(word);
  }
  applyExampleAudioCorrections({library:[p]});validateLesson(p);library.push(p);
 }

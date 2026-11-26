@@ -1,6 +1,6 @@
 <template>
- <view :class="['grammar-mode','grammar-screen-'+screen]">
-  <Transition name="grammar-screen" mode="out-in" @before-leave="screenSwitching=true" @after-enter="screenSwitching=false" @enter-cancelled="screenSwitching=false" @leave-cancelled="screenSwitching=false">
+ <view ref="screenStage" :class="['grammar-mode','fade-stage','grammar-screen-'+screen]">
+  <Transition name="grammar-screen" @before-leave="retireFadePane">
    <view :key="screen+(screen==='lesson'?':'+lessonKey+':'+ruleIndex:'')" class="grammar-screen">
   <template v-if="screen==='home'">
    <view class="grammar-home">
@@ -62,17 +62,17 @@
 
   <template v-else-if="screen==='quiz'&&current">
    <view class="grammar-page-bar"><button hover-class="none" class="icon-button back-control" @click="leaveQuiz" aria-label="返回 / Retour"><Icon name="back" /></button><view class="quiz-progress"><view :style="{width:(results.length/questions.length*100)+'%'}" /></view><text class="quiz-count">{{ index+1 }} / {{ questions.length }}</text></view>
-   <view class="grammar-scroll grammar-question-scroll">
-    <Transition name="grammar-question" mode="out-in" @before-leave="questionSwitching=true" @after-enter="questionSwitching=false" @enter-cancelled="questionSwitching=false" @leave-cancelled="questionSwitching=false"><view :key="current.id" class="glass quiz-card">
+   <view class="grammar-scroll grammar-question-scroll fade-stage">
+    <Transition name="grammar-question" @before-leave="retireFadePane"><view :key="current.id" class="glass quiz-card">
      <view class="quiz-tag"><Bi :zh="current.type==='translate'?'中译选句':'判断用法'" :fr="current.type==='translate'?'Traduction':'Vrai ou faux'" small /><text>{{ current.lessonId }} · {{ current.point.title }}</text></view>
      <view class="quiz-prompt"><text :class="current.type==='translate'?'prompt-zh':'prompt-fr'" :lang="current.type==='judge'?'fr':'zh'">{{ current.prompt }}</text><Bi :zh="current.type==='translate'?'选出恰当的法语表达':'这句话符合本题用法吗？'" :fr="current.type==='translate'?'Choisissez la bonne phrase.':'Cet emploi est-il correct ?'" small /></view>
-     <view class="grammar-options"><button v-for="(option,i) in current.options" :key="option.id" hover-class="none" :class="['grammar-option',optionClass(option)]" :disabled="answered||switching" :aria-pressed="pickedId===option.id" @click="pickedId=option.id"><text class="option-key">{{ 'ABCD'[i] }}</text><text class="option-text" lang="fr">{{ option.text }}</text><view class="grammar-option-status"><Transition name="grammar-mark"><Icon v-if="answered&&(option.correct||pickedId===option.id)" :name="option.correct?'check':'close'" /></Transition></view></button></view>
+     <view class="grammar-options"><button v-for="(option,i) in current.options" :key="option.id" hover-class="none" :class="['grammar-option',optionClass(option)]" :disabled="answered" :aria-pressed="pickedId===option.id" @click="pickedId=option.id"><text class="option-key">{{ 'ABCD'[i] }}</text><text class="option-text" lang="fr">{{ option.text }}</text><view class="grammar-option-status"><Transition name="grammar-mark"><Icon v-if="answered&&(option.correct||pickedId===option.id)" :name="option.correct?'check':'close'" /></Transition></view></button></view>
      <view class="grammar-feedback-slot" aria-live="polite">
       <Transition name="grammar-fold" v-bind="foldTransition"><view v-if="answered"><view :class="['grammar-feedback',lastCorrect?'ok':'no']"><view class="feedback-head"><Icon :name="lastCorrect?'check':'info'" /><Bi :zh="lastCorrect?'答对了':'再看一眼规则'" :fr="lastCorrect?'Correct':'À revoir'" small /></view><view class="feedback-answer"><Bi zh="正确表达" fr="Bonne formulation" small /><text lang="fr">{{ current.answerText }}</text></view><text class="feedback-rule">{{ current.explain }}</text><view v-if="current.point.hook" class="grammar-hook">{{ current.point.hook }}</view></view></view></Transition>
      </view>
     </view></Transition>
    </view>
-   <view class="grammar-quiz-dock"><button hover-class="none" class="button primary" :disabled="switching||(!answered&&!pickedId)" @click="answered?next():submit()"><Transition name="grammar-label" mode="out-in"><view :key="answered?(index+1<questions.length?'next':'result'):'submit'" class="grammar-action-label"><Bi :zh="answered?(index+1<questions.length?'下一题':'查看结果'):'确认答案'" :fr="answered?(index+1<questions.length?'Suivant':'Résultat'):'Valider'" small /><Icon v-if="answered" name="arrow" /></view></Transition></button></view>
+   <view class="grammar-quiz-dock"><button hover-class="none" class="button primary fade-stage" :disabled="!answered&&!pickedId" @click="answered?next():submit()"><Transition name="grammar-label" @before-leave="retireFadePane"><view :key="answered?(index+1<questions.length?'next':'result'):'submit'" class="grammar-action-label"><Bi :zh="answered?(index+1<questions.length?'下一题':'查看结果'):'确认答案'" :fr="answered?(index+1<questions.length?'Suivant':'Résultat'):'Valider'" small /><Icon v-if="answered" name="arrow" /></view></Transition></button></view>
   </template>
 
   <template v-else-if="screen==='result'">
@@ -89,6 +89,7 @@
 </template>
 
 <script setup>
+import {rememberFadeBounds,retireFadePane} from '../platform/page-motion.js';
 import {computed,ref,watch,onMounted,onBeforeUnmount} from 'vue';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import BookPicker from './BookPicker.vue';
 import grammarData from '../grammar/grammar-data.json';
@@ -118,15 +119,19 @@ const screen=ref('home'),lessonKey=ref(''),scopeLabel=ref(''),navigation=ref([])
 const roundKind=ref('lesson'),roundLessonKey=ref(''),cachedRounds=ref({mixed:null,lessons:{}});
 const questions=ref([]),index=ref(0),pickedId=ref(''),answered=ref(false),results=ref([]);
 const rulePages=ref(read('qihang-grammar-rule-pages')||{});const ruleIndex=ref(0);const visibleRule=computed(()=>selectedLesson.value?.points.slice(ruleIndex.value,ruleIndex.value+1)||[]);
-const openRules=ref([]),screenSwitching=ref(false),questionSwitching=ref(false);
-const switching=computed(()=>screenSwitching.value||questionSwitching.value);
+const openRules=ref([]);
 const selectedLesson=computed(()=>allLessons.find(l=>l.key===lessonKey.value));
 const chosenLesson=computed(()=>allLessons.find(l=>l.key===chosenLessonKey.value));
 const lastStudyLesson=computed(()=>allLessons.find(l=>l.key===lastStudyKey.value));
 function nextRule(){rememberEntry();ruleIndex.value++;rulePages.value[lessonKey.value]=ruleIndex.value;persist('qihang-grammar-rule-pages',rulePages.value);openRules.value=visibleRule.value.map(p=>p.id);}
 function toggleRule(id){openRules.value=[id];}
 watch(lessonKey,()=>{openRules.value=visibleRule.value.map(p=>p.id);});
-watch(screen,value=>{questionSwitching.value=false;emit('home',value==='home');},{immediate:true});
+const screenStage=ref(null);
+watch(screen,()=>{
+ const stage=screenStage.value?.$el||screenStage.value;
+ rememberFadeBounds(stage?.querySelector('.grammar-screen:not([inert])'));
+},{flush:'sync'});
+watch(screen,value=>emit('home',value==='home'),{immediate:true});
 const visibleLessons=computed(()=>allLessons.filter(l=>unitId.value==='all'||l.unitId===unitId.value));
 const unitChoices=[{id:'all',zh:'全部单元',fr:'Toutes les unités'},...units.map(u=>({id:u.id,zh:'单元 '+u.id.slice(1),fr:'Unité '+u.id.slice(1)+' · '+u.title}))];
 const typeAllowed=q=>settings.value.questionType==='both'||q.type===settings.value.questionType;
@@ -200,10 +205,10 @@ const current=computed(()=>questions.value[index.value]||null);
 const lastCorrect=computed(()=>!!current.value?.options.find(o=>o.id===pickedId.value)?.correct);
 function optionClass(o){if(!answered.value)return {selected:pickedId.value===o.id};return {correct:o.correct,wrong:!o.correct&&o.id===pickedId.value,dim:!o.correct&&o.id!==pickedId.value};}
 function submit(){
- if(switching.value||answered.value||!current.value)return;const option=current.value.options.find(o=>o.id===pickedId.value);if(!option)return;
+ if(answered.value||!current.value)return;const option=current.value.options.find(o=>o.id===pickedId.value);if(!option)return;
  answered.value=true;recordAnswer(current.value.pointId,option.correct);results.value.push({question:current.value,pickedId:option.id,correct:option.correct});if(option.correct)playCorrect();
 }
-function next(){if(switching.value||!answered.value)return;if(index.value+1===questions.value.length){screen.value='result';return;}index.value++;pickedId.value='';answered.value=false;}
+function next(){if(!answered.value)return;if(index.value+1===questions.value.length){screen.value='result';return;}index.value++;pickedId.value='';answered.value=false;}
 function leaveQuiz(){returnToEntry();}
 function resume(){if(currentPending.value){enterScreen('quiz');if(roundKind.value==='lesson'&&allLessons.some(l=>l.key===roundLessonKey.value))lessonKey.value=roundLessonKey.value;}else if(lastStudyLesson.value)openLearning(lastStudyLesson.value);}
 function retryWrong(){begin(wrongList.value.map(r=>r.question),'错题 · Erreurs','retry');}
@@ -250,7 +255,7 @@ restoreRound();
 watch([screen,navigation,bookId,unitId,chosenLessonKey,lastStudyKey,lessonKey,questions,index,pickedId,answered,results],saveRound,{deep:true});
 function handleBack(){return returnToEntry();}
 defineExpose({handleBack});
-function onKey(e){if(!props.active||switching.value||e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||e.target?.closest?.('input,textarea,[contenteditable=true]')||screen.value!=='quiz')return;const n='abcd'.indexOf(e.key.toLowerCase());if(n>=0&&!answered.value&&current.value?.options[n]){e.preventDefault();pickedId.value=current.value.options[n].id;}else if(e.key==='Enter'&&!e.repeat&&!e.target?.closest?.('button,uni-button,[role=button]')){e.preventDefault();answered.value?next():submit();}}
+function onKey(e){if(!props.active||e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||e.target?.closest?.('input,textarea,[contenteditable=true]')||screen.value!=='quiz')return;const n='abcd'.indexOf(e.key.toLowerCase());if(n>=0&&!answered.value&&current.value?.options[n]){e.preventDefault();pickedId.value=current.value.options[n].id;}else if(e.key==='Enter'&&!e.repeat&&!e.target?.closest?.('button,uni-button,[role=button]')){e.preventDefault();answered.value?next():submit();}}
 onMounted(()=>document.addEventListener('keydown',onKey));
 onBeforeUnmount(()=>{saveRound();document.removeEventListener('keydown',onKey);});
 </script>
@@ -263,7 +268,7 @@ onBeforeUnmount(()=>{saveRound();document.removeEventListener('keydown',onKey);}
 .grammar-rule-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0;background:transparent;border:0;text-align:left}.grammar-rule-toggle>view{min-width:0}.grammar-rule-toggle>.icon{transition:transform .22s cubic-bezier(.2,.7,.3,1)}.grammar-rule-toggle[aria-expanded=true]>.icon{transform:rotate(180deg)}
 .grammar-option-status{width:18px;height:20px;flex:0 0 18px;display:flex;align-items:center;justify-content:center}.grammar-option-status>.icon{width:18px;height:18px}.grammar-action-label{display:flex;align-items:center;justify-content:center;gap:12px}
 .grammar-option,.unit-tab{transition:background-color .18s,border-color .18s,color .18s,box-shadow .18s,opacity .18s}
-.grammar-screen-enter-active,.grammar-question-enter-active,.grammar-content-enter-active{transition:opacity .22s cubic-bezier(.2,.7,.3,1),transform .24s cubic-bezier(.2,.7,.3,1);pointer-events:none}.grammar-screen-leave-active,.grammar-question-leave-active,.grammar-content-leave-active{transition:opacity .12s ease-out,transform .12s ease-out;pointer-events:none}.grammar-screen-enter-from,.grammar-question-enter-from,.grammar-content-enter-from{opacity:0;transform:translateY(6px)}.grammar-screen-leave-to,.grammar-question-leave-to,.grammar-content-leave-to{opacity:0;transform:translateY(-3px)}
+.grammar-screen-enter-active,.grammar-question-enter-active,.grammar-content-enter-active{transition:opacity .22s cubic-bezier(.2,.7,.3,1),transform .24s cubic-bezier(.2,.7,.3,1)}.grammar-screen-leave-active,.grammar-question-leave-active,.grammar-content-leave-active{transition:opacity .12s ease-out,transform .12s ease-out;pointer-events:none}.grammar-screen-enter-from,.grammar-question-enter-from,.grammar-content-enter-from{opacity:0;transform:translateY(6px)}.grammar-screen-leave-to,.grammar-question-leave-to,.grammar-content-leave-to{opacity:0;transform:translateY(-3px)}
 .grammar-fold-enter-active,.grammar-fold-leave-active{transition:height .24s cubic-bezier(.2,.7,.3,1),opacity .18s ease}
 .grammar-label-enter-active,.grammar-label-leave-active{transition:opacity .12s ease}.grammar-label-enter-from,.grammar-label-leave-to{opacity:0}
 .grammar-mark-enter-active,.grammar-mark-leave-active{transition:opacity .16s,transform .2s cubic-bezier(.2,.7,.3,1)}.grammar-mark-enter-from,.grammar-mark-leave-to{opacity:0;transform:scale(.8)}

@@ -1,2 +1,2 @@
 // Generated from the formal Inspire 1 materials by build-content.mjs.
-export const BUNDLED_CONTENT_ID = '069708005e71626f449c6a0c859fd7909afb5f1acda4ce20d507be3fec8896de';
+export const BUNDLED_CONTENT_ID = 'a9840c55f778e073a813132cc78dea23744695cd5080994ecfc3074228e317d8';

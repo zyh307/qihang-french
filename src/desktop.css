@@ -35,7 +35,7 @@
  html.qihang-desktop .settings-scope-tabs{grid-column:1;grid-template-columns:1fr;gap:11px;position:sticky;top:0;margin:0}
  html.qihang-desktop .settings-scope-tabs>uni-button{justify-content:flex-start;padding:15px 18px;min-height:66px}
  html.qihang-desktop .settings-scope-tabs .bi{align-items:flex-start;text-align:left}
- html.qihang-desktop .app-settings-section{grid-column:2;min-width:0}
+ html.qihang-desktop .app-settings-stage{grid-column:2;min-width:0}
  html.qihang-desktop .practice-content{max-width:1000px;padding-left:38px;padding-right:38px}
  html.qihang-desktop .oral-content{padding:16px 32px 24px;max-width:1320px}
 }

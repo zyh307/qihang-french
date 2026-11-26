@@ -44,11 +44,39 @@ const hintTexts = {intro:'可以从姓名、居住地、学习和爱好说起。
   roleplay:'先打招呼，再说明你需要什么。需要时询问价格或请对方重复，最后礼貌告别。'};
 function node(tag, text, cls) { const e = document.createElement(tag); if(text !== undefined) e.textContent = text; if(cls) e.className = cls; return e; }
 function notice(message) { $('notice').textContent = message; $('notice').hidden = !message; $('notice').setAttribute('role','alert');$('notice').setAttribute('aria-live','polite'); }
+let finishViewFade;
+function swapOralView(view) {
+  finishViewFade?.();
+  const views=['home','practice','history','review'].map($);
+  const next=$(view),previous=views.find(section=>!section.hidden);
+  if(previous===next)return;
+  if(!previous?.animate||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){
+    for(const section of views)section.hidden=section!==next;
+    return;
+  }
+  const original=previous.style.cssText;
+  const {offsetTop,offsetLeft,offsetWidth,offsetHeight}=previous;
+  Object.assign(previous.style,{position:'absolute',top:offsetTop+'px',left:offsetLeft+'px',width:offsetWidth+'px',height:offsetHeight+'px',boxSizing:'border-box',margin:'0',pointerEvents:'none'});
+  previous.inert=true;
+  previous.setAttribute('aria-hidden','true');
+  const exit=previous.animate([{opacity:1},{opacity:0}],{duration:120,easing:'ease-out'});
+  next.hidden=false;
+  next.animate([{opacity:0},{opacity:1}],{duration:180,easing:'ease-out'});
+  finishViewFade=()=>{
+    previous.hidden=true;
+    previous.style.cssText=original;
+    previous.inert=false;
+    previous.removeAttribute('aria-hidden');
+    exit.cancel();
+    finishViewFade=null;
+  };
+  exit.onfinish=finishViewFade;
+}
 function show(view) {
   if (view !== 'practice') leaveExam();
   if(window.parent!==window)window.parent.postMessage({type:'qihang-oral-view',home:view==='home'},location.origin);
   clearTimeout(S.evaluationTimer);
-  for (const id of ['home','practice','history','review']) $(id).hidden = id !== view;
+  swapOralView(view);
   $('navPractice').classList.toggle('active', view === 'home' || view === 'practice');
   $('navHistory').classList.toggle('active', view === 'history' || view === 'review');
 }

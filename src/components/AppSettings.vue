@@ -5,7 +5,7 @@
    <nav class="settings-scope-tabs" aria-label="设置分类 / Catégories">
     <button v-for="item in scopes" :key="item.id" hover-class="none" :class="{active:scope===item.id}" @click="scope=item.id"><Icon :name="item.icon" /><Bi :zh="item.zh" :fr="item.fr" small /></button>
    </nav>
-   <Transition name="panel-switch" mode="out-in"><view :key="scope" class="app-settings-section">
+   <view class="app-settings-stage fade-stage"><Transition name="page-fade" @before-leave="retireFadePane"><view :key="scope" class="app-settings-section">
     <template v-if="scope==='general'">
       <ThemePicker :value="data.settings.colorTheme" :disabled="busy||!dataReady" @change="setting('colorTheme',$event)" />
      <section class="glass settings-card"><button hover-class="none" class="toggle-row" @click="setting('sounds',data.settings.sounds===false)"><Bi zh="按键与提示音" fr="Sons de l’application" small /><SpringToggle :on="data.settings.sounds!==false" /></button><button hover-class="none" class="setting-action" @click="$emit('share')"><Icon name="upload" /><Bi zh="分享学习记录" fr="Partager mes progrès" /><Icon name="arrow" /></button></section>
@@ -17,8 +17,9 @@
      <view v-if="!dataReady" class="empty-state glass"><Bi zh="词汇资料正在读取，请稍后重试。" fr="Chargement du vocabulaire. Réessayez dans un instant." /></view>
      <template v-else>
      <view class="settings-panel-tabs"><button v-for="tab in vocabularyTabs" :key="tab.id" hover-class="none" :class="{active:vocabularySection===tab.id}" @click="vocabularySection=tab.id"><Icon :name="tab.icon" /><Bi :zh="tab.zh" :fr="tab.fr" small /></button></view>
-     <Transition name="panel-switch" mode="out-in"><view :key="vocabularySection" class="settings-vocabulary-panel">
+     <view class="fade-stage"><Transition name="page-fade" @before-leave="retireFadePane"><view :key="vocabularySection" class="settings-vocabulary-panel">
      <section v-if="vocabularySection==='study'" class="glass settings-card">
+      <button hover-class="none" class="toggle-row" role="switch" :aria-checked="data.settings.showChoiceFrench!==false" :disabled="busy||!dataReady" @click="setting('showChoiceFrench',data.settings.showChoiceFrench===false)"><Bi zh="答对后显示选项法语" fr="Termes français après une bonne réponse" small/><SpringToggle :on="data.settings.showChoiceFrench!==false"/></button>
       <button hover-class="none" class="toggle-row" @click="setting('learnThreeErrorDefer',data.settings.learnThreeErrorDefer===false)"><Bi zh="新学三错移至最后一组" fr="Trois erreurs : série finale" small/><SpringToggle :on="data.settings.learnThreeErrorDefer!==false"/></button>
       <button hover-class="none" class="toggle-row" @click="setting('shuffleLearning',!data.settings.shuffleLearning)"><Bi zh="课内乱序学习" fr="Mélanger la leçon" small /><SpringToggle :on="data.settings.shuffleLearning" /></button>
       <view class="setting-stack"><Bi zh="名词冠词" fr="Articles des noms" small /><view class="segments"><button v-for="item in articles" :key="item.id" hover-class="none" :class="{active:(data.settings.articleMode||'choice')===item.id}" @click="setting('articleMode',item.id)"><Bi :zh="item.zh" :fr="item.fr" small /></button></view></view>
@@ -40,7 +41,7 @@
       <button hover-class="none" class="setting-action" @click="$emit('import')"><Icon name="plus" /><Bi zh="导入课次" fr="Importer" /><Icon name="arrow" /></button>
      </section>
      <section v-else class="glass settings-card"><StudyGuide /></section>
-     </view></Transition>
+     </view></Transition></view>
      </template>
     </template>
     <template v-else-if="scope==='grammar'">
@@ -52,13 +53,14 @@
      <view class="glass settings-card grammar-quick-help"><Bi zh="选择课次或综合练习，答题后查看规则，再进入下一题。错题可在结果页重新练习。" fr="Choisissez une leçon, répondez puis relisez la règle. Vous pouvez refaire vos erreurs." small /></view>
     </template>
     <OralSetup v-else-if="scope==='oral'" :auto-enter="false" @notice="$emit('notice',$event)" @ready="enterOral" />
-   </view></Transition>
+   </view></Transition></view>
   </view>
  </view>
 </template>
 <script setup>
 import SpringToggle from './SpringToggle.vue';
 import ThemePicker from './ThemePicker.vue';
+import {retireFadePane} from '../platform/page-motion.js';
 import {ref} from 'vue';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import StudyGuide from './StudyGuide.vue';import OralSetup from './OralSetup.vue';
 import appManifest from '../manifest.json';
@@ -70,7 +72,7 @@ const mobile=isMobileAnswerDevice();
 const scopes=[{id:'general',icon:'settings',zh:'通用',fr:'Général'},{id:'vocabulary',icon:'book',zh:'词汇',fr:'Vocabulaire'},{id:'grammar',icon:'grammar',zh:'语法',fr:'Grammaire'},{id:'oral',icon:'microphone',zh:'口语',fr:'Expression orale'}];
 const vocabularyTabs=[{id:'study',icon:'book',zh:'学习',fr:'Étude'},{id:'review',icon:'repeat',zh:'复习',fr:'Révision'},{id:'data',icon:'upload',zh:'资料',fr:'Données'},{id:'guide',icon:'info',zh:'帮助',fr:'Aide'}];
 const articles=[{id:'choice',zh:'选择冠词',fr:'Choisir'},{id:'typed',zh:'自行填写',fr:'Écrire'}];
-const motions=[{id:'slide',zh:'滑动',fr:'Glisser'},{id:'page',zh:'翻页',fr:'Tourner'},{id:'none',zh:'关闭',fr:'Aucune'}];
+const motions=[{id:'slide',zh:'滑动',fr:'Glisser'},{id:'page',zh:'翻页',fr:'Tourner'},{id:'none',zh:'淡化',fr:'Fondu'}];
 const reviewModes=[{id:'both',zh:'认义＋填空',fr:'Sens + écrit'},{id:'spelling',zh:'只做填空',fr:'Écrit seul'}];
 const grammarTypes=[{id:'both',zh:'全部',fr:'Tous'},{id:'translate',zh:'中译选句',fr:'Traduction'},{id:'judge',zh:'判断用法',fr:'Vrai ou faux'}];
 function setting(key,value){if(!props.dataReady){emit('notice','请等待词汇资料读取完成 / Attendez la fin du chargement.');return;}emit('setting',key,value);}

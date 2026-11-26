@@ -8,21 +8,22 @@
     </view>
     <view class="calendar-summary"><Bi :zh="`本月 ${summary.days} 天 · ${summary.words} 个词 · ${summary.attempts} 次作答`" :fr="`${summary.days} jours · ${summary.words} mots · ${summary.attempts} réponses ce mois-ci`" small /></view>
     <view class="calendar-weekdays"><view v-for="weekday in weekdays" :key="weekday[0]"><text>{{ weekday[0] }}</text><text lang="fr">{{ weekday[1] }}</text></view></view>
-    <Transition name="panel-switch" mode="out-in"><view :key="month" class="month-grid">
+    <view class="fade-stage"><Transition name="page-fade" @before-leave="retireFadePane"><view :key="month" class="month-grid">
       <button hover-class="none" v-for="cell in cells" :key="cell.date" :data-date="cell.date" :class="['calendar-day',{outside:!cell.inMonth,today:cell.today,selected:cell.date===selected,practiced:cell.active,future:cell.future}]" :aria-pressed="cell.date===selected" :aria-label="`${cell.date} · ${cell.count} 词 / mots${cell.today?' · 今天 / Aujourd’hui':''}`" @click="selectDate(cell.date)">
         <text class="calendar-number">{{ cell.number }}</text><text class="calendar-count">{{ cell.count ? `${cell.count} 词` : cell.active ? '•' : '·' }}</text>
       </button>
     </view>
-    </Transition><view class="calendar-legend"><view><text class="legend-dot" /><Bi zh="有学习记录" fr="Journée active" inline small /></view><view><text class="legend-today" /><Bi zh="今天" fr="Aujourd’hui" inline small /></view></view>
-    <view class="day-detail" aria-live="polite">
+    </Transition></view><view class="calendar-legend"><view><text class="legend-dot" /><Bi zh="有学习记录" fr="Journée active" inline small /></view><view><text class="legend-today" /><Bi zh="今天" fr="Aujourd’hui" inline small /></view></view>
+    <view class="fade-stage"><Transition name="page-fade" @before-leave="retireFadePane"><view :key="selected" class="day-detail" aria-live="polite">
       <view class="day-detail-heading"><Bi :zh="`${selected} 的记录`" :fr="selectedFrench" /><text v-if="selected===today" class="tag">今天 · Aujourd’hui</text></view>
       <view v-if="record.words.length || record.attempts" class="day-detail-stats"><view><strong>{{ record.words.length }}</strong><Bi zh="完成词数" fr="mots terminés" small /></view><view><strong>{{ record.reviews.length }}</strong><Bi zh="其中复习" fr="dont révisés" small /></view><view><strong>{{ record.attempts }}</strong><Bi zh="作答次数" fr="réponses" small /></view><view><strong>{{ record.attempts ? Math.round(record.correct/record.attempts*100)+'%' : '—' }}</strong><Bi zh="正确率" fr="réussite" small /></view></view>
       <view v-if="words.length" class="calendar-words"><button hover-class="none" v-for="word in words" :key="word.id" :disabled="!word.package||!word.word" @click="$emit('word',{p:word.package,w:word.word})"><text lang="fr">{{ word.text }}</text><text>{{ word.meaning }}</text><text class="muted">{{ word.label }}</text><Icon v-if="word.package" name="arrow" /></button></view>
       <Bi v-else :zh="selected>today?'这一天还未到来。':record.attempts?'当天练习尚未完成。':'这一天还没有学习记录。'" :fr="selected>today?'Cette journée est à venir.':record.attempts?'Des réponses, mais aucun mot terminé.':'Aucune activité enregistrée ce jour-là.'" small />
-    </view>
+    </view></Transition></view>
   </view>
 </template>
 <script setup>
+import {retireFadePane} from '../platform/page-motion.js';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import Bi from './Bi.vue'; import Icon from './Icon.vue';
 import { day } from '../domain/learning.js';

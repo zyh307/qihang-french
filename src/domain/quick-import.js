@@ -1,3 +1,5 @@
+import {notebookSearch} from './notebook-search.js';
+import {searchLemmas} from '../conjugation/search.js';
 import {vocabularyIdentity,logicalVocabularyKey,preferVocabularyEntry,uniqueVocabularyEntries,textbookPackage} from './vocabulary-identity.js';
 import {primaryMeaning,primaryMeaningOptions} from './meanings.js';
 import {runCooperatively} from '../platform/ui-work.js';
@@ -47,7 +49,7 @@ function* makeLookupSteps(entries,library=[]){
   }
   return [...m.values()];
  };
- return (input,{allowTypos=true}={})=>{const key=exact(input),plain=bare(key);let found=byExact.get(key),kind='exact';if(!found){found=byExact.get(plain);kind='article';}const aliases=[...(byAlias.get(key)||[]),...(plain===key?[]:byAlias.get(plain)||[])];if(aliases.length){if(!found)kind='alias';found=[...(found||[]),...aliases];}if(!found){found=byNormal.get(importNormal(key))||byNormal.get(importNormal(plain))||byAliasNormal.get(importNormal(key));kind='fuzzy';}if(!found&&allowTypos){const n=importNormal(plain),hits=[];let min=3;for(const [candidate,items] of byNormal){if(candidate[0]!==n[0]||Math.abs(candidate.length-n.length)>2)continue;const d=distance(n,candidate,2);if(d<min){min=d;hits.length=0;}if(d===min&&d<=2)hits.push(...items);}found=hits;kind='typo';}
+ return (input,{allowTypos=true}={})=>{const key=exact(input),plain=bare(key);let found=byExact.get(key),kind='exact';if(!found){found=byExact.get(plain);kind='article';}const aliases=[...(byAlias.get(key)||[]),...(plain===key?[]:byAlias.get(plain)||[])];if(aliases.length){if(!found)kind='alias';found=[...(found||[]),...aliases];}if(!found){found=byNormal.get(importNormal(key))||byNormal.get(importNormal(plain))||byAliasNormal.get(importNormal(key));kind='fuzzy';}const inflected=[...searchLemmas(key)].flatMap(lemma=>(byExact.get(lemma)||[]).filter(row=>/^v(?:[.\s]|$)|^verb/iu.test(row.pos)));if(inflected.length){if(!found)kind='alias';found=[...(found||[]),...inflected];}if(!found&&allowTypos){const n=importNormal(plain),hits=[];let min=3;for(const [candidate,items] of byNormal){if(candidate[0]!==n[0]||Math.abs(candidate.length-n.length)>2)continue;const d=distance(n,candidate,2);if(d<min){min=d;hits.length=0;}if(d===min&&d<=2)hits.push(...items);}found=hits;kind='typo';}
   const options=unique(found||[]).sort((a,b)=>(b.frequency||0)-(a.frequency||0)).slice(0,6);
   const reviewedNames=options.map(reviewedReading).filter(Boolean).map(row=>row.word);
   return {input,kind,options,requiresPartOfSpeech:new Set(options.map(row=>grammaticalKind(row.pos))).size>1,requiresSense:new Set(reviewedNames).size<reviewedNames.length,selected:options.length===1?options[0].id:'',missing:!options.length};
@@ -68,6 +70,14 @@ export function importedUnitScope(data,p,w,book='imported'){
  return record.units?{infinitive:record.units.infinitive===true,tenses:[...normalizePlan(record.units).tenses]}:{infinitive:!isConjugationVerb(w)||normalizePlan(w.conjugationPlan).infinitive,tenses:isConjugationVerb(w)?[...normalizePlan(w.conjugationPlan).tenses]:[]};
 }
 const memberLessons=(record,sequence)=>record?.lessonIds?.length?record.lessonIds:[record?.lessonId||importedLessonId(sequence)];
+export const isCompletedImportedLesson=(data,id)=>!!data.lessonCompletions?.['imported:'+id];
+export function assertImportScopeCanExpand(data,key,before,requested){
+ const member=data.importedWords?.[key];
+ const expands=requested.infinitive&&!before.infinitive||requested.tenses.some(tense=>!before.tenses.includes(tense));
+ if(member&&expands&&memberLessons(member,data.importedWordOrder?.[key]).some(id=>isCompletedImportedLesson(data,id))){
+  throw Error('该词所在课次已背完 / La leçon de ce mot est terminée.');
+ }
+}
 function rawImportedEntries(data){return data.library.flatMap(p=>p.words.filter(w=>!w.conjugation&&data.importedWords?.[wordKey(p,w)]).map(w=>({p,w,imported:data.importedWords[wordKey(p,w)]})));}
 export function importedEntries(data,book='imported'){return uniqueVocabularyEntries(rawImportedEntries(data),data);}
 export function createImportedLesson(data,book='imported'){
@@ -79,7 +89,6 @@ export function createImportedLesson(data,book='imported'){
 }
 // Keep legacy order-to-lesson mapping stable; new allocation is explicit.
 export const IMPORTED_LESSON_SIZE=30;
-export const AUTO_IMPORTED_LESSON_TARGET=25;
 export function importedMembershipSize(word,record){
  const verb=isConjugationVerb(word),scope=record?.units||{infinitive:!verb||normalizePlan(word.conjugationPlan).infinitive,tenses:verb?normalizePlan(word.conjugationPlan).tenses:[]};
  return Number(scope.infinitive===true)+(verb?(scope.tenses||[]).filter(tense=>Object.keys(conjugations(lemmaFor(word),tense)).length).length:0);
@@ -95,7 +104,7 @@ export function createAutomaticImportAllocator(data,book='imported'){
   adjust(ids,delta){if(delta)for(const id of ids)counts.set(id,(counts.get(id)||0)+delta);},
   take(size=1){
    if(!Number.isInteger(size)||size<1)throw Error('请选择原形或时态 / Choisissez un élément.');
-   let id=[...counts].sort((a,b)=>Number(a[0].slice(1))-Number(b[0].slice(1))).find(([,count])=>count<AUTO_IMPORTED_LESSON_TARGET)?.[0];
+   let id=[...counts].sort((a,b)=>Number(a[0].slice(1))-Number(b[0].slice(1))).find(([id,count])=>!isCompletedImportedLesson(data,id)&&count+size<=IMPORTED_LESSON_SIZE)?.[0];
    if(!id){const number=Math.max(0,...[...counts.keys()].map(value=>Number(value.slice(1))))+1;if(!Number.isSafeInteger(number))throw Error('课次编号无效 / Numéro invalide.');id='L'+String(number).padStart(2,'0');}
    data[catalog][id]||={id,order:Number(id.slice(1))};counts.set(id,(counts.get(id)||0)+size);return id;
   }
@@ -217,6 +226,7 @@ export function resetImportedLesson(data,p){
 }
 export function addImportedEntries(data,entries,at=Date.now(),addToImported=true,destination={}){
  ensureImportedLessons(data);
+ if(addToImported&&isCompletedImportedLesson(data,destination.lessonId))throw Error('此课已背完 / Leçon terminée.');
  const learnedLookup=addToImported?makeLearnedImportLookup(data):null,tenseLookup=addToImported?makeLearnedTenseLookup(data):null,skippedReview=[],skippedKnown=[];
  const skip=(hit,unit)=>{(hit.notebook==='known'?skippedKnown:skippedReview).push({lesson:packageKey(hit.p),word:hit.w.id,unit});};
  const book='imported',[members,orders,serial,catalog]=importFields(book);if(addToImported&&destination.lessonId&&!data[catalog]?.[destination.lessonId]&&!importedLessons(data,book).some(p=>p.lesson.id===destination.lessonId))throw Error('请选择 Lesson / Choisissez une leçon.');let added=0,duplicates=0;const resolved=[],addedKeys=[];const date=day(new Date(at));let personal=data.library.find(p=>p.book.id==='personal');
@@ -243,7 +253,7 @@ export function addImportedEntries(data,entries,at=Date.now(),addToImported=true
    while(used.has('w'+String(counter).padStart(6,'0')))counter++;if(counter>999999)throw Error('词条空间不足 / Limite atteinte.');const id='w'+counter++;used.add(id);
    const gender=entry.gender||null,pos=entry.pos==='n.'&&!gender?'loc.':entry.pos||'loc.';
    const text=entry.textbookText||(pos==='n.'&&entry.plural?'des '+entry.word:entry.word),spoken=displayForm({pos,primaryMeaning:entry.primaryMeaning,meanings:entry.meanings},{text,gender,literal:!!entry.literal});
-   const example=entry.example?.fr?{...entry.example,audioKey:entry.example.audioKey||spokenKey(entry.example.fr)}:undefined;
+   const example=entry.example?.fr?{...entry.example,...(!entry.example.noAudio?{audioKey:entry.example.audioKey||spokenKey(entry.example.fr)}:{})}:undefined;
    const form={id:id+'-base',text,tested:true,gender,audio:null,audioKey:entry.audioKey||spokenKey(spoken),ipa:entry.ipa||'',source:entry.textbookSource||entry.fosSource||'Wiktionary · '+entry.word+' · CC BY-SA 4.0'+(example?.source?' / '+example.source:'')};if(entry.conjugationSource){Object.assign(form,{audioKey:recording(entry.word).audioKey,conjugationAudio:true,source:'法语变位器3.0'});}if(example)form.example=example;if(entry.literal||pos!=='n.'&&splitNounArticle(text).prefix)form.literal=true;
    w={id,lexiconId:entry.id,lexiconWord:entry.word,provenance:{dictionary:entry.textbookSource||entry.fosSource|| (entry.conjugationSource?'法语变位器3.0':entry.sourceUrl||'https://zh.wiktionary.org/'),license:entry.textbookSource||entry.fosSource?'用户提供的课程资料':entry.conjugationSource?'MIT':'CC BY-SA 4.0',sentence:entry.example?.url||entry.sourceUrl||'',sentenceSource:entry.example?.source||'',authored:!!entry.example?.authored},order:p.words.length+1,pos,sourcePos:entry.pos||pos,meanings:entry.meanings,primaryMeaning:entry.primaryMeaning,forms:[form]};p.words.push(w);p.lesson.version++;newIds.push(id);wordIndex.set(vocabularyIdentity(entry),{p,w});
   }
@@ -251,12 +261,13 @@ export function addImportedEntries(data,entries,at=Date.now(),addToImported=true
   applyFormRelations(w);
   preferredNounAudio(w);
   const previousMember=data[members]?.[wordKey(p,w)],previousSize=previousMember?importedMembershipSize(w,previousMember):0,previousScope=previousMember?importedUnitScope(data,p,w):{infinitive:false,tenses:[]};
+  if(addToImported&&previousMember)assertImportScopeCanExpand(data,wordKey(p,w),previousScope,accepted);
   for(const f of w.forms){
    const same=exact(w.lexiconWord||bare(displayForm(w,f))).toLocaleLowerCase('fr')===exact(entry.existing?bare(entry.word):entry.word).toLocaleLowerCase('fr');
    if(!f.audioKey)f.audioKey=spokenKey(displayForm(w,f));
    if(same&&!f.ipa&&entry.ipa)f.ipa=entry.ipa;
    if(same&&!f.example?.fr&&entry.example?.fr)f.example={...entry.example};
-   if(f.example?.fr&&!f.example.audioKey)f.example.audioKey=spokenKey(f.example.fr);
+   if(f.example?.fr&&!f.example.audioKey&&!f.example.noAudio)f.example.audioKey=spokenKey(f.example.fr);
   }
   if(verb&&(addToImported||entry.conjugationPlan)){const before=newWord?{infinitive:false,tenses:[]}:normalizePlan(w.conjugationPlan),wanted=addToImported?accepted:requested;w.conjugationPlan={infinitive:before.infinitive||wanted.infinitive,tenses:[...new Set([...before.tenses,...wanted.tenses])]};}
   const key=wordKey(p,w);resolved.push({lesson:packageKey(p),word:w.id});
@@ -340,14 +351,62 @@ export function pruneImportedPractice(data,p,w,book='imported'){
 export function activeImportedSession(data,lessonKey=null){return Object.values(data.sessions).find(s=>s.importedPractice&&s.importedCourseLearning!==false&&(!lessonKey||s.importedLessonKey===lessonKey)&&s.phase!=='done'&&(s.jobs?.length||s.group?.some(id=>!s.doneWords?.includes(id))));}
 export function waitingImportedSession(data,lessonKey){return Object.values(data.sessions).find(s=>s.importedPractice&&s.importedCourseLearning!==false&&s.importedLessonKey===lessonKey&&s.phase==='done'&&s.pending?.length);}
 
-export function dictionaryEntry(row){const gender=row.gender||null,pos=row.pos==='n.'&&!gender?'loc.':row.pos;let text=row.textbookText||(pos==='n.'&&row.plural?'des '+row.word:row.word);const spoken=displayForm({pos,primaryMeaning:row.primaryMeaning,meanings:row.meanings},{text,gender,literal:!!row.literal});const word={id:row.id,lexiconId:row.id,lexiconWord:row.word,...(row.vocabularySource?{vocabularyMerge:{revision:1,key:vocabularyIdentity(row),source:row.vocabularySource}}:{}),order:1,pos,sourcePos:row.pos,meanings:row.meanings,primaryMeaning:row.primaryMeaning,forms:[{id:row.id+'-base',text,gender,tested:true,literal:!!row.literal||pos!=='n.'&&!!splitNounArticle(text).prefix,ipa:row.ipa,source:row.textbookSource||row.fosSource||'',audio:null,audioKey:row.conjugationSource?recording(row.word).audioKey:row.audioKey||spokenKey(spoken),...(row.conjugationSource?{conjugationAudio:true}:{}),example:row.example?{...row.example,audioKey:row.example.audioKey||spokenKey(row.example.fr)}:undefined}]};applyReviewedReading(word);applyFormRelations(word);preferredNounAudio(word);return word;}
-const preparedRows=new WeakMap(),rowWords=new WeakMap(),rowSearch=new WeakMap(),librarySources=new WeakMap();
+const dictionaryNotebookPackage={dictionary:true,book:{id:'dictionary',title:'词库 · Dictionnaire'},lesson:{id:'all',title:'词库',order:1,version:1}};
+export function practiceOptionEntry(data,p,option,rows){
+ const id=option.id;
+ if(id.startsWith('dictionary:')){
+  const dictionaryRow=rows.find(row=>row.id===id.slice('dictionary:'.length));
+  return dictionaryRow?{p:dictionaryNotebookPackage,w:dictionaryEntry(dictionaryRow),dictionaryRow}:null;
+ }
+ const local=p.words.find(w=>w.id===id);
+ if(local)return wordContext(data,p,local);
+ const candidates=data.library.flatMap(pkg=>pkg.words.filter(w=>w.id===id||wordKey(pkg,w)===id).map(w=>({p:pkg,w})));
+ const matching=candidates.filter(({w})=>w.forms.map(form=>displayForm(w,form)).join(' / ')===option.french);
+ const entries=matching.length?matching:candidates;
+ if(entries.length===1)return entries[0];
+ const identity=vocabularyIdentity(entries[0]?.w);
+ if(!identity||entries.some(({w})=>vocabularyIdentity(w)!==identity))return null;
+ return entries.reduce((best,entry)=>preferVocabularyEntry(entry,best,data)?entry:best,null);
+}
+
+export function dictionaryEntry(row){const gender=row.gender||null,pos=row.pos==='n.'&&!gender?'loc.':row.pos;let text=row.textbookText||(pos==='n.'&&row.plural?'des '+row.word:row.word);const spoken=displayForm({pos,primaryMeaning:row.primaryMeaning,meanings:row.meanings},{text,gender,literal:!!row.literal});const word={id:row.id,lexiconId:row.id,lexiconWord:row.word,...(row.vocabularySource?{vocabularyMerge:{revision:1,key:vocabularyIdentity(row),source:row.vocabularySource}}:{}),order:1,pos,sourcePos:row.pos,meanings:row.meanings,primaryMeaning:row.primaryMeaning,forms:[{id:row.id+'-base',text,gender,tested:true,literal:!!row.literal||pos!=='n.'&&!!splitNounArticle(text).prefix,ipa:row.ipa,source:row.textbookSource||row.fosSource||'',audio:null,audioKey:row.conjugationSource?recording(row.word).audioKey:row.audioKey||spokenKey(spoken),...(row.conjugationSource?{conjugationAudio:true}:{}),example:row.example?{...row.example,...(!row.example.noAudio?{audioKey:row.example.audioKey||spokenKey(row.example.fr)}:{})}:undefined}]};applyReviewedReading(word);applyFormRelations(word);preferredNounAudio(word);return word;}
+const preparedRows=new WeakMap(),rowWords=new WeakMap(),rowIdentities=new WeakMap(),librarySources=new WeakMap();
 export function* dictionaryNotebookEntrySteps(rows,data,{query='',limit=Infinity}={}){
  let work=0;let prepared=preparedRows.get(rows);if(!prepared){prepared=withSourceVerbs(rows);preparedRows.set(rows,prepared);}
  let source=librarySources.get(data.library);if(!source){const existing=new Map(),all=[];for(const p of sourceOrderedLibrary(data.library))for(const w of p.words){if(++work%64===0)yield;if(w.conjugation)continue;const e={p,w};all.push(e);for(const f of w.forms){const name=vocabularyIdentity({...w,forms:[f]});const old=existing.get(name),keys=new Set(w.forms.map(f=>vocabularyIdentity({...w,forms:[f]}))),oldKeys=old&&new Set(old.w.forms.map(f=>vocabularyIdentity({...old.w,forms:[f]})));const superset=oldKeys&&keys.size>oldKeys.size&&[...oldKeys].every(key=>keys.has(key)),subset=oldKeys&&oldKeys.size>keys.size&&[...keys].every(key=>oldKeys.has(key));if(superset||!subset&&preferVocabularyEntry(e,old,data))existing.set(name,e);}}source={existing,all:uniqueVocabularyEntries(all,data)};librarySources.set(data.library,source);}
- const p={dictionary:true,book:{id:'dictionary',title:'词库 · Dictionnaire'},lesson:{id:'all',title:'词库',order:1,version:1}},seen=new Set(),seenWords=new Set(),result=[],needle=normalize(query);
- for(const row of prepared){if(++work%64===0)yield;const identity=vocabularyIdentity(row);if(identity&&seenWords.has(identity))continue;const e=source.existing.get(vocabularyIdentity(row));if(e){const key=wordKey(e.p,e.w);if(seen.has(key)){if(identity)seenWords.add(identity);continue;}seen.add(key);if(needle&&!normalize([...e.w.meanings,...e.w.forms.map(f=>f.text)].join(' ')).includes(needle))continue;result.push(e);}else{let search=rowSearch.get(row);if(search===undefined){search=normalize([...readingSpellings(row),...row.meanings].join(' '));rowSearch.set(row,search);}if(needle&&!search.includes(needle))continue;let w=rowWords.get(row);if(!w){w=dictionaryEntry(row);rowWords.set(row,w);}result.push({p,w,dictionaryRow:row});}if(identity)seenWords.add(identity);if(e){const key=vocabularyIdentity(e.w);if(key)seenWords.add(key);for(const f of e.w.forms)seenWords.add(vocabularyIdentity({...e.w,forms:[f]}));}if(result.length>=limit)return result;}
- for(const e of source.all){if(++work%64===0)yield;const identity=vocabularyIdentity(e.w),key=wordKey(e.p,e.w);if(seen.has(key)||identity&&seenWords.has(identity))continue;seen.add(key);if(needle&&!normalize([...e.w.meanings,...e.w.forms.map(f=>f.text)].join(' ')).includes(needle))continue;result.push(e);if(identity)seenWords.add(identity);if(result.length>=limit)break;}return result;
+ const p=dictionaryNotebookPackage,seen=new Set(),seenWords=new Set(),result=[];
+ const score=notebookSearch(query),ranked=[[],[],[],[],[]];
+ const collect=(tier,entry)=>{
+  const bucket=score?ranked[tier]:result;
+  if(bucket.length<limit)bucket.push(entry());
+  return !score&&result.length>=limit;
+ };
+ for(const row of prepared){if(++work%64===0)yield;let identity=rowIdentities.get(row);
+  if(identity===undefined){identity=vocabularyIdentity(row);rowIdentities.set(row,identity);}
+  if(identity&&seenWords.has(identity))continue;
+  const e=source.existing.get(identity);
+  if(e){const key=wordKey(e.p,e.w);if(seen.has(key)){if(identity)seenWords.add(identity);continue;}seen.add(key);}
+  const tier=score?.(e?.w||row)??0;
+  if(tier===Infinity)continue;
+  if(identity)seenWords.add(identity);
+  if(e){const key=vocabularyIdentity(e.w);if(key)seenWords.add(key);for(const f of e.w.forms)seenWords.add(vocabularyIdentity({...e.w,forms:[f]}));}
+  if(collect(tier,()=>{
+   if(e)return e;
+   let w=rowWords.get(row);if(!w){w=dictionaryEntry(row);rowWords.set(row,w);}
+   return {p,w,dictionaryRow:row};
+  }))return result;
+ }
+ for(const e of source.all){
+  if(++work%64===0)yield;
+  const identity=vocabularyIdentity(e.w),key=wordKey(e.p,e.w);
+  if(seen.has(key)||identity&&seenWords.has(identity))continue;
+  seen.add(key);
+  const tier=score?.(e.w)??0;
+  if(tier===Infinity)continue;
+  if(identity)seenWords.add(identity);
+  if(collect(tier,()=>e))break;
+ }
+ return score?ranked.flat().slice(0,limit):result;
 }
 export function dictionaryNotebookEntries(rows,data,options){const steps=dictionaryNotebookEntrySteps(rows,data,options);let next;do{next=steps.next();}while(!next.done);return next.value;}
 export function resolveDictionaryEntry(data,entry){if(!entry.p.dictionary)return entry;const result=addImportedEntries(data,[entry.dictionaryRow],Date.now(),false).resolved[0],p=data.library.find(p=>packageKey(p)===result.lesson);return {p,w:p.words.find(w=>w.id===result.word)};}

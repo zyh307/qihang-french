@@ -4,27 +4,36 @@ const exact=value=>String(value||'').normalize('NFC').replaceAll('’',"'").repl
 export const grammaticalKind=value=>String(value||'').trim().toLocaleLowerCase('fr').split(/[.\s]/u)[0];
 export const grammaticalLabel=value=>({n:'名词',adj:'形容词',v:'动词',adv:'副词',prép:'介词',pron:'代词',art:'冠词',conj:'连词',interj:'感叹词',loc:'短语',num:'数词'}[grammaticalKind(value)]||'')+' · '+String(value||'');
 const byId=new Map(readings.flatMap(row=>[row.id,...(row.legacyIds||[]),...(row.courseIds||[])].map(id=>[id,row])));
+const byLegacyChoice=new Map(readings.flatMap(row=>(row.legacyChoices||[]).map(choice=>[choice.id+'|'+choice.meaning,row])));
 export function reviewedReading(word){
  if(!word||word.conjugation)return null;
+ const savedChoice=word.primaryMeaningChosen&&byLegacyChoice.get(word.lexiconId+'|'+word.primaryMeaning);
+ if(savedChoice)return savedChoice;
  const direct=byId.get(word.lexicalReading||word.lexiconId||word.id);if(direct)return direct;
- // Unreviewed homographs are never merged by a guessed suffix or lemma.
  const name=exact(word.lexiconWord||word.word||word.forms?.[0]?.text),kind=grammaticalKind(word.pos);
+ if(name==='glace'&&kind==='n'&&
+   [word.primaryMeaning,...(word.meanings||[])].some(value=>/^(冰|冰激凌|冰淇淋|冰糕)$/u.test(value)))return byId.get('lex-glace-dessert');
+ // Unreviewed homographs are never merged by a guessed suffix or lemma.
  return readings.find(row=>!row.splitSense&&(word.lexiconWord||row.matchSpelling)&&(row.word===name||row.aliases?.includes(name))&&grammaticalKind(row.pos)===kind)||null;
 }
 export function applyReviewedForms(word,row){
  if(!word.forms?.length)return;
  const ids=new Set(word.forms.map(form=>form.id));
  for(const descriptor of row.forms){
-  const existing=word.forms.find(form=>exact(form.text)===descriptor.text);
+  const existing=word.forms.find(form=>exact(form.text)===descriptor.text&&(row.pos!=='n.'||!form.gender||form.gender===descriptor.gender));
   if(existing){
-   existing.gender=descriptor.gender;existing.tested=descriptor.tested;existing.literal=true;
+   existing.gender=descriptor.gender;existing.tested=descriptor.tested;existing.literal=row.pos!=='n.';
    if(descriptor.ipa)existing.ipa=descriptor.ipa;
    if(descriptor.questionHint)existing.questionHint=descriptor.questionHint;
    continue;
   }
   let next=1;while(ids.has(word.id+'-v'+next))next++;
   const id=word.id+'-v'+next;ids.add(id);
-  word.forms.push({id,...descriptor,literal:true,studySupplement:true,audio:null,audioKey:'tts:'+encodeURIComponent(descriptor.text)});
+  const spoken=row.pos==='n.'?(descriptor.gender==='f'?'une ':'un ')+descriptor.text:descriptor.text;
+  const extra={...descriptor,literal:row.pos!=='n.',audio:null,audioKey:descriptor.audioKey||'tts:'+encodeURIComponent(spoken)};
+  const incorrect=word.forms.find(form=>row.pos==='n.'&&form.gender===descriptor.gender&&row.forms.some(other=>other.gender!==descriptor.gender&&other.text===exact(form.text)));
+  if(incorrect)Object.assign(incorrect,extra);
+  else word.forms.push({id,...extra,studySupplement:true});
  }
  word.forms.sort((left,right)=>row.forms.findIndex(form=>form.text===exact(left.text))-row.forms.findIndex(form=>form.text===exact(right.text)));
 }
@@ -39,8 +48,20 @@ export function applyReviewedReading(word){
  }
  if(row.invalidMeanings?.includes(word.primaryMeaning))delete word.primaryMeaningChosen;
  if(!word.primaryMeaningChosen)word.primaryMeaning=row.primaryMeaning;
+ if(row.courseIds?.includes(word.id)&&word.forms?.[0]?.example?.zh){
+  const example=word.forms[0].example;
+  if(row.word==='menu')example.meaning=example.zh.includes('套餐')?row.meanings[0]:row.meanings[1];
+ }
  if(row.courseIds?.includes(word.id))return;
- if(row.matchSpelling){applyReviewedForms(word,row);return;}
+ if(row.keepSourceExample&&word.forms?.some(form=>form.example?.fr))return;
+ if(row.matchSpelling){
+  applyReviewedForms(word,row);
+  if(row.pos==='n.'&&word.lexiconWord&&!word.curriculumAuthority&&word.forms?.[0]&&row.example){
+   const first=word.forms[0],same=first.example?.fr===row.example.fr;
+   first.example={...(same?first.example:{audioKey:'tts:'+encodeURIComponent(row.example.fr)}),...row.example};
+  }
+  return;
+ }
  if(!word.forms)return;
  for(const form of word.forms){
   const descriptor=row.forms.find(f=>f.text===exact(form.text));if(!descriptor)continue;
@@ -60,10 +81,10 @@ export function applyDictionaryReadings(entries){
  const ids=new Set(entries.map(row=>row.id));
  const result=entries.map(entry=>{
   const row=byId.get(entry.id);if(!row)return entry;
-  return {...entry,pos:row.pos,gender:row.legacyIds?.includes(entry.id)?entry.gender:row.gender,meanings:[...row.meanings],primaryMeaning:row.primaryMeaning,example:{...(entry.example?.fr===row.example.fr?entry.example:{}),...row.example},aliases:[...new Set([...(entry.aliases||[]),...(row.aliases||[])])],lexicalReading:row.id};
+  return {...entry,pos:row.pos,gender:row.legacyIds?.includes(entry.id)?entry.gender:row.gender,meanings:[...row.meanings],primaryMeaning:row.primaryMeaning,example:row.keepSourceExample&&entry.example?.fr?entry.example:{...(entry.example?.fr===row.example.fr?entry.example:{}),...row.example},aliases:[...new Set([...(entry.aliases||[]),...(row.aliases||[])])],lexicalReading:row.id};
  });
  for(const row of readings)if(!ids.has(row.id)){
-  const {forms,courseIds,splitSense,displacedMeanings,...entry}=row;
+  const {forms,courseIds,splitSense,displacedMeanings,legacyChoices,...entry}=row;
   result.push({...entry,lexicalReading:row.id,ipa:forms[0]?.ipa||'',frequency:row.frequency||4.38,source:'Wiktionary',sourceUrl:'https://zh.wiktionary.org/wiki/'+encodeURIComponent(row.word)});
  }
  return result;

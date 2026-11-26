@@ -1,4 +1,5 @@
 <script setup>
+import {retireFadePane} from "../../platform/page-motion.js";
 import {canPlayPracticeAudio, registerPlayer} from '../../../oral-assistant/web/practice-audio-gate.js'
 import {ref, computed, onMounted, onBeforeUnmount, nextTick, watch} from 'vue'
 import WordLine from './WordLine.vue'
@@ -221,6 +222,7 @@ async function downloadRecord() {
 <button v-if="route!=='home'" class="back" @click="leave">← 模式选择</button><span v-else class="mast-note" lang="fr">Atelier oral</span></header>
 <div v-if="error" role="alert" class="alert">{{error}} <button v-if="route==='home'" @click="load">重试</button></div>
 
+<div class="fade-stage"><Transition name="desk-fade" @before-leave="retireFadePane"><div :key="route==='session'?(reading?'reading':phase):route">
 <section v-if="route==='home'" class="landing">
 <div class="intro"><div><p class="overline" lang="fr">Atelier de français</p><h1>口语练习室</h1></div>
 <div v-if="pack" class="scope"><label>教材<select :value="book(pack)" @change="choose('book',$event.target.value)"><option v-for="b in books" :key="b">{{b}}</option></select></label><label>单元<select :value="pack.unit" @change="choose('unit',$event.target.value)"><option v-for="u in units" :key="u" :value="u">Unité {{u}}</option></select></label><label>课<select :value="pack.id" @change="choose('lesson',$event.target.value)"><option v-for="p in lessons" :key="p.id" :value="p.id">Leçon {{p.lesson}}{{lessons.filter(q=>q.lesson===p.lesson).length>1?' · '+p.title.zh:''}}</option></select></label></div>
@@ -259,5 +261,6 @@ async function downloadRecord() {
 <div class="metrics"><div v-for="[title,value] in [['有效朗读',report.recorded+'/'+lines.length],['平均覆盖率',mean('coverage')],['平均准确率',mean('accuracy')],['今日连击',today+' 句']]" :key="title"><small>{{title}}</small><strong>{{value}}</strong></div></div>
 <p>常错词　<strong>{{report.frequent.map(p=>p[0]+' ×'+p[1]).join('　')||'暂无'}}</strong></p><ol class="list"><li v-for="l in lines" :key="l.id"><strong lang="fr">{{l.fr}}</strong><span>{{report.scores[l.id]?names[report.scores[l.id].status]+' · '+pct(report.scores[l.id].accuracy):'尚无有效判定'}}</span></li></ol>
 <div class="actions"><button class="speak" :disabled="busy" @click="report.wrong.length?advance('drill'):move('games')">{{report.wrong.length?'再练一遍红的':'完成'}}</button><button class="text-link" :disabled="busy" @click="downloadRecord">导出记录</button></div></section>
-</template></main>
+</template>
+</div></Transition></div></main>
 </template>

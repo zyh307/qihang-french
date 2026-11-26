@@ -82,15 +82,21 @@ def copy(source, target):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', type=Path)
+    model_options = parser.add_mutually_exclusive_group()
+    model_options.add_argument('--model', type=Path)
+    model_options.add_argument('--omit-model', action='store_true')
     args = parser.parse_args()
     OUT.mkdir(exist_ok=True)
     assert not OUT.is_symlink() and OUT.resolve() == ROOT / f'{NAME}-正式版-v{VERSION}'
-    model = args.model or Path(os.environ.get('QIHANG_MODEL_FILE') or OUT / MANIFEST['filename'])
-    if not model.is_file():
-        model = ROOT / '交付/模型' / MANIFEST['filename']
-    assert model.is_file() and model.stat().st_size == MANIFEST['size'], 'Pinned model file required'
-    assert digest(model) == MANIFEST['sha256'], 'Model SHA-256 mismatch'
+    model_target = OUT / MANIFEST['filename']
+    if args.omit_model:
+        assert not model_target.exists(), 'The release directory already contains the model'
+    else:
+        model = args.model or Path(os.environ.get('QIHANG_MODEL_FILE') or model_target)
+        if not model.is_file():
+            model = ROOT / '交付/模型' / MANIFEST['filename']
+        assert model.is_file() and model.stat().st_size == MANIFEST['size'], 'Pinned model file required'
+        assert digest(model) == MANIFEST['sha256'], 'Model SHA-256 mismatch'
     outputs = []
     for source, name, prefix, windows in (
         (ROOT / f'安卓安装包/{NAME}-v{VERSION}.apk', f'{NAME}-Android-v{VERSION}.apk', 'assets/', False),
@@ -101,10 +107,10 @@ def main():
         copy(source, target)
         outputs.append(target)
         print(name, target.stat().st_size, digest(target), flush=True)
-    target = OUT / MANIFEST['filename']
-    copy(model, target)
-    assert digest(target) == MANIFEST['sha256']
-    outputs.append(target)
+    if not args.omit_model:
+        copy(model, model_target)
+        assert digest(model_target) == MANIFEST['sha256']
+        outputs.append(model_target)
 
     license_file = OUT / f'{NAME}-模型许可.zip'
     with zipfile.ZipFile(license_file, 'w', zipfile.ZIP_DEFLATED) as archive:

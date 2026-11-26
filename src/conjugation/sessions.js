@@ -35,6 +35,7 @@ export function pendingConjugations(data,pkg=null,mode='learn'){
 }
 export function startConjugationSession(data,pkg=null,mode='learn',scope=null){
  data.conjugationSessions||={};const key=(pkg?packageKey(pkg):'all')+':'+mode+(scope?':word:'+scope.baseWordId+':'+encodeURIComponent(scope.tense):''),old=data.conjugationSessions[key];
+ if(old?.answerReview&&!old.retired){data.lastConjugationKey=key;return key;}
  if(old&&!old.done&&!old.retired){restoreMeanings(data,old);mergeDailyReview(data,key,old);const engine=engineFor(data,old);for(const e of [...(old.engine.entries||[]),...old.engine.groups.flatMap(g=>g.entries)])if((mode==='review'&&conjugationReviewPaused(data,e.verbe,day()))||contexts(data,old,{...e,personne:e.personnes[0]}).some(({p,w})=>studyPaused(data,p,w,day()))){engine.defer(e);if(old.reviewDailyUnits){
    if(mode==='review'&&conjugationReviewPaused(data,e.verbe,day()))old.reviewDailyUnits=old.reviewDailyUnits.filter(id=>id.split('|')[0]!==e.verbe);
    else if(!old.reviewDoneToday?.includes(entryKey(e)))old.reviewDailyUnits=old.reviewDailyUnits.filter(id=>id!==entryKey(e));
@@ -125,7 +126,11 @@ function engineFor(data,s){
  return engine;
 }
 export function conjugationQuestion(data,key){const s=data.conjugationSessions?.[key];if(!s)return null;const engine=engineFor(data,s);let q=engine.question();while(q.round==='judge')q=engine.answer({id:q.id,choice:3}).next;if(q.completed)s.done=true;s.viewQuestion=q;return q;}
-export function answerConjugation(data,key,body){const s=data.conjugationSessions[key];if(s.paused||s.done)throw Error('请继续练习 / Reprenez la série.');mergeDailyReview(data,key,s);const engine=engineFor(data,s),q=s.engine.question,cursor=s.engine.cursor;const entry={verbe:q.verbe,temps:q.temps,personne:q.personne};const previousView=s.viewQuestion;const result=engine.answer(body);result.input=body.answer||'';result.formatted=q.round==='fill'&&result.correct&&result.input.normalize('NFC')!==result.expected.normalize('NFC');result.fuzzy=q.round==='fill'&&checkAnswer(body.answer,conjugations(q.verbe,q.temps)[q.personne],data.settings.fuzzy).fuzzy;result.spoken=result.correct?conjugationSpeech(q.round==='fill'?q.personne:(q.board.left_persons?.[body.person_key]||q.board.cards.find(card=>card.key===body.person_key)?.personne),result.expected):'';
+export function answerConjugation(data,key,body){const s=data.conjugationSessions[key];if(s.paused||s.done||s.answerReview)throw Error('请继续练习 / Reprenez la série.');mergeDailyReview(data,key,s);const engine=engineFor(data,s),q=s.engine.question,cursor=s.engine.cursor;const entry={verbe:q.verbe,temps:q.temps,personne:q.personne};const previousView=s.viewQuestion;const result=engine.answer(body);result.input=body.answer||'';if(q.round==='fill'){
+  const spelling=checkAnswer(result.input,result.expected,data.settings.fuzzy);
+  result.formatted=spelling.formatted;
+  result.fuzzy=spelling.fuzzy;
+ }result.spoken=result.correct?conjugationSpeech(q.round==='fill'?q.personne:(q.board.left_persons?.[body.person_key]||q.board.cards.find(card=>card.key===body.person_key)?.personne),result.expected):'';
  if(result.correct&&q.round==='fill'){
   const id=keyFor(entry.verbe,entry.temps,entry.personne);
   if(!s.engine.pending.some(e=>keyFor(e.verbe,e.temps,e.personne)===id)&&!s.completedForms.includes(id)){
@@ -135,7 +140,14 @@ export function answerConjugation(data,key,body){const s=data.conjugationSession
   if(s.mode==='review'&&!s.engine.pending.some(e=>entryKey(e)===entryKey(entry))&&!s.engine.groups.slice(s.engine.cursor+1).some(g=>g.entries.some(e=>entryKey(e)===entryKey(entry)))){s.reviewDoneToday||=[];if(!s.reviewDoneToday.includes(entryKey(entry)))s.reviewDoneToday.push(entryKey(entry));}
  }
  if(s.engine.cursor!==cursor){s.mistakeWordIds=[];if(!result.next.completed)s.paused=true;}
- s.updatedAt=Date.now();data.lastConjugationKey=key;result.next=conjugationQuestion(data,key);s.nextQuestion=s.viewQuestion;s.viewQuestion=previousView;return result;
+ s.updatedAt=Date.now();data.lastConjugationKey=key;result.next=conjugationQuestion(data,key);s.nextQuestion=s.viewQuestion;s.viewQuestion=previousView;
+ if(!result.correct&&q.round==='match'&&result.next.board?.id!==q.board.id&&result.correction){
+  const {lemma,person,form}=result.correction;
+  s.answerReview={round:'match',lemma,expected:conjugationSpeech(person,form)};
+ }else if(!result.correct&&q.round==='fill'&&result.deferred){
+  s.answerReview={round:'fill',correct:false,deferred:true,expected:result.expected,input:result.input};
+ }
+ return result;
 }
 export function hintConjugation(data,key,questionId){
  const s=data.conjugationSessions[key],q=s?.engine.question;
@@ -145,7 +157,7 @@ export function hintConjugation(data,key,questionId){
   q.hinted=true;s.viewQuestion.hinted=true;
   const id=keyFor(q.verbe,q.temps,q.personne);s.engine.fill_retry||={};s.engine.fill_retry[id]=1;
   deferred=recordAttempts(data,s,q,false,'hint');
-  if(deferred){const previous=s.viewQuestion,engine=engineFor(data,s),cursor=s.engine.cursor;engine.defer(q);conjugationQuestion(data,key);if(s.engine.cursor!==cursor&&!s.done)s.paused=true;s.nextQuestion=s.viewQuestion;s.viewQuestion=previous;}
+  if(deferred){const previous=s.viewQuestion,engine=engineFor(data,s),cursor=s.engine.cursor;engine.defer(q);conjugationQuestion(data,key);if(s.engine.cursor!==cursor&&!s.done)s.paused=true;s.nextQuestion=s.viewQuestion;s.viewQuestion=previous;s.answerReview={round:'fill',correct:false,deferred:true,expected:conjugations(q.verbe,q.temps)[q.personne],input:''};}
   s.updatedAt=Date.now();data.lastConjugationKey=key;
  }
  return {answer:conjugations(q.verbe,q.temps)[q.personne],deferred};
@@ -162,7 +174,14 @@ export function validateConjugationSessions(data){
  }
 }
 
-export function advanceConjugationUI(data,key,automatic=false){const s=data.conjugationSessions[key];engineFor(data,s);mergeDailyReview(data,key,s);if(s.nextQuestion){s.viewQuestion=s.nextQuestion;delete s.nextQuestion;}if(!automatic)s.paused=false;}
+export function advanceConjugationUI(data,key,automatic=false,acknowledge=false){
+ const s=data.conjugationSessions[key];
+ if(s.answerReview&&!acknowledge)return;
+ delete s.answerReview;
+ engineFor(data,s);mergeDailyReview(data,key,s);
+ if(s.nextQuestion){s.viewQuestion=s.nextQuestion;delete s.nextQuestion;}
+ if(!automatic)s.paused=false;
+}
 
 export function startWordConjugationPractice(data,entry,tense){
  const source=wordContext(data,entry.p,entry.w),p=data.library.find(item=>packageKey(item)===packageKey(source.p))||source.p,w=p.words.find(item=>item.id===source.w.id)||source.w,lemma=lemmaFor(w);

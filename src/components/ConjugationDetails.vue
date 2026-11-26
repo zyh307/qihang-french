@@ -3,22 +3,23 @@
     <view class="practice-top"><button data-conjugation-close class="icon-button back-control" hover-class="none" @click="back" aria-label="返回 / Retour"><Icon name="back" /></button><view class="practice-location conj-location"><text lang="fr">{{ lemma }}</text><text v-if="meaning" class="conj-meaning" lang="zh">{{ meaning }}</text></view><button v-if="fromOriginal||original" class="text-button conj-original" hover-class="none" :disabled="working" @click="openOriginal"><Icon name="book"/><Bi zh="原形" fr="Infinitif" small/></button></view>
     <view v-if="actions" class="definition-title conj-action-row"><Icon name="grammar"/><Bi zh="变位释义" fr="Conjugaison" small/><view class="definition-tools"><button v-if="isIrregularLemma(lemma)" class="text-button" hover-class="none" :disabled="working" @click="practice"><Icon name="repeat"/><Bi zh="专练" fr="Pratiquer" small/></button><button class="text-button" hover-class="none" :disabled="working" @click="openMove"><Icon name="notebook"/><Bi zh="词本" fr="Carnet" small/></button></view><button class="icon-button favorite" :class="{marked:status.favorite}" hover-class="none" :disabled="working" @click="actions.favorite(word,pkg,tense)" aria-label="收藏当前时态 / Ajouter ce temps aux favoris"><SuccessIcon name="heart" :active="!!status.favorite" :item-key="'conjugation:'+(pkg?.book?.id||'')+':'+(pkg?.lesson?.id||'')+':'+lemma+':'+tense" /></button></view>
     <view class="conj-tense-tabs" role="group" aria-label="选择时态 / Choisir un temps"><button v-for="t in availableTenses" :key="t.id" hover-class="none" :class="{selected:tense===t.id}" :aria-pressed="tense===t.id" @click="tense=t.id"><text>{{ t.id }}</text></button></view>
-    <view class="conj-detail-scroll">
-      <view class="conj-person-grid"><button v-for="p in PERSONS" :key="p" class="conj-person-card" hover-class="none" :disabled="!forms[p]||forms[p]==='—'" :aria-label="personLabel(p)+' '+(forms[p]||'—')" @click="$emit('audio',recording(spokenForm(lemma,tense,p),p))"><text class="conj-person-label" lang="fr">{{ personLabel(p) }}</text><text class="conj-person-form" lang="fr">{{ forms[p]||'—' }}</text><Icon v-if="forms[p]&&forms[p]!=='—'" name="sound" /></button></view>
-    </view>
+    <view class="conj-detail-scroll fade-stage"><Transition name="page-fade" @before-leave="retireFadePane">
+      <view :key="tense" class="conj-person-grid"><button v-for="p in PERSONS" :key="p" class="conj-person-card" hover-class="none" :disabled="!forms[p]||forms[p]==='—'" :aria-label="personLabel(p)+' '+(forms[p]||'—')" @click="$emit('audio',recording(spokenForm(lemma,tense,p),p))"><text class="conj-person-label" lang="fr">{{ personLabel(p) }}</text><text class="conj-person-form" lang="fr">{{ forms[p]||'—' }}</text><Icon v-if="forms[p]&&forms[p]!=='—'" name="sound" /></button></view>
+    </Transition></view>
     <view v-if="actions" class="exercise-footer"><KnownAction :disabled="working||!Object.keys(forms).length" :known="status.known" @confirm="move('known',$event)"/></view>
-    <view v-if="moveOpen" class="modal-shade confirm-shade" @click.self="moveOpen=false"><view class="modal small-modal"><view class="modal-heading"><button class="icon-button back-control" hover-class="none" @click="moveOpen=false" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="调整词本" fr="Changer de carnet"/></view><text class="move-word">{{ lemma }}</text>
+    <Transition name="dialog-pop"><view v-if="moveOpen" class="modal-shade confirm-shade" @click.self="moveOpen=false"><view class="modal small-modal"><view class="modal-heading"><button class="icon-button back-control" hover-class="none" @click="moveOpen=false" aria-label="返回 / Retour"><Icon name="back"/></button><Bi zh="调整词本" fr="Changer de carnet"/></view><text class="move-word">{{ lemma }}</text>
       <NotebookSelection :word="word" v-model="adjustmentSelection" :disabled="working"/>
       <button class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust('favorite')"><SuccessIcon name="heart" :active="adjustmentState.favorite" :item-key="'adjust-conj:'+lemma"/><Bi :zh="adjustmentState.favorite?'取消收藏':'收藏'" fr="Favoris"/><Icon :name="adjustmentState.favorite?'check':'plus'"/></button>
       <button v-for="target in targets" :key="target.id" class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust(target.id)"><Icon :name="target.icon"/><Bi :zh="target.zh" :fr="target.fr"/><Icon name="arrow"/></button>
       <button class="setting-action" hover-class="none" :disabled="working||!adjustmentState.selected" @click="adjust('imported')"><Icon :name="adjustmentState.imported?'trash':'plus'"/><Bi :zh="adjustmentState.imported?'移出导入本':'加入导入本'" :fr="adjustmentState.imported?'Retirer des mots importés':'Ajouter aux mots importés'"/><Icon name="arrow"/></button>
       <KnownAction :disabled="working||!adjustmentState.selected" @confirm="adjust('known',$event)"/>
-    </view></view>
+    </view></view></Transition>
   </view></view>
 </template>
 <script setup>
 import KnownAction from './KnownAction.vue';
 import NotebookSelection from './NotebookSelection.vue';
+import {retireFadePane} from '../platform/page-motion.js';
 import {defaultNotebookSelection} from '../domain/notebook-adjustment.js';
 import SuccessIcon from './SuccessIcon.vue';
 import {ref,computed,inject,watch} from 'vue';
@@ -40,8 +41,11 @@ function openMove(){adjustmentSelection.value=defaultNotebookSelection(props.wor
 async function adjust(target,complete){
  if(working.value||!adjustmentState.value.selected){complete?.(false);return;}
  if(target==='imported')target=adjustmentState.value.imported?'remove-imported':'add-imported';
+ const adding=target==='add-imported',selectedTense=tense.value;
+ if(adding)moveOpen.value=false;
  const saved=!!await actions.adjust({p:props.pkg,w:props.word},adjustmentSelection.value,target);
  if(saved&&target!=='favorite')moveOpen.value=false;
+ else if(adding&&tense.value===selectedTense)moveOpen.value=true;
  complete?.(saved);
 }
 function back(){if(moveOpen.value)moveOpen.value=false;else emit('close');}

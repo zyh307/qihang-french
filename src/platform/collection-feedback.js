@@ -8,15 +8,15 @@ let activeCleanup;
 // This callback survives when saving advances a question or closes a sheet.
 export function prepareCollection(){
  let completed=false;
- return saved=>{
+ return (saved,onFinished)=>{
   if(completed)return;
   completed=true;
-  if(saved===true)finishCollection();
+  if(saved===true)finishCollection(onFinished);
  };
 }
 
-export function finishCollection(){
- if(!document.body||document.hidden)return;
+export function finishCollection(onFinished){
+ if(!document.body||document.hidden){onFinished?.();return;}
  activeCleanup?.();
  const host=document.createElement('div');
  let removed=false,timeout;
@@ -28,6 +28,7 @@ export function finishCollection(){
   render(null,host);
   host.remove();
   if(activeCleanup===cleanup)activeCleanup=null;
+  onFinished?.();
  };
  const onVisibility=()=>{if(document.hidden)cleanup();};
  activeCleanup=cleanup;

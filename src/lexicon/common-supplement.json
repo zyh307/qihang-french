@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "date": "2026-11-04",
+  "date": "2026-11-25",
   "entries": [
     {
       "word": "milieu",
@@ -47,7 +47,7 @@
       "ipa": "/yn/",
       "highlight": "une",
       "sourceUrl": "https://fr.wiktionary.org/wiki/une",
-      "frequency": 7.0,
+      "frequency": 7,
       "primaryMeaning": "一个（阴性）"
     },
     {
@@ -223,7 +223,7 @@
       "ipa": "/ma/",
       "highlight": "ma",
       "sourceUrl": "https://fr.wiktionary.org/wiki/ma",
-      "frequency": 6.0,
+      "frequency": 6,
       "primaryMeaning": "我的（阴性）"
     },
     {
@@ -2865,7 +2865,7 @@
       "zh": "其他学生已经离开了。",
       "highlight": "autres",
       "sourceUrl": "https://fr.wiktionary.org/wiki/autres",
-      "frequency": 6.0,
+      "frequency": 6,
       "primaryMeaning": "其他的（复数）"
     },
     {
@@ -3431,6 +3431,829 @@
       "sourceUrl": "https://fr.wiktionary.org/wiki/desquelles",
       "frequency": 3.61,
       "primaryMeaning": "其……的（阴性复数）"
+    },
+    {
+      "word": "lardon",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "培根丁"
+      ],
+      "fr": "Je fais revenir les lardons à la poêle.",
+      "zh": "我把培根丁放在平底锅里煸炒。",
+      "ipa": "/laʁ.dɔ̃/",
+      "highlight": "lardons",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/lardon",
+      "aliases": [
+        "lardons"
+      ]
+    },
+    {
+      "word": "saucisson",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "法式干香肠"
+      ],
+      "fr": "On coupe le saucisson en fines tranches.",
+      "zh": "我们把法式干香肠切成薄片。",
+      "ipa": "/so.si.sɔ̃/",
+      "highlight": "saucisson",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/saucisson"
+    },
+    {
+      "word": "rillettes",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "法式手撕肉酱"
+      ],
+      "fr": "Elle étale des rillettes sur une tranche de pain.",
+      "zh": "她把法式手撕肉酱抹在一片面包上。",
+      "ipa": "/ʁi.jɛt/",
+      "highlight": "rillettes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rillettes",
+      "plural": true
+    },
+    {
+      "word": "entrecôte",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "肋眼牛排"
+      ],
+      "fr": "Je commande une entrecôte avec des frites.",
+      "zh": "我点了一份肋眼牛排配薯条。",
+      "ipa": "/ɑ̃.tʁə.kot/",
+      "highlight": "entrecôte",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/entrec%C3%B4te"
+    },
+    {
+      "word": "escalope",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "薄肉片"
+      ],
+      "fr": "Il fait cuire une escalope de veau à la poêle.",
+      "zh": "他用平底锅煎一片薄切小牛肉。",
+      "ipa": "/ɛs.ka.lɔp/",
+      "highlight": "escalope",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/escalope"
+    },
+    {
+      "word": "échalote",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "小红葱头"
+      ],
+      "fr": "Ajoute une échalote hachée à la vinaigrette.",
+      "zh": "往油醋汁里加一颗切碎的小红葱头。",
+      "ipa": "/e.ʃa.lɔt/",
+      "highlight": "échalote",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9chalote"
+    },
+    {
+      "word": "potimarron",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "栗子南瓜"
+      ],
+      "fr": "Je prépare une soupe de potimarron.",
+      "zh": "我在做栗子南瓜汤。",
+      "ipa": "/pɔ.ti.ma.ʁɔ̃/",
+      "highlight": "potimarron",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/potimarron"
+    },
+    {
+      "word": "panais",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "欧防风根"
+      ],
+      "fr": "Elle fait rôtir des panais et des carottes.",
+      "zh": "她把欧防风根和胡萝卜一起烤。",
+      "ipa": "/pa.nɛ/",
+      "highlight": "panais",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/panais"
+    },
+    {
+      "word": "endive",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "苦苣菜"
+      ],
+      "fr": "On ajoute des noix à la salade d'endives.",
+      "zh": "我们往苦苣沙拉里加核桃。",
+      "ipa": "/ɑ̃.div/",
+      "highlight": "endives",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/endive"
+    },
+    {
+      "word": "poêlée",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "一锅煎炒菜"
+      ],
+      "fr": "Je sers une poêlée de champignons.",
+      "zh": "我端上一锅炒蘑菇。",
+      "ipa": "/pwa.le/",
+      "highlight": "poêlée",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/po%C3%AAl%C3%A9e"
+    },
+    {
+      "word": "passoire",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "滤水篮"
+      ],
+      "fr": "Verse les pâtes dans la passoire.",
+      "zh": "把意面倒进滤水篮里。",
+      "ipa": "/pa.swaʁ/",
+      "highlight": "passoire",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/passoire"
+    },
+    {
+      "word": "croûton",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "酥脆面包丁"
+      ],
+      "fr": "Il ajoute des croûtons dans sa soupe.",
+      "zh": "他往汤里加了些酥脆面包丁。",
+      "ipa": "/kʁu.tɔ̃/",
+      "highlight": "croûtons",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/cro%C3%BBton"
+    },
+    {
+      "word": "chapelure",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "面包糠"
+      ],
+      "fr": "On recouvre le poisson de chapelure avant de le faire frire.",
+      "zh": "炸鱼前先给鱼裹上面包糠。",
+      "ipa": "/ʃa.pə.lyʁ/",
+      "highlight": "chapelure",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/chapelure"
+    },
+    {
+      "word": "pâte feuilletée",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "起酥面团"
+      ],
+      "fr": "Déroule la pâte feuilletée sur la plaque du four.",
+      "zh": "把起酥面团摊在烤盘上。",
+      "ipa": "/pɑt fœj.te/",
+      "highlight": "pâte feuilletée",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A2te_feuillet%C3%A9e"
+    },
+    {
+      "word": "pâte brisée",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "酥皮面团（不分层）"
+      ],
+      "fr": "On utilise une pâte brisée pour cette tarte salée.",
+      "zh": "这个咸派用的是不分层的酥皮面团。",
+      "ipa": "/pɑt bʁi.ze/",
+      "highlight": "pâte brisée",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A2te_bris%C3%A9e"
+    },
+    {
+      "word": "rissoler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "煎至金黄"
+      ],
+      "fr": "Laisse rissoler les pommes de terre quelques minutes.",
+      "zh": "把土豆再煎几分钟，煎到金黄。",
+      "ipa": "/ʁi.sɔ.le/",
+      "highlight": "rissoler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/rissoler"
+    },
+    {
+      "word": "émincer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "切成薄片"
+      ],
+      "fr": "Il faut émincer les oignons avant de les faire revenir.",
+      "zh": "先把洋葱切成薄片，再下锅煸炒。",
+      "ipa": "/e.mɛ̃.se/",
+      "highlight": "émincer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9mincer"
+    },
+    {
+      "word": "hacher",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "剁碎"
+      ],
+      "fr": "Elle commence par hacher du persil.",
+      "zh": "她先把欧芹剁碎。",
+      "ipa": "/a.ʃe/",
+      "highlight": "hacher",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/hacher"
+    },
+    {
+      "word": "égoutter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "沥干水分"
+      ],
+      "fr": "Il faut égoutter les pâtes avant d'ajouter la sauce.",
+      "zh": "加酱汁前要把意面沥干。",
+      "ipa": "/e.ɡu.te/",
+      "highlight": "égoutter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9goutter"
+    },
+    {
+      "word": "crisper",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使紧绷"
+      ],
+      "fr": "Le froid lui fait crisper les doigts.",
+      "zh": "冷得他手指都绷紧了。",
+      "ipa": "/kʁis.pe/",
+      "highlight": "crisper",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/crisper"
+    },
+    {
+      "word": "s'accroupir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "蹲下"
+      ],
+      "fr": "Elle doit s'accroupir pour ramasser les clés.",
+      "zh": "她得蹲下去捡钥匙。",
+      "ipa": "/sa.kʁu.piʁ/",
+      "highlight": "s'accroupir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/accroupir"
+    },
+    {
+      "word": "apprêter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "备好"
+      ],
+      "fr": "Il faut apprêter la viande avant le repas.",
+      "zh": "开饭前要把肉备好。",
+      "ipa": "/a.pʁe.te/",
+      "highlight": "apprêter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/appr%C3%AAter"
+    },
+    {
+      "word": "naguère",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "不久以前"
+      ],
+      "fr": "Il y avait naguère une librairie dans cette rue.",
+      "zh": "不久以前，这条街上还有一家书店。",
+      "ipa": "/na.ɡɛʁ/",
+      "highlight": "naguère",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/nagu%C3%A8re"
+    },
+    {
+      "word": "navrer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使难过"
+      ],
+      "fr": "Cette nouvelle va navrer ses amis.",
+      "zh": "这个消息会让他的朋友们难过。",
+      "ipa": "/na.vʁe/",
+      "highlight": "navrer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/navrer"
+    },
+    {
+      "word": "s'accouder",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "用手肘撑着"
+      ],
+      "fr": "Il vient s'accouder au comptoir.",
+      "zh": "他走过来，把手肘撑在吧台上。",
+      "ipa": "/sa.ku.de/",
+      "highlight": "s'accouder",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/accouder"
+    },
+    {
+      "word": "passionner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使着迷"
+      ],
+      "fr": "Cette histoire va passionner les enfants.",
+      "zh": "这个故事会让孩子们着迷。",
+      "ipa": "/pa.sjɔ.ne/",
+      "highlight": "passionner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/passionner"
+    },
+    {
+      "word": "s'adosser",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "背靠"
+      ],
+      "fr": "Elle préfère s'adosser au mur.",
+      "zh": "她更喜欢背靠着墙。",
+      "ipa": "/sa.dɔ.se/",
+      "highlight": "s'adosser",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/adosser"
+    },
+    {
+      "word": "dévaler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "飞奔而下"
+      ],
+      "fr": "Les enfants se mettent à dévaler la pente.",
+      "zh": "孩子们开始沿斜坡飞奔而下。",
+      "ipa": "/de.va.le/",
+      "highlight": "dévaler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9valer"
+    },
+    {
+      "word": "pommette",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "颧骨"
+      ],
+      "fr": "Il a une cicatrice sur la pommette gauche.",
+      "zh": "他的左颧骨上有一道疤。",
+      "ipa": "/pɔ.mɛt/",
+      "highlight": "pommette",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/pommette"
+    },
+    {
+      "word": "vachement",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "特别（口语）"
+      ],
+      "fr": "Il fait vachement froid ce matin.",
+      "zh": "今天早上特别冷。",
+      "ipa": "/vaʃ.mɑ̃/",
+      "highlight": "vachement",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/vachement"
+    },
+    {
+      "word": "tôle",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "金属板"
+      ],
+      "fr": "La pluie tambourine sur le toit en tôle.",
+      "zh": "雨点噼啪地打在金属板屋顶上。",
+      "ipa": "/tol/",
+      "highlight": "tôle",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/t%C3%B4le"
+    },
+    {
+      "word": "tournoyer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "盘旋"
+      ],
+      "fr": "On voit les feuilles tournoyer dans le vent.",
+      "zh": "可以看到树叶在风中打转。",
+      "ipa": "/tuʁ.nwa.je/",
+      "highlight": "tournoyer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tournoyer"
+    },
+    {
+      "word": "flairer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "嗅探"
+      ],
+      "fr": "Le chien se met à flairer le sol.",
+      "zh": "狗开始嗅探地面。",
+      "ipa": "/flɛ.ʁe/",
+      "highlight": "flairer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/flairer"
+    },
+    {
+      "word": "bribe",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "片段"
+      ],
+      "fr": "J'ai entendu une bribe de leur conversation.",
+      "zh": "我听到他们谈话的一小段。",
+      "ipa": "/bʁib/",
+      "highlight": "bribe",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/bribe"
+    },
+    {
+      "word": "blême",
+      "pos": "adj.",
+      "gender": null,
+      "meanings": [
+        "脸色惨白的"
+      ],
+      "fr": "En apprenant la nouvelle, il est devenu blême.",
+      "zh": "听到消息后，他的脸色变得惨白。",
+      "ipa": "/blɛm/",
+      "highlight": "blême",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/bl%C3%AAme"
+    },
+    {
+      "word": "machin",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "那玩意儿（口语）"
+      ],
+      "fr": "Tu sais à quoi sert ce machin ?",
+      "zh": "你知道这玩意儿是干什么的吗？",
+      "ipa": "/ma.ʃɛ̃/",
+      "highlight": "machin",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/machin"
+    },
+    {
+      "word": "à mi-voix",
+      "pos": "loc.",
+      "gender": null,
+      "meanings": [
+        "低声地"
+      ],
+      "fr": "Ils parlent à mi-voix pour ne pas réveiller le bébé.",
+      "zh": "他们低声说话，免得吵醒宝宝。",
+      "ipa": "/a mi.vwa/",
+      "highlight": "à mi-voix",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_mi-voix"
+    },
+    {
+      "word": "flipper",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "慌起来（口语）"
+      ],
+      "fr": "Ne commence pas à flipper, on a encore le temps.",
+      "zh": "先别慌，我们还有时间。",
+      "ipa": "/fli.pe/",
+      "highlight": "flipper",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/flipper"
+    },
+    {
+      "word": "lambeau",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "破布片"
+      ],
+      "fr": "Un lambeau de tissu est resté accroché à la clôture.",
+      "zh": "围栏上还挂着一块破布。",
+      "ipa": "/lɑ̃.bo/",
+      "highlight": "lambeau",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/lambeau"
+    },
+    {
+      "word": "se recroqueviller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "蜷缩"
+      ],
+      "fr": "Le chat aime se recroqueviller dans un coin du canapé.",
+      "zh": "猫喜欢蜷缩在沙发的一角。",
+      "ipa": "/sə ʁə.kʁɔ.kə.vi.je/",
+      "highlight": "se recroqueviller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/recroqueviller"
+    },
+    {
+      "word": "s'affaler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "一屁股瘫坐下去"
+      ],
+      "fr": "Il vient s'affaler dans le fauteuil après le travail.",
+      "zh": "下班后，他一屁股瘫坐在扶手椅里。",
+      "ipa": "/sa.fa.le/",
+      "highlight": "s'affaler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/affaler"
+    },
+    {
+      "word": "hérisser",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使竖起"
+      ],
+      "fr": "Le bruit suffit à hérisser les poils du chat.",
+      "zh": "这声响让猫一下子炸了毛。",
+      "ipa": "/e.ʁi.se/",
+      "highlight": "hérisser",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/h%C3%A9risser"
+    },
+    {
+      "word": "balbutier",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "结结巴巴地说"
+      ],
+      "fr": "De surprise, elle ne peut que balbutier quelques mots.",
+      "zh": "她惊讶得只能结结巴巴地说几个字。",
+      "ipa": "/bal.by.sje/",
+      "highlight": "balbutier",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/balbutier"
+    },
+    {
+      "word": "grommeler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "低声抱怨"
+      ],
+      "fr": "Il continue de grommeler dans son coin.",
+      "zh": "他继续在一旁嘟囔抱怨。",
+      "ipa": "/ɡʁɔm.le/",
+      "highlight": "grommeler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/grommeler"
+    },
+    {
+      "word": "ronce",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "荆棘"
+      ],
+      "fr": "Une ronce s'est accrochée à sa manche.",
+      "zh": "一根荆棘勾住了他的袖子。",
+      "ipa": "/ʁɔ̃s/",
+      "highlight": "ronce",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/ronce"
+    },
+    {
+      "word": "exalter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使情绪高涨"
+      ],
+      "fr": "La victoire suffit à exalter les supporters.",
+      "zh": "这场胜利足以让球迷们热血沸腾。",
+      "ipa": "/ɛɡ.zal.te/",
+      "highlight": "exalter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/exalter"
+    },
+    {
+      "word": "assombrir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "使变暗"
+      ],
+      "fr": "Les nuages commencent à assombrir la pièce.",
+      "zh": "乌云渐渐让房间暗了下来。",
+      "ipa": "/a.sɔ̃.bʁiʁ/",
+      "highlight": "assombrir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/assombrir"
+    },
+    {
+      "word": "éparpiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "撒得到处都是"
+      ],
+      "fr": "Le vent risque d'éparpiller les feuilles sur la terrasse.",
+      "zh": "风可能把露台上的树叶吹得到处都是。",
+      "ipa": "/e.paʁ.pi.je/",
+      "highlight": "éparpiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9parpiller"
+    },
+    {
+      "word": "marmonner",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "含糊地嘟囔"
+      ],
+      "fr": "Je l'entends marmonner quelque chose.",
+      "zh": "我听见他含糊地嘟囔了一句。",
+      "ipa": "/maʁ.mɔ.ne/",
+      "highlight": "marmonner",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/marmonner"
+    },
+    {
+      "word": "distraitement",
+      "pos": "adv.",
+      "gender": null,
+      "meanings": [
+        "心不在焉地"
+      ],
+      "fr": "Elle feuillette distraitement un magazine.",
+      "zh": "她心不在焉地翻着一本杂志。",
+      "ipa": "/dis.tʁɛt.mɑ̃/",
+      "highlight": "distraitement",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/distraitement"
+    },
+    {
+      "word": "bredouiller",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "支支吾吾地说"
+      ],
+      "fr": "Gêné, il ne fait que bredouiller une excuse.",
+      "zh": "他很尴尬，只是支支吾吾地道了个歉。",
+      "ipa": "/bʁə.du.je/",
+      "highlight": "bredouiller",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/bredouiller"
+    },
+    {
+      "word": "tituber",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "踉踉跄跄地走"
+      ],
+      "fr": "On le voit tituber jusqu'à la porte.",
+      "zh": "我们看见他踉踉跄跄地走到门口。",
+      "ipa": "/ti.ty.be/",
+      "highlight": "tituber",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tituber"
+    },
+    {
+      "word": "fringue",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "衣服（口语）"
+      ],
+      "fr": "J'ai donné les fringues que je ne porte plus.",
+      "zh": "我把不再穿的衣服送人了。",
+      "ipa": "/fʁɛ̃ɡ/",
+      "highlight": "fringues",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/fringue"
+    },
+    {
+      "word": "tumulte",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "喧闹"
+      ],
+      "fr": "Le tumulte de la foule couvre sa voix.",
+      "zh": "人群的喧闹声盖过了他的声音。",
+      "ipa": "/ty.mylt/",
+      "highlight": "tumulte",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/tumulte"
+    },
+    {
+      "word": "se blottir",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "蜷身依偎"
+      ],
+      "fr": "Le bébé vient se blottir contre sa mère.",
+      "zh": "宝宝蜷在妈妈怀里。",
+      "ipa": "/sə blɔ.tiʁ/",
+      "highlight": "se blottir",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/blottir"
+    },
+    {
+      "word": "racler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "刮掉"
+      ],
+      "fr": "Elle utilise une spatule pour racler le fond du bol.",
+      "zh": "她用刮刀把碗底刮干净。",
+      "ipa": "/ʁa.kle/",
+      "highlight": "racler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/racler"
+    },
+    {
+      "word": "dégringoler",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "一路滚落"
+      ],
+      "fr": "J'ai entendu les pommes dégringoler dans l'escalier.",
+      "zh": "我听见苹果沿楼梯一路滚了下去。",
+      "ipa": "/de.ɡʁɛ̃.ɡɔ.le/",
+      "highlight": "dégringoler",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9gringoler"
+    },
+    {
+      "word": "acquiescer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "表示同意"
+      ],
+      "fr": "Il finit par acquiescer d'un signe de tête.",
+      "zh": "他最后点头表示同意。",
+      "ipa": "/a.kjɛ.se/",
+      "highlight": "acquiescer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/acquiescer"
+    },
+    {
+      "word": "grimacer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "做怪脸"
+      ],
+      "fr": "Cette boisson trop acide le fait grimacer.",
+      "zh": "这饮料太酸，酸得他直做怪脸。",
+      "ipa": "/ɡʁi.ma.se/",
+      "highlight": "grimacer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/grimacer"
+    },
+    {
+      "word": "suffoquer",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "喘不过气"
+      ],
+      "fr": "La fumée commence à le faire suffoquer.",
+      "zh": "烟呛得他快喘不过气了。",
+      "ipa": "/sy.fɔ.ke/",
+      "highlight": "suffoquer",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/suffoquer"
+    },
+    {
+      "word": "haleter",
+      "pos": "v.",
+      "gender": null,
+      "meanings": [
+        "急促地喘气"
+      ],
+      "fr": "On entend le chien haleter après sa course.",
+      "zh": "狗跑完后，可以听到它在急促地喘气。",
+      "ipa": "/al.te/",
+      "highlight": "haleter",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/haleter"
+    },
+    {
+      "word": "menotte",
+      "pos": "n.",
+      "gender": "f",
+      "meanings": [
+        "手铐"
+      ],
+      "fr": "Le policier lui passe les menottes.",
+      "zh": "警察给他戴上手铐。",
+      "ipa": "/mə.nɔt/",
+      "highlight": "menottes",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/menotte"
+    },
+    {
+      "word": "guéridon",
+      "pos": "n.",
+      "gender": "m",
+      "meanings": [
+        "小圆桌"
+      ],
+      "fr": "Elle pose son verre sur le guéridon.",
+      "zh": "她把杯子放在小圆桌上。",
+      "ipa": "/ɡe.ʁi.dɔ̃/",
+      "highlight": "guéridon",
+      "sourceUrl": "https://fr.wiktionary.org/wiki/gu%C3%A9ridon"
     }
   ]
 }

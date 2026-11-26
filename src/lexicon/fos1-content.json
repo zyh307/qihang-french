@@ -1485,8 +1485,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "总数",
-            "全体的"
+            "总数"
           ],
           "primaryMeaning": "总数",
           "curriculumAuthority": {
@@ -1734,7 +1733,7 @@
             {
               "id": "w600038-base",
               "text": "égal à",
-              "gender": null,
+              "gender": "m",
               "tested": true,
               "audio": null,
               "audioKey": "a6b77e33c05eba3f028ca9d9c2eeb72c9e5ee7398cdf3925bf0b0b8e86feae7c",
@@ -1756,7 +1755,7 @@
             {
               "id": "w600038-v2",
               "text": "égale à",
-              "gender": null,
+              "gender": "f",
               "tested": true,
               "audio": null,
               "audioKey": "59b98b5bbe36287dedc47d6e71f5e07f78deae78b5cf624129aac210a3b3bb8f",
@@ -1829,8 +1828,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "倍数",
-            "多样的"
+            "倍数"
           ],
           "primaryMeaning": "倍数",
           "curriculumAuthority": {
@@ -2610,9 +2608,7 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "物理学",
-            "外貌的",
-            "身体的"
+            "物理学"
           ],
           "primaryMeaning": "物理学",
           "curriculumAuthority": {
@@ -3504,8 +3500,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "补集",
-            "adj. 补充的，充足的couleurs ~s 互补色"
+            "补集"
           ],
           "primaryMeaning": "补集",
           "curriculumAuthority": {
@@ -3593,8 +3588,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "基数",
-            "adj. 基本的，主要的cardinal n.m. 基数词cardinal n.m. 枢机主教，红衣主教；红雀"
+            "基数"
           ],
           "primaryMeaning": "基数",
           "curriculumAuthority": {
@@ -5372,8 +5366,7 @@
           "sourcePos": "n.",
           "pos": "n.",
           "meanings": [
-            "二分之一",
-            "一半的"
+            "二分之一"
           ],
           "primaryMeaning": "二分之一",
           "curriculumAuthority": {
@@ -5438,10 +5431,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "三分之一",
-            "第三个的",
-            "第三方的",
-            "第三方"
+            "三分之一"
           ],
           "primaryMeaning": "三分之一",
           "curriculumAuthority": {
@@ -5577,8 +5567,7 @@
           "pos": "adj.",
           "meanings": [
             "刻度的",
-            "女大学毕业生",
-            "分度的、大学毕业生"
+            "女大学毕业生"
           ],
           "primaryMeaning": "刻度的",
           "curriculumAuthority": {
@@ -5923,11 +5912,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "平方",
-            "正方形的，四方的",
-            "方形物体的",
-            "明显带有棱角的",
-            "明确的，毫不含糊的，断然的"
+            "平方"
           ],
           "primaryMeaning": "平方",
           "curriculumAuthority": {
@@ -6407,8 +6392,7 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "变量",
-            "可变的"
+            "变量"
           ],
           "primaryMeaning": "变量",
           "curriculumAuthority": {
@@ -6817,9 +6801,7 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "物理学",
-            "外貌的",
-            "身体的"
+            "物理学"
           ],
           "primaryMeaning": "物理学",
           "curriculumAuthority": {
@@ -6863,10 +6845,7 @@
           "sourcePos": "n. f.",
           "pos": "n.",
           "meanings": [
-            "力学",
-            "机械的，机动的",
-            "力学的",
-            "机械学"
+            "力学"
           ],
           "primaryMeaning": "力学",
           "curriculumAuthority": {
@@ -9052,11 +9031,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "正方形",
-            "正方形的，四方的",
-            "方形物体的",
-            "明显带有棱角的",
-            "明确的，毫不含糊的，断然的"
+            "正方形"
           ],
           "primaryMeaning": "正方形",
           "curriculumAuthority": {
@@ -9145,10 +9120,7 @@
           "sourcePos": "n.m.",
           "pos": "n.",
           "meanings": [
-            "六边形",
-            "六角的，六边的",
-            "六角形，六边形",
-            "Hexagone (“法国本土”)的另一种拼写法"
+            "六边形"
           ],
           "primaryMeaning": "六边形",
           "curriculumAuthority": {
@@ -9643,8 +9615,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "稳定器",
-            "使稳定的"
+            "稳定器"
           ],
           "primaryMeaning": "稳定器",
           "curriculumAuthority": {
@@ -9912,8 +9883,7 @@
           "sourcePos": "n. m.",
           "pos": "n.",
           "meanings": [
-            "边",
-            "n.m. 肋，胸侧，体侧；旁，侧；面；侧，边；方向；方面；亲属关系，亲戚关系； 标尺寸，得好评的de ~横斜地，向旁边，在旁边； adj. ［证券］上市的，在股市有标价的；受到重视的，得到好评的，受人喜爱的"
+            "边"
           ],
           "primaryMeaning": "边",
           "curriculumAuthority": {

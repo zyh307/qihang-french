@@ -1,6 +1,6 @@
 <template>
-  <view class="practice-panel" @click="closeArticle">
-    <Transition :name="definitionVisible?'definition-sheet':motion==='none'?'no-motion':question?.kind==='recognize'?'recognition-sheet':motion==='page'?'word-switch-page':'word-switch-slide'" mode="out-in">
+  <view class="practice-panel fade-stage" @click="closeArticle">
+    <Transition :name="definitionVisible?'definition-sheet':motion==='none'?'page-fade':question?.kind==='recognize'?'recognition-sheet':motion==='page'?'word-switch-page':'word-switch-slide'" @before-leave="retireFadePane">
       <DefinitionPanel v-if="definitionVisible" key="definition" ref="definitionCard" :pkg="sourcePkg||pkg" :source-label="sourceLabel" :hide-source="session.mode==='review'" :word="word" :favorite="favorite" :playing="playing" :busy="busy" :continue-disabled="errorCooldown" :known="known" :allow-known="session.mode!=='errors'" :allow-remove="false" @remove="removeImported" @primary-meaning="$emit('primary-meaning',$event)" @favorite="$emit('favorite',word)" @audio="$emit('audio',$event)" @known="forwardKnown" @continue="continueDefinition"></DefinitionPanel>
       <view v-else-if="question" :key="question.kind==='spell'?'spell:'+question.wordId+':'+question.formId:'question:'+question.id" class="exercise-screen" :class="{'is-recognition':question.kind==='recognize'}">
         <view class="exercise-body">
@@ -10,7 +10,7 @@
           <view v-else class="exercise-prompt"><text lang="fr">{{ displayForm(word,form) }}</text><text class="question-detail">{{ questionDetail }}<template v-if="form?.questionHint"> · {{ form.questionHint }}</template></text></view>
           <view v-if="question.kind==='recognize'&&example?.fr" class="exercise-context"><ExampleSentence :text="example.fr" :word="word" /></view>
           <view v-if="question.options" class="exercise-options">
-            <button v-for="(option,index) in visibleOptions" :key="option.id" hover-class="none" :class="['exercise-option',{correct:session.feedback?.correct&&option.id===word.id,incorrect:question.rejectedIds?.includes(option.id)}]" :disabled="busy||submitted||!!session.feedback||question.rejectedIds?.includes(option.id)" @click="submit(option.id)"><text class="option-letter">{{ String.fromCharCode(65+index) }}</text><text class="option-meaning">{{ option.label }}</text><text class="wrong-option-word" :class="{visible:question.rejectedIds?.includes(option.id)}">{{ question.rejectedIds?.includes(option.id)?(option.french||optionWord(option.id)):'' }}</text><Icon v-if="question.rejectedIds?.includes(option.id)||(session.feedback?.correct&&option.id===word.id)" :name="option.id===word.id?'check':'close'" /></button>
+            <button v-for="(option,index) in visibleOptions" :key="option.id" hover-class="none" :class="['exercise-option',{correct:session.feedback?.correct&&option.id===word.id,incorrect:question.rejectedIds?.includes(option.id)}]" :disabled="busy||submitted||!canViewOptions&&(!!session.feedback||question.rejectedIds?.includes(option.id))" @click="activateOption(option.id)"><text class="option-letter">{{ String.fromCharCode(65+index) }}</text><text class="option-meaning">{{ question.kind==='recognize'?exerciseGloss(option.label):option.label }}</text><text class="wrong-option-word" :class="{visible:showOptionFrench(option.id),reviewed:session.feedback?.correct&&!question.rejectedIds?.includes(option.id)}" lang="fr">{{ showOptionFrench(option.id)?(option.french||optionWord(option.id)):'' }}</text><Icon v-if="question.rejectedIds?.includes(option.id)||(session.feedback?.correct&&option.id===word.id)" :name="option.id===word.id?'check':'close'" /></button>
           </view>
           <template v-else>
             <view :class="['exercise-entry',{correct:session.feedback?.correct,incorrect:session.feedback&&!session.feedback.correct}]" @click="retrySpelling"><view v-if="task.mode==='choice'" class="article-picker" @click.stop><button hover-class="none" class="article-trigger" :class="{selected:!!articleSelection}" :disabled="busy||!!session.feedback" :aria-expanded="articleOpen" aria-label="选择冠词 / Choisir un article" @click="toggleArticle"><text v-if="articleSelection">{{ articleSelection }}</text><Bi v-else zh="冠词" fr="Article" small /><Icon name="chevron-down" /></button><Transition name="article-menu"><view v-if="articleOpen" class="article-menu" role="group" aria-label="冠词选项 / Articles"><button v-for="article in task.options" :key="article" hover-class="none" :class="{selected:articleSelection===article}" :aria-pressed="articleSelection===article" @click="selectArticle(article)"><text>{{ article }}</text><Icon v-if="articleSelection===article" name="check" /></button></view></Transition></view><text v-if="task.mode==='given'&&parts.prefix" class="given-article">{{ parts.prefix }}</text><AnswerInput ref="answerInput" v-model="input" :touch="useTouchKeyboard" :active="keyboardOpen" :disabled="busy||!!session.feedback" @update:model-value="draft=$event" @activate="openKeyboard" @blur="focusInput=false" @keydown="physicalInput" /><Icon v-if="session.feedback" :name="session.feedback.correct?'check':'close'" /></view>
@@ -27,7 +27,7 @@
             <button v-else-if="session.feedback" hover-class="none" class="button primary" :disabled="busy||errorCooldown" @click="retrySpelling"><Icon name="repeat" /><Bi zh="重试" fr="Réessayer" small /></button>
             <button v-else hover-class="none" class="button primary" :disabled="busy||submitted||!liveInput.trim()||(task.mode==='choice'&&!articleSelection)" @click="submitSpelling"><Icon name="check" /><Bi zh="提交" fr="Vérifier" small /></button>
           </template>
-          <template v-else-if="session.feedback&&(returnedToQuestion||(session.mode==='review'&&session.feedback.correct&&!question.rejectedIds?.length))"><button hover-class="none" class="button secondary" :disabled="busy" @click="showHint"><Icon name="eye" /><Bi zh="释义" fr="Fiche" small /></button><button hover-class="none" class="button primary" :disabled="busy||errorCooldown" @click="continueQuestion"><Icon :name="session.feedback.correct?'arrow':'repeat'" /><Bi :zh="session.feedback.correct?'继续':'重试'" :fr="session.feedback.correct?'Continuer':'Réessayer'" small /></button></template>
+          <template v-else-if="session.feedback&&(returnedToQuestion||(session.feedback.correct&&!question.rejectedIds?.length))"><button hover-class="none" class="button secondary" :disabled="busy" @click="showHint"><Icon name="eye" /><Bi zh="释义" fr="Fiche" small /></button><button hover-class="none" class="button primary" :disabled="busy||errorCooldown" @click="continueQuestion"><Icon :name="session.feedback.correct?'arrow':'repeat'" /><Bi :zh="session.feedback.correct?'继续':'重试'" :fr="session.feedback.correct?'Continuer':'Réessayer'" small /></button></template>
           <view v-else class="choice-wait" aria-live="polite"><Icon :name="session.feedback?(session.feedback.correct?'check':'close'):'hand'" /><Bi :zh="session.feedback?(session.feedback.correct?'正确':'再看一遍'):'选择一项'" :fr="session.feedback?(session.feedback.correct?'Correct':'À revoir'):'Choisir une réponse'" small /></view>
         </view>
       </view>
@@ -36,9 +36,10 @@
   </view>
 </template>
 <script setup>
+import {retireFadePane} from '../platform/page-motion.js';
 import {computed,ref,watch,nextTick,onMounted,onUnmounted} from 'vue';
 import {useErrorCooldown} from '../platform/use-error-cooldown.js';
-import {primaryMeaning,questionMeaning} from '../domain/meanings.js';
+import {exerciseGloss,questionMeaning} from '../domain/meanings.js';
 import {hasMeaningNuance} from '../domain/meaning-nuances.js';
 import ExampleSentence from './ExampleSentence.vue';
 import FrenchKeyboard from './FrenchKeyboard.vue';
@@ -48,19 +49,21 @@ import {isMobileAnswerDevice} from '../platform/answer-keyboard.js';
 import {playCorrect,playTap} from '../platform/feedback-sounds.js';
 import Bi from './Bi.vue';import Icon from './Icon.vue';import DefinitionPanel from './DefinitionPanel.vue';import SpellingFeedback from './SpellingFeedback.vue';
 import {displayForm,spellingParts,spellingTask,sharedExample,splitNounArticle,exampleAudio,testsBothGenders,cardPartOfSpeech,partOfSpeech,spellingGender} from '../domain/word-display.js';
-const props=defineProps({pkg:Object,sourcePkg:Object,sourceLabel:String,session:Object,word:Object,form:Object,favorite:Boolean,known:Boolean,playing:String,busy:Boolean,allowRemove:Boolean,motion:String,articleMode:String,builtInKeyboard:{type:Boolean,default:true}});
-const emit=defineEmits(['answer','next','hint','retry-hint','known','favorite','audio','audio-stop','remove','primary-meaning']);
+const props=defineProps({pkg:Object,sourcePkg:Object,sourceLabel:String,session:Object,word:Object,form:Object,favorite:Boolean,known:Boolean,playing:String,busy:Boolean,allowRemove:Boolean,motion:String,articleMode:String,builtInKeyboard:{type:Boolean,default:true},showChoiceFrench:{type:Boolean,default:true}});
+const emit=defineEmits(['answer','next','hint','retry-hint','known','favorite','audio','audio-stop','remove','primary-meaning','option-detail']);
 const mobile=isMobileAnswerDevice(),useTouchKeyboard=computed(()=>mobile&&props.builtInKeyboard);
 let desktopBlockedUntil=0;
 function desktopReady(){return mobile||performance.now()>=desktopBlockedUntil;}
 function blockDesktopAction(){if(!mobile)desktopBlockedUntil=performance.now()+500;}
 const answerInput=ref(null),keyboardOpen=ref(false),draft=ref('');
-const input=ref(''),focusInput=ref(false),articleSelection=ref(''),articleOpen=ref(false),submitted=ref(false),choiceReady=ref(false),definitionOpen=ref(false),returnedToQuestion=ref(false),definitionCard=ref(null);let choiceFrame,definitionTimer,wrongFeedbackAt=0,retryFocus=false;
+const input=ref(''),focusInput=ref(false),articleSelection=ref(''),articleOpen=ref(false),submitted=ref(false),choiceReady=ref(false),definitionOpen=ref(false),returnedToQuestion=ref(false),definitionCard=ref(null);let definitionTimer,wrongFeedbackAt=0,retryFocus=false;
 const question=computed(()=>props.session.question||props.session.feedback?.question);
 const cooldown=useErrorCooldown(),errorCooldown=cooldown.blocked;
 watch(()=>props.session.feedback&&!props.session.feedback.correct?props.session.feedback.question?.id:props.session.question?.hinted?props.session.question.id:null,id=>id?cooldown.start():cooldown.clear(),{immediate:true,flush:'sync'});
 // The engine validates and fills saved choices together, before display.
 const visibleOptions=computed(()=>question.value?.options||[]);
+const canViewOptions=computed(()=>question.value?.kind==='recognize'&&props.session.feedback?.correct===true&&!props.session.feedback.deferred);
+const showOptionFrench=id=>question.value?.rejectedIds?.includes(id)||props.showChoiceFrench&&props.session.feedback?.correct&&id!==props.word.id;
 const liveInput=computed(()=>useTouchKeyboard.value?input.value:draft.value);
 function inputElement(){return answerInput.value?.element;}
 function submitSpelling(){if(!useTouchKeyboard.value)input.value=draft.value=inputElement()?.value??input.value;submit(input.value);}
@@ -99,9 +102,9 @@ const definitionVisible=computed(()=>definitionOpen.value||props.session.questio
 const autoOpensDefinition=computed(()=>{
   const feedback=props.session.feedback;
   return feedback?.questionKind==='recognize'&&!feedback.deferred&&
-    (props.session.mode!=='review'||!feedback.correct||!!feedback.question.rejectedIds?.length);
+    (!feedback.correct||!!feedback.question.rejectedIds?.length);
 });
-function cancelDefinitionTransition(){cancelAnimationFrame(choiceFrame);clearTimeout(definitionTimer);}
+function cancelDefinitionTransition(){clearTimeout(definitionTimer);}
 function afterFeedback(show,startedAt=wrongFeedbackAt){
   const remaining=startedAt?500-(performance.now()-startedAt):0;
   clearTimeout(definitionTimer);
@@ -115,12 +118,7 @@ watch(()=>props.session.feedback?.question?.id,id=>{
   blockDesktopAction();
   closeKeyboard();
   if(feedback.correct){playCorrect();if(feedback.questionKind==='spell'&&audioForm.value)emit('audio',audioForm.value);}
-  if(autoOpensDefinition.value){
-    const learning=props.session.mode==='learn'||(props.session.importedPractice&&!props.session.importedRelearning);
-    const show=()=>choiceReady.value=true;
-    if(learning||wrongFeedbackAt)afterFeedback(show,learning?performance.now():wrongFeedbackAt);
-    else choiceFrame=requestAnimationFrame(()=>{choiceFrame=requestAnimationFrame(show);});
-  }
+  if(autoOpensDefinition.value)afterFeedback(()=>choiceReady.value=true);
 },{immediate:true});
 watch(()=>props.session.question?.id,id=>{if(id){closeKeyboard();input.value='';draft.value='';articleSelection.value='';articleOpen.value=false;submitted.value=false;returnedToQuestion.value=false;if(retryFocus){retryFocus=false;nextTick(openKeyboard);}}});
 const audioScreen=computed(()=>definitionVisible.value?`definition:${question.value?.id}`:question.value?.kind==='recognize'?`recognize:${question.value.id}`:'');
@@ -128,9 +126,17 @@ watch(audioScreen,key=>{emit('audio-stop');const recording=definitionVisible.val
 function closeArticle(){articleOpen.value=false;}
 function toggleArticle(){const open=!articleOpen.value;closeKeyboard();articleOpen.value=open;}
 function selectArticle(article){articleSelection.value=article;articleOpen.value=false;}
+function activateOption(id){
+ if(props.busy||submitted.value)return;
+ if(canViewOptions.value){
+  cancelDefinitionTransition();
+  returnedToQuestion.value=true;
+  emit('option-detail',id);
+ }else if(!question.value?.rejectedIds?.includes(id))submit(id);
+}
 function submit(value){
   closeArticle();
-  if(submitted.value||props.busy||props.session.feedback||!desktopReady())return;
+  if(submitted.value||props.busy||props.session.feedback)return;
   if(question.value.kind==='spell'){
     if(!String(value).trim())return;
     if(task.value.mode==='choice'){
@@ -142,12 +148,18 @@ function submit(value){
   blockDesktopAction();submitted.value=true;emit('answer',value,()=>submitted.value=false);
 }
 function showHint(){if(props.busy||submitted.value)return;closeKeyboard();closeArticle();returnedToQuestion.value=false;if(props.session.feedback)afterFeedback(()=>definitionOpen.value=true);else emit('hint');}
-function continueQuestion(){if(!props.busy&&cooldown.ready()&&desktopReady()){blockDesktopAction();emit('next');}}
-function retrySpelling(){if(cooldown.ready()&&desktopReady()&&!props.busy&&props.session.feedback&&!props.session.feedback.correct&&!props.session.feedback.deferred){blockDesktopAction();input.value='';draft.value='';articleSelection.value='';focusInput.value=false;retryFocus=true;closeArticle();emit('next');}}
-function continueDefinition(){if(props.busy||!cooldown.ready()||!desktopReady()||definitionCard.value?.celebrating)return;blockDesktopAction();if(props.session.question?.hinted)emit('retry-hint');else emit('next');}
+function continueQuestion(){if(!props.busy&&!submitted.value&&cooldown.ready()){blockDesktopAction();emit('next');}}
+function retrySpelling(){if(cooldown.ready()&&!props.busy&&props.session.feedback&&!props.session.feedback.correct&&!props.session.feedback.deferred){blockDesktopAction();input.value='';draft.value='';articleSelection.value='';focusInput.value=false;retryFocus=true;closeArticle();emit('next');}}
+const definitionContinueBlocked=computed(()=>props.busy||errorCooldown.value||!!definitionCard.value?.celebrating);
+function continueDefinition(){
+ if(definitionContinueBlocked.value||!cooldown.ready())return false;
+ blockDesktopAction();
+ if(props.session.question?.hinted)emit('retry-hint');else emit('next');
+ return true;
+}
 function onDesktopEnter(event){
   if(event.key!=='Enter'||event.isComposing||event.keyCode===229||event.altKey||event.ctrlKey||event.metaKey||
-    document.querySelector('.modal-shade,.word-preview,.app-settings-page'))return;
+    document.querySelector('.modal-shade:not(.page-fade-leave-active):not(.dialog-pop-leave-active),.word-preview:not(.page-fade-leave-active),.app-settings-page:not(.page-fade-leave-active)'))return;
   const target=event.target;
   const control=target?.closest?.('button,uni-button,a,[role="button"]');
   const answerField=inputElement();
@@ -176,7 +188,7 @@ function backToQuestion(){
   if(props.session.question?.hinted)emit('retry-hint');
   return true;
 }
-defineExpose({backToQuestion});
+defineExpose({backToQuestion,continueDefinition,definitionContinueBlocked});
 onMounted(()=>{if(!mobile)document.addEventListener('keydown',onDesktopEnter,true);});
 onUnmounted(()=>{if(!mobile)document.removeEventListener('keydown',onDesktopEnter,true);cancelDefinitionTransition();emit('audio-stop');});
 </script>

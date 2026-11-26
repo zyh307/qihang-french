@@ -13,3 +13,7 @@ html uni-button:active:not(:disabled),html button:active:not(:disabled){transfor
 .round-step-enter-active{transition:opacity .14s ease-out,transform .14s cubic-bezier(.2,.7,.3,1)}.round-step-leave-active{transition:opacity .09s ease-in,transform .09s ease-in;pointer-events:none}.round-step-enter-from{opacity:0;transform:translateY(6px)}.round-step-leave-to{opacity:0;transform:translateY(-4px)}@media(prefers-reduced-motion:reduce){.round-step-enter-active,.round-step-leave-active{transition:none}.round-step-enter-from,.round-step-leave-to{transform:none}}
 
 .notebook-panel{transition:opacity .14s ease-out}.notebook-panel.is-preparing{opacity:.45;pointer-events:none}@media(prefers-reduced-motion:reduce){.notebook-panel{transition:none}}
+
+.fade-stage{position:relative;min-width:0}
+.fade-fill{display:flex;flex-direction:column;flex:1;min-height:0}
+.page-fade-leave-active,.lesson-entrance-leave-active,.recognition-sheet-leave-active,.word-switch-slide-leave-active,.word-switch-page-leave-active,.definition-sheet-leave-active{pointer-events:none}

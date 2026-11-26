@@ -1,9 +1,12 @@
+// Treat the keyboard apostrophe and its typographic forms as the same character.
+export const normalizeApostrophes=value=>String(value??'').normalize('NFC').replace(/[‘’ʼ＇]/gu,"'");
+
 const base=s=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr').replace(/œ/g,'oe').replace(/æ/g,'ae');
 const punctuation=s=>!/[\p{L}\p{N}]/u.test(s);
 export function spellingDiff(input,expected){
   // Keep an expanded ligature together so accepted oe/œ is one highlighted
   // spelling difference instead of a missing letter plus a wrong letter.
-  const left=String(input).normalize('NFC'),right=String(expected).normalize('NFC');
+  const left=normalizeApostrophes(input),right=normalizeApostrophes(expected);
   const tokens=text=>/[œæ]/i.test(left+right)?(text.match(/oe|ae|[\s\S]/giu)||[]):[...text];
   const a=tokens(left),b=tokens(right);
   if(a.length>300||b.length>300)return[{kind:'replace',actual:a.join(''),expected:b.join('')}];

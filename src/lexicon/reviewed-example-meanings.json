@@ -7303,5 +7303,638 @@
       "称为"
     ],
     "zh": "约定的那天，我们中午到了。"
+  },
+  "pont": {
+    "fr": "Voici un pont.",
+    "meaning": "桥",
+    "zh": "这是一座桥。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "连休假期（利用节假日与周末之间的工作日）"
+    ],
+    "meanings": [
+      "桥",
+      "连休假期（在节假日和周末之间请假连休）"
+    ]
+  },
+  "à gauche": {
+    "fr": "La poste est à gauche.",
+    "meaning": "在左边",
+    "zh": "邮局在左边。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "向左",
+      "在左边"
+    ],
+    "meanings": [
+      "在左边",
+      "向左"
+    ]
+  },
+  "salade": {
+    "fr": "De la salade, s'il vous plaît.",
+    "meaning": "生菜",
+    "zh": "请给我一些生菜。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "沙拉",
+      "生菜"
+    ],
+    "meanings": [
+      "生菜",
+      "沙拉"
+    ]
+  },
+  "plat": {
+    "fr": "Comme plat, un poulet.",
+    "meaning": "主菜",
+    "zh": "主菜要一份鸡肉。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "菜肴，一道菜",
+      "主菜"
+    ],
+    "meanings": [
+      "主菜",
+      "菜肴，一道菜"
+    ]
+  },
+  "santé": {
+    "fr": "Elle travaille dans la santé.",
+    "meaning": "医疗卫生领域",
+    "zh": "她在医疗卫生领域工作。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "健康",
+      "医疗"
+    ],
+    "meanings": [
+      "医疗卫生领域",
+      "健康",
+      "医疗"
+    ]
+  },
+  "l'informatique": {
+    "fr": "Elle travaille dans l'informatique.",
+    "meaning": "信息技术",
+    "zh": "她在信息技术领域工作。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "计算机",
+      "信息技术"
+    ],
+    "meanings": [
+      "信息技术",
+      "计算机"
+    ]
+  },
+  "belle-mère": {
+    "fr": "Voici une belle-mère.",
+    "meaning": "婆婆，岳母",
+    "zh": "这是一位婆婆。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "继母",
+      "婆婆",
+      "岳母"
+    ],
+    "meanings": [
+      "婆婆，岳母",
+      "继母",
+      "婆婆",
+      "岳母"
+    ]
+  },
+  "maternité": {
+    "fr": "Une nouvelle maternité a ouvert près de chez nous.",
+    "meaning": "产科",
+    "zh": "我们家附近新开了一家产科机构。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "产科医院",
+      "产科病房"
+    ],
+    "meanings": [
+      "产科",
+      "产科医院",
+      "产科病房"
+    ]
+  },
+  "familier": {
+    "fr": "Il utilise un registre familier avec ses amis.",
+    "meaning": "口语的，非正式的",
+    "zh": "他和朋友交谈时使用非正式的语体。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "随便的",
+      "熟悉的"
+    ],
+    "meanings": [
+      "口语的，非正式的",
+      "随便的",
+      "熟悉的"
+    ]
+  },
+  "studio": {
+    "fr": "Voici un studio.",
+    "meaning": "单间公寓（起居、睡眠合用一室）",
+    "zh": "这是一间单间公寓。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "单间公寓",
+      "工作室"
+    ],
+    "meanings": [
+      "单间公寓（起居、睡眠合用一室）",
+      "单间公寓",
+      "工作室"
+    ]
+  },
+  "cobaye": {
+    "fr": "Voici un cobaye.",
+    "meaning": "豚鼠",
+    "zh": "这是一只豚鼠。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "实验对象",
+      "豚鼠"
+    ],
+    "meanings": [
+      "豚鼠",
+      "实验对象"
+    ]
+  },
+  "égérie": {
+    "fr": "Voici une égérie.",
+    "meaning": "缪斯，灵感来源",
+    "zh": "她是一位缪斯。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "品牌代言人",
+      "缪斯"
+    ],
+    "meanings": [
+      "缪斯，灵感来源",
+      "品牌代言人",
+      "缪斯"
+    ]
+  },
+  "fibre": {
+    "fr": "Nous parlons de la fibre.",
+    "meaning": "光纤",
+    "zh": "我们在谈光纤。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "光纤",
+      "纤维"
+    ],
+    "meanings": [
+      "光纤",
+      "纤维"
+    ]
+  },
+  "l'isolation": {
+    "fr": "Nous parlons de l'isolation.",
+    "meaning": "隔热保温",
+    "zh": "我们在谈隔热保温。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "隔热保温",
+      "绝缘"
+    ],
+    "meanings": [
+      "隔热保温",
+      "绝缘"
+    ]
+  },
+  "l'accompagnement": {
+    "fr": "Cette technologie doit être un complément à l'accompagnement humain pour soulager tant les seniors dépendants que les personnes veillant sur eux.",
+    "meaning": "照护，支持",
+    "zh": "这项技术应作为人工照护的补充，减轻失能老年人及其照护者的负担。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "陪伴",
+      "支持",
+      "指导"
+    ],
+    "meanings": [
+      "照护，支持",
+      "陪伴",
+      "支持",
+      "指导"
+    ]
+  },
+  "note": {
+    "fr": "Les autres groupes prennent des notes.",
+    "meaning": "笔记",
+    "zh": "其他小组在记笔记。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "分数",
+      "笔记",
+      "音符"
+    ],
+    "meanings": [
+      "笔记",
+      "分数",
+      "音符"
+    ]
+  },
+  "fourchette": {
+    "fr": "Il manque une fourchette.",
+    "meaning": "叉子",
+    "zh": "少了一把叉子。",
+    "applyToCurriculum": true,
+    "previousMeanings": [
+      "范围",
+      "区间",
+      "叉子"
+    ],
+    "meanings": [
+      "叉子",
+      "范围",
+      "区间"
+    ]
+  },
+  "campagne": {
+    "fr": "Nous parlons de la campagne.",
+    "meaning": "竞选活动",
+    "zh": "我们正在谈论竞选活动。",
+    "meanings": [
+      "竞选活动",
+      "乡村",
+      "平原，原野",
+      "农村，乡村，乡下",
+      "出征，战役，战斗",
+      "活动，运动"
+    ]
+  },
+  "presse": {
+    "fr": "Ils ne lisent pas beaucoup la presse écrite.",
+    "meaning": "报刊，新闻媒体",
+    "zh": "他们阅读的印刷媒体不多。",
+    "meanings": [
+      "报刊，新闻媒体",
+      "新闻界",
+      "挤压；按压",
+      "压力机",
+      "印刷机",
+      "媒体；新闻界"
+    ]
+  },
+  "voie": {
+    "fr": "Une voie de circulation passe le pont.",
+    "meaning": "车道",
+    "zh": "一条车道经过桥。",
+    "meanings": [
+      "车道",
+      "道路",
+      "途径",
+      "路，径，道；道路；路线",
+      "手段，途径，方法",
+      "人生道路，使命"
+    ]
+  },
+  "code": {
+    "fr": "Elle casse les codes de la mode.",
+    "meaning": "准则，惯例",
+    "zh": "她打破了时尚准则。",
+    "meanings": [
+      "准则，惯例",
+      "代码",
+      "n.m. 法，法典，法规，规则，规章；规约，准则，惯例；电码，编码，代码；（计算机）代码，密码~s n.m.pl. 汽车近光灯，会车灯"
+    ]
+  },
+  "carrière": {
+    "fr": "Voici une carrière.",
+    "meaning": "职业，事业",
+    "zh": "这是一份职业。",
+    "meanings": [
+      "职业，事业",
+      "体育生涯",
+      "n.f. 生涯， 职业 ； 一生，任期，道路，历程，职业，矿场 ； adj. 职业（经历，炉期，专业）"
+    ]
+  },
+  "théâtre": {
+    "fr": "J'aime le théâtre et le cinéma.",
+    "meaning": "戏剧",
+    "zh": "我喜欢戏剧和电影。",
+    "meanings": [
+      "戏剧",
+      "剧院",
+      "(路易斯安纳) 电影院"
+    ]
+  },
+  "rêve": {
+    "fr": "Allez partout en rêve.",
+    "meaning": "梦，梦境",
+    "zh": "去你梦想中的任何地方。",
+    "meanings": [
+      "梦，梦境",
+      "一个梦",
+      "梦",
+      "梦想，幻想"
+    ]
+  },
+  "laisser tomber": {
+    "fr": "Mince à la fin, ce n'est pas parce que ta mère est accro aux médocs et t’oblige à te tenir à carreau et que ton père est une carpette, que tu dois les laisser tomber.",
+    "meaning": "抛下，丢下",
+    "zh": "好吧，最后，并不是因为你的母亲吸毒成瘾并强迫你独来独往，而你的父亲是一块地毯，所以你必须放弃他们。",
+    "meanings": [
+      "抛下，丢下",
+      "使落下，使掉下",
+      "放弃，忘记，置之不理"
+    ]
+  },
+  "condition": {
+    "fr": "J'accepte, mais à une condition.",
+    "meaning": "条件",
+    "zh": "我接受，但有一个条件。",
+    "meanings": [
+      "条件",
+      "n.f. 生活条件，生存条件；社会地位，身份，等级；身体精神的状况，状态；情况，环境，形势；条件，条款，条文；［数］条件~s n.f.pl. 付款方式，价格标准"
+    ]
+  },
+  "résistance": {
+    "fr": "Il pressentait que l’eau triompherait des semelles sans résistance, et, sournoisement, s’infiltrerait jusqu’aux chevilles.",
+    "meaning": "阻力",
+    "zh": "他有预感，水会毫无阻力地浸过脚底，并且会偷偷地渗到脚踝处。",
+    "meanings": [
+      "阻力",
+      "抵抗",
+      "耐力"
+    ]
+  },
+  "forum": {
+    "fr": "Un forum de discussion.",
+    "meaning": "论坛",
+    "zh": "一个讨论论坛。",
+    "meanings": [
+      "论坛",
+      "(古罗马) 集会场, 市场",
+      "论坛, 讨论会, 研讨会",
+      "网络论坛"
+    ]
+  },
+  "autonomie": {
+    "fr": "Ces écouteurs résistent à la poussière et à l’eau, peuvent se connecter à un smartphone et à un ordinateur sans avoir à les repairer et revendiquent aussi jusqu’à 36 heures d’autonomie.",
+    "meaning": "续航时间",
+    "zh": "这些耳机防尘防水，无需维修即可连接智能手机和电脑，电池续航时间长达 36 小时。",
+    "meanings": [
+      "续航时间",
+      "n.f. 自治，个人自主；续驶里程，最大行程，续航时间"
+    ]
+  },
+  "fusion": {
+    "fr": "Le Jazz fusion est un mélange de rock et de jazz.",
+    "meaning": "融合",
+    "zh": "融合爵士是摇滚乐与爵士乐的融合。",
+    "meanings": [
+      "融合",
+      "熔化\n* 正体： 熔化；熔合［电机工程］\n* 简体： 融合［信息科技］\n* 正体： 融合［计算机］\n* 正体： 融合［电子计算机］"
+    ]
+  },
+  "concentration": {
+    "fr": "la concentration de sucre",
+    "meaning": "浓度",
+    "zh": "糖浓度",
+    "meanings": [
+      "浓度",
+      "n.f. 集中，集结，聚集；全神贯注，专心致志；积聚，集中；浓缩，浓度"
+    ]
+  },
+  "bonus": {
+    "fr": "Plus astucieux encore, des bonus leur sont alloués s’ils acceptent de participer activement à la diffusion de leurs inventions.",
+    "meaning": "奖金",
+    "zh": "更聪明的是，如果他们同意积极参与其发明的传播，则向他们分配奖金。",
+    "meanings": [
+      "奖金",
+      "汽车保险费特别折扣",
+      "红利，奖金，额外酬金"
+    ]
+  },
+  "alternative": {
+    "fr": "Au milieu des alternatives de succès et de revers, tous les yeux cherchaient à découvrir les chefs de chaque troupe, […].",
+    "meaning": "交替，轮番出现",
+    "zh": "在成功与挫折的交替中，所有人的目光都在寻找每支队伍的领导者，[……]。",
+    "meanings": [
+      "交替，轮番出现",
+      "n.f. 两者择一，取舍，抉择；（英语alternative的仿造词，用法不宜）替代办法，供抉择的解决办法；交替，轮番出现"
+    ]
+  },
+  "ressort": {
+    "fr": "Le boîtier ouvert lui avait livré l’état désespérant d'un mécanisme hors d'usage : rouages encrassés, ressort cassé, cette montre était morte, non de maladie mais de vieillesse.",
+    "meaning": "弹簧",
+    "zh": "打开的表壳向他揭示了机械装置失灵的绝望状态：肮脏的齿轮，破损的弹簧，这只表已经死亡，不是因为疾病而是因为年老。",
+    "meanings": [
+      "弹簧",
+      "弹力",
+      "弹簧， 发条",
+      "能量",
+      "动机"
+    ]
+  },
+  "souveraineté": {
+    "fr": "La cité, fatiguée de la souveraineté de ceux-ci, envoya, en 1444, ses députés au-devant de Charles VII pour se donner à lui.",
+    "meaning": "主权，统治权",
+    "zh": "这座城市厌倦了他们的主权，于 1444 年派出其代表会见查理七世以支持他。",
+    "meanings": [
+      "主权，统治权",
+      "王权",
+      "主权"
+    ]
+  },
+  "pension": {
+    "fr": "Voici une pension.",
+    "meaning": "养老金",
+    "zh": "这是养老金。",
+    "meanings": [
+      "养老金",
+      "小旅馆",
+      "膳宿",
+      "寄宿学校"
+    ]
+  },
+  "envisager": {
+    "fr": "Le réalisateur de 68 ans envisagerait même de passer la main…",
+    "meaning": "考虑，打算",
+    "zh": "68岁的导演甚至会考虑交出……",
+    "meanings": [
+      "考虑，打算",
+      "面对",
+      "看，看做",
+      "考虑，打算，计划",
+      "预料，预计"
+    ]
+  },
+  "popularité": {
+    "fr": "Le capital sympathie associé au vautour fauve ne menace pas vraiment la popularité de l’ours brun ou du pottock (le poney basque), pour ne parler que des animaux des pentes pyrénéennes.",
+    "meaning": "受欢迎程度",
+    "zh": "与狮鹫相关的同情资本并没有真正威胁到棕熊或矮种马（巴斯克小马）的受欢迎程度，仅就比利牛斯山坡上的动物而言。",
+    "meanings": [
+      "受欢迎程度",
+      "名望，声名；受欢迎程度，流行性"
+    ]
+  },
+  "débile": {
+    "fr": "Le clown débile s’accroche et il y a longtemps qu’il n’amuse plus.",
+    "meaning": "愚蠢的",
+    "zh": "愚蠢的小丑死活不活了，他已经很久没有玩过了。",
+    "meanings": [
+      "愚蠢的",
+      "薄弱的，脆弱的",
+      "愚蠢的，傻的"
+    ]
+  },
+  "aire": {
+    "fr": "L’aire d’un triangle. L’aire d’un carré. L’aire d’un disque. L’aire d’une sphère. Note : En ce sens, la définition peut être étendue, voir superficie.",
+    "meaning": "面积",
+    "zh": "三角形的面积。正方形的面积。磁盘的面积。球体的面积。注：从这个意义上讲，定义可以扩展，参见表面积。",
+    "meanings": [
+      "面积",
+      "n.f. 场，空地，平地，场地；域，领域；猛禽用以筑巢的平面；猛禽的巢；［数］面积，面"
+    ]
+  },
+  "autrui": {
+    "fr": "Il faut respecter autrui.",
+    "meaning": "他人",
+    "zh": "我们必须尊重他人。",
+    "meanings": [
+      "他人",
+      "其他",
+      "pron.indéf. 别人，他人，人家"
+    ]
+  },
+  "souligner": {
+    "fr": "Je veux souligner la nécessité de le faire faire à temps.",
+    "meaning": "强调",
+    "zh": "我想强调必须按时完成。",
+    "meanings": [
+      "强调",
+      "给……画下划线",
+      "著重，强调"
+    ]
+  },
+  "amendement": {
+    "fr": "Ces homologations ont été prononcées en application du règlement 100 dans sa série 02 d’ amendement.",
+    "meaning": "修正案",
+    "zh": "这些批准是根据02系列修正案中的条例100的应用而颁发的。",
+    "meanings": [
+      "修正案",
+      "土壤改良；改良剂"
+    ]
+  },
+  "isolé": {
+    "fr": "Non contents de traquer les fourrageurs et d’enlever les hommes isolés, les Indiens commençaient à menacer ouvertement la place.",
+    "meaning": "孤立的，落单的",
+    "zh": "印第安人不满足于追踪采集者和绑架孤立的人，开始公开威胁这个地方。",
+    "meanings": [
+      "孤立的，落单的",
+      "孤独的",
+      "偏僻的",
+      "孤立的",
+      "绝缘的"
+    ]
+  },
+  "volet": {
+    "fr": "L’Assemblée nationale rejette les motions de censure du RN et de LFI, le premier volet du budget 2024 adopté [title]",
+    "meaning": "部分，方面",
+    "zh": "国民议会驳回对 RN 和 LFI 的谴责动议，通过的 2024 年预算第一部分 [标题]",
+    "meanings": [
+      "部分，方面",
+      "百叶窗",
+      "襟翼",
+      "活门阀，节流门，节气门",
+      "(活动、计划等的) 部分，方面"
+    ]
+  },
+  "trahison": {
+    "fr": "Gaubertin crut à quelque trahison de Soudry, comme Lupin et Soudry se crurent joués par Gaubertin ; mais la déclaration de command les réconcilia.",
+    "meaning": "背叛",
+    "zh": "高伯坦相信索德里有某种背叛，正如卢平和索德里相信他们被高伯坦玩弄一样；但命令的宣布使他们和解了。",
+    "meanings": [
+      "背叛",
+      "叛国",
+      "陷阱"
+    ]
+  },
+  "attribution": {
+    "fr": "Je suis désolé, mais cela ne fait pas partie de mes attributions.",
+    "meaning": "职权，权限",
+    "zh": "抱歉，这不属于我的职权范围。",
+    "meanings": [
+      "职权，权限",
+      "n.f. 授予，给予，赋予~s",
+      "n.f.pl. 职权，权限"
+    ]
+  },
+  "avertissement": {
+    "fr": "Beautrelet détacha la corde. À l’arbre de gauche autour duquel elle était attachée, un petit papier était fixé par une ficelle. Il le déplia et lut :\nTroisième et dernier avertissement.",
+    "meaning": "警告",
+    "zh": "Beautrelet解开了绳子。左边绑着它的树上，用绳子系着一张小纸。他打开它，读道：\n第三次也是最后一次警告。",
+    "meanings": [
+      "警告",
+      "n.m. 通知，告知；警告，提醒；训斥，斥责；序文，告读者；纳税通知书"
+    ]
+  },
+  "arracher": {
+    "fr": "À de grandes altitudes planaient les frégates et les phaétons, qui tombaient souvent avec une rapidité vertigineuse pour arracher en l’air leur proie aux oiseaux de mer plongeurs.",
+    "meaning": "夺取",
+    "zh": "在高空翱翔的军舰鸟和四轮战车，常常以令人眼花缭乱的速度坠落，从空中潜水的海鸟手中夺取猎物。",
+    "meanings": [
+      "夺取",
+      "v.t. 拔掉；夺取，夺得，争得；力夺，巧夺；扯下，拔下s'~ v.pr. 遗憾地离开，挣脱",
+      "vt.从某人手中抢走某物"
+    ]
+  },
+  "comptable": {
+    "fr": "principes comptables",
+    "meaning": "会计的",
+    "zh": "会计原则",
+    "meanings": [
+      "会计的",
+      "adj. 管帐的；会计的，财务的；负有责任的",
+      "n. 会计，会计员，会计师",
+      "n.m. 数，计数，计算"
+    ]
+  },
+  "régulation": {
+    "fr": "Le nationalisme arabe a servi de catalyseur, sinon de porte-drapeau, à un processus de régulation de l’État et de la société dans certaines parties du monde islamique.",
+    "meaning": "监管，规制",
+    "zh": "阿拉伯民族主义即使不是旗手，也是伊斯兰世界部分地区国家和社会监管进程的催化剂。",
+    "meanings": [
+      "监管，规制",
+      "调整，调节"
+    ]
+  },
+  "souhaiter": {
+    "fr": "On peut être marri, ou plutôt s’attrister du bien d'autrui, à cause que nous ne l’avons pas & que nous souhaiterions le posséder aussi bien que lui.",
+    "meaning": "希望",
+    "zh": "我们可能会因为别人的财产而感到悲伤，或者更确切地说感到悲伤，因为我们没有它，而且我们希望像他们一样拥有它。",
+    "meanings": [
+      "希望",
+      "祝愿；希望"
+    ]
+  },
+  "camping": {
+    "fr": "Nous parlons du camping.",
+    "meaning": "露营",
+    "zh": "我们正在谈论露营。",
+    "meanings": [
+      "露营",
+      "露营地",
+      "n.m. 野营，露营，帐篷生活；露营地，野营地"
+    ]
+  },
+  "séduire": {
+    "fr": "Privé de tout accommodement, de ses fards, de ses sourires et de ses ruses, le vice a peu de chance de séduire la vertu la plus chancelante.",
+    "meaning": "诱惑，吸引",
+    "zh": "罪恶被剥夺了所有的包容性、化妆、微笑和诡计，几乎不可能诱惑最动摇的美德。",
+    "meanings": [
+      "诱惑，吸引",
+      "贿赂，收买",
+      "吸引，引诱，诱惑",
+      "诱奸，勾引"
+    ]
   }
 }

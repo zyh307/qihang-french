@@ -218,5 +218,7 @@
     "meaning": "计算",
     "source": "启航法语编写",
     "authored": true
-  }
+  },
+  {"word": "cheval", "previousFr": "La construction fut réalisée à cheval sur deux siècles.", "fr": "Le cheval galope dans le pré.", "zh": "马在草地上奔跑。", "meaning": "马", "authored": true},
+  {"word": "jument", "previousFr": "Jument poulinière.", "fr": "La jument reste près de son poulain.", "zh": "母马待在小马驹身旁。", "meaning": "母马", "authored": true}
 ]

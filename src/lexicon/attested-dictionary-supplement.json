@@ -1,0 +1,5662 @@
+[
+  {
+    "id": "lex2584eee1ea3ef34734ce",
+    "word": "avant de",
+    "pos": "prép.",
+    "gender": null,
+    "meanings": [
+      "在做……之前"
+    ],
+    "primaryMeaning": "在做……之前",
+    "ipa": "/a.vɑ̃ də/",
+    "example": {
+      "fr": "Depuis combien de temps étais-tu malade avant de voir le médecin ?",
+      "zh": "你去看医生以前已经病了多久了呀？",
+      "source": "Tatoeba #9934870 · Micsmithel · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/9934870",
+      "meaning": "在做……之前"
+    },
+    "frequency": 5.91,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/avant%20de",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avant%20de",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex9fce6d0064b624a792cd",
+    "word": "au loin",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "在远处"
+    ],
+    "primaryMeaning": "在远处",
+    "ipa": "/o lwɛ̃/",
+    "example": {
+      "fr": "Nous avons été heureux d'apercevoir une lumière au loin.",
+      "zh": "我们很高兴看见在远处有光。",
+      "source": "Tatoeba #426072 · gall · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/426072",
+      "meaning": "在远处"
+    },
+    "frequency": 5.37,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/au%20loin",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/au%20loin",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexdbf1405b425121f1ea0b",
+    "word": "mon Dieu",
+    "pos": "interj.",
+    "gender": null,
+    "meanings": [
+      "天哪！"
+    ],
+    "primaryMeaning": "天哪！",
+    "ipa": "/mɔ̃ djø/",
+    "example": {
+      "fr": "Mon dieu que j'ai eu peur !",
+      "zh": "我的天哪，吓死我了！",
+      "source": "Tatoeba #6740612 · felix63 · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/6740612",
+      "meaning": "天哪！"
+    },
+    "frequency": 5.34,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/mon%20Dieu",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/mon%20Dieu",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd6b468a5f562a50cea6d",
+    "word": "autour de",
+    "pos": "prép.",
+    "gender": null,
+    "meanings": [
+      "在……周围"
+    ],
+    "primaryMeaning": "在……周围",
+    "ipa": "/o.tuʁ də/",
+    "example": {
+      "fr": "Bientôt une foule se rassembla autour de lui.",
+      "zh": "很快人群就在他周围聚集了起来。",
+      "source": "Tatoeba #8910 · eddiegab · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/8910",
+      "meaning": "在……周围"
+    },
+    "frequency": 5.21,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/autour%20de",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/autour%20de",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex07e37b1cd83490cabf42",
+    "word": "site internet",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "网站"
+    ],
+    "primaryMeaning": "网站",
+    "ipa": "/si.t‿ɛ̃.tɛʁ.nɛt/",
+    "example": {
+      "fr": "Elle met à jour le site internet de son magasin.",
+      "zh": "她更新了店铺的网站。",
+      "meaning": "网站",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4.97,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/site%20Internet",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/site%20internet",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex73c2b9e96cdbd0d4e3f8",
+    "word": "TV",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "电视"
+    ],
+    "primaryMeaning": "电视",
+    "ipa": "/te.ve/",
+    "example": {
+      "fr": "Il regarde la TV.",
+      "zh": "他在看电视。",
+      "source": "Tatoeba #130516 · nimfeo · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/130516",
+      "meaning": "电视"
+    },
+    "frequency": 4.67,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/TV",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/TV",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7d842c5ce126183c87cd",
+    "word": "adresse électronique",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "电子邮件地址"
+    ],
+    "primaryMeaning": "电子邮件地址",
+    "ipa": "/a.dʁɛ.s‿e.lɛk.tʁɔ.nik/",
+    "example": {
+      "fr": "As-tu une adresse électronique ?",
+      "zh": "你有没有电子邮件地址？",
+      "source": "Tatoeba #784378 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/784378",
+      "meaning": "电子邮件地址"
+    },
+    "frequency": 4.32,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/adresse%20%C3%A9lectronique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/adresse%20%C3%A9lectronique",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexab7835e3fd5ae24962c7",
+    "word": "bateau de pêche",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "渔船"
+    ],
+    "primaryMeaning": "渔船",
+    "ipa": "/ba.to də pɛʃ/",
+    "example": {
+      "fr": "Le bateau de pêche rentre au port avant la nuit.",
+      "zh": "渔船在天黑前回到港口。",
+      "meaning": "渔船",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4.25,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bateau%20de%20p%C3%AAche",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bateau%20de%20p%C3%AAche",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexfd76d1b5f43ccbf3312d",
+    "word": "Halloween",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "万圣节"
+    ],
+    "primaryMeaning": "万圣节",
+    "ipa": "/a.lɔ.win/",
+    "example": {
+      "fr": "Joyeux Halloween !",
+      "zh": "万圣节快乐！",
+      "source": "Tatoeba #15107 · Micsmithel · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/15107",
+      "meaning": "万圣节"
+    },
+    "frequency": 3.81,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/Halloween",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/halloween",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex57811897161d65f27fe5",
+    "word": "numéro atomique",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "原子序数"
+    ],
+    "primaryMeaning": "原子序数",
+    "ipa": "/ny.me.ʁo.a.tɔ.mik/",
+    "example": {
+      "fr": "Le numéro atomique du fer est le 26.",
+      "zh": "铁的原子序数是二十六。",
+      "source": "Tatoeba #181611 · Romira · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/181611",
+      "meaning": "原子序数",
+      "noAudio": true
+    },
+    "frequency": 3.76,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/num%C3%A9ro%20atomique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/num%C3%A9ro%20atomique",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexacf3f625421764782ac6",
+    "word": "boîte de Pandore",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "潘多拉魔盒"
+    ],
+    "primaryMeaning": "潘多拉魔盒",
+    "ipa": "/bwat də pɑ̃.dɔʁ/",
+    "example": {
+      "fr": "Cette décision risque d'ouvrir une boîte de Pandore.",
+      "zh": "这个决定可能打开潘多拉魔盒，引出一连串麻烦。",
+      "meaning": "潘多拉魔盒",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 3.06,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bo%C3%AEte%20de%20Pandore",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bo%C3%AEte%20de%20Pandore",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7030379166c10407f48b",
+    "word": "bafouer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "践踏，无视"
+    ],
+    "primaryMeaning": "践踏，无视",
+    "ipa": "/ba.fwe/",
+    "example": {
+      "fr": "Cette mesure risque de bafouer les droits des travailleurs.",
+      "zh": "这项措施可能践踏劳动者的权利。",
+      "meaning": "践踏，无视",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.59,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bafouer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bafouer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb3876bfb1d900573cbf6",
+    "word": "reluisant",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "光彩的，体面的"
+    ],
+    "primaryMeaning": "光彩的，体面的",
+    "ipa": "/ʁə.lɥi.zɑ̃/",
+    "example": {
+      "fr": "Ce n'est pas un passé très reluisant.",
+      "zh": "那段过去可不怎么光彩。",
+      "meaning": "光彩的，体面的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.59,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/reluisant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/reluisant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf0648f3b8e2907f2a2d7",
+    "word": "aimablement",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "亲切地，和蔼地"
+    ],
+    "primaryMeaning": "亲切地，和蔼地",
+    "ipa": "/ɛ.ma.blə.mɑ̃/",
+    "example": {
+      "fr": "Il a répondu aimablement à la question.",
+      "zh": "他亲切地回答了问题。",
+      "source": "Tatoeba #131048 · fucongcong · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/131048",
+      "meaning": "亲切地，和蔼地",
+      "noAudio": true
+    },
+    "frequency": 2.58,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/aimablement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/aimablement",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexe061844b5432c6a492e4",
+    "word": "crawl",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "爬泳，自由泳"
+    ],
+    "primaryMeaning": "爬泳，自由泳",
+    "ipa": "/kʁɔl/",
+    "example": {
+      "fr": "Il nage le crawl à une vitesse impressionnante, tu devrais voir ça.",
+      "zh": "他以惊人的速度游自由泳，你该看看。",
+      "source": "Tatoeba #828998 · sysko · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/828998",
+      "meaning": "爬泳，自由泳",
+      "noAudio": true
+    },
+    "frequency": 2.58,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/crawl",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/crawl",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexf23ede04bb0d3e3f9571",
+    "word": "pâtée",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "（形似面团的）宠物食品",
+      "惩罚，挨揍，惨败"
+    ],
+    "primaryMeaning": "（形似面团的）宠物食品",
+    "ipa": "/pɑ.te/",
+    "example": {
+      "fr": "la pâtée pour chiens",
+      "zh": "狗食",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/p%C3%A2t%C3%A9e",
+      "meaning": "（形似面团的）宠物食品",
+      "noAudio": true
+    },
+    "frequency": 2.58,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/p%C3%A2t%C3%A9e",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A2t%C3%A9e",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1973b50fba77eea7003b",
+    "word": "fichtre",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "加强语气，丝毫（口语）"
+    ],
+    "primaryMeaning": "加强语气，丝毫（口语）",
+    "ipa": "/fiʃtʁ/",
+    "example": {
+      "fr": "Je n'en sais fichtre rien.",
+      "zh": "我压根儿不知道这事。",
+      "meaning": "加强语气，丝毫（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.57,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fichtre",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fichtre",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf47004452932d7ce9d2f",
+    "word": "fantoche",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "傀儡，受人操纵的人"
+    ],
+    "primaryMeaning": "傀儡，受人操纵的人",
+    "ipa": "/fɑ̃.tɔʃ/",
+    "example": {
+      "fr": "Le chef n'est qu'un fantoche aux mains des militaires.",
+      "zh": "这个领导人不过是军方手里的傀儡。",
+      "meaning": "傀儡，受人操纵的人",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.56,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fantoche",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fantoche",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexf27e66353fe3dc4dd1a3",
+    "word": "larvaire",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "幼虫的"
+    ],
+    "primaryMeaning": "幼虫的",
+    "ipa": "/laʁ.vɛʁ/",
+    "example": {
+      "fr": "au stade larvaire",
+      "zh": "在幼虫阶段",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/larvaire",
+      "meaning": "幼虫的",
+      "noAudio": true
+    },
+    "frequency": 2.56,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/larvaire",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/larvaire",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc06839458cbd3a9e6651",
+    "word": "de derrière les fagots",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "特别的，秘藏的，高级的"
+    ],
+    "primaryMeaning": "特别的，秘藏的，高级的",
+    "ipa": "/də dɛ.ʁjɛʁ le fa.ɡo/",
+    "example": {
+      "fr": "un petit vin de derrière les fagots",
+      "zh": "特别的好酒，高级酒",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/de%20derri%C3%A8re%20les%20fagots",
+      "meaning": "特别的，秘藏的，高级的",
+      "noAudio": true
+    },
+    "frequency": 2.55,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/de%20derri%C3%A8re%20les%20fagots",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/de%20derri%C3%A8re%20les%20fagots",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex0e2be87e18838c7b10b0",
+    "word": "existentialisme",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "(哲学) 存在主义"
+    ],
+    "primaryMeaning": "(哲学) 存在主义",
+    "ipa": "/ɛɡ.zis.tɑ̃.sja.lism/",
+    "example": {
+      "fr": "L’existentialisme est un humanisme.",
+      "zh": "存在主义是一种人道主义。",
+      "source": "Tatoeba #12137276 · Fenrir · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/12137276",
+      "meaning": "(哲学) 存在主义",
+      "noAudio": true
+    },
+    "frequency": 2.55,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/existentialisme",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/existentialisme",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1ce9d34721dfc8cc0d62",
+    "word": "impolitesse",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "无礼，失礼"
+    ],
+    "primaryMeaning": "无礼，失礼",
+    "ipa": "/ɛ̃.pɔ.li.tɛs/",
+    "example": {
+      "fr": "impolitesse grossière",
+      "zh": "粗鲁无礼",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/impolitesse",
+      "meaning": "无礼，失礼",
+      "noAudio": true
+    },
+    "frequency": 2.55,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/impolitesse",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/impolitesse",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexfaf90b70396e1fd20a06",
+    "word": "surestimer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "高估"
+    ],
+    "primaryMeaning": "高估",
+    "ipa": "/sy.ʁɛs.ti.me/",
+    "example": {
+      "fr": "Il ne faut pas surestimer la capacité de ce petit réservoir.",
+      "zh": "别高估这个小水箱的容量。",
+      "meaning": "高估",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.55,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/surestimer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/surestimer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex18f0ed4c9d119732591e",
+    "word": "contrevenir",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "违反，违背，违犯"
+    ],
+    "primaryMeaning": "违反，违背，违犯",
+    "ipa": "/kɔ̃.tʁəv.niʁ/",
+    "example": {
+      "fr": "contrevenir à un règlement",
+      "zh": "违反规则",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/contrevenir",
+      "meaning": "违反，违背，违犯",
+      "noAudio": true
+    },
+    "frequency": 2.53,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/contrevenir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/contrevenir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc73d4cce9f91bd3ed9fe",
+    "word": "épeler",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "拼写"
+    ],
+    "primaryMeaning": "拼写",
+    "ipa": "/e.ple/",
+    "example": {
+      "fr": "Je ne sais pas comment épeler ce mot.",
+      "zh": "我不知道这个单词怎么拼写。",
+      "source": "Tatoeba #7154 · Archibald · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/7154",
+      "meaning": "拼写",
+      "noAudio": true
+    },
+    "frequency": 2.53,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9peler",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9peler",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex39297b881df690713218",
+    "word": "constipé",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "便秘的"
+    ],
+    "primaryMeaning": "便秘的",
+    "ipa": "/kɔ̃s.ti.pe/",
+    "example": {
+      "fr": "Je suis constipé depuis deux jours.",
+      "zh": "我便秘两天了。",
+      "meaning": "便秘的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.52,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/constip%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/constip%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb3531481b26dc9c4e7bb",
+    "word": "opiniâtre",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "执着不懈的"
+    ],
+    "primaryMeaning": "执着不懈的",
+    "ipa": "/ɔ.pi.njatʁ/",
+    "example": {
+      "fr": "Son travail opiniâtre a porté ses fruits.",
+      "zh": "她坚持不懈的努力终于有了回报。",
+      "meaning": "执着不懈的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.52,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/opini%C3%A2tre",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/opini%C3%A2tre",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb03dcdc0de37a98da3d0",
+    "word": "jugeote",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "常识；见识"
+    ],
+    "primaryMeaning": "常识；见识",
+    "ipa": "/ʒy.ʒɔt/",
+    "example": {
+      "fr": "Il n'a pas beaucoup de jugeote.",
+      "zh": "他没啥见识。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/jugeote",
+      "meaning": "常识；见识",
+      "noAudio": true
+    },
+    "frequency": 2.51,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/jugeote",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/jugeote",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexef4fac75a9ec33204854",
+    "word": "guigne",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "霉运"
+    ],
+    "primaryMeaning": "霉运",
+    "ipa": "/ɡiɲ/",
+    "example": {
+      "fr": "avoir la guigne",
+      "zh": "倒霉",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/guigne",
+      "meaning": "霉运",
+      "noAudio": true
+    },
+    "frequency": 2.5,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/guigne",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/guigne",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex90d72a2c46d345098ad5",
+    "word": "cornélien",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "高乃依的，高乃依作品的；高乃依式的［指情感和义务的矛盾冲突］"
+    ],
+    "primaryMeaning": "高乃依的，高乃依作品的；高乃依式的［指情感和义务的矛盾冲突］",
+    "ipa": "/kɔʁ.ne.ljɛ̃/",
+    "example": {
+      "fr": "C'est un choix cornélien.",
+      "zh": "这是个高乃依式的选择。",
+      "source": "Tatoeba #846351 · U2FS · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/846351",
+      "meaning": "高乃依的，高乃依作品的；高乃依式的［指情感和义务的矛盾冲突］",
+      "noAudio": true
+    },
+    "frequency": 2.49,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/corn%C3%A9lien",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/corn%C3%A9lien",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexa7bff1c33e6d8b89bb54",
+    "word": "déchanter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "幻灭；改变（高高在上的）态度；泄气，失望"
+    ],
+    "primaryMeaning": "幻灭；改变（高高在上的）态度；泄气，失望",
+    "ipa": "/de.ʃɑ̃.te/",
+    "example": {
+      "fr": "Il espère en tirer de grands avantages, mais il aura bien à déchanter.",
+      "zh": "他希望能从那里弄到不少好处，但是他恐怕要大失所望。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9chanter",
+      "meaning": "幻灭；改变（高高在上的）态度；泄气，失望",
+      "noAudio": true
+    },
+    "frequency": 2.49,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9chanter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9chanter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex42d8ee0c7a56a4f31d61",
+    "word": "poireauter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "久等"
+    ],
+    "primaryMeaning": "久等",
+    "ipa": "/pwa.ʁɔ.te/",
+    "example": {
+      "fr": "Il m'a fait poireauter 4 jours.",
+      "zh": "他让我苦苦等了4天。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/poireauter",
+      "meaning": "久等",
+      "noAudio": true
+    },
+    "frequency": 2.48,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/poireauter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/poireauter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd96d9815cbc163582291",
+    "word": "zouave",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "古怪的人"
+    ],
+    "primaryMeaning": "古怪的人",
+    "ipa": "/zwav/",
+    "example": {
+      "fr": "faire le zouave",
+      "zh": "扮小丑",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/zouave",
+      "meaning": "古怪的人",
+      "noAudio": true
+    },
+    "frequency": 2.48,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/zouave",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/zouave",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex84c9e44a58d3b76a234f",
+    "word": "antisocial",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "反社会的，敌视社会的，危害社会秩序的；违背劳动者利益的"
+    ],
+    "primaryMeaning": "反社会的，敌视社会的，危害社会秩序的；违背劳动者利益的",
+    "ipa": "/ɑ̃.ti.sɔ.sjal/",
+    "example": {
+      "fr": "Il se peut que je sois antisocial, mais ça ne veut pas dire pas que je ne parle pas aux gens.",
+      "zh": "我可能是反社会的，但这并不表示我不跟人说话。",
+      "source": "Tatoeba #3171 · ANH_DAO · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/3171",
+      "meaning": "反社会的，敌视社会的，危害社会秩序的；违背劳动者利益的",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/antisocial",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/antisocial",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex25179451b342abff60d4",
+    "word": "colorectal",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "结直肠的"
+    ],
+    "primaryMeaning": "结直肠的",
+    "ipa": "/ko.lo.ʁɛk.tal/",
+    "example": {
+      "fr": "cancer colorectal",
+      "zh": "结直肠癌",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/colorectal",
+      "meaning": "结直肠的",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/colorectal",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/colorectal",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex90cea17ae3eb072aa48b",
+    "word": "faon",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "幼鹿"
+    ],
+    "primaryMeaning": "幼鹿",
+    "ipa": "/fɑ̃/",
+    "example": {
+      "fr": "Un faon peut se tenir debout dès qu'il nait.",
+      "zh": "幼鹿一出生就能站起来。",
+      "source": "Tatoeba #413801 · Scott · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/413801",
+      "meaning": "幼鹿",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/faon",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/faon",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex5d83490ab4c2d33c3cd0",
+    "word": "mélèze",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "落叶松（Larix）"
+    ],
+    "primaryMeaning": "落叶松（Larix）",
+    "ipa": "/me.lɛz/",
+    "example": {
+      "fr": "Le mélèze est un conifère des montagnes qui perd ses aiguilles en hiver.",
+      "zh": "落叶松是一种生长在山区的针叶树，针叶在冬天会脱落。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/m%C3%A9l%C3%A8ze",
+      "meaning": "落叶松（Larix）",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/m%C3%A9l%C3%A8ze",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/m%C3%A9l%C3%A8ze",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex254d65f2abe09c9de33c",
+    "word": "pugilat",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "斗殴，打架",
+      "拳击"
+    ],
+    "primaryMeaning": "斗殴，打架",
+    "ipa": "/py.ʒi.la/",
+    "example": {
+      "fr": "La discussion a tourné au pugilat.",
+      "zh": "讨论最后变成了打架。",
+      "source": "Tatoeba #14998 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/14998",
+      "meaning": "斗殴，打架",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/pugilat",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pugilat",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex550f47adec79c5f2c496",
+    "word": "rembourrage",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "填料，填充物，衬垫"
+    ],
+    "primaryMeaning": "填料，填充物，衬垫",
+    "ipa": "/ʁɑ̃.bu.ʁaʒ/",
+    "example": {
+      "fr": "Le sac contient un rembourrage pour protéger l’ordinateur.",
+      "zh": "这个包里有填充物来保护电脑。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/rembourrage",
+      "meaning": "填料，填充物，衬垫",
+      "noAudio": true
+    },
+    "frequency": 2.47,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/rembourrage",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/rembourrage",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7b833736a437246591bc",
+    "word": "cambrousse",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "乡下，穷乡僻壤"
+    ],
+    "primaryMeaning": "乡下，穷乡僻壤",
+    "ipa": "/kɑ̃.bʁus/",
+    "example": {
+      "fr": "en pleine cambrousse",
+      "zh": "在一个鸟不拉屎的地方",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/cambrousse",
+      "meaning": "乡下，穷乡僻壤",
+      "noAudio": true
+    },
+    "frequency": 2.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/cambrousse",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/cambrousse",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex64dbda9e7eb6707a26ef",
+    "word": "cyrillique",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "用西里尔字母书写的"
+    ],
+    "primaryMeaning": "用西里尔字母书写的",
+    "ipa": "/si.ʁi.lik/",
+    "example": {
+      "fr": "Elle apprend à lire l'alphabet cyrillique.",
+      "zh": "她在学读西里尔字母。",
+      "meaning": "用西里尔字母书写的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/cyrillique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/cyrillique",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexec94edce8b58f0c08968",
+    "word": "cyrillique",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "西里尔字母"
+    ],
+    "primaryMeaning": "西里尔字母",
+    "ipa": "/si.ʁi.lik/",
+    "example": {
+      "fr": "Le cyrillique est l'alphabet utilisé pour écrire le russe.",
+      "zh": "俄语使用的是西里尔字母。",
+      "meaning": "西里尔字母",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/cyrillique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/cyrillique",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex33d382b8d31dbca029d7",
+    "word": "fainéantise",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "懒惰"
+    ],
+    "primaryMeaning": "懒惰",
+    "ipa": "/fe.ne.ɑ̃.tiz/",
+    "example": {
+      "fr": "La principale cause de son échec est la fainéantise.",
+      "zh": "他失败的最主要原因是懒惰。",
+      "source": "Tatoeba #465664 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/465664",
+      "meaning": "懒惰",
+      "noAudio": true
+    },
+    "frequency": 2.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fain%C3%A9antise",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fain%C3%A9antise",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexc8b350580108b78bfa3f",
+    "word": "grisou",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "沼气，瓦斯"
+    ],
+    "primaryMeaning": "沼气，瓦斯",
+    "ipa": "/ɡʁi.zu/",
+    "example": {
+      "fr": "coup de grisou",
+      "zh": "沼气爆炸",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/grisou",
+      "meaning": "沼气，瓦斯",
+      "noAudio": true
+    },
+    "frequency": 2.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/grisou",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/grisou",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexdea35c30c3560d085619",
+    "word": "chamailler",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "拌嘴（常用代词式）"
+    ],
+    "primaryMeaning": "拌嘴（常用代词式）",
+    "ipa": "/ʃa.mɑ.je/",
+    "example": {
+      "fr": "Les enfants ont encore commencé à se chamailler.",
+      "zh": "孩子们又开始拌嘴了。",
+      "meaning": "拌嘴（常用代词式）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.45,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/chamailler",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/chamailler",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf3072bba445a4934a4d2",
+    "word": "déconseiller",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "劝阻"
+    ],
+    "primaryMeaning": "劝阻",
+    "ipa": "/de.kɔ̃.sɛ.je/",
+    "example": {
+      "fr": "déconseiller quelque chose",
+      "zh": "劝说不要做某事",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9conseiller",
+      "meaning": "劝阻",
+      "noAudio": true
+    },
+    "frequency": 2.45,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9conseiller",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9conseiller",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex99d676a83d50fb9856ec",
+    "word": "orientalisme",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "东方主义",
+      "东方学"
+    ],
+    "primaryMeaning": "东方主义",
+    "ipa": "/ɔ.ʁjɑ̃.ta.lism/",
+    "example": {
+      "fr": "Une thèse universitaire décrit l'orientalisme qui imprègne la science-fiction occidentale.",
+      "zh": "一篇大学论文描述了充斥在西方科幻作品中的「东方主义」。",
+      "source": "Tatoeba #4624803 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/4624803",
+      "meaning": "东方主义",
+      "noAudio": true
+    },
+    "frequency": 2.45,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/orientalisme",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/orientalisme",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd82e2aa08a1bc440c424",
+    "word": "pivoine",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "芍药"
+    ],
+    "primaryMeaning": "芍药",
+    "ipa": "/pi.vwan/",
+    "example": {
+      "fr": "Une pivoine rose pousse près de la fenêtre.",
+      "zh": "窗边长着一株粉色芍药。",
+      "meaning": "芍药",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.45,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/pivoine",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pivoine",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7bae355aad1fca15f775",
+    "word": "pivotant",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "可转动的"
+    ],
+    "primaryMeaning": "可转动的",
+    "ipa": "/pi.vɔ.tɑ̃/",
+    "example": {
+      "fr": "Il s'assoit sur un fauteuil pivotant.",
+      "zh": "他坐在一把转椅上。",
+      "meaning": "可转动的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.45,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/pivotant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pivotant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex5e833015c1f74105aa88",
+    "word": "croupir",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "长期困于恶劣处境"
+    ],
+    "primaryMeaning": "长期困于恶劣处境",
+    "ipa": "/kʁu.piʁ/",
+    "example": {
+      "fr": "Personne ne devrait croupir dans un logement insalubre.",
+      "zh": "谁都不该长年困在不卫生的住所里。",
+      "meaning": "长期困于恶劣处境",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.44,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/croupir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/croupir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc7ae65e22e3a64832183",
+    "word": "déchoir",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "剥夺",
+      "衰退，衰弱；堕落；颓废"
+    ],
+    "primaryMeaning": "剥夺",
+    "ipa": "/de.ʃwaʁ/",
+    "example": {
+      "fr": "déchoir un homme de son titre",
+      "zh": "剥夺一个人的头衔",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9choir",
+      "meaning": "剥夺",
+      "noAudio": true
+    },
+    "frequency": 2.44,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9choir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9choir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb10a192fa45af5216b48",
+    "word": "pétrir",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "揉，捏，和",
+      "塑造，使成形"
+    ],
+    "primaryMeaning": "揉，捏，和",
+    "ipa": "/pe.tʁiʁ/",
+    "example": {
+      "fr": "pétrir la pâte",
+      "zh": "揉面",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/p%C3%A9trir",
+      "meaning": "揉，捏，和",
+      "noAudio": true
+    },
+    "frequency": 2.42,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/p%C3%A9trir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A9trir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex580f67480e4ca54fbc0a",
+    "word": "fors",
+    "pos": "prép.",
+    "gender": null,
+    "meanings": [
+      "除了……以外"
+    ],
+    "primaryMeaning": "除了……以外",
+    "ipa": "/fɔʁ/",
+    "example": {
+      "fr": "Tout est perdu fors l'honneur.",
+      "zh": "除了荣耀以外，一切都失去了。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/fors",
+      "meaning": "除了……以外",
+      "noAudio": true
+    },
+    "frequency": 2.41,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fors",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fors",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexe6eb58da3559f0b6e89f",
+    "word": "sabrer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "用军刀砍、劈、划",
+      "大段删除、删节、削减",
+      "用剑打开（香槟）酒瓶"
+    ],
+    "primaryMeaning": "用军刀砍、劈、划",
+    "ipa": "/sa.bʁe/",
+    "example": {
+      "fr": "sabrer à droite et à gauche",
+      "zh": "左右砍击",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/sabrer",
+      "meaning": "用军刀砍、劈、划",
+      "noAudio": true
+    },
+    "frequency": 2.41,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/sabrer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/sabrer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbfbb04320f9f710d8adf",
+    "word": "sportivité",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "运动性",
+      "体育精神"
+    ],
+    "primaryMeaning": "运动性",
+    "ipa": "/spɔʁ.ti.vi.te/",
+    "example": {
+      "fr": "la sportivité d'une voiture",
+      "zh": "汽车的运动性能",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/sportivit%C3%A9",
+      "meaning": "运动性",
+      "noAudio": true
+    },
+    "frequency": 2.41,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/sportivit%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/sportivit%C3%A9",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex8b643eab11bd6772c7f5",
+    "word": "électrocardiogramme",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "心电图"
+    ],
+    "primaryMeaning": "心电图",
+    "ipa": "/e.lɛk.tʁɔ.kaʁ.djɔ.ɡʁam/",
+    "example": {
+      "fr": "Je vais faire un électrocardiogramme.",
+      "zh": "我要做一个心电图。",
+      "source": "Tatoeba #14670 · Micsmithel · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/14670",
+      "meaning": "心电图",
+      "noAudio": true
+    },
+    "frequency": 2.41,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9lectrocardiogramme",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9lectrocardiogramme",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexc0325846c771b233de27",
+    "word": "délester",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "减轻……的负担"
+    ],
+    "primaryMeaning": "减轻……的负担",
+    "ipa": "/de.lɛs.te/",
+    "example": {
+      "fr": "La nouvelle ligne doit délester le métro aux heures de pointe.",
+      "zh": "这条新线将缓解高峰期地铁的压力。",
+      "meaning": "减轻……的负担",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.4,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9lester",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9lester",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex5aca90f67e5bf69f7ab3",
+    "word": "laiteux",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "乳状的；乳白色的",
+      "乳汁的"
+    ],
+    "primaryMeaning": "乳状的；乳白色的",
+    "ipa": "/lɛ.tø/",
+    "example": {
+      "fr": "un liquide blanc laiteux",
+      "zh": "乳白色液体",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/laiteux",
+      "meaning": "乳状的；乳白色的",
+      "noAudio": true
+    },
+    "frequency": 2.4,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/laiteux",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/laiteux",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex52397fb9b60ba952cd08",
+    "word": "veinard",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "走运的人，幸运的人"
+    ],
+    "primaryMeaning": "走运的人，幸运的人",
+    "ipa": "/vɛ.naʁ/",
+    "example": {
+      "fr": "petit veinard",
+      "zh": "幸运的家伙",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/veinard",
+      "meaning": "走运的人，幸运的人",
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/veinard",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/Veinard",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex3d6ed97b11345fcca176",
+    "word": "dactylo",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "打字员",
+      "秘书",
+      "指纹学"
+    ],
+    "primaryMeaning": "打字员",
+    "ipa": "/dak.ti.lo/",
+    "example": {
+      "fr": "Ma sœur est une très bonne dactylo.",
+      "zh": "我姐妹是一个很棒的打字员。",
+      "source": "Tatoeba #1086916 · sysko · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/1086916",
+      "meaning": "打字员",
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/dactylo",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/dactylo",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex8c48a87901f14ebbb46f",
+    "word": "fastoche",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "简单的，轻松的"
+    ],
+    "primaryMeaning": "简单的，轻松的",
+    "ipa": "/fas.tɔʃ/",
+    "example": {
+      "fr": "L'exo était super fastoche.",
+      "zh": "练习超级简单。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/fastoche",
+      "meaning": "简单的，轻松的",
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fastoche",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fastoche",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbe5c84bd4860d8bdf28a",
+    "word": "iel",
+    "pos": "pron.",
+    "gender": null,
+    "meanings": [
+      "TA，他／她 (单数)：性别中立的单数第三人称主语人称代词"
+    ],
+    "primaryMeaning": "TA，他／她 (单数)：性别中立的单数第三人称主语人称代词",
+    "ipa": "/jɛl/",
+    "example": {
+      "fr": "[…]; les jours où iels n’avaient pas l’occasion de parler un peu, juste tous les deux, iel se sentait vide.",
+      "zh": "[…] ；在他们没有机会私下聊聊、只有两个人独处的日子里，TA感到空虚。",
+      "source": "Wiktionnaire · 汉语版 · 2014，Carina Rozenfeld，La Symphonie des abysses，Robert Laffont，「Book 1」：",
+      "url": "https://zh.wiktionary.org/wiki/iel",
+      "meaning": "TA，他／她 (单数)：性别中立的单数第三人称主语人称代词",
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/iel",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/iel",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf39756d95dda5eed8c67",
+    "word": "migrateur",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "迁徙的",
+      "移民的"
+    ],
+    "primaryMeaning": "迁徙的",
+    "ipa": "/mi.ɡʁa.tœʁ/",
+    "example": {
+      "fr": "un oiseau migrateur",
+      "zh": "候鸟",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/migrateur",
+      "meaning": "迁徙的",
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/migrateur",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/migrateur",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc6a9ff1a8efd960b8418",
+    "word": "mémère",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "奶奶，姥姥（口语）"
+    ],
+    "primaryMeaning": "奶奶，姥姥（口语）",
+    "ipa": "/me.mɛʁ/",
+    "example": {
+      "fr": "Je vais voir ma mémère ce dimanche.",
+      "zh": "这个周日我要去看奶奶。",
+      "meaning": "奶奶，姥姥（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/m%C3%A9m%C3%A8re",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/m%C3%A9m%C3%A8re",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd830759f45babdb31653",
+    "word": "vitreux",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "眼神呆滞无神的"
+    ],
+    "primaryMeaning": "眼神呆滞无神的",
+    "ipa": "/vi.tʁø/",
+    "example": {
+      "fr": "Il avait le regard vitreux après une nuit sans dormir.",
+      "zh": "他一夜没睡，眼神呆滞。",
+      "meaning": "眼神呆滞无神的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.39,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/vitreux",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/vitreux",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexadc92fcd599f1f1997b3",
+    "word": "revoici",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "又来了，又出现了"
+    ],
+    "primaryMeaning": "又来了，又出现了",
+    "ipa": "/ʁə.vwa.si/",
+    "example": {
+      "fr": "Nous revoici devant la gare.",
+      "zh": "我们又到了车站门口。",
+      "meaning": "又来了，又出现了",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.38,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/revoici",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/revoici",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex832a36047e0a23fdd299",
+    "word": "gâterie",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "给人的一份小零食或小礼物"
+    ],
+    "primaryMeaning": "给人的一份小零食或小礼物",
+    "ipa": "/ɡɑt.ʁi/",
+    "example": {
+      "fr": "Il offre une petite gâterie à son chien.",
+      "zh": "他给了自家狗一点小零食。",
+      "meaning": "给人的一份小零食或小礼物",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.37,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/g%C3%A2terie",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/g%C3%A2terie",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexa18620a08779cddf4038",
+    "word": "quereller",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "争吵，争执，争论"
+    ],
+    "primaryMeaning": "争吵，争执，争论",
+    "ipa": "/kə.ʁe.le/",
+    "example": {
+      "fr": "Ils commencèrent à se quereller entre eux.",
+      "zh": "他们开始相互争吵了。",
+      "source": "Tatoeba #136631 · hortusdei · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/136631",
+      "meaning": "争吵，争执，争论",
+      "noAudio": true
+    },
+    "frequency": 2.37,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/quereller",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/quereller",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex49c1f6396c5ac5ee88c5",
+    "word": "usuellement",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "通常，一般"
+    ],
+    "primaryMeaning": "通常，一般",
+    "ipa": "/y.zɥɛl.mɑ̃/",
+    "example": {
+      "fr": "On demande usuellement aux visiteurs de retirer leurs chaussures avant de rentrer dans une maison japonaise.",
+      "zh": "访客通常在进入一户日本人家之前会被要求脱鞋。",
+      "source": "Tatoeba #335346 · sysko · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/335346",
+      "meaning": "通常，一般",
+      "noAudio": true
+    },
+    "frequency": 2.37,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/usuellement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/usuellement",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex2ebb855c194416117abe",
+    "word": "mutin",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "顽皮的，淘气的",
+      "反叛的"
+    ],
+    "primaryMeaning": "顽皮的，淘气的",
+    "ipa": "/my.tɛ̃/",
+    "example": {
+      "fr": "Elle eut un sourire mutin.",
+      "zh": "她露出顽皮的微笑。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/mutin",
+      "meaning": "顽皮的，淘气的",
+      "noAudio": true
+    },
+    "frequency": 2.36,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/mutin",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/mutin",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexa68745eee09cbd0a80f1",
+    "word": "léthargique",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "昏睡的，嗜睡的",
+      "麻木的，迟钝的"
+    ],
+    "primaryMeaning": "昏睡的，嗜睡的",
+    "ipa": "/le.taʁ.ʒik/",
+    "example": {
+      "fr": "Il ne fait rien, il ne réagit pas : il est complètement léthargique.",
+      "zh": "他什么也不做，什么也不说：他完全昏睡过去了。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/l%C3%A9thargique",
+      "meaning": "昏睡的，嗜睡的",
+      "noAudio": true
+    },
+    "frequency": 2.35,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/l%C3%A9thargique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/l%C3%A9thargique",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexda66e0918dad5a0fe356",
+    "word": "démener",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "竭尽全力（常用代词式）"
+    ],
+    "primaryMeaning": "竭尽全力（常用代词式）",
+    "ipa": "/dem.ne/",
+    "example": {
+      "fr": "Elle a dû se démener pour trouver un logement.",
+      "zh": "她为了找到住处费了很大的劲。",
+      "meaning": "竭尽全力（常用代词式）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.34,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9mener",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9mener",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex3b94b2b0524243fde9cd",
+    "word": "parallélogramme",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "平行四边形"
+    ],
+    "primaryMeaning": "平行四边形",
+    "ipa": "/pa.ʁa.le.lɔ.ɡʁam/",
+    "example": {
+      "fr": "Un parallélogramme est un quadrilatère formé de deux paires de lignes parallèles.",
+      "zh": "平行四边形是由两组平行线组成的四边形。",
+      "source": "Tatoeba #499440 · ajira86 · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/499440",
+      "meaning": "平行四边形",
+      "noAudio": true
+    },
+    "frequency": 2.34,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/parall%C3%A9logramme",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/parall%C3%A9logramme",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd6a1167e52b3327de75f",
+    "word": "tox",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "瘾君子"
+    ],
+    "primaryMeaning": "瘾君子",
+    "ipa": "/tɔks/",
+    "example": {
+      "fr": "Y'a rien de glorieux, ça c'est pour les tox",
+      "zh": "这没有什么值得光彩的，这是给瘾君子的",
+      "source": "Wiktionnaire · 汉语版 · 1998，「Sans faire couler le sang」，收錄於Don Choa（作詞），Fonky Family（作曲），Si Dieu Veut：",
+      "url": "https://zh.wiktionary.org/wiki/tox",
+      "meaning": "瘾君子",
+      "noAudio": true
+    },
+    "frequency": 2.34,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/tox",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/tox",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexa09835ffa9f1e9736200",
+    "word": "philatélie",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "集邮"
+    ],
+    "primaryMeaning": "集邮",
+    "ipa": "/fi.la.te.li/",
+    "example": {
+      "fr": "Yoko s'intéresse à la philatélie.",
+      "zh": "洋子有收集邮票的兴趣。",
+      "source": "Tatoeba #799718 · U2FS · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/799718",
+      "meaning": "集邮",
+      "noAudio": true
+    },
+    "frequency": 2.33,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/philat%C3%A9lie",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/philat%C3%A9lie",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd953606e3e26607b35eb",
+    "word": "quantième",
+    "pos": "pron.",
+    "gender": "m",
+    "meanings": [
+      "（一个月的）几日，几号"
+    ],
+    "primaryMeaning": "（一个月的）几日，几号",
+    "ipa": "/kɑ̃.tjɛm/",
+    "example": {
+      "fr": "Le quantième sommes-nous ?",
+      "zh": "今天几号？",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/quanti%C3%A8me",
+      "meaning": "（一个月的）几日，几号",
+      "noAudio": true
+    },
+    "frequency": 2.33,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/quanti%C3%A8me",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/quanti%C3%A8me",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex02267f8f0af4deb0a235",
+    "word": "taoïsme",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "道教，道家思想"
+    ],
+    "primaryMeaning": "道教，道家思想",
+    "ipa": "/ta.o.ism/",
+    "example": {
+      "fr": "Le taoïsme fut fondé sur les enseignements de Laotseu, un sage né en 604 avant J-C. dans la province actuelle du Henan.",
+      "zh": "道教是用老子的教导创立的，他是公元前六零四年在现代的河南省出生的圣贤。",
+      "source": "Tatoeba #898262 · U2FS · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/898262",
+      "meaning": "道教，道家思想",
+      "noAudio": true
+    },
+    "frequency": 2.33,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/tao%C3%AFsme",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/tao%C3%AFsme",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex53a2fc8e778811934f70",
+    "word": "adosser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "使背靠",
+      "背靠",
+      "倚靠，以……作为支撑或庇护"
+    ],
+    "primaryMeaning": "使背靠",
+    "ipa": "/a.do.se/",
+    "example": {
+      "fr": "adosser quelqu'un contre un mur",
+      "zh": "使某人靠在墙上",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/adosser",
+      "meaning": "使背靠",
+      "noAudio": true
+    },
+    "frequency": 2.32,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/adosser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/adosser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex79a5d51809f9ca1541fb",
+    "word": "rembourré",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "胖的；丰满的",
+      "装有衬垫或填充物的",
+      "穿著厚衣服的"
+    ],
+    "primaryMeaning": "胖的；丰满的",
+    "ipa": "/ʁɑ̃.bu.ʁe/",
+    "example": {
+      "fr": "il est bien rembourré.",
+      "zh": "他胖嘟嘟的。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/rembourr%C3%A9",
+      "meaning": "胖的；丰满的",
+      "noAudio": true
+    },
+    "frequency": 2.31,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/rembourr%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/rembourr%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc2b93d6aa5ea84b1c7fe",
+    "word": "ausculter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "听诊"
+    ],
+    "primaryMeaning": "听诊",
+    "ipa": "/os.kyl.te/",
+    "example": {
+      "fr": "ausculter un patient",
+      "zh": "给病人听诊",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/ausculter",
+      "meaning": "听诊",
+      "noAudio": true
+    },
+    "frequency": 2.3,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/ausculter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ausculter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex4a5584b190113b0b66f5",
+    "word": "barder",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "变得严重，变得激烈，变得危险",
+      "用薄片肥肉包肉（防止烹饪中变干）",
+      "铺设瓦片、壁板"
+    ],
+    "primaryMeaning": "变得严重，变得激烈，变得危险",
+    "ipa": "/baʁ.de/",
+    "example": {
+      "fr": "Si Michel décide de venir à la réunion, c'est sûr que ça va barder!",
+      "zh": "如果米歇尔决定来参加会议，事情肯定会变得很糟糕！",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/barder",
+      "meaning": "变得严重，变得激烈，变得危险",
+      "noAudio": true
+    },
+    "frequency": 2.3,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/barder",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/barder",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex40597a3a84603245d7be",
+    "word": "chatouilleux",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "敏感的，易怒的",
+      "怕痒的"
+    ],
+    "primaryMeaning": "敏感的，易怒的",
+    "ipa": "/ʃa.tu.jø/",
+    "example": {
+      "fr": "Fais attention, il est chatouilleux sur ce sujet.",
+      "zh": "小心点，这对他来说是个敏感话题。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/chatouilleux",
+      "meaning": "敏感的，易怒的",
+      "noAudio": true
+    },
+    "frequency": 2.3,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/chatouilleux",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/chatouilleux",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex8ff13a784ba7a3ddfbbf",
+    "word": "interjeter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "提出上诉"
+    ],
+    "primaryMeaning": "提出上诉",
+    "ipa": "/ɛ̃.tɛʁ.ʒə.te/",
+    "example": {
+      "fr": "interjeter appel",
+      "zh": "提出上诉",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/interjeter",
+      "meaning": "提出上诉",
+      "noAudio": true
+    },
+    "frequency": 2.3,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/interjeter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/interjeter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc25d6440bd23553ed108",
+    "word": "hébété",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "茫然的，呆滞的；变迟钝、愚笨的"
+    ],
+    "primaryMeaning": "茫然的，呆滞的；变迟钝、愚笨的",
+    "ipa": "^((h muet))/e.be.te/",
+    "example": {
+      "fr": "Il avait l’air hébété ; quelque chose gonflait la poche intérieure de son veston et de temps à autre il portait la main à sa poitrine.",
+      "zh": "他看起来很茫然；他夹克内袋里有东西鼓鼓的，他不时把手放在胸前。",
+      "source": "Wiktionnaire · 汉语版 · 1947，Boris Vian，L'écume des jours，Kindle版：",
+      "url": "https://zh.wiktionary.org/wiki/h%C3%A9b%C3%A9t%C3%A9",
+      "meaning": "茫然的，呆滞的；变迟钝、愚笨的",
+      "noAudio": true
+    },
+    "frequency": 2.29,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/h%C3%A9b%C3%A9t%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/h%C3%A9b%C3%A9t%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex7df3d67011e4ad601e5d",
+    "word": "lésine",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "小气，吝啬"
+    ],
+    "primaryMeaning": "小气，吝啬",
+    "ipa": "/le.zin/",
+    "example": {
+      "fr": "La sottise, l’erreur, le péché, la lésine / Occupent nos esprits et travaillent nos corps,",
+      "zh": "愚昧、错误、罪恶、吝啬/占据我们的思想，影响我们的身体，",
+      "source": "Wiktionnaire · 汉语版 · 1857，Charles Baudelaire，「Au lecteur」，收錄於Les Fleurs du mal [The Flowers of Evil]，Paris：Poulet-Malassis et De Broise：",
+      "url": "https://zh.wiktionary.org/wiki/l%C3%A9sine",
+      "meaning": "小气，吝啬",
+      "noAudio": true
+    },
+    "frequency": 2.29,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/l%C3%A9sine",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/l%C3%A9sine",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexda1541f5a4001da98e19",
+    "word": "embardée",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "急转弯",
+      "航行时突然偏向"
+    ],
+    "primaryMeaning": "急转弯",
+    "ipa": "/ɑ̃.baʁ.de/",
+    "example": {
+      "fr": "La roue avant fit une embardée, le guidon glissa entre les doigts et le vélo s'échappa pour finir sa course dans un buisson de branches.",
+      "zh": "前轮突然转向，车把从我指间滑落，自行车飞了出去，最后停在了茂密的树枝丛中。",
+      "source": "Wiktionnaire · 汉语版 · 2024，Ploum，Bikepunk […] ，PVH éditions，→ISBN，13頁：",
+      "url": "https://zh.wiktionary.org/wiki/embard%C3%A9e",
+      "meaning": "急转弯",
+      "noAudio": true
+    },
+    "frequency": 2.28,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/embard%C3%A9e",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/embard%C3%A9e",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexfbfb04c61f153dcc898c",
+    "word": "fraterniser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "亲如兄弟，亲善，相处融洽"
+    ],
+    "primaryMeaning": "亲如兄弟，亲善，相处融洽",
+    "ipa": "/fʁa.tɛʁ.ni.ze/",
+    "example": {
+      "fr": "fraterniser avec l'ennemi",
+      "zh": "与敌人交好",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/fraterniser",
+      "meaning": "亲如兄弟，亲善，相处融洽",
+      "noAudio": true
+    },
+    "frequency": 2.28,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/fraterniser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fraterniser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd929df3fc878af674b79",
+    "word": "foudroyer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "将...一下子摧毁；使...立即死亡",
+      "（指雷电）劈",
+      "震撼，使...震惊不已"
+    ],
+    "primaryMeaning": "将...一下子摧毁；使...立即死亡",
+    "ipa": "/fu.dʁwa.je/",
+    "example": {
+      "fr": "foudroyer une ville",
+      "zh": "将一个城市一下子夷为平地",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/foudroyer",
+      "meaning": "将...一下子摧毁；使...立即死亡",
+      "noAudio": true
+    },
+    "frequency": 2.27,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/foudroyer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/foudroyer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexa23f434337c01440accf",
+    "word": "affûter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "磨利，磨快",
+      "磨炼，琢磨（技能、意志等）",
+      "吃"
+    ],
+    "primaryMeaning": "磨利，磨快",
+    "ipa": "/a.fy.te/",
+    "example": {
+      "fr": "C'est bon ! On a compris ! Venez les filles ! Allons au camp pour commencer à affûter nos flèches !",
+      "zh": "好了好了，我们知道了！姑娘们，跟我来！回营地去，把箭都磨锋利起来！",
+      "source": "Wiktionnaire · 汉语版 · 2021，Jean-Yves Ferri，Didier Conrad，Astérix et le Griffon（Asterix），Vanves：Les Éditions Albert René，→ISBN，18頁：",
+      "url": "https://zh.wiktionary.org/wiki/aff%C3%BBter",
+      "meaning": "磨利，磨快",
+      "noAudio": true
+    },
+    "frequency": 2.25,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/aff%C3%BBter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/aff%C3%BBter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex4153ee62e47534446a40",
+    "word": "chabbat",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "犹太安息日"
+    ],
+    "primaryMeaning": "犹太安息日",
+    "ipa": "/ʃa.ba/",
+    "example": {
+      "fr": "Les juifs observent fort exactement le chabbat.",
+      "zh": "犹太人守安息非常严格。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/chabbat",
+      "meaning": "犹太安息日",
+      "noAudio": true
+    },
+    "frequency": 2.25,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/chabbat",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/chabbat",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd377952d92614a56ae4b",
+    "word": "trucider",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "杀害，杀掉"
+    ],
+    "primaryMeaning": "杀害，杀掉",
+    "ipa": "/tʁy.si.de/",
+    "example": {
+      "fr": "— C'est peut-être Antoine qui s'en est chargé ? Qui l'a fait trucider ?",
+      "zh": "也许是照顾他的安托万——把他杀了？",
+      "source": "Wiktionnaire · 汉语版 · 2008, Chrystine Brouillet, Silence de mort, page 190.",
+      "url": "https://zh.wiktionary.org/wiki/trucider",
+      "meaning": "杀害，杀掉",
+      "noAudio": true
+    },
+    "frequency": 2.25,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/trucider",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/trucider",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbd2a8401a439bd718de2",
+    "word": "empaillé",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "(指动物标本) 躯壳被填塞稻草的"
+    ],
+    "primaryMeaning": "(指动物标本) 躯壳被填塞稻草的",
+    "ipa": "/ɑ̃.pa.je/",
+    "example": {
+      "fr": "un renard empaillé",
+      "zh": "一只狐狸标本",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/empaill%C3%A9",
+      "meaning": "(指动物标本) 躯壳被填塞稻草的",
+      "noAudio": true
+    },
+    "frequency": 2.24,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/empaill%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/empaill%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexdb3440221aed592faf67",
+    "word": "trouillard",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "胆小鬼，懦夫"
+    ],
+    "primaryMeaning": "胆小鬼，懦夫",
+    "ipa": "/tʁu.jɑʁ/",
+    "example": {
+      "fr": "« Pour être franc, j'ai le vertige. » « Tu es un trouillard ! »",
+      "zh": "“坦白说，我有恐高症。”“你是个胆小鬼！”",
+      "source": "Tatoeba #3327 · trotter · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/3327",
+      "meaning": "胆小鬼，懦夫",
+      "noAudio": true
+    },
+    "frequency": 2.24,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/trouillard",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/trouillard",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7eccb46143882e41f276",
+    "word": "émincé",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "薄片，肉片"
+    ],
+    "primaryMeaning": "薄片，肉片",
+    "ipa": "/e.mɛ̃.se/",
+    "example": {
+      "fr": "un émincé de veau",
+      "zh": "牛犊肉片",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/%C3%A9minc%C3%A9",
+      "meaning": "薄片，肉片",
+      "noAudio": true
+    },
+    "frequency": 2.24,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9minc%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9minc%C3%A9",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex2069e6b2c6389a98d960",
+    "word": "émigrant",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "移民者，侨民"
+    ],
+    "primaryMeaning": "移民者，侨民",
+    "ipa": "/e.mi.ɡʁɑ̃/",
+    "example": {
+      "fr": "Le nom du Bronx provient de Jonas Bronck, un émigrant suédois qui fut le premier à coloniser cette zone.",
+      "zh": "布朗克斯的名字来自乔纳斯·布朗克（Jonas Bronck），他是第一个在该地区殖民的瑞典移民。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/%C3%A9migrant",
+      "meaning": "移民者，侨民",
+      "noAudio": true
+    },
+    "frequency": 2.22,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9migrant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9migrant",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexa60b4052aa72666460af",
+    "word": "badigeonner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "涂抹药物",
+      "粉刷"
+    ],
+    "primaryMeaning": "涂抹药物",
+    "ipa": "/ba.di.ʒɔ.ne/",
+    "example": {
+      "fr": "se badigeonner la gorge",
+      "zh": "用药水涂抹咽喉",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/badigeonner",
+      "meaning": "涂抹药物",
+      "noAudio": true
+    },
+    "frequency": 2.21,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/badigeonner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/badigeonner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb90dc56c075dc505e90f",
+    "word": "immuniser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "免疫"
+    ],
+    "primaryMeaning": "免疫",
+    "ipa": "/i.my.ni.ze/",
+    "example": {
+      "fr": "Immuniser contre une maladie.",
+      "zh": "对疾病免疫。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/immuniser",
+      "meaning": "免疫",
+      "noAudio": true
+    },
+    "frequency": 2.21,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/immuniser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/immuniser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexe9ae5a7865b53775b662",
+    "word": "jalouser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "嫉妒，妒忌"
+    ],
+    "primaryMeaning": "嫉妒，妒忌",
+    "ipa": "/ʒa.lu.ze/",
+    "example": {
+      "fr": "Il ne cessa de le jalouser et de le haïr.",
+      "zh": "他从来没有停止过嫉妒他、恨他。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/jalouser",
+      "meaning": "嫉妒，妒忌",
+      "noAudio": true
+    },
+    "frequency": 2.2,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/jalouser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/jalouser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex6a746b6c993495428f63",
+    "word": "essorer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "挤掉水分，脱水"
+    ],
+    "primaryMeaning": "挤掉水分，脱水",
+    "ipa": "/e.sɔ.ʁe/",
+    "example": {
+      "fr": "Il faut essorer la laitue avant de la mettre dans le saladier.",
+      "zh": "把生菜放进沙拉碗前要先甩干水分。",
+      "meaning": "挤掉水分，脱水",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.19,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/essorer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/essorer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd47de69b421eb778bb90",
+    "word": "affaisser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "下沉，沉降，陷落",
+      "使下沉，使下陷，使塌陷",
+      "塌陷，下垂、坍塌"
+    ],
+    "primaryMeaning": "下沉，沉降，陷落",
+    "ipa": "/a.fe.se/",
+    "example": {
+      "fr": "Il a contemplé les choses s'affaisser au ralenti, puis l'effondrement s'est accéléré.",
+      "zh": "他凝视著事物缓缓地塌陷，然后崩塌开始加速。",
+      "source": "Wiktionnaire · 汉语版 · 2015 January，Virginie Despentes，Vernon Subutex，第1卷，Éditions Grasset，→ISBN，第9頁：",
+      "url": "https://zh.wiktionary.org/wiki/affaisser",
+      "meaning": "下沉，沉降，陷落",
+      "noAudio": true
+    },
+    "frequency": 2.17,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/affaisser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/affaisser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex9920f0aa50b53a957b5e",
+    "word": "zoner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "漫无目的地闲逛（口语）"
+    ],
+    "primaryMeaning": "漫无目的地闲逛（口语）",
+    "ipa": "/zo.ne/",
+    "example": {
+      "fr": "On passait nos samedis à zoner près de la gare.",
+      "zh": "我们以前每周六都在车站旁闲逛。",
+      "meaning": "漫无目的地闲逛（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.17,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/zoner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/zoner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex8f111c610536341280e3",
+    "word": "oisillon",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "小鸟，雏鸟"
+    ],
+    "primaryMeaning": "小鸟，雏鸟",
+    "ipa": "/wa.zi.jɔ̃/",
+    "example": {
+      "fr": "Au pied du hêtre, j’ai trouvé un oisillon qui est tombé de son nid.",
+      "zh": "我在山毛榉树底下，发现一只从巢穴里掉出来的小鸟。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/oisillon",
+      "meaning": "小鸟，雏鸟",
+      "noAudio": true
+    },
+    "frequency": 2.16,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/oisillon",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/Oisillon",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex2093e76f42b11bc023d5",
+    "word": "anti-trigonométrique",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "顺时针的"
+    ],
+    "primaryMeaning": "顺时针的",
+    "ipa": "/ɑ̃.ti.tʁi.ɡɔ.nɔ.me.tʁik/",
+    "example": {
+      "fr": "dans le sens anti-trigonométrique",
+      "zh": "顺时针",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/anti-trigonom%C3%A9trique",
+      "meaning": "顺时针的",
+      "noAudio": true
+    },
+    "frequency": 2.15,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/anti-trigonom%C3%A9trique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/anti-trigonom%C3%A9trique",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex0a36a818355ffbc69c18",
+    "word": "bellâtre",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "（自以为是的）美男"
+    ],
+    "primaryMeaning": "（自以为是的）美男",
+    "ipa": "/bɛ.lɑtʁ/",
+    "example": {
+      "fr": "Ne pas trop briller intellectuellement. Juste assez cultivée pour comprendre ce qu'un bellâtre a à raconter.",
+      "zh": "算不上才智过人，只是略懂教养，能听懂俊男说的话。",
+      "source": "Wiktionnaire · 汉语版 · 2006，Virginie Despentes，「King Kong Girl」，收錄於King Kong Théorie [金剛理論]，Éditions Grasset，→ISBN，127頁：",
+      "url": "https://zh.wiktionary.org/wiki/bell%C3%A2tre",
+      "meaning": "（自以为是的）美男",
+      "noAudio": true
+    },
+    "frequency": 2.15,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bell%C3%A2tre",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bell%C3%A2tre",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex829a4aecd7d46f9de423",
+    "word": "bichonner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "精心打扮",
+      "关怀；爱抚；怜爱，疼爱",
+      "精心打扮自己"
+    ],
+    "primaryMeaning": "精心打扮",
+    "ipa": "/bi.ʃɔ.ne/",
+    "example": {
+      "fr": "Elle aime bichonner sa petite fille.",
+      "zh": "她喜欢给自己的小女儿打扮。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/bichonner",
+      "meaning": "精心打扮",
+      "noAudio": true
+    },
+    "frequency": 2.15,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bichonner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bichonner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbd88a60ac39c2962f096",
+    "word": "lésiner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "在……上过分节省"
+    ],
+    "primaryMeaning": "在……上过分节省",
+    "ipa": "/le.zi.ne/",
+    "example": {
+      "fr": "Ils ne veulent pas lésiner sur la sécurité.",
+      "zh": "他们不想在安全方面省钱。",
+      "meaning": "在……上过分节省",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.14,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/l%C3%A9siner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/l%C3%A9siner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf57481918b04bc4debc1",
+    "word": "ouïghour",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "维吾尔语"
+    ],
+    "primaryMeaning": "维吾尔语",
+    "ipa": "/u.i.ɡuʁ/",
+    "example": {
+      "fr": "Apprends l'ouïghour !",
+      "zh": "学维吾尔语。",
+      "source": "Tatoeba #431423 · Archibald · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/431423",
+      "meaning": "维吾尔语",
+      "noAudio": true
+    },
+    "frequency": 2.13,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/ou%C3%AFghour",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/Ou%C3%AFghour",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex45f6b3d0aa6a1fcf4ec4",
+    "word": "caracal",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "狞猫"
+    ],
+    "primaryMeaning": "狞猫",
+    "ipa": "/ka.ʁa.kal/",
+    "example": {
+      "fr": "J'ai vu un caracal.",
+      "zh": "我见过狞猫。",
+      "source": "Tatoeba #8954793 · Rafik · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/8954793",
+      "meaning": "狞猫",
+      "noAudio": true
+    },
+    "frequency": 2.1,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/caracal",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/caracal",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex78ea4c0ecf23d85f0ac9",
+    "word": "gnon",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "重击",
+      "凹痕"
+    ],
+    "primaryMeaning": "重击",
+    "ipa": "/ɲɔ̃/",
+    "example": {
+      "fr": "Tu veux un gnon ?",
+      "zh": "你找打吗？",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/gnon",
+      "meaning": "重击",
+      "noAudio": true
+    },
+    "frequency": 2.09,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/gnon",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/gnon",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex5cff972b67225dd15b47",
+    "word": "mirobolant",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "（过于美好而）不现实的",
+      "很棒的，非常好的，梦幻的，惊人的"
+    ],
+    "primaryMeaning": "（过于美好而）不现实的",
+    "ipa": "/mi.ʁɔ.bɔ.lɑ̃/",
+    "example": {
+      "fr": "Le projet fut tout à fait mirobolant.",
+      "zh": "那个项目太不切实际了。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/mirobolant",
+      "meaning": "（过于美好而）不现实的",
+      "noAudio": true
+    },
+    "frequency": 2.08,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/mirobolant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/mirobolant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbc949bdd17bde1a6f1d8",
+    "word": "zonzon",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "监狱",
+      "嗡嗡声"
+    ],
+    "primaryMeaning": "监狱",
+    "ipa": "/zɔ̃.zɔ̃/",
+    "example": {
+      "fr": "au zonzon, en zonzon",
+      "zh": "入狱",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/zonzon",
+      "meaning": "监狱",
+      "noAudio": true
+    },
+    "frequency": 2.07,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/zonzon",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/zonzon",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexaa29ce2de5f96a2f159f",
+    "word": "blème",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "问题，麻烦，毛病"
+    ],
+    "primaryMeaning": "问题，麻烦，毛病",
+    "ipa": "/blɛm/",
+    "example": {
+      "fr": "C'est quoi son blème ?",
+      "zh": "他什么毛病？",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/bl%C3%A8me",
+      "meaning": "问题，麻烦，毛病",
+      "noAudio": true
+    },
+    "frequency": 2.05,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/bl%C3%A8me",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bl%C3%A8me",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex90167be078ad1d634bab",
+    "word": "ébranlement",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "动摇",
+      "摇晃，摇动",
+      "震惊，震动"
+    ],
+    "primaryMeaning": "动摇",
+    "ipa": "/e.bʁɑ̃l.mɑ̃/",
+    "example": {
+      "fr": "L'ébranlement sied bien aux plus fermes courages",
+      "zh": "动摇最适合最坚定的勇气",
+      "source": "Wiktionnaire · 汉语版 · 1640，Pierre Corneille，「Act I, Scene I」，收錄於Horace：",
+      "url": "https://zh.wiktionary.org/wiki/%C3%A9branlement",
+      "meaning": "动摇",
+      "noAudio": true
+    },
+    "frequency": 2.04,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9branlement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9branlement",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex30fb72d043ea9f8cfda7",
+    "word": "désœuvrement",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "无所事事，闲散"
+    ],
+    "primaryMeaning": "无所事事，闲散",
+    "ipa": "/de.zœ.vʁə.mɑ̃/",
+    "example": {
+      "fr": "Je l'ai fait par désœuvrement.",
+      "zh": "我这么做只是为了消磨时间。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9s%C5%93uvrement",
+      "meaning": "无所事事，闲散",
+      "noAudio": true
+    },
+    "frequency": 2.02,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9s%C5%93uvrement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9s%C5%93uvrement",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex9eed2daf4ef1d1f1245e",
+    "word": "moufette",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "臭鼬"
+    ],
+    "primaryMeaning": "臭鼬",
+    "ipa": "/mu.fɛt/",
+    "example": {
+      "fr": "J'ai failli marcher sur une moufette hier soir.",
+      "zh": "我昨晚差点踩到一只臭鼬。",
+      "source": "Tatoeba #423340 · qdii · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/423340",
+      "meaning": "臭鼬",
+      "noAudio": true
+    },
+    "frequency": 1.98,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/moufette",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/moufette",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex62a11b1fa36d5b931165",
+    "word": "pâmoison",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "晕厥"
+    ],
+    "primaryMeaning": "晕厥",
+    "ipa": "/pɑ.mwa.zɔ̃/",
+    "example": {
+      "fr": "Elle faillit tomber en pâmoison à la vue du sang.",
+      "zh": "她一看到血差点晕过去。",
+      "meaning": "晕厥",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.98,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/p%C3%A2moison",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A2moison",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexdd95b5d77f81ceeacfbb",
+    "word": "presbytie",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "老花眼"
+    ],
+    "primaryMeaning": "老花眼",
+    "ipa": "/pʁɛs.bi.si/",
+    "example": {
+      "fr": "La presbytie rend la lecture de près plus difficile.",
+      "zh": "老花眼会让近距离阅读变得更困难。",
+      "meaning": "老花眼",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.97,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/presbytie",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/presbytie",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex3e16a5e71ba64742c4e8",
+    "word": "zic",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "音乐"
+    ],
+    "primaryMeaning": "音乐",
+    "ipa": "/zik/",
+    "example": {
+      "fr": "Attends, je vais éteindre la zic !",
+      "zh": "等等，我来关掉音乐！",
+      "source": "Wiktionnaire · 汉语版 · 2014，Arnaud Tsamere，25ème Montreux Comedy Festival : La Boum：",
+      "url": "https://zh.wiktionary.org/wiki/zic",
+      "meaning": "音乐",
+      "noAudio": true
+    },
+    "frequency": 1.95,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/zic",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/zic",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex018d318ef32e36875f20",
+    "word": "badiner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "耍，舞弄（棍子等）",
+      "开玩笑，打趣"
+    ],
+    "primaryMeaning": "耍，舞弄（棍子等）",
+    "ipa": "/ba.di.ne/",
+    "example": {
+      "fr": "badiner avec sa canne",
+      "zh": "耍拐杖",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/badiner",
+      "meaning": "耍，舞弄（棍子等）",
+      "noAudio": true
+    },
+    "frequency": 1.92,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/badiner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/badiner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex3da05525927f69d7e59f",
+    "word": "désaccordé",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "走调的"
+    ],
+    "primaryMeaning": "走调的",
+    "ipa": "/de.za.kɔʁ.de/",
+    "example": {
+      "fr": "un piano désaccordé",
+      "zh": "走调的钢琴",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9saccord%C3%A9",
+      "meaning": "走调的",
+      "noAudio": true
+    },
+    "frequency": 1.89,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9saccord%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9saccord%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex6c77fb576fbfbab156e1",
+    "word": "pétiller",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "闪亮，闪闪发光",
+      "滋滋冒泡的",
+      "噼啪响"
+    ],
+    "primaryMeaning": "闪亮，闪闪发光",
+    "ipa": "/pe.ti.je/",
+    "example": {
+      "fr": "Son sourire fit pétiller les yeux de son amant.",
+      "zh": "她的微笑让他眼睛发出爱的光芒",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/p%C3%A9tiller",
+      "meaning": "闪亮，闪闪发光",
+      "noAudio": true
+    },
+    "frequency": 1.89,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/p%C3%A9tiller",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/p%C3%A9tiller",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex8094280d85bb971db374",
+    "word": "baratiner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "花言巧语地哄（口语）"
+    ],
+    "primaryMeaning": "花言巧语地哄（口语）",
+    "ipa": "/ba.ʁa.ti.ne/",
+    "example": {
+      "fr": "Il essaie de me baratiner pour que j'accepte son prix.",
+      "zh": "他想用花言巧语哄我接受他的报价。",
+      "meaning": "花言巧语地哄（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.88,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/baratiner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/baratiner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex3fce2603c4baaf6fd1da",
+    "word": "tramer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "编织",
+      "想出，谋划出，策划出",
+      "发生，出现"
+    ],
+    "primaryMeaning": "编织",
+    "ipa": "/tʁa.me/",
+    "example": {
+      "fr": "tramer une étoffe",
+      "zh": "织布",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/tramer",
+      "meaning": "编织",
+      "noAudio": true
+    },
+    "frequency": 1.87,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/tramer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/tramer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex4a6d4ce798273728a1f1",
+    "word": "barbouiller",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "弄脏",
+      "（用漆刷）粗糙地漆；乱画",
+      "在……上潦草地写；在……上涂写意义不大的东西"
+    ],
+    "primaryMeaning": "弄脏",
+    "ipa": "/baʁ.bu.je/",
+    "example": {
+      "fr": "barbouiller son cahier",
+      "zh": "弄脏簿子",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/barbouiller",
+      "meaning": "弄脏",
+      "noAudio": true
+    },
+    "frequency": 1.86,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/barbouiller",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/barbouiller",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex15566444dfd44adba5eb",
+    "word": "labelliser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "贴标签",
+      "批准，给予正式地位"
+    ],
+    "primaryMeaning": "贴标签",
+    "ipa": "/la.bɛ.li.ze/",
+    "example": {
+      "fr": "Labelliser un produit.",
+      "zh": "给商品贴标签。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/labelliser",
+      "meaning": "贴标签",
+      "noAudio": true
+    },
+    "frequency": 1.81,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/labelliser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/labelliser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex0a8fbecfb1dac90b98ba",
+    "word": "socialisant",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "社会主义的"
+    ],
+    "primaryMeaning": "社会主义的",
+    "ipa": "/sɔ.sja.li.zɑ̃/",
+    "example": {
+      "fr": "Le programme du Mouvement social italien, nouvellement créé, est socialisant, anticapitaliste et antibourgeois.",
+      "zh": "新成立的意大利社会运动的纲领是社会主义的、反资本主义的和反资产阶级的。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/socialisant",
+      "meaning": "社会主义的",
+      "noAudio": true
+    },
+    "frequency": 1.81,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/socialisant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/socialisant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex8e46457d33679fe4636d",
+    "word": "esquinter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "损害，损伤",
+      "筋疲力尽",
+      "严酷抨击、中伤"
+    ],
+    "primaryMeaning": "损害，损伤",
+    "ipa": "/ɛs.kɛ̃.te/",
+    "example": {
+      "fr": "À sauter sur ce fauteuil, tu vas l'esquinter.",
+      "zh": "你这样跳到扶手椅上会把它弄坏的。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/esquinter",
+      "meaning": "损害，损伤",
+      "noAudio": true
+    },
+    "frequency": 1.79,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/esquinter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/esquinter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex469761b6f24ddf61bc48",
+    "word": "allécher",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "诱惑，吸引",
+      "用诱饵引诱"
+    ],
+    "primaryMeaning": "诱惑，吸引",
+    "ipa": "/a.le.ʃe/",
+    "example": {
+      "fr": "allécher qn par de belles promesses",
+      "zh": "用动听的诺言引诱某人",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/all%C3%A9cher",
+      "meaning": "诱惑，吸引",
+      "noAudio": true
+    },
+    "frequency": 1.72,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/all%C3%A9cher",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/all%C3%A9cher",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexaed827c37e3e44080aba",
+    "word": "guignon",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "霉运，晦气"
+    ],
+    "primaryMeaning": "霉运，晦气",
+    "ipa": "/ɡi.ɲɔ̃/",
+    "example": {
+      "fr": "porter le guignon à quelqu'un",
+      "zh": "给某人带来霉运",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/guignon",
+      "meaning": "霉运，晦气",
+      "noAudio": true
+    },
+    "frequency": 1.71,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/guignon",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/guignon",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex0c501b1763e6ff2ea613",
+    "word": "déboguer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "调试，排查程序错误"
+    ],
+    "primaryMeaning": "调试，排查程序错误",
+    "ipa": "/de.bɔ.ɡe/",
+    "example": {
+      "fr": "Elle sait déboguer cette application.",
+      "zh": "她会给这个应用排查程序错误。",
+      "meaning": "调试，排查程序错误",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.68,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9boguer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9boguer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex94e5d09495884502dc6c",
+    "word": "pifomètre",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "大致猜测，粗略估计"
+    ],
+    "primaryMeaning": "大致猜测，粗略估计",
+    "ipa": "/pi.fɔ.mɛtʁ/",
+    "example": {
+      "fr": "Au pifomètre, je dirais que ça vaut dix briques.",
+      "zh": "我猜它值一万块钱。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/pifom%C3%A8tre",
+      "meaning": "大致猜测，粗略估计",
+      "noAudio": true
+    },
+    "frequency": 1.67,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/pifom%C3%A8tre",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pifom%C3%A8tre",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexf09d71bb93f0467c4aea",
+    "word": "schlass",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "烂醉，酩酊大醉",
+      "精疲力尽，疲惫不堪"
+    ],
+    "primaryMeaning": "烂醉，酩酊大醉",
+    "ipa": "/ʃlas/",
+    "example": {
+      "fr": "C'est ce que j'ai cru comprendre. J'étais déjà schlass à ce moment-là.",
+      "zh": "我以为我是这么理解的。那时我已经烂醉如泥了。",
+      "source": "Wiktionnaire · 汉语版 · Georges Simenon，Maigret at Picratt's：",
+      "url": "https://zh.wiktionary.org/wiki/schlass",
+      "meaning": "烂醉，酩酊大醉",
+      "noAudio": true
+    },
+    "frequency": 1.67,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/schlass",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/schlass",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex20eda934908c8f32dc7d",
+    "word": "enchâsser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "插入 （文章中等）",
+      "将...供奉起来，珍藏",
+      "镶嵌"
+    ],
+    "primaryMeaning": "插入 （文章中等）",
+    "ipa": "/ɑ̃.ʃɑ.se/",
+    "example": {
+      "fr": "enchâsser un passage",
+      "zh": "插入一段文字",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/ench%C3%A2sser",
+      "meaning": "插入 （文章中等）",
+      "noAudio": true
+    },
+    "frequency": 1.66,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/ench%C3%A2sser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ench%C3%A2sser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex4b7b76afff81054ec63c",
+    "word": "éructer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "脱口说出",
+      "嗳气，打嗝"
+    ],
+    "primaryMeaning": "脱口说出",
+    "ipa": "/e.ʁyk.te/",
+    "example": {
+      "fr": "éructer des menaces",
+      "zh": "脱口而出威胁",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/%C3%A9ructer",
+      "meaning": "脱口说出",
+      "noAudio": true
+    },
+    "frequency": 1.66,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9ructer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9ructer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexce43fabf36c05f0b949b",
+    "word": "découcher",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "在外面过夜，整晚不回家",
+      "到情人家过夜"
+    ],
+    "primaryMeaning": "在外面过夜，整晚不回家",
+    "ipa": "/de.ku.ʃe/",
+    "example": {
+      "fr": "— Mais non! mais non! m'sieu le curé, pensez-vous que j’voudrais découcher du presbytère.",
+      "zh": "「不！不！本堂神父先生，您以为我会想在神父住所外面过夜吗？」",
+      "source": "Wiktionnaire · 汉语版 · 1904，Rodolphe Girard，第XVI章，收錄於Marie Calumet，Montréal：",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9coucher",
+      "meaning": "在外面过夜，整晚不回家",
+      "noAudio": true
+    },
+    "frequency": 1.65,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9coucher",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9coucher",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex4bb2ba72c0d655a2988c",
+    "word": "tirailler",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "反复拉扯"
+    ],
+    "primaryMeaning": "反复拉扯",
+    "ipa": "/ti.ʁɑ.je/",
+    "example": {
+      "fr": "L'enfant commence à tirailler la manche de son père.",
+      "zh": "孩子开始一下下拉爸爸的袖子。",
+      "meaning": "反复拉扯",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.64,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/tirailler",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/tirailler",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex81eef430d62a47b59135",
+    "word": "abreuvement",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "给动物喂水喝",
+      "灌溉；浇水"
+    ],
+    "primaryMeaning": "给动物喂水喝",
+    "ipa": "/a.bʁøv.mɑ̃/",
+    "example": {
+      "fr": "Elle se rendait au puits pour présider à l'abreuvement de ses troupeaux.",
+      "zh": "她常去井边给畜群打水喝。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/abreuvement",
+      "meaning": "给动物喂水喝",
+      "noAudio": true
+    },
+    "frequency": 1.58,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/abreuvement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/abreuvement",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex995bfa7f5beeff20730f",
+    "word": "hélitreuillage",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "用直升机吊起"
+    ],
+    "primaryMeaning": "用直升机吊起",
+    "ipa": "/e.li.tʁø.jaʒ/",
+    "example": {
+      "fr": "De nombreuses routes étant coupées, plusieurs habitants ont été secourus par hélitreuillage.",
+      "zh": "由于许多道路被切断，一些居民被直升飞机救出。",
+      "source": "Wiktionnaire · 汉语版 · 2018年 10月16日，「L’Aude meurtrie panse ses plaies et évalue les dégâts」，收錄於Le Monde：",
+      "url": "https://zh.wiktionary.org/wiki/h%C3%A9litreuillage",
+      "meaning": "用直升机吊起",
+      "noAudio": true
+    },
+    "frequency": 1.57,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/h%C3%A9litreuillage",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/h%C3%A9litreuillage",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex79babfc6c95db46c6f8f",
+    "word": "combientième",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "第几"
+    ],
+    "primaryMeaning": "第几",
+    "ipa": "/kɔ̃.bjɛ̃.tjɛm/",
+    "example": {
+      "fr": "George W. Bush est le combientième président ?",
+      "zh": "George W. Bush是第几任总统？",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/combienti%C3%A8me",
+      "meaning": "第几",
+      "noAudio": true
+    },
+    "frequency": 1.56,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/combienti%C3%A8me",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/combienti%C3%A8me",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex492d213ac95434ea3998",
+    "word": "shanghaïen",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "上海话",
+      "上海人"
+    ],
+    "primaryMeaning": "上海话",
+    "ipa": "/ʃɑ̃.ɡa.jɛ̃/",
+    "example": {
+      "fr": "Sais-tu parler shanghaïen ?",
+      "zh": "你会说上海话吗？",
+      "source": "Tatoeba #374895 · sysko · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/374895",
+      "meaning": "上海话",
+      "noAudio": true
+    },
+    "frequency": 1.49,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/shangha%C3%AFen",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/shangha%C3%AFen",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexbb804a507fab1de8c1ce",
+    "word": "foisonner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "充满，丰富",
+      "繁殖",
+      "（沙土等材料）膨胀，胀大"
+    ],
+    "primaryMeaning": "充满，丰富",
+    "ipa": "/fwa.zɔ.ne/",
+    "example": {
+      "fr": "foisonner de bonheur",
+      "zh": "洋溢著幸福",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/foisonner",
+      "meaning": "充满，丰富",
+      "noAudio": true
+    },
+    "frequency": 1.46,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/foisonner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/foisonner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex573e880a9570a414a52f",
+    "word": "vitupérer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "责骂，斥责，批评，抨击 [接 contre 「对……」]"
+    ],
+    "primaryMeaning": "责骂，斥责，批评，抨击 [接 contre 「对……」]",
+    "ipa": "/vi.ty.pe.ʁe/",
+    "example": {
+      "fr": "vitupérer contre le gouvernement",
+      "zh": "抨击政府",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/vitup%C3%A9rer",
+      "meaning": "责骂，斥责，批评，抨击 [接 contre 「对……」]",
+      "noAudio": true
+    },
+    "frequency": 1.4,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/vitup%C3%A9rer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/vitup%C3%A9rer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb0c5831715eaed71f9c3",
+    "word": "resquiller",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "（以不买票等违法的方式）偷偷溜进",
+      "骗取，弄到，搞到"
+    ],
+    "primaryMeaning": "（以不买票等违法的方式）偷偷溜进",
+    "ipa": "/ʁɛs.ki.je/",
+    "example": {
+      "fr": "resquiller dans le métro",
+      "zh": "逃票坐地铁",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/resquiller",
+      "meaning": "（以不买票等违法的方式）偷偷溜进",
+      "noAudio": true
+    },
+    "frequency": 1.38,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/resquiller",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/resquiller",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex513ef687e3d086c7b174",
+    "word": "mémorisable",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "可记忆的"
+    ],
+    "primaryMeaning": "可记忆的",
+    "ipa": "/me.mɔ.ʁi.zabl/",
+    "example": {
+      "fr": "facilement mémorisable",
+      "zh": "容易记住",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/m%C3%A9morisable",
+      "meaning": "可记忆的",
+      "noAudio": true
+    },
+    "frequency": 1.37,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/m%C3%A9morisable",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/m%C3%A9morisable",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex47fa5ebcf27ce9e16af1",
+    "word": "boulotter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "吃（口语）"
+    ],
+    "primaryMeaning": "吃（口语）",
+    "ipa": "/bu.lɔ.te/",
+    "example": {
+      "fr": "Il ne reste plus rien à boulotter.",
+      "zh": "已经没东西吃了。",
+      "meaning": "吃（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.33,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/boulotter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/boulotter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd9fc0b167de723f9d95f",
+    "word": "asphalter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "铺沥青，浇沥青"
+    ],
+    "primaryMeaning": "铺沥青，浇沥青",
+    "ipa": "/as.fal.te/",
+    "example": {
+      "fr": "asphalter un trottoir",
+      "zh": "给人行道铺上沥青",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/asphalter",
+      "meaning": "铺沥青，浇沥青",
+      "noAudio": true
+    },
+    "frequency": 1.24,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/asphalter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/asphalter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexda110fe074bcc9ce3a8d",
+    "word": "atermoyer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "拖延，推迟"
+    ],
+    "primaryMeaning": "拖延，推迟",
+    "ipa": "/a.tɛʁ.mwa.je/",
+    "example": {
+      "fr": "Il n'y a plus à atermoyer, il faut agir.",
+      "zh": "再也不能拖了，该行动了。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/atermoyer",
+      "meaning": "拖延，推迟",
+      "noAudio": true
+    },
+    "frequency": 1.2,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/atermoyer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/atermoyer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexa4f17b2d5b4c655c40cf",
+    "word": "virologiste",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "病毒学家"
+    ],
+    "primaryMeaning": "病毒学家",
+    "ipa": "/vi.ʁɔ.lɔ.ʒist/",
+    "example": {
+      "fr": "Julia est virologiste. Elle est l'envoyée du CREAM, le fameux centre de recherche britannique.",
+      "zh": "Julia 是一名病毒学家。她是英国著名研究中心 CREAM 的代表。",
+      "source": "Wiktionnaire · 汉语版 · 2004，Éric Nataf，Autobiographie d'un virus，416頁：",
+      "url": "https://zh.wiktionary.org/wiki/virologiste",
+      "meaning": "病毒学家",
+      "noAudio": true
+    },
+    "frequency": 1.16,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/virologiste",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/virologiste",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1d65bcf3e5ed5ca543ed",
+    "word": "cacaoyère",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "可可种植园"
+    ],
+    "primaryMeaning": "可可种植园",
+    "ipa": "/ka.ka.ɔ.jɛʁ/",
+    "example": {
+      "fr": "Au Nigeria le coût d'établissement d'une cacaoyère est voisin de 137 £ 10 s. 10 d ou 68.770 f CFA par hectare.",
+      "zh": "在尼日利亚，建立一个可可种植园的成本约为每公顷137英镑10先令10便士，或68,770非洲金融共同体法郎。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/cacaoy%C3%A8re",
+      "meaning": "可可种植园",
+      "noAudio": true
+    },
+    "frequency": 1.12,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/cacaoy%C3%A8re",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/cacaoy%C3%A8re",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex16abaa9e9978f7cf6048",
+    "word": "désemplir",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "变得不再那么满"
+    ],
+    "primaryMeaning": "变得不再那么满",
+    "ipa": "/de.zɑ̃.pliʁ/",
+    "example": {
+      "fr": "Le café ne cesse de se remplir et ne semble pas près de désemplir.",
+      "zh": "咖啡馆里的人越来越多，一时半会儿还散不了。",
+      "meaning": "变得不再那么满",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.03,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9semplir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9semplir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexa542343c82741dd1487a",
+    "word": "désinhibant",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "解除抑制的"
+    ],
+    "primaryMeaning": "解除抑制的",
+    "ipa": "/de.zi.ni.bɑ̃/",
+    "example": {
+      "fr": "L'alcool a un effet désinhibant.",
+      "zh": "酒精是一种去抑制剂。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9sinhibant",
+      "meaning": "解除抑制的",
+      "noAudio": true
+    },
+    "frequency": 1.01,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9sinhibant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9sinhibant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex1d108fe6a84448c09968",
+    "word": "irrécouvrable",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "无法收回的（款项）"
+    ],
+    "primaryMeaning": "无法收回的（款项）",
+    "ipa": "/i.ʁe.ku.vʁabl/",
+    "example": {
+      "fr": "La banque a classé cette dette comme irrécouvrable.",
+      "zh": "银行把这笔债务列为无法收回的坏账。",
+      "meaning": "无法收回的（款项）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.01,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/irr%C3%A9couvrable",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/irr%C3%A9couvrable",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex290db93f174515472778",
+    "word": "sudoripare",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "分泌汗的"
+    ],
+    "primaryMeaning": "分泌汗的",
+    "ipa": "/sy.dɔ.ʁi.paʁ/",
+    "example": {
+      "fr": "glande sudoripare",
+      "zh": "汗腺",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/sudoripare",
+      "meaning": "分泌汗的",
+      "noAudio": true
+    },
+    "frequency": 1.01,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/sudoripare",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/sudoripare",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex90480f5465be2e862178",
+    "word": "acutangle",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "锐角的"
+    ],
+    "primaryMeaning": "锐角的",
+    "ipa": "/a.ky.tɑ̃ɡl/",
+    "example": {
+      "fr": "triangle acutangle",
+      "zh": "锐角三角形",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/acutangle",
+      "meaning": "锐角的",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/acutangle",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/acutangle",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexcf8595a84b29c29e7cd7",
+    "word": "affriander",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "用饵诱",
+      "使嗜美食",
+      "改善口味；使美味"
+    ],
+    "primaryMeaning": "用饵诱",
+    "ipa": "/a.fʁi.jɑ̃.de/",
+    "example": {
+      "fr": "affriander les poissons avec de l'appat",
+      "zh": "用诱饵引鱼（上钩）",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/affriander",
+      "meaning": "用饵诱",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/affriander",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/affriander",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexf6888d7ff95cc2bfd3eb",
+    "word": "alambiquer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "过分细腻",
+      "蒸馏"
+    ],
+    "primaryMeaning": "过分细腻",
+    "ipa": "/a.lɑ̃.bi.ke/",
+    "example": {
+      "fr": "alambiquer son style",
+      "zh": "文笔写得过分细腻",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/alambiquer",
+      "meaning": "过分细腻",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/alambiquer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/alambiquer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex7a7a37c457aa71ad0577",
+    "word": "attributif",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "表语的"
+    ],
+    "primaryMeaning": "表语的",
+    "ipa": "/a.tʁi.by.tif/",
+    "example": {
+      "fr": "« Devenir » est un verbe attributif dans cette phrase.",
+      "zh": "在这句话里，devenir 是能接表语的动词。",
+      "meaning": "表语的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/attributif",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/attributif",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex58e3495e0eb4a7497bfc",
+    "word": "blackbouler",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "投票使某人落选（口语）"
+    ],
+    "primaryMeaning": "投票使某人落选（口语）",
+    "ipa": "/blak.bu.le/",
+    "example": {
+      "fr": "Ils ont voulu le blackbouler au dernier vote.",
+      "zh": "他们上次投票时想让他落选。",
+      "meaning": "投票使某人落选（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/blackbouler",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/blackbouler",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex83d1048ed133612758db",
+    "word": "chaponner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "给公鸡去势"
+    ],
+    "primaryMeaning": "给公鸡去势",
+    "ipa": "/ʃa.pɔ.ne/",
+    "example": {
+      "fr": "Autrefois, on pouvait chaponner un jeune coq pour sa chair.",
+      "zh": "以前，有时会为了改善肉质而给小公鸡去势。",
+      "meaning": "给公鸡去势",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/chaponner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/chaponner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex5f8b8a2bd4e066210b66",
+    "word": "controverser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "争论，争辩"
+    ],
+    "primaryMeaning": "争论，争辩",
+    "ipa": "/kɔ̃.tʁɔ.vɛʁ.se/",
+    "example": {
+      "fr": "controverser une question",
+      "zh": "争论一个问题",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/controverser",
+      "meaning": "争论，争辩",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/controverser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/controverser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex7a9596e1ea38fb740259",
+    "word": "déringardiser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "使过时的东西重新流行起来"
+    ],
+    "primaryMeaning": "使过时的东西重新流行起来",
+    "ipa": "/de.ʁɛ̃.ɡaʁ.di.ze/",
+    "example": {
+      "fr": "Le président Emmanuel Macron est déterminé, semble-t-il, à «déringardiser» la langue française",
+      "zh": "看来埃马纽埃尔·马克龙总统决心让法语重新流行。",
+      "source": "Wiktionnaire · 汉语版 · 2018年 2月11日，Alain Mabanckou，Achille Mbembe，BibliObs：",
+      "url": "https://zh.wiktionary.org/wiki/d%C3%A9ringardiser",
+      "meaning": "使过时的东西重新流行起来",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9ringardiser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9ringardiser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex6aae0c5115523c839de7",
+    "word": "inintentionnellement",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "无意中"
+    ],
+    "primaryMeaning": "无意中",
+    "ipa": "/i.nɛ̃.tɑ̃.sjɔ.nɛl.mɑ̃/",
+    "example": {
+      "fr": "Elle a inintentionnellement effacé le fichier.",
+      "zh": "她无意中删掉了那个文件。",
+      "meaning": "无意中",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/inintentionnellement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/inintentionnellement",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex88f686360c4c5dd52b32",
+    "word": "injurieusement",
+    "pos": "adv.",
+    "gender": null,
+    "meanings": [
+      "侮辱地"
+    ],
+    "primaryMeaning": "侮辱地",
+    "ipa": "/ɛ̃.ʒy.ʁjøz.mɑ̃/",
+    "example": {
+      "fr": "Pierre a tenté de poser une question à Christine, qui lui a répondu, comme à son habitude, injurieusement.",
+      "zh": "皮埃尔试图问克莉丝汀一个问题，而她像往常一样，以一种辱骂的方式回答。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/injurieusement",
+      "meaning": "侮辱地",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/injurieusement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/injurieusement",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex02ad51dfe799630949ee",
+    "word": "livrophage",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "书虫，书迷（嗜书成瘾的人）"
+    ],
+    "primaryMeaning": "书虫，书迷（嗜书成瘾的人）",
+    "ipa": "/li.vʁɔ.faʒ/",
+    "example": {
+      "fr": "J’en ai toujours, au cas où ma livrophage préférée passerait me rendre visite.",
+      "zh": "我总是准备著，以防我最喜欢的爱书狂来访。",
+      "source": "Wiktionnaire · 汉语版 · 2020，Stefany Thorne，Forever: L’intégrale de la trilogie：",
+      "url": "https://zh.wiktionary.org/wiki/livrophage",
+      "meaning": "书虫，书迷（嗜书成瘾的人）",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/livrophage",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/livrophage",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexf39c4cdb449c60232e22",
+    "word": "nativiser",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "本土化，融入本土文化"
+    ],
+    "primaryMeaning": "本土化，融入本土文化",
+    "ipa": "/na.ti.vi.ze/",
+    "example": {
+      "fr": "Je crois que quel que soit le genre littéraire choisi, un écrivain antillais se doit de le nativiser",
+      "zh": "我相信，无论选择何种文学体裁，安地列斯作家都有责任将其本土化。",
+      "source": "Wiktionnaire · 汉语版 · 2012，La Tribune des Antilles：",
+      "url": "https://zh.wiktionary.org/wiki/nativiser",
+      "meaning": "本土化，融入本土文化",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/nativiser",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/nativiser",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex88fc087d07dd55e9f78f",
+    "word": "recalotter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "再次给……戴上（小圆）帽子",
+      "拉起包皮，再次覆盖龟头或阴蒂"
+    ],
+    "primaryMeaning": "再次给……戴上（小圆）帽子",
+    "ipa": "/ʁə.ka.lɔ.te/",
+    "example": {
+      "fr": "recalotter quelqu’un",
+      "zh": "再次给某人戴上帽子",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/recalotter",
+      "meaning": "再次给……戴上（小圆）帽子",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/recalotter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/recalotter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexaad16f06902c0978bbcc",
+    "word": "recetter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "给……做验收测试"
+    ],
+    "primaryMeaning": "给……做验收测试",
+    "ipa": "/ʁə.sɛ.te/",
+    "example": {
+      "fr": "Quand allez-vous recetter la version 5.1 ?",
+      "zh": "你们什么时候会对5.1版本进行验收测试？",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/recetter",
+      "meaning": "给……做验收测试",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/recetter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/recetter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexea1f95956f78aeaf53fe",
+    "word": "retéléphoner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "再打电话"
+    ],
+    "primaryMeaning": "再打电话",
+    "ipa": "/ʁə.te.le.fɔ.ne/",
+    "example": {
+      "fr": "Est-ce que tu pourrais retéléphoner plus tard s'il te plaît ?",
+      "zh": "你可以晚点再打电话来吗？",
+      "source": "Tatoeba #3646 · TRANG · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/3646",
+      "meaning": "再打电话",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/ret%C3%A9l%C3%A9phoner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ret%C3%A9l%C3%A9phoner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb1c7269652e891c429b2",
+    "word": "rinçure",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "刷锅水"
+    ],
+    "primaryMeaning": "刷锅水",
+    "ipa": "/ʁɛ̃.syʁ/",
+    "example": {
+      "fr": "La salle sent le fût vide, les rats, la rinçure.",
+      "zh": "房间里有一股空酒桶、老鼠和刷锅水的味道。",
+      "source": "Wiktionnaire · 汉语版 · 1924，Emmanuel Bove，Mes Amis：",
+      "url": "https://zh.wiktionary.org/wiki/rin%C3%A7ure",
+      "meaning": "刷锅水",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/rin%C3%A7ure",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/rin%C3%A7ure",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex3324ae3f0f4356d40024",
+    "word": "slavisant",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "带有斯拉夫特色的"
+    ],
+    "primaryMeaning": "带有斯拉夫特色的",
+    "ipa": "/sla.vi.zɑ̃/",
+    "example": {
+      "fr": "Ce compositeur a choisi un style slavisant.",
+      "zh": "这位作曲家选择了带有斯拉夫特色的风格。",
+      "meaning": "带有斯拉夫特色的",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/slavisant",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/slavisant",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexcb50de5e4cda715017e2",
+    "word": "substantiver",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "名词化，实词化"
+    ],
+    "primaryMeaning": "名词化，实词化",
+    "ipa": "/syp.stɑ̃.ti.ve/",
+    "example": {
+      "fr": "substantiver un adjectif, un infinitif",
+      "zh": "将形容词、不定式名词化",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/substantiver",
+      "meaning": "名词化，实词化",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/substantiver",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/substantiver",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex528600c2122ca588cf05",
+    "word": "thériomorphe",
+    "pos": "adj.",
+    "gender": "m",
+    "meanings": [
+      "有兽形的"
+    ],
+    "primaryMeaning": "有兽形的",
+    "ipa": "/te.ʁjɔ.mɔʁf/",
+    "example": {
+      "fr": "Une divinité thériomorphe.",
+      "zh": "兽形神。",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/th%C3%A9riomorphe",
+      "meaning": "有兽形的",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/th%C3%A9riomorphe",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/th%C3%A9riomorphe",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexdae034c3d57ae6aec2ee",
+    "word": "écaler",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "剥……的壳"
+    ],
+    "primaryMeaning": "剥……的壳",
+    "ipa": "/e.ka.le/",
+    "example": {
+      "fr": "écaler des noix",
+      "zh": "剥坚果壳",
+      "source": "Wiktionnaire · 汉语版",
+      "url": "https://zh.wiktionary.org/wiki/%C3%A9caler",
+      "meaning": "剥……的壳",
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/%C3%A9caler",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A9caler",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex68e62c4511b692372435",
+    "word": "pub",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "英式酒馆"
+    ],
+    "primaryMeaning": "英式酒馆",
+    "ipa": "/pœb/",
+    "example": {
+      "fr": "On se retrouve au pub après le travail.",
+      "zh": "下班后我们在英式酒馆碰面。",
+      "meaning": "英式酒馆",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/pub",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pub",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexdb60844916d76a3932d9",
+    "word": "fan",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "粉丝，爱好者"
+    ],
+    "primaryMeaning": "粉丝，爱好者",
+    "ipa": "/fan/",
+    "example": {
+      "fr": "Mon frère est un fan de ce groupe.",
+      "zh": "我弟弟是这个乐队的粉丝。",
+      "meaning": "粉丝，爱好者",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/fan",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fan",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexbe8c402f76ccc4869b4f",
+    "word": "flanquer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "猛地给（口语）"
+    ],
+    "primaryMeaning": "猛地给（口语）",
+    "ipa": "/flɑ̃.ke/",
+    "example": {
+      "fr": "Ce bruit risque de lui flanquer la trouille.",
+      "zh": "这声音可能会把他吓一跳。",
+      "meaning": "猛地给（口语）",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/flanquer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/flanquer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexe77b98f4cb1e07ef4138",
+    "word": "à la fin de",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "在……结束时"
+    ],
+    "primaryMeaning": "在……结束时",
+    "ipa": "/a la fɛ̃ də/",
+    "example": {
+      "fr": "On se parle à la fin de la réunion.",
+      "zh": "我们开完会聊。",
+      "meaning": "在……结束时",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_la_fin_de",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_la_fin_de",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex1cfe97e53a9fe34f55d4",
+    "word": "avoir mal à",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "……疼"
+    ],
+    "primaryMeaning": "……疼",
+    "ipa": "/a.vwaʁ mal a/",
+    "example": {
+      "fr": "Après la course, je commence à avoir mal à la cheville.",
+      "zh": "跑完步，我的脚踝开始疼。",
+      "meaning": "……疼",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/avoir_mal_%C3%A0",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avoir_mal_%C3%A0",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexbf5f84062571584b649d",
+    "word": "avoir droit à",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "有权获得，有资格享受"
+    ],
+    "primaryMeaning": "有权获得，有资格享受",
+    "ipa": "/a.vwaʁ dʁwa a/",
+    "example": {
+      "fr": "Avec cet abonnement, on peut avoir droit à une réduction.",
+      "zh": "办了这个会员就可以享受折扣。",
+      "meaning": "有权获得，有资格享受",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/avoir_droit_%C3%A0",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avoir_droit_%C3%A0",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex30afc2a545ee432a4936",
+    "word": "à son tour",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "轮到他或她"
+    ],
+    "primaryMeaning": "轮到他或她",
+    "ipa": "/a sɔ̃ tuʁ/",
+    "example": {
+      "fr": "Elle a répondu à son tour.",
+      "zh": "轮到她回答了。",
+      "meaning": "轮到他或她",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_son_tour",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_son_tour",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex0e73c44adb5dcf562de9",
+    "word": "avoir le temps",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "有时间"
+    ],
+    "primaryMeaning": "有时间",
+    "ipa": "/a.vwaʁ lə tɑ̃/",
+    "example": {
+      "fr": "On devrait avoir le temps de prendre un café.",
+      "zh": "我们应该有时间喝杯咖啡。",
+      "meaning": "有时间",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/avoir_le_temps",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avoir_le_temps",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex27fc8276d8235209e718",
+    "word": "aussi bien que",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "跟……一样好"
+    ],
+    "primaryMeaning": "跟……一样好",
+    "ipa": "/o.si bjɛ̃ kə/",
+    "example": {
+      "fr": "Elle chante aussi bien que sa sœur.",
+      "zh": "她唱得跟姐姐一样好。",
+      "meaning": "跟……一样好",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/aussi_bien_que",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/aussi_bien_que",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex71cc2904f23e20095872",
+    "word": "au service de",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "为……服务"
+    ],
+    "primaryMeaning": "为……服务",
+    "ipa": "/o sɛʁ.vis də/",
+    "example": {
+      "fr": "Il met ses compétences au service de son équipe.",
+      "zh": "他把自己的专长用来为团队服务。",
+      "meaning": "为……服务",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/au_service_de",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/au_service_de",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb7294d32a75272b278d2",
+    "word": "avant de faire",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "在做……之前"
+    ],
+    "primaryMeaning": "在做……之前",
+    "ipa": "/a.vɑ̃ də fɛʁ/",
+    "example": {
+      "fr": "Réfléchis bien avant de faire ton choix.",
+      "zh": "做决定前好好想想。",
+      "meaning": "在做……之前",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/avant_de_faire",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avant_de_faire",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex0f3ce9f5598f4ea68e7e",
+    "word": "couverts",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "餐具"
+    ],
+    "primaryMeaning": "餐具",
+    "ipa": "/ku.vɛʁ/",
+    "example": {
+      "fr": "Les couverts sont dans le premier tiroir.",
+      "zh": "餐具在第一个抽屉里。",
+      "meaning": "餐具",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/couverts",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/couverts",
+    "attestedSupplement": 1,
+    "literal": false,
+    "plural": true
+  },
+  {
+    "id": "lexd19b526da6685414b555",
+    "word": "sous-verre",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "杯垫"
+    ],
+    "primaryMeaning": "杯垫",
+    "ipa": "/su.vɛʁ/",
+    "example": {
+      "fr": "Pose ton verre sur le sous-verre.",
+      "zh": "把杯子放在杯垫上。",
+      "meaning": "杯垫",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/sous-verre",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/sous-verre",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1bb83ba28fe15a1762a4",
+    "word": "dessous-de-plat",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "隔热餐垫"
+    ],
+    "primaryMeaning": "隔热餐垫",
+    "ipa": "/də.su də pla/",
+    "example": {
+      "fr": "Je pose la casserole chaude sur un dessous-de-plat.",
+      "zh": "我把热锅放在隔热垫上。",
+      "meaning": "隔热餐垫",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/dessous-de-plat",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/dessous-de-plat",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex0bf51c13389fa762a5e3",
+    "word": "plat à gratin",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "焗烤盘"
+    ],
+    "primaryMeaning": "焗烤盘",
+    "ipa": "/pla a ɡʁa.tɛ̃/",
+    "example": {
+      "fr": "Elle beurre le plat à gratin avant d'y mettre les pommes de terre.",
+      "zh": "她在放土豆前先给焗烤盘抹上黄油。",
+      "meaning": "焗烤盘",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/plat_%C3%A0_gratin",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/plat_%C3%A0_gratin",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex945ee74840003e090afb",
+    "word": "faire revenir",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "用油略炒"
+    ],
+    "primaryMeaning": "用油略炒",
+    "ipa": "/fɛʁ ʁə.və.niʁ/",
+    "example": {
+      "fr": "On commence par faire revenir l'oignon.",
+      "zh": "先用油把洋葱略炒一下。",
+      "meaning": "用油略炒",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/faire_revenir",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/faire_revenir",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexba5524df9345f268add6",
+    "word": "poivre du moulin",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "现磨胡椒"
+    ],
+    "primaryMeaning": "现磨胡椒",
+    "ipa": "/pwavʁ dy mu.lɛ̃/",
+    "example": {
+      "fr": "Ajoute un peu de poivre du moulin.",
+      "zh": "加一点现磨胡椒。",
+      "meaning": "现磨胡椒",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/poivre_du_moulin",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/poivre_du_moulin",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex2c163b91626008b1471a",
+    "word": "vinaigre balsamique",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "意式香醋"
+    ],
+    "primaryMeaning": "意式香醋",
+    "ipa": "/vi.nɛɡʁ bal.za.mik/",
+    "example": {
+      "fr": "On assaisonne la salade avec du vinaigre balsamique.",
+      "zh": "我们用意式香醋给沙拉调味。",
+      "meaning": "意式香醋",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/vinaigre_balsamique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/vinaigre_balsamique",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexde960a3ea3cc2250392a",
+    "word": "pancetta",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "意式腌五花肉"
+    ],
+    "primaryMeaning": "意式腌五花肉",
+    "ipa": "/pan.tʃɛ.ta/",
+    "example": {
+      "fr": "Il coupe la pancetta en petits dés.",
+      "zh": "他把意式腌五花肉切成小丁。",
+      "meaning": "意式腌五花肉",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/pancetta",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pancetta",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1c6fdf92fafda2ef8d03",
+    "word": "chipolata",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "细猪肉香肠"
+    ],
+    "primaryMeaning": "细猪肉香肠",
+    "ipa": "/ʃi.pɔ.la.ta/",
+    "example": {
+      "fr": "Elle fait griller une chipolata au barbecue.",
+      "zh": "她在烤架上烤了一根细猪肉香肠。",
+      "meaning": "细猪肉香肠",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/chipolata",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/chipolata",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex28a41d5f62ff742ec155",
+    "word": "brosse à dents électrique",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "电动牙刷"
+    ],
+    "primaryMeaning": "电动牙刷",
+    "ipa": "/bʁɔs a dɑ̃ e.lɛk.tʁik/",
+    "example": {
+      "fr": "Elle recharge sa brosse à dents électrique.",
+      "zh": "她给电动牙刷充电。",
+      "meaning": "电动牙刷",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/brosse_%C3%A0_dents_%C3%A9lectrique",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/brosse_%C3%A0_dents_%C3%A9lectrique",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex248308642ca66883322c",
+    "word": "litière pour chat",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "猫砂"
+    ],
+    "primaryMeaning": "猫砂",
+    "ipa": "/li.tjɛʁ puʁ ʃa/",
+    "example": {
+      "fr": "Il faut acheter de la litière pour chat.",
+      "zh": "得去买点猫砂。",
+      "meaning": "猫砂",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/liti%C3%A8re_pour_chat",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/liti%C3%A8re_pour_chat",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexe37e1fdbb07e1b271b6f",
+    "word": "ampoule LED",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "LED 灯泡"
+    ],
+    "primaryMeaning": "LED 灯泡",
+    "ipa": "/ɑ̃.pul lɛd/",
+    "example": {
+      "fr": "Il remplace la vieille ampoule par une ampoule LED.",
+      "zh": "他把旧灯泡换成了 LED 灯泡。",
+      "meaning": "LED 灯泡",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/ampoule_LED",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ampoule_LED",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex4c3897f58665908b2c62",
+    "word": "fil à linge",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "晾衣绳"
+    ],
+    "primaryMeaning": "晾衣绳",
+    "ipa": "/fil a lɛ̃ʒ/",
+    "example": {
+      "fr": "Le fil à linge s'est détaché du crochet.",
+      "zh": "晾衣绳从挂钩上掉了。",
+      "meaning": "晾衣绳",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/fil_%C3%A0_linge",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fil_%C3%A0_linge",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex3b1aa9b3fb62daa6d549",
+    "word": "prise multiple",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "插线板"
+    ],
+    "primaryMeaning": "插线板",
+    "ipa": "/pʁiz myl.tipl/",
+    "example": {
+      "fr": "Je branche la lampe sur une prise multiple.",
+      "zh": "我把灯插在插线板上。",
+      "meaning": "插线板",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/prise_multiple",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/prise_multiple",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexc0586be8eb8151f28b86",
+    "word": "ruban adhésif",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "胶带"
+    ],
+    "primaryMeaning": "胶带",
+    "ipa": "/ʁy.bɑ̃ a.de.zif/",
+    "example": {
+      "fr": "Ferme le carton avec du ruban adhésif.",
+      "zh": "用胶带把纸箱封好。",
+      "meaning": "胶带",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/ruban_adh%C3%A9sif",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ruban_adh%C3%A9sif",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexbba9c84b9bff73fe7350",
+    "word": "déboucheur",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "管道疏通剂"
+    ],
+    "primaryMeaning": "管道疏通剂",
+    "ipa": "/de.bu.ʃœʁ/",
+    "example": {
+      "fr": "Il achète un déboucheur pour l'évier.",
+      "zh": "他买了管道疏通剂来通水槽。",
+      "meaning": "管道疏通剂",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9boucheur",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9boucheur",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex28b23fd45e1ce90732b9",
+    "word": "sac-poubelle",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "垃圾袋"
+    ],
+    "primaryMeaning": "垃圾袋",
+    "ipa": "/sak pu.bɛl/",
+    "example": {
+      "fr": "Elle remplace le sac-poubelle de la cuisine.",
+      "zh": "她换了厨房里的垃圾袋。",
+      "meaning": "垃圾袋",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/sac-poubelle",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/sac-poubelle",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex38e7f636be0ef2d77605",
+    "word": "fermeture éclair",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "拉链"
+    ],
+    "primaryMeaning": "拉链",
+    "ipa": "/fɛʁ.mə.tyʁ e.klɛʁ/",
+    "example": {
+      "fr": "La fermeture éclair de mon manteau est coincée.",
+      "zh": "我外套的拉链卡住了。",
+      "meaning": "拉链",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/fermeture_%C3%A9clair",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/fermeture_%C3%A9clair",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex1d1efac7e5a42aeafa9a",
+    "word": "à emporter",
+    "pos": "loc.",
+    "gender": null,
+    "meanings": [
+      "外带"
+    ],
+    "primaryMeaning": "外带",
+    "ipa": "/a ɑ̃.pɔʁ.te/",
+    "example": {
+      "fr": "Je voudrais un café à emporter.",
+      "zh": "我想要一杯外带咖啡。",
+      "meaning": "外带",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_emporter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/%C3%A0_emporter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexb82a24aaff0fd138b0dd",
+    "word": "titre de séjour",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "居留证"
+    ],
+    "primaryMeaning": "居留证",
+    "ipa": "/titʁ də se.ʒuʁ/",
+    "example": {
+      "fr": "Il doit renouveler son titre de séjour.",
+      "zh": "他得续办居留证。",
+      "meaning": "居留证",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/titre_de_s%C3%A9jour",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/titre_de_s%C3%A9jour",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexcfb06e725141f598ccba",
+    "word": "justificatif de domicile",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "住址证明"
+    ],
+    "primaryMeaning": "住址证明",
+    "ipa": "/ʒys.ti.fi.ka.tif də dɔ.mi.sil/",
+    "example": {
+      "fr": "On me demande un justificatif de domicile pour ouvrir le compte.",
+      "zh": "开户时对方要我出示住址证明。",
+      "meaning": "住址证明",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/justificatif_de_domicile",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/justificatif_de_domicile",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex7504ed78b75cf7412599",
+    "word": "carte de séjour",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "居留卡"
+    ],
+    "primaryMeaning": "居留卡",
+    "ipa": "/kaʁt də se.ʒuʁ/",
+    "example": {
+      "fr": "Elle a reçu sa nouvelle carte de séjour.",
+      "zh": "她收到了新的居留卡。",
+      "meaning": "居留卡",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/carte_de_s%C3%A9jour",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/carte_de_s%C3%A9jour",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex9465edcc4705a4d4bfe4",
+    "word": "ordonnance médicale",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "医生处方"
+    ],
+    "primaryMeaning": "医生处方",
+    "ipa": "/ɔʁ.dɔ.nɑ̃s me.di.kal/",
+    "example": {
+      "fr": "Présentez une ordonnance médicale au pharmacien.",
+      "zh": "请向药剂师出示医生的处方。",
+      "meaning": "医生处方",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/ordonnance_m%C3%A9dicale",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/ordonnance_m%C3%A9dicale",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex054a166c99ae931ae755",
+    "word": "salle d'attente",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "候诊室，等候室"
+    ],
+    "primaryMeaning": "候诊室，等候室",
+    "ipa": "/sal da.tɑ̃t/",
+    "example": {
+      "fr": "Les patients sont dans la salle d'attente.",
+      "zh": "病人们在候诊室里。",
+      "meaning": "候诊室，等候室",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/salle_d'attente",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/salle_d'attente",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexb5a7c7d5239a3a543973",
+    "word": "prise de sang",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "抽血"
+    ],
+    "primaryMeaning": "抽血",
+    "ipa": "/pʁiz də sɑ̃/",
+    "example": {
+      "fr": "J'ai rendez-vous demain pour une prise de sang.",
+      "zh": "我预约了明天抽血。",
+      "meaning": "抽血",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/prise_de_sang",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/prise_de_sang",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex14df698b575fb3320c3d",
+    "word": "carte d'embarquement",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "登机牌"
+    ],
+    "primaryMeaning": "登机牌",
+    "ipa": "/kaʁt dɑ̃.baʁ.kə.mɑ̃/",
+    "example": {
+      "fr": "Elle a laissé sa carte d'embarquement sur le comptoir.",
+      "zh": "她把登机牌落在柜台上了。",
+      "meaning": "登机牌",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/carte_d'embarquement",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/carte_d'embarquement",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexf306773249824578b895",
+    "word": "bagage à main",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "手提行李"
+    ],
+    "primaryMeaning": "手提行李",
+    "ipa": "/ba.ɡaʒ a mɛ̃/",
+    "example": {
+      "fr": "Ce sac compte comme un bagage à main.",
+      "zh": "这个包算一件手提行李。",
+      "meaning": "手提行李",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/bagage_%C3%A0_main",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/bagage_%C3%A0_main",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex5b52bfa88bd3594522b0",
+    "word": "correspondance manquée",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "错过的接续车次或航班"
+    ],
+    "primaryMeaning": "错过的接续车次或航班",
+    "ipa": "/kɔ.ʁɛs.pɔ̃.dɑ̃s mɑ̃.ke/",
+    "example": {
+      "fr": "Il a demandé un remboursement après sa correspondance manquée.",
+      "zh": "他错过接续车次后申请了退款。",
+      "meaning": "错过的接续车次或航班",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/correspondance_manqu%C3%A9e",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/correspondance_manqu%C3%A9e",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex6722d02d03f32228f7bb",
+    "word": "avis de passage",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "投递未遇通知"
+    ],
+    "primaryMeaning": "投递未遇通知",
+    "ipa": "/a.vi də pa.saʒ/",
+    "example": {
+      "fr": "Le facteur a laissé un avis de passage.",
+      "zh": "邮递员留下了一张投递未遇通知。",
+      "meaning": "投递未遇通知",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/avis_de_passage",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/avis_de_passage",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexe3f836afbf59189d2b69",
+    "word": "lettre recommandée",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "挂号信"
+    ],
+    "primaryMeaning": "挂号信",
+    "ipa": "/lɛtʁ ʁə.kɔ.mɑ̃.de/",
+    "example": {
+      "fr": "Elle a envoyé sa demande par lettre recommandée.",
+      "zh": "她用挂号信寄出了申请。",
+      "meaning": "挂号信",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/lettre_recommand%C3%A9e",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/lettre_recommand%C3%A9e",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex3832755c369bca77e9f4",
+    "word": "jour ouvré",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "工作日"
+    ],
+    "primaryMeaning": "工作日",
+    "ipa": "/ʒuʁ u.vʁe/",
+    "example": {
+      "fr": "Le virement arrive le prochain jour ouvré.",
+      "zh": "转账会在下一个工作日到账。",
+      "meaning": "工作日",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 4,
+    "source": "Wiktionnaire · 启航法语常用词校订",
+    "sourceUrl": "https://fr.wiktionary.org/wiki/jour_ouvr%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/jour_ouvr%C3%A9",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexebe86f626810fbdc5d47",
+    "word": "Française",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "法国女性"
+    ],
+    "primaryMeaning": "法国女性",
+    "ipa": "/fʁɑ̃.sɛz/",
+    "example": {
+      "fr": "Cette Française vit à Lyon.",
+      "zh": "这位法国女性住在里昂。",
+      "meaning": "法国女性",
+      "source": "启航法语编写",
+      "authored": true
+    },
+    "frequency": 5.31,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/Fran%C3%A7aise",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/Fran%C3%A7aise",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lexd450c2592af648c31f36",
+    "word": "Anna",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "安娜（女子名）"
+    ],
+    "primaryMeaning": "安娜（女子名）",
+    "ipa": "/a.na/",
+    "example": {
+      "fr": "Anna prend le train demain.",
+      "zh": "安娜明天坐火车。",
+      "meaning": "安娜（女子名）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 4.19,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/Anna",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/anna",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex00ea2fbb77715eb2ed30",
+    "word": "Taïwanaise",
+    "pos": "n.",
+    "gender": "f",
+    "meanings": [
+      "台湾女性"
+    ],
+    "primaryMeaning": "台湾女性",
+    "ipa": "/taj.wa.nɛz/",
+    "example": {
+      "fr": "Une Taïwanaise présente son travail à la conférence.",
+      "zh": "一位台湾女性在会上介绍自己的工作。",
+      "meaning": "台湾女性",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.55,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/Ta%C3%AFwanaise",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/Ta%C3%AFwanaise",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex34dbb0b94ff6c201f64f",
+    "word": "enraciner",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "生根（常用代词式）"
+    ],
+    "primaryMeaning": "生根（常用代词式）",
+    "ipa": "/ɑ̃.ʁa.si.ne/",
+    "example": {
+      "fr": "Les boutures commencent à s'enraciner.",
+      "zh": "插条开始生根了。",
+      "meaning": "生根（常用代词式）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.51,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/enraciner",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/enraciner",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexd9da6e0afb8173073e77",
+    "word": "pioncer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "睡觉（口语）"
+    ],
+    "primaryMeaning": "睡觉（口语）",
+    "ipa": "/pjɔ̃.se/",
+    "example": {
+      "fr": "On peut pioncer ici cette nuit.",
+      "zh": "今晚我们可以在这儿睡。",
+      "meaning": "睡觉（口语）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.41,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/pioncer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/pioncer",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexe1734bbe9e7b2e6d5d84",
+    "word": "luné",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "心情好的或差的（常与 bien、mal 连用）"
+    ],
+    "primaryMeaning": "心情好的或差的（常与 bien、mal 连用）",
+    "ipa": "/ly.ne/",
+    "example": {
+      "fr": "Il est mal luné depuis ce matin.",
+      "zh": "他从今天早上起就心情不好。",
+      "meaning": "心情好的或差的（常与 bien、mal 连用）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.16,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/lun%C3%A9",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/lun%C3%A9",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex58f20cab57c0c8fa11b7",
+    "word": "enceint",
+    "pos": "adj.",
+    "gender": null,
+    "meanings": [
+      "怀孕的（阳性）"
+    ],
+    "primaryMeaning": "怀孕的（阳性）",
+    "ipa": "/ɑ̃.sɛ̃/",
+    "example": {
+      "fr": "Un homme trans peut être enceint.",
+      "zh": "跨性别男性也可以怀孕。",
+      "meaning": "怀孕的（阳性）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 2.06,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/enceint",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/enceint",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lexc882b94efeb2b5ed5084",
+    "word": "démériter",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "因表现不好而不再值得肯定"
+    ],
+    "primaryMeaning": "因表现不好而不再值得肯定",
+    "ipa": "/de.me.ʁi.te/",
+    "example": {
+      "fr": "Malgré la défaite, l'équipe n'a pas démérité.",
+      "zh": "球队虽然输了，但表现仍值得肯定。",
+      "meaning": "因表现不好而不再值得肯定",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 1.72,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/d%C3%A9m%C3%A9riter",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/d%C3%A9m%C3%A9riter",
+    "attestedSupplement": 1,
+    "literal": true
+  },
+  {
+    "id": "lex101cc167f25b2379e8b9",
+    "word": "paroli",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "把赢的钱连同本钱加倍下注"
+    ],
+    "primaryMeaning": "把赢的钱连同本钱加倍下注",
+    "ipa": "/pa.ʁɔ.li/",
+    "example": {
+      "fr": "Il voulait faire paroli après son premier gain.",
+      "zh": "第一把赢了之后，他想把钱连本带利押下去。",
+      "meaning": "把赢的钱连同本钱加倍下注",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/paroli",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/paroli",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex2512dcae0c701c4834f6",
+    "word": "goddam",
+    "pos": "n.",
+    "gender": "m",
+    "meanings": [
+      "英国佬（旧时贬称）"
+    ],
+    "primaryMeaning": "英国佬（旧时贬称）",
+    "ipa": "/ɡɔ.dam/",
+    "example": {
+      "fr": "« Encore un goddam ! » cria le soldat.",
+      "zh": "士兵喊道：「又来一个英国佬！」",
+      "meaning": "英国佬（旧时贬称）",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/goddam",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/goddam",
+    "attestedSupplement": 1,
+    "literal": false
+  },
+  {
+    "id": "lex288a49693f41719e85f5",
+    "word": "retransmigrer",
+    "pos": "v.",
+    "gender": null,
+    "meanings": [
+      "再次转生"
+    ],
+    "primaryMeaning": "再次转生",
+    "ipa": "/ʁə.tʁɑ̃s.mi.ɡʁe/",
+    "example": {
+      "fr": "Dans ce récit, l'âme doit retransmigrer dans un autre corps.",
+      "zh": "在这个故事里，灵魂还要转生到另一具身体里。",
+      "meaning": "再次转生",
+      "source": "启航法语编写",
+      "authored": true,
+      "noAudio": true
+    },
+    "frequency": 0,
+    "source": "Wiktionnaire",
+    "sourceUrl": "https://zh.wiktionary.org/wiki/retransmigrer",
+    "frenchSourceUrl": "https://fr.wiktionary.org/wiki/retransmigrer",
+    "attestedSupplement": 1,
+    "literal": true
+  }
+]

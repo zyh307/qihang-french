@@ -6,6 +6,10 @@ export function refinedSense(word,value){
  const rows=nuances[nuanceWordKey(word)];if(!rows)return value;
  return rows.find(row=>row.gloss===value||row.match.includes(core(value)))?.gloss||value;
 }
+export function senseDifference(word,value){
+ const row=nuances[nuanceWordKey(word)]?.find(entry=>entry.gloss===refinedSense(word,value));
+ return row?.gloss.match(/（([^（）]+)）$/u)?.[1]||'';
+}
 export function refinedPrimary(word,value){
  const example=word?.forms?.find(f=>f.example?.fr)?.example||word?.example;
  if(!word?.primaryMeaningChosen&&nuanceWordKey(word)==='monnaie'&&/pièces? de monnaie/iu.test(example?.fr||''))return '硬币（金属钱币）';

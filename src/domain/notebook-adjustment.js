@@ -1,7 +1,7 @@
 import {day,wordKey,packageKey,getProgress,moveWord,markWordKnown} from './learning.js';
 import {TENSES,lemmaFor,conjugations,isConjugationVerb} from '../conjugation/catalog.js';
 import {tenseCards,moveTense} from '../conjugation/tense-actions.js';
-import {ensureImportedLessons,learnedNotebook,makeLearnedImportLookup,makeLearnedTenseLookup,removeImportedEntry,pruneImportedPractice,importedUnitScope,createAutomaticImportAllocator,importedMembershipSize} from './quick-import.js';
+import {ensureImportedLessons,learnedNotebook,makeLearnedImportLookup,makeLearnedTenseLookup,removeImportedEntry,pruneImportedPractice,importedUnitScope,createAutomaticImportAllocator,importedMembershipSize,assertImportScopeCanExpand} from './quick-import.js';
 
 export function notebookChoices(word){
  const lemma=word?.conjugation||isConjugationVerb(word)?lemmaFor(word):null;
@@ -50,9 +50,12 @@ export function applyNotebookSelection(data,entry,selection,action,at=Date.now()
  if(action==='add-imported'){
   const accepted={...s,tenses:[...s.tenses]},skipped=[];
   if(s.infinitive&&makeLearnedImportLookup(data)({p,w})){accepted.infinitive=false;skipped.push('原形');}
-  const learnedTense=makeLearnedTenseLookup(data);
-  accepted.tenses=s.tenses.filter(t=>{if(learnedTense(lemmaFor(w),t)){skipped.push(t);return false;}return true;});
+  if(s.tenses.length){
+   const learnedTense=makeLearnedTenseLookup(data);
+   accepted.tenses=s.tenses.filter(t=>{if(learnedTense(lemmaFor(w),t)){skipped.push(t);return false;}return true;});
+  }
   if(!accepted.infinitive&&!accepted.tenses.length)throw Error('已在已会本或复习本，无需导入 / Déjà acquis ou en révision.');
+  assertImportScopeCanExpand(data,key,prior,accepted);
   if(accepted.infinitive&&w.conjugationPlan)w.conjugationPlan={...w.conjugationPlan,infinitive:true};
   const allocator=!data.importedWords[key]?createAutomaticImportAllocator(data):null;
   const member=data.importedWords[key]||={at,date:day(new Date(at))};

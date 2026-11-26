@@ -1,18 +1,42 @@
 [
   {
     "id": "lex79b996059587d5c6afb9",
-    "legacyIds": ["lex85f7ceb545d1a2d55308"],
+    "legacyIds": [
+      "lex85f7ceb545d1a2d55308"
+    ],
     "word": "nouveau",
-    "aliases": ["nouvel", "nouvelle"],
+    "aliases": [
+      "nouvel",
+      "nouvelle"
+    ],
     "pos": "adj.",
     "gender": "m",
     "matchSpelling": true,
-    "meanings": ["新的"],
+    "meanings": [
+      "新的"
+    ],
     "primaryMeaning": "新的",
     "forms": [
-      {"text":"nouveau","gender":"m","tested":true,"ipa":"/nu.vo/","questionHint":"辅音或嘘音 h 前 · Devant une consonne ou un h aspiré"},
-      {"text":"nouvel","gender":"m","tested":true,"ipa":"/nu.vɛl/","questionHint":"元音或哑音 h 前 · Devant une voyelle ou un h muet"},
-      {"text":"nouvelle","gender":"f","tested":true,"ipa":"/nu.vɛl/"}
+      {
+        "text": "nouveau",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/nu.vo/",
+        "questionHint": "辅音或嘘音 h 前 · Devant une consonne ou un h aspiré"
+      },
+      {
+        "text": "nouvel",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/nu.vɛl/",
+        "questionHint": "元音或哑音 h 前 · Devant une voyelle ou un h muet"
+      },
+      {
+        "text": "nouvelle",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/nu.vɛl/"
+      }
     ],
     "example": {
       "fr": "J'ai un nouveau téléphone.",
@@ -244,9 +268,9 @@
     "gender": "m",
     "splitSense": true,
     "meanings": [
-      "全新的，未使用过的"
+      "全新的（买来后还没用过）"
     ],
-    "primaryMeaning": "全新的，未使用过的",
+    "primaryMeaning": "全新的（买来后还没用过）",
     "forms": [
       {
         "text": "neuf",
@@ -264,7 +288,7 @@
     "example": {
       "fr": "Ce téléphone est neuf et cette tablette est neuve.",
       "zh": "这部手机和这台平板都是全新的。",
-      "meaning": "全新的，未使用过的",
+      "meaning": "全新的（买来后还没用过）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -312,9 +336,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "磅（重量单位）"
+      "磅（重量单位，在法国买菜时常指半公斤）"
     ],
-    "primaryMeaning": "磅（重量单位）",
+    "primaryMeaning": "磅（重量单位，在法国买菜时常指半公斤）",
     "forms": [
       {
         "text": "livre",
@@ -326,7 +350,7 @@
     "example": {
       "fr": "Le colis pèse une livre.",
       "zh": "这个包裹重一磅。",
-      "meaning": "磅（重量单位）",
+      "meaning": "磅（重量单位，在法国买菜时常指半公斤）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -338,9 +362,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "镑（货币单位）"
+      "镑（货币，如英镑）"
     ],
-    "primaryMeaning": "镑（货币单位）",
+    "primaryMeaning": "镑（货币，如英镑）",
     "forms": [
       {
         "text": "livre",
@@ -352,7 +376,7 @@
     "example": {
       "fr": "Ce café coûte une livre sterling.",
       "zh": "这杯咖啡要一英镑。",
-      "meaning": "镑（货币单位）",
+      "meaning": "镑（货币，如英镑）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -425,9 +449,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "精力，活力（口语）"
+      "精力充沛（口语，常指精神头足）"
     ],
-    "primaryMeaning": "精力，活力（口语）",
+    "primaryMeaning": "精力充沛（口语，常指精神头足）",
     "forms": [
       {
         "text": "pêche",
@@ -439,7 +463,7 @@
     "example": {
       "fr": "J'ai la pêche ce matin.",
       "zh": "今天早上我精神十足。",
-      "meaning": "精力，活力（口语）",
+      "meaning": "精力充沛（口语，常指精神头足）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -451,11 +475,10 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "冰"
+      "冰，冰淇淋"
     ],
-    "primaryMeaning": "冰",
+    "primaryMeaning": "冰，冰淇淋",
     "displacedMeanings": [
-      "冰淇淋",
       "镜子",
       "冷淡，冷漠",
       "冷淡",
@@ -475,33 +498,11 @@
       "meaning": "冰",
       "source": "启航法语编写",
       "authored": true
-    }
-  },
-  {
-    "id": "lex-glace-dessert",
-    "word": "glace",
-    "pos": "n.",
-    "gender": "f",
-    "splitSense": true,
-    "meanings": [
-      "冰淇淋"
+    },
+    "legacyIds": [
+      "lex-glace-dessert"
     ],
-    "primaryMeaning": "冰淇淋",
-    "forms": [
-      {
-        "text": "glace",
-        "gender": "f",
-        "tested": true,
-        "ipa": "/ɡlas/"
-      }
-    ],
-    "example": {
-      "fr": "Je prends une glace à la vanille.",
-      "zh": "我要一份香草冰淇淋。",
-      "meaning": "冰淇淋",
-      "source": "启航法语编写",
-      "authored": true
-    }
+    "keepSourceExample": true
   },
   {
     "id": "lex-glace-miroir",
@@ -536,9 +537,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "冰冷，冷漠（比喻）"
+      "冷漠（形容人对事情毫无反应）"
     ],
-    "primaryMeaning": "冰冷，冷漠（比喻）",
+    "primaryMeaning": "冷漠（形容人对事情毫无反应）",
     "forms": [
       {
         "text": "glace",
@@ -550,7 +551,7 @@
     "example": {
       "fr": "Elle est restée de glace devant ses excuses.",
       "zh": "面对他的道歉，她毫无反应。",
-      "meaning": "冰冷，冷漠（比喻）",
+      "meaning": "冷漠（形容人对事情毫无反应）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -733,9 +734,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "字面意思"
+      "字面意思（按原话逐字理解）"
     ],
-    "primaryMeaning": "字面意思",
+    "primaryMeaning": "字面意思（按原话逐字理解）",
     "forms": [
       {
         "text": "lettre",
@@ -747,7 +748,7 @@
     "example": {
       "fr": "Il suit les instructions à la lettre.",
       "zh": "他严格照着说明做。",
-      "meaning": "字面意思",
+      "meaning": "字面意思（按原话逐字理解）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -833,9 +834,9 @@
     "gender": "f",
     "splitSense": true,
     "meanings": [
-      "入场券"
+      "入场名额或门票"
     ],
-    "primaryMeaning": "入场券",
+    "primaryMeaning": "入场名额或门票",
     "forms": [
       {
         "text": "entrée",
@@ -847,7 +848,7 @@
     "example": {
       "fr": "J'ai gagné deux entrées pour le musée.",
       "zh": "我赢得了两张博物馆门票。",
-      "meaning": "入场券",
+      "meaning": "入场名额或门票",
       "source": "启航法语编写",
       "authored": true
     }
@@ -922,9 +923,9 @@
       "w930149"
     ],
     "meanings": [
-      "方式，模式"
+      "方式（做事或生活的方式）"
     ],
-    "primaryMeaning": "方式，模式",
+    "primaryMeaning": "方式（做事或生活的方式）",
     "displacedMeanings": [
       "时尚",
       "时尚，流行",
@@ -941,7 +942,7 @@
     "example": {
       "fr": "Ce mode de vie respecte l'environnement.",
       "zh": "这种生活方式尊重环境。",
-      "meaning": "方式，模式",
+      "meaning": "方式（做事或生活的方式）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -991,10 +992,10 @@
       "w000386"
     ],
     "meanings": [
-      "菜肴，一道菜",
+      "一道菜（与前菜、甜点并列时指主菜）",
       "主菜"
     ],
-    "primaryMeaning": "菜肴，一道菜",
+    "primaryMeaning": "一道菜（与前菜、甜点并列时指主菜）",
     "forms": [
       {
         "text": "plat",
@@ -1006,7 +1007,33 @@
     "example": {
       "fr": "Comme plat, un poulet.",
       "zh": "主菜来一份鸡肉。",
-      "meaning": "菜肴，一道菜",
+      "meaning": "一道菜（与前菜、甜点并列时指主菜）",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "id": "lex-plat-serveware",
+    "word": "plat",
+    "pos": "n.",
+    "gender": "m",
+    "splitSense": true,
+    "meanings": [
+      "盛菜的大盘"
+    ],
+    "primaryMeaning": "盛菜的大盘",
+    "forms": [
+      {
+        "text": "plat",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/pla/"
+      }
+    ],
+    "example": {
+      "fr": "Elle pose le poisson dans un grand plat.",
+      "zh": "她把鱼放进一个大盘里。",
+      "meaning": "盛菜的大盘",
       "source": "启航法语编写",
       "authored": true
     }
@@ -1018,9 +1045,9 @@
     "gender": null,
     "splitSense": true,
     "meanings": [
-      "坚实的，坚固的"
+      "硬实的（按下去有支撑感）"
     ],
-    "primaryMeaning": "坚实的，坚固的",
+    "primaryMeaning": "硬实的（按下去有支撑感）",
     "forms": [
       {
         "text": "ferme",
@@ -1032,7 +1059,7 @@
     "example": {
       "fr": "Le matelas est ferme.",
       "zh": "这张床垫很硬实。",
-      "meaning": "坚实的，坚固的",
+      "meaning": "硬实的（按下去有支撑感）",
       "source": "启航法语编写",
       "authored": true
     }
@@ -1062,5 +1089,987 @@
       "source": "启航法语编写",
       "authored": true
     }
+  },
+  {
+    "id": "lex5152cc21067154b896fa",
+    "word": "ami",
+    "aliases": [
+      "amie"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "朋友"
+    ],
+    "primaryMeaning": "朋友",
+    "forms": [
+      {
+        "text": "ami",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/a.mi/",
+        "audioKey": "tts:un%20ami"
+      },
+      {
+        "text": "amie",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/a.mi/",
+        "audioKey": "tts:une%20amie"
+      }
+    ],
+    "example": {
+      "fr": "Qui prend encore le temps pour une longue lettre à un ami ?",
+      "zh": "谁还会花时间给朋友写一封长信呢？",
+      "source": "Tatoeba #465389 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/465389",
+      "meaning": "朋友"
+    },
+    "legacyIds": [
+      "lexae61383bced38773780b"
+    ]
+  },
+  {
+    "id": "lex67df1877c93a6ec10c81",
+    "word": "acteur",
+    "aliases": [
+      "actrice"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "演员"
+    ],
+    "primaryMeaning": "演员",
+    "forms": [
+      {
+        "text": "acteur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ak.tœʁ/",
+        "audioKey": "tts:un%20acteur"
+      },
+      {
+        "text": "actrice",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ak.tʁis/",
+        "audioKey": "tts:une%20actrice"
+      }
+    ],
+    "example": {
+      "fr": "Je n'ai jamais encore entendu parler de l'acteur.",
+      "zh": "我还从没听说过这个演员。",
+      "source": "Tatoeba #817159 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/817159",
+      "meaning": "演员"
+    },
+    "legacyIds": [
+      "lex185505f0dcca01a40b38"
+    ]
+  },
+  {
+    "id": "lex9369b07eb0e3620b5b23",
+    "word": "animateur",
+    "aliases": [
+      "animatrice"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "主持人"
+    ],
+    "primaryMeaning": "主持人",
+    "forms": [
+      {
+        "text": "animateur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃n animatœʁ/",
+        "audioKey": "tts:un%20animateur"
+      },
+      {
+        "text": "animatrice",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/yn animatʁis/",
+        "audioKey": "tts:une%20animatrice"
+      }
+    ],
+    "example": {
+      "fr": "L'animatrice présente une nouvelle émission.",
+      "zh": "主持人正在呈现新节目。",
+      "sourceKind": "companion",
+      "translationOrigin": "bundled",
+      "source": "词汇资料包 · Exemple complémentaire",
+      "audioKey": "tts:L'animatrice%20pr%C3%A9sente%20une%20nouvelle%20%C3%A9mission.",
+      "meaning": "主持人"
+    },
+    "legacyIds": [
+      "lexd3afd4b0e9be447d3d2b"
+    ]
+  },
+  {
+    "id": "lexcf5c293f49c5c6065257",
+    "word": "coiffeur",
+    "aliases": [
+      "coiffeuse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "理发师"
+    ],
+    "primaryMeaning": "理发师",
+    "forms": [
+      {
+        "text": "coiffeur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/kwa.fœʁ/",
+        "audioKey": "tts:un%20coiffeur"
+      },
+      {
+        "text": "coiffeuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/kwa.føz/",
+        "audioKey": "tts:une%20coiffeuse"
+      }
+    ],
+    "example": {
+      "fr": "Je me suis fait couper les cheveux chez le coiffeur hier.",
+      "zh": "我昨天去理发师那里剪了头发。",
+      "source": "Tatoeba #8281 · Petro1 · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/8281",
+      "meaning": "理发师"
+    },
+    "legacyIds": [
+      "lex3c173ee085ed6f27d4aa"
+    ]
+  },
+  {
+    "id": "lex6e7d5d567573f45536d4",
+    "word": "chanteur",
+    "aliases": [
+      "chanteuse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "歌手"
+    ],
+    "primaryMeaning": "歌手",
+    "forms": [
+      {
+        "text": "chanteur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃ ʃɑ̃tœʁ / yn ʃɑ̃tøz/",
+        "audioKey": "tts:un%20chanteur"
+      },
+      {
+        "text": "chanteuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/œ̃ ʃɑ̃tœʁ / yn ʃɑ̃tøz/",
+        "audioKey": "tts:une%20chanteuse"
+      }
+    ],
+    "example": {
+      "fr": "Il est chanteur. / Elle est chanteuse.",
+      "zh": "他是一名歌手。／她是一名歌手。",
+      "audio": "audio/L08_022-example.mp3",
+      "audioKey": "388c4bbb24c045af1ff75be9e7956d32e9e0e8e39bbe6fe70a884d5a25d82da7",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "歌手"
+    },
+    "legacyIds": [
+      "lexbc6ba523b9b446c76e07"
+    ]
+  },
+  {
+    "id": "lexea04d13740883ad7b1ab",
+    "word": "instituteur",
+    "aliases": [
+      "institutrice"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "小学教师"
+    ],
+    "primaryMeaning": "小学教师",
+    "forms": [
+      {
+        "text": "instituteur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ɛ̃s.ti.ty.tœʁ/",
+        "audioKey": "tts:un%20instituteur"
+      },
+      {
+        "text": "institutrice",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ɛ̃s.ti.ty.tʁis/",
+        "audioKey": "tts:une%20institutrice"
+      }
+    ],
+    "example": {
+      "fr": "Nous rendrons visite à notre instituteur la semaine prochaine.",
+      "zh": "下周我们要去看望我们的老师。",
+      "source": "Tatoeba #460658 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/460658",
+      "meaning": "小学教师"
+    },
+    "legacyIds": [
+      "lex2f9d2698d0dea5f6c17e"
+    ]
+  },
+  {
+    "id": "lex30e6a64d6415dbbd5f69",
+    "word": "étudiant",
+    "aliases": [
+      "étudiante"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "大学生"
+    ],
+    "primaryMeaning": "大学生",
+    "forms": [
+      {
+        "text": "étudiant",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃n etydjɑ̃ / yn etydjɑ̃t/",
+        "audioKey": "tts:un%20%C3%A9tudiant"
+      },
+      {
+        "text": "étudiante",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/œ̃n etydjɑ̃ / yn etydjɑ̃t/"
+      }
+    ],
+    "example": {
+      "fr": "C'est une étudiante en droit.",
+      "zh": "这是一位学法律的女大学生。",
+      "audio": "audio/L28_005-example.mp3",
+      "audioKey": "85d7c4ebb48790d9e15519129eb7c3e1eabc74a28214050f8d26b353cc35cf85",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "大学生"
+    }
+  },
+  {
+    "id": "lex8faa9e4769f0c69bc94e",
+    "word": "infirmier",
+    "aliases": [
+      "infirmière"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "护士"
+    ],
+    "primaryMeaning": "护士",
+    "forms": [
+      {
+        "text": "infirmier",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃n ɛ̃fiʁmje / yn ɛ̃fiʁmjɛʁ/",
+        "audioKey": "tts:un%20infirmier"
+      },
+      {
+        "text": "infirmière",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/œ̃n ɛ̃fiʁmje / yn ɛ̃fiʁmjɛʁ/"
+      }
+    ],
+    "example": {
+      "fr": "Elle est infirmière.",
+      "zh": "她是一名护士。",
+      "audio": "audio/L24_013-example.mp3",
+      "audioKey": "16a27ced4e9073ea92c77135212b2de5032eb39f69381c84b5152a1b159f0a99",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "护士"
+    }
+  },
+  {
+    "id": "lexbfd39a9fe23d9f31444b",
+    "word": "ouvrier",
+    "aliases": [
+      "ouvrière"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "工人"
+    ],
+    "primaryMeaning": "工人",
+    "forms": [
+      {
+        "text": "ouvrier",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃n uvʁie/",
+        "audioKey": "tts:un%20ouvrier"
+      },
+      {
+        "text": "ouvrière",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/yn uvʁiɛʁ/",
+        "audioKey": "tts:une%20ouvri%C3%A8re"
+      }
+    ],
+    "example": {
+      "fr": "Voici un ouvrier.",
+      "zh": "这是一名工人。",
+      "sourceKind": "companion",
+      "translationOrigin": "bundled",
+      "source": "词汇资料包 · Exemple complémentaire",
+      "audioKey": "tts:Voici%20un%20ouvrier.",
+      "meaning": "工人"
+    },
+    "legacyIds": [
+      "lexb10a3797ca6695312a5e"
+    ]
+  },
+  {
+    "id": "lex-vendeur-person",
+    "word": "vendeur",
+    "aliases": [
+      "vendeuse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "售货员"
+    ],
+    "primaryMeaning": "售货员",
+    "forms": [
+      {
+        "text": "vendeur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃ vɑ̃dœʁ/",
+        "audioKey": "tts:vendeur"
+      },
+      {
+        "text": "vendeuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/yn vɑ̃døz/",
+        "audioKey": "tts:une%20vendeuse"
+      }
+    ],
+    "example": {
+      "fr": "La vendeuse est très sympa.",
+      "zh": "售货员人很好。",
+      "sourceKind": "companion",
+      "translationOrigin": "bundled",
+      "source": "Inspire 1 · 词表例句",
+      "audioKey": "tts:La%20vendeuse%20est%20tr%C3%A8s%20sympa.",
+      "meaning": "售货员"
+    },
+    "legacyIds": [
+      "lex2789ee8ad7d80128aa59"
+    ]
+  },
+  {
+    "id": "lex-directeur-person",
+    "word": "directeur",
+    "aliases": [
+      "directrice"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "主管，总监"
+    ],
+    "primaryMeaning": "主管，总监",
+    "forms": [
+      {
+        "text": "directeur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/lə diʁɛktœʁ / la diʁɛktʁis/",
+        "audioKey": "tts:directeur"
+      },
+      {
+        "text": "directrice",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/lə diʁɛktœʁ / la diʁɛktʁis/"
+      }
+    ],
+    "example": {
+      "fr": "Sophie est directrice marketing.",
+      "zh": "索菲是市场营销总监。",
+      "audio": "audio/L29_006-example.mp3",
+      "audioKey": "67aa03564fbf7f276d6e56424ddff28f57a072e4151cd7f02dc79ab003347e7d",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "主管，总监"
+    }
+  },
+  {
+    "id": "lexb3f86b52e64b223356be",
+    "word": "docteur",
+    "aliases": [
+      "docteure"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "医生"
+    ],
+    "primaryMeaning": "医生",
+    "forms": [
+      {
+        "text": "docteur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/dɔk.tœʁ/",
+        "audioKey": "tts:un%20docteur"
+      },
+      {
+        "text": "docteure",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/dɔk.tœʁ/",
+        "audioKey": "tts:une%20docteure"
+      }
+    ],
+    "example": {
+      "fr": "Le docteur a continué à observer le comportement du patient.",
+      "zh": "医生继续观察病人的一举一动。",
+      "source": "Tatoeba #1206163 · GeeZ · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/1206163",
+      "meaning": "医生"
+    },
+    "legacyIds": [
+      "lex447f36dec4c7b31ba280"
+    ]
+  },
+  {
+    "id": "lex2025e4718522aa7c94ab",
+    "word": "manifestant",
+    "aliases": [
+      "manifestante"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "示威者"
+    ],
+    "primaryMeaning": "示威者",
+    "forms": [
+      {
+        "text": "manifestant",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ma.ni.fɛs.tɑ̃/",
+        "audioKey": "tts:un%20manifestant"
+      },
+      {
+        "text": "manifestante",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/ma.ni.fɛs.tɑ̃t/",
+        "audioKey": "tts:une%20manifestante"
+      }
+    ],
+    "example": {
+      "fr": "Des soldats israéliens tirent sur un manifestant lançant une minuscule pierre.",
+      "zh": "以色列士兵向一名扔小石头的抗议者开枪。",
+      "source": "Wiktionary · Paul Giniewski, La guerre des hommes-bombes : Israël 2000-2006, 2006",
+      "translationOrigin": "bundled",
+      "meaning": "示威者"
+    },
+    "legacyIds": [
+      "lexd5d92f0402a3bd486318"
+    ]
+  },
+  {
+    "id": "lex65069fc77c1d8fed9ea2",
+    "word": "gardien",
+    "aliases": [
+      "gardienne"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "看守，看管人"
+    ],
+    "primaryMeaning": "看守，看管人",
+    "forms": [
+      {
+        "text": "gardien",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ɡaʁ.djɛ̃/",
+        "audioKey": "tts:un%20gardien"
+      },
+      {
+        "text": "gardienne",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/ɡaʁ.djɛn/",
+        "audioKey": "tts:une%20gardienne"
+      }
+    ],
+    "example": {
+      "fr": "Il est gardien de but.",
+      "zh": "他是守门员。",
+      "source": "Tatoeba #845929 · U2FS · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/845929",
+      "meaning": "看守，看管人"
+    },
+    "legacyIds": [
+      "lex9fc62f9d5bcc019a22c6"
+    ]
+  },
+  {
+    "id": "lexdc25c026c45da34b8f09",
+    "word": "couturier",
+    "aliases": [
+      "couturière"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "裁缝，服装设计师"
+    ],
+    "primaryMeaning": "裁缝，服装设计师",
+    "forms": [
+      {
+        "text": "couturier",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ku.ty.ʁje/",
+        "audioKey": "tts:un%20couturier"
+      },
+      {
+        "text": "couturière",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/ku.ty.ʁjɛʁ/",
+        "audioKey": "tts:une%20couturi%C3%A8re"
+      }
+    ],
+    "example": {
+      "fr": "Trois top-modèles vivaient en colocation dans l'appartement prêté par un couturier en vogue.\nUne quatrième débarqua de sa Russie natale, une longue liane de 180 cm, belle, de naturel parée.",
+      "zh": "三位顶级模特住在一位时装设计师借来的公寓里。\n第四个来自俄罗斯本土，180厘米长的藤蔓，美丽，自然装饰。",
+      "source": "Wiktionary · Patricia Lepetit, Les colocataires, TheBookEdition, 2015, page 32",
+      "translationOrigin": "bundled",
+      "meaning": "裁缝，服装设计师"
+    },
+    "legacyIds": [
+      "lexd04f6c1e4aea7dc19248"
+    ]
+  },
+  {
+    "id": "lexf50c9960e6ea3f4b214d",
+    "word": "écolier",
+    "aliases": [
+      "écolière"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "小学生"
+    ],
+    "primaryMeaning": "小学生",
+    "forms": [
+      {
+        "text": "écolier",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/e.kɔ.lje/",
+        "audioKey": "tts:un%20%C3%A9colier"
+      },
+      {
+        "text": "écolière",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/e.kɔ.ljɛʁ/",
+        "audioKey": "tts:une%20%C3%A9coli%C3%A8re"
+      }
+    ],
+    "example": {
+      "fr": "Le moniteur demande : 1 et 1 ?\nLe premier écolier répond : 1 et 1 font 2.",
+      "zh": "班长问：1和1？\n第一个男生回答：1 和 1 等于 2。",
+      "source": "Wiktionary · ",
+      "translationOrigin": "bundled",
+      "meaning": "小学生"
+    },
+    "legacyIds": [
+      "lex8861d4aab33fc5dfebbb"
+    ]
+  },
+  {
+    "id": "lexf25fadf6a1f5590badc9",
+    "word": "comte",
+    "aliases": [
+      "comtesse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "伯爵"
+    ],
+    "primaryMeaning": "伯爵",
+    "forms": [
+      {
+        "text": "comte",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/kɔ̃t/",
+        "audioKey": "tts:un%20comte"
+      },
+      {
+        "text": "comtesse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/kɔ̃.tɛs/",
+        "audioKey": "tts:une%20comtesse"
+      }
+    ],
+    "example": {
+      "fr": "Comte du sacré palais.",
+      "zh": "圣宫伯爵。",
+      "source": "Wiktionary · ",
+      "translationOrigin": "bundled",
+      "meaning": "伯爵"
+    },
+    "legacyIds": [
+      "lex74c356223c27324e4363"
+    ]
+  },
+  {
+    "id": "lex1fa67d8e018acd26f574",
+    "word": "sorcier",
+    "aliases": [
+      "sorcière"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "巫师"
+    ],
+    "primaryMeaning": "巫师",
+    "forms": [
+      {
+        "text": "sorcier",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/sɔʁ.sje/",
+        "audioKey": "tts:un%20sorcier"
+      },
+      {
+        "text": "sorcière",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/sɔʁ.sjɛʁ/",
+        "audioKey": "tts:une%20sorci%C3%A8re"
+      }
+    ],
+    "example": {
+      "fr": "J'abandonne. Qu'ont en commun un prêtre irlandais et un sorcier africain ?",
+      "zh": "我放弃了。爱尔兰牧师和非洲巫婆有什么共同点？",
+      "source": "Tatoeba #817870 · sacredceltic · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/817870",
+      "meaning": "巫师"
+    },
+    "legacyIds": [
+      "lexddf613e182f8c5a3cbdb"
+    ]
+  },
+  {
+    "id": "lex3eda8741b9205565ee94",
+    "word": "menteur",
+    "aliases": [
+      "menteuse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "说谎的人"
+    ],
+    "primaryMeaning": "说谎的人",
+    "forms": [
+      {
+        "text": "menteur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/mɑ̃.tœʁ/",
+        "audioKey": "tts:un%20menteur"
+      },
+      {
+        "text": "menteuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/mɑ̃.tøz/",
+        "audioKey": "tts:une%20menteuse"
+      }
+    ],
+    "example": {
+      "fr": "Cela tend à prouver que vous êtes un menteur.",
+      "zh": "这正可以说明您是个骗子。",
+      "source": "Tatoeba #12335 · sysko · CC BY 2.0",
+      "url": "https://tatoeba.org/en/sentences/show/12335",
+      "meaning": "说谎的人"
+    },
+    "legacyIds": [
+      "lex2e3fdbe530d4310d2ea4"
+    ]
+  },
+  {
+    "id": "lexec4694bfb0bb7987fb62",
+    "word": "gérant",
+    "aliases": [
+      "gérante"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "经理，经营者"
+    ],
+    "primaryMeaning": "经理，经营者",
+    "forms": [
+      {
+        "text": "gérant",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/ʒe.ʁɑ̃/",
+        "audioKey": "tts:un%20g%C3%A9rant"
+      },
+      {
+        "text": "gérante",
+        "gender": "f",
+        "tested": false,
+        "ipa": "/ʒe.ʁɑ̃t/",
+        "audioKey": "tts:une%20g%C3%A9rante"
+      }
+    ],
+    "example": {
+      "fr": "De plus, l’apprentissage de la langue m'était facilité par la bienveillante coopération du gérant de la Compagnie de la Baie d'Hudson, qui parlait l’esquimau et l’anglais.",
+      "zh": "此外，在哈德逊湾公司经理的善意合作下，我的语言学习变得更加容易，他会说爱斯基摩语和英语。",
+      "source": "Wiktionary · André Steinmann & Gilbert La Rocque, La petite barbe, Éditions de l'Homme, 1977, page 83",
+      "translationOrigin": "bundled",
+      "meaning": "经理，经营者"
+    },
+    "legacyIds": [
+      "lex50c1ebd271db1c62e06b"
+    ]
+  },
+  {
+    "id": "lex-serveur-person",
+    "word": "serveur",
+    "aliases": [
+      "serveuse"
+    ],
+    "pos": "n.",
+    "gender": "m",
+    "matchSpelling": true,
+    "meanings": [
+      "服务员，侍应生"
+    ],
+    "primaryMeaning": "服务员，侍应生",
+    "forms": [
+      {
+        "text": "serveur",
+        "gender": "m",
+        "tested": true,
+        "ipa": "/œ̃ sɛʁvœʁ/",
+        "audioKey": "tts:un%20serveur"
+      },
+      {
+        "text": "serveuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/sɛʁ.vøz/",
+        "audioKey": "tts:une%20serveuse"
+      }
+    ],
+    "example": {
+      "fr": "La serveuse la regarda, surprise.",
+      "zh": "女服务员惊讶地看着她。",
+      "source": "Wiktionary · Yves Beauchemin, La serveuse du café Cherrier, 2011",
+      "translationOrigin": "bundled",
+      "meaning": "服务员，侍应生"
+    },
+    "legacyIds": [
+      "lex2b907372107d65916179"
+    ],
+    "splitSense": true
+  },
+  {
+    "id": "lex-coiffeuse-vanity",
+    "word": "coiffeuse",
+    "pos": "n.",
+    "gender": "f",
+    "splitSense": true,
+    "legacyChoices": [
+      {
+        "id": "lex3c173ee085ed6f27d4aa",
+        "meaning": "梳妆台"
+      }
+    ],
+    "meanings": [
+      "梳妆台"
+    ],
+    "primaryMeaning": "梳妆台",
+    "forms": [
+      {
+        "text": "coiffeuse",
+        "gender": "f",
+        "tested": true,
+        "ipa": "/kwa.føz/"
+      }
+    ],
+    "example": {
+      "fr": "Elle range ses bijoux dans la coiffeuse.",
+      "zh": "她把首饰收进梳妆台。",
+      "meaning": "梳妆台",
+      "source": "启航法语编写",
+      "authored": true
+    }
+  },
+  {
+    "word": "menu",
+    "id": "lex398991009da1d251792e",
+    "gender": "m",
+    "pos": "n.",
+    "splitSense": true,
+    "meanings": [
+      "定价套餐（几道菜合计一个价）",
+      "菜单（一餐供应的菜品）",
+      "功能菜单（软件中可选择的操作列表）"
+    ],
+    "primaryMeaning": "定价套餐（几道菜合计一个价）",
+    "courseIds": [
+      "w000380",
+      "w218018"
+    ],
+    "forms": [
+      {
+        "text": "menu",
+        "ipa": "/mə.ny/",
+        "gender": "m",
+        "tested": true
+      }
+    ],
+    "example": {
+      "fr": "Le menu, c'est 15 euros.",
+      "zh": "套餐十五欧元。",
+      "audio": "audio/L21_002-example.mp3",
+      "audioKey": "cdf7c78f3a50ca78213ce048c55ec68024838bd6d91704c72939b2c22c966bcb",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "定价套餐（几道菜合计一个价）"
+    }
+  },
+  {
+    "word": "carte",
+    "id": "lexd2c12420b9815e07b29b",
+    "gender": "f",
+    "pos": "n.",
+    "splitSense": true,
+    "meanings": [
+      "点菜单（各道菜分别标价）",
+      "地图",
+      "卡片",
+      "证件（如身份证）",
+      "纸牌"
+    ],
+    "primaryMeaning": "点菜单（各道菜分别标价）",
+    "courseIds": [
+      "w000381"
+    ],
+    "forms": [
+      {
+        "text": "carte",
+        "ipa": "/kaʁt/",
+        "gender": "f",
+        "tested": true
+      }
+    ],
+    "example": {
+      "fr": "On pourrait avoir la carte, s'il vous plaît ?",
+      "zh": "请问可以给我们菜单吗？",
+      "audio": "audio/L21_003-example.mp3",
+      "audioKey": "a2811ee0ca496cec7c7db5dce465f6d6a7189e4dab84ca9c5afe4789e6274ae6",
+      "translationOrigin": "bundled",
+      "audioOrigin": "bundled",
+      "meaning": "点菜单（各道菜分别标价）"
+    }
+  },
+  {
+    "id": "lex-menu-adj",
+    "word": "menu",
+    "pos": "adj.",
+    "splitSense": true,
+    "primaryMeaning": "纤细的，小巧的（常形容身材或手脚）",
+    "meanings": [
+      "纤细的，小巧的（常形容身材或手脚）",
+      "细小的（如碎屑、零星开支）"
+    ],
+    "forms": [
+      {
+        "text": "menu",
+        "gender": "m",
+        "ipa": "/mə.ny/",
+        "tested": true
+      },
+      {
+        "text": "menue",
+        "gender": "f",
+        "ipa": "/mə.ny/",
+        "tested": false
+      }
+    ],
+    "example": {
+      "fr": "Elle a les mains menues.",
+      "zh": "她的双手很纤细。",
+      "meaning": "纤细的，小巧的（常形容身材或手脚）",
+      "authored": true,
+      "source": "启航法语编写"
+    },
+    "legacyChoices": [
+      {
+        "id": "lex398991009da1d251792e",
+        "meaning": "细小的"
+      }
+    ]
   }
 ]

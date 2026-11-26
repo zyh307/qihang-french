@@ -116,7 +116,7 @@ export function sharedExample(word) {
 }
 export function exampleAudio(word){
   const example=sharedExample(word).example;
-  if(!example?.fr)return null;
+  if(!example?.fr||example.noAudio)return null;
   // Legacy imports may have the sentence but no usable saved recording key.
   // Resolve synthesized recordings from the displayed text, never an old sentence.
   const audioKey=!example.audioKey||example.audioKey.startsWith('tts:')?'tts:'+encodeURIComponent(example.fr):example.audioKey;

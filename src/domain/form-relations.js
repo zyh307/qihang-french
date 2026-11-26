@@ -14,6 +14,23 @@ export function applyFormRelations(word){
  const lexiconWord=spelling(word.lexiconWord);
  const withoutArticle=text=>text.replace(/^(?:un|une) /u,'');
  const head=names[0]&&withoutArticle(names[0]);
+ if(word.pos==='adj.'&&names.includes('égal à')&&names.includes('égale à')){
+  for(const form of word.forms){
+   const text=spelling(form.text);
+   if(text==='égal à')form.gender='m';
+   if(text==='égale à')form.gender='f';
+  }
+ }
+ if(word.pos==='n.'&&names.some(name=>/^(?:(?:un|le|des|les) )?multiples?$/u.test(name))){
+  const isAdjectiveMeaning=value=>typeof value==='string'&&value.trim()==='多样的';
+  if(word.meanings?.some(isAdjectiveMeaning))word.meanings=word.meanings.filter(value=>!isAdjectiveMeaning(value));
+  if(isAdjectiveMeaning(word.primaryMeaning)){
+   word.primaryMeaning=word.meanings?.[0]||'倍数';
+   delete word.primaryMeaningChosen;
+  }
+  if(isAdjectiveMeaning(word.primaryMeaningBeforeChoice))delete word.primaryMeaningBeforeChoice;
+ }
+
  if(head&&(!lexiconWord||lexiconWord===head)&&names.every(name=>withoutArticle(name)===head)){
   const pos={pour:'prép.',comment:'adv.'}[head];
   if(typeof pos==='string'){

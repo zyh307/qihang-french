@@ -2,6 +2,7 @@
 // French-to-Chinese multiple-choice question, even when their grammar differs.
 // Groups are independent, not transitively merged through polysemous words.
 export const reviewedSemanticGroups=[
+ ['减法','减去','相减','两数相减','做减法'],
  ['西','西边','西侧','西面','西部','西方','在西边','向西方的'],
  ['东','东边','东侧','东面','东部','东方'],['南','南边','南面','南方','南部'],['北','北边','北面','北方','北部'],
  ['东北','东北方','东北部'],['东南','东南方','东南部'],['西北','西北方','西北部'],['西南','西南方','西南部'],

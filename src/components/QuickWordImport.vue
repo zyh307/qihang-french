@@ -6,7 +6,8 @@
    <textarea auto-height v-model="input" :adjust-position="false" class="quick-import-input" maxlength="12000" placeholder="bonjour, un livre, hôtel" :disabled="loading||saving"/>
    <button class="button secondary" :disabled="!input.trim()||loading||saving" @click="lookup"><Icon name="search"/><Bi :zh="loading?'正在导入':'导入单词'" :fr="loading?'Importation…':'Importer'" small/></button>
    <view class="ai-image-help">
-    <Bi zh="AI 识图提示词" fr="Consigne pour lire une image" small/>
+    <Icon name="camera" aria-hidden="true"/>
+    <Bi class="ai-image-label" zh="识图推荐前往 DeepSeek" fr="Pour lire une image, utilisez DeepSeek"/>
     <button class="button secondary ai-image-copy" hover-class="none" aria-label="复制识图提示词 / Copier la consigne" @click="copyImagePrompt"><Bi :zh="copied?'已复制':'复制'" :fr="copied?'Copié':'Copier'" small/></button>
    </view>
    <text v-if="copyFailed" class="quick-import-error" role="alert">复制失败，请重试 · Échec de la copie.</text>
@@ -145,7 +146,10 @@ function submit(){
 }
 </script>
 <style scoped>
-.ai-image-help{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ai-image-help{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:15px;background:color-mix(in srgb,var(--accent) 9%,var(--glass));color:var(--ink)}
+.ai-image-help>.icon{color:var(--accent)}
+.ai-image-label{flex:1}
+.ai-image-help>.ai-image-copy{flex:none}
 .ai-image-copy{min-height:36px;padding:5px 12px;flex:none}
 .quick-import-body{flex:1;min-height:0;overflow-y:auto;padding:8px 2px 12px;display:flex;flex-direction:column;gap:14px}.quick-import-input{width:100%;height:auto;min-height:88px;max-width:100%;overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap;flex:none;box-sizing:border-box;padding:15px;border:1px solid var(--ui-926d7c5b65de,#dce4f1);background:var(--ui-4e24da21164e,#ffffffd9);border-radius:20px;box-shadow:0 5px 20px var(--ui-b5e6260e95d6,#7085a407);font:16px/1.6 Georgia,serif;color:var(--ui-89eeba3a2d41,#49617f)}.quick-import-body>.button{flex:none;align-self:flex-start}.quick-import-results{display:flex;flex-direction:column;gap:12px}.quick-import-row{padding:16px;display:flex;flex-direction:column;gap:9px}.quick-import-row>text{font-size:12px;color:var(--ui-65eda1fb6ebd,#94a5bc)}.quick-word-choice{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--ui-e509653ab173,#d9e2ee);border-radius:12px;line-height:1.6;background:var(--ui-a814ced23185,#f9fbfe)}.quick-word-choice>view{flex:1;min-width:0}.quick-word-choice>view>text{display:block;overflow-wrap:anywhere}.quick-word-choice.selected{border-color:var(--ui-7cb29025ddcb,#a8bddc);background:var(--ui-154c51ac860c,#edf3fc)}.quick-word-choice .muted{font-size:11px}.quick-word-pending{font-size:10px;color:var(--ui-3f8b157b9d3d,#ae9370)}.quick-import-error{font-size:12px;color:var(--ui-970e198c8d5f,#b97780);line-height:1.7}.quick-import-page .exercise-footer{flex:none}.quick-import-page .practice-top>.bi{flex:1}.quick-import-page :deep(uni-text){line-height:1.6}
 .quick-word-pronunciation{font-size:11px;color:var(--ui-7ccbcf728c92,#9aaac1);line-height:1.6}

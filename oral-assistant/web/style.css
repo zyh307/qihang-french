@@ -46,3 +46,5 @@
 .delf-live .conversation{position:sticky;top:0;align-self:start;z-index:2}
 .delf-quiet .voice-buttons{grid-template-columns:minmax(0,240px) 42px}
 @media(max-width:860px){.delf-live .conversation{grid-row:1}}
+
+.wrap{position:relative}

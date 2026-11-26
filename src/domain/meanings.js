@@ -12,14 +12,14 @@ function shortSense(value){
  const original=definitionText(glossLabel(value)),short=original.replace(/^[1-9]\.\s*/u,'').replace(/［[^］]*］|【[^】]*】|\[[^\]]*\]|〈[^〉]*〉|（[^）]*）|\([^)]*\)/g,'').split(/(?:adv|adj|n|v|loc|prép|art)\./i)[0].split(/[；;\n]/)[0].trim();
  return !/\p{Script=Han}/u.test(short)&&/\p{Script=Han}/u.test(original)?original:short;
 }
-function senseTerms(value){
+function senseTerms(value,exercise=false){
  const text=String(value).trim(),terms=[],closing=[],pairs={'(':')','（':'）','[':']','［':'］','【':'】','〈':'〉'};
  let start=0;
  for(let i=0;i<text.length;i++){
   const char=text[i];
   if(pairs[char])closing.push(pairs[char]);
   else if(char===closing.at(-1))closing.pop();
-  else if(!closing.length&&/[，,、]/u.test(char)){terms.push(text.slice(start,i).trim());start=i+1;}
+  else if(!closing.length&&(/[，,、]/u.test(char)||exercise&&/[；;／/\n]/u.test(char))){terms.push(text.slice(start,i).trim());start=i+1;}
  }
  terms.push(text.slice(start).trim());
  return terms.filter(Boolean);
@@ -58,7 +58,11 @@ function mainSense(word,full){
  return refinedPrimary(word,exampleMeaning(word)||chosen||points[0]||String(word?.meanings?.[0]||'').trim());
 }
 export const primaryMeaning=word=>mainSense(word,meaningPoints(word));
-export const questionMeaning=(word,form)=>form?.meaning?refinedPrimary(word,form.meaning):primaryMeaning(word);
+export function exerciseGloss(value){
+ const terms=senseTerms(value,true);
+ return terms.length>2?terms.slice(0,2).join('，'):value;
+}
+export const questionMeaning=(word,form)=>exerciseGloss(form?.meaning?refinedPrimary(word,form.meaning):primaryMeaning(word));
 const synonymousTerm=new Map([
  ['夏季','夏天'],['秋季','秋天'],['春季','春天'],['冬季','冬天'],
  ['电脑','计算机'],['事实上','实际上'],['同僚','同事'],['太空旅行者','宇航员'],
@@ -91,7 +95,10 @@ export function applyMeaningCorrections(data){
   const curriculumKey=w.lexiconWord||w.forms?.[0]?.text?.replace(/^(?:un|une|le|la)\s+/i,''),curriculumFix=reviewedExamples[curriculumKey];
   if(curriculumFix?.applyToCurriculum&&w.forms.some(f=>exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr))){
    if(JSON.stringify(w.meanings)===JSON.stringify(curriculumFix.previousMeanings))w.meanings=[...curriculumFix.meanings];
-   for(const f of w.forms)if(exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr))f.example.meaning=curriculumFix.meaning;
+   for(const f of w.forms)if(exampleKey(f.example?.fr)===exampleKey(curriculumFix.fr)){
+    f.example.meaning=curriculumFix.meaning;
+    if(curriculumFix.zh){f.example.zh=curriculumFix.zh;f.example.translationOrigin='reviewed';}
+   }
    if(!w.primaryMeaningChosen)w.primaryMeaning=curriculumFix.meaning;
   }
   if(w.conjugation)continue;

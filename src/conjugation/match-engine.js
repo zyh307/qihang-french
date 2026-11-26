@@ -191,7 +191,7 @@ export class MatchSession {
       if (body.choice === 1) this.env.known(entry);
       return { correct: true, judged: true, next: this.question() };
     }
-    let entry, correct, expected;
+    let entry, correct, expected, correction;
     if (s.phase === 'match') {
       const b = s.board;
       const left = b.cards.find(e => e.key === body.person_key);
@@ -201,6 +201,11 @@ export class MatchSession {
       const person = b.left_persons[left.key]||left.personne, forms = this.env.forms(b.rule===2?left.verbe:form.verbe,b.rule===2?left.temps:form.temps);
       expected = forms[person] || form.form;
       correct = forms[person] === form.form;
+      if(!correct){
+        const target=b.rule===2?left:form;
+        correction=forms[person]?{lemma:target.verbe,person,form:forms[person]}:
+          {lemma:left.verbe,person,form:this.env.forms(left.verbe,left.temps)[person]||left.form};
+      }
       // The visible right-hand form owns the task and its error record. A
       // different verb on the hidden left slot never changes its person.
       entry = b.rule===3?form:b.rule===2?{...left,personne:person}:correct || !forms[person] ? form : { ...form, personne: person, key: taskKey({ ...form, personne: person }) };
@@ -215,7 +220,7 @@ export class MatchSession {
     }
     const deferred=!correct&&!entry.filler&&this.env.record(correct, entry)===true;
     if(correct&&!entry.filler)this.env.record(correct,entry);
-    if(deferred){this.defer(entry);return {correct:false,expected,deferred:true,matched:s.phase==='match',next:this.question()};}
+    if(deferred){this.defer(entry);return {correct:false,expected,correction,deferred:true,matched:s.phase==='match',next:this.question()};}
     // Reinforcement is bounded: a lone real task gets this extra attempt,
     // then moves on to spelling even if it is still wrong. Keep the failure
     // recorded; support tiles must never create another retry round.
@@ -229,7 +234,7 @@ export class MatchSession {
         this.env.complete(entry, s);if(s.deferred_words)s.deferred_words=s.deferred_words.filter(id=>id!==wordKey(entry)); if (!s.completed_words.includes(wordKey(entry))) s.completed_words.push(wordKey(entry));
       }
     }
-    return { correct, expected, matched: s.phase === 'match', next: this.question() };
+    return { correct, expected, correction, matched: s.phase === 'match', next: this.question() };
   }
   restart(excluded = new Set()) {
     const s = this.s; s.done = Math.max(0, s.done - s.batch_done);

@@ -1,4 +1,5 @@
 <script setup>
+import {retireFadePane} from "../platform/page-motion.js";
 import {computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch} from 'vue'
 import AppearanceEditor from './AppearanceEditor.vue'
 import {loadArt, makeRenderer} from './graphics.js'
@@ -358,6 +359,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <div class="fade-stage game-stage"><Transition name="game-fade" @before-leave="retireFadePane">
   <OpeningStory v-if="intro" :busy="introSaving" :error="error" :local-audio="!forceCc0" @complete="finishIntro"/>
   <section v-else-if="!playing" class="game-landing" :class="{'town-landing':immersive}">
     <div class="game-intro">
@@ -422,7 +424,7 @@ onBeforeUnmount(() => {
         <aside v-else-if="town && !modal" class="rift-hint town-hint" :style="point(town.x, town.y)" role="status">
           {{ town.label }} <kbd>空格</kbd>
         </aside>
-        <div v-if="modal" class="rift-overlay" :class="{'town-overlay':modal.kind!=='rift'}">
+        <Transition name="game-fade"><div v-if="modal" class="rift-overlay" :class="{'town-overlay':modal.kind!=='rift'}">
           <section ref="dialog" class="rift-dialog" :class="{'town-dialog':modal.kind!=='rift'}"
             role="dialog" aria-modal="true" aria-labelledby="game-panel-title">
             <template v-if="modal.kind==='rift'">
@@ -459,7 +461,7 @@ onBeforeUnmount(() => {
               </div>
             </template>
           </section>
-        </div>
+        </div></Transition>
       </div>
     </div>
     <footer id="game-controls" class="world-controls">
@@ -470,9 +472,15 @@ onBeforeUnmount(() => {
     <p v-if="!modal && (townNotice || returnMessage)" class="game-receipt" role="status">{{ townNotice || returnMessage }}</p>
     <p v-if="error" class="game-error" role="alert">{{ error }}</p>
   </section>
+  </Transition></div>
 </template>
 
 <style scoped>
+.game-stage{position:relative}
+.game-fade-enter-active{transition:opacity .18s ease-out}
+.game-fade-leave-active{transition:opacity .12s ease-out;pointer-events:none}
+.game-fade-enter-from,.game-fade-leave-to{opacity:0}
+@media(prefers-reduced-motion:reduce){.game-fade-enter-active,.game-fade-leave-active{transition:none}}
 .game-landing,.world{max-width:960px;margin:32px auto 0}
 .game-intro,.character,.world{border:1px solid var(--ui-c03293a37481,#d5ddc9);border-radius:18px;background:var(--ui-81309ffb5573,#f6f5eb)}
 .game-intro{padding:25px 30px;background:var(--ui-bc7ac8f39ebd,#e8eedc)}

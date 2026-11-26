@@ -1,4 +1,5 @@
 <script setup>
+import {retireFadePane} from "../../platform/page-motion.js";
 import {computed, onMounted, onBeforeUnmount, ref, shallowRef} from 'vue'
 import ReadingShelf from './ReadingShelf.vue'
 import FluencyDemo from './FluencyDemo.vue'
@@ -565,6 +566,7 @@ onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();u
 <template><main class="desk guided" :class="{'town-desk':embedded&&view==='adventure'}">
 <header v-if="!embedded||(view!=='games'&&view!=='adventure')" class="mast"><div v-if="!embedded" class="brand"><span class="brand-mark" aria-hidden="true"><i/><i/><i/><i/></span>启航法语<span class="divider"/>口语练习</div><nav v-if="view!=='home'"><button v-if="canSave" class="secondary" :disabled="exitBusy" @click="saveExit">{{gamePractice?'保存并回地图':'保存并退出'}}</button><button v-else-if="view!=='games'&&!(embedded&&view==='scope')" class="back" @click="back">← {{gamePractice?'返回地图':dailyReview||view==='read'&&batchSize?'需练习本':view==='scope'||view==='adventure'||dailyMode?'日常练习':'课次列表'}}</button><button v-if="!embedded" class="back" :disabled="canSave&&exitBusy" @click="nav('home')">模式选择</button></nav></header>
 <p class="alert" role="alert" v-if="error">{{error}} <button v-if="['scope','notebook'].includes(view)" @click="shelf(view,false)">重试</button><button v-else-if="gamePractice?.mode==='lecture'&&!s" @click="openGamePractice(gamePractice,false)">重试</button></p>
+<div class="fade-stage"><Transition name="desk-fade" @before-leave="retireFadePane"><div :key="view">
 <section v-if="view==='home'" class="landing"><p class="overline">Atelier de français</p><h1>口语练习室</h1><div class="mode-grid">
 <button class="mode daily" @click="nav('games')"><span class="card-fr">Pratique</span><span class="bars" aria-hidden="true"><i v-for="(h,i) in [25,45,68,43,80,96,72,47,68,40,24]" :key="i" :style="{'--bar':h+'%'}"/></span><strong>日常练习</strong><span class="card-foot">跟着课本，练好每一句。<b>↗</b></span></button>
 <button class="mode exam exam-practice" aria-labelledby="exam-title" aria-describedby="exam-skills exam-summary" @click="exam">
@@ -631,6 +633,7 @@ onBeforeUnmount(()=>{clearInterval(tick);pagehide();gameRadio.value?.dispose();u
 <ol class="list"><li v-for="l in lines" :key="l.id"><strong>{{l.fr}}</strong><span>{{report.lines[l.id]?.status==='passed'?(report.lines[l.id].passKind==='independent'?'独立通过':'辅助通过'):report.lines[l.id]?'待巩固':'本轮未练'}} · 首读 {{pct(report.first[l.id]?.accuracy)}}</span></li></ol>
 <div class="actions"><button v-if="gamePractice" class="speak" @click="finishGamePractice(s)">结算并返回地图</button>
 <template v-else><button class="speak" @click="scope()">换一课</button><button v-if="s.phase==='ended'" class="secondary" :disabled="loading" @click="action('full')">整段连读</button></template><button class="text-link" @click="download">导出记录</button></div></section>
+</div></Transition></div>
 </main></template>
 <style scoped>
 .today-practice{margin-top:28px}.today-practice ul{list-style:none;padding:0;margin:0}.today-practice li{display:flex;flex-wrap:wrap;gap:8px 18px;padding:9px 0;border-bottom:1px solid var(--line)}.today-practice strong{min-width:120px}.today-practice span{color:var(--sub)}

@@ -1,28 +1,28 @@
 export const ADDITIONAL_BUNDLED_BOOKS = [
   {
     "id": "inspire2",
-    "contentId": "45aaf84329ad786c4a7226c2069fba2b733f6e6bc2d578bd6144188e10bb574e",
+    "contentId": "428ff1bb1d26618f319d6de892dceba9278e547a54fc0c0ca804a76fa0bb3c66",
     "file": "inspire2.zip",
     "lessons": 24,
     "words": 759
   },
   {
     "id": "inspire3",
-    "contentId": "d89c2a75937f00bb85793239adbd56c0480404aa5e8434ed0f9b731d8d445986",
+    "contentId": "c32d390f5012f9889426c448d40866706130aea38124c54d5190147ca487151a",
     "file": "inspire3.zip",
     "lessons": 27,
     "words": 718
   },
   {
     "id": "inspire4",
-    "contentId": "bddeed1e6f35048507729538e0699f159f5552d470f956241243bf6bf9e4139b",
+    "contentId": "3c1301d0de4d672e438d395575a495410cc97084f7ca312e2b94ff732e7ff234",
     "file": "inspire4.zip",
     "lessons": 27,
     "words": 737
   },
   {
     "id": "fos1",
-    "contentId": "a3d64d8673c72738a69fe78ad3d47881a6b8f3604e883a4f947302a1f24a9215",
+    "contentId": "b4d0f1c5f6fe85b1f091b80f2539bfe553ed813ceb8e229b6ced2be8ca4f4b37",
     "file": "fos1.zip",
     "lessons": 6,
     "words": 236,
